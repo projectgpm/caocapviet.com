@@ -1,0 +1,14 @@
+C:\Users\vmquy\Desktop\GitHub\banhangccv\BanHang\bin\BanHang.dll
+C:\Users\vmquy\Desktop\GitHub\banhangccv\BanHang\bin\BanHang.pdb
+C:\Users\vmquy\Desktop\GitHub\banhangccv\BanHang\obj\Debug\BanHang.csprojResolveAssemblyReference.cache
+C:\Users\vmquy\Desktop\GitHub\banhangccv\BanHang\obj\Debug\BanHang.dll.licenses
+C:\Users\vmquy\Desktop\GitHub\banhangccv\BanHang\obj\Debug\BanHang.dll
+C:\Users\vmquy\Desktop\GitHub\banhangccv\BanHang\obj\Debug\BanHang.pdb
+D:\GPM\ccv_1\gpm_GitCCV\BanHang\bin\BanHang.dll
+D:\GPM\ccv_1\gpm_GitCCV\BanHang\bin\BanHang.pdb
+D:\GPM\ccv_1\gpm_GitCCV\BanHang\obj\Debug\BanHang.dll.licenses
+D:\GPM\ccv_1\gpm_GitCCV\BanHang\obj\Debug\BanHang.dll
+D:\GPM\ccv_1\gpm_GitCCV\BanHang\obj\Debug\BanHang.pdb
+D:\GPM\ccv_1\gpm_GitCCV\BanHang\obj\Debug\BanHang.Report.rpHoaDonBanHangLe.resources
+D:\GPM\ccv_1\gpm_GitCCV\BanHang\obj\Debug\BanHang.csproj.GenerateResource.Cache
+D:\GPM\ccv_1\gpm_GitCCV\BanHang\obj\Debug\BanHang.csprojResolveAssemblyReference.cache
