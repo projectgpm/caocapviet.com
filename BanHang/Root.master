@@ -87,7 +87,7 @@
                                                                     </dx:RibbonDropDownButtonItem>
                                                                 </Items>
                                                             </dx:RibbonDropDownButtonItem>
-                                                            <dx:RibbonDropDownButtonItem Name="Danh sách hãng sản xuất" NavigateUrl="HangSanXuat.aspx" Text="Danh Sách Hãng Sản Xuất">
+                                                            <dx:RibbonDropDownButtonItem Name="Danh sách hãng sản xuất" NavigateUrl="HangSanXuat.aspx" Text="Nhà Sản Xuất">
                                                             </dx:RibbonDropDownButtonItem>
                                                             <dx:RibbonDropDownButtonItem Name="Danh Sách Kệ" NavigateUrl="DanhSachKe.aspx" Text="Danh Sách Kệ">
                                                                 <SmallImage IconID="people_mr_16x16devav">

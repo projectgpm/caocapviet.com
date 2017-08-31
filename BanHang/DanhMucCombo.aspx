@@ -26,10 +26,10 @@
         </Items>
       </dx:ASPxFormLayout> 
     <dx:ASPxGridView ID="gridDanhMucCombo" runat="server" AutoGenerateColumns="False" Width="100%" OnRowDeleting="gridDanhMucCombo_RowDeleting" OnRowUpdating="gridDanhMucCombo_RowUpdating" KeyFieldName="ID">
-         <Settings ShowFilterRow="True" />
+          <Settings AutoFilterCondition="Contains" ShowFilterRow="True" ShowTitlePanel="True" />
         <SettingsEditing Mode="PopupEditForm">
         </SettingsEditing>
-          <Settings AutoFilterCondition="Contains" ShowFilterRow="True" ShowTitlePanel="True" />
+         <Settings ShowFilterRow="True" />
         <SettingsBehavior ConfirmDelete="True" />
         <SettingsCommandButton>
             <ShowAdaptiveDetailButton ButtonType="Image">
@@ -60,7 +60,8 @@
         <SettingsPopup>
             <EditForm HorizontalAlign="WindowCenter" VerticalAlign="WindowCenter" Modal="True" />
         </SettingsPopup>
-        <SettingsText CommandDelete="Xóa" CommandEdit="Sửa" CommandNew="Thêm" ConfirmDelete="Bạn có chắc chắn muốn xóa không?" PopupEditFormCaption="Thông tin danh mục combo" Title="DANH SÁCH DANH MỤC COMBO" />
+         <SettingsSearchPanel Visible="True" />
+        <SettingsText CommandDelete="Xóa" CommandEdit="Sửa" CommandNew="Thêm" ConfirmDelete="Bạn có chắc chắn muốn xóa không?" PopupEditFormCaption="Thông tin danh mục combo" Title="DANH SÁCH DANH MỤC COMBO" EmptyDataRow="Không có dữ liệu hiển thị" SearchPanelEditorNullText="Nhập thông tin cần tìm..." />
           <EditFormLayoutProperties ColCount="2">
               <Items>
                   <dx:GridViewColumnLayoutItem ColumnName="Tên Hàng Hóa" ColSpan="2" Name="TenHangHoa">

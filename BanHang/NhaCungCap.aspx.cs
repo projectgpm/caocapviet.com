@@ -65,15 +65,30 @@ namespace BanHang
             string nguoiLienHe = e.NewValues["NguoiLienHe"] == null ? "" : e.NewValues["NguoiLienHe"].ToString();
             string maSoThue = e.NewValues["MaSoThue"] == null ? "" : e.NewValues["MaSoThue"].ToString();
             string linhVucKinhDoanh = e.NewValues["LinhVucKinhDoanh"] == null ? "" : e.NewValues["LinhVucKinhDoanh"].ToString();
-            //string loGo = ""; //e.NewValues["TenNganhHang"].ToString();
+            string MaNCC = e.NewValues["MaNCC"].ToString();
             DateTime NgayCapNhat = DateTime.Today.Date;
             string ghiChu = e.NewValues["GhiChu"] == null ? "" : e.NewValues["GhiChu"].ToString();
-            data.ThemNhaCungCap(tenNhaCungCap, dienThoai, fax, email, diaChi, nguoiLienHe, maSoThue, linhVucKinhDoanh, NgayCapNhat, ghiChu);
-            e.Cancel = true;
-            gridNhaCungCap.CancelEdit();
-            LoadGrid();
-            dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Nhà Cung Cấp:" + tenNhaCungCap, Session["IDKho"].ToString(), "Danh Mục", "Thêm");
-
+            if (dtSetting.kiemTraChuyenDoiDau() == 1)
+                tenNhaCungCap = dtSetting.convertDauSangKhongDau(tenNhaCungCap).ToUpper();
+            if (dtSetting.IsNumber(MaNCC) == true)
+            {
+                if (dtNhaCungCap.KiemTraMaNCC(MaNCC) == false)
+                {
+                    data.ThemNhaCungCap(MaNCC, tenNhaCungCap, dienThoai, fax, email, diaChi, nguoiLienHe, maSoThue, linhVucKinhDoanh, NgayCapNhat, ghiChu);
+                    e.Cancel = true;
+                    gridNhaCungCap.CancelEdit();
+                    LoadGrid();
+                    dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Nhà Cung Cấp:" + tenNhaCungCap, Session["IDKho"].ToString(), "Danh Mục", "Thêm");
+                }
+                else
+                {
+                    throw new Exception("Lỗi: Mã nhà cung cấp đã tồn tại");
+                }
+            }
+            else
+            {
+                throw new Exception("Lỗi: Mã nhà cung cấp phải là số");
+            }
         }
 
         protected void gridNhaCungCap_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
@@ -87,16 +102,40 @@ namespace BanHang
             string nguoiLienHe = e.NewValues["NguoiLienHe"] == null ? "" : e.NewValues["NguoiLienHe"].ToString();
             string maSoThue = e.NewValues["MaSoThue"] == null ? "" : e.NewValues["MaSoThue"].ToString();
             string linhVucKinhDoanh = e.NewValues["LinhVucKinhDoanh"] == null ? "" : e.NewValues["LinhVucKinhDoanh"].ToString();
-            //string loGo = ""; //e.NewValues["TenNganhHang"].ToString();
-            DateTime NgayCapNhat = DateTime.Today.Date;
+            string MaNCC = e.NewValues["MaNCC"].ToString();
             string ghiChu = e.NewValues["GhiChu"] == null ? "" : e.NewValues["GhiChu"].ToString();
-
-            data.SuaThongTinNhaCungCap(Int32.Parse(ID), tenNhaCungCap, dienThoai, fax, email, diaChi, nguoiLienHe, maSoThue, linhVucKinhDoanh, NgayCapNhat, ghiChu);
-
-            e.Cancel = true;
-            gridNhaCungCap.CancelEdit();
-            LoadGrid();
-            dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Nhà Cung Cấp: " + tenNhaCungCap, Session["IDKho"].ToString(), "Danh Mục", "Cập Nhật");
+            if (dtSetting.kiemTraChuyenDoiDau() == 1)
+                tenNhaCungCap = dtSetting.convertDauSangKhongDau(tenNhaCungCap).ToUpper();
+            if (dtSetting.IsNumber(MaNCC) == true)
+            {
+                if (dtNhaCungCap.KiemTraMaNCC_ID(MaNCC, ID) == true)
+                {
+                    data.SuaThongTinNhaCungCap(MaNCC, Int32.Parse(ID), tenNhaCungCap, dienThoai, fax, email, diaChi, nguoiLienHe, maSoThue, linhVucKinhDoanh, ghiChu);
+                    e.Cancel = true;
+                    gridNhaCungCap.CancelEdit();
+                    LoadGrid();
+                    dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Nhà Cung Cấp: " + tenNhaCungCap, Session["IDKho"].ToString(), "Danh Mục", "Cập Nhật");
+                }
+                else
+                {
+                    if (dtNhaCungCap.KiemTraMaNCC(MaNCC) == false)
+                    {
+                        data.SuaThongTinNhaCungCap(MaNCC, Int32.Parse(ID), tenNhaCungCap, dienThoai, fax, email, diaChi, nguoiLienHe, maSoThue, linhVucKinhDoanh, ghiChu);
+                        e.Cancel = true;
+                        gridNhaCungCap.CancelEdit();
+                        LoadGrid();
+                        dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Nhà Cung Cấp: " + tenNhaCungCap, Session["IDKho"].ToString(), "Danh Mục", "Cập Nhật");
+                    }
+                    else
+                    {
+                        throw new Exception("Lỗi: Mã nhà cung cấp đã tồn tại");
+                    }
+                }
+            }
+            else
+            {
+                throw new Exception("Lỗi: Mã nhà cung cấp phải là số");
+            }
         }
 
         protected void btnXuatPDF_Click(object sender, EventArgs e)
@@ -112,6 +151,11 @@ namespace BanHang
         protected void btnNhapExcel_Click(object sender, EventArgs e)
         {
             Response.Redirect("ImportExcel_NhaCungCap.aspx");
+        }
+
+        protected void gridNhaCungCap_InitNewRow(object sender, DevExpress.Web.Data.ASPxDataInitNewRowEventArgs e)
+        {
+            e.NewValues["MaNCC"] = dtNhaCungCap.Dem_Max();
         }
     }
 }

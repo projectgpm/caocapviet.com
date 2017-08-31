@@ -123,8 +123,7 @@ namespace BanHang
        
         protected void gridNganhHang_InitNewRow(object sender, DevExpress.Web.Data.ASPxDataInitNewRowEventArgs e)
         {
-            int Max = dataNganhHang.LayID_Max();
-            e.NewValues["MaNganh"] = ((Max + 1)*0.01).ToString().Replace(".","");
+            e.NewValues["MaNganh"] = dataNganhHang.Dem_Max();
         }
 
     }

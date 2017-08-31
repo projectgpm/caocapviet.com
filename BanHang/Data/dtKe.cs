@@ -246,7 +246,13 @@ namespace BanHang.Data
                 try
                 {
                     myConnection.Open();
-                    string strSQL = "DELETE [GPM_Ke]  WHERE [ID] = @ID";
+                    string strSQL = "DELETE [GPM_ChiTietKe]  WHERE [IDKe] = @ID";
+                    using (SqlCommand myCommand = new SqlCommand(strSQL, myConnection))
+                    {
+                        myCommand.Parameters.AddWithValue("@ID", ID);
+                        myCommand.ExecuteNonQuery();
+                    }
+                    strSQL = "DELETE [GPM_Ke]  WHERE [ID] = @ID";
                     using (SqlCommand myCommand = new SqlCommand(strSQL, myConnection))
                     {
                         myCommand.Parameters.AddWithValue("@ID", ID);

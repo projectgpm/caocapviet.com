@@ -35,7 +35,7 @@
             <EditForm HorizontalAlign="WindowCenter" Modal="True" VerticalAlign="WindowCenter" />
         </SettingsPopup>
         <SettingsSearchPanel Visible="True" />
-        <SettingsText CommandDelete="Xóa" CommandEdit="Sửa" CommandNew="Thêm" ConfirmDelete="Bạn có chắc chắn muốn xóa không?" PopupEditFormCaption="Thông tin thanh toán" Title="Hình thức thanh toán" />
+        <SettingsText CommandDelete="Xóa" CommandEdit="Sửa" CommandNew="Thêm" ConfirmDelete="Bạn có chắc chắn muốn xóa không?" PopupEditFormCaption="Thông tin thanh toán" Title="Hình thức thanh toán" EmptyDataRow="Không có dữ liệu hiển thị" SearchPanelEditorNullText="Nhập thông tin cần tìm..." />
         <EditFormLayoutProperties>
             <Items>
                 <dx:GridViewColumnLayoutItem ColumnName="Hình Thức" Name="TenHinhThuc">
@@ -49,7 +49,7 @@
         <Columns>
             <dx:GridViewCommandColumn ShowClearFilterButton="True" ShowDeleteButton="True" ShowEditButton="True" ShowNewButtonInHeader="True" VisibleIndex="5" Name="iconaction">
             </dx:GridViewCommandColumn>
-            <dx:GridViewDataTextColumn Caption="Mã" FieldName="ID" VisibleIndex="0">
+            <dx:GridViewDataTextColumn Caption="Mã" FieldName="ID" VisibleIndex="0" Visible="False">
             </dx:GridViewDataTextColumn>
             <dx:GridViewDataTextColumn Caption="Hình Thức" FieldName="TenHinhThuc" VisibleIndex="1" SortIndex="0" SortOrder="Ascending">
                 <PropertiesTextEdit>

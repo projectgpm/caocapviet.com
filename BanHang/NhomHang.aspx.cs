@@ -126,8 +126,8 @@ namespace BanHang
 
         protected void gridNhomHang_InitNewRow(object sender, DevExpress.Web.Data.ASPxDataInitNewRowEventArgs e)
         {
-            int Max = dataNhomHang.LayID_Max();
-            e.NewValues["MaNhom"] = ((Max + 1) * 0.001).ToString().Replace(".", "");
+
+            e.NewValues["MaNhom"] = dataNhomHang.Dem_Max();
             e.NewValues["IDNganhHang"] = 2;
         }
     }
