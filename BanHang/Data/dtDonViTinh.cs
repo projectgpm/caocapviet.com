@@ -9,6 +9,66 @@ namespace BanHang.Data
 {
     public class dtDonViTinh
     {
+        public static bool KiemTraMaDonViTinh_ID(string MaDonVi, string ID)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT MaDonVi FROM [GPM_DONVITINH] WHERE [MaDonVi] = '" + MaDonVi + "' AND ID =  " + ID;
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    if (tb.Rows.Count != 0)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+            }
+        }
+        public static string Dem_Max()
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                int STTV = 0;
+                string So;
+                string GPM = "000";
+                string cmdText = "SELECT * FROM [GPM_DONVITINH]";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    STTV = tb.Rows.Count + 1;
+                    int DoDaiHT = STTV.ToString().Length;
+                    string DoDaiGPM = GPM.Substring(0, 3 - DoDaiHT);
+                    So = DoDaiGPM + STTV;
+                    return So;
+                }
+            }
+        }
+        public static int KiemTraMa(string MaDonVi)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT * FROM [GPM_DONVITINH] WHERE [MaDonVi] = N'" + MaDonVi + "'";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    if (tb.Rows.Count == 0)
+                    {
+                        return 1;
+                    }
+                    else return -1;
+                }
+            }
+        }
         public DataTable DanhSachDonViTinh()
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
@@ -65,16 +125,17 @@ namespace BanHang.Data
             }
         }
 
-        public void ThemDonViTinh(string TenDonViTinh, string MoTa)
+        public void ThemDonViTinh(string MaDonVi, string TenDonViTinh, string MoTa)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
                 try
                 {
                     myConnection.Open();
-                    string cmdText = "INSERT INTO [GPM_DONVITINH] ([TenDonViTinh],[MoTa],[NgayCapNhat]) VALUES (@TenDonViTinh,@MoTa, getdate())";
+                    string cmdText = "INSERT INTO [GPM_DONVITINH] ([TenDonViTinh],[MoTa],[NgayCapNhat],[MaDonVi]) VALUES (@TenDonViTinh,@MoTa, getdate(),@MaDonVi)";
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
+                        myCommand.Parameters.AddWithValue("@MaDonVi", MaDonVi);
                         myCommand.Parameters.AddWithValue("@TenDonViTinh", TenDonViTinh);
                         myCommand.Parameters.AddWithValue("@MoTa", MoTa);
                         myCommand.ExecuteNonQuery();
@@ -109,18 +170,19 @@ namespace BanHang.Data
             }
         }
 
-        public void SuaThongTinDonViTinh(int ID, string TenDonViTinh, string MoTa)
+        public void SuaThongTinDonViTinh(int ID, string TenDonViTinh, string MoTa, string MaDonVi)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
                 try
                 {
                     myConnection.Open();
-                    string strSQL = "UPDATE [GPM_DONVITINH] SET [TenDonViTinh] = @TenDonViTinh,[MoTa] = @MoTa, [NgayCapNhat] = getdate() WHERE [ID] = @ID";
+                    string strSQL = "UPDATE [GPM_DONVITINH] SET [MaDonVi] = @MaDonVi,[TenDonViTinh] = @TenDonViTinh,[MoTa] = @MoTa, [NgayCapNhat] = getdate() WHERE [ID] = @ID";
                     using (SqlCommand myCommand = new SqlCommand(strSQL, myConnection))
                     {
                         myCommand.Parameters.AddWithValue("@ID", ID);
                         myCommand.Parameters.AddWithValue("@TenDonViTinh", TenDonViTinh);
+                        myCommand.Parameters.AddWithValue("@MaDonVi", MaDonVi);
                         myCommand.Parameters.AddWithValue("@MoTa", MoTa);
                         myCommand.ExecuteNonQuery();
                     }
