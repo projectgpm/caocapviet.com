@@ -180,6 +180,26 @@ namespace BanHang.Data
                 }
             }
         }
+        public static float LayGiaBanTruocThue(string IDHangHoa)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT GiaBanTruocThue FROM [GPM_HangHoa] WHERE [ID] = " + IDHangHoa;
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    if (tb.Rows.Count != 0)
+                    {
+                        DataRow dr = tb.Rows[0];
+                        return float.Parse(dr["GiaBanTruocThue"].ToString().Trim());
+                    }
+                    return 0;
+                }
+            }
+        }
         public static float LayGiaMuaSauThue(string IDHangHoa)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
@@ -195,6 +215,26 @@ namespace BanHang.Data
                     {
                         DataRow dr = tb.Rows[0];
                         return float.Parse(dr["GiaMuaSauThue"].ToString().Trim());
+                    }
+                    return 0;
+                }
+            }
+        }
+        public static float LayGiaMuaTruocThue(string IDHangHoa)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT GiaMuaTruocThue FROM [GPM_HangHoa] WHERE [ID] = " + IDHangHoa;
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    if (tb.Rows.Count != 0)
+                    {
+                        DataRow dr = tb.Rows[0];
+                        return float.Parse(dr["GiaMuaTruocThue"].ToString().Trim());
                     }
                     return 0;
                 }

@@ -34,27 +34,43 @@
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
                 </dx:LayoutItem>
-                <dx:LayoutItem Caption="Giá Bán">
+                <dx:LayoutItem Caption="Tổng Giá Mua Trước Thuế">
+                    <LayoutItemNestedControlCollection>
+                        <dx:LayoutItemNestedControlContainer runat="server">
+                            <dx:ASPxSpinEdit ID="txtGiaMuaTruocThue" runat="server" Enabled="False" Width ="100%" DisplayFormatString="N0">
+                            </dx:ASPxSpinEdit>
+                        </dx:LayoutItemNestedControlContainer>
+                    </LayoutItemNestedControlCollection>
+                </dx:LayoutItem>
+                <dx:LayoutItem Caption="Tổng Giá Mua Sau Thuế">
+                    <LayoutItemNestedControlCollection>
+                        <dx:LayoutItemNestedControlContainer runat="server">
+                            <dx:ASPxSpinEdit ID="txtGiaMuaSauThue" runat="server" Enabled="False" Width ="100%" DisplayFormatString="N0">
+                            </dx:ASPxSpinEdit>
+                        </dx:LayoutItemNestedControlContainer>
+                    </LayoutItemNestedControlCollection>
+                </dx:LayoutItem>
+                <dx:LayoutItem Caption="Tổng Giá Bán Trước Thuế">
+                    <LayoutItemNestedControlCollection>
+                        <dx:LayoutItemNestedControlContainer runat="server">
+                            <dx:ASPxSpinEdit ID="txtGiaBanTruocThue" runat="server" Enabled="False" Width ="100%" DisplayFormatString="N0">
+                            </dx:ASPxSpinEdit>
+                        </dx:LayoutItemNestedControlContainer>
+                    </LayoutItemNestedControlCollection>
+                </dx:LayoutItem>
+<dx:LayoutItem Caption="Tổng Giá Bán Sau Thuế"><LayoutItemNestedControlCollection>
+<dx:LayoutItemNestedControlContainer runat="server">
+                            <dx:ASPxSpinEdit ID="txtGiaBanSauThue" runat="server" Enabled="False" Width ="100%" DisplayFormatString="N0">
+                            </dx:ASPxSpinEdit>
+
+                        </dx:LayoutItemNestedControlContainer>
+</LayoutItemNestedControlCollection>
+</dx:LayoutItem>
+                <dx:LayoutItem Caption="Giá Bán Tổng">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer5" runat="server">
                             <dx:ASPxSpinEdit ID="txtGiaBan" runat="server" DisplayFormatString="N0" Width="100%">
                             </dx:ASPxSpinEdit>
-                        </dx:LayoutItemNestedControlContainer>
-                    </LayoutItemNestedControlCollection>
-                </dx:LayoutItem>
-                <dx:LayoutItem Caption="Số Lượng">
-                    <LayoutItemNestedControlCollection>
-                        <dx:LayoutItemNestedControlContainer runat="server">
-                            <dx:ASPxSpinEdit ID="txtSLCombo" runat="server" AutoPostBack="True" OnNumberChanged="txtSLCombo_NumberChanged" Width="100%">
-                            </dx:ASPxSpinEdit>
-                        </dx:LayoutItemNestedControlContainer>
-                    </LayoutItemNestedControlCollection>
-                </dx:LayoutItem>
-                <dx:LayoutItem Caption="Barcode">
-                    <LayoutItemNestedControlCollection>
-                        <dx:LayoutItemNestedControlContainer runat="server">
-                            <dx:ASPxTextBox ID="txtBarcode" runat="server" Width="100%">
-                            </dx:ASPxTextBox>
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
                 </dx:LayoutItem>
@@ -66,6 +82,14 @@
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
                 </dx:LayoutItem>
+                <dx:LayoutItem Caption="Barcode" ColSpan="2">
+                    <LayoutItemNestedControlCollection>
+                        <dx:LayoutItemNestedControlContainer runat="server">
+                            <dx:ASPxTextBox ID="txtBarcode" runat="server" Width="100%">
+                            </dx:ASPxTextBox>
+                        </dx:LayoutItemNestedControlContainer>
+                    </LayoutItemNestedControlCollection>
+                </dx:LayoutItem>
                 <dx:LayoutItem Caption="Hạng sủ dụng">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer runat="server">
@@ -74,7 +98,7 @@
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
                 </dx:LayoutItem>
-                <dx:LayoutItem Caption="Ghi Chú">
+                <dx:LayoutItem Caption="Ghi Chú" ColSpan="3">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer runat="server">
                             <dx:ASPxTextBox ID="txtGhiChu" runat="server" Width="100%">
@@ -92,7 +116,7 @@
                             <dx:ASPxComboBox ID="cmbHangHoa" runat="server" 
                                 AutoPostBack="True" OnSelectedIndexChanged="cmbHangHoa_SelectedIndexChanged" 
                                 DropDownWidth="750px" DropDownStyle="DropDownList"   TextFormatString="{0} - {1}"
-                                EnableCallbackMode="true" Enabled="False" Width="100%" 
+                                EnableCallbackMode="true" Width="100%" 
                                 OnItemRequestedByValue="cmbHangHoa_ItemRequestedByValue" 
                                 OnItemsRequestedByFilterCondition="cmbHangHoa_ItemsRequestedByFilterCondition"
                                 ValueField="ID"
@@ -123,7 +147,7 @@
                 <dx:LayoutItem Caption="Số Lượng">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer8" runat="server">
-                            <dx:ASPxSpinEdit ID="txtSoLuong" runat="server" Enabled="False" Width="100%">
+                            <dx:ASPxSpinEdit ID="txtSoLuong" runat="server" Width="100%">
                             </dx:ASPxSpinEdit>
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
@@ -136,10 +160,26 @@
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
                 </dx:LayoutItem>
+                <dx:LayoutItem Caption="Giá Bán Sau Thuế">
+                    <LayoutItemNestedControlCollection>
+                        <dx:LayoutItemNestedControlContainer runat="server">
+                            <dx:ASPxSpinEdit ID="txtGiaBanST" runat="server" Enabled="False" Width="100%" DisplayFormatString="N0">
+                            </dx:ASPxSpinEdit>
+                        </dx:LayoutItemNestedControlContainer>
+                    </LayoutItemNestedControlCollection>
+                </dx:LayoutItem>
+                <dx:LayoutItem Caption="Ghi Chú" ColSpan="2">
+                    <LayoutItemNestedControlCollection>
+                        <dx:LayoutItemNestedControlContainer runat="server">
+                            <dx:ASPxTextBox ID="txtGhiChuHangHoa" runat="server" Width="100%">
+                            </dx:ASPxTextBox>
+                        </dx:LayoutItemNestedControlContainer>
+                    </LayoutItemNestedControlCollection>
+                </dx:LayoutItem>
                 <dx:LayoutItem Caption="" HorizontalAlign="Left">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer13" runat="server">
-                            <dx:ASPxButton ID="btnThem_Temp" runat="server" Text="Thêm" OnClick="btnThem_Temp_Click" Enabled="False">
+                            <dx:ASPxButton ID="btnThem_Temp" runat="server" Text="Thêm" OnClick="btnThem_Temp_Click">
                                 <Image IconID="actions_add_32x32">
                                 </Image>
                             </dx:ASPxButton>
@@ -154,7 +194,8 @@
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer14" runat="server">
                                                 
-                            <dx:ASPxGridView ID="gridDanhSachHangHoa" runat="server" AutoGenerateColumns="False" KeyFieldName="ID" OnRowDeleting="gridDanhSachHangHoa_RowDeleting" Width="100%" OnRowDeleted="gridDanhSachHangHoa_RowDeleted" OnRowUpdated="gridDanhSachHangHoa_RowUpdated">
+                            <dx:ASPxGridView ID="gridDanhSachHangHoa" runat="server" AutoGenerateColumns="False" KeyFieldName="ID" Width="100%">
+                                 <Settings ShowFooter="True" />
                                  <SettingsBehavior ConfirmDelete="True" />
                                  <SettingsCommandButton>
                                     <ShowAdaptiveDetailButton ButtonType="Image">
@@ -182,7 +223,7 @@
                                         </Image>
                                     </DeleteButton>
                                 </SettingsCommandButton>
-                                <SettingsText CommandBatchEditCancel="Hủy tất cả" CommandBatchEditUpdate="Lưu tất cả" Title="DANH SÁCH HÀNG HÓA GIÁ THEO CHI NHÁNH" ConfirmDelete="Bạn chắc chắn muốn xóa?" />
+                                <SettingsText CommandBatchEditCancel="Hủy tất cả" CommandBatchEditUpdate="Lưu tất cả" Title="DANH SÁCH HÀNG HÓA GIÁ THEO CHI NHÁNH" ConfirmDelete="Bạn chắc chắn muốn xóa?" EmptyDataRow="Danh sách hàng hóa rỗng" />
                                 <Columns>
                                     <dx:GridViewDataTextColumn Caption="Mã Hàng" FieldName="MaHang" ShowInCustomizationForm="True" VisibleIndex="0">
                                     </dx:GridViewDataTextColumn>
@@ -190,11 +231,11 @@
                                     </dx:GridViewDataTextColumn>
                                     <dx:GridViewDataTextColumn Caption="ĐVT" FieldName="TenDonViTinh" ShowInCustomizationForm="True" VisibleIndex="2">
                                     </dx:GridViewDataTextColumn>
-                                    <dx:GridViewDataSpinEditColumn Caption="Thành Tiền" FieldName="ThanhTien" ShowInCustomizationForm="True" VisibleIndex="5">
+                                    <dx:GridViewDataSpinEditColumn Caption="Thành Tiền" FieldName="ThanhTien" ShowInCustomizationForm="True" VisibleIndex="8">
                                         <PropertiesSpinEdit DisplayFormatString="N0" NumberFormat="Custom">
                                         </PropertiesSpinEdit>
                                     </dx:GridViewDataSpinEditColumn>
-                                    <dx:GridViewDataSpinEditColumn Caption="Giá Bán Sau Thuế" FieldName="GiaBan" ShowInCustomizationForm="True" VisibleIndex="4">
+                                    <dx:GridViewDataSpinEditColumn Caption="Giá Bán Sau Thuế" FieldName="GiaBanSauThue" ShowInCustomizationForm="True" VisibleIndex="7">
                                         <PropertiesSpinEdit DisplayFormatString="N0" NumberFormat="Custom">
                                         </PropertiesSpinEdit>
                                     </dx:GridViewDataSpinEditColumn>
@@ -203,7 +244,7 @@
                                         </PropertiesSpinEdit>
                                     </dx:GridViewDataSpinEditColumn>
                                     <dx:GridViewDataButtonEditColumn Caption="Xóa" ShowInCustomizationForm="True" Width="50px" 
-                                        VisibleIndex="6">
+                                        VisibleIndex="10">
                                         <DataItemTemplate>
                                             <dx:ASPxButton ID="BtnXoaHang" runat="server" CommandName="XoaHang"
                                                 CommandArgument='<%# Eval("ID") %>' 
@@ -215,7 +256,30 @@
                                         <CellStyle HorizontalAlign="Center">
                                         </CellStyle>
                                     </dx:GridViewDataButtonEditColumn>
+                                    <dx:GridViewDataTextColumn Caption="Ghi Chú" ShowInCustomizationForm="True" VisibleIndex="9" FieldName="GhiChu">
+                                    </dx:GridViewDataTextColumn>
+                                    <dx:GridViewDataSpinEditColumn Caption="Giá Mua Sau Thuế" ShowInCustomizationForm="True" VisibleIndex="5" FieldName="GiaMuaSauThue">
+                                        <PropertiesSpinEdit DisplayFormatString="N0" NumberFormat="Custom">
+                                        </PropertiesSpinEdit>
+                                    </dx:GridViewDataSpinEditColumn>
+                                    <dx:GridViewDataSpinEditColumn Caption="Giá Bán Trước Thuế" ShowInCustomizationForm="True" VisibleIndex="6" FieldName="GiaBanTruocThue">
+                                        <PropertiesSpinEdit DisplayFormatString="N0" NumberFormat="Custom">
+                                        </PropertiesSpinEdit>
+                                    </dx:GridViewDataSpinEditColumn>
+                                    <dx:GridViewDataSpinEditColumn Caption="Giá Mua Trước Thuế" ShowInCustomizationForm="True" VisibleIndex="4" FieldName="GiaMuaTruocThue">
+                                        <PropertiesSpinEdit DisplayFormatString="N0" NumberFormat="Custom">
+                                        </PropertiesSpinEdit>
+                                    </dx:GridViewDataSpinEditColumn>
                                 </Columns>
+                                 <TotalSummary>
+                                     <dx:ASPxSummaryItem DisplayFormat="Tổng = {0:N0}" FieldName="GiaMuaTruocThue" ShowInColumn="Giá Mua Trước Thuế" SummaryType="Sum" />
+                                     <dx:ASPxSummaryItem DisplayFormat="Tổng = {0:N0}" FieldName="GiaMuaSauThue" ShowInColumn="Giá Mua Sau Thuế" SummaryType="Sum" />
+                                     <dx:ASPxSummaryItem DisplayFormat="Tổng = {0:N0}" FieldName="GiaBanTruocThue" ShowInColumn="Giá Bán Trước Thuế" SummaryType="Sum" />
+                                     <dx:ASPxSummaryItem DisplayFormat="Tổng = {0:N0}" FieldName="GiaBanSauThue" ShowInColumn="Giá Bán Sau Thuế" SummaryType="Sum" />
+                                     <dx:ASPxSummaryItem DisplayFormat="Tổng = {0:N0}" FieldName="SoLuong" ShowInColumn="Số Lượng" SummaryType="Sum" />
+                                     <dx:ASPxSummaryItem DisplayFormat="Tổng = {0:N0}" FieldName="ThanhTien" ShowInColumn="Thành Tiền" SummaryType="Sum" />
+                                 </TotalSummary>
+                                 
                                  <Styles>
                                     <Header Font-Bold="True" HorizontalAlign="Center">
                                     </Header>
