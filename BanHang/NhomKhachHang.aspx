@@ -37,7 +37,7 @@
         <SettingsPopup>
             <EditForm HorizontalAlign="WindowCenter" Modal="True" VerticalAlign="WindowCenter" />
         </SettingsPopup>
-        <SettingsText CommandDelete="Xóa" CommandEdit="Sửa" CommandNew="Thêm" ConfirmDelete="Bạn có chắc chắn muốn xóa không?. Thao tác này có thể dẫn đễn việc xóa các Khách Hàng của nhóm!." PopupEditFormCaption="Thông tin nhóm khách hàng" Title="DANH SÁCH NHÓM KHÁCH HÀNG HÀNG" />
+        <SettingsText CommandDelete="Xóa" CommandEdit="Sửa" CommandNew="Thêm" ConfirmDelete="Bạn có chắc chắn muốn xóa không?. Thao tác này có thể dẫn đễn việc xóa các Khách Hàng của nhóm!." PopupEditFormCaption="Thông tin nhóm khách hàng" Title="DANH SÁCH NHÓM KHÁCH HÀNG HÀNG" EmptyDataRow="Không có dữ liệu hiển thị" SearchPanelEditorNullText="Nhập thông tin cần tìm..." />
         <SettingsSearchPanel Visible="True" />
         <EditFormLayoutProperties>
             <Items>
@@ -52,8 +52,6 @@
         <Columns>
             <dx:GridViewCommandColumn ShowClearFilterButton="True" ShowDeleteButton="True" ShowEditButton="True" ShowNewButtonInHeader="True" VisibleIndex="5" Name="iconaction">
             </dx:GridViewCommandColumn>
-            <dx:GridViewDataTextColumn VisibleIndex="0" Caption="Mã Nhóm" FieldName="ID">
-            </dx:GridViewDataTextColumn>
             <dx:GridViewDataTextColumn VisibleIndex="1" Caption="Tên Nhóm" FieldName="TenNhomKhachHang">
                 <PropertiesTextEdit>
                     <ValidationSettings SetFocusOnError="True">
