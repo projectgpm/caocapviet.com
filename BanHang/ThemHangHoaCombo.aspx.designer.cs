@@ -85,6 +85,24 @@ namespace BanHang {
         protected global::System.Web.UI.WebControls.SqlDataSource sqlDonViTinh;
         
         /// <summary>
+        /// cmbNhomHang control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxComboBox cmbNhomHang;
+        
+        /// <summary>
+        /// SqlNhomHang control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlNhomHang;
+        
+        /// <summary>
         /// txtGiaMuaTruocThue control.
         /// </summary>
         /// <remarks>
@@ -130,13 +148,13 @@ namespace BanHang {
         protected global::DevExpress.Web.LayoutItemNestedControlContainer LayoutItemNestedControlContainer5;
         
         /// <summary>
-        /// txtGiaBan control.
+        /// txtGiaBanTong control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxSpinEdit txtGiaBan;
+        protected global::DevExpress.Web.ASPxSpinEdit txtGiaBanTong;
         
         /// <summary>
         /// txtTrongLuong control.
