@@ -111,7 +111,7 @@
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
                 </dx:LayoutItem>
-                <dx:LayoutItem Caption="Barcode">
+                <dx:LayoutItem Caption="Barcode(*)">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer runat="server">
                             <dx:ASPxTextBox ID="txtBarcode" runat="server" Width="100%">
@@ -119,7 +119,7 @@
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
                 </dx:LayoutItem>
-                <dx:LayoutItem Caption="Hạng sủ dụng">
+                <dx:LayoutItem Caption="Hạng sủ dụng(*)">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer runat="server">
                             <dx:ASPxSpinEdit ID="txtHanSuDung" runat="server" Width="100%">

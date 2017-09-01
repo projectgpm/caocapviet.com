@@ -54,7 +54,7 @@ namespace BanHang
 
         protected void btnThem_Click(object sender, EventArgs e)
         {
-            if (txtMaHang.Text != "" && cmbDonViTinh.Text != "" && txtTenHangHoa.Text != "" && txtGiaBanTong.Text != "" && cmbNhomHang.Text != "")
+            if (txtBarcode.Text != "" && txtHanSuDung.Text !="" && txtMaHang.Text != "" && cmbDonViTinh.Text != "" && txtTenHangHoa.Text != "" && txtGiaBanTong.Text != "" && cmbNhomHang.Text != "")
             {
                 data = new dtHangCombo();
                 int IDHangHoaComBo = Int32.Parse(IDHangHoaComBo_Temp.Value.ToString());
