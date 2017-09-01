@@ -54,6 +54,7 @@
     </dx:GridViewDataSpinEditColumn>
     <dx:GridViewDataSpinEditColumn Caption="Giá Bán Trước Thuế" FieldName="GiaBanTruocThue" VisibleIndex="6">
         <propertiesspinedit DisplayFormatString="N0"></propertiesspinedit>
+        <HeaderStyle Wrap="True" />
     </dx:GridViewDataSpinEditColumn>
     <dx:GridViewDataSpinEditColumn Caption="Thành Tiền" FieldName="ThanhTien" VisibleIndex="8">
         <propertiesspinedit DisplayFormatString="N0"></propertiesspinedit>
@@ -77,14 +78,17 @@
     <dx:GridViewDataSpinEditColumn Caption="Giá Bán Sau Thuế" FieldName="GiaBanSauThue" VisibleIndex="7">
         <PropertiesSpinEdit DisplayFormatString="N0" NumberFormat="Custom">
         </PropertiesSpinEdit>
+        <HeaderStyle Wrap="True" />
     </dx:GridViewDataSpinEditColumn>
     <dx:GridViewDataSpinEditColumn Caption="Giá Mua Sau Thuế" FieldName="GiaMuaSauThue" VisibleIndex="5">
         <PropertiesSpinEdit DisplayFormatString="N0" NumberFormat="Custom">
         </PropertiesSpinEdit>
+        <HeaderStyle Wrap="True" />
     </dx:GridViewDataSpinEditColumn>
     <dx:GridViewDataSpinEditColumn Caption="Giá Mua Trước Thuế" FieldName="GiaMuaTruocThue" VisibleIndex="4">
         <PropertiesSpinEdit DisplayFormatString="N0" NumberFormat="Custom">
         </PropertiesSpinEdit>
+        <HeaderStyle Wrap="True" />
     </dx:GridViewDataSpinEditColumn>
 </Columns>
 

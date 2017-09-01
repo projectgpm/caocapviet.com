@@ -214,6 +214,7 @@ namespace BanHang
                     DataTable db = data.DanhSachHangHoaCombo_IDHangHoaComBo(ID.ToString());
                     if (db.Rows.Count > 0)
                     {
+                        //kiểm tra số lượng hàng con của combo
                         int kt = 0;
                         foreach (DataRow dr in db.Rows)
                         {
@@ -228,6 +229,7 @@ namespace BanHang
                                 break;
                             }
                         }
+
                         if (kt == 0)
                         {
                             //throw new Exception("đủ hàng:");
@@ -241,7 +243,7 @@ namespace BanHang
                                 {
                                     //đủ hàng
                                     int SL_SUM = (SLTon_SUM - (SLMoi * SLHang));
-                                    dtLichSuKho.ThemLichSu(IDHangHoa, Session["IDNhanVien"].ToString(), ((-1) * (SL_SUM - SLTon)).ToString(), "Cập nhật số lượng chi tiết hàng combo:" + dtHangHoa.LayTenHangHoa(IDHangHoa) + "", Session["IDKho"].ToString());
+                                    dtLichSuKho.ThemLichSu(IDHangHoa, Session["IDNhanVien"].ToString(), ((-1) * (SL_SUM - SLTon)).ToString(), "Gộp Hàng Combo:" + dtHangHoa.LayTenHangHoa(IDHangHoa) + "", Session["IDKho"].ToString());
                                     dtCapNhatTonKho.CapNhatKho(IDHangHoa, SL_SUM.ToString(), Session["IDKho"].ToString());
                                 }
                             }
@@ -249,18 +251,37 @@ namespace BanHang
                             dtCapNhatTonKho.CapNhatKho(ID.ToString(), SLMoi.ToString(), Session["IDKho"].ToString());
                         }
                     }
+                    else 
+                    {
+                        Response.Write("<script language='JavaScript'> alert('Lỗi: Không có hàng trong combo này? Vui lòng kiểm tra lại.'); </script>");
+                    }
+                }
+                else if (SLMoi < SLTonKho)
+                {
+                    // tách hàng combo
+                    DataTable db = data.DanhSachHangHoaCombo_IDHangHoaComBo(ID.ToString());
+                    if (db.Rows.Count > 0)
+                    {
+                        int SLTachHang = SLTonKho - SLMoi;// sl hàng hóa combo rã vd:5
+                        foreach (DataRow dr in db.Rows)
+                        {
+                            string IDHangHoa = dr["IDHangHoa"].ToString();
+                            int SLHang = Int32.Parse(dr["SoLuong"].ToString());//vd: 7
+                            int SLTon = dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, Session["IDKho"].ToString());// vd: 10
+                            int SLTon_SUM = (SLTachHang * SLHang) + SLTon; //(5 * 7) + 10 = 45
+                            dtCapNhatTonKho.CapNhatKho(IDHangHoa, SLTon_SUM.ToString(), Session["IDKho"].ToString()); // vd: 45
+                            dtLichSuKho.ThemLichSu(IDHangHoa, Session["IDNhanVien"].ToString(), (SLHang * SLTachHang).ToString(), "Tách Hàng Combo:" + dtHangHoa.LayTenHangHoa(IDHangHoa) + "", Session["IDKho"].ToString());
+                        }
+                        dtLichSuKho.ThemLichSu(ID.ToString(), Session["IDNhanVien"].ToString(), ((-1) * (SLTachHang)).ToString(), "Cập nhật số lượng hàng combo:" + dtHangHoa.LayTenHangHoa(ID.ToString()) + "", Session["IDKho"].ToString());
+                        dtCapNhatTonKho.CapNhatKho(ID.ToString(), SLMoi.ToString(), Session["IDKho"].ToString());
+                    }
                     else
                     {
                         Response.Write("<script language='JavaScript'> alert('Lỗi: Không có hàng trong combo này? Vui lòng kiểm tra lại.'); </script>");
                     }
-                    dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Danh Mục Combo:" + txtTenHangSua, Session["IDKho"].ToString(), "Danh Mục", "Cập nhật số lượng");
-                }
-                else
-                {
-                    // tách hàng combo
                 }
             }
-            else
+            else 
             {
                 Response.Write("<script language='JavaScript'> alert('Lỗi: Số lượng phải lớn hơn hoặc bằng 0.'); </script>");
             }

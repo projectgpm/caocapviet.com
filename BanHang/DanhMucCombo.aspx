@@ -87,71 +87,68 @@
               </Items>
           </EditFormLayoutProperties>
         <Columns>
-            <dx:GridViewCommandColumn ShowClearFilterButton="True" ShowDeleteButton="True" VisibleIndex="0" ShowEditButton="True" Name="iconaction">
+            <dx:GridViewCommandColumn ShowClearFilterButton="True" ShowDeleteButton="True" VisibleIndex="16" ShowEditButton="True" Name="iconaction">
             </dx:GridViewCommandColumn>
-            <dx:GridViewDataTextColumn Caption="Tên Hàng Hóa" FieldName="TenHangHoa" VisibleIndex="4">
+            <dx:GridViewDataTextColumn Caption="Tên Hàng Hóa" FieldName="TenHangHoa" VisibleIndex="1">
                 <PropertiesTextEdit>
                     <ValidationSettings SetFocusOnError="True">
                         <RequiredField IsRequired="True" />
                     </ValidationSettings>
                 </PropertiesTextEdit>
             </dx:GridViewDataTextColumn>
-            <dx:GridViewDataComboBoxColumn Caption="ĐVT" VisibleIndex="6" FieldName="IDDonViTinh">
+            <dx:GridViewDataComboBoxColumn Caption="ĐVT" VisibleIndex="3" FieldName="IDDonViTinh">
 <PropertiesComboBox DataSourceID="sqlDonViTinh" TextField="TenDonViTinh" ValueField="ID">
     <ValidationSettings SetFocusOnError="True">
         <RequiredField IsRequired="True" />
     </ValidationSettings>
                 </PropertiesComboBox>
             </dx:GridViewDataComboBoxColumn>
-            <dx:GridViewDataSpinEditColumn Caption="Đơn Giá Tổng" VisibleIndex="12" FieldName="GiaBanSauThue">
+            <dx:GridViewDataSpinEditColumn Caption="Đơn Giá Tổng" VisibleIndex="9" FieldName="GiaBanSauThue" Width="150px">
                 <PropertiesSpinEdit DisplayFormatString="N0" NumberFormat="Custom" DisplayFormatInEditMode="True">
                     <ValidationSettings SetFocusOnError="True">
                         <RequiredField IsRequired="True" />
                     </ValidationSettings>
                 </PropertiesSpinEdit>
+                <HeaderStyle Wrap="True" />
             </dx:GridViewDataSpinEditColumn>
-            <dx:GridViewDataButtonEditColumn Caption="Xem Chi Tiết" VisibleIndex="1">
+            <dx:GridViewDataButtonEditColumn Caption="Xem Chi Tiết" VisibleIndex="14" Width="150px">
                 
                 <DataItemTemplate>
                     <a href="javascript:void(0);" onclick="OnMoreInfoClick(this, '<%# Container.KeyValue %>')">Xem </a>
                 </DataItemTemplate>
+                <HeaderStyle Wrap="True" />
             </dx:GridViewDataButtonEditColumn>
-            <dx:GridViewDataTextColumn Caption="Mã Hàng" FieldName="MaHang" VisibleIndex="3">
+            <dx:GridViewDataTextColumn Caption="Mã Hàng" FieldName="MaHang" VisibleIndex="0">
                 <PropertiesTextEdit>
                     <ValidationSettings SetFocusOnError="True">
                         <RequiredField IsRequired="True" />
                     </ValidationSettings>
                 </PropertiesTextEdit>
             </dx:GridViewDataTextColumn>
-            <dx:GridViewDataSpinEditColumn Caption="Tổng Trọng Lượng" FieldName="TrongLuong" VisibleIndex="13">
+            <dx:GridViewDataSpinEditColumn Caption="Tổng Trọng Lượng" FieldName="TrongLuong" VisibleIndex="10" Width="150px">
                 <PropertiesSpinEdit DisplayFormatString="g" DisplayFormatInEditMode="True">
                     <ValidationSettings SetFocusOnError="True">
                         <RequiredField IsRequired="True" />
                     </ValidationSettings>
                 </PropertiesSpinEdit>
+                <HeaderStyle Wrap="True" />
             </dx:GridViewDataSpinEditColumn>
-            <dx:GridViewDataComboBoxColumn Caption="Trạng Thái" FieldName="IDTrangThaiHang" VisibleIndex="14">
+            <dx:GridViewDataComboBoxColumn Caption="Trạng Thái" FieldName="IDTrangThaiHang" VisibleIndex="11">
                 <PropertiesComboBox DataSourceID="SqlTrangThaiHang" TextField="TenTrangThai" ValueField="ID">
                     <ValidationSettings SetFocusOnError="True">
                         <RequiredField IsRequired="True" />
                     </ValidationSettings>
                 </PropertiesComboBox>
             </dx:GridViewDataComboBoxColumn>
-            <dx:GridViewDataSpinEditColumn Caption="Hạn Sử Dụng" FieldName="HanSuDung" VisibleIndex="15">
+            <dx:GridViewDataSpinEditColumn Caption="Hạn Sử Dụng" FieldName="HanSuDung" VisibleIndex="12" Width="150px">
                 <PropertiesSpinEdit DisplayFormatString="g">
                     <ValidationSettings SetFocusOnError="True">
                         <RequiredField IsRequired="True" />
                     </ValidationSettings>
                 </PropertiesSpinEdit>
+                <HeaderStyle Wrap="True" />
             </dx:GridViewDataSpinEditColumn>
-            <dx:GridViewDataSpinEditColumn Caption="Giá Bán Sau Thuế" FieldName="GiaBanSauThue" VisibleIndex="11">
-                <PropertiesSpinEdit DisplayFormatString="N0" NumberFormat="Custom" DisplayFormatInEditMode="True">
-                    <ValidationSettings SetFocusOnError="True">
-                        <RequiredField IsRequired="True" />
-                    </ValidationSettings>
-                </PropertiesSpinEdit>
-            </dx:GridViewDataSpinEditColumn>
-            <dx:GridViewDataSpinEditColumn Caption="Giá Mua Trước Thuế" FieldName="GiaMuaTruocThue" VisibleIndex="8" Width="50px">
+            <dx:GridViewDataSpinEditColumn Caption="Giá Bán Sau Thuế" FieldName="GiaBanSauThue" VisibleIndex="8" Width="150px">
                 <PropertiesSpinEdit DisplayFormatString="N0" NumberFormat="Custom" DisplayFormatInEditMode="True">
                     <ValidationSettings SetFocusOnError="True">
                         <RequiredField IsRequired="True" />
@@ -159,7 +156,7 @@
                 </PropertiesSpinEdit>
                 <HeaderStyle Wrap="True" />
             </dx:GridViewDataSpinEditColumn>
-            <dx:GridViewDataSpinEditColumn Caption="Giá Mua Sau Thuế" FieldName="GiaMuaSauThue" VisibleIndex="9" Width="50px">
+            <dx:GridViewDataSpinEditColumn Caption="Giá Mua Trước Thuế" FieldName="GiaMuaTruocThue" VisibleIndex="5" Width="150px">
                 <PropertiesSpinEdit DisplayFormatString="N0" NumberFormat="Custom" DisplayFormatInEditMode="True">
                     <ValidationSettings SetFocusOnError="True">
                         <RequiredField IsRequired="True" />
@@ -167,24 +164,33 @@
                 </PropertiesSpinEdit>
                 <HeaderStyle Wrap="True" />
             </dx:GridViewDataSpinEditColumn>
-            <dx:GridViewDataSpinEditColumn Caption="Giá Bán Trước Thuế" FieldName="GiaBanTruocThue" VisibleIndex="10">
+            <dx:GridViewDataSpinEditColumn Caption="Giá Mua Sau Thuế" FieldName="GiaMuaSauThue" VisibleIndex="6" Width="150px">
                 <PropertiesSpinEdit DisplayFormatString="N0" NumberFormat="Custom" DisplayFormatInEditMode="True">
                     <ValidationSettings SetFocusOnError="True">
                         <RequiredField IsRequired="True" />
                     </ValidationSettings>
                 </PropertiesSpinEdit>
+                <HeaderStyle Wrap="True" />
             </dx:GridViewDataSpinEditColumn>
-            <dx:GridViewDataComboBoxColumn Caption="Nhóm Hàng" FieldName="IDNhomHang" VisibleIndex="5">
+            <dx:GridViewDataSpinEditColumn Caption="Giá Bán Trước Thuế" FieldName="GiaBanTruocThue" VisibleIndex="7" Width="150px">
+                <PropertiesSpinEdit DisplayFormatString="N0" NumberFormat="Custom" DisplayFormatInEditMode="True">
+                    <ValidationSettings SetFocusOnError="True">
+                        <RequiredField IsRequired="True" />
+                    </ValidationSettings>
+                </PropertiesSpinEdit>
+                <HeaderStyle Wrap="True" />
+            </dx:GridViewDataSpinEditColumn>
+            <dx:GridViewDataComboBoxColumn Caption="Nhóm Hàng" FieldName="IDNhomHang" VisibleIndex="2">
                 <PropertiesComboBox DataSourceID="SqlNhomHang" TextField="TenNhomHang" ValueField="ID">
                     <ValidationSettings SetFocusOnError="True">
                         <RequiredField IsRequired="True" />
                     </ValidationSettings>
                 </PropertiesComboBox>
             </dx:GridViewDataComboBoxColumn>
-            <dx:GridViewDataTextColumn Caption="Ghi Chú" FieldName="GhiChu" VisibleIndex="16">
+            <dx:GridViewDataTextColumn Caption="Ghi Chú" FieldName="GhiChu" VisibleIndex="13">
             </dx:GridViewDataTextColumn>
-            <dx:GridViewDataButtonEditColumn Caption=" Cập Nhật SL" ShowInCustomizationForm="True" Width="50px" 
-                                        VisibleIndex="2">
+            <dx:GridViewDataButtonEditColumn Caption=" Cập Nhật SL" ShowInCustomizationForm="True" Width="150px" 
+                                        VisibleIndex="15">
                 <DataItemTemplate>
                     <dx:ASPxButton ID="BtnSuaSoLuong" runat="server" CommandName="SuaSoLuongHang"
                         CommandArgument='<%# Eval("ID") %>' 
@@ -193,10 +199,11 @@
                         </Image>
                     </dx:ASPxButton>
                 </DataItemTemplate>
+                <HeaderStyle Wrap="True" />
                 <CellStyle HorizontalAlign="Center">
                 </CellStyle>
             </dx:GridViewDataButtonEditColumn>
-            <dx:GridViewDataTextColumn Caption="Số Lượng Còn" FieldName="SoLuongCon" VisibleIndex="7">
+            <dx:GridViewDataTextColumn Caption="Số Lượng Còn" FieldName="SoLuongCon" VisibleIndex="4">
             </dx:GridViewDataTextColumn>
         </Columns>
         <Styles>
