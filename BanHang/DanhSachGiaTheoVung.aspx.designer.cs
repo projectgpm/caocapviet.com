@@ -31,6 +31,15 @@ namespace BanHang {
         protected global::DevExpress.Web.ASPxButton btnGiaTheoKho;
         
         /// <summary>
+        /// cmbChiNhanh control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxComboBox cmbChiNhanh;
+        
+        /// <summary>
         /// gridHangHoa control.
         /// </summary>
         /// <remarks>
