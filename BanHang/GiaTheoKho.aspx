@@ -1,15 +1,56 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Root.master" AutoEventWireup="true" CodeBehind="GiaTheoKho.aspx.cs" Inherits="BanHang.GiaTheoVung" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
-    <dx:ASPxFormLayout ID="LayoutGiaTheoVung" runat="server" ColCount="2" Width="100%">
+    <dx:ASPxFormLayout ID="LayoutGiaTheoVung" runat="server" Width="100%">
         <Items>
+
+            <dx:LayoutGroup Caption="Danh sách các chi nhánh" Width="100%" RowSpan="10">
+
+                <Items>
+                    <dx:LayoutItem Caption="">
+                        <LayoutItemNestedControlCollection>
+                            <dx:LayoutItemNestedControlContainer runat="server">
+                                <dx:ASPxComboBox ID="cmbVung" runat="server" AutoPostBack="True"
+                                     OnSelectedIndexChanged="cmbVung_SelectedIndexChanged" Width="50%"
+                                     
+                                    >
+                                     <%--<Columns>
+                                        <dx:ListBoxColumn FieldName="MaVung" Width="100px" Caption="Mã Vùng" />
+                                        <dx:ListBoxColumn FieldName="TenVung" Width="200px" Caption="Tên Vùng"/>
+                                    </Columns>--%>
+                                </dx:ASPxComboBox>
+
+                                <br />
+                                <dx:ASPxCheckBoxList ID="DanhSachKho" runat="server" RepeatColumns="5" Width="100%">
+                                </dx:ASPxCheckBoxList>
+                            </dx:LayoutItemNestedControlContainer>
+                        </LayoutItemNestedControlCollection>
+                    </dx:LayoutItem>
+                    <dx:LayoutItem Caption="" RowSpan="10">
+                        <LayoutItemNestedControlCollection>
+                            <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer3" runat="server">
+                                <asp:SqlDataSource ID="sqlKho" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" SelectCommand="SELECT [ID], [TenCuaHang], [MaKho],[DiaChi] FROM [GPM_Kho] WHERE ([DaXoa] = @DaXoa)">
+                                    <SelectParameters>
+                                        <asp:Parameter DefaultValue="0" Name="DaXoa" Type="Int32" />
+                                    </SelectParameters>
+                                </asp:SqlDataSource>
+                            </dx:LayoutItemNestedControlContainer>
+                        </LayoutItemNestedControlCollection>
+                    </dx:LayoutItem>
+                </Items>
+
+            </dx:LayoutGroup>
             <dx:LayoutGroup Caption="Thông tin" ColCount="2" Width="100%">
                 
                 <Items>
-                    <dx:LayoutItem Caption="Nhóm Hàng" ColSpan="2">
+                    <dx:LayoutItem Caption="Chọn Chi Nhánh Mẫu Để Áp Dụng Giá" ColSpan="2">
                         <LayoutItemNestedControlCollection>
                             <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer1" runat="server">
-                                <dx:ASPxComboBox ID="cmbNhomHang" runat="server" TextField="TenNhomHang" ValueField="ID" Width="80%" OnSelectedIndexChanged="LayoutGiaTheoVung_E2_SelectedIndexChanged" AutoPostBack="True">
-                                   
+                                <dx:ASPxComboBox ID="cmbKho" runat="server" TextField="TenCuaHang" ValueField="ID" Width="80%" OnSelectedIndexChanged="cmbKho_SelectedIndexChanged" AutoPostBack="True" DataSourceID="sqlKho" DropDownWidth="400px">
+                                    <Columns>
+                                        <dx:ListBoxColumn FieldName="MaKho" Width="100px" Caption="Mã Chi Nhánh" />
+                                        <dx:ListBoxColumn FieldName="TenCuaHang" Width="200px" Caption="Tên Chi Nhánh"/>
+                                         <dx:ListBoxColumn FieldName="DiaChi" Width="200px" Caption="Địa Chỉ"/>
+                                    </Columns>
                                 </dx:ASPxComboBox>
                             </dx:LayoutItemNestedControlContainer>
                         </LayoutItemNestedControlCollection>
@@ -38,26 +79,40 @@
                                                 <HideAdaptiveDetailButton ButtonType="Image">
                                                 </HideAdaptiveDetailButton>
                                             </SettingsCommandButton>
-                                            <SettingsText CommandBatchEditCancel="Hủy tất cả" CommandBatchEditUpdate="Lưu tất cả" Title="DANH SÁCH HÀNG HÓA" />
+                                            <SettingsSearchPanel Visible="True" />
+                                            <SettingsText CommandBatchEditCancel="Hủy tất cả" CommandBatchEditUpdate="Lưu tất cả" Title="DANH SÁCH HÀNG HÓA" EmptyDataRow="Danh sách hàng hóa rỗng" SearchPanelEditorNullText="Nhập thông tin cần tìm" />
                                             <Columns>
-                                                <dx:GridViewDataTextColumn Caption="Tên Hàng Hóa" FieldName="TenHangHoa" ShowInCustomizationForm="True" VisibleIndex="2" ReadOnly="True">
+                                                <dx:GridViewDataTextColumn Caption="Tên Hàng Hóa" FieldName="TenHangHoa" ShowInCustomizationForm="True" VisibleIndex="1" ReadOnly="True">
                                                 </dx:GridViewDataTextColumn>
-                                                <dx:GridViewDataComboBoxColumn Caption="ĐVT" FieldName="IDDonViTinh" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="3">
+                                                <dx:GridViewDataComboBoxColumn Caption="ĐVT" FieldName="IDDonViTinh" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="2">
                                                     <PropertiesComboBox DataSourceID="sqlDonViTinh" TextField="TenDonViTinh" ValueField="ID">
                                                     </PropertiesComboBox>
                                                 </dx:GridViewDataComboBoxColumn>
-                                                <dx:GridViewDataSpinEditColumn Caption="Giá Bán" FieldName="GiaBanSauThue" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="4">
-                                                    <PropertiesSpinEdit DisplayFormatString="N0" NumberFormat="Custom">
+                                                <dx:GridViewDataSpinEditColumn Caption="Giá Bán" FieldName="GiaBan" ShowInCustomizationForm="True" VisibleIndex="3">
+                                                    <PropertiesSpinEdit DisplayFormatString="{0:#,# đ}" NumberFormat="Custom">
                                                     </PropertiesSpinEdit>
                                                 </dx:GridViewDataSpinEditColumn>
-                                                <dx:GridViewDataSpinEditColumn Caption="Giá Bán Mới" FieldName="DaXoa" ShowInCustomizationForm="True" VisibleIndex="5">
-                                                    <PropertiesSpinEdit DisplayFormatString="N0" NumberFormat="Custom">
+<dx:GridViewDataSpinEditColumn FieldName="GiaBan1" ShowInCustomizationForm="True" Caption="Giá Bán 1" VisibleIndex="4">
+<PropertiesSpinEdit DisplayFormatString="{0:#,# đ}" NumberFormat="Custom"></PropertiesSpinEdit>
+</dx:GridViewDataSpinEditColumn>
+                                                <dx:GridViewDataTextColumn Caption="Mã Hàng" FieldName="MaHang" ShowInCustomizationForm="True" VisibleIndex="0" ReadOnly="True">
+                                                </dx:GridViewDataTextColumn>
+                                                <dx:GridViewDataSpinEditColumn Caption="Giá Bán 2" FieldName="GiaBan2" ShowInCustomizationForm="True" VisibleIndex="5">
+                                                    <PropertiesSpinEdit DisplayFormatString="{0:#,# đ}" NumberFormat="Custom">
                                                     </PropertiesSpinEdit>
                                                 </dx:GridViewDataSpinEditColumn>
-                                                <dx:GridViewDataTextColumn Caption="ID" FieldName="ID" ShowInCustomizationForm="True" VisibleIndex="0" Visible="False">
-                                                </dx:GridViewDataTextColumn>
-                                                <dx:GridViewDataTextColumn Caption="Mã Hàng" FieldName="MaHang" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="1">
-                                                </dx:GridViewDataTextColumn>
+                                                <dx:GridViewDataSpinEditColumn Caption="Giá Bán 3" FieldName="GiaBan3" ShowInCustomizationForm="True" VisibleIndex="6">
+                                                    <PropertiesSpinEdit DisplayFormatString="{0:#,# đ}" NumberFormat="Custom">
+                                                    </PropertiesSpinEdit>
+                                                </dx:GridViewDataSpinEditColumn>
+                                                <dx:GridViewDataSpinEditColumn Caption="Giá Bán 4" FieldName="GiaBan4" ShowInCustomizationForm="True" VisibleIndex="7">
+                                                    <PropertiesSpinEdit DisplayFormatString="{0:#,# đ}" NumberFormat="Custom">
+                                                    </PropertiesSpinEdit>
+                                                </dx:GridViewDataSpinEditColumn>
+                                                <dx:GridViewDataSpinEditColumn Caption="Giá Bán 5" FieldName="GiaBan5" ShowInCustomizationForm="True" VisibleIndex="8">
+                                                    <PropertiesSpinEdit DisplayFormatString="{0:#,# đ}" NumberFormat="Custom">
+                                                    </PropertiesSpinEdit>
+                                                </dx:GridViewDataSpinEditColumn>
                                             </Columns>
                                             <Styles>
                                                 <Header Font-Bold="True" HorizontalAlign="Center">
@@ -82,34 +137,6 @@
                 
             </dx:LayoutGroup>
 
-            <dx:LayoutGroup Caption="Danh sách kho" Width="300px" RowSpan="10">
-
-                <Items>
-                    <dx:LayoutItem Caption="">
-                        <LayoutItemNestedControlCollection>
-                            <dx:LayoutItemNestedControlContainer runat="server">
-                                <dx:ASPxComboBox ID="cmbVung" runat="server" AutoPostBack="True" OnSelectedIndexChanged="cmbVung_SelectedIndexChanged">
-                                </dx:ASPxComboBox>
-
-                            </dx:LayoutItemNestedControlContainer>
-                        </LayoutItemNestedControlCollection>
-                    </dx:LayoutItem>
-                    <dx:LayoutItem Caption="" RowSpan="10">
-                        <LayoutItemNestedControlCollection>
-                            <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer3" runat="server">
-                                <dx:ASPxListBox ID="DanhSachKho" runat="server" ValueType="System.String" SelectionMode="CheckColumn" Width="100%" Height="400px">
-                                </dx:ASPxListBox>
-                                <asp:SqlDataSource ID="sqlKho" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" SelectCommand="SELECT [ID], [TenCuaHang], [DiaChi] FROM [GPM_ThongTinCuaHangKho] WHERE ([DaXoa] = @DaXoa)">
-                                    <SelectParameters>
-                                        <asp:Parameter DefaultValue="0" Name="DaXoa" Type="Int32" />
-                                    </SelectParameters>
-                                </asp:SqlDataSource>
-                            </dx:LayoutItemNestedControlContainer>
-                        </LayoutItemNestedControlCollection>
-                    </dx:LayoutItem>
-                </Items>
-
-            </dx:LayoutGroup>
         </Items>
     </dx:ASPxFormLayout>
 </asp:Content>

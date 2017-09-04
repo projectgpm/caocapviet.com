@@ -9,36 +9,7 @@ namespace BanHang.Data
 {
     public class dtGiaTheoVung
     {
-        public DataTable NhomHang()
-        {
-            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
-            {
-                con.Open();
-                string cmdText = "  SELECT * FROM [GPM_NhomHang]";
-                using (SqlCommand command = new SqlCommand(cmdText, con))
-                using (SqlDataReader reader = command.ExecuteReader())
-                {
-                    DataTable tb = new DataTable();
-                    tb.Load(reader);
-                    return tb;
-                }
-            }
-        }
-        public DataTable LayDanhSachHangHoa_IDNhomHang(int ID, int IDKho)
-        {
-            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
-            {
-                con.Open();
-                string cmdText = "  SELECT [GPM_HANGHOA].*, [GPM_HangHoaTonKho].GiaBan FROM [GPM_HANGHOA],[GPM_NhomHang],[GPM_HangHoaTonKho] WHERE [GPM_HANGHOA].[DaXoa] = 0 AND [GPM_HANGHOA].IDNhomHang = [GPM_NhomHang].ID AND [GPM_HangHoaTonKho].IDHangHoa = [GPM_HANGHOA].ID AND [GPM_HangHoaTonKho].IDKho= '" + IDKho + "' AND ('" + ID + "' = -1 OR [GPM_NhomHang].ID = '" + ID + "')";
-                using (SqlCommand command = new SqlCommand(cmdText, con))
-                using (SqlDataReader reader = command.ExecuteReader())
-                {
-                    DataTable tb = new DataTable();
-                    tb.Load(reader);
-                    return tb;
-                }
-            }
-        }
+        
         public DataTable DanhSachHangHoa()
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
@@ -76,14 +47,42 @@ namespace BanHang.Data
                 }
             }
         }
-        public static void CapNhat_GiaTheoVung(string ID, string IDKho, float GiaBan)
+        public static void CapNhat_GiaTheoVung(string ID, string IDKho, string GiaBan, string GiaBan1, string GiaBan2, string GiaBan3, string GiaBan4, string GiaBan5)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
                 try
                 {
                     myConnection.Open();
-                    string strSQL = "UPDATE [GPM_HangHoaTonKho] SET [GiaBan] = @GiaBan WHERE [IDKho] = @IDKho AND [ID]= @ID";
+                    string strSQL = "UPDATE [GPM_HangHoaTonKho] SET [GiaBan2] = @GiaBan2,[GiaBan3] = @GiaBan3,[GiaBan4]=@GiaBan4,[GiaBan5] = @GiaBan5,[GiaBan1] = @GiaBan1,[GiaBan] = @GiaBan WHERE [IDKho] = @IDKho AND [ID]= @ID";
+                    using (SqlCommand myCommand = new SqlCommand(strSQL, myConnection))
+                    {
+                        myCommand.Parameters.AddWithValue("@ID", ID);
+                        myCommand.Parameters.AddWithValue("@GiaBan", GiaBan);
+                        myCommand.Parameters.AddWithValue("@GiaBan1", GiaBan1);
+                        myCommand.Parameters.AddWithValue("@GiaBan2", GiaBan2);
+                        myCommand.Parameters.AddWithValue("@GiaBan3", GiaBan3);
+                        myCommand.Parameters.AddWithValue("@GiaBan4", GiaBan4);
+                        myCommand.Parameters.AddWithValue("@GiaBan5", GiaBan5);
+                        myCommand.Parameters.AddWithValue("@IDKho", IDKho);
+                        myCommand.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Lỗi: Quá trình cập nhật dữ liệu gặp lỗi, hãy tải lại trang");
+                }
+            }
+        }
+
+        public static void CapNhat_GiaTheoVung_NhiuKho(string ID, string IDKho, string GiaBan,string GiaThayDoi)
+        {
+            using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
+            {
+                try
+                {
+                    myConnection.Open();
+                    string strSQL = "UPDATE [GPM_HangHoaTonKho] [" + GiaThayDoi + "] =  @GiaBan SET  WHERE [IDKho] = @IDKho AND [ID]= @ID";
                     using (SqlCommand myCommand = new SqlCommand(strSQL, myConnection))
                     {
                         myCommand.Parameters.AddWithValue("@ID", ID);
@@ -98,12 +97,12 @@ namespace BanHang.Data
                 }
             }
         }
-        public DataTable DanhSachHangHoa_ALL()
+        public DataTable DanhSachHangHoa_IDKho(string IDKho)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "SELECT [GPM_HangHoa].IDDonViTinh,[GPM_HangHoa].ID as IDHangHoa,[GPM_HangHoa].MaHang,[GPM_HangHoaTonKho].ID,[GPM_HangHoa].TenHangHoa,[GPM_HangHoa].GiaBanSauThue,[GPM_HangHoaTonKho].GiaBan,[GPM_HangHoaTonKho].IDKho FROM [GPM_HangHoa],[GPM_HangHoaTonKho]  WHERE [GPM_HangHoa].ID = [GPM_HangHoaTonKho].IDHangHoa AND [GPM_HangHoa].DaXoa = 0 AND IDKho > 1";
+                string cmdText = "SELECT [GPM_HangHoa].IDDonViTinh,[GPM_HangHoa].ID as IDHangHoa,[GPM_HangHoa].MaHang,[GPM_HangHoaTonKho].*,[GPM_HangHoa].TenHangHoa FROM [GPM_HangHoa],[GPM_HangHoaTonKho]  WHERE [GPM_HangHoa].ID = [GPM_HangHoaTonKho].IDHangHoa AND [GPM_HangHoa].DaXoa = 0 AND IDKho  = " + IDKho;
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
@@ -118,7 +117,7 @@ namespace BanHang.Data
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = " SELECT * FROM [GPM_Kho] WHERE [DAXOA] = 0 AND [ID] > 1";
+                string cmdText = " SELECT * FROM [GPM_Kho] WHERE [DAXOA] = 0";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
@@ -133,7 +132,7 @@ namespace BanHang.Data
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = " SELECT * FROM [GPM_Kho] WHERE [DAXOA] = 0 AND [ID] > 1 AND ('" + IDVung + "' = -1 OR [IDVung] = '" + IDVung + "')";
+                string cmdText = " SELECT * FROM [GPM_Kho] WHERE [DAXOA] = 0 AND ('" + IDVung + "' = -1 OR [IDVung] = '" + IDVung + "')";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
