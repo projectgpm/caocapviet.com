@@ -20,14 +20,12 @@
         </SettingsPopup>
       
         <SettingsSearchPanel Visible="True" />
-        <SettingsText Title="DANH SÁCH HÀNG HÓA TỒN KHO" />
+        <SettingsText Title="DANH SÁCH HÀNG HÓA TỒN KHO" EmptyDataRow="Danh sách tồn kho rỗng" SearchPanelEditorNullText="Nhập thông tin cần tìm..." />
       
         <EditFormLayoutProperties ColCount="2">
         </EditFormLayoutProperties>
         <Columns>
             <dx:GridViewDataTextColumn Caption="Mã Hàng" FieldName="MaHang" VisibleIndex="0">
-            </dx:GridViewDataTextColumn>
-            <dx:GridViewDataTextColumn Caption="Số Lượng Tồn" FieldName="SoLuongCon" VisibleIndex="3">
             </dx:GridViewDataTextColumn>
             <dx:GridViewDataComboBoxColumn Caption="Hàng Hóa" FieldName="IDHangHoa" VisibleIndex="1">
                 <PropertiesComboBox DataSourceID="sqlHangHoa" TextField="TenHangHoa" ValueField="ID">
@@ -41,6 +39,10 @@
                 <PropertiesComboBox DataSourceID="SqlDonViTinh" TextField="TenDonViTinh" ValueField="ID">
                 </PropertiesComboBox>
             </dx:GridViewDataComboBoxColumn>
+            <dx:GridViewDataSpinEditColumn Caption="Số Lượng Tồn" FieldName="SoLuongCon" VisibleIndex="3">
+                <PropertiesSpinEdit DisplayFormatString="N0" NumberFormat="Custom">
+                </PropertiesSpinEdit>
+            </dx:GridViewDataSpinEditColumn>
         </Columns>
         <Styles>
             <Header Font-Bold="True" HorizontalAlign="Center">
