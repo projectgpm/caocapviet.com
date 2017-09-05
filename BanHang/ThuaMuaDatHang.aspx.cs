@@ -123,7 +123,7 @@ namespace BanHang
                     string ChietKhau = txtChietKhau.Text.ToString();
 
                     data = new dtThuMuaDatHang();
-                    data.CapNhatDonDatHang(IDThuMuaDatHang, SoDonHang, IDNguoiLap, NgayLap, TongTrongLuong, TongTien, IDKhoLap, GhiChu, IDNhaCungCap, NgayDat, NgayGiaoDuKien, TongTienSauCk, ChietKhau);
+                    data.CapNhatDonDatHang(IDThuMuaDatHang, SoDonHang, IDNguoiLap, NgayLap, TongTrongLuong, TongTien, IDKhoLap, GhiChu, IDNhaCungCap, NgayDat, NgayGiaoDuKien, ChietKhau, TongTienSauCk);
                     foreach (DataRow dr in dt.Rows)
                     {
                         string IDHangHoa = dr["IDHangHoa"].ToString();
@@ -398,7 +398,9 @@ namespace BanHang
                 if (GiaTri >= 0)
                 {
                     double TongTien = double.Parse(txtTongTien.Text.ToString());
-                    double TienSauCK = (TongTien - (TongTien * (GiaTri / 100)));
+                    double Tylegiam = (GiaTri * (0.01));
+                    double TienGiam = TongTien * Tylegiam;
+                    double TienSauCK = (TongTien - TienGiam);
                     txtTongTienSauCk.Text = TienSauCK.ToString();
                 }
                 else
@@ -416,6 +418,11 @@ namespace BanHang
         protected void txtNgayGiaoDuKien_Init(object sender, EventArgs e)
         {
             txtNgayGiaoDuKien.Date = DateTime.Today;
+        }
+
+        protected void ASPxButton1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -93,6 +93,7 @@
                 <dx:LayoutItem Caption="Chiết Khấu (%)">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer3" runat="server">
+                            <dx:ASPxButton ID="ASPxButton1" runat="server" Text="ASPxButton" OnClick="ASPxButton1_Click" Visible="False"></dx:ASPxButton>
                             <dx:ASPxSpinEdit ID="txtChietKhau" runat="server"  Width="100%" AutoPostBack="True" OnNumberChanged="txtChietKhau_NumberChanged">
                             </dx:ASPxSpinEdit>
                         </dx:LayoutItemNestedControlContainer>
@@ -137,9 +138,10 @@
                 <dx:LayoutItem Caption="Hàng Hóa" ColSpan="2">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer runat="server">
+                            
                             <dx:ASPxComboBox ID="cmbHangHoa" runat="server" 
                                 AutoPostBack="True" OnSelectedIndexChanged="cmbHangHoa_SelectedIndexChanged" 
-                                DropDownWidth="750px" DropDownStyle="DropDownList"   TextFormatString="{0} - {1}"
+                                DropDownWidth="750px" DropDownStyle="DropDownList"   TextFormatString="{0}"
                                 EnableCallbackMode="true" Width="100%" 
                                 OnItemsRequestedByFilterCondition="cmbHangHoa_ItemsRequestedByFilterCondition"
                                 OnItemRequestedByValue="cmbHangHoa_ItemRequestedByValue"
