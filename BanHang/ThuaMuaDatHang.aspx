@@ -23,23 +23,23 @@
                 <dx:LayoutItem Caption="Ngày Lập">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer6" runat="server">
-                            <dx:ASPxDateEdit ID="txtNgayLap" runat="server" OnInit="txtNgayLap_Init" Width="100%">
+                            <dx:ASPxDateEdit ID="txtNgayLap" runat="server" OnInit="txtNgayLap_Init" Width="100%" DisplayFormatString="dd/MM/yyyy">
                             </dx:ASPxDateEdit>
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
                 </dx:LayoutItem>
-                <dx:LayoutItem Caption="Ngày Đặt">
+                <dx:LayoutItem Caption="Ngày Đặt(*)">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer runat="server">
-                            <dx:ASPxDateEdit ID="txtNgayDat" runat="server"  Width="100%">
+                            <dx:ASPxDateEdit ID="txtNgayDat" runat="server"  Width="100%" DisplayFormatString="dd/MM/yyyy" OnInit="txtNgayDat_Init">
                             </dx:ASPxDateEdit>
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
                 </dx:LayoutItem>
-                <dx:LayoutItem Caption="Ngày Giao Dự Kiến">
+                <dx:LayoutItem Caption="Ngày Giao Dự Kiến(*)">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer runat="server">
-                            <dx:ASPxDateEdit ID="txtNgayGiaoDuKien" runat="server"  Width="100%">
+                            <dx:ASPxDateEdit ID="txtNgayGiaoDuKien" runat="server"  Width="100%" DisplayFormatString="dd/MM/yyyy" OnInit="txtNgayGiaoDuKien_Init">
                             </dx:ASPxDateEdit>
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
@@ -52,7 +52,7 @@
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
                 </dx:LayoutItem>
-                <dx:LayoutItem Caption="Nhà Cung Cấp" ColSpan="2">
+                <dx:LayoutItem Caption="Nhà Cung Cấp(*)">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer7" runat="server">
                             <dx:ASPxComboBox ID="cmbNhaCungCap" runat="server" Width="100%"
@@ -109,7 +109,7 @@
                 <dx:LayoutItem Caption="Tổng Tiền Sau CK">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer runat="server">
-                            <dx:ASPxSpinEdit ID="txtTongTienSauCk" runat="server" Enabled="False" Width ="100%">
+                            <dx:ASPxSpinEdit ID="txtTongTienSauCk" runat="server" Enabled="False" Width ="100%" DisplayFormatString="N0">
                             </dx:ASPxSpinEdit>
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
@@ -149,7 +149,7 @@
                                 <Columns>
                                     <dx:ListBoxColumn Caption="Mã Hàng" FieldName="MaHang" Width="70px" />
                                     <dx:ListBoxColumn Caption="Tên Hàng Hóa" FieldName="TenHangHoa" Width="100%" />
-                                    <dx:ListBoxColumn Caption="Giá Mua" FieldName="GiaMuaSauThue" Width="100px" />   
+                                    <dx:ListBoxColumn Caption="Giá Mua Trước Thuế" FieldName="GiaMuaTruocThue" Width="120px" />   
                                     <dx:ListBoxColumn Caption="ĐVT" FieldName="TenDonViTinh" Width="100px" />          
                                 </Columns>
                                  <DropDownButton Visible="False">
@@ -270,7 +270,7 @@
 <PropertiesSpinEdit DisplayFormatString="N0" NumberFormat="Custom"></PropertiesSpinEdit>
 </dx:GridViewDataSpinEditColumn>
                                     <dx:GridViewDataSpinEditColumn Caption="Số Lượng" FieldName="SoLuong" ShowInCustomizationForm="True" VisibleIndex="4">
-<PropertiesSpinEdit DisplayFormatString="g"></PropertiesSpinEdit>
+<PropertiesSpinEdit DisplayFormatString="N0" NumberFormat="Custom"></PropertiesSpinEdit>
                                     </dx:GridViewDataSpinEditColumn>
                                     <dx:GridViewDataComboBoxColumn Caption="Tên Hàng Hóa" FieldName="IDHangHoa" ShowInCustomizationForm="True" VisibleIndex="1" ReadOnly="True">
                                         <PropertiesComboBox DataSourceID="SqlDanhSachHangHoa" TextField="TenHangHoa" ValueField="ID">

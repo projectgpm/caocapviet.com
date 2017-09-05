@@ -126,16 +126,17 @@ namespace BanHang.Data
                 }
             }
         }
-        public void ThemChiTietDonHang(string IDDonHangThuMua, string MaHang, string IDHangHoa, string IDDonViTinh, string TrongLuong, string SoLuong, string DonGia, string ThanhTien)
+        public void ThemChiTietDonHang(string IDDonHangThuMua, string MaHang, string IDHangHoa, string IDDonViTinh, string TrongLuong, string SoLuong, string DonGia, string ThanhTien, string GhiChu)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
                 try
                 {
                     myConnection.Open();
-                    string cmdText = "INSERT INTO [GPM_ThuMua_DonHang_ChiTiet] ([IDDonHangThuMua],[MaHang],[IDHangHoa],[IDDonViTinh],[TrongLuong],[SoLuong],[DonGia],[ThanhTien]) VALUES (@IDDonHangThuMua,@MaHang,@IDHangHoa,@IDDonViTinh,@TrongLuong,@SoLuong,@DonGia,@ThanhTien)";
+                    string cmdText = "INSERT INTO [GPM_ThuMua_DonHang_ChiTiet] ([IDDonHangThuMua],[MaHang],[IDHangHoa],[IDDonViTinh],[TrongLuong],[SoLuong],[DonGia],[ThanhTien],[GhiChu]) VALUES (@IDDonHangThuMua,@MaHang,@IDHangHoa,@IDDonViTinh,@TrongLuong,@SoLuong,@DonGia,@ThanhTien,@GhiChu)";
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
+                        myCommand.Parameters.AddWithValue("@GhiChu", GhiChu);
                         myCommand.Parameters.AddWithValue("@IDDonHangThuMua", IDDonHangThuMua);
                         myCommand.Parameters.AddWithValue("@MaHang", MaHang);
                         myCommand.Parameters.AddWithValue("@IDHangHoa", IDHangHoa);
@@ -154,7 +155,7 @@ namespace BanHang.Data
                 }
             }
         }
-        public void CapNhatDonDatHang(string ID, string SoDonHang, string IDNguoiLap, DateTime NgayLap, string TongTrongLuong, string TongTien, string IDKhoLap, string GhiChu,string IDNhaCungCap)
+        public void CapNhatDonDatHang(string ID, string SoDonHang, string IDNguoiLap, DateTime NgayLap, string TongTrongLuong, string TongTien, string IDKhoLap, string GhiChu, string IDNhaCungCap, DateTime NgayDat, DateTime NgayGiaoDuKien, string ChietKhau, string TongTienSauChietKhau)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
@@ -162,7 +163,7 @@ namespace BanHang.Data
                 {
                     myConnection.Open();
 
-                    string cmdText = "UPDATE [GPM_ThuMua_DonHang] SET [IDNhaCungCap] = @IDNhaCungCap,[SoDonHang] = @SoDonHang,[IDNguoiLap] = @IDNguoiLap,[NgayLap] = @NgayLap,[TongTrongLuong] = @TongTrongLuong,[TongTien] = @TongTien,[IDKhoLap] = @IDKhoLap,[GhiChu] = @GhiChu WHERE ID = @ID";
+                    string cmdText = "UPDATE [GPM_ThuMua_DonHang] SET [IDNhaCungCap] = @IDNhaCungCap,[SoDonHang] = @SoDonHang,[IDNguoiLap] = @IDNguoiLap,[NgayLap] = @NgayLap,[TongTrongLuong] = @TongTrongLuong,[TongTien] = @TongTien,[IDKhoLap] = @IDKhoLap,[GhiChu] = @GhiChu,[NgayDat] = @NgayDat,[NgayGiaoDuKien] = @NgayGiaoDuKien,[ChietKhau] = @ChietKhau , [TongTienSauChietKhau] = @TongTienSauChietKhau WHERE ID = @ID";
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
                         myCommand.Parameters.AddWithValue("@ID", ID);
@@ -174,6 +175,10 @@ namespace BanHang.Data
                         myCommand.Parameters.AddWithValue("@TongTien", TongTien);
                         myCommand.Parameters.AddWithValue("@IDKhoLap", IDKhoLap);
                         myCommand.Parameters.AddWithValue("@GhiChu", GhiChu);
+                        myCommand.Parameters.AddWithValue("@NgayDat", NgayDat);
+                        myCommand.Parameters.AddWithValue("@NgayGiaoDuKien", NgayGiaoDuKien);
+                        myCommand.Parameters.AddWithValue("@ChietKhau", ChietKhau);
+                        myCommand.Parameters.AddWithValue("@TongTienSauChietKhau", TongTienSauChietKhau);
                         myCommand.ExecuteNonQuery();
                     }
                     myConnection.Close();

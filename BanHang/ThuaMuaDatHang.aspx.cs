@@ -32,6 +32,9 @@ namespace BanHang
                     cmbKhoLap.Value = Session["IDKho"].ToString();
                     txtNguoiLap.Text = Session["TenDangNhap"].ToString();
                     txtChietKhau.Text = "0";
+                    txtTongTien.Text = "0";
+                    txtTongTienSauCk.Text = "0";
+                    txtTongTrongLuong.Text = "0";
                     txtSoDonHang.Text = (Int32.Parse(Session["IDKho"].ToString())).ToString().Replace(".", "") + "-" + (DateTime.Now.ToString("ddMMyyyy-hhmmss"));
                 }
                 LoadGrid(IDThuMuaDatHang_Temp.Value.ToString());
@@ -47,7 +50,7 @@ namespace BanHang
             if (e.Value == null || !Int64.TryParse(e.Value.ToString(), out value))
                 return;
             ASPxComboBox comboBox = (ASPxComboBox)source;
-            dsHangHoa.SelectCommand = @"SELECT GPM_HangHoa.ID, GPM_HangHoa.MaHang, GPM_HangHoa.TenHangHoa, GPM_HangHoa.GiaMuaSauThue, GPM_DonViTinh.TenDonViTinh 
+            dsHangHoa.SelectCommand = @"SELECT GPM_HangHoa.ID, GPM_HangHoa.MaHang, GPM_HangHoa.TenHangHoa, GPM_HangHoa.GiaMuaTruocThue, GPM_DonViTinh.TenDonViTinh 
                                         FROM GPM_DonViTinh INNER JOIN GPM_HangHoa ON GPM_DonViTinh.ID = GPM_HangHoa.IDDonViTinh
                                         WHERE (GPM_HangHoa.ID = @ID) AND  (GPM_HangHoa.IDTrangThaiHang = 1) AND (GPM_HangHoa.IDNhomDatHang != 3)";
             dsHangHoa.SelectParameters.Clear();
@@ -59,9 +62,9 @@ namespace BanHang
         {
             ASPxComboBox comboBox = (ASPxComboBox)source;
 
-            dsHangHoa.SelectCommand = @"SELECT [ID], [MaHang], [TenHangHoa], [GiaMuaSauThue] , [TenDonViTinh]
+            dsHangHoa.SelectCommand = @"SELECT [ID], [MaHang], [TenHangHoa], [GiaMuaTruocThue] , [TenDonViTinh]
                                         FROM (
-	                                        select GPM_HangHoa.ID, GPM_HangHoa.MaHang, GPM_HangHoa.TenHangHoa,GPM_HangHoa.GiaMuaSauThue, GPM_DonViTinh.TenDonViTinh, 
+	                                        select GPM_HangHoa.ID, GPM_HangHoa.MaHang, GPM_HangHoa.TenHangHoa,GPM_HangHoa.GiaMuaTruocThue, GPM_DonViTinh.TenDonViTinh, 
 	                                        row_number()over(order by GPM_HangHoa.MaHang) as [rn] 
 	                                        FROM GPM_DonViTinh INNER JOIN GPM_HangHoa ON GPM_DonViTinh.ID = GPM_HangHoa.IDDonViTinh           
 	                                        WHERE ((GPM_HangHoa.TenHangHoa LIKE @TenHang) OR (GPM_HangHoa.MaHang LIKE @MaHang)) AND (GPM_HangHoa.DaXoa = 0) AND  (GPM_HangHoa.IDTrangThaiHang = 1) AND (GPM_HangHoa.IDNhomDatHang != 3)
@@ -83,7 +86,7 @@ namespace BanHang
             {
                 txtTrongLuong.Text = dtHangHoa.LayTrongLuong(cmbHangHoa.Value.ToString()).ToString();
                 txtTonKho.Text = dtCapNhatTonKho.SoLuong_TonKho(cmbHangHoa.Value.ToString(), Session["IDKho"].ToString()) + "";
-                txtDonGia.Text = dtHangHoa.LayGiaMuaSauThue(cmbHangHoa.Value.ToString())+"";
+                txtDonGia.Text = dtHangHoa.LayGiaMuaTruocThue(cmbHangHoa.Value.ToString())+"";
                 txtSoLuong.Text = "0";
             }
         }
@@ -97,7 +100,7 @@ namespace BanHang
         }
         protected void btnThem_Click(object sender, EventArgs e)
         {
-            if (cmbNhaCungCap.Text != "")
+            if (cmbNhaCungCap.Text != "" && txtNgayLap.Text != "" && txtNgayDat.Text !="" && txtNgayGiaoDuKien.Text !="" && txtChietKhau.Text !="" )
             {
                 string IDThuMuaDatHang = IDThuMuaDatHang_Temp.Value.ToString();
                 data = new dtThuMuaDatHang();
@@ -112,8 +115,14 @@ namespace BanHang
                     string IDKhoLap = Session["IDKho"].ToString();
                     string IDNhaCungCap = cmbNhaCungCap.Value.ToString();
                     string GhiChu = txtGhiChu.Text == null ? "" : txtGhiChu.Text.ToString();
+
+                    DateTime NgayDat = DateTime.Parse(txtNgayDat.Text);
+                    DateTime NgayGiaoDuKien = DateTime.Parse(txtNgayGiaoDuKien.Text);
+                    string TongTienSauCk = txtTongTienSauCk.Text.ToString();
+                    string ChietKhau = txtChietKhau.Text.ToString();
+
                     data = new dtThuMuaDatHang();
-                    data.CapNhatDonDatHang(IDThuMuaDatHang, SoDonHang, IDNguoiLap, NgayLap, TongTrongLuong, TongTien, IDKhoLap, GhiChu, IDNhaCungCap);
+                    data.CapNhatDonDatHang(IDThuMuaDatHang, SoDonHang, IDNguoiLap, NgayLap, TongTrongLuong, TongTien, IDKhoLap, GhiChu, IDNhaCungCap, NgayDat, NgayGiaoDuKien, TongTienSauCk, ChietKhau);
                     foreach (DataRow dr in dt.Rows)
                     {
                         string IDHangHoa = dr["IDHangHoa"].ToString();
@@ -123,8 +132,9 @@ namespace BanHang
                         string SoLuong = dr["SoLuong"].ToString();
                         string DonGia = dr["DonGia"].ToString();
                         string ThanhTien = dr["ThanhTien"].ToString();
+                        string GhiChuHangHoa = dr["GhiChu"].ToString();
                         data = new dtThuMuaDatHang();
-                        data.ThemChiTietDonHang(IDThuMuaDatHang, MaHang, IDHangHoa, IDDonViTinh, TrongLuong, SoLuong, DonGia, ThanhTien);
+                        data.ThemChiTietDonHang(IDThuMuaDatHang, MaHang, IDHangHoa, IDDonViTinh, TrongLuong, SoLuong, DonGia, ThanhTien, GhiChuHangHoa);
                     }
                     data = new dtThuMuaDatHang();
                     data.XoaChiTietDonHang_Nhap(IDThuMuaDatHang);
@@ -138,7 +148,7 @@ namespace BanHang
             }
             else
             {
-                Response.Write("<script language='JavaScript'> alert('Vui lòng chọn nhà cung cấp.'); </script>");
+                Response.Write("<script language='JavaScript'> alert('Không được bỏ trống trường có dấu (*).'); </script>");
             }
         }
         protected void btnHuy_Click(object sender, EventArgs e)
@@ -217,6 +227,7 @@ namespace BanHang
                 }
                 txtTongTien.Text = (TongTien).ToString();
                 TinhTrongLuong();
+                TinhChietKhau();
             }
             else
             {
@@ -386,13 +397,23 @@ namespace BanHang
                 if (GiaTri >= 0)
                 {
                     Double TongTien = Double.Parse(txtTongTien.Text.ToString());
-                    txtTongTienSauCk.Text = (TongTien * (GiaTri / 100)).ToString();
+                    txtTongTienSauCk.Text = (TongTien - (TongTien * (GiaTri / 100))).ToString();
                 }
                 else
                 {
                     Response.Write("<script language='JavaScript'> alert('Tỷ lệ chiết khấu phải là số dương.Vui lòng kiểm tra lại? '); </script>");
                 }
             }
+        }
+
+        protected void txtNgayDat_Init(object sender, EventArgs e)
+        {
+            txtNgayDat.Date = DateTime.Today;
+        }
+
+        protected void txtNgayGiaoDuKien_Init(object sender, EventArgs e)
+        {
+            txtNgayGiaoDuKien.Date = DateTime.Today;
         }
     }
 }
