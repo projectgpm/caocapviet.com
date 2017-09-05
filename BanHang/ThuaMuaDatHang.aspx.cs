@@ -31,6 +31,7 @@ namespace BanHang
                     IDThuMuaDatHang_Temp.Value = IDPhieuDatHang.ToString();
                     cmbKhoLap.Value = Session["IDKho"].ToString();
                     txtNguoiLap.Text = Session["TenDangNhap"].ToString();
+                    txtChietKhau.Text = "0";
                     txtSoDonHang.Text = (Int32.Parse(Session["IDKho"].ToString())).ToString().Replace(".", "") + "-" + (DateTime.Now.ToString("ddMMyyyy-hhmmss"));
                 }
                 LoadGrid(IDThuMuaDatHang_Temp.Value.ToString());
@@ -171,18 +172,19 @@ namespace BanHang
                     string TrongLuong = dtHangHoa.LayTrongLuong(IDHangHoa).ToString();
                     float DonGia = float.Parse(txtDonGia.Text);
                     string IDDonHangChiNhanh = IDThuMuaDatHang_Temp.Value.ToString();
+                    string GhiChuHangHoa = txtGhiChuHangHoa.Text == null ? "" : txtGhiChuHangHoa.Text.ToString();
                     DataTable db = dtThuMuaDatHang.KTChiTietDonHang_Temp(IDHangHoa, IDDonHangChiNhanh);// kiểm tra hàng hóa
                     if (db.Rows.Count == 0)
                     {
                         data = new dtThuMuaDatHang();
-                        data.ThemChiTietDonHang_Temp(IDDonHangChiNhanh, MaHang, IDHangHoa, IDDonViTinh, TrongLuong, SoLuong, DonGia, DonGia * SoLuong);
+                        data.ThemChiTietDonHang_Temp(IDDonHangChiNhanh, MaHang, IDHangHoa, IDDonViTinh, TrongLuong, SoLuong, DonGia, DonGia * SoLuong, GhiChuHangHoa);
                         TinhTongTien();
                         CLear();
                     }
                     else
                     {
                         data = new dtThuMuaDatHang();
-                        data.CapNhatChiTietDonHang_temp(IDDonHangChiNhanh, IDHangHoa, SoLuong, DonGia, DonGia * SoLuong);
+                        data.CapNhatChiTietDonHang_temp(IDDonHangChiNhanh, IDHangHoa, SoLuong, DonGia, DonGia * SoLuong, GhiChuHangHoa);
                         TinhTongTien();
                         CLear();
                     }
@@ -216,6 +218,10 @@ namespace BanHang
                 txtTongTien.Text = (TongTien).ToString();
                 TinhTrongLuong();
             }
+            else
+            {
+                txtTongTien.Text = "0";
+            }
         }
         public void TinhTrongLuong()
         {
@@ -232,6 +238,10 @@ namespace BanHang
                     Tong = Tong + (TrongLuong * SoLuong);
                 }
                 txtTongTrongLuong.Text = (Tong).ToString();
+            }
+            else
+            {
+                txtTongTrongLuong.Text = "0";
             }
         }
         private void LoadGrid(string IDDonHangChiNhanh)
@@ -291,7 +301,7 @@ namespace BanHang
         private void Import_Temp(DataTable datatable)
         {
             int intRow = datatable.Rows.Count;
-            if (datatable.Columns.Contains("MaHang") && datatable.Columns.Contains("TenHangHoa") && datatable.Columns.Contains("SoLuong") && datatable.Columns.Contains("DonViTinh") && datatable.Columns.Contains("DonGia"))
+            if (datatable.Columns.Contains("MaHang") && datatable.Columns.Contains("TenHangHoa") && datatable.Columns.Contains("SoLuong") && datatable.Columns.Contains("DonViTinh") && datatable.Columns.Contains("DonGia") && datatable.Columns.Contains("GhiChu"))
             {
                 if (intRow != 0)
                 {
@@ -303,6 +313,7 @@ namespace BanHang
                         if (SoLuong > 0 && SoLuong.ToString() != "" && MaHang != "")
                         {
                             string TenHangHoa = dr["TenHangHoa"].ToString();
+                            string GhiChu = dr["GhiChu"].ToString();
                             string IDHangHoa = dtHangHoa.LayIDHangHoa_MaHang(MaHang.Trim());
                             string IDDonViTinh = dtHangHoa.LayIDDonViTinh(IDHangHoa.Trim());
                             string IDDonHangChiNhanh = IDThuMuaDatHang_Temp.Value.ToString();
@@ -318,7 +329,7 @@ namespace BanHang
                                 data = new dtThuMuaDatHang();
                                 if (dtHangHoa.TrangThaiHang(IDHangHoa) == 1 && dtHangHoa.TrangThaiNhomDatHang(IDHangHoa) != 3)
                                 {
-                                    data.ThemChiTietDonHang_Temp(IDDonHangChiNhanh, MaHang, IDHangHoa, IDDonViTinh, TrongLuong, SoLuong, DonGia, DonGia * SoLuong);
+                                    data.ThemChiTietDonHang_Temp(IDDonHangChiNhanh, MaHang, IDHangHoa, IDDonViTinh, TrongLuong, SoLuong, DonGia, DonGia * SoLuong, GhiChu);
                                     TinhTongTien();
                                     CLear();
                                 }
@@ -326,7 +337,7 @@ namespace BanHang
                             else
                             {
                                 data = new dtThuMuaDatHang();
-                                data.CapNhatChiTietDonHang_temp(IDDonHangChiNhanh, IDHangHoa, SoLuong, DonGia, DonGia * SoLuong);
+                                data.CapNhatChiTietDonHang_temp(IDDonHangChiNhanh, IDHangHoa, SoLuong, DonGia, DonGia * SoLuong, GhiChu);
                                 TinhTongTien();
                                 CLear();
                             }
@@ -354,6 +365,34 @@ namespace BanHang
             TinhTrongLuong();
             TinhTongTien();
             LoadGrid(IDThuMuaDatHang);
+        }
+
+        protected void txtChietKhau_NumberChanged(object sender, EventArgs e)
+        {
+            if (txtChietKhau.Text != "")
+            {
+                TinhChietKhau();
+            }
+            else
+            {
+                Response.Write("<script language='JavaScript'> alert('Vui lòng nhập giá trị chiết khấu cho đơn hàng.'); </script>");
+            }
+        }
+        public void TinhChietKhau()
+        {
+            if (txtChietKhau.Text != "")
+            {
+                int GiaTri = Int32.Parse(txtChietKhau.Text.ToString());
+                if (GiaTri >= 0)
+                {
+                    Double TongTien = Double.Parse(txtTongTien.Text.ToString());
+                    txtTongTienSauCk.Text = (TongTien * (GiaTri / 100)).ToString();
+                }
+                else
+                {
+                    Response.Write("<script language='JavaScript'> alert('Tỷ lệ chiết khấu phải là số dương.Vui lòng kiểm tra lại? '); </script>");
+                }
+            }
         }
     }
 }
