@@ -342,14 +342,14 @@ namespace BanHang.Data
             }
         }
 
-        public void CapNhatHangHoa(int ID, string MaHang, string TenHangHoa, string IDNhomHang, string IDDonViTinh, string GiaMuaTruocThue, string GiaBanTruocThue, string GiaMuaSauThue, string GiaBanSauThue, string TrongLuong, string GhiChu, string HanSuDung, string GiaBan1, string GiaBan2, string GiaBan3, string GiaBan4, string GiaBan5)
+        public void CapNhatHangHoa(int ID, string MaHang, string TenHangHoa, string IDNhomHang, string IDDonViTinh, string GiaMuaTruocThue, string GiaBanTruocThue, string GiaMuaSauThue, string GiaBanSauThue, string TrongLuong, string GhiChu, string HanSuDung)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
                 try
                 {
                     myConnection.Open();
-                    string cmdText = "UPDATE [GPM_HangHoa] SET [GiaBan2] = @GiaBan1,[GiaBan3] = @GiaBan1,[GiaBan4] = @GiaBan1,[GiaBan5] = @GiaBan1,[GiaBan1] = @GiaBan1,[HanSuDung] = @HanSuDung,[GhiChu] = @GhiChu,[TrongLuong] = @TrongLuong,[GiaBanSauThue] = @GiaBanSauThue,[GiaMuaTruocThue] =@GiaMuaTruocThue,[GiaBanTruocThue] = @GiaBanTruocThue,[GiaMuaSauThue] = @GiaMuaSauThue,[IDDonViTinh] = @IDDonViTinh, [IDNhomHang]= @IDNhomHang,[MaHang] = @MaHang,[TenHangHoa] = @TenHangHoa  WHERE [ID] = @ID";
+                    string cmdText = "UPDATE [GPM_HangHoa] SET [HanSuDung] = @HanSuDung,[GhiChu] = @GhiChu,[TrongLuong] = @TrongLuong,[TongCombo] = @GiaBanSauThue,[GiaMuaTruocThue] =@GiaMuaTruocThue,[GiaBanTruocThue] = @GiaBanTruocThue,[GiaMuaSauThue] = @GiaMuaSauThue,[IDDonViTinh] = @IDDonViTinh, [IDNhomHang]= @IDNhomHang,[MaHang] = @MaHang,[TenHangHoa] = @TenHangHoa  WHERE [ID] = @ID";
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
                         myCommand.Parameters.AddWithValue("@MaHang", MaHang);
@@ -363,7 +363,6 @@ namespace BanHang.Data
                         myCommand.Parameters.AddWithValue("@TrongLuong", TrongLuong);
                         myCommand.Parameters.AddWithValue("@GhiChu", GhiChu);
                         myCommand.Parameters.AddWithValue("@HanSuDung", HanSuDung);
-                        myCommand.Parameters.AddWithValue("@GiaBan1", GiaBan1);
                         myCommand.Parameters.AddWithValue("@ID", ID);
                         myCommand.ExecuteNonQuery();
                     }

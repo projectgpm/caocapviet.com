@@ -78,38 +78,45 @@ namespace BanHang
                     string GhiChu = txtGhiChu.Text == null ? "" : txtGhiChu.Text.ToString();
                     if ((dtHangHoa.KiemTraMaHang(MaHang))  ==  false)
                     {
-                        data = new dtHangCombo();
-                        data.CapNhatHangHoa(IDHangHoaComBo, MaHang, txtTenHangComBo, IDNhomHang, IDDonViTinh, TongGiaMuaTruocThue, TongGiaBanTruocThue, TongGiaMuaSauThue, TongGiaBanSauThue, TongTrongLuong, GhiChu, HanSuDung, GiaBanTong, GiaBanTong, GiaBanTong, GiaBanTong, GiaBanTong);
-                        data.ThemBarCode(IDHangHoaComBo, Barcode);
-                        //Thêm hàng hóa vào các kho....
-                        DataTable dta = data.LayDanhSachKho();
-                        for (int i = 0; i < dta.Rows.Count; i++)
+                        if (dtHangHoa.KiemTraBarcode(Barcode) == false)
                         {
-                            DataRow dr = dta.Rows[i];
-                            int IDKho = Int32.Parse(dr["ID"].ToString());
                             data = new dtHangCombo();
-                            data.ThemHangVaoTonKho(IDKho, (int)IDHangHoaComBo, "0", GiaBanTong, GiaBanTong, GiaBanTong, GiaBanTong, GiaBanTong, GiaBanTong);
-                        }
+                            data.CapNhatHangHoa(IDHangHoaComBo, MaHang, txtTenHangComBo, IDNhomHang, IDDonViTinh, TongGiaMuaTruocThue, TongGiaBanTruocThue, TongGiaMuaSauThue, TongGiaBanSauThue, TongTrongLuong, GhiChu, HanSuDung);
+                            data.ThemBarCode(IDHangHoaComBo, Barcode);
+                            //Thêm hàng hóa vào các kho....
+                            DataTable dta = data.LayDanhSachKho();
+                            for (int i = 0; i < dta.Rows.Count; i++)
+                            {
+                                DataRow dr = dta.Rows[i];
+                                int IDKho = Int32.Parse(dr["ID"].ToString());
+                                data = new dtHangCombo();
+                                data.ThemHangVaoTonKho(IDKho, (int)IDHangHoaComBo, "0", GiaBanTong, GiaBanTong, GiaBanTong, GiaBanTong, GiaBanTong, GiaBanTong);
+                            }
 
-                        foreach (DataRow dr in dt.Rows)
-                        {
-                            string IDHangHoa1 = dr["IDHangHoa"].ToString();
-                            string SoLuong1 = dr["SoLuong"].ToString();
-                            string GiaBanTruocThue1 = dr["GiaBanTruocThue"].ToString();
-                            string ThanhTien1 = dr["ThanhTien"].ToString();
-                            string IDDonViTinh1 = dr["IDDonViTinh"].ToString();
-                            string MaHang1 = dr["MaHang"].ToString();
-                            string TrongLuong1 = dr["TrongLuong"].ToString();
-                            string GiaBanSauThue1 = dr["GiaBanSauThue"].ToString();
-                            string GiaMuaTruocThue1 = dr["GiaMuaTruocThue"].ToString();
-                            string GiaMuaSauThue1 = dr["GiaMuaSauThue"].ToString();
-                            string GhiChu1 = dr["GhiChu"].ToString();
-                            data = new dtHangCombo();
-                            data.ThemHangHoa(IDHangHoaComBo, IDHangHoa1, SoLuong1, GiaBanTruocThue1, ThanhTien1, IDDonViTinh1, MaHang1, TrongLuong1, GiaBanSauThue1, GiaMuaTruocThue1, GiaMuaSauThue1, GhiChu1);
+                            foreach (DataRow dr in dt.Rows)
+                            {
+                                string IDHangHoa1 = dr["IDHangHoa"].ToString();
+                                string SoLuong1 = dr["SoLuong"].ToString();
+                                string GiaBanTruocThue1 = dr["GiaBanTruocThue"].ToString();
+                                string ThanhTien1 = dr["ThanhTien"].ToString();
+                                string IDDonViTinh1 = dr["IDDonViTinh"].ToString();
+                                string MaHang1 = dr["MaHang"].ToString();
+                                string TrongLuong1 = dr["TrongLuong"].ToString();
+                                string GiaBanSauThue1 = dr["GiaBanSauThue"].ToString();
+                                string GiaMuaTruocThue1 = dr["GiaMuaTruocThue"].ToString();
+                                string GiaMuaSauThue1 = dr["GiaMuaSauThue"].ToString();
+                                string GhiChu1 = dr["GhiChu"].ToString();
+                                data = new dtHangCombo();
+                                data.ThemHangHoa(IDHangHoaComBo, IDHangHoa1, SoLuong1, GiaBanTruocThue1, ThanhTien1, IDDonViTinh1, MaHang1, TrongLuong1, GiaBanSauThue1, GiaMuaTruocThue1, GiaMuaSauThue1, GhiChu1);
+                            }
+                            data.XoaHangHoa_Temp_IDHangCombo(IDHangHoaComBo);
+                            dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Hàng hóa combo", Session["IDKho"].ToString(), "Danh Mục", "Thêm");
+                            Response.Redirect("DanhMucCombo.aspx");
                         }
-                        data.XoaHangHoa_Temp_IDHangCombo(IDHangHoaComBo);
-                        dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Hàng hóa combo", Session["IDKho"].ToString(), "Danh Mục", "Thêm");
-                        Response.Redirect("DanhMucCombo.aspx");
+                        else
+                        {
+                            Response.Write("<script language='JavaScript'> alert('Mã Barcode đã tồn tại. Vui lòng kiểm tra lại?'); </script>");
+                        }
                     }
                     else
                     {
