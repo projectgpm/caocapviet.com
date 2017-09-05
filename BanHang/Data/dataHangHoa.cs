@@ -244,34 +244,6 @@ namespace BanHang.Data
             }
         }
 
-        public object insertHangHoa_Temp()
-        {
-            using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
-            {
-                try
-                {
-                    object IDHangHoa = null;
-                    myConnection.Open();
-                    string cmdText = "INSERT INTO [GPM_HANGHOA] ([MaHang])" +
-                                     " OUTPUT INSERTED.ID" +
-                                     " VALUES (@MaHang)";
-                    using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
-                    {
-                        myCommand.Parameters.AddWithValue("@MaHang", "00000");
-                        IDHangHoa = myCommand.ExecuteScalar();
-                    }
-                    myConnection.Close();
-
-                    return IDHangHoa;
-                }
-                catch
-                {
-                    throw new Exception("Lỗi: Quá trình thêm dữ liệu gặp lỗi");
-                }
-            }
-        }
-
-
         public void SuaThongTinHangHoa(string ID, string IDNhomHang, string MaHang, string TenHangHoa, string IDDonViTinh, string HeSo, string IDHangSanXuat, string IDThue, string IDHangQuyDoi, string IDNhomDatHang, string GiaMuaTruocThue, string GiaBanTruocThue, string GiaMuaSauThue, string GiaBanSauThue, string GiaBan1, string GiaBan2, string GiaBan3, string GiaBan4, string GiaBan5, string TrongLuong, string HanSuDung, string IDTrangThaiHang, string GhiChu)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
@@ -337,6 +309,113 @@ namespace BanHang.Data
             }
         }
 
+        public object insertHangHoa_Temp()
+        {
+            using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
+            {
+                try
+                {
+                    object IDHH = -1;
+                    myConnection.Open();
+                    string cmdText = "INSERT INTO [GPM_HangHoa] ([MaHang])" +
+                                     " OUTPUT INSERTED.ID" +
+                                     " VALUES (@MaHang)";
+                    using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
+                    {
+
+                        myCommand.Parameters.AddWithValue("@MaHang", "temp");
+                        IDHH = myCommand.ExecuteScalar();
+                    }
+                    return IDHH;
+                    myConnection.Close();
+                }
+                catch
+                {
+                    throw new Exception("Lỗi: Quá trình thêm dữ liệu gặp lỗi");
+                }
+            }
+        }
+
+        public object insertHangHoa_Barcode(string IDHangHoa, string IDTrangThaiBarcode, string Barcode)
+        {
+            using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
+            {
+                try
+                {
+                    object IDHH = -1;
+                    myConnection.Open();
+                    string cmdText = "INSERT INTO [GPM_HangHoa_Barcode] ([IDHangHoa],[IDTrangThaiBarcode],[Barcode],[NgayCapnhat])" +
+                                     " OUTPUT INSERTED.ID" +
+                                     " VALUES (@IDHangHoa,@IDTrangThaiBarcode,@Barcode,getDATE())";
+                    using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
+                    {
+
+                        myCommand.Parameters.AddWithValue("@IDHangHoa", IDHangHoa);
+                        myCommand.Parameters.AddWithValue("@IDTrangThaiBarcode", IDTrangThaiBarcode);
+                        myCommand.Parameters.AddWithValue("@Barcode", Barcode);
+                        IDHH = myCommand.ExecuteScalar();
+                    }
+                    return IDHH;
+                    myConnection.Close();
+                }
+                catch
+                {
+                    throw new Exception("Lỗi: Quá trình thêm dữ liệu gặp lỗi");
+                }
+            }
+        }
+
+
+        public void updateHangHoa_Barcode(string ID, string IDTrangThaiBarcode, string Barcode)
+        {
+            using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
+            {
+                try
+                {
+                    object IDHH = -1;
+                    myConnection.Open();
+                    string cmdText = "update GPM_HangHoa_Barcode set IDTrangThaiBarcode = @IDTrangThaiBarcode, Barcode = @Barcode, NgayCapNhat = getDATE() where ID = @ID";
+                    using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
+                    {
+
+                        myCommand.Parameters.AddWithValue("@ID", ID);
+                        myCommand.Parameters.AddWithValue("@IDTrangThaiBarcode", IDTrangThaiBarcode);
+                        myCommand.Parameters.AddWithValue("@Barcode", Barcode);
+                        myCommand.ExecuteScalar();
+                    }
+                    myConnection.Close();
+                }
+                catch
+                {
+                    throw new Exception("Lỗi: Quá trình cập nhật dữ liệu gặp lỗi");
+                }
+            }
+        }
+
+        public void deleteHangHoa_Barcode(string ID)
+        {
+            using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
+            {
+                try
+                {
+                    object IDHH = -1;
+                    myConnection.Open();
+                    string cmdText = "update GPM_HangHoa_Barcode set DaXoa = 1 where ID = @ID";
+                    using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
+                    {
+
+                        myCommand.Parameters.AddWithValue("@ID", ID);
+                        myCommand.ExecuteScalar();
+                    }
+                    myConnection.Close();
+                }
+                catch
+                {
+                    throw new Exception("Lỗi: Quá trình cập nhật dữ liệu gặp lỗi");
+                }
+            }
+        }
+
         public object insertHangHoa(string IDNhomHang, string MaHang, string TenHangHoa, string IDDonViTinh, string HeSo, string IDHangSanXuat, string IDThue, string IDHangQuyDoi, string IDNhomDatHang, string GiaMuaTruocThue, string GiaBanTruocThue, string GiaMuaSauThue, string GiaBanSauThue, string GiaBan1, string GiaBan2, string GiaBan3, string GiaBan4, string GiaBan5, string TrongLuong, string HanSuDung, string IDTrangThaiHang, string GhiChu)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
@@ -390,7 +469,7 @@ namespace BanHang.Data
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "SELECT * FROM [GPM_HangHoa_Barcode] WHERE [IDHangHoa] = @IDHangHoa";
+                string cmdText = "SELECT * FROM [GPM_HangHoa_Barcode] WHERE [IDHangHoa] = @IDHangHoa AND [DaXoa] = 0";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 {
                     command.Parameters.AddWithValue("@IDHangHoa", ID);
@@ -513,12 +592,12 @@ namespace BanHang.Data
             }
         }
 
-        public static int LayID_Max()
+        public static int LayID_Count(string IDDV)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "SELECT Max(MaHang) as IDMax FROM [GPM_HANGHOA] ";
+                string cmdText = "SELECT COUNT(MaHang) as CountMH FROM [GPM_HANGHOA] WHERE MaHang like '" + IDDV + "%'";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
@@ -527,7 +606,7 @@ namespace BanHang.Data
                     if (tb.Rows.Count != 0)
                     {
                         DataRow dr = tb.Rows[0];
-                        return Int32.Parse(dr["IDMax"].ToString());
+                        return Int32.Parse(dr["CountMH"].ToString());
                     }
                     else return -1;
                 }

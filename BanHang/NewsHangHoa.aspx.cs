@@ -15,47 +15,47 @@ namespace BanHang
         {
             if (!IsPostBack)
             {
-                if (Request.QueryString["IDHH"] != null)
-                {
-                    string IDHH = Request.QueryString["IDHH"].ToString();
-                    dataHangHoa data = new dataHangHoa();
-                    aspGridBarcode.DataSource = data.GetListBarCode((object)IDHH);
-                    aspGridBarcode.DataBind();
+                //if (Request.QueryString["IDHH"] != null)
+                //{
+                //    string IDHH = Request.QueryString["IDHH"].ToString();
+                //    dataHangHoa data = new dataHangHoa();
+                //    aspGridBarcode.DataSource = data.GetListBarCode((object)IDHH);
+                //    aspGridBarcode.DataBind();
 
-                    DataTable da = data.getDanhSachHangHoa_ID(IDHH);
-                    if (da.Rows.Count != 0)
-                    {
-                        DataRow dr = da.Rows[0];
-                        IDNhomHang.Value = dr["IDNhomHang"].ToString();
-                        MaHang.Text = dr["MaHang"].ToString();
-                        TenHangHoa.Text = dr["TenHangHoa"].ToString();
-                        IDDonViTinh.Value = dr["IDDonViTinh"].ToString();
-                        txtHeSo.Value = dr["HeSo"].ToString();
-                        IDHangSanXuat.Value = dr["IDHangSanXuat"].ToString();
-                        IDThue.Value = dr["IDThue"].ToString();
-                        IDHangQuyDoi.Value = dr["IDHangQuyDoi"].ToString();
-                        IDNhomDatHang.Value = dr["IDNhomDatHang"].ToString();
-                        GiaMuaTruocThue.Value = dr["GiaMuaTruocThue"].ToString();
-                        GiaBanTruocThue.Value = dr["GiaBanTruocThue"].ToString();
-                        GiaMuaSauThue.Value = dr["GiaMuaSauThue"].ToString();
-                        GiaBanSauThue.Value = dr["GiaBanSauThue"].ToString();
-                        GiaBan1.Value = dr["GiaBan1"].ToString();
-                        GiaBan2.Value = dr["GiaBan2"].ToString();
-                        GiaBan3.Value = dr["GiaBan3"].ToString();
-                        GiaBan4.Value = dr["GiaBan4"].ToString();
-                        GiaBan5.Value = dr["GiaBan5"].ToString();
-                        TrongLuong.Value = dr["TrongLuong"].ToString();
-                        HanSuDung.Value = dr["HanSuDung"].ToString();
-                        IDTrangThaiHang.Value = dr["IDTrangThaiHang"].ToString();
-                        GhiChu.Value = dr["GhiChu"].ToString();
-                    }
-                    else
-                    {
-                        int Max = Int32.Parse(dataHangHoa.LayID_Max().ToString().Substring(2));
-                        string MaHangx = IDDonViTinh.Value + (((Max + 1) * 0.0001).ToString().Replace(".", ""));
-                        MaHang.Text = MaHangx;
-                    }
-                }
+                //    DataTable da = data.getDanhSachHangHoa_ID(IDHH);
+                //    if (da.Rows.Count != 0)
+                //    {
+                //        DataRow dr = da.Rows[0];
+                //        IDNhomHang.Value = dr["IDNhomHang"].ToString();
+                //        MaHang.Text = dr["MaHang"].ToString();
+                //        TenHangHoa.Text = dr["TenHangHoa"].ToString();
+                //        IDDonViTinh.Value = dr["IDDonViTinh"].ToString();
+                //        txtHeSo.Value = dr["HeSo"].ToString();
+                //        IDHangSanXuat.Value = dr["IDHangSanXuat"].ToString();
+                //        IDThue.Value = dr["IDThue"].ToString();
+                //        IDHangQuyDoi.Value = dr["IDHangQuyDoi"].ToString();
+                //        IDNhomDatHang.Value = dr["IDNhomDatHang"].ToString();
+                //        GiaMuaTruocThue.Value = dr["GiaMuaTruocThue"].ToString();
+                //        GiaBanTruocThue.Value = dr["GiaBanTruocThue"].ToString();
+                //        GiaMuaSauThue.Value = dr["GiaMuaSauThue"].ToString();
+                //        GiaBanSauThue.Value = dr["GiaBanSauThue"].ToString();
+                //        GiaBan1.Value = dr["GiaBan1"].ToString();
+                //        GiaBan2.Value = dr["GiaBan2"].ToString();
+                //        GiaBan3.Value = dr["GiaBan3"].ToString();
+                //        GiaBan4.Value = dr["GiaBan4"].ToString();
+                //        GiaBan5.Value = dr["GiaBan5"].ToString();
+                //        TrongLuong.Value = dr["TrongLuong"].ToString();
+                //        HanSuDung.Value = dr["HanSuDung"].ToString();
+                //        IDTrangThaiHang.Value = dr["IDTrangThaiHang"].ToString();
+                //        GhiChu.Value = dr["GhiChu"].ToString();
+                //    }
+                //    else
+                //    {
+                //        int Max = Int32.Parse(dataHangHoa.LayID_Max().ToString().Substring(2));
+                //        string MaHangx = IDDonViTinh.Value + (((Max + 1) * 0.0001).ToString().Replace(".", ""));
+                //        MaHang.Text = MaHangx;
+                //    }
+                //}
             }
         }
 
@@ -114,21 +114,21 @@ namespace BanHang
         {
             if (IsPostBack && Request.QueryString["IDHH"] != null)
             {
-                string IDHH = Request.QueryString["IDHH"].ToString();
-                dataHangHoa data = new dataHangHoa();
-                int maHang = 0;
-                DataTable da = data.getDanhSachHangHoa_ID(IDHH);
-                if (da.Rows.Count != 0)
-                {
-                    DataRow dr = da.Rows[0];
-                    maHang = Int32.Parse(dr["MaHang"].ToString().Substring(2)) - 1;
-                }
-                else
-                {
-                    maHang = Int32.Parse(dataHangHoa.LayID_Max().ToString().Substring(2));
-                }
-                string MaHangx = IDDonViTinh.Value + (((maHang + 1) * 0.0001).ToString().Replace(".", ""));
-                MaHang.Text = MaHangx;
+                //string IDHH = Request.QueryString["IDHH"].ToString();
+                //dataHangHoa data = new dataHangHoa();
+                //int maHang = 0;
+                //DataTable da = data.getDanhSachHangHoa_ID(IDHH);
+                //if (da.Rows.Count != 0)
+                //{
+                //    DataRow dr = da.Rows[0];
+                //    maHang = Int32.Parse(dr["MaHang"].ToString().Substring(2)) - 1;
+                //}
+                //else
+                //{
+                //    maHang = Int32.Parse(dataHangHoa.LayID_Max().ToString().Substring(2));
+                //}
+                //string MaHangx = IDDonViTinh.Value + (((maHang + 1) * 0.0001).ToString().Replace(".", ""));
+                //MaHang.Text = MaHangx;
             }
         }
 
