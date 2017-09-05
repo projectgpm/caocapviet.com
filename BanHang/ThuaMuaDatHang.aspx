@@ -23,7 +23,7 @@
                 <dx:LayoutItem Caption="Ngày Lập">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer6" runat="server">
-                            <dx:ASPxDateEdit ID="txtNgayLap" runat="server" OnInit="txtNgayLap_Init" Width="100%" DisplayFormatString="dd/MM/yyyy">
+                            <dx:ASPxDateEdit ID="txtNgayLap" runat="server" OnInit="txtNgayLap_Init" Width="100%" DisplayFormatString="dd/MM/yyyy" Enabled="False">
                             </dx:ASPxDateEdit>
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
@@ -115,11 +115,12 @@
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
                 </dx:LayoutItem>
-                <dx:LayoutItem Caption="Trạng Thái">
+                <dx:LayoutItem Caption="Trạng Thái Thanh Toán(*)">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer8" runat="server">
-                            <dx:ASPxTextBox ID="txtTrangThai" runat="server" Enabled="False" Text="Phiếu tạm" Width="100%">
-                            </dx:ASPxTextBox>
+                            <dx:ASPxComboBox ID="cmbThanhToan" runat="server" DataSourceID="SqlTrangThaiThanhToan" TextField="TenHinhThuc" ValueField="ID" Width="100%">
+                            </dx:ASPxComboBox>
+                            <asp:SqlDataSource ID="SqlTrangThaiThanhToan" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" SelectCommand="SELECT [ID], [TenHinhThuc] FROM [GPM_HinhThucThanhToan]"></asp:SqlDataSource>
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
                 </dx:LayoutItem>

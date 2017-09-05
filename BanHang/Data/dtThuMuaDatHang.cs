@@ -155,7 +155,7 @@ namespace BanHang.Data
                 }
             }
         }
-        public void CapNhatDonDatHang(string ID, string SoDonHang, string IDNguoiLap, DateTime NgayLap, string TongTrongLuong, string TongTien, string IDKhoLap, string GhiChu, string IDNhaCungCap, DateTime NgayDat, DateTime NgayGiaoDuKien, string ChietKhau, string TongTienSauChietKhau)
+        public void CapNhatDonDatHang(string ID, string SoDonHang, string IDNguoiLap, DateTime NgayLap, string TongTrongLuong, string TongTien, string IDKhoLap, string GhiChu, string IDNhaCungCap, DateTime NgayDat, DateTime NgayGiaoDuKien, string ChietKhau, string TongTienSauChietKhau, string IDThanhToan)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
@@ -163,10 +163,11 @@ namespace BanHang.Data
                 {
                     myConnection.Open();
 
-                    string cmdText = "UPDATE [GPM_ThuMua_DonHang] SET [IDNhaCungCap] = @IDNhaCungCap,[SoDonHang] = @SoDonHang,[IDNguoiLap] = @IDNguoiLap,[NgayLap] = @NgayLap,[TongTrongLuong] = @TongTrongLuong,[TongTien] = @TongTien,[IDKhoLap] = @IDKhoLap,[GhiChu] = @GhiChu,[NgayDat] = @NgayDat,[NgayGiaoDuKien] = @NgayGiaoDuKien,[ChietKhau] = @ChietKhau , [TongTienSauChietKhau] = @TongTienSauChietKhau WHERE ID = @ID";
+                    string cmdText = "UPDATE [GPM_ThuMua_DonHang] SET [IDThanhToan] = @IDThanhToan, [IDNhaCungCap] = @IDNhaCungCap,[SoDonHang] = @SoDonHang,[IDNguoiLap] = @IDNguoiLap,[NgayLap] = @NgayLap,[TongTrongLuong] = @TongTrongLuong,[TongTien] = @TongTien,[IDKhoLap] = @IDKhoLap,[GhiChu] = @GhiChu,[NgayDat] = @NgayDat,[NgayGiaoDuKien] = @NgayGiaoDuKien,[ChietKhau] = @ChietKhau , [TongTienSauChietKhau] = @TongTienSauChietKhau WHERE ID = @ID";
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
                         myCommand.Parameters.AddWithValue("@ID", ID);
+                        myCommand.Parameters.AddWithValue("@IDThanhToan", IDThanhToan);
                         myCommand.Parameters.AddWithValue("@IDNhaCungCap", IDNhaCungCap);
                         myCommand.Parameters.AddWithValue("@SoDonHang", SoDonHang);
                         myCommand.Parameters.AddWithValue("@IDNguoiLap", IDNguoiLap);
