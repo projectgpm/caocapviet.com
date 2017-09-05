@@ -10,6 +10,7 @@ namespace BanHang
 {
     public partial class HangSanXuat : System.Web.UI.Page
     {
+        dataHangSanXuat data = new dataHangSanXuat();
         protected void Page_Load(object sender, EventArgs e)
         {
             //if (Session["KTDangNhap"] != "GPM")
@@ -22,7 +23,7 @@ namespace BanHang
             //        gridDanhSach.Columns["chucnang"].Visible = false;
             //    if (dtSetting.LayTrangThaiMenu(Session["IDNhom"].ToString(), 10) == 1)
             //    {
-                    loadGrid();
+            LoadGrid();
                 //}
                 //else
                 //{
@@ -31,31 +32,48 @@ namespace BanHang
             //}
         }
 
-        private void loadGrid()
+        private void LoadGrid()
         {
             dataHangSanXuat data = new dataHangSanXuat();
             gridDanhSach.DataSource = data.getDanhSachHangSX();
             gridDanhSach.DataBind();
-
         }
 
         protected void gridDanhSach_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
         {
-            dataHangSanXuat data = new dataHangSanXuat();
-            string TenHangSanXuat = e.NewValues["TenHangSanXuat"].ToString();
+            data = new dataHangSanXuat();
+            string TenNSX = e.NewValues["TenNSX"].ToString();
+            string dienThoai = e.NewValues["DienThoai"] == null ? "" : e.NewValues["DienThoai"].ToString();
+            string fax = e.NewValues["Fax"] == null ? "" : e.NewValues["Fax"].ToString();
+            string email = e.NewValues["Email"] == null ? "" : e.NewValues["Email"].ToString();
+            string diaChi = e.NewValues["DiaChi"] == null ? "" : e.NewValues["DiaChi"].ToString();
+            string nguoiLienHe = e.NewValues["NguoiLienHe"] == null ? "" : e.NewValues["NguoiLienHe"].ToString();
+            string maSoThue = e.NewValues["MaSoThue"] == null ? "" : e.NewValues["MaSoThue"].ToString();
+            string linhVucKinhDoanh = e.NewValues["LinhVucKinhDoanh"] == null ? "" : e.NewValues["LinhVucKinhDoanh"].ToString();
+            string MaNSX = e.NewValues["MaNSX"].ToString();
+            DateTime NgayCapNhat = DateTime.Today.Date;
+            string ghiChu = e.NewValues["GhiChu"] == null ? "" : e.NewValues["GhiChu"].ToString();
             if (dtSetting.kiemTraChuyenDoiDau() == 1)
-                TenHangSanXuat = dtSetting.convertDauSangKhongDau(TenHangSanXuat).ToUpper();
-
-            string SDT = e.NewValues["SDT"] == null ? "" : e.NewValues["SDT"].ToString();
-            string DiaChi = e.NewValues["DiaChi"] == null ? "" : e.NewValues["DiaChi"].ToString();
-            string Email = e.NewValues["Email"] == null ? "" : e.NewValues["Email"].ToString();
-            string GhiChu = e.NewValues["GhiChu"] == null ? "" : e.NewValues["GhiChu"].ToString();
-            data.insertHangSX(TenHangSanXuat, SDT, DiaChi, Email, GhiChu);
-            e.Cancel = true;
-            gridDanhSach.CancelEdit();
-            loadGrid();
-
-            dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Hãng SX", Session["IDKho"].ToString(), "Danh mục", "Thêm: " + TenHangSanXuat); 
+                TenNSX = dtSetting.convertDauSangKhongDau(TenNSX).ToUpper();
+            if (dtSetting.IsNumber(MaNSX) == true)
+            {
+                if (dataHangSanXuat.KiemTraMaNSX(MaNSX) == false)
+                {
+                    data.ThemHangSX(MaNSX, TenNSX, dienThoai, fax, email, diaChi, nguoiLienHe, maSoThue, linhVucKinhDoanh, NgayCapNhat, ghiChu);
+                    e.Cancel = true;
+                    gridDanhSach.CancelEdit();
+                    LoadGrid();
+                    dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Nhà SX", Session["IDKho"].ToString(), "Danh mục", "Thêm: " + TenNSX); 
+                }
+                else
+                {
+                    throw new Exception("Lỗi: Mã nhà cung cấp đã tồn tại");
+                }
+            }
+            else
+            {
+                throw new Exception("Lỗi: Mã nhà sản xuất phải là số.");
+            }
         }
 
         protected void gridDanhSach_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
@@ -65,29 +83,63 @@ namespace BanHang
             data.deleteHangSX(ID);
             e.Cancel = true;
             gridDanhSach.CancelEdit();
-            loadGrid();
-
+            LoadGrid();
             dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Hãng SX", Session["IDKho"].ToString(), "Danh mục", "Xóa: ID = " + ID); 
         }
 
         protected void gridDanhSach_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
         {
-            string ID = e.Keys[0].ToString();
-            dataHangSanXuat data = new dataHangSanXuat();
-            string TenHangSanXuat = e.NewValues["TenHangSanXuat"].ToString();
+            data = new dataHangSanXuat();
+            string ID = e.Keys["ID"].ToString();
+            string TenNSX = e.NewValues["TenNSX"].ToString();
+            string dienThoai = e.NewValues["DienThoai"] == null ? "" : e.NewValues["DienThoai"].ToString();
+            string fax = e.NewValues["Fax"] == null ? "" : e.NewValues["Fax"].ToString();
+            string email = e.NewValues["Email"] == null ? "" : e.NewValues["Email"].ToString();
+            string diaChi = e.NewValues["DiaChi"] == null ? "" : e.NewValues["DiaChi"].ToString();
+            string nguoiLienHe = e.NewValues["NguoiLienHe"] == null ? "" : e.NewValues["NguoiLienHe"].ToString();
+            string maSoThue = e.NewValues["MaSoThue"] == null ? "" : e.NewValues["MaSoThue"].ToString();
+            string linhVucKinhDoanh = e.NewValues["LinhVucKinhDoanh"] == null ? "" : e.NewValues["LinhVucKinhDoanh"].ToString();
+            string MaNSX = e.NewValues["MaNSX"].ToString();
+            string ghiChu = e.NewValues["GhiChu"] == null ? "" : e.NewValues["GhiChu"].ToString();
             if (dtSetting.kiemTraChuyenDoiDau() == 1)
-                TenHangSanXuat = dtSetting.convertDauSangKhongDau(TenHangSanXuat).ToUpper();
+                TenNSX = dtSetting.convertDauSangKhongDau(TenNSX).ToUpper();
+            if (dtSetting.IsNumber(MaNSX) == true)
+            {
+                if (dataHangSanXuat.KiemTraMaNCC_ID(MaNSX, ID) == true)
+                {
+                    data.SuaThongTin(MaNSX, Int32.Parse(ID), TenNSX, dienThoai, fax, email, diaChi, nguoiLienHe, maSoThue, linhVucKinhDoanh, ghiChu);
+                    e.Cancel = true;
+                    gridDanhSach.CancelEdit();
+                    LoadGrid();
+                    dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Nhà Sản Xuất: " + TenNSX, Session["IDKho"].ToString(), "Danh Mục", "Cập Nhật");
+                }
+                else
+                {
+                    if (dataHangSanXuat.KiemTraMaNSX(MaNSX) == false)
+                    {
+                        data.SuaThongTin(MaNSX, Int32.Parse(ID), TenNSX, dienThoai, fax, email, diaChi, nguoiLienHe, maSoThue, linhVucKinhDoanh, ghiChu);
+                        e.Cancel = true;
+                        gridDanhSach.CancelEdit();
+                        LoadGrid();
+                        dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Nhà Sản Xuất: " + TenNSX, Session["IDKho"].ToString(), "Danh Mục", "Cập Nhật");
+                    }
+                    else
+                    {
+                        throw new Exception("Lỗi: Mã nhà cung cấp đã tồn tại");
+                    }
+                }
+            }
+            else
+            {
+                throw new Exception("Lỗi: Mã nhà cung cấp phải là số");
+            }
 
-            string SDT = e.NewValues["SDT"] == null ? "" : e.NewValues["SDT"].ToString();
-            string DiaChi = e.NewValues["DiaChi"] == null ? "" : e.NewValues["DiaChi"].ToString();
-            string Email = e.NewValues["Email"] == null ? "" : e.NewValues["Email"].ToString();
-            string GhiChu = e.NewValues["GhiChu"] == null ? "" : e.NewValues["GhiChu"].ToString();
-            data.updateHangSX(ID, TenHangSanXuat, SDT, DiaChi, Email, GhiChu);
-            e.Cancel = true;
-            gridDanhSach.CancelEdit();
-            loadGrid();
+            dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Hãng SX", Session["IDKho"].ToString(), "Danh mục", "Cập nhật: " + TenNSX); 
+        }
 
-            dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Hãng SX", Session["IDKho"].ToString(), "Danh mục", "Cập nhật: " + TenHangSanXuat); 
+        protected void gridDanhSach_InitNewRow(object sender, DevExpress.Web.Data.ASPxDataInitNewRowEventArgs e)
+        {
+            e.NewValues["MaNSX"] = dataHangSanXuat.Dem_Max();
         }
     }
 }

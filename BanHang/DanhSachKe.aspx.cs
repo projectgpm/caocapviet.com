@@ -40,7 +40,6 @@ namespace BanHang
             e.Cancel = true;
             gridKe.CancelEdit();
             LoadGrid(Session["IDKho"].ToString());
-
             dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Danh sách kệ", Session["IDKho"].ToString(), "Danh mục", "Xóa");
         }
 
@@ -54,7 +53,6 @@ namespace BanHang
             e.Cancel = true;
             gridKe.CancelEdit();
             LoadGrid(Session["IDKho"].ToString());
-
             dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Danh sách kệ", Session["IDKho"].ToString(), "Danh mục", "Thêm");
         }
 
@@ -69,7 +67,6 @@ namespace BanHang
             e.Cancel = true;
             gridKe.CancelEdit();
             LoadGrid(Session["IDKho"].ToString());
-
             dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Danh sách kệ", Session["IDKho"].ToString(), "Danh mục", "Cập nhật");
         }
     }

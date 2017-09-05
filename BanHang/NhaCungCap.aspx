@@ -36,7 +36,7 @@
     </dx:ASPxFormLayout>
     <dx:ASPxGridViewExporter ID="XuatDuLieu" runat="server">
     </dx:ASPxGridViewExporter>
-    <dx:ASPxGridView ID="gridNhaCungCap" runat="server" AutoGenerateColumns="False" Width="100%" KeyFieldName="ID" OnRowDeleting="gridNhaCungCap_RowDeleting" OnRowInserting="gridNhaCungCap_RowInserting" OnRowUpdating="gridNhaCungCap_RowUpdating">
+    <dx:ASPxGridView ID="gridNhaCungCap" runat="server" AutoGenerateColumns="False" Width="100%" KeyFieldName="ID" OnRowDeleting="gridNhaCungCap_RowDeleting" OnRowInserting="gridNhaCungCap_RowInserting" OnRowUpdating="gridNhaCungCap_RowUpdating" OnInitNewRow="gridNhaCungCap_InitNewRow">
         <SettingsEditing Mode="PopupEditForm">
         </SettingsEditing>
         <Settings AutoFilterCondition="Contains" ShowFilterRow="True" ShowTitlePanel="True" />
@@ -71,22 +71,23 @@
             <EditForm HorizontalAlign="WindowCenter" Modal="True" VerticalAlign="WindowCenter" />
         </SettingsPopup>
         <SettingsSearchPanel Visible="True" />
-        <SettingsText CommandCancel="Hủy bỏ thao tác" CommandDelete="Xóa" CommandEdit="Sửa" CommandNew="Thêm" CommandUpdate="Lưu" ConfirmDelete="Bạn có chắc chắn muốn xóa không?. Thao tác này có thể xóa Hàng Hóa thuộc nhà cung cấp!." PopupEditFormCaption="Thông tin nhà cung cấp" Title="DANH SÁCH NHÀ CUNG CẤP" />
+        <SettingsText CommandCancel="Hủy bỏ thao tác" CommandDelete="Xóa" CommandEdit="Sửa" CommandNew="Thêm" CommandUpdate="Lưu" ConfirmDelete="Bạn có chắc chắn muốn xóa không?. Thao tác này có thể xóa Hàng Hóa thuộc nhà cung cấp!." PopupEditFormCaption="Thông tin nhà cung cấp" Title="DANH SÁCH NHÀ CUNG CẤP" EmptyDataRow="Không có dữ liệu hiển thị" SearchPanelEditorNullText="Nhập thông tin cần tìm..." />
         <EditFormLayoutProperties>
             <Items>
-                <dx:GridViewColumnLayoutItem ColumnName="Nhà Cung Cấp" Name="TenNhaCungCap">
+<dx:GridViewColumnLayoutItem ColumnName="Mã NCC"></dx:GridViewColumnLayoutItem>
+                <dx:GridViewColumnLayoutItem ColumnName="Tên NCC" Name="TenNhaCungCap">
                 </dx:GridViewColumnLayoutItem>
-                <dx:GridViewColumnLayoutItem ColumnName="Điện Thoại" Name="DienThoai">
+                <dx:GridViewColumnLayoutItem ColumnName="Địa Chỉ" Name="DienThoai">
                 </dx:GridViewColumnLayoutItem>
-                <dx:GridViewColumnLayoutItem ColumnName="Fax" Name="Fax">
+                <dx:GridViewColumnLayoutItem ColumnName="Mã số thuế" Name="Fax">
                 </dx:GridViewColumnLayoutItem>
-                <dx:GridViewColumnLayoutItem ColumnName="Email" Name="Email">
+                <dx:GridViewColumnLayoutItem ColumnName="Điện Thoại" Name="Email">
                 </dx:GridViewColumnLayoutItem>
-                <dx:GridViewColumnLayoutItem ColumnName="Địa Chỉ" Name="DiaChi">
+                <dx:GridViewColumnLayoutItem ColumnName="Fax" Name="DiaChi">
                 </dx:GridViewColumnLayoutItem>
-                <dx:GridViewColumnLayoutItem ColumnName="Người Liên Hệ" Name="NguoiLienHe">
+                <dx:GridViewColumnLayoutItem ColumnName="Email" Name="NguoiLienHe">
                 </dx:GridViewColumnLayoutItem>
-                <dx:GridViewColumnLayoutItem ColumnName="Mã số thuế" Name="MaSoThue">
+                <dx:GridViewColumnLayoutItem ColumnName="Người Liên Hệ" Name="MaSoThue">
                 </dx:GridViewColumnLayoutItem>
                 <dx:GridViewColumnLayoutItem ColumnName="Lĩnh Vực Kinh Doanh" Name="LinhVucKinhDoanh">
                 </dx:GridViewColumnLayoutItem>
@@ -99,18 +100,18 @@
         <Columns>
             <dx:GridViewCommandColumn ShowClearFilterButton="True" ShowDeleteButton="True" ShowEditButton="True" ShowNewButtonInHeader="True" VisibleIndex="11" Name="iconaction">
             </dx:GridViewCommandColumn>
-            <dx:GridViewDataTextColumn Caption="Nhà Cung Cấp" FieldName="TenNhaCungCap" VisibleIndex="1">
+            <dx:GridViewDataTextColumn Caption="Tên NCC" FieldName="TenNhaCungCap" VisibleIndex="1">
                 <PropertiesTextEdit>
                     <ValidationSettings SetFocusOnError="True">
                         <RequiredField IsRequired="True" />
                     </ValidationSettings>
                 </PropertiesTextEdit>
             </dx:GridViewDataTextColumn>
-            <dx:GridViewDataTextColumn Caption="Điện Thoại" FieldName="DienThoai" VisibleIndex="2">
+            <dx:GridViewDataTextColumn Caption="Điện Thoại" FieldName="DienThoai" VisibleIndex="4">
             </dx:GridViewDataTextColumn>
-            <dx:GridViewDataTextColumn Caption="Địa Chỉ" FieldName="DiaChi" VisibleIndex="5">
+            <dx:GridViewDataTextColumn Caption="Địa Chỉ" FieldName="DiaChi" VisibleIndex="2">
             </dx:GridViewDataTextColumn>
-            <dx:GridViewDataTextColumn Caption="Người Liên Hệ" FieldName="NguoiLienHe" VisibleIndex="6">
+            <dx:GridViewDataTextColumn Caption="Người Liên Hệ" FieldName="NguoiLienHe" VisibleIndex="7">
                <%-- <PropertiesTextEdit>
                     <ValidationSettings>
                         <RequiredField IsRequired="True" />
@@ -119,19 +120,26 @@
             </dx:GridViewDataTextColumn>
             <dx:GridViewDataTextColumn Caption="Lĩnh Vực Kinh Doanh" FieldName="LinhVucKinhDoanh" VisibleIndex="8">
             </dx:GridViewDataTextColumn>
-            <dx:GridViewDataTextColumn Caption="Fax" FieldName="Fax" VisibleIndex="3">
+            <dx:GridViewDataTextColumn Caption="Fax" FieldName="Fax" VisibleIndex="5">
             </dx:GridViewDataTextColumn>
-            <dx:GridViewDataTextColumn Caption="Email" FieldName="Email" VisibleIndex="4">
+            <dx:GridViewDataTextColumn Caption="Email" FieldName="Email" VisibleIndex="6">
                <%-- <PropertiesTextEdit>
                     <ValidationSettings>
                         <RequiredField IsRequired="True" />
                     </ValidationSettings>
                 </PropertiesTextEdit>--%>
             </dx:GridViewDataTextColumn>
-            <dx:GridViewDataTextColumn Caption="Mã số thuế" FieldName="MaSoThue" VisibleIndex="7">
+            <dx:GridViewDataTextColumn Caption="Mã số thuế" FieldName="MaSoThue" VisibleIndex="3">
             </dx:GridViewDataTextColumn>
             
             <dx:GridViewDataTextColumn Caption="Ghi chú" FieldName="GhiChu" VisibleIndex="10">
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn Caption="Mã NCC" VisibleIndex="0" FieldName="MaNCC">
+                <PropertiesTextEdit>
+                    <ValidationSettings SetFocusOnError="True">
+                        <RequiredField IsRequired="True" />
+                    </ValidationSettings>
+                </PropertiesTextEdit>
             </dx:GridViewDataTextColumn>
         </Columns>
 

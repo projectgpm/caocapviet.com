@@ -57,16 +57,16 @@
                                                     <dx:RibbonDropDownButtonItem Name="Danh mục" NavigateUrl="javascript:void(2)" 
                                                         Size="Large" Text="Danh mục">
                                                         <Items>
-                                                            <dx:RibbonDropDownButtonItem NavigateUrl="DonViTinh.aspx" Text="Đơn Vị Tính" Name="don_vi_tinh">
-                                                                <SmallImage IconID="businessobjects_bodepartment_16x16">
-                                                                </SmallImage>
-                                                            </dx:RibbonDropDownButtonItem>
                                                             <dx:RibbonDropDownButtonItem Name="nhom_khach_hang" NavigateUrl="NhomKhachHang.aspx" Text="Nhóm Khách Hàng">
                                                                 <SmallImage IconID="people_people_16x16devav">
                                                                 </SmallImage>
                                                             </dx:RibbonDropDownButtonItem>
                                                             <dx:RibbonDropDownButtonItem Name="khach_hang" NavigateUrl="KhachHang.aspx" 
                                                                 Text="Khách Hàng">
+                                                            </dx:RibbonDropDownButtonItem>
+                                                            <dx:RibbonDropDownButtonItem NavigateUrl="DonViTinh.aspx" Text="Đơn Vị Tính" Name="don_vi_tinh">
+                                                                <SmallImage IconID="businessobjects_bodepartment_16x16">
+                                                                </SmallImage>
                                                             </dx:RibbonDropDownButtonItem>
                                                             <dx:RibbonDropDownButtonItem Name="nha_cung_cap" 
                                                                 NavigateUrl="NhaCungCap.aspx" Text="Nhà Cung Cấp">
@@ -87,7 +87,7 @@
                                                                     </dx:RibbonDropDownButtonItem>
                                                                 </Items>
                                                             </dx:RibbonDropDownButtonItem>
-                                                            <dx:RibbonDropDownButtonItem Name="Danh sách hãng sản xuất" NavigateUrl="HangSanXuat.aspx" Text="Danh Sách Hãng Sản Xuất">
+                                                            <dx:RibbonDropDownButtonItem Name="Danh sách hãng sản xuất" NavigateUrl="HangSanXuat.aspx" Text="Nhà Sản Xuất">
                                                             </dx:RibbonDropDownButtonItem>
                                                             <dx:RibbonDropDownButtonItem Name="Danh Sách Kệ" NavigateUrl="DanhSachKe.aspx" Text="Danh Sách Kệ">
                                                                 <SmallImage IconID="people_mr_16x16devav">
@@ -115,7 +115,7 @@
                                                             </dx:RibbonDropDownButtonItem>
                                                             <dx:RibbonDropDownButtonItem Name="Danh mục Combo" NavigateUrl="DanhMucCombo.aspx" Text="Danh Mục Combo">
                                                             </dx:RibbonDropDownButtonItem>
-                                                            <dx:RibbonDropDownButtonItem Name="Danh sách hàng hóa theo vùng" NavigateUrl="DanhSachGiaTheoVung.aspx" Text="Danh sách hàng hóa theo vùng">
+                                                            <dx:RibbonDropDownButtonItem Name="Danh sách hàng hóa theo vùng" NavigateUrl="DanhSachGiaTheoVung.aspx" Text="Giá Theo Vùng">
                                                             </dx:RibbonDropDownButtonItem>
                                                         </Items>
                                                         <LargeImage Url="~/image/danhsach.png">

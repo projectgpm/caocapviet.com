@@ -68,23 +68,25 @@ namespace BanHang.Data
             }
         }
 
-        public static int LayID_Max()
+        public static string Dem_Max()
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "SELECT Max(MaNhom) as IDMax FROM [GPM_NHOMHANG] ";
+                int STTV = 0;
+                string So;
+                string GPM = "0000";
+                string cmdText = "SELECT * FROM [GPM_NHOMHANG]";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
                     DataTable tb = new DataTable();
                     tb.Load(reader);
-                    if (tb.Rows.Count != 0)
-                    {
-                        DataRow dr = tb.Rows[0];
-                        return Int32.Parse(dr["IDMax"].ToString());
-                    }
-                    else return -1;
+                    STTV = tb.Rows.Count + 1;
+                    int DoDaiHT = STTV.ToString().Length;
+                    string DoDaiGPM = GPM.Substring(0, 4 - DoDaiHT);
+                    So = DoDaiGPM + STTV;
+                    return So;
                 }
             }
         }

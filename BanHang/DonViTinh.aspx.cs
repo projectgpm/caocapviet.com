@@ -26,17 +26,31 @@ namespace BanHang
         {
             data = new dtDonViTinh();
             string TenDonViTinh = e.NewValues["TenDonViTinh"].ToString();
+            string MaDonVi = e.NewValues["MaDonVi"].ToString();
             string MoTa = e.NewValues["MoTa"] == null ? "" : e.NewValues["MoTa"].ToString();
             if (dtSetting.kiemTraChuyenDoiDau() == 1)
                 TenDonViTinh = dtSetting.convertDauSangKhongDau(TenDonViTinh).ToUpper();
-
             if (dtDonViTinh.KiemTraTen(TenDonViTinh) == 1)
             {
-                data.ThemDonViTinh(TenDonViTinh, MoTa);
-                dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Đơn vị tính:" + TenDonViTinh, Session["IDKho"].ToString(), "Danh Mục", "Thêm"); 
-                e.Cancel = true;
-                gridDonViTinh.CancelEdit();
-                LoadGrid();
+                if (dtSetting.IsNumber(MaDonVi) == true)
+                {
+                    if (dtDonViTinh.KiemTraMa(MaDonVi) == 1)
+                    {
+                        data.ThemDonViTinh(MaDonVi, TenDonViTinh, MoTa);
+                        dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Đơn vị tính:" + TenDonViTinh, Session["IDKho"].ToString(), "Danh Mục", "Thêm");
+                        e.Cancel = true;
+                        gridDonViTinh.CancelEdit();
+                        LoadGrid();
+                    }
+                    else
+                    {
+                        throw new Exception("Lỗi: Mã đơn vị tính đã tồn tại: " + MaDonVi);
+                    }
+                }
+                else
+                {
+                    throw new Exception("Lỗi: Mã đơn vị tính phải là số: " + MaDonVi);
+                }
             }
             else
             {
@@ -52,7 +66,6 @@ namespace BanHang
             e.Cancel = true;
             gridDonViTinh.CancelEdit();
             LoadGrid();
-
             dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Đơn vị tính:" + ID, Session["IDKho"].ToString(), "Danh Mục", "Xóa"); 
         }
 
@@ -61,15 +74,44 @@ namespace BanHang
             int ID = Int32.Parse(e.Keys["ID"].ToString());
             string TenDonViTinh = e.NewValues["TenDonViTinh"].ToString();
             string MoTa = e.NewValues["MoTa"] == null ? "" : e.NewValues["MoTa"].ToString();
+            string MaDonVi = e.NewValues["MaDonVi"].ToString();
             if (dtSetting.kiemTraChuyenDoiDau() == 1)
                 TenDonViTinh = dtSetting.convertDauSangKhongDau(TenDonViTinh).ToUpper();
+            if (dtSetting.IsNumber(MaDonVi) == true)
+            {
+                if (dtDonViTinh.KiemTraMaDonViTinh_ID(MaDonVi, ID.ToString()) == true)
+                {
+                    data.SuaThongTinDonViTinh(ID, TenDonViTinh, MoTa, MaDonVi);
+                    e.Cancel = true;
+                    gridDonViTinh.CancelEdit();
+                    LoadGrid();
+                    dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Đơn vị tính:" + TenDonViTinh, Session["IDKho"].ToString(), "Danh Mục", "Cập Nhật");
+                }
+                else
+                {
+                    if (dtDonViTinh.KiemTraMa(MaDonVi) == 1)
+                    {
+                        data.SuaThongTinDonViTinh(ID, TenDonViTinh, MoTa, MaDonVi);
+                        e.Cancel = true;
+                        gridDonViTinh.CancelEdit();
+                        LoadGrid();
+                        dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Đơn vị tính:" + TenDonViTinh, Session["IDKho"].ToString(), "Danh Mục", "Cập Nhật");
+                    }
+                    else
+                    {
+                        throw new Exception("Lỗi: Mã đơn vị tính đã tồn tại");
+                    }
+                }
+            }
+            else
+            {
+                throw new Exception("Lỗi: Mã đơn vị tính phải là số: " + MaDonVi);
+            }
+        }
 
-            data.SuaThongTinDonViTinh(ID, TenDonViTinh, MoTa);
-            e.Cancel = true;
-            gridDonViTinh.CancelEdit();
-            LoadGrid();
-
-            dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Đơn vị tính:" + TenDonViTinh, Session["IDKho"].ToString(), "Danh Mục", "Cập Nhật"); 
+        protected void gridDonViTinh_InitNewRow(object sender, DevExpress.Web.Data.ASPxDataInitNewRowEventArgs e)
+        {
+            e.NewValues["MaDonVi"] = dtDonViTinh.Dem_Max();
         }
     }
 }

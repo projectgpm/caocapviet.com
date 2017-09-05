@@ -9,7 +9,66 @@ namespace BanHang.Data
 {
     public class dtNhaCungCap
     {
-		
+        public static string Dem_Max()
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                int STTV = 0;
+                string So;
+                string GPM = "00000";
+                string cmdText = "SELECT * FROM [GPM_NHACUNGCAP]";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    STTV = tb.Rows.Count + 1;
+                    int DoDaiHT = STTV.ToString().Length;
+                    string DoDaiGPM = GPM.Substring(0, 5 - DoDaiHT);
+                    So = DoDaiGPM + STTV;
+                    return So;
+                }
+            }
+        }
+        public static bool KiemTraMaNCC_ID(string MaNCC, string ID)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT MaNCC FROM [GPM_NHACUNGCAP] WHERE [MaNCC] = '" + MaNCC + "' AND ID =  " + ID;
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    if (tb.Rows.Count != 0)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+            }
+        }
+        public static bool KiemTraMaNCC(string MaNCC)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT MaNCC FROM [GPM_NHACUNGCAP] WHERE [MaNCC] = " + MaNCC;
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    if (tb.Rows.Count != 0)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+            }
+        }
 		public DataTable LayDanhSachNhaCungCap()
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
@@ -26,16 +85,17 @@ namespace BanHang.Data
             }
         }
 
-        public void ThemNhaCungCap(string TenNhaCungCap, string DienThoai, string Fax, string Email, string DiaChi, string NguoiLienHe, string MaSoThue, string LinhVucKinhDoanh, DateTime NgayCapNhat, string GhiChu)
+        public void ThemNhaCungCap(string MaNCC , string TenNhaCungCap, string DienThoai, string Fax, string Email, string DiaChi, string NguoiLienHe, string MaSoThue, string LinhVucKinhDoanh, DateTime NgayCapNhat, string GhiChu)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
                 try
                 {
                     myConnection.Open();
-                    string cmdText = "INSERT INTO [GPM_NHACUNGCAP] ([TenNhaCungCap], [DienThoai], [Fax], [Email], [DiaChi], [NguoiLienHe], [MaSoThue], [LinhVucKinhDoanh], [NgayCapNhat], [GhiChu]) VALUES (@TenNhaCungCap, @DienThoai, @Fax, @Email, @DiaChi, @NguoiLienHe, @MaSoThue, @LinhVucKinhDoanh, @NgayCapNhat, @GhiChu)";
+                    string cmdText = "INSERT INTO [GPM_NHACUNGCAP] ([MaNCC],[TenNhaCungCap], [DienThoai], [Fax], [Email], [DiaChi], [NguoiLienHe], [MaSoThue], [LinhVucKinhDoanh], [NgayCapNhat], [GhiChu]) VALUES (@MaNCC,@TenNhaCungCap, @DienThoai, @Fax, @Email, @DiaChi, @NguoiLienHe, @MaSoThue, @LinhVucKinhDoanh, @NgayCapNhat, @GhiChu)";
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
+                        myCommand.Parameters.AddWithValue("@MaNCC", MaNCC);
                         myCommand.Parameters.AddWithValue("@TenNhaCungCap", TenNhaCungCap);
                         myCommand.Parameters.AddWithValue("@DienThoai", DienThoai);
                         myCommand.Parameters.AddWithValue("@Fax", Fax);
@@ -78,17 +138,18 @@ namespace BanHang.Data
             }
         }
 
-        public void SuaThongTinNhaCungCap(int ID, string TenNhaCungCap, string DienThoai, string Fax, string Email, string DiaChi, string NguoiLienHe, string MaSoThue, string LinhVucKinhDoanh, DateTime NgayCapNhat, string GhiChu)
+        public void SuaThongTinNhaCungCap(string MaNCC, int ID, string TenNhaCungCap, string DienThoai, string Fax, string Email, string DiaChi, string NguoiLienHe, string MaSoThue, string LinhVucKinhDoanh, string GhiChu)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
                 try
                 {
                     myConnection.Open();
-                    string strSQL = "UPDATE [GPM_NHACUNGCAP] SET [TenNhaCungCap] = @TenNhaCungCap, [DienThoai] = @DienThoai, [Fax] = @Fax, [Email] = @Email, [DiaChi] = @DiaChi, [NguoiLienHe] = @NguoiLienHe, [MaSoThue] = @MaSoThue, [LinhVucKinhDoanh] = @LinhVucKinhDoanh, [NgayCapNhat] = @NgayCapNhat, [GhiChu] = @GhiChu WHERE [ID] = @ID";
+                    string strSQL = "UPDATE [GPM_NHACUNGCAP] SET [MaNCC] = @MaNCC, [TenNhaCungCap] = @TenNhaCungCap, [DienThoai] = @DienThoai, [Fax] = @Fax, [Email] = @Email, [DiaChi] = @DiaChi, [NguoiLienHe] = @NguoiLienHe, [MaSoThue] = @MaSoThue, [LinhVucKinhDoanh] = @LinhVucKinhDoanh, [NgayCapNhat] = getdate(), [GhiChu] = @GhiChu WHERE [ID] = @ID";
                     using (SqlCommand myCommand = new SqlCommand(strSQL, myConnection))
                     {
                         myCommand.Parameters.AddWithValue("@ID", ID);
+                        myCommand.Parameters.AddWithValue("@MaNCC", MaNCC);
                         myCommand.Parameters.AddWithValue("@TenNhaCungCap", TenNhaCungCap);
                         myCommand.Parameters.AddWithValue("@DienThoai", DienThoai);
                         myCommand.Parameters.AddWithValue("@Fax", Fax);
@@ -97,8 +158,6 @@ namespace BanHang.Data
                         myCommand.Parameters.AddWithValue("@NguoiLienHe", NguoiLienHe);
                         myCommand.Parameters.AddWithValue("@MaSoThue", MaSoThue);
                         myCommand.Parameters.AddWithValue("@LinhVucKinhDoanh", LinhVucKinhDoanh);
-                
-                        myCommand.Parameters.AddWithValue("@NgayCapNhat", NgayCapNhat);
                         myCommand.Parameters.AddWithValue("@GhiChu", GhiChu);
                         myCommand.ExecuteNonQuery();
                     }

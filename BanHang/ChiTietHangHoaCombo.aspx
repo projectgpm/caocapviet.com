@@ -12,7 +12,7 @@
             <dx:ASPxGridView runat="server" AutoGenerateColumns="False" Width="100%" ID="gridChiTietHangHoaCombo" KeyFieldName="ID">
         <SettingsEditing Mode="PopupEditForm">
         </SettingsEditing>
-<Settings ShowTitlePanel="True"></Settings>
+<Settings ShowTitlePanel="True" ShowFooter="True"></Settings>
 
         <SettingsBehavior ConfirmDelete="True" />
 
@@ -52,15 +52,16 @@
     <dx:GridViewDataSpinEditColumn Caption="Số Lượng" FieldName="SoLuong" VisibleIndex="3">
         <propertiesspinedit DisplayFormatString="N0"></propertiesspinedit>
     </dx:GridViewDataSpinEditColumn>
-    <dx:GridViewDataSpinEditColumn Caption="Giá Bán" FieldName="GiaBan" VisibleIndex="4">
+    <dx:GridViewDataSpinEditColumn Caption="Giá Bán Trước Thuế" FieldName="GiaBanTruocThue" VisibleIndex="6">
         <propertiesspinedit DisplayFormatString="N0"></propertiesspinedit>
+        <HeaderStyle Wrap="True" />
     </dx:GridViewDataSpinEditColumn>
-    <dx:GridViewDataSpinEditColumn Caption="Thành Tiền" FieldName="ThanhTien" VisibleIndex="5">
+    <dx:GridViewDataSpinEditColumn Caption="Thành Tiền" FieldName="ThanhTien" VisibleIndex="8">
         <propertiesspinedit DisplayFormatString="N0"></propertiesspinedit>
     </dx:GridViewDataSpinEditColumn>
     <dx:GridViewDataTextColumn Caption="Mã Hàng" FieldName="MaHang" VisibleIndex="0">
     </dx:GridViewDataTextColumn>
-    <dx:GridViewDataSpinEditColumn Caption="Trọng Lượng" FieldName="TrongLuong" VisibleIndex="6">
+    <dx:GridViewDataSpinEditColumn Caption="Trọng Lượng" FieldName="TrongLuong" VisibleIndex="9">
         <PropertiesSpinEdit DisplayFormatString="g">
         </PropertiesSpinEdit>
     </dx:GridViewDataSpinEditColumn>
@@ -72,7 +73,35 @@
         <PropertiesComboBox DataSourceID="SqlDonViTinh" TextField="TenDonViTinh" ValueField="ID">
         </PropertiesComboBox>
     </dx:GridViewDataComboBoxColumn>
+    <dx:GridViewDataTextColumn Caption="Ghi Chú" FieldName="GhiChu" VisibleIndex="10">
+    </dx:GridViewDataTextColumn>
+    <dx:GridViewDataSpinEditColumn Caption="Giá Bán Sau Thuế" FieldName="GiaBanSauThue" VisibleIndex="7">
+        <PropertiesSpinEdit DisplayFormatString="N0" NumberFormat="Custom">
+        </PropertiesSpinEdit>
+        <HeaderStyle Wrap="True" />
+    </dx:GridViewDataSpinEditColumn>
+    <dx:GridViewDataSpinEditColumn Caption="Giá Mua Sau Thuế" FieldName="GiaMuaSauThue" VisibleIndex="5">
+        <PropertiesSpinEdit DisplayFormatString="N0" NumberFormat="Custom">
+        </PropertiesSpinEdit>
+        <HeaderStyle Wrap="True" />
+    </dx:GridViewDataSpinEditColumn>
+    <dx:GridViewDataSpinEditColumn Caption="Giá Mua Trước Thuế" FieldName="GiaMuaTruocThue" VisibleIndex="4">
+        <PropertiesSpinEdit DisplayFormatString="N0" NumberFormat="Custom">
+        </PropertiesSpinEdit>
+        <HeaderStyle Wrap="True" />
+    </dx:GridViewDataSpinEditColumn>
 </Columns>
+
+                <TotalSummary>
+                    <dx:ASPxSummaryItem DisplayFormat="Tổng: {0:N0}" FieldName="SoLuong" ShowInColumn="Số Lượng" SummaryType="Sum" />
+                    <dx:ASPxSummaryItem DisplayFormat="Tổng: {0:N0}" FieldName="GiaBanTruocThue" ShowInColumn="Giá Bán Trước Thuế" SummaryType="Sum" />
+                    <dx:ASPxSummaryItem DisplayFormat="Tổng: {0:N0}" FieldName="ThanhTien" ShowInColumn="Thành Tiền" SummaryType="Sum" />
+                    <dx:ASPxSummaryItem DisplayFormat="Tổng: {0}" FieldName="TrongLuong" ShowInColumn="Trọng Lượng" SummaryType="Sum" />
+                    <dx:ASPxSummaryItem DisplayFormat="Tổng: {0:N0}" FieldName="GiaBanSauThue" ShowInColumn="Giá Bán Sau Thuế" SummaryType="Sum" />
+                    <dx:ASPxSummaryItem DisplayFormat="Tổng: {0:N0}" FieldName="GiaMuaTruocThue" ShowInColumn="Giá Mua Trước Thuế" SummaryType="Sum" />
+                    <dx:ASPxSummaryItem DisplayFormat="Tổng: {0:N0}" FieldName="GiaMuaSauThue" ShowInColumn="Giá Mua Sau Thuế" SummaryType="Sum" />
+                    <dx:ASPxSummaryItem DisplayFormat="Tổng SLH: {0}" FieldName="MaHang" ShowInColumn="Mã Hàng" SummaryType="Count" />
+                </TotalSummary>
 
 <Styles>
 <Header HorizontalAlign="Center" Font-Bold="True"></Header>
