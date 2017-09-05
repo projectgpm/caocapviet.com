@@ -75,17 +75,17 @@ namespace BanHang.Data
             }
         }
 
-        public static void CapNhat_GiaTheoVung_NhiuKho(string ID, string IDKho, string GiaBan,string GiaThayDoi)
+        public  void CapNhat_GiaTheoVung_NhiuKho(string IDHangHoa, string IDKho, string GiaBan,string GiaThayDoi)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
                 try
                 {
                     myConnection.Open();
-                    string strSQL = "UPDATE [GPM_HangHoaTonKho] [" + GiaThayDoi + "] =  @GiaBan SET  WHERE [IDKho] = @IDKho AND [ID]= @ID";
+                    string strSQL = "UPDATE [GPM_HangHoaTonKho] SET [" + GiaThayDoi + "] =  @GiaBan   WHERE [IDKho] = @IDKho AND [IDHangHoa]= @IDHangHoa";
                     using (SqlCommand myCommand = new SqlCommand(strSQL, myConnection))
                     {
-                        myCommand.Parameters.AddWithValue("@ID", ID);
+                        myCommand.Parameters.AddWithValue("@IDHangHoa", IDHangHoa);
                         myCommand.Parameters.AddWithValue("@GiaBan", GiaBan);
                         myCommand.Parameters.AddWithValue("@IDKho", IDKho);
                         myCommand.ExecuteNonQuery();

@@ -100,7 +100,26 @@ namespace BanHang.Data
             }
         }
 
-
+        public static int LayIDHangHoa_HangHoaTonKho(string ID)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = " SELECT IDHangHoa FROM [GPM_HangHoaTonKho] WHERE [ID] = '" + ID + "'";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    if (tb.Rows.Count != 0)
+                    {
+                        DataRow dr = tb.Rows[0];
+                        return Int32.Parse(dr["IDHangHoa"].ToString());
+                    }
+                    else return -1;
+                }
+            }
+        }
         public static float GiaBan_Kho1(string IDHangHoa)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))

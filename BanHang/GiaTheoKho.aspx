@@ -113,6 +113,8 @@
                                                     <PropertiesSpinEdit DisplayFormatString="{0:#,# đ}" NumberFormat="Custom">
                                                     </PropertiesSpinEdit>
                                                 </dx:GridViewDataSpinEditColumn>
+                                                <dx:GridViewDataTextColumn FieldName="IDHangHoa" ShowInCustomizationForm="True" Visible="False" VisibleIndex="9">
+                                                </dx:GridViewDataTextColumn>
                                             </Columns>
                                             <Styles>
                                                 <Header Font-Bold="True" HorizontalAlign="Center">
