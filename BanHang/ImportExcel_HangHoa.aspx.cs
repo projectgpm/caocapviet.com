@@ -104,7 +104,7 @@ namespace BanHang
                     DataTable dd = hh.KiemTraHangHoa_MaHang(MaHang);
                     if (dd.Rows.Count == 0)
                     {
-                        IDHangHoa = hh.insertHangHoa(IDNhomHang, MaHang, TenHangHoa, IDDonViTinh, HeSo, IDHangSanXuat, IDThue, -1 + "", IDNhomDatHang, GiaMuaTruocThue, GiaBanTruocThue, GiaMuaSauThue, GiaBanSauThue, GiaBan1, GiaBan2, GiaBan3, GiaBan4, GiaBan5, TrongLuong, HanSuDung, IDTrangThaiHang, GhiChu);
+                        //IDHangHoa = hh.insertHangHoa(IDNhomHang, MaHang, TenHangHoa, IDDonViTinh, HeSo, IDHangSanXuat, IDThue, -1 + "", IDNhomDatHang, GiaMuaTruocThue, GiaBanTruocThue, GiaMuaSauThue, GiaBanSauThue, GiaBan1, GiaBan2, GiaBan3, GiaBan4, GiaBan5, TrongLuong, HanSuDung, IDTrangThaiHang, GhiChu);
                         // Thêm hàng hóa vào các kho....
                         dtKho dtx = new dtKho();
                         DataTable dtax = dtx.LayDanhSachKho();

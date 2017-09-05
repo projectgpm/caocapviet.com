@@ -84,6 +84,24 @@ namespace BanHang.Data
                 }
             }
         }
+        public string LayMaDonViTinh(string ID)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT MaDonVi FROM [GPM_DONVITINH] WHERE ID = '" + ID + "'";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    if(tb.Rows.Count != 0)
+                        return tb.Rows[0]["MaDonVi"].ToString();
+                    return 1 + "";
+                }
+            }
+        }
+
 
         public static int KiemTraTen(string TenDonViTinh)
         {
