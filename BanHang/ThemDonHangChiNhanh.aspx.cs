@@ -121,24 +121,24 @@ namespace BanHang
                     string IDDonViTinh = dtHangHoa.LayIDDonViTinh(IDHangHoa);
                     string MaHang = dtHangHoa.LayMaHang(IDHangHoa);
                     string TrongLuong = dtHangHoa.LayTrongLuong(IDHangHoa).ToString();
-                    float DonGia = dtHangHoa.LayGiaBanSauThue(IDHangHoa);
-                    string IDDonHangChiNhanh = IDDonDatHang_Temp.Value.ToString();
-                    DataTable db = dtDonHangChiNhanh.KTChiTietDonHang_Temp(IDHangHoa, IDDonHangChiNhanh);// kiểm tra hàng hóa
-                    if (db.Rows.Count == 0)
-                    {
-                        data = new dtDonHangChiNhanh();
-                        data.ThemChiTietDonHang_Temp(IDDonHangChiNhanh, MaHang, IDHangHoa, IDDonViTinh, TrongLuong, SoLuong, DonGia, DonGia * SoLuong);
-                        TinhTongTien();
-                        CLear();
-                    }
-                    else
-                    {
-                        data = new dtDonHangChiNhanh();
-                        data.CapNhatChiTietDonHang_temp(IDDonHangChiNhanh, IDHangHoa, SoLuong, DonGia, DonGia * SoLuong);
-                        TinhTongTien();
-                        CLear();
-                    }
-                    LoadGrid(IDDonHangChiNhanh);
+                    //float DonGia = dtHangHoa.LayGiaBanSauThue(IDHangHoa);
+                    //string IDDonHangChiNhanh = IDDonDatHang_Temp.Value.ToString();
+                    //DataTable db = dtDonHangChiNhanh.KTChiTietDonHang_Temp(IDHangHoa, IDDonHangChiNhanh);// kiểm tra hàng hóa
+                    //if (db.Rows.Count == 0)
+                    //{
+                    //    data = new dtDonHangChiNhanh();
+                    //    data.ThemChiTietDonHang_Temp(IDDonHangChiNhanh, MaHang, IDHangHoa, IDDonViTinh, TrongLuong, SoLuong, DonGia, DonGia * SoLuong);
+                    //    TinhTongTien();
+                    //    CLear();
+                    //}
+                    //else
+                    //{
+                    //    data = new dtDonHangChiNhanh();
+                    //    data.CapNhatChiTietDonHang_temp(IDDonHangChiNhanh, IDHangHoa, SoLuong, DonGia, DonGia * SoLuong);
+                    //    TinhTongTien();
+                    //    CLear();
+                    //}
+                    //LoadGrid(IDDonHangChiNhanh);
                     
                 }
                 else
@@ -326,25 +326,25 @@ namespace BanHang
                             string DonViTinh = dtHangHoa.LayIDDonViTinh(IDHangHoa.Trim());
                             string IDDonHangChiNhanh = IDDonDatHang_Temp.Value.ToString();
                             string TrongLuong = dtHangHoa.LayTrongLuong(IDHangHoa)+"";
-                            float DonGia = dtHangHoa.LayGiaBanSauThue(IDHangHoa);
-                            DataTable db = dtDonHangChiNhanh.KTChiTietDonHang_Temp(IDHangHoa, IDDonHangChiNhanh);// kiểm tra hàng hóa
-                            if (db.Rows.Count == 0)
-                            {
-                                data = new dtDonHangChiNhanh();
-                                if ((dtHangHoa.TrangThaiHang(IDHangHoa) == 1 || dtHangHoa.TrangThaiHang(IDHangHoa) == 3 || dtHangHoa.TrangThaiHang(IDHangHoa) == 6) && dtHangHoa.TrangThaiNhomDatHang(IDHangHoa) != 2)
-                                {
-                                    data.ThemChiTietDonHang_Temp(IDDonHangChiNhanh, MaHang, IDHangHoa, DonViTinh, TrongLuong, SoLuong, DonGia, DonGia * SoLuong);
-                                    TinhTongTien();
-                                    CLear();
-                                }
-                            }
-                            else
-                            {
-                                data = new dtDonHangChiNhanh();
-                                data.CapNhatChiTietDonHang_temp(IDDonHangChiNhanh, IDHangHoa, SoLuong, DonGia, DonGia * SoLuong);
-                                TinhTongTien();
-                                CLear();
-                            }
+                            //float DonGia = dtHangHoa.LayGiaBanSauThue(IDHangHoa);
+                            //DataTable db = dtDonHangChiNhanh.KTChiTietDonHang_Temp(IDHangHoa, IDDonHangChiNhanh);// kiểm tra hàng hóa
+                            //if (db.Rows.Count == 0)
+                            //{
+                            //    data = new dtDonHangChiNhanh();
+                            //    if ((dtHangHoa.TrangThaiHang(IDHangHoa) == 1 || dtHangHoa.TrangThaiHang(IDHangHoa) == 3 || dtHangHoa.TrangThaiHang(IDHangHoa) == 6) && dtHangHoa.TrangThaiNhomDatHang(IDHangHoa) != 2)
+                            //    {
+                            //        data.ThemChiTietDonHang_Temp(IDDonHangChiNhanh, MaHang, IDHangHoa, DonViTinh, TrongLuong, SoLuong, DonGia, DonGia * SoLuong);
+                            //        TinhTongTien();
+                            //        CLear();
+                            //    }
+                            //}
+                            //else
+                            //{
+                            //    data = new dtDonHangChiNhanh();
+                            //    data.CapNhatChiTietDonHang_temp(IDDonHangChiNhanh, IDHangHoa, SoLuong, DonGia, DonGia * SoLuong);
+                            //    TinhTongTien();
+                            //    CLear();
+                            //}
                             LoadGrid(IDDonHangChiNhanh);
                         }
                         else

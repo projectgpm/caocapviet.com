@@ -160,12 +160,12 @@ namespace BanHang.Data
                 }
             }
         }
-        public static float LayGiaBanSauThue(string IDHangHoa)
+        public static float LayGiaBanSauThue(string IDHangHoa, string IDKho)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "SELECT GiaBanSauThue FROM [GPM_HangHoa] WHERE [ID] = " + IDHangHoa;
+                string cmdText = "SELECT GiaBan FROM [GPM_HangHoaTonKho] WHERE [IDHangHoa] = '" + IDHangHoa + "' AND [IDKho]  = '" + IDKho + "'";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
@@ -174,7 +174,7 @@ namespace BanHang.Data
                     if (tb.Rows.Count != 0)
                     {
                         DataRow dr = tb.Rows[0];
-                        return float.Parse(dr["GiaBanSauThue"].ToString().Trim());
+                        return float.Parse(dr["GiaBan"].ToString().Trim());
                     }
                     return 0;
                 }

@@ -50,15 +50,15 @@ namespace BanHang
             int SoLuong = Int32.Parse(e.NewValues["SoLuong"].ToString());
             if (SoLuong >= 0)
             {
-                string MaHang = e.NewValues["MaHang"].ToString();
-                string IDHangHoa = dtHangHoa.LayIDHangHoa_MaHang(MaHang.Trim());
-                float DonGia = dtHangHoa.LayGiaBanSauThue(IDHangHoa);
-                data = new dtChiTietDonHangChiNhanh();
-                data.CapNhatChiTietDonHang(IDDonHangChiNhanh, IDHangHoa, SoLuong, DonGia, DonGia * SoLuong);
-                data.CapNhat_TongTien_TongTrongLuong(IDDonHangChiNhanh, TinhTongTien().ToString(), TinhTrongLuong().ToString());
-                e.Cancel = true;
-                gridChiTiet.CancelEdit();
-                LoadGrid(IDDonHangChiNhanh);
+                //string MaHang = e.NewValues["MaHang"].ToString();
+                //string IDHangHoa = dtHangHoa.LayIDHangHoa_MaHang(MaHang.Trim());
+                //float DonGia = dtHangHoa.LayGiaBanSauThue(IDHangHoa);
+                //data = new dtChiTietDonHangChiNhanh();
+                //data.CapNhatChiTietDonHang(IDDonHangChiNhanh, IDHangHoa, SoLuong, DonGia, DonGia * SoLuong);
+                //data.CapNhat_TongTien_TongTrongLuong(IDDonHangChiNhanh, TinhTongTien().ToString(), TinhTrongLuong().ToString());
+                //e.Cancel = true;
+                //gridChiTiet.CancelEdit();
+                //LoadGrid(IDDonHangChiNhanh);
 
                 dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Chi tiết đơn hàng chi nhánh", Session["IDKho"].ToString(), "Nhập xuất tồn", "Cập nhật");
             }

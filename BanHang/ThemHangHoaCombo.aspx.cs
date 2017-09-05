@@ -136,24 +136,16 @@ namespace BanHang
                 double GiaBanTruocThue = 0, GiaBanSauThue = 0, GiaMuaTruocThue = 0, GiaMuaSauThue=0;
                 foreach (DataRow dr in db.Rows)
                 {
-                    double ThanhTien = double.Parse(dr["GiaMuaTruocThue"].ToString());
-                    GiaMuaTruocThue = GiaMuaTruocThue + ThanhTien;
+                    double ThanhTien1 = double.Parse(dr["GiaMuaTruocThue"].ToString());
+                    GiaMuaTruocThue = GiaMuaTruocThue + ThanhTien1;
+                    double ThanhTien2 = double.Parse(dr["GiaMuaSauThue"].ToString());
+                    GiaMuaSauThue = GiaMuaSauThue + ThanhTien2;
+                    double ThanhTien3 = double.Parse(dr["GiaBanTruocThue"].ToString());
+                    GiaBanTruocThue = GiaBanTruocThue + ThanhTien3;
+                     double ThanhTien4 = double.Parse(dr["ThanhTien"].ToString());
+                    GiaBanSauThue = GiaBanSauThue + ThanhTien4;
                 }
-                foreach (DataRow dr in db.Rows)
-                {
-                    double ThanhTien = double.Parse(dr["GiaMuaSauThue"].ToString());
-                    GiaMuaSauThue = GiaMuaSauThue + ThanhTien;
-                }
-                foreach (DataRow dr in db.Rows)
-                {
-                    double ThanhTien = double.Parse(dr["GiaBanTruocThue"].ToString());
-                    GiaBanTruocThue = GiaBanTruocThue + ThanhTien;
-                }
-                foreach (DataRow dr in db.Rows)
-                {
-                    double ThanhTien = double.Parse(dr["GiaBanSauThue"].ToString());
-                    GiaBanSauThue = GiaBanSauThue + ThanhTien;
-                }
+              
                 txtGiaMuaTruocThue.Text = GiaMuaTruocThue.ToString();
                 txtGiaMuaSauThue.Text = GiaMuaSauThue.ToString();
                 txtGiaBanTruocThue.Text = GiaBanTruocThue.ToString();
@@ -199,7 +191,7 @@ namespace BanHang
                 {
 
                     int IDHangHoaComBo = Int32.Parse(IDHangHoaComBo_Temp.Value.ToString());
-                    float GiaBanSauThue = dtHangHoa.LayGiaBanSauThue(cmbHangHoa.Value.ToString());
+                    float GiaBanSauThue = float.Parse(txtGiaBanST.Text.ToString());
                     float GiaBanTruocThue = dtHangHoa.LayGiaBanTruocThue(cmbHangHoa.Value.ToString());
                     float GiaMuaSauThue = dtHangHoa.LayGiaMuaSauThue(cmbHangHoa.Value.ToString());
                     float GiaMuaTruocThue = dtHangHoa.LayGiaMuaTruocThue(cmbHangHoa.Value.ToString());
@@ -209,18 +201,20 @@ namespace BanHang
                     string GhiChu = txtGhiChuHangHoa.Text == null ? "" : txtGhiChuHangHoa.Text.ToString();
                     data = new dtHangCombo();
                     DataTable db = data.KTHangHoa_Temp(cmbHangHoa.Value.ToString());// kiểm tra hàng hóa
-                    float tong = SL * TrongLuong;
+                    float TongTrongLuong = SL * TrongLuong;
+                    float TongGiaMuaSauThue = SL * GiaMuaSauThue;
+                    //float
                     if (db.Rows.Count == 0)
                     {
                         data = new dtHangCombo();
-                        data.ThemHangHoa_Temp(IDHangHoaComBo, cmbHangHoa.Value.ToString(), SL,GiaBanTruocThue, SL * GiaBanSauThue, MaHang, IDDonViTinh, tong.ToString(), GiaBanSauThue, GiaMuaTruocThue, GiaMuaSauThue, GhiChu);
+                        data.ThemHangHoa_Temp(IDHangHoaComBo, cmbHangHoa.Value.ToString(), SL, SL * GiaBanTruocThue, SL * GiaBanSauThue, MaHang, IDDonViTinh, TongTrongLuong.ToString(), GiaBanSauThue, SL * GiaMuaTruocThue, SL * GiaMuaSauThue, GhiChu);
                         TinhTongTien();
                         Clear();
                     }
                     else
                     {
                         data = new dtHangCombo();
-                        data.UpdateHangHoa_temp(IDHangHoaComBo, cmbHangHoa.Value.ToString(), SL, GiaBanTruocThue, SL * GiaBanSauThue, MaHang, IDDonViTinh, tong.ToString(), GhiChu);
+                        data.UpdateHangHoa_temp(IDHangHoaComBo, cmbHangHoa.Value.ToString(), SL, SL * GiaBanTruocThue, SL * GiaBanSauThue, MaHang, IDDonViTinh, TongTrongLuong.ToString(), GhiChu);
                         TinhTongTien();
                         Clear();
                     }
@@ -252,7 +246,7 @@ namespace BanHang
             {
                 txtTL.Text = dtHangHoa.LayTrongLuong(cmbHangHoa.Value.ToString()) + "";
                 txtTonKho.Text = dtCapNhatTonKho.SoLuong_TonKho(cmbHangHoa.Value.ToString(), Session["IDKho"].ToString()) + "";
-                txtGiaBanST.Text = dtHangHoa.LayGiaBanSauThue(cmbHangHoa.Value.ToString()).ToString();
+                txtGiaBanST.Text = dtHangHoa.LayGiaBanSauThue(cmbHangHoa.Value.ToString(),Session["IDKho"].ToString()).ToString();
             }
             else
             {
@@ -272,20 +266,21 @@ namespace BanHang
         protected void cmbHangHoa_ItemsRequestedByFilterCondition(object source, DevExpress.Web.ListEditItemsRequestedByFilterConditionEventArgs e)
         {
             ASPxComboBox comboBox = (ASPxComboBox)source;
-
-            dsHangHoa.SelectCommand = @"SELECT [ID], [MaHang], [TenHangHoa], [GiaBanSauThue] , [TenDonViTinh]
+            //IDTrangThaiHang = 1  Hàng Hóa Thường
+            //IDTrangThaiHang = 3 Hàng Ngừng Nhập
+            dsHangHoa.SelectCommand = @"SELECT [ID], [MaHang], [TenHangHoa], [GiaBan] , [TenDonViTinh]
                                         FROM (
-	                                        select GPM_HangHoa.ID, GPM_HangHoa.MaHang, GPM_HangHoa.TenHangHoa,GPM_HangHoa.GiaBanSauThue, GPM_DonViTinh.TenDonViTinh, 
+	                                        select GPM_HangHoa.ID, GPM_HangHoa.MaHang, GPM_HangHoa.TenHangHoa, GPM_HangHoaTonKho.GiaBan, GPM_DonViTinh.TenDonViTinh, 
 	                                        row_number()over(order by GPM_HangHoa.MaHang) as [rn] 
 	                                        FROM GPM_DonViTinh INNER JOIN GPM_HangHoa ON GPM_DonViTinh.ID = GPM_HangHoa.IDDonViTinh 
-                                                              
-	                                        WHERE ((GPM_HangHoa.TenHangHoa LIKE @TenHang) OR (GPM_HangHoa.MaHang LIKE @MaHang)) AND (GPM_HangHoa.DaXoa = 0) AND  (GPM_HangHoa.IDTrangThaiHang = 1 OR GPM_HangHoa.IDTrangThaiHang = 3)
+                                                               INNER JOIN GPM_HangHoaTonKho ON GPM_HangHoaTonKho.IDHangHoa = GPM_HangHoa.ID
+	                                        WHERE (GPM_HangHoa.MaHang LIKE @MaHang) AND (GPM_HangHoa.IDTrangThaiHang = 1 OR GPM_HangHoa.IDTrangThaiHang = 3 ) AND (GPM_HangHoaTonKho.IDKho = @IDKho) AND (GPM_HangHoaTonKho.DaXoa = 0)	
 	                                        ) as st 
                                         where st.[rn] between @startIndex and @endIndex";
 
             dsHangHoa.SelectParameters.Clear();
-            dsHangHoa.SelectParameters.Add("TenHang", TypeCode.String, string.Format("%{0}%", e.Filter));
             dsHangHoa.SelectParameters.Add("MaHang", TypeCode.String, string.Format("%{0}%", e.Filter));
+            dsHangHoa.SelectParameters.Add("TenHang", TypeCode.String, string.Format("%{0}%", e.Filter));
             dsHangHoa.SelectParameters.Add("IDKho", TypeCode.Int32, Session["IDKho"].ToString());
             dsHangHoa.SelectParameters.Add("startIndex", TypeCode.Int64, (e.BeginIndex + 1).ToString());
             dsHangHoa.SelectParameters.Add("endIndex", TypeCode.Int64, (e.EndIndex + 1).ToString());
@@ -299,12 +294,14 @@ namespace BanHang
             if (e.Value == null || !Int64.TryParse(e.Value.ToString(), out value))
                 return;
             ASPxComboBox comboBox = (ASPxComboBox)source;
-            dsHangHoa.SelectCommand = @"SELECT GPM_HangHoa.ID, GPM_HangHoa.MaHang, GPM_HangHoa.TenHangHoa, GPM_HangHoa.GiaBanSauThue, GPM_DonViTinh.TenDonViTinh 
-                                        FROM GPM_DonViTinh INNER JOIN GPM_HangHoa ON GPM_DonViTinh.ID = GPM_HangHoa.IDDonViTinh
-                                        WHERE (GPM_HangHoa.ID = @ID) AND  (GPM_HangHoa.IDTrangThaiHang = 1 OR GPM_HangHoa.IDTrangThaiHang = 3)";
+            dsHangHoa.SelectCommand = @"SELECT GPM_HangHoa.ID, GPM_HangHoa.MaHang, GPM_HangHoa.TenHangHoa, GPM_HangHoaTonKho.GiaBan, GPM_DonViTinh.TenDonViTinh 
+                                        FROM GPM_DonViTinh INNER JOIN GPM_HangHoa ON GPM_DonViTinh.ID = GPM_HangHoa.IDDonViTinh 
+                                                           INNER JOIN GPM_HangHoaTonKho ON GPM_HangHoaTonKho.IDHangHoa = GPM_HangHoa.ID 
+                                        WHERE (GPM_HangHoa.ID = @ID) AND (GPM_HangHoa.IDTrangThaiHang = 1 OR GPM_HangHoa.IDTrangThaiHang = 3 ) AND GPM_HangHoaTonKho.IDKho = @IDKho";
 
             dsHangHoa.SelectParameters.Clear();
             dsHangHoa.SelectParameters.Add("ID", TypeCode.Int64, e.Value.ToString());
+            dsHangHoa.SelectParameters.Add("IDKho", TypeCode.Int32, Session["IDKho"].ToString());
             comboBox.DataSource = dsHangHoa;
             comboBox.DataBind();
         }

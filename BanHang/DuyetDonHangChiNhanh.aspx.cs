@@ -67,13 +67,13 @@ namespace BanHang
                 int SoLuong = Int32.Parse(e.NewValues["SoLuong"].ToString());
                 if (SoLuong >= 0)
                 {
-                    string MaHang = e.NewValues["MaHang"].ToString();
-                    string IDHangHoa = dtHangHoa.LayIDHangHoa_MaHang(MaHang.Trim());
-                    float DonGia = dtHangHoa.LayGiaBanSauThue(IDHangHoa);
-                    data = new dtDuyetDonHangChiNhanh();
-                    data.CapNhatChiTietDonHang(ID, IDHangHoa, SoLuong, DonGia, DonGia * SoLuong);
-                    txtTongTien.Text = TinhTongTien().ToString();
-                    txtTongTrongLuong.Text = TinhTrongLuong().ToString();
+                    //string MaHang = e.NewValues["MaHang"].ToString();
+                    //string IDHangHoa = dtHangHoa.LayIDHangHoa_MaHang(MaHang.Trim());
+                    //float DonGia = dtHangHoa.LayGiaBanSauThue(IDHangHoa);
+                    //data = new dtDuyetDonHangChiNhanh();
+                    //data.CapNhatChiTietDonHang(ID, IDHangHoa, SoLuong, DonGia, DonGia * SoLuong);
+                    //txtTongTien.Text = TinhTongTien().ToString();
+                    //txtTongTrongLuong.Text = TinhTrongLuong().ToString();
                 }
                 else
                 {
@@ -303,13 +303,13 @@ namespace BanHang
             int SoLuong = Int32.Parse(txtSoLuongSua.Text);
             if (SoLuong >= 0)
             {
-                string MaHang = txtMaHangSua.Text;
-                string IDHangHoa = dtHangHoa.LayIDHangHoa_MaHang(MaHang.Trim());
-                float DonGia = dtHangHoa.LayGiaBanSauThue(IDHangHoa);
-                data = new dtDuyetDonHangChiNhanh();
-                data.CapNhatChiTietDonHang(ID, IDHangHoa, SoLuong, DonGia, DonGia * SoLuong);
-                txtTongTien.Text = TinhTongTien().ToString();
-                txtTongTrongLuong.Text = TinhTrongLuong().ToString();
+                //string MaHang = txtMaHangSua.Text;
+                //string IDHangHoa = dtHangHoa.LayIDHangHoa_MaHang(MaHang.Trim());
+                //float DonGia = dtHangHoa.LayGiaBanSauThue(IDHangHoa);
+                //data = new dtDuyetDonHangChiNhanh();
+                //data.CapNhatChiTietDonHang(ID, IDHangHoa, SoLuong, DonGia, DonGia * SoLuong);
+                //txtTongTien.Text = TinhTongTien().ToString();
+                //txtTongTrongLuong.Text = TinhTrongLuong().ToString();
             }
             else
             {

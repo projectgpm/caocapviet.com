@@ -154,7 +154,7 @@
                                 <Columns>
                                     <dx:ListBoxColumn Caption="Mã Hàng" FieldName="MaHang" Width="70px" />
                                     <dx:ListBoxColumn Caption="Tên Hàng Hóa" FieldName="TenHangHoa" Width="100%" />
-                                    <dx:ListBoxColumn Caption="Giá Bán" FieldName="GiaBanSauThue" Width="100px" />   
+                                    <dx:ListBoxColumn Caption="Giá Bán Sau Thuế" FieldName="GiaBan" Width="120px" />   
                                     <dx:ListBoxColumn Caption="ĐVT" FieldName="TenDonViTinh" Width="100px" />          
                                 </Columns>
 

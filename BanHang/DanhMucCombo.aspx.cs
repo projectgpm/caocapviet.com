@@ -70,7 +70,7 @@ namespace BanHang
             string TenHangHoa = e.NewValues["TenHangHoa"].ToString();
             string IDDonViTinh = e.NewValues["IDDonViTinh"].ToString();
             string IDNhomHang = e.NewValues["IDNhomHang"].ToString();
-            string GiaBanSauThue = e.NewValues["GiaBanSauThue"].ToString();
+            string GiaBanSauThue = e.NewValues["GiaBan"].ToString();
             string TrongLuong = e.NewValues["TrongLuong"].ToString();
             string IDTrangThaiHang = e.NewValues["IDTrangThaiHang"].ToString();
             string HanSuDung = e.NewValues["HanSuDung"].ToString();
@@ -82,14 +82,14 @@ namespace BanHang
                 if (dtHangCombo.KiemTraMa_ID(MaHang, ID.ToString()) == true)
                 {
                     data = new dtHangCombo();
-                    data.CapNhat(ID, MaHang, TenHangHoa, IDDonViTinh, IDNhomHang, TrongLuong, IDTrangThaiHang, HanSuDung, GhiChu, Session["IDKho"].ToString());
+                    data.CapNhat(ID, MaHang, TenHangHoa, IDDonViTinh, IDNhomHang, TrongLuong, IDTrangThaiHang, HanSuDung, GhiChu, Session["IDKho"].ToString(), GiaBanSauThue);
                 }
                 else
                 {
                     if ((dtHangHoa.KiemTraMaHang(MaHang)) == false)
                     {
                         data = new dtHangCombo();
-                        data.CapNhat(ID, MaHang, TenHangHoa, IDDonViTinh, IDNhomHang, GiaBanSauThue, TrongLuong, IDTrangThaiHang, HanSuDung, GhiChu, Session["IDKho"].ToString());
+                        data.CapNhat(ID, MaHang, TenHangHoa, IDDonViTinh, IDNhomHang, TrongLuong, IDTrangThaiHang, HanSuDung, GhiChu, Session["IDKho"].ToString(), GiaBanSauThue);
 
                     }
                     else
