@@ -92,12 +92,12 @@ namespace BanHang.Data
                 }
             }
         }
-        public DataTable LayDanhSachDonHang()
+        public DataTable LayDanhSachDonHang(string IDKho)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "SELECT * FROM [GPM_ThuMua_DonHang] WHERE [SoDonHang] is not null ORDER BY [ID] DESC";
+                string cmdText = "SELECT * FROM [GPM_ThuMua_DonHang] WHERE [SoDonHang] is not null AND [IDKhoLap] = '" + IDKho + "' ORDER BY [ID] DESC ";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {

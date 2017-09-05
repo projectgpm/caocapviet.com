@@ -19,14 +19,14 @@ namespace BanHang
             }
             else
             {
-                LoadGrid();
+                LoadGrid(Session["IDKho"].ToString());
             }
         }
 
-        private void LoadGrid()
+        private void LoadGrid(string IDKho)
         {
             data = new dtThuMuaDatHang();
-            gridDonDatHang.DataSource = data.LayDanhSachDonHang();
+            gridDonDatHang.DataSource = data.LayDanhSachDonHang(IDKho);
             gridDonDatHang.DataBind();
         }
     }
