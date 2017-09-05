@@ -1,4 +1,5 @@
 ﻿using BanHang.Data;
+using BanHang.Object;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -33,6 +34,9 @@ namespace BanHang
                 {
                     dataHangHoa data = new dataHangHoa();
                     IDHangHoa.Value = data.insertHangHoa_Temp() + "";
+
+                    cmbTrangThaiHang.SelectedIndex = 0;
+                    cmbNhomDatHang.SelectedIndex = 0;
                 }
             }
             Load();
@@ -45,11 +49,11 @@ namespace BanHang
             gridHangHoaBarcode.DataSource = data.GetListBarCode(IDHangHoa.Value);
             gridHangHoaBarcode.DataBind();
 
-            //gridHangHoaGiaTheoSL.DataSource = GiaHangHoaTheoSoLuong;
-            //gridHangHoaGiaTheoSL.DataBind();
+            gridHangHoaGiaTheoSL.DataSource = data.GetListHangHoa_GiaTheoSL(IDHangHoa.Value); ;
+            gridHangHoaGiaTheoSL.DataBind();
 
-            //gridHangHoaQuyDoi.DataSource = HangHoaQuyDoi;
-            //gridHangHoaQuyDoi.DataBind();
+            gridHangHoaQuyDoi.DataSource = data.GetListHangHoaQuyDoi(IDHangHoa.Value);
+            gridHangHoaQuyDoi.DataBind();
 
         }
         protected void cmbDonViTinh_SelectedIndexChanged(object sender, EventArgs e)
@@ -179,32 +183,150 @@ namespace BanHang
 
         protected void gridHangHoaQuyDoi_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
         {
-
+            string ID = e.Keys[0].ToString();
+            dataHangHoa data = new dataHangHoa();
+            data.deleteHangHoaQuyDoi(ID);
+            e.Cancel = true;
+            gridHangHoaQuyDoi.CancelEdit();
+            Load();
         }
 
         protected void gridHangHoaQuyDoi_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
         {
+            if (e.NewValues["MaHang"] != null)
+            {
+                string MaHang = e.NewValues["MaHang"].ToString();
+                dataHangHoa data = new dataHangHoa();
+                DataTable daMaHang = data.getHangHoa_MaHang(MaHang);
+                if (daMaHang.Rows.Count != 0)
+                {
+                    data.insertHangHoa_QuyDoi(IDHangHoa.Value + "", daMaHang.Rows[0]["ID"].ToString());
+                    e.Cancel = true;
+                    gridHangHoaQuyDoi.CancelEdit();
+                }
+                else throw new Exception("Mã hàng không tồn tại.");
+            }
+            else throw new Exception("Không được bỏ trống dữ liệu.");
 
+            Load();
         }
 
         protected void gridHangHoaQuyDoi_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
         {
+            if (e.NewValues["MaHang"] != null)
+            {
+                string MaHang = e.NewValues["MaHang"].ToString();
+                string ID = e.Keys[0].ToString();
+                dataHangHoa data = new dataHangHoa();
+                DataTable daMaHang = data.getHangHoa_MaHang(MaHang);
+                if (daMaHang.Rows.Count != 0)
+                {
+                    data.updateHangHoa_QuyDoi(ID, daMaHang.Rows[0]["ID"].ToString());
+                    e.Cancel = true;
+                    gridHangHoaQuyDoi.CancelEdit();
+                }
+                else throw new Exception("Mã hàng không tồn tại.");
+            }
+            else throw new Exception("Không được bỏ trống dữ liệu.");
 
+            Load();
         }
 
         protected void gridHangHoaGiaTheoSL_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
         {
+            if (e.NewValues["SoLuongBD"] != null && e.NewValues["SoLuongKT"] != null && e.NewValues["GiaBan"] != null)
+            {
+                string SoLuongBD = e.NewValues["SoLuongBD"].ToString();
+                string SoLuongKT = e.NewValues["SoLuongKT"].ToString();
+                string GiaBan = e.NewValues["GiaBan"].ToString();
+                string ID = e.Keys[0].ToString();
 
+                dataHangHoa data = new dataHangHoa();
+                data.updateHangHoa_GiaTheoSL(ID, SoLuongBD, SoLuongKT, GiaBan);
+
+                e.Cancel = true;
+                gridHangHoaGiaTheoSL.CancelEdit();
+            }
+            else throw new Exception("Không được bỏ trống dữ liệu.");
+
+            Load();
         }
 
         protected void gridHangHoaGiaTheoSL_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
         {
+            if (e.NewValues["SoLuongBD"] != null && e.NewValues["SoLuongKT"] != null && e.NewValues["GiaBan"] != null)
+            {
+                string SoLuongBD = e.NewValues["SoLuongBD"].ToString();
+                string SoLuongKT = e.NewValues["SoLuongKT"].ToString();
+                string GiaBan = e.NewValues["GiaBan"].ToString();
 
+                dataHangHoa data = new dataHangHoa();
+                data.insertHangHoa_GiaTheoSL(IDHangHoa.Value + "", SoLuongBD, SoLuongKT, GiaBan);
+
+                e.Cancel = true;
+                gridHangHoaGiaTheoSL.CancelEdit();
+            }
+            else throw new Exception("Không được bỏ trống dữ liệu.");
+
+            Load();
         }
 
         protected void gridHangHoaGiaTheoSL_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
         {
+            string ID = e.Keys[0].ToString();
+            dataHangHoa data = new dataHangHoa();
+            data.deleteHangHoa_TheoSL(ID);
+            e.Cancel = true;
+            gridHangHoaGiaTheoSL.CancelEdit();
+            Load();
+        }
 
+        protected void btnHuy_Click(object sender, EventArgs e)
+        {
+            dataHangHoa data = new dataHangHoa();
+            data.XoaHangHoa_Delete(IDHangHoa.Value + "");
+            data.XoaHangHoaQuyDoi_Delete(IDHangHoa.Value + "");
+            data.XoaHangHoaBarCode_Delete(IDHangHoa.Value + "");
+            data.XoaHangHoaGiaTheoSL_Delete(IDHangHoa.Value + "");
+
+            Response.Redirect("HangHoa.aspx");
+        }
+
+        protected void btnLuuHangHoa_Click(object sender, EventArgs e)
+        {
+            O_HangHoa hh = new O_HangHoa();
+
+            if (cmbNhomHang.Value != null && txtMaHang.Value != null && txtTenHang.Value != null && cmbDonViTinh.Value != null && txtHeSo.Value != null && cmbHangSX.Value != null && cmbThue.Value != null)
+            {
+                hh.IDNhomHang = cmbNhomHang.Value + "";
+                hh.MaHang = txtMaHang.Value + "";
+                hh.TenHangHoa = txtTenHang.Value + "";
+                hh.IDDonViTinh = cmbDonViTinh.Value + "";
+                hh.HeSo = txtHeSo.Value + "";
+                hh.IDHangSanXuat = cmbHangSX.Value + "";
+                hh.IDThue = cmbThue.Value + "";
+                hh.IDNhomDatHang = cmbNhomDatHang.Value + "";
+                hh.TrongLuong = txtTrongLuong.Value + "";
+                hh.HanSuDung = txtHangSuDung.Value + "";
+                hh.IDTrangThaiHang = cmbTrangThaiHang.Value + "";
+                hh.GhiChu = txtGhiChu.Value + "";
+
+                hh.GiaMuaTruocThue = txtGiaMuaTruocThue.Value + "";
+                hh.GiaBanTruocThue = txtGiaBanTruocThue.Value + "";
+                hh.GiaMuaSauThue = txtGiaMuaSauThue.Value + "";
+                hh.GiaBanSauThue = txtGiaBanSauThue.Value + "";
+                hh.GiaBan1 = txtGiaBan1.Value + "";
+                hh.GiaBan2 = txtGiaBan2.Value + "";
+                hh.GiaBan3 = txtGiaBan3.Value + "";
+                hh.GiaBan4 = txtGiaBan4.Value + "";
+                hh.GiaBan5 = txtGiaBan5.Value + "";
+
+                dataHangHoa data = new dataHangHoa();
+                data.updateHangHoa(IDHangHoa.Value + "", hh);
+
+                Response.Redirect("HangHoa.aspx");
+            }
+            else Response.Write("<script language='JavaScript'> alert('Các trường (*) không được bỏ trống.'); </script>");
         }
     }
 
