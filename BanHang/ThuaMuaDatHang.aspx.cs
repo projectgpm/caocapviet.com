@@ -34,6 +34,7 @@ namespace BanHang
                     txtChietKhau.Text = "0";
                     txtTongTien.Text = "0";
                     txtTongTienSauCk.Text = "0";
+                   
                     txtTongTrongLuong.Text = "0";
                     txtSoDonHang.Text = (Int32.Parse(Session["IDKho"].ToString())).ToString().Replace(".", "") + "-" + (DateTime.Now.ToString("ddMMyyyy-hhmmss"));
                 }
@@ -396,8 +397,9 @@ namespace BanHang
                 int GiaTri = Int32.Parse(txtChietKhau.Text.ToString());
                 if (GiaTri >= 0)
                 {
-                    Double TongTien = Double.Parse(txtTongTien.Text.ToString());
-                    txtTongTienSauCk.Text = (TongTien - (TongTien * (GiaTri / 100))).ToString();
+                    double TongTien = double.Parse(txtTongTien.Text.ToString());
+                    double TienSauCK = (TongTien - (TongTien * (GiaTri / 100)));
+                    txtTongTienSauCk.Text = TienSauCK.ToString();
                 }
                 else
                 {
