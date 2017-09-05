@@ -292,14 +292,14 @@ namespace BanHang.Data
             }
         }
 
-       
 
-        public DataTable KTHangHoa_Temp(string IDHangHoa)
+
+        public DataTable KTHangHoa_Temp(string IDHangHoa, int IDHangHoaComBo)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "SELECT * FROM [GPM_HangHoa_Combo_Temp] WHERE [IDHangHoa]= '" + IDHangHoa + "'";
+                string cmdText = "SELECT * FROM [GPM_HangHoa_Combo_Temp] WHERE [IDHangHoa]= '" + IDHangHoa + "' AND [IDHangHoaComBo] = '" + IDHangHoaComBo + "'";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
@@ -309,17 +309,20 @@ namespace BanHang.Data
                 }
             }
         }
-        public void UpdateHangHoa_temp(int IDHangHoaCombo, string IDHangHoa, int SoLuong, float GiaBanTruocThue, float ThanhTien, string MaHang, string IDDonViTinh, string TrongLuong, string GhiChu)
+        public void UpdateHangHoa_temp(int IDHangHoaCombo, string IDHangHoa, int SoLuong, float GiaBanTruocThue, float ThanhTien, string MaHang, string IDDonViTinh, string TrongLuong, float GiaBanSauThue, float GiaMuaTruocThue, float GiaMuaSauThue, string GhiChu)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
                 try
                 {
                     myConnection.Open();
-                    string cmdText = "UPDATE [GPM_HangHoa_Combo_Temp] SET [GhiChu] = @GhiChu,[TrongLuong] =@TrongLuong,[IDDonViTinh] = @IDDonViTinh,[MaHang] = @MaHang,[IDHangHoaCombo] = @IDHangHoaCombo,[SoLuong] = @SoLuong,[GiaBanTruocThue] = @GiaBanTruocThue ,[ThanhTien] = @ThanhTien  WHERE [IDHangHoa] = @IDHangHoa";
+                    string cmdText = "UPDATE [GPM_HangHoa_Combo_Temp] SET [SoLuong] = @SoLuong,[GiaBanTruocThue] = @GiaBanTruocThue,[ThanhTien] = @ThanhTien,[MaHang] = @MaHang,[IDDonViTinh] = @IDDonViTinh,[TrongLuong] = @TrongLuong,[GiaBanSauThue]= @GiaBanSauThue,[GiaMuaTruocThue] = @GiaMuaTruocThue,[GhiChu] = @GhiChu WHERE [IDHangHoa] = @IDHangHoa AND [IDHangHoaCombo] = @IDHangHoaCombo";
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
                         myCommand.Parameters.AddWithValue("@GhiChu", GhiChu);
+                        myCommand.Parameters.AddWithValue("@GiaMuaTruocThue", GiaMuaTruocThue);
+                        myCommand.Parameters.AddWithValue("@GiaMuaSauThue", GiaMuaSauThue);
+                        myCommand.Parameters.AddWithValue("@GiaBanSauThue", GiaBanSauThue);
                         myCommand.Parameters.AddWithValue("@TrongLuong", TrongLuong);
                         myCommand.Parameters.AddWithValue("@MaHang", MaHang);
                         myCommand.Parameters.AddWithValue("@IDDonViTinh", IDDonViTinh);

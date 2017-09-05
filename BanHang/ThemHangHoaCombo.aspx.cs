@@ -200,21 +200,23 @@ namespace BanHang
                     float TrongLuong = dtHangHoa.LayTrongLuong(cmbHangHoa.Value.ToString());
                     string GhiChu = txtGhiChuHangHoa.Text == null ? "" : txtGhiChuHangHoa.Text.ToString();
                     data = new dtHangCombo();
-                    DataTable db = data.KTHangHoa_Temp(cmbHangHoa.Value.ToString());// kiểm tra hàng hóa
+                    DataTable db = data.KTHangHoa_Temp(cmbHangHoa.Value.ToString(), IDHangHoaComBo);// kiểm tra hàng hóa
                     float TongTrongLuong = SL * TrongLuong;
                     float TongGiaMuaSauThue = SL * GiaMuaSauThue;
-                    //float
+                    float TongGiaMuaTruocThue = SL * GiaMuaTruocThue;
+                    float TongGiaBanTruocThue = SL * GiaBanTruocThue;
+                    float TongGiaBanSauThue = SL * GiaBanSauThue;
                     if (db.Rows.Count == 0)
                     {
                         data = new dtHangCombo();
-                        data.ThemHangHoa_Temp(IDHangHoaComBo, cmbHangHoa.Value.ToString(), SL, SL * GiaBanTruocThue, SL * GiaBanSauThue, MaHang, IDDonViTinh, TongTrongLuong.ToString(), GiaBanSauThue, SL * GiaMuaTruocThue, SL * GiaMuaSauThue, GhiChu);
+                        data.ThemHangHoa_Temp(IDHangHoaComBo, cmbHangHoa.Value.ToString(), SL, TongGiaBanTruocThue, TongGiaBanSauThue, MaHang, IDDonViTinh, TongTrongLuong.ToString(), GiaBanSauThue, TongGiaMuaTruocThue, TongGiaMuaSauThue, GhiChu);
                         TinhTongTien();
                         Clear();
                     }
                     else
                     {
                         data = new dtHangCombo();
-                        data.UpdateHangHoa_temp(IDHangHoaComBo, cmbHangHoa.Value.ToString(), SL, SL * GiaBanTruocThue, SL * GiaBanSauThue, MaHang, IDDonViTinh, TongTrongLuong.ToString(), GhiChu);
+                        data.UpdateHangHoa_temp(IDHangHoaComBo, cmbHangHoa.Value.ToString(), SL, TongGiaBanTruocThue, TongGiaBanSauThue, MaHang, IDDonViTinh, TongTrongLuong.ToString(), GiaBanSauThue, TongGiaMuaTruocThue, TongGiaMuaSauThue, GhiChu);
                         TinhTongTien();
                         Clear();
                     }
