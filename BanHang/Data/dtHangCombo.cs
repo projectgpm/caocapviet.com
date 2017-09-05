@@ -135,7 +135,7 @@ namespace BanHang.Data
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "SELECT [GPM_HANGHOA].*,[GPM_NHOMHANG].TenNhomHang,[GPM_HangHoaTonKho].SoLuongCon FROM [GPM_HangHoaTonKho],[GPM_HANGHOA],[GPM_NHOMHANG] WHERE [GPM_HangHoaTonKho].IDKho = '" + IDKho + "'  AND  [GPM_HangHoaTonKho].IDHangHoa = [GPM_HANGHOA].ID   AND [GPM_NHOMHANG].ID = [GPM_HANGHOA].IDNhomHang  AND  GPM_HANGHOA.[DAXOA] = 0 AND IDTrangThaiHang > 4 AND TenHangHoa is not null";
+                string cmdText = "SELECT [GPM_HANGHOA].*,[GPM_NHOMHANG].TenNhomHang,[GPM_HangHoaTonKho].SoLuongCon,[GPM_HangHoaTonKho].GiaBan as GiaBanSauThue FROM [GPM_HangHoaTonKho],[GPM_HANGHOA],[GPM_NHOMHANG] WHERE [GPM_HangHoaTonKho].IDKho = '" + IDKho + "'  AND  [GPM_HangHoaTonKho].IDHangHoa = [GPM_HANGHOA].ID   AND [GPM_NHOMHANG].ID = [GPM_HANGHOA].IDNhomHang  AND  GPM_HANGHOA.[DAXOA] = 0 AND IDTrangThaiHang > 4 AND TenHangHoa is not null";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
@@ -432,14 +432,14 @@ namespace BanHang.Data
                 }
             }
         }
-        public void CapNhat(int ID, string MaHang, string TenHangHoa, string IDDonViTinh, string IDNhomHang, string GiaBanSauThue, string TrongLuong, string IDTrangThaiHang, string HanSuDung, string GhiChu, string IDKho)
+        public void CapNhat(int ID, string MaHang, string TenHangHoa, string IDDonViTinh, string IDNhomHang, string TrongLuong, string IDTrangThaiHang, string HanSuDung, string GhiChu, string IDKho)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
                 try
                 {
                     myConnection.Open();
-                    string cmdText = "UPDATE [GPM_HangHoa] SET [GhiChu] = @GhiChu,[GiaBan5] = @GiaBanSauThue,[GiaBan4] = @GiaBanSauThue,[GiaBan3] = @GiaBanSauThue,[GiaBan2] = @GiaBanSauThue,[GiaBan1] = @GiaBanSauThue,[HanSuDung] = @HanSuDung,[IDTrangThaiHang] = @IDTrangThaiHang,[TrongLuong] = @TrongLuong,[GiaBanSauThue] = @GiaBanSauThue,[IDNhomHang] = @IDNhomHang,[IDDonViTinh] = @IDDonViTinh, [MaHang] = @MaHang,[TenHangHoa] = @TenHangHoa  WHERE [ID] = @ID";
+                    string cmdText = "UPDATE [GPM_HangHoa] SET [GhiChu] = @GhiChu,[HanSuDung] = @HanSuDung,[IDTrangThaiHang] = @IDTrangThaiHang,[TrongLuong] = @TrongLuong,[IDNhomHang] = @IDNhomHang,[IDDonViTinh] = @IDDonViTinh, [MaHang] = @MaHang,[TenHangHoa] = @TenHangHoa  WHERE [ID] = @ID";
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
                         myCommand.Parameters.AddWithValue("@TenHangHoa", TenHangHoa);
@@ -447,7 +447,6 @@ namespace BanHang.Data
                         myCommand.Parameters.AddWithValue("@MaHang", MaHang);
                         myCommand.Parameters.AddWithValue("@IDDonViTinh", IDDonViTinh);
                         myCommand.Parameters.AddWithValue("@IDNhomHang", IDNhomHang);
-                        myCommand.Parameters.AddWithValue("@GiaBanSauThue", GiaBanSauThue);
                         myCommand.Parameters.AddWithValue("@TrongLuong", TrongLuong);
                         myCommand.Parameters.AddWithValue("@IDTrangThaiHang", IDTrangThaiHang);
                         myCommand.Parameters.AddWithValue("@HanSuDung", HanSuDung);

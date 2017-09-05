@@ -82,7 +82,7 @@ namespace BanHang
                 if (dtHangCombo.KiemTraMa_ID(MaHang, ID.ToString()) == true)
                 {
                     data = new dtHangCombo();
-                    data.CapNhat(ID, MaHang, TenHangHoa, IDDonViTinh, IDNhomHang, GiaBanSauThue, TrongLuong, IDTrangThaiHang, HanSuDung, GhiChu, Session["IDKho"].ToString());
+                    data.CapNhat(ID, MaHang, TenHangHoa, IDDonViTinh, IDNhomHang, TrongLuong, IDTrangThaiHang, HanSuDung, GhiChu, Session["IDKho"].ToString());
                 }
                 else
                 {
