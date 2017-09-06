@@ -217,7 +217,7 @@
                                         </Image>
                                     </DeleteButton>
                                 </SettingsCommandButton>
-                                <SettingsText CommandBatchEditCancel="Hủy tất cả" CommandBatchEditUpdate="Lưu tất cả" Title="DANH SÁCH HÀNG HÓA GIÁ THEO CHI NHÁNH" ConfirmDelete="Bạn chắc chắn muốn xóa?" />
+                                <SettingsText CommandBatchEditCancel="Hủy tất cả" CommandBatchEditUpdate="Lưu tất cả" Title="DANH SÁCH HÀNG HÓA GIÁ THEO CHI NHÁNH" ConfirmDelete="Bạn chắc chắn muốn xóa?" EmptyDataRow="Danh sách hàng hóa trống." />
                                 <Columns>                                    
                                     <dx:GridViewDataTextColumn Caption="Mã Hàng" FieldName="MaHang" ShowInCustomizationForm="True" VisibleIndex="0">
                                     </dx:GridViewDataTextColumn>
@@ -257,7 +257,7 @@
                                     </dx:GridViewDataTextColumn>
                                 </Columns>
                                  <TotalSummary>
-                                     <dx:ASPxSummaryItem DisplayFormat="Tổng = {0:N0}" FieldName="TrongLuong" ShowInColumn="Trọng Lượng" SummaryType="Sum" />
+                                     <dx:ASPxSummaryItem  DisplayFormat="Tổng = {0}" FieldName="TrongLuong" ShowInColumn="Trọng Lượng" SummaryType="Sum" />
                                      <dx:ASPxSummaryItem DisplayFormat="Tổng = {0:N0}" FieldName="SoLuong" ShowInColumn="Số Lượng Đặt" SummaryType="Sum" />
                                  </TotalSummary>
                                  <Styles>

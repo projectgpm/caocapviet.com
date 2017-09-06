@@ -31,6 +31,7 @@ namespace BanHang
                     cmbKhoLap.Value = Session["IDKho"].ToString();
                     txtNguoiLap.Text = Session["TenDangNhap"].ToString();
                     txtTongTrongLuong.Text = "0";
+                    cmbMucDoUuTien.SelectedIndex = 0;
                     txtSoDonHang.Text = (Int32.Parse(Session["IDKho"].ToString())).ToString().Replace(".", "") + "-" + (DateTime.Now.ToString("ddMMyyyy-hhmmss"));
                 }
                 LoadGrid(IDDonDatHang_Temp.Value.ToString());
@@ -42,10 +43,7 @@ namespace BanHang
             data = new dtDonHangChiNhanh();
             gridDanhSachHangHoa.DataSource = data.DanhSachDonDatHangClient_Temp(IDDonDatHang_Temp.Value.ToString());
             gridDanhSachHangHoa.DataBind();
-            
         }
-
-        
 
         protected void cmbHangHoa_ItemsRequestedByFilterCondition(object source, DevExpress.Web.ListEditItemsRequestedByFilterConditionEventArgs e)
         {
@@ -56,7 +54,7 @@ namespace BanHang
 	                                        select GPM_HangHoa.ID, GPM_HangHoa.MaHang, GPM_HangHoa.TenHangHoa,GPM_HangHoa.GiaMuaTruocThue, GPM_DonViTinh.TenDonViTinh, 
 	                                        row_number()over(order by GPM_HangHoa.MaHang) as [rn] 
 	                                        FROM GPM_DonViTinh INNER JOIN GPM_HangHoa ON GPM_DonViTinh.ID = GPM_HangHoa.IDDonViTinh           
-	                                        WHERE ((GPM_HangHoa.MaHang LIKE @MaHang)) AND (GPM_HangHoa.DaXoa = 0) AND  (GPM_HangHoa.IDTrangThaiHang = 1) AND (GPM_HangHoa.IDNhomDatHang = 3) AND (GPM_HangHoa.IDNhomDatHang = 6)
+	                                        WHERE ((GPM_HangHoa.MaHang LIKE @MaHang)) AND (GPM_HangHoa.DaXoa = 0) AND  ((GPM_HangHoa.IDTrangThaiHang = 1) OR (GPM_HangHoa.IDTrangThaiHang = 3) OR (GPM_HangHoa.IDTrangThaiHang = 6))
 	                                        ) as st 
                                         where st.[rn] between @startIndex and @endIndex";
 
@@ -104,6 +102,7 @@ namespace BanHang
             txtSoLuong.Text = "";
             txtTrongLuong.Text = "";
             txtSoLuongGoiY.Text = "";
+            txtGhiChuHangHoa.Text = "";
         }
         protected void btnThem_Temp_Click(object sender, EventArgs e)
         {
@@ -136,12 +135,14 @@ namespace BanHang
                         data = new dtDonHangChiNhanh();
                         data.ThemChiTietDonHang_Temp(IDDonHangChiNhanh, MaHang, IDHangHoa, IDDonViTinh, (SoLuong * TrongLuong).ToString(), SoLuong, TonKho, GhiChu);
                         CLear();
+                        TinhTrongLuong();
                     }
                     else
                     {
                         data = new dtDonHangChiNhanh();
                         data.CapNhatChiTietDonHang_temp(IDDonHangChiNhanh, IDHangHoa, SoLuong,(SoLuong * TrongLuong).ToString(), TonKho, GhiChu);
                         CLear();
+                        TinhTrongLuong();
                     }
                     LoadGrid(IDDonHangChiNhanh);
                     
@@ -161,40 +162,53 @@ namespace BanHang
 
         protected void btnThem_Click(object sender, EventArgs e)
         {
-            string IDDonHangChiNhanh = IDDonDatHang_Temp.Value.ToString();
-            data = new dtDonHangChiNhanh();
-            DataTable dt = data.DanhSachDonDatHangClient_Temp(IDDonHangChiNhanh);
-            if (dt.Rows.Count != 0)
+            if (txtNgayDat.Text != "" && txtNgayGiaoDuKien.Text != "" && cmbMucDoUuTien.Text != "")
             {
-                string SoDonHang = txtSoDonHang.Text.Trim();
-                string IDNguoiLap = Session["IDNhanVien"].ToString();
-                DateTime NgayLap = DateTime.Parse(txtNgayLap.Text);
-                string TongTrongLuong = txtTongTrongLuong.Text;
-              
-                string IDKho = Session["IDKho"].ToString();
-                string GhiChu = txtGhiChu.Text == null ? "" : txtGhiChu.Text.ToString();
+                string IDDonHangChiNhanh = IDDonDatHang_Temp.Value.ToString();
                 data = new dtDonHangChiNhanh();
-                //data.CapNhatDonDatHangClient(IDDonHangChiNhanh, SoDonHang, IDNguoiLap, NgayLap, TongTrongLuong, TongTien, IDKho, GhiChu);
-                foreach (DataRow dr in dt.Rows)
+                DataTable dt = data.DanhSachDonDatHangClient_Temp(IDDonHangChiNhanh);
+                if (dt.Rows.Count != 0)
                 {
-                    string IDHangHoa = dr["IDHangHoa"].ToString();
-                    string MaHang = dr["MaHang"].ToString();
-                    string IDDonViTinh = dr["IDDonViTinh"].ToString();
-                    string TrongLuong = dr["TrongLuong"].ToString();
-                    string SoLuong = dr["SoLuong"].ToString();
-                    string DonGia = dr["DonGia"].ToString();
-                    string ThanhTien = dr["ThanhTien"].ToString();
+                    string SoDonHang = txtSoDonHang.Text.Trim();
+                    string IDNguoiLap = Session["IDNhanVien"].ToString();
+                    DateTime NgayLap = DateTime.Parse(txtNgayLap.Text);
+                    DateTime NgayDat = DateTime.Parse(txtNgayDat.Text.ToString());
+                    DateTime NgayGiaoDuKien = DateTime.Parse(txtNgayGiaoDuKien.Text.ToString());
+                    string TongTrongLuong = txtTongTrongLuong.Text;
+                    string IDKho = Session["IDKho"].ToString();
+                    string GhiChu = txtGhiChu.Text == null ? "" : txtGhiChu.Text.ToString();
+                    string MucDoUuTien = cmbMucDoUuTien.Value.ToString();
                     data = new dtDonHangChiNhanh();
-                    data.ThemChiTietDonHangClient(IDDonHangChiNhanh, MaHang, IDHangHoa, IDDonViTinh, TrongLuong, SoLuong, DonGia, ThanhTien,IDKho);
+                    data.CapNhatDonDatHangClient(IDDonHangChiNhanh, SoDonHang, IDNguoiLap, NgayLap, TongTrongLuong, IDKho, GhiChu, NgayDat, NgayGiaoDuKien, MucDoUuTien);
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        string IDHangHoa = dr["IDHangHoa"].ToString();
+                        string MaHang = dr["MaHang"].ToString();
+                        string IDDonViTinh = dr["IDDonViTinh"].ToString();
+                        string TrongLuong = dr["TrongLuong"].ToString();
+                        string SoLuong = dr["SoLuong"].ToString();
+                        string TonKho = dr["TonKho"].ToString();
+                        string GhiChuHangHoa = dr["GhiChu"].ToString();
+                        string TrangThai = dr["TrangThai"].ToString();
+                        data = new dtDonHangChiNhanh();
+                        data.ThemChiTietDonHangClient(IDDonHangChiNhanh, MaHang, IDHangHoa, IDDonViTinh, TrongLuong, SoLuong, TonKho, GhiChuHangHoa,TrangThai, IDKho);
+                    }
+                    data = new dtDonHangChiNhanh();
+                    data.XoaChiTietDonHang_Nhap(IDDonHangChiNhanh);
+
+                    dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Chi Nhánh Thêm Đặt Hàng", IDKho, "Nhập xuất tồn", "Thêm");
+                    Response.Redirect("ChiNhanhDatHang.aspx");
                 }
-                data = new dtDonHangChiNhanh();
-                data.XoaChiTietDonHang_Nhap(IDDonHangChiNhanh);
-                dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Chi Nhánh Thêm Đặt Hàng", IDKho, "Nhập xuất tồn", "Thêm");
-                Response.Redirect("ChiNhanhDatHang.aspx");
+                else
+                {
+                    Response.Write("<script language='JavaScript'> alert('Danh sách hàng hóa rỗng.'); </script>");
+                    return;
+                }
             }
             else
             {
-                Response.Write("<script language='JavaScript'> alert('Danh sách hàng hóa rỗng.'); </script>");
+                Response.Write("<script language='JavaScript'> alert('Vui lòng nhập đầy đủ các trường có dấu (*).'); </script>");
+                return;
             }
         }
         protected void btnHuy_Click(object sender, EventArgs e)
@@ -327,6 +341,7 @@ namespace BanHang
                                 {
                                     data.ThemChiTietDonHang_Temp(IDDonHangChiNhanh, MaHang, IDHangHoa, DonViTinh, (SoLuong * float.Parse(TrongLuong)).ToString(), SoLuong, TonKho.ToString(), GhiChu);
                                     CLear();
+                                    TinhTrongLuong();
                                 }
                             }
                             else
@@ -334,19 +349,20 @@ namespace BanHang
                                 data = new dtDonHangChiNhanh();
                                 data.CapNhatChiTietDonHang_temp(IDDonHangChiNhanh, IDHangHoa, SoLuong, (SoLuong * float.Parse(TrongLuong)).ToString(), TonKho.ToString(), GhiChu);
                                 CLear();
+                                TinhTrongLuong();
                             }
                             LoadGrid(IDDonHangChiNhanh);
                         }
                         else
                         {
-                            Response.Write("<script language='JavaScript'> alert('Số lượng phải > 0.'); </script>");
+                            Response.Write("<script language='JavaScript'> alert('Số lượng phải > 0.'); </script>"); return;
                         }
                     }
                 }
             }
             else
             {
-                Response.Write("<script language='JavaScript'> alert('Dữ liệu không chính xác? Vui lòng kiểm tra lại.'); </script>");
+                Response.Write("<script language='JavaScript'> alert('Dữ liệu không chính xác? Vui lòng kiểm tra lại.'); </script>"); return;
             }
         }
         public string strFileExcel { get; set; }

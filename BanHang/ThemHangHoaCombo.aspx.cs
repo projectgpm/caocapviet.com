@@ -115,23 +115,23 @@ namespace BanHang
                         }
                         else
                         {
-                            Response.Write("<script language='JavaScript'> alert('Mã Barcode đã tồn tại. Vui lòng kiểm tra lại?'); </script>");
+                            Response.Write("<script language='JavaScript'> alert('Mã Barcode đã tồn tại. Vui lòng kiểm tra lại?'); </script>"); return;
                         }
                     }
                     else
                     {
-                        Response.Write("<script language='JavaScript'> alert('Mã hàng đã tồn tại.Vui lòng kiểm tra lại'); </script>");
+                        Response.Write("<script language='JavaScript'> alert('Mã hàng đã tồn tại.Vui lòng kiểm tra lại'); </script>"); return;
                     }
                 }
                 else
                 {
                     cmbHangHoa.Focus();
-                    Response.Write("<script language='JavaScript'> alert('Danh sách hàng hóa combo rỗng.'); </script>");
+                    Response.Write("<script language='JavaScript'> alert('Danh sách hàng hóa combo rỗng.'); </script>"); return;
                 }
             }
             else
             {
-                Response.Write("<script language='JavaScript'> alert('Trường có dấu (*) không được bỏ trống.'); </script>");
+                Response.Write("<script language='JavaScript'> alert('Trường có dấu (*) không được bỏ trống.'); </script>"); return;
             }
         }
         public void TinhTongTien()
@@ -231,12 +231,12 @@ namespace BanHang
                 }
                 else
                 {
-                    Response.Write("<script language='JavaScript'> alert('Số lượng > 0.'); </script>");
+                    Response.Write("<script language='JavaScript'> alert('Số lượng > 0.'); </script>"); return;
                 }
             }
             else
             {
-                Response.Write("<script language='JavaScript'> alert('Bạn chưa chọn hàng hóa hoặc số lượng.'); </script>");
+                Response.Write("<script language='JavaScript'> alert('Bạn chưa chọn hàng hóa hoặc số lượng.'); </script>"); return;
             }
         }
         public void Clear()
@@ -261,7 +261,7 @@ namespace BanHang
             {
                 txtTonKho.Text = "";
                 txtSoLuong.Text = "";
-                Response.Write("<script language='JavaScript'> alert('Bạn chưa chọn hàng hóa.'); </script>");
+                Response.Write("<script language='JavaScript'> alert('Bạn chưa chọn hàng hóa.'); </script>"); return;
             }
         }
         private void LoadGrid(int IDHangHoaComBo)

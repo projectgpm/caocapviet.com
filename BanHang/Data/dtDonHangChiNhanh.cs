@@ -48,14 +48,14 @@ namespace BanHang.Data
                 }
             }
         }
-        public void ThemChiTietDonHangClient(string IDDonHangChiNhanh, string MaHang, string IDHangHoa, string IDDonViTinh, string TrongLuong, string SoLuong, string DonGia, string ThanhTien, string IDKho)
+        public void ThemChiTietDonHangClient(string IDDonHangChiNhanh, string MaHang, string IDHangHoa, string IDDonViTinh, string TrongLuong, string SoLuong, string TonKho, string GhiChu, string TrangThai, string IDKho)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
                 try
                 {
                     myConnection.Open();
-                    string cmdText = "INSERT INTO [GPM_DonHangChiNhanh_ChiTiet] ([IDDonHangChiNhanh],[MaHang],[IDHangHoa],[IDDonViTinh],[TrongLuong],[SoLuong],[DonGia],[ThanhTien],[IDKho]) VALUES (@IDDonHangChiNhanh,@MaHang,@IDHangHoa,@IDDonViTinh,@TrongLuong,@SoLuong,@DonGia,@ThanhTien,@IDKho)";
+                    string cmdText = "INSERT INTO [GPM_DonHangChiNhanh_ChiTiet] ([IDDonHangChiNhanh],[MaHang],[IDHangHoa],[IDDonViTinh],[TrongLuong],[SoLuong],[TonKho],[GhiChu],[IDKho],[TrangThai]) VALUES (@IDDonHangChiNhanh,@MaHang,@IDHangHoa,@IDDonViTinh,@TrongLuong,@SoLuong,@TonKho,@GhiChu,@IDKho,@TrangThai)";
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
                         myCommand.Parameters.AddWithValue("@IDDonHangChiNhanh", IDDonHangChiNhanh);
@@ -65,8 +65,9 @@ namespace BanHang.Data
                         myCommand.Parameters.AddWithValue("@IDDonViTinh", IDDonViTinh);
                         myCommand.Parameters.AddWithValue("@TrongLuong", TrongLuong);
                         myCommand.Parameters.AddWithValue("@SoLuong", SoLuong);
-                        myCommand.Parameters.AddWithValue("@DonGia", DonGia);
-                        myCommand.Parameters.AddWithValue("@ThanhTien", ThanhTien);
+                        myCommand.Parameters.AddWithValue("@TonKho", TonKho);
+                        myCommand.Parameters.AddWithValue("@GhiChu", GhiChu);
+                        myCommand.Parameters.AddWithValue("@TrangThai", TrangThai);
                         myCommand.ExecuteNonQuery();
                     }
                     myConnection.Close();
@@ -77,7 +78,7 @@ namespace BanHang.Data
                 }
             }
         }
-        public void CapNhatDonDatHangClient(string ID, string SoDonHang, string IDNguoiLap, DateTime NgayLap, string TongTrongLuong, string TongTien, string IDKho, string GhiChu)
+        public void CapNhatDonDatHangClient(string ID, string SoDonHang, string IDNguoiLap, DateTime NgayLap, string TongTrongLuong, string IDKho, string GhiChu, DateTime NgayDat, DateTime NgayGiaoDuKien, string MucDoUuTien)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
@@ -85,7 +86,7 @@ namespace BanHang.Data
                 {
                     myConnection.Open();
 
-                    string cmdText = "UPDATE [GPM_DonHangChiNhanh] SET [SoDonHang] = @SoDonHang,[IDNguoiLap] = @IDNguoiLap,[NgayLap] = @NgayLap,[TongTrongLuong] = @TongTrongLuong,[TongTien] = @TongTien,[IDKho] = @IDKho,[GhiChu] = @GhiChu WHERE ID = @ID";
+                    string cmdText = "UPDATE [GPM_DonHangChiNhanh] SET [MucDoUuTien] = @MucDoUuTien,[NgayGiaoDuKien] = @NgayGiaoDuKien,[SoDonHang] = @SoDonHang,[IDNguoiLap] = @IDNguoiLap,[NgayLap] = @NgayLap,[TongTrongLuong] = @TongTrongLuong,[NgayDat] = @NgayDat,[IDKho] = @IDKho,[GhiChu] = @GhiChu WHERE ID = @ID";
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
                         myCommand.Parameters.AddWithValue("@ID", ID);
@@ -93,9 +94,11 @@ namespace BanHang.Data
                         myCommand.Parameters.AddWithValue("@IDNguoiLap", IDNguoiLap);
                         myCommand.Parameters.AddWithValue("@NgayLap", NgayLap);
                         myCommand.Parameters.AddWithValue("@TongTrongLuong", TongTrongLuong);
-                        myCommand.Parameters.AddWithValue("@TongTien", TongTien);
+                        myCommand.Parameters.AddWithValue("@NgayDat", NgayDat);
                         myCommand.Parameters.AddWithValue("@IDKho", IDKho);
                         myCommand.Parameters.AddWithValue("@GhiChu", GhiChu);
+                        myCommand.Parameters.AddWithValue("@NgayGiaoDuKien", NgayGiaoDuKien);
+                        myCommand.Parameters.AddWithValue("@MucDoUuTien", MucDoUuTien);
                         myCommand.ExecuteNonQuery();
                     }
                     myConnection.Close();

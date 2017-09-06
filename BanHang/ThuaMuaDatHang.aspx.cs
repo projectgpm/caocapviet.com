@@ -144,12 +144,12 @@ namespace BanHang
                 }
                 else
                 {
-                    Response.Write("<script language='JavaScript'> alert('Danh sách hàng hóa rỗng.'); </script>");
+                    Response.Write("<script language='JavaScript'> alert('Danh sách hàng hóa rỗng.'); </script>"); return;
                 }
             }
             else
             {
-                Response.Write("<script language='JavaScript'> alert('Không được bỏ trống trường có dấu (*).'); </script>");
+                Response.Write("<script language='JavaScript'> alert('Không được bỏ trống trường có dấu (*).'); </script>"); return;
             }
         }
         protected void btnHuy_Click(object sender, EventArgs e)
@@ -357,14 +357,14 @@ namespace BanHang
                         }
                         else
                         {
-                            Response.Write("<script language='JavaScript'> alert('Số lượng phải > 0.'); </script>");
+                            Response.Write("<script language='JavaScript'> alert('Số lượng phải > 0.'); </script>"); return;
                         }
                     }
                 }
             }
             else
             {
-                Response.Write("<script language='JavaScript'> alert('Dữ liệu không chính xác? Vui lòng kiểm tra lại.'); </script>");
+                Response.Write("<script language='JavaScript'> alert('Dữ liệu không chính xác? Vui lòng kiểm tra lại.'); </script>"); return;
             }
         }
         public string strFileExcel { get; set; }
@@ -387,7 +387,7 @@ namespace BanHang
             }
             else
             {
-                Response.Write("<script language='JavaScript'> alert('Vui lòng nhập giá trị chiết khấu cho đơn hàng.'); </script>");
+                Response.Write("<script language='JavaScript'> alert('Vui lòng nhập giá trị chiết khấu cho đơn hàng.'); </script>"); return;
             }
         }
         public void TinhChietKhau()
@@ -406,6 +406,7 @@ namespace BanHang
                 else
                 {
                     Response.Write("<script language='JavaScript'> alert('Tỷ lệ chiết khấu phải là số dương.Vui lòng kiểm tra lại? '); </script>");
+                    return;
                 }
             }
         }

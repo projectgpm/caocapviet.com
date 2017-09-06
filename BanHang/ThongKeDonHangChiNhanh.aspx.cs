@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BanHang.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,9 +10,34 @@ namespace BanHang
 {
     public partial class ThongKeDonHangChiNhanh : System.Web.UI.Page
     {
+        dtThongKeDonHangChiNhanh data = new dtThongKeDonHangChiNhanh();
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["KTDangNhap"] != "GPM")
+            {
+                Response.Redirect("DangNhap.aspx");
+            }
+            else
+            {
+                LoadGrid();
+            }
+        }
 
+        private void LoadGrid()
+        {
+            data = new dtThongKeDonHangChiNhanh();
+            gridDanhSach.DataSource = data.DanhSachThongKe(Session["IDKho"].ToString());
+            gridDanhSach.DataBind();
+        }
+
+        protected void btnXuatPDF_Click(object sender, EventArgs e)
+        {
+            XuatDuLieu.WritePdfToResponse();
+        }
+
+        protected void btnXuatExcel_Click(object sender, EventArgs e)
+        {
+            XuatDuLieu.WriteXlsToResponse();
         }
     }
 }

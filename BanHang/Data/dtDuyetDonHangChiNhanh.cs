@@ -278,7 +278,7 @@ namespace BanHang.Data
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "SELECT * FROM [GPM_DonHangChiNhanh] WHERE [IDNguoiLap] is not null ORDER BY [TrangThai] ASC";
+                string cmdText = "SELECT * FROM [GPM_DonHangChiNhanh] WHERE [TrangThai] = 0 AND [GiamSatDuyet] = 1  AND [IDNguoiLap] is not null ";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
