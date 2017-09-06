@@ -9,19 +9,40 @@ namespace BanHang.Data
 {
     public class dtThuMuaDatHang
     {
-        public void CapNhat_TongTien_TongTrongLuong(string ID, string TongTien, string TongTrongLuong)
+        public static int LayTyLeChietKhau(string IDDonHangThuMua)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT ChietKhau FROM [GPM_ThuMua_DonHang] WHERE [ID] = '" + IDDonHangThuMua + "'";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    if (tb.Rows.Count != 0)
+                    {
+                        DataRow dr = tb.Rows[0];
+                        return Int32.Parse(dr["ChietKhau"].ToString());
+                    }
+                    else return 0;
+                }
+            }
+        }
+        public void CapNhat_TongTien_TongTrongLuong(string ID, string TongTien, string TongTrongLuong, string TongTienSauChietKhau)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
                 try
                 {
                     myConnection.Open();
-                    string cmdText = "UPDATE [GPM_ThuMua_DonHang] SET [TongTien] = @TongTien,[TongTrongLuong] = @TongTrongLuong WHERE [ID] = @ID";
+                    string cmdText = "UPDATE [GPM_ThuMua_DonHang] SET [TongTienSauChietKhau] = @TongTienSauChietKhau,[TongTien] = @TongTien,[TongTrongLuong] = @TongTrongLuong, [NgayCapNhat] = getdate() WHERE [ID] = @ID";
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
                         myCommand.Parameters.AddWithValue("@ID", ID);
                         myCommand.Parameters.AddWithValue("@TongTien", TongTien);
                         myCommand.Parameters.AddWithValue("@TongTrongLuong", TongTrongLuong);
+                        myCommand.Parameters.AddWithValue("@TongTienSauChietKhau", TongTienSauChietKhau);
                         myCommand.ExecuteNonQuery();
                     }
                     myConnection.Close();
