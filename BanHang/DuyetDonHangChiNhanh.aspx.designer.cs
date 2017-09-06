@@ -130,6 +130,15 @@ namespace BanHang {
         protected global::DevExpress.Web.ASPxDateEdit txtNgayDuyet;
         
         /// <summary>
+        /// ASPxFormLayout1_E2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxDateEdit ASPxFormLayout1_E2;
+        
+        /// <summary>
         /// LayoutItemNestedControlContainer1 control.
         /// </summary>
         /// <remarks>
@@ -157,13 +166,31 @@ namespace BanHang {
         protected global::System.Web.UI.WebControls.SqlDataSource SqlTrangThaiHang;
         
         /// <summary>
+        /// ASPxFormLayout1_E6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxComboBox ASPxFormLayout1_E6;
+        
+        /// <summary>
         /// ASPxFormLayout1_E4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxUploadControl ASPxFormLayout1_E4;
+        protected global::DevExpress.Web.ASPxComboBox ASPxFormLayout1_E4;
+        
+        /// <summary>
+        /// ASPxFormLayout1_E8 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxUploadControl ASPxFormLayout1_E8;
         
         /// <summary>
         /// LayoutItemNestedControlContainer10 control.
@@ -173,15 +200,6 @@ namespace BanHang {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.LayoutItemNestedControlContainer LayoutItemNestedControlContainer10;
-        
-        /// <summary>
-        /// ASPxFormLayout1_E2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxDateEdit ASPxFormLayout1_E2;
         
         /// <summary>
         /// txtGhiChu control.
