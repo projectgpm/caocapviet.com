@@ -94,13 +94,13 @@ namespace BanHang {
         protected global::DevExpress.Web.ASPxGridView gridHangHoa;
         
         /// <summary>
-        /// sqlTrangThaiBarcode control.
+        /// sqlTrangThaiBarCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource sqlTrangThaiBarcode;
+        protected global::System.Web.UI.WebControls.SqlDataSource sqlTrangThaiBarCode;
         
         /// <summary>
         /// sqlTrangThaiHang control.
@@ -119,15 +119,6 @@ namespace BanHang {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource sqlNhomDatHang;
-        
-        /// <summary>
-        /// sqlHangHoaDoi control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource sqlHangHoaDoi;
         
         /// <summary>
         /// sqlThue control.
@@ -173,5 +164,14 @@ namespace BanHang {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxGridView HangHoaExport1;
+        
+        /// <summary>
+        /// popup control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxPopupControl popup;
     }
 }

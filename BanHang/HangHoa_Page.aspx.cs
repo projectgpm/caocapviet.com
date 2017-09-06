@@ -12,32 +12,15 @@ namespace BanHang
 {
     public partial class HangHoa_Page : System.Web.UI.Page
     {
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                if (Request.QueryString["IDHH"] != null)
-                {
-                    string IDHH = Request.QueryString["IDHH"].ToString();
-                    dataHangHoa data = new dataHangHoa();
-                    //aspGridBarcode.DataSource = data.GetListBarCode((object)IDHH);
-                    //aspGridBarcode.DataBind();
+                dataHangHoa data = new dataHangHoa();
+                IDHangHoa.Value = data.insertHangHoa_Temp() + "";
 
-                    DataTable da = data.getDanhSachHangHoa_ID(IDHH);
-                    if (da.Rows.Count != 0)
-                    {
-
-                    }
-                }
-                else
-                {
-                    dataHangHoa data = new dataHangHoa();
-                    IDHangHoa.Value = data.insertHangHoa_Temp() + "";
-
-                    cmbTrangThaiHang.SelectedIndex = 0;
-                    cmbNhomDatHang.SelectedIndex = 0;
-                }
+                cmbTrangThaiHang.SelectedIndex = 0;
+                cmbNhomDatHang.SelectedIndex = 0;
             }
             Load();
         }
@@ -56,6 +39,7 @@ namespace BanHang
             gridHangHoaQuyDoi.DataBind();
 
         }
+
         protected void cmbDonViTinh_SelectedIndexChanged(object sender, EventArgs e)
         {
             dtDonViTinh dt = new dtDonViTinh();
@@ -142,10 +126,16 @@ namespace BanHang
                 string ID = e.Keys[0].ToString();
 
                 dataHangHoa data = new dataHangHoa();
-                data.updateHangHoa_Barcode(ID, IDTrangThaiBarcode, Barcode);
 
-                e.Cancel = true;
-                gridHangHoaBarcode.CancelEdit();
+                DataTable da = data.KiemTraBarcode(Barcode);
+                if (da.Rows.Count == 0)
+                {
+                    data.updateHangHoa_Barcode(ID, IDTrangThaiBarcode, Barcode);
+
+                    e.Cancel = true;
+                    gridHangHoaBarcode.CancelEdit();
+                }
+                else throw new Exception("Barcode đã tồn tại.");
             }
             else throw new Exception("Không được bỏ trống dữ liệu.");
 
@@ -161,10 +151,15 @@ namespace BanHang
                 string Barcode = e.NewValues["Barcode"].ToString();
 
                 dataHangHoa data = new dataHangHoa();
-                data.insertHangHoa_Barcode(IDHangHoa.Value + "",IDTrangThaiBarcode, Barcode);
+                DataTable da = data.KiemTraBarcode(Barcode);
+                if (da.Rows.Count == 0)
+                {
+                    data.insertHangHoa_Barcode(IDHangHoa.Value + "", IDTrangThaiBarcode, Barcode);
 
-                e.Cancel = true;
-                gridHangHoaBarcode.CancelEdit();
+                    e.Cancel = true;
+                    gridHangHoaBarcode.CancelEdit();
+                }
+                else throw new Exception("Barcode đã tồn tại.");
             }
             else throw new Exception("Không được bỏ trống dữ liệu.");
 
@@ -200,9 +195,13 @@ namespace BanHang
                 DataTable daMaHang = data.getHangHoa_MaHang(MaHang);
                 if (daMaHang.Rows.Count != 0)
                 {
-                    data.insertHangHoa_QuyDoi(IDHangHoa.Value + "", daMaHang.Rows[0]["ID"].ToString());
-                    e.Cancel = true;
-                    gridHangHoaQuyDoi.CancelEdit();
+                    if (!dtHangHoa.KiemTraMaHang_HangQuyDoi(IDHangHoa.Value + "", daMaHang.Rows[0]["ID"].ToString()))
+                    {
+                        data.insertHangHoa_QuyDoi(IDHangHoa.Value + "", daMaHang.Rows[0]["ID"].ToString());
+                        e.Cancel = true;
+                        gridHangHoaQuyDoi.CancelEdit();
+                    }
+                    else throw new Exception("Mã hàng đã có trong danh sách.");
                 }
                 else throw new Exception("Mã hàng không tồn tại.");
             }
@@ -221,9 +220,13 @@ namespace BanHang
                 DataTable daMaHang = data.getHangHoa_MaHang(MaHang);
                 if (daMaHang.Rows.Count != 0)
                 {
-                    data.updateHangHoa_QuyDoi(ID, daMaHang.Rows[0]["ID"].ToString());
-                    e.Cancel = true;
-                    gridHangHoaQuyDoi.CancelEdit();
+                    if (!dtHangHoa.KiemTraMaHang_HangQuyDoi(IDHangHoa.Value + "", daMaHang.Rows[0]["ID"].ToString()))
+                    {
+                        data.updateHangHoa_QuyDoi(ID, daMaHang.Rows[0]["ID"].ToString());
+                        e.Cancel = true;
+                        gridHangHoaQuyDoi.CancelEdit();
+                    }
+                    else throw new Exception("Mã hàng đã có trong danh sách.");
                 }
                 else throw new Exception("Mã hàng không tồn tại.");
             }
@@ -283,6 +286,7 @@ namespace BanHang
 
         protected void btnHuy_Click(object sender, EventArgs e)
         {
+
             dataHangHoa data = new dataHangHoa();
             data.XoaHangHoa_Delete(IDHangHoa.Value + "");
             data.XoaHangHoaQuyDoi_Delete(IDHangHoa.Value + "");

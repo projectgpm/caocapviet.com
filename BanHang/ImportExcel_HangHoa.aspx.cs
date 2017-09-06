@@ -118,21 +118,21 @@ namespace BanHang
                     }
                     if ((int)IDHangHoa != -1)
                     {
-                        DataTable d3 = hh.KiemTraBarcode(IDHangHoa + "", Barcode);
-                        if (d3.Rows.Count == 0)
-                        {
-                            hh.ThemBarCode(IDHangHoa, IDTrangThaiBarcode, Barcode);
-                        }
+                        //DataTable d3 = hh.KiemTraBarcode(IDHangHoa + "", Barcode);
+                        //if (d3.Rows.Count == 0)
+                        //{
+                        //    hh.ThemBarCode(IDHangHoa, IDTrangThaiBarcode, Barcode);
+                        //}
                     }
                     else
                     {
                         DataRow drx = dd.Rows[0];
                         int ID = Int32.Parse(drx["ID"].ToString());
-                        DataTable d3 = hh.KiemTraBarcode(ID + "", Barcode);
-                        if (d3.Rows.Count == 0)
-                        {
-                            hh.ThemBarCode(ID, IDTrangThaiBarcode, Barcode);
-                        }
+                        //DataTable d3 = hh.KiemTraBarcode(ID + "", Barcode);
+                        //if (d3.Rows.Count == 0)
+                        //{
+                        //    hh.ThemBarCode(ID, IDTrangThaiBarcode, Barcode);
+                        //}
                     }
                 }
 
