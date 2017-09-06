@@ -58,6 +58,15 @@ namespace BanHang {
         protected global::DevExpress.Web.ASPxButton btnDonHangDaDuyet;
         
         /// <summary>
+        /// ASPxFormLayout1_E2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxButton ASPxFormLayout1_E2;
+        
+        /// <summary>
         /// gridDonDatHang control.
         /// </summary>
         /// <remarks>
@@ -67,6 +76,15 @@ namespace BanHang {
         protected global::DevExpress.Web.ASPxGridView gridDonDatHang;
         
         /// <summary>
+        /// SqlTrangThaiThanhToan control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlTrangThaiThanhToan;
+        
+        /// <summary>
         /// SqlNhaCungCap control.
         /// </summary>
         /// <remarks>
@@ -74,15 +92,6 @@ namespace BanHang {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlNhaCungCap;
-        
-        /// <summary>
-        /// SqlKho control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlKho;
         
         /// <summary>
         /// SqlNguoiDung control.

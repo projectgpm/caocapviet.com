@@ -101,7 +101,7 @@ namespace BanHang
         }
         protected void btnThem_Click(object sender, EventArgs e)
         {
-            if (cmbNhaCungCap.Text != "" && txtNgayLap.Text != "" && txtNgayDat.Text !="" && txtNgayGiaoDuKien.Text !="" && txtChietKhau.Text !="" )
+            if (cmbNhaCungCap.Text != "" && txtNgayLap.Text != "" && txtNgayDat.Text !="" && txtNgayGiaoDuKien.Text !="" && txtChietKhau.Text !="" && cmbThanhToan.Text !="" )
             {
                 string IDThuMuaDatHang = IDThuMuaDatHang_Temp.Value.ToString();
                 data = new dtThuMuaDatHang();
@@ -121,9 +121,9 @@ namespace BanHang
                     DateTime NgayGiaoDuKien = DateTime.Parse(txtNgayGiaoDuKien.Text);
                     string TongTienSauCk = txtTongTienSauCk.Text.ToString();
                     string ChietKhau = txtChietKhau.Text.ToString();
-
+                    string IDThanhToan = cmbThanhToan.Value.ToString();
                     data = new dtThuMuaDatHang();
-                    data.CapNhatDonDatHang(IDThuMuaDatHang, SoDonHang, IDNguoiLap, NgayLap, TongTrongLuong, TongTien, IDKhoLap, GhiChu, IDNhaCungCap, NgayDat, NgayGiaoDuKien, TongTienSauCk, ChietKhau);
+                    data.CapNhatDonDatHang(IDThuMuaDatHang, SoDonHang, IDNguoiLap, NgayLap, TongTrongLuong, TongTien, IDKhoLap, GhiChu, IDNhaCungCap, NgayDat, NgayGiaoDuKien, ChietKhau, TongTienSauCk, IDThanhToan);
                     foreach (DataRow dr in dt.Rows)
                     {
                         string IDHangHoa = dr["IDHangHoa"].ToString();
@@ -398,7 +398,9 @@ namespace BanHang
                 if (GiaTri >= 0)
                 {
                     double TongTien = double.Parse(txtTongTien.Text.ToString());
-                    double TienSauCK = (TongTien - (TongTien * (GiaTri / 100)));
+                    double Tylegiam = (GiaTri * (0.01));
+                    double TienGiam = TongTien * Tylegiam;
+                    double TienSauCK = (TongTien - TienGiam);
                     txtTongTienSauCk.Text = TienSauCK.ToString();
                 }
                 else
@@ -416,6 +418,11 @@ namespace BanHang
         protected void txtNgayGiaoDuKien_Init(object sender, EventArgs e)
         {
             txtNgayGiaoDuKien.Date = DateTime.Today;
+        }
+
+        protected void ASPxButton1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

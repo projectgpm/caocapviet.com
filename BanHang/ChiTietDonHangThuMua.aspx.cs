@@ -51,7 +51,12 @@ namespace BanHang
                 string IDHangHoa = dtHangHoa.LayIDHangHoa_MaHang(MaHang.Trim());
                 data = new dtThuMuaDatHang();
                 data.CapNhatChiTietDonHang(IDDonHangThuMua, IDHangHoa, SoLuong, DonGia, DonGia * SoLuong);
-                data.CapNhat_TongTien_TongTrongLuong(IDDonHangThuMua, TinhTongTien().ToString(), TinhTrongLuong().ToString());
+                int GiaTri = dtThuMuaDatHang.LayTyLeChietKhau(IDDonHangThuMua);
+                double TongTien = TinhTongTien();
+                double Tylegiam = (GiaTri * (0.01));
+                double TienGiam = TongTien * Tylegiam;
+                double TienSauCK = (TongTien - TienGiam);
+                data.CapNhat_TongTien_TongTrongLuong(IDDonHangThuMua, TinhTongTien().ToString(), TinhTrongLuong().ToString(), TienSauCK.ToString());
                 e.Cancel = true;
                 gridChiTiet.CancelEdit();
                 LoadGrid(IDDonHangThuMua);
@@ -60,7 +65,7 @@ namespace BanHang
             }
             else
             {
-                throw new Exception("Lỗi: Số lượng & Đơn giá phải >=0 ?");
+                throw new Exception("Lỗi: Số lượng & Đơn giá phải >= 0 ?");
             }
         }
         public double TinhTongTien()

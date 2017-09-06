@@ -144,7 +144,7 @@
                         <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer6" runat="server">
                             <dx:ASPxComboBox ID="cmbHangHoa" runat="server" 
                                 AutoPostBack="True" OnSelectedIndexChanged="cmbHangHoa_SelectedIndexChanged" 
-                                DropDownWidth="750px" DropDownStyle="DropDownList"   TextFormatString="{0} - {1}"
+                                DropDownWidth="750px" DropDownStyle="DropDownList"   TextFormatString="{0}"
                                 EnableCallbackMode="true" Width="100%" 
                                 OnItemRequestedByValue="cmbHangHoa_ItemRequestedByValue" 
                                 OnItemsRequestedByFilterCondition="cmbHangHoa_ItemsRequestedByFilterCondition"

@@ -12,7 +12,7 @@
         <dx:ASPxGridView runat="server" AutoGenerateColumns="False" Width="100%" ID="gridChiTiet" KeyFieldName="ID" OnRowUpdating="gridChiTiet_RowUpdating">
         <SettingsEditing Mode="PopupEditForm">
         </SettingsEditing>
-<Settings ShowTitlePanel="True"></Settings>
+<Settings ShowTitlePanel="True" ShowFooter="True"></Settings>
 
         <SettingsBehavior ConfirmDelete="True" />
 
@@ -70,10 +70,10 @@
         <propertiesspinedit DisplayFormatString="N0"></propertiesspinedit>
     </dx:GridViewDataSpinEditColumn>
     <dx:GridViewDataSpinEditColumn Caption="Đơn Giá" FieldName="DonGia" VisibleIndex="5">
-        <propertiesspinedit DisplayFormatString="{0:#,# VND}" DisplayFormatInEditMode="True"></propertiesspinedit>
+        <propertiesspinedit DisplayFormatString="{0:#,# đ}" DisplayFormatInEditMode="True"></propertiesspinedit>
     </dx:GridViewDataSpinEditColumn>
     <dx:GridViewDataSpinEditColumn Caption="Thành Tiền" FieldName="ThanhTien" VisibleIndex="6" ReadOnly="True">
-        <propertiesspinedit DisplayFormatString="{0:#,# VND}"></propertiesspinedit>
+        <propertiesspinedit DisplayFormatString="{0:#,# đ}"></propertiesspinedit>
     </dx:GridViewDataSpinEditColumn>
     <dx:GridViewDataTextColumn Caption="Mã Hàng" FieldName="MaHang" VisibleIndex="0" ReadOnly="True">
     </dx:GridViewDataTextColumn>
@@ -90,6 +90,11 @@
         </PropertiesComboBox>
     </dx:GridViewDataComboBoxColumn>
 </Columns>
+
+            <TotalSummary>
+                <dx:ASPxSummaryItem DisplayFormat="Tổng = {0:N0}" FieldName="ThanhTien" ShowInColumn="Thành Tiền" SummaryType="Sum" />
+                <dx:ASPxSummaryItem DisplayFormat="Tổng = {0:N0}" FieldName="SoLuong" ShowInColumn="Số Lượng" SummaryType="Sum" />
+            </TotalSummary>
 
 <Styles>
 <Header HorizontalAlign="Center" Font-Bold="True"></Header>

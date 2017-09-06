@@ -23,7 +23,7 @@
                 <dx:LayoutItem Caption="Ngày Lập">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer6" runat="server">
-                            <dx:ASPxDateEdit ID="txtNgayLap" runat="server" OnInit="txtNgayLap_Init" Width="100%" DisplayFormatString="dd/MM/yyyy">
+                            <dx:ASPxDateEdit ID="txtNgayLap" runat="server" OnInit="txtNgayLap_Init" Width="100%" DisplayFormatString="dd/MM/yyyy" Enabled="False">
                             </dx:ASPxDateEdit>
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
@@ -93,6 +93,7 @@
                 <dx:LayoutItem Caption="Chiết Khấu (%)">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer3" runat="server">
+                            <dx:ASPxButton ID="ASPxButton1" runat="server" Text="ASPxButton" OnClick="ASPxButton1_Click" Visible="False"></dx:ASPxButton>
                             <dx:ASPxSpinEdit ID="txtChietKhau" runat="server"  Width="100%" AutoPostBack="True" OnNumberChanged="txtChietKhau_NumberChanged">
                             </dx:ASPxSpinEdit>
                         </dx:LayoutItemNestedControlContainer>
@@ -114,11 +115,12 @@
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
                 </dx:LayoutItem>
-                <dx:LayoutItem Caption="Trạng Thái">
+                <dx:LayoutItem Caption="Trạng Thái Thanh Toán(*)">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer8" runat="server">
-                            <dx:ASPxTextBox ID="txtTrangThai" runat="server" Enabled="False" Text="Phiếu tạm" Width="100%">
-                            </dx:ASPxTextBox>
+                            <dx:ASPxComboBox ID="cmbThanhToan" runat="server" DataSourceID="SqlTrangThaiThanhToan" TextField="TenHinhThuc" ValueField="ID" Width="100%">
+                            </dx:ASPxComboBox>
+                            <asp:SqlDataSource ID="SqlTrangThaiThanhToan" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" SelectCommand="SELECT [ID], [TenHinhThuc] FROM [GPM_HinhThucThanhToan]"></asp:SqlDataSource>
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
                 </dx:LayoutItem>
@@ -137,9 +139,10 @@
                 <dx:LayoutItem Caption="Hàng Hóa" ColSpan="2">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer runat="server">
+                            
                             <dx:ASPxComboBox ID="cmbHangHoa" runat="server" 
                                 AutoPostBack="True" OnSelectedIndexChanged="cmbHangHoa_SelectedIndexChanged" 
-                                DropDownWidth="750px" DropDownStyle="DropDownList"   TextFormatString="{0} - {1}"
+                                DropDownWidth="750px" DropDownStyle="DropDownList"   TextFormatString="{0}"
                                 EnableCallbackMode="true" Width="100%" 
                                 OnItemsRequestedByFilterCondition="cmbHangHoa_ItemsRequestedByFilterCondition"
                                 OnItemRequestedByValue="cmbHangHoa_ItemRequestedByValue"

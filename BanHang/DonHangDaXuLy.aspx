@@ -1,40 +1,13 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Root.master" AutoEventWireup="true" CodeBehind="DonDatHangChiNhanh.aspx.cs" Inherits="BanHang.DonDatHangChiNhanh" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Root.master" AutoEventWireup="true" CodeBehind="DonHangDaXuLy.aspx.cs" Inherits="BanHang.DonHangDaXuLy" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
-     <script type="text/javascript">
-         function OnMoreInfoClick(element, key) {
-             popup.SetContentUrl("ChiTietDonHangChiNhanh.aspx?IDDonHangChiNhanh=" + key);
-             popup.ShowAtElement();
-             // alert(key);
-         }
+    <script type="text/javascript">
+        function OnMoreInfoClick(element, key) {
+            popup.SetContentUrl("ChiTietDonHangDuyetThuMua.aspx?IDDonHang=" + key);
+            popup.ShowAtElement();
+            // alert(key);
+        }
 
-    </script>
-    <dx:ASPxFormLayout ID="ASPxFormLayout1" runat="server" ColCount="2">
-        <Items>
-            <dx:LayoutItem Caption="">
-                <LayoutItemNestedControlCollection>
-                    <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer1" runat="server">
-                        <dx:ASPxButton ID="btnDuyetDonHang" runat="server" Text="Xác nhận đơn hàng" HorizontalAlign="Right" VerticalAlign="Middle" PostBackUrl="DuyetDonHangChiNhanh.aspx">
-                            <Image IconID="actions_converttorange_32x32">
-                            </Image>
-                            <Paddings Padding="4px" />
-                        </dx:ASPxButton>
-                    </dx:LayoutItemNestedControlContainer>
-                </LayoutItemNestedControlCollection>
-            </dx:LayoutItem>
-           
-             <dx:LayoutItem Caption="">
-                <LayoutItemNestedControlCollection>
-                    <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer2" runat="server">
-                        <dx:ASPxButton ID="btnDonHangDaDuyet" runat="server" PostBackUrl="DonHangDaDuyet.aspx" Text="Đơn hàng đã xác nhận">
-                            <Image IconID="content_checkbox_32x32">
-                            </Image>
-                        </dx:ASPxButton>
-                    </dx:LayoutItemNestedControlContainer>
-                </LayoutItemNestedControlCollection>
-            </dx:LayoutItem>
-           
-        </Items>
-      </dx:ASPxFormLayout> 
+    </script> 
      <dx:ASPxGridView ID="gridDonDatHang" runat="server" AutoGenerateColumns="False" KeyFieldName="ID" Width="100%">
         <SettingsEditing Mode="PopupEditForm">
         </SettingsEditing>
@@ -70,54 +43,67 @@
             <EditForm HorizontalAlign="WindowCenter" Modal="True" VerticalAlign="WindowCenter" />
         </SettingsPopup>
         <SettingsSearchPanel Visible="True" />
-        <SettingsText CommandDelete="Xóa" CommandEdit="Sửa" CommandNew="Thêm" ConfirmDelete="Bạn có chắc chắn muốn xóa không?" PopupEditFormCaption="Thông tin đơn vị tính" Title="DANH SÁCH ĐƠN ĐẶT HÀNG CHI NHÁNH" EmptyDataRow="Danh sách đơn hàng trống." SearchPanelEditorNullText="Nhập thông tin cần tìm..." />
+        <SettingsText CommandDelete="Xóa" CommandEdit="Sửa" CommandNew="Thêm" ConfirmDelete="Bạn có chắc chắn muốn xóa không?" PopupEditFormCaption="Thông tin đơn vị tính" Title="DANH SÁCH ĐƠN HÀNG KHO ĐÃ XỬ LÝ" EmptyDataRow="Danh sách đơn hàng trống." SearchPanelEditorNullText="Nhập thông tin cần tìm.." />
          <Columns>
              <dx:GridViewDataTextColumn Caption="Số Đơn Hàng" FieldName="SoDonHang" VisibleIndex="0">
+                 <HeaderStyle Wrap="True" />
              </dx:GridViewDataTextColumn>
-             <dx:GridViewDataTextColumn Caption="Ghi Chú" FieldName="GhiChu" VisibleIndex="7">
+             <dx:GridViewDataTextColumn Caption="Ghi Chú" FieldName="GhiChu" VisibleIndex="8">
              </dx:GridViewDataTextColumn>
-             <dx:GridViewDataComboBoxColumn Caption="Người Lập" FieldName="IDNguoiLap" VisibleIndex="1">
+             <dx:GridViewDataComboBoxColumn Caption="Người Lập" FieldName="IDNguoiLap" VisibleIndex="2">
                  <PropertiesComboBox DataSourceID="SqlNguoiDung" TextField="TenNguoiDung" ValueField="ID">
                  </PropertiesComboBox>
+                 <HeaderStyle Wrap="True" />
              </dx:GridViewDataComboBoxColumn>
-             <dx:GridViewDataComboBoxColumn Caption="Người Duyệt" FieldName="IDNguoiDuyet" VisibleIndex="3">
+             <dx:GridViewDataComboBoxColumn Caption="Người Duyệt" FieldName="IDNguoiDuyet" VisibleIndex="4">
                  <PropertiesComboBox DataSourceID="SqlNguoiDung" TextField="TenNguoiDung" ValueField="ID">
                  </PropertiesComboBox>
+                 <HeaderStyle Wrap="True" />
              </dx:GridViewDataComboBoxColumn>
-             <dx:GridViewDataComboBoxColumn Caption="Chi Nhánh" FieldName="IDKho" VisibleIndex="8">
-                 <PropertiesComboBox DataSourceID="SqlKho" TextField="TenCuaHang" ValueField="ID">
-                 </PropertiesComboBox>
-             </dx:GridViewDataComboBoxColumn>
-             <dx:GridViewDataDateColumn Caption="Ngày Lập" FieldName="NgayLap" VisibleIndex="2">
+             <dx:GridViewDataDateColumn Caption="Ngày Lập" FieldName="NgayLap" VisibleIndex="3">
                  <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy ">
                  </PropertiesDateEdit>
              </dx:GridViewDataDateColumn>
-             <dx:GridViewDataDateColumn Caption="Ngày Duyệt" FieldName="NgayDuyet" VisibleIndex="4">
+             <dx:GridViewDataDateColumn Caption="Ngày Duyệt" FieldName="NgayDuyet" VisibleIndex="5">
                  <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy ">
                  </PropertiesDateEdit>
+                 <HeaderStyle Wrap="True" />
              </dx:GridViewDataDateColumn>
-             <dx:GridViewDataSpinEditColumn Caption="Tổng Tiền" FieldName="TongTien" VisibleIndex="5">
-                 <PropertiesSpinEdit DisplayFormatString="{0:#,# VND}" NumberFormat="Custom">
+             <dx:GridViewDataSpinEditColumn Caption="Tổng Tiền" FieldName="TongTien" VisibleIndex="6">
+                 <PropertiesSpinEdit DisplayFormatString="{0:#,# đ}" NumberFormat="Custom">
                  </PropertiesSpinEdit>
+                 <HeaderStyle Wrap="True" />
              </dx:GridViewDataSpinEditColumn>
-             <dx:GridViewDataSpinEditColumn Caption="Tổng Trọng Lượng" FieldName="TongTrongLuong" VisibleIndex="6">
+             <dx:GridViewDataSpinEditColumn Caption="Tổng Trọng Lượng" FieldName="TongTrongLuong" VisibleIndex="7">
                  <PropertiesSpinEdit DisplayFormatString="{0:n} KG" NumberFormat="Custom">
                  </PropertiesSpinEdit>
+                 <HeaderStyle Wrap="True" />
              </dx:GridViewDataSpinEditColumn>
              <dx:GridViewDataComboBoxColumn Caption="Trạng Thái" FieldName="TrangThai" VisibleIndex="9">
                  <PropertiesComboBox>
                      <Items>
-                         <dx:ListEditItem Text="Chưa duyệt" Value="0" />
-                         <dx:ListEditItem Text="Đã duyệt" Value="1" />
+                         <dx:ListEditItem Text="Chưa xử lý" Value="0" />
+                         <dx:ListEditItem Text="Đã xử lý" Value="1" />
                      </Items>
                  </PropertiesComboBox>
+                 <HeaderStyle Wrap="True" />
              </dx:GridViewDataComboBoxColumn>
-             <dx:GridViewDataButtonEditColumn Caption="Xem Chi Tiết" VisibleIndex="10">
+             <dx:GridViewDataButtonEditColumn Caption="Xem Chi Tiết" VisibleIndex="11">
                 
                 <DataItemTemplate>
                     <a href="javascript:void(0);" onclick="OnMoreInfoClick(this, '<%# Container.KeyValue %>')">Xem </a>
                 </DataItemTemplate>
+                 <HeaderStyle Wrap="True" />
             </dx:GridViewDataButtonEditColumn>
+             <dx:GridViewDataComboBoxColumn Caption="Nhà Cung Cấp" FieldName="IDNhaCungCap" VisibleIndex="1">
+                 <PropertiesComboBox DataSourceID="SqlNhaCungCap" TextField="TenNhaCungCap" ValueField="ID">
+                 </PropertiesComboBox>
+                 <HeaderStyle Wrap="True" />
+             </dx:GridViewDataComboBoxColumn>
+             <dx:GridViewDataComboBoxColumn Caption="Tình Trạng" FieldName="IDTrangThaiDonHang" VisibleIndex="10">
+                 <PropertiesComboBox DataSourceID="SqlTinhTrang" TextField="TenTrangThai" ValueField="ID">
+                 </PropertiesComboBox>
+             </dx:GridViewDataComboBoxColumn>
          </Columns>
         <Styles>
             <Header Font-Bold="True" HorizontalAlign="Center">
@@ -128,6 +114,16 @@
             </TitlePanel>
         </Styles>
     </dx:ASPxGridView>
+      <asp:SqlDataSource ID="SqlNhaCungCap" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" SelectCommand="SELECT [ID], [TenNhaCungCap] FROM [GPM_NhaCungCap] WHERE ([DaXoa] = @DaXoa)">
+          <SelectParameters>
+              <asp:Parameter DefaultValue="0" Name="DaXoa" Type="Int32" />
+          </SelectParameters>
+      </asp:SqlDataSource>
+      <asp:SqlDataSource ID="SqlTinhTrang" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" SelectCommand="SELECT [ID], [TenTrangThai] FROM [GPM_TrangThaiDonHang] WHERE ([ID] &lt;&gt; @ID)">
+          <SelectParameters>
+              <asp:Parameter DefaultValue="3" Name="ID" Type="Int32" />
+          </SelectParameters>
+      </asp:SqlDataSource>
      <asp:SqlDataSource ID="SqlKho" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" SelectCommand="SELECT [ID], [TenCuaHang] FROM [GPM_Kho] WHERE ([DaXoa] = @DaXoa)">
          <SelectParameters>
              <asp:Parameter DefaultValue="0" Name="DaXoa" Type="Int32" />

@@ -8,25 +8,27 @@ using System.Web.UI.WebControls;
 
 namespace BanHang
 {
-    public partial class DanhSachDonHangThuMua : System.Web.UI.Page
+    public partial class DonHangDaXuLy : System.Web.UI.Page
     {
-        dtThuMuaDatHang data = new dtThuMuaDatHang();
+        dtDuyetDonHangThuMua data = new dtDuyetDonHangThuMua();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["KTDangNhap"] != "GPM")
             {
                 Response.Redirect("DangNhap.aspx");
             }
+
             else
             {
-                LoadGrid(Session["IDKho"].ToString());
+               
+                LoadGrid();
             }
         }
 
-        private void LoadGrid(string IDKho)
+        private void LoadGrid()
         {
-            data = new dtThuMuaDatHang();
-            gridDonDatHang.DataSource = data.LayDanhSachDonHang(IDKho);
+            data = new dtDuyetDonHangThuMua();
+            gridDonDatHang.DataSource = data.DanhSachDuyet_ThuMua();
             gridDonDatHang.DataBind();
         }
     }
