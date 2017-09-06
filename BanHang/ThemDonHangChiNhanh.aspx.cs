@@ -23,7 +23,6 @@ namespace BanHang
             }
             else
             {
-                //TinhTongTien();
                 if (!IsPostBack)
                 {
                     data = new dtDonHangChiNhanh();
@@ -31,6 +30,7 @@ namespace BanHang
                     IDDonDatHang_Temp.Value = IDPhieuDatHang.ToString();
                     cmbKhoLap.Value = Session["IDKho"].ToString();
                     txtNguoiLap.Text = Session["TenDangNhap"].ToString();
+                    txtTongTrongLuong.Text = "0";
                     txtSoDonHang.Text = (Int32.Parse(Session["IDKho"].ToString())).ToString().Replace(".", "") + "-" + (DateTime.Now.ToString("ddMMyyyy-hhmmss"));
                 }
                 LoadGrid(IDDonDatHang_Temp.Value.ToString());
@@ -51,17 +51,17 @@ namespace BanHang
         {
             ASPxComboBox comboBox = (ASPxComboBox)source;
 
-            dsHangHoa.SelectCommand = @"SELECT [ID], [MaHang], [TenHangHoa], [GiaBanSauThue] , [TenDonViTinh]
+            dsHangHoa.SelectCommand = @"SELECT [ID], [MaHang], [TenHangHoa], [GiaMuaTruocThue] , [TenDonViTinh]
                                         FROM (
-	                                        select GPM_HangHoa.ID, GPM_HangHoa.MaHang, GPM_HangHoa.TenHangHoa,GPM_HangHoa.GiaBanSauThue, GPM_DonViTinh.TenDonViTinh, 
+	                                        select GPM_HangHoa.ID, GPM_HangHoa.MaHang, GPM_HangHoa.TenHangHoa,GPM_HangHoa.GiaMuaTruocThue, GPM_DonViTinh.TenDonViTinh, 
 	                                        row_number()over(order by GPM_HangHoa.MaHang) as [rn] 
 	                                        FROM GPM_DonViTinh INNER JOIN GPM_HangHoa ON GPM_DonViTinh.ID = GPM_HangHoa.IDDonViTinh           
-	                                        WHERE ((GPM_HangHoa.TenHangHoa LIKE @TenHang) OR (GPM_HangHoa.MaHang LIKE @MaHang)) AND (GPM_HangHoa.DaXoa = 0) AND  (GPM_HangHoa.IDTrangThaiHang = 1 OR GPM_HangHoa.IDTrangThaiHang = 3 OR GPM_HangHoa.IDTrangThaiHang = 6)
+	                                        WHERE ((GPM_HangHoa.MaHang LIKE @MaHang)) AND (GPM_HangHoa.DaXoa = 0) AND  (GPM_HangHoa.IDTrangThaiHang = 1) AND (GPM_HangHoa.IDNhomDatHang != 3)
 	                                        ) as st 
                                         where st.[rn] between @startIndex and @endIndex";
 
             dsHangHoa.SelectParameters.Clear();
-            dsHangHoa.SelectParameters.Add("TenHang", TypeCode.String, string.Format("%{0}%", e.Filter));
+           // dsHangHoa.SelectParameters.Add("TenHang", TypeCode.String, string.Format("%{0}%", e.Filter));
             dsHangHoa.SelectParameters.Add("MaHang", TypeCode.String, string.Format("%{0}%", e.Filter));
             dsHangHoa.SelectParameters.Add("IDKho", TypeCode.Int32, Session["IDKho"].ToString());
             dsHangHoa.SelectParameters.Add("startIndex", TypeCode.Int64, (e.BeginIndex + 1).ToString());
@@ -75,9 +75,9 @@ namespace BanHang
             if (e.Value == null || !Int64.TryParse(e.Value.ToString(), out value))
                 return;
             ASPxComboBox comboBox = (ASPxComboBox)source;
-            dsHangHoa.SelectCommand = @"SELECT GPM_HangHoa.ID, GPM_HangHoa.MaHang, GPM_HangHoa.TenHangHoa, GPM_HangHoa.GiaBanSauThue, GPM_DonViTinh.TenDonViTinh 
+            dsHangHoa.SelectCommand = @"SELECT GPM_HangHoa.ID, GPM_HangHoa.MaHang, GPM_HangHoa.TenHangHoa, GPM_DonViTinh.TenDonViTinh 
                                         FROM GPM_DonViTinh INNER JOIN GPM_HangHoa ON GPM_DonViTinh.ID = GPM_HangHoa.IDDonViTinh
-                                        WHERE (GPM_HangHoa.ID = @ID) AND  (GPM_HangHoa.IDTrangThaiHang = 1 OR GPM_HangHoa.IDTrangThaiHang = 3 OR GPM_HangHoa.IDTrangThaiHang = 6) AND (GPM_HangHoa.IDNhomDatHang != 2)";
+                                        WHERE (GPM_HangHoa.ID = @ID) AND  (GPM_HangHoa.IDTrangThaiHang = 1) AND (GPM_HangHoa.IDNhomDatHang != 3)";
             dsHangHoa.SelectParameters.Clear();
             dsHangHoa.SelectParameters.Add("ID", TypeCode.Int64, e.Value.ToString());
             comboBox.DataSource = dsHangHoa;
@@ -88,8 +88,13 @@ namespace BanHang
             if (cmbHangHoa.Text != "")
             {
                 txtTrongLuong.Text = dtHangHoa.LayTrongLuong(cmbHangHoa.Value.ToString()).ToString();
-                txtTonKho.Text = dtCapNhatTonKho.SoLuong_TonKho(cmbHangHoa.Value.ToString(), Session["IDKho"].ToString())+"";
+                int TonKho  = dtCapNhatTonKho.SoLuong_TonKho(cmbHangHoa.Value.ToString(), Session["IDKho"].ToString());
+                txtTonKho.Text = TonKho.ToString();
                 txtSoLuong.Text = "0";
+                // tính tần suất bán hàng trong 10 ngày.
+                int SoNgayBan = dtSetting.LaySoNgayBanHang();
+                int SoLuongBan = dtDonHangChiNhanh.TuanSuatBanHang(DateTime.Now, cmbHangHoa.Value.ToString(), -SoNgayBan, Session["IDKho"].ToString());
+                txtSoLuongGoiY.Text = (SoLuongBan - TonKho).ToString();
             }
         }
         public void CLear()
@@ -98,6 +103,7 @@ namespace BanHang
             txtTonKho.Text = "";
             txtSoLuong.Text = "";
             txtTrongLuong.Text = "";
+            txtSoLuongGoiY.Text = "";
         }
         protected void btnThem_Temp_Click(object sender, EventArgs e)
         {
@@ -121,24 +127,22 @@ namespace BanHang
                     string IDDonViTinh = dtHangHoa.LayIDDonViTinh(IDHangHoa);
                     string MaHang = dtHangHoa.LayMaHang(IDHangHoa);
                     string TrongLuong = dtHangHoa.LayTrongLuong(IDHangHoa).ToString();
-                    //float DonGia = dtHangHoa.LayGiaBanSauThue(IDHangHoa);
-                    //string IDDonHangChiNhanh = IDDonDatHang_Temp.Value.ToString();
-                    //DataTable db = dtDonHangChiNhanh.KTChiTietDonHang_Temp(IDHangHoa, IDDonHangChiNhanh);// kiểm tra hàng hóa
-                    //if (db.Rows.Count == 0)
-                    //{
+                    string TonKho = txtTonKho.Text.ToString();
+                    string IDDonHangChiNhanh = IDDonDatHang_Temp.Value.ToString();
+                    DataTable db = dtDonHangChiNhanh.KTChiTietDonHang_Temp(IDHangHoa, IDDonHangChiNhanh);// kiểm tra hàng hóa
+                    if (db.Rows.Count == 0)
+                    {
                     //    data = new dtDonHangChiNhanh();
                     //    data.ThemChiTietDonHang_Temp(IDDonHangChiNhanh, MaHang, IDHangHoa, IDDonViTinh, TrongLuong, SoLuong, DonGia, DonGia * SoLuong);
-                    //    TinhTongTien();
                     //    CLear();
-                    //}
-                    //else
-                    //{
+                    }
+                    else
+                    {
                     //    data = new dtDonHangChiNhanh();
                     //    data.CapNhatChiTietDonHang_temp(IDDonHangChiNhanh, IDHangHoa, SoLuong, DonGia, DonGia * SoLuong);
-                    //    TinhTongTien();
                     //    CLear();
-                    //}
-                    //LoadGrid(IDDonHangChiNhanh);
+                    }
+                    LoadGrid(IDDonHangChiNhanh);
                     
                 }
                 else
@@ -165,11 +169,11 @@ namespace BanHang
                 string IDNguoiLap = Session["IDNhanVien"].ToString();
                 DateTime NgayLap = DateTime.Parse(txtNgayLap.Text);
                 string TongTrongLuong = txtTongTrongLuong.Text;
-                string TongTien = txtTongTien.Text;
+              
                 string IDKho = Session["IDKho"].ToString();
                 string GhiChu = txtGhiChu.Text == null ? "" : txtGhiChu.Text.ToString();
                 data = new dtDonHangChiNhanh();
-                data.CapNhatDonDatHangClient(IDDonHangChiNhanh, SoDonHang, IDNguoiLap, NgayLap, TongTrongLuong, TongTien, IDKho, GhiChu);
+                //data.CapNhatDonDatHangClient(IDDonHangChiNhanh, SoDonHang, IDNguoiLap, NgayLap, TongTrongLuong, TongTien, IDKho, GhiChu);
                 foreach (DataRow dr in dt.Rows)
                 {
                     string IDHangHoa = dr["IDHangHoa"].ToString();
@@ -198,24 +202,6 @@ namespace BanHang
             data = new dtDonHangChiNhanh();
             data.XoaChiTietDonHang_Temp(IDDonHangChiNhanh);
             Response.Redirect("ChiNhanhDatHang.aspx");
-        }
-        
-        public void TinhTongTien()
-        {
-            string IDDonHangChiNhanh = IDDonDatHang_Temp.Value.ToString();
-            data = new dtDonHangChiNhanh();
-            DataTable db = data.DanhSachDonDatHangClient_Temp(IDDonHangChiNhanh);
-            if (db.Rows.Count != 0)
-            {
-                double TongTien = 0;
-                foreach (DataRow dr in db.Rows)
-                {
-                    double ThanhTien = double.Parse(dr["ThanhTien"].ToString());
-                    TongTien = TongTien + ThanhTien;
-                }
-                txtTongTien.Text = (TongTien).ToString();
-                TinhTrongLuong();
-            }
         }
         public void TinhTrongLuong()
         {
@@ -252,7 +238,7 @@ namespace BanHang
             data = new dtDonHangChiNhanh();
             data.XoaChiTietDonHang_Temp_ID(ID);
             TinhTrongLuong();
-            TinhTongTien();
+            
             LoadGrid(IDDonHangChiNhanh);
         }
         protected void txtNgayLap_Init(object sender, EventArgs e)
@@ -360,5 +346,15 @@ namespace BanHang
             }
         }
         public string strFileExcel { get; set; }
+
+        protected void txtNgayGiaoDuKien_Init(object sender, EventArgs e)
+        {
+            txtNgayGiaoDuKien.Date = DateTime.Now;
+        }
+
+        protected void txtNgayDat_Init(object sender, EventArgs e)
+        {
+            txtNgayDat.Date = DateTime.Now;
+        }
     }
 }

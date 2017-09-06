@@ -9,6 +9,30 @@ namespace BanHang.Data
 {
     public class dtDonHangChiNhanh
     {
+        public static int TuanSuatBanHang(DateTime NgayHomNay, string IDHangHoa, int SoNgay, string IDKho)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT SUM(SoLuong) as Tong FROM [GPM_ChiTietHoaDon] WHERE [NgayBan] >= '" + NgayHomNay.AddDays(SoNgay).ToString("yyyy-MM-dd hh:mm:ss tt") + "' AND [NgayBan] <= '" + NgayHomNay.ToString("yyyy-MM-dd hh:mm:ss tt") + "'  AND [IDHangHoa] = '" + IDHangHoa + "' AND [IDKho] = '" + IDKho + "'";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    if (tb.Rows.Count != 0)
+                    {
+                        DataRow dr = tb.Rows[0];
+                        if (dr["Tong"].ToString() != "")
+                        {
+                            return Int32.Parse(dr["Tong"].ToString());
+                        }
+                        return 0;
+                    }
+                    else return 0;
+                }
+            }
+        }
         public DataTable LayDanhSachDonHang(string IDKho)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))

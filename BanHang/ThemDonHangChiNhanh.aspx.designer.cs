@@ -76,6 +76,33 @@ namespace BanHang {
         protected global::DevExpress.Web.ASPxDateEdit txtNgayLap;
         
         /// <summary>
+        /// LayoutItemNestedControlContainer2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.LayoutItemNestedControlContainer LayoutItemNestedControlContainer2;
+        
+        /// <summary>
+        /// txtNgayDat control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxDateEdit txtNgayDat;
+        
+        /// <summary>
+        /// txtNgayGiaoDuKien control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxDateEdit txtNgayGiaoDuKien;
+        
+        /// <summary>
         /// LayoutItemNestedControlContainer5 control.
         /// </summary>
         /// <remarks>
@@ -92,24 +119,6 @@ namespace BanHang {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxSpinEdit txtTongTrongLuong;
-        
-        /// <summary>
-        /// LayoutItemNestedControlContainer2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.LayoutItemNestedControlContainer LayoutItemNestedControlContainer2;
-        
-        /// <summary>
-        /// txtTongTien control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxSpinEdit txtTongTien;
         
         /// <summary>
         /// LayoutItemNestedControlContainer3 control.
@@ -137,6 +146,24 @@ namespace BanHang {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlKho;
+        
+        /// <summary>
+        /// cmbMucDoUuTien control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxComboBox cmbMucDoUuTien;
+        
+        /// <summary>
+        /// ASPxFormLayout1_E12 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxTextBox ASPxFormLayout1_E12;
         
         /// <summary>
         /// LayoutItemNestedControlContainer7 control.
@@ -211,6 +238,15 @@ namespace BanHang {
         protected global::DevExpress.Web.LayoutItemNestedControlContainer LayoutItemNestedControlContainer12;
         
         /// <summary>
+        /// txtSoLuongGoiY control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxSpinEdit txtSoLuongGoiY;
+        
+        /// <summary>
         /// txtSoLuong control.
         /// </summary>
         /// <remarks>
@@ -236,6 +272,15 @@ namespace BanHang {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxTextBox txtTrongLuong;
+        
+        /// <summary>
+        /// txtGhiChuHangHoa control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxTextBox txtGhiChuHangHoa;
         
         /// <summary>
         /// UploadFileExcel control.
