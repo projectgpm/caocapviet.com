@@ -23,11 +23,11 @@ namespace BanHang
             {
                 if (!IsPostBack)
                 {
-                    //data = new dtDuyetDonHangChiNhanh();
-                    //data.Xoa_ALL_Temp();
-                    //txtNguoiDuyet.Text = Session["TenDangNhap"].ToString();
-                    //cmbKhoDuyet.Value = Session["IDKho"].ToString();
-                    //btnThem.Enabled = false;
+                    data = new dtDuyetDonHangChiNhanh();
+                    data.Xoa_ALL_Temp();
+                    txtNguoiDuyet.Text = Session["TenDangNhap"].ToString();
+                    cmbChiNhanhDuyet.Value = Session["IDKho"].ToString();
+                       
                 }
                 
             }
@@ -133,21 +133,18 @@ namespace BanHang
         {
             if (cmbSoDonHang.Text != "")
             {
-                btnThem.Enabled = true;
                 data = new dtDuyetDonHangChiNhanh();
-                data.Xoa_ALL_Temp();
+                //data.Xoa_ALL_Temp();
                 string ID = cmbSoDonHang.Value.ToString();
                 DataTable db = data.LayDanhSachDonHang_ID(ID);
                 if (db.Rows.Count > 0)
                 {
-                    //DataRow dr = db.Rows[0];
-                    //cmbNguoiLap.Value = dr["IDNguoiLap"].ToString();
-                    //txtNgayLap.Text = dr["NgayLap"].ToString();
-                    //txtTongTien.Text = dr["TongTien"].ToString();
-                    //txtTongTrongLuong.Text = dr["TongTrongLuong"].ToString();
-                    //cmbKhoLap.Value = dr["IDKho"].ToString();
-                    //txtGhiChu.Text = dr["GhiChu"].ToString();
-                    //DataTable dt = data.DanhSachChiTiet(ID);
+                    DataRow dr = db.Rows[0];
+                    cmbNguoiLap.Value = dr["IDNguoiLap"].ToString();
+                    txtNgayLap.Text = dr["NgayLap"].ToString();
+                    cmbChiNhanhLap.Value = dr["IDKho"].ToString();
+                    txtGhiChu.Text = dr["GhiChu"].ToString();
+                    DataTable dt = data.DanhSachChiTiet(ID);
                     //if (dt.Rows.Count > 0)
                     //{
                     //    foreach (DataRow dr1 in dt.Rows)
@@ -317,6 +314,11 @@ namespace BanHang
             //}
             //LoadDanhSach(cmbSoDonHang.Value.ToString());
             //popupSuaSoLuong.ShowOnPageLoad = false;
+        }
+
+        protected void txtNgayGiao_Init(object sender, EventArgs e)
+        {
+            txtNgayGiao.Date = DateTime.Today;
         }
     }
 }

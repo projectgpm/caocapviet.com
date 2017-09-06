@@ -130,13 +130,13 @@ namespace BanHang {
         protected global::DevExpress.Web.ASPxDateEdit txtNgayDuyet;
         
         /// <summary>
-        /// ASPxFormLayout1_E2 control.
+        /// txtNgayGiao control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxDateEdit ASPxFormLayout1_E2;
+        protected global::DevExpress.Web.ASPxDateEdit txtNgayGiao;
         
         /// <summary>
         /// LayoutItemNestedControlContainer1 control.
@@ -166,31 +166,40 @@ namespace BanHang {
         protected global::System.Web.UI.WebControls.SqlDataSource SqlTrangThaiHang;
         
         /// <summary>
-        /// ASPxFormLayout1_E6 control.
+        /// cmbChiNhanhLap control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxComboBox ASPxFormLayout1_E6;
+        protected global::DevExpress.Web.ASPxComboBox cmbChiNhanhLap;
         
         /// <summary>
-        /// ASPxFormLayout1_E4 control.
+        /// SqlChiNhanh control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxComboBox ASPxFormLayout1_E4;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlChiNhanh;
         
         /// <summary>
-        /// ASPxFormLayout1_E8 control.
+        /// cmbChiNhanhDuyet control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxUploadControl ASPxFormLayout1_E8;
+        protected global::DevExpress.Web.ASPxComboBox cmbChiNhanhDuyet;
+        
+        /// <summary>
+        /// uploadfile control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxUploadControl uploadfile;
         
         /// <summary>
         /// LayoutItemNestedControlContainer10 control.
