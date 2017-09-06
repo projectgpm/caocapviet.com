@@ -31,7 +31,7 @@ namespace BanHang.Data
 
         public DataTable getDanhSachHangHoa()
         {
-            string cmd = "SELECT * FROM [GPM_HANGHOA] WHERE [DAXOA] = 0 AND IDTrangThaiHang < 5";
+            string cmd = "SELECT GPM_HangHoa.*, GPM_HangHoaTonKho.GiaBan, GPM_HangHoaTonKho.GiaBan1, GPM_HangHoaTonKho.GiaBan2, GPM_HangHoaTonKho.GiaBan3, GPM_HangHoaTonKho.GiaBan4, GPM_HangHoaTonKho.GiaBan5 FROM GPM_HangHoa, GPM_HangHoaTonKho WHERE GPM_HangHoa.DaXoa = 0 AND GPM_HangHoa.ID = GPM_HangHoaTonKho.IDHangHoa AND GPM_HangHoa.IDTrangThaiHang < 5 AND GPM_HangHoaTonKho.IDKho = 1";
             return getData(cmd);
         }
 
@@ -44,6 +44,12 @@ namespace BanHang.Data
                 return da.Rows[0]["TenHangHoa"].ToString();
             }
             return "-";
+        }
+
+        public DataTable getDanhSachHangHoa_ID_2(string ID)
+        {
+            string cmd = "SELECT GPM_HangHoa.*, GPM_HangHoaTonKho.GiaBan, GPM_HangHoaTonKho.GiaBan1, GPM_HangHoaTonKho.GiaBan2, GPM_HangHoaTonKho.GiaBan3, GPM_HangHoaTonKho.GiaBan4, GPM_HangHoaTonKho.GiaBan5 FROM GPM_HangHoa, GPM_HangHoaTonKho WHERE GPM_HangHoa.DaXoa = 0 AND GPM_HangHoa.ID = GPM_HangHoaTonKho.IDHangHoa AND GPM_HangHoa.IDTrangThaiHang < 5 AND GPM_HangHoaTonKho.IDKho = 1 AND GPM_HangHoa.ID = '" + ID + "'";
+            return getData(cmd);
         }
 
         public DataTable getDanhSachHangHoa_ID(string ID)
@@ -82,9 +88,9 @@ namespace BanHang.Data
             return getData(cmd);
         }
 
-        public DataTable KiemTraBarcode(string ID, string Barcode)
+        public DataTable KiemTraBarcode(string Barcode)
         {
-            string cmd = "SELECT * FROM [GPM_HangHoa_Barcode] WHERE Barcode = '" + Barcode + "' AND IDHangHoa = '" + ID + "'";
+            string cmd = "SELECT * FROM [GPM_HangHoa_Barcode] WHERE Barcode = '" + Barcode + "'";
             return getData(cmd);
         }
 
@@ -421,7 +427,7 @@ namespace BanHang.Data
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
 
-                        myCommand.Parameters.AddWithValue("@MaHang", "temp");
+                        myCommand.Parameters.AddWithValue("@MaHang", "");
                         IDHH = myCommand.ExecuteScalar();
                     }
                     return IDHH;

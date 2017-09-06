@@ -50,14 +50,15 @@ namespace BanHang
         {
             
         }
-        protected void gridBarCode_Init(object sender, EventArgs e)
-        {
-            dataHangHoa data = new dataHangHoa();
-            ASPxGridView gridBarCode = sender as ASPxGridView;
-            object IDHangHoa = gridBarCode.GetMasterRowKeyValue();
-            gridBarCode.DataSource = data.GetListBarCode(IDHangHoa);
-            gridBarCode.DataBind();
-        }
+
+        //protected void gridBarCode_Init(object sender, EventArgs e)
+        //{
+        //    dataHangHoa data = new dataHangHoa();
+        //    ASPxGridView gridBarCode = sender as ASPxGridView;
+        //    object IDHangHoa = gridBarCode.GetMasterRowKeyValue();
+        //    gridBarCode.DataSource = data.GetListBarCode(IDHangHoa);
+        //    gridBarCode.DataBind();
+        //}
 
         protected void btnXuatExcel_Click(object sender, EventArgs e)
         {
@@ -91,14 +92,14 @@ namespace BanHang
             data.XoaHangHoa(ID);
             e.Cancel = true;
             LoadGrid();
+
             dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Hàng hóa", Session["IDKho"].ToString(), "Danh mục", "Xóa");
         }
 
         protected void btnTheMoi_Click(object sender, EventArgs e)
         {
             dataHangHoa data = new dataHangHoa();
-            object IDHH  = data.insertHangHoa_Temp();
-            Response.Redirect("NewsHangHoa.aspx?IDHH=" + IDHH);
+            Response.Redirect("HangHoa_Page.aspx");
         }
 
     }
