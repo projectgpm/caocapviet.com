@@ -1,6 +1,7 @@
 ﻿using BanHang.Data;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -24,11 +25,20 @@ namespace BanHang
             }
         }
 
-        private void LoadGrid(string p)
+        private void LoadGrid(string IDKho)
         {
             data = new dtDonHangChiNhanh();
-            gridDonDatHang.DataSource = data.LayDanhSachDonHang(p);
+            gridDonDatHang.DataSource = data.LayDanhSachDonHang(IDKho);
             gridDonDatHang.DataBind();
+        }
+
+        protected void gridDonDatHang_HtmlRowPrepared(object sender, DevExpress.Web.ASPxGridViewTableRowEventArgs e)
+        {
+            Color color = (Color)ColorTranslator.FromHtml("#FF9797");
+            int MucDoUuTien = Convert.ToInt32(e.GetValue("MucDoUuTien"));// lấy giá trị
+            int TrangThai = Convert.ToInt32(e.GetValue("TrangThai"));
+            if (MucDoUuTien == 1 && TrangThai ==0)
+                e.Row.BackColor = color;
         }
     }
 }

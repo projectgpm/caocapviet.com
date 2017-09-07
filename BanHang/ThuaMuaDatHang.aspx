@@ -231,6 +231,7 @@
                             <dx:ASPxGridView ID="gridDanhSachHangHoa" runat="server" AutoGenerateColumns="False" KeyFieldName="ID" Width="100%">
                                  <SettingsEditing Mode="PopupEditForm">
                                  </SettingsEditing>
+                                 <Settings ShowFooter="True" />
                                  <SettingsBehavior ConfirmDelete="True" />
                                  <SettingsCommandButton>
                                     <ShowAdaptiveDetailButton ButtonType="Image">
@@ -306,6 +307,10 @@
                                     </dx:GridViewDataTextColumn>
 
                                 </Columns>
+                                 <TotalSummary>
+                                     <dx:ASPxSummaryItem DisplayFormat="Tổng = {0:N0}" FieldName="ThanhTien" ShowInColumn="Thành Tiền" SummaryType="Sum" />
+                                     <dx:ASPxSummaryItem DisplayFormat="Tổng = {0:N0}" FieldName="SoLuong" ShowInColumn="Số Lượng" SummaryType="Sum" />
+                                 </TotalSummary>
                                  <Styles>
                                     <Header Font-Bold="True" HorizontalAlign="Center">
                                     </Header>

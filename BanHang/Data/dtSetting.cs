@@ -33,6 +33,26 @@ namespace BanHang.Data
                 }
             }
         }
+        public static int LaySoNgayBanHang()
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT TuanSuatBanHang FROM [Setting]";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    if (tb.Rows.Count != 0)
+                    {
+                        DataRow dr = tb.Rows[0];
+                        return Int32.Parse(dr["TuanSuatBanHang"].ToString());
+                    }
+                    else return 0;
+                }
+            }
+        }
         public static int KT_BanHang(string IDKho)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
