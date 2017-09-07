@@ -78,6 +78,8 @@
                  <HeaderStyle Wrap="True" />
              </dx:GridViewDataDateColumn>
              <dx:GridViewDataComboBoxColumn Caption="Trạng Thái Xử Lý" FieldName="IDTrangThaiXuLy" VisibleIndex="10">
+                 <PropertiesComboBox DataSourceID="SqlTrangThaiXuLy" TextField="TenTrangThai" ValueField="ID">
+                 </PropertiesComboBox>
                  <HeaderStyle Wrap="True" />
              </dx:GridViewDataComboBoxColumn>
              <dx:GridViewDataComboBoxColumn Caption="Chi Nhánh Lập" FieldName="IDKhoLap" VisibleIndex="7">
@@ -96,6 +98,12 @@
                  <HeaderStyle Wrap="True" />
              </dx:GridViewDataSpinEditColumn>
              <dx:GridViewDataComboBoxColumn Caption="Trạng Thái Đơn Hàng" FieldName="TrangThai" VisibleIndex="11">
+                 <PropertiesComboBox>
+                     <Items>
+                         <dx:ListEditItem Text="Chênh Lệch" Value="1" />
+                         <dx:ListEditItem Text="Không Chênh Lệch" Value="0" />
+                     </Items>
+                 </PropertiesComboBox>
                  <HeaderStyle Wrap="True" />
              </dx:GridViewDataComboBoxColumn>
              <dx:GridViewDataDateColumn Caption="Ngày Cập Nhật" FieldName="NgayCapNhat" VisibleIndex="13">
@@ -109,7 +117,7 @@
                  <HeaderStyle Wrap="True" />
              </dx:GridViewDataComboBoxColumn>
              <dx:GridViewDataHyperLinkColumn Caption="Chứng Từ" FieldName="ChungTu" VisibleIndex="12" UnboundType="String">
-                  <PropertiesHyperLinkEdit ImageUrlField="ChungTu"></PropertiesHyperLinkEdit>       
+                  <PropertiesHyperLinkEdit ImageUrl="image/download.png" ImageWidth="90" ImageHeight="60"></PropertiesHyperLinkEdit>       
              </dx:GridViewDataHyperLinkColumn>
          </Columns>
         <Styles>
@@ -121,6 +129,7 @@
             </TitlePanel>
         </Styles>
     </dx:ASPxGridView>
+     <asp:SqlDataSource ID="SqlTrangThaiXuLy" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" SelectCommand="SELECT [ID], [TenTrangThai] FROM [GPM_TrangThaiDonHang]"></asp:SqlDataSource>
      <asp:SqlDataSource ID="SqlKho" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" SelectCommand="SELECT [ID], [TenCuaHang] FROM [GPM_Kho] WHERE ([DaXoa] = @DaXoa)">
          <SelectParameters>
              <asp:Parameter DefaultValue="0" Name="DaXoa" Type="Int32" />

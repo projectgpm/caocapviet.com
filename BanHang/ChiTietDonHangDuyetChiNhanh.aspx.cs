@@ -1,6 +1,7 @@
 ﻿using BanHang.Data;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -32,6 +33,14 @@ namespace BanHang
             data = new dtDuyetDonHangChiNhanh();
             gridChiTiet.DataSource = data.DanhSachChiTietDuyet(IDDuyetHangChiNhanh);
             gridChiTiet.DataBind();
+        }
+
+        protected void gridChiTiet_HtmlRowPrepared(object sender, DevExpress.Web.ASPxGridViewTableRowEventArgs e)
+        {
+            Color color = (Color)ColorTranslator.FromHtml("#FF9797");
+            int TrangThai = Convert.ToInt32(e.GetValue("TrangThai"));
+            if (TrangThai == 1)
+                e.Row.BackColor = color;
         }
     }
 }

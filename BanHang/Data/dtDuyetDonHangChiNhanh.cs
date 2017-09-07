@@ -180,14 +180,15 @@ namespace BanHang.Data
                 }
             }
         }
-        public void CapNhatTrangThaiClient(string ID)
+        public void CapNhatTrangThaiClient(string ID, int TrangThaiXuLu)
         {
+
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
                 try
                 {
                     myConnection.Open();
-                    string cmdText = "UPDATE [GPM_DonHangChiNhanh] SET [TrangThai] = 1 WHERE [ID] = " + ID;
+                    string cmdText = "UPDATE [GPM_DonHangChiNhanh] SET [TrangThai] = 1 , [IDTrangThaiDonHang] = '" + TrangThaiXuLu + "' WHERE [ID] = " + ID;
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
                         myCommand.ExecuteNonQuery();

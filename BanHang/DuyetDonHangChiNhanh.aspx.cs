@@ -341,7 +341,7 @@ namespace BanHang
                             }
                         }
                         data = new dtDuyetDonHangChiNhanh();
-                        data.CapNhatTrangThaiClient(cmbSoDonHang.Value.ToString());
+                        data.CapNhatTrangThaiClient(cmbSoDonHang.Value.ToString(), TrangThaiXuLu);
                         data.Xoa_Temp_ID(IDTemp);
                         Response.Redirect("DonDatHangChiNhanh.aspx");
                         return;
@@ -365,7 +365,7 @@ namespace BanHang
                             string IDDonViTinh = dr1["IDDonViTinh"].ToString();
                             string TrongLuong = dr1["TrongLuong"].ToString();
                             string SoLuong = dr1["SoLuong"].ToString();
-                            string IDDuyetHangChiNhanh = dr1["IDDuyetHangChiNhanh"].ToString();
+                           
                             string TrangThai = dr1["TrangThai"].ToString();
                             string GhiChuHH = dr1["GhiChu"].ToString();
                             string ChenhLech = dr1["ChenhLech"].ToString();
@@ -401,7 +401,7 @@ namespace BanHang
                             }
                         }
                         data = new dtDuyetDonHangChiNhanh();
-                        data.CapNhatTrangThaiClient(cmbSoDonHang.Value.ToString());
+                        data.CapNhatTrangThaiClient(cmbSoDonHang.Value.ToString(), TrangThaiXuLu);
                         data.Xoa_Temp_ID(IDTemp);
                         Response.Redirect("DonDatHangChiNhanh.aspx");
                         return;
