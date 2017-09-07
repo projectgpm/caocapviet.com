@@ -4,7 +4,7 @@
     <Items>
         <dx:LayoutGroup Caption="Thông tin đơn hàng" ColCount="3" ColSpan="3" RowSpan="3">
             <Items>
-                <dx:LayoutItem Caption="Số Đơn Hàng">
+                <dx:LayoutItem Caption="Số Đơn Hàng(*)">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer4" runat="server">
                             <dx:ASPxComboBox ID="cmbSoDonHang" runat="server" Width="100%" 

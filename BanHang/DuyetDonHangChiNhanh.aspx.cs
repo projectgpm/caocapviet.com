@@ -88,6 +88,7 @@ namespace BanHang
                     int SoLuongThucTe = Int32.Parse(e.NewValues["ThucTe"].ToString());
                     int SoLuong = Int32.Parse(e.NewValues["SoLuong"].ToString());
                     int TonKhoTong = Int32.Parse(e.NewValues["TonKhoTong"].ToString());
+                     string IDTemp = IDDonHangDuyet_Temp.Value.ToString();
                     if (SoLuongThucTe >= 0)
                     {
                         if (SoLuongThucTe > SoLuong)
@@ -99,12 +100,23 @@ namespace BanHang
                             string MaHang = e.NewValues["MaHang"].ToString();
                             string IDHangHoa = dtHangHoa.LayIDHangHoa_MaHang(MaHang.Trim());
                             data = new dtDuyetDonHangChiNhanh();
-                            string IDTemp = IDDonHangDuyet_Temp.Value.ToString();
+                           
                             data.CapNhatChiTietDonHang(ID, IDHangHoa, IDTemp, SoLuongThucTe, SoLuong - SoLuongThucTe);
                         }
                         if (SoLuongThucTe > TonKhoTong)
                         {
                             // cập nhật ghi chú
+                            string GhiChu = e.NewValues["GhiChu"].ToString();
+                            string aa = ", Tồn kho âm";
+                            data = new dtDuyetDonHangChiNhanh();
+                            data.CapNhatGhiChu(ID, IDTemp, (GhiChu + aa).ToString());
+                        }
+                        else
+                        {
+                            string GhiChu = e.NewValues["GhiChu"].ToString();
+                            string aa = ", Tồn kho âm";
+                            data = new dtDuyetDonHangChiNhanh();
+                            data.CapNhatGhiChu(ID, IDTemp, (GhiChu).ToString().Replace(aa,""));
                         }
                     }
                     else
@@ -130,8 +142,7 @@ namespace BanHang
                     foreach (DataRow dr in db.Rows)
                     {
                         double TrongLuong = double.Parse(dr["TrongLuong"].ToString());
-                        int SoLuong = Int32.Parse(dr["SoLuong"].ToString());
-                        Tong = Tong + (TrongLuong * SoLuong);
+                        Tong = Tong + (TrongLuong);
                     }
                     return Tong;
                 }
@@ -163,35 +174,65 @@ namespace BanHang
                     txtNgayDatHang.Date = DateTime.Parse(dr["NgayDat"].ToString());
                     cmbChiNhanhLap.Value = dr["IDKho"].ToString();
                     txtGhiChu.Text = dr["GhiChu"].ToString();
-                    DataTable dt = data.DanhSachChiTiet(ID);
+                    
                     string IDTemp = IDDonHangDuyet_Temp.Value.ToString();
-                    if (dt.Rows.Count > 0)
+                    int TrangThaiDonHang = Int32.Parse(dr["IDTrangThaiDonHang"].ToString());
+                    if (TrangThaiDonHang != 4)
                     {
-                        foreach (DataRow dr1 in dt.Rows)
+                        //đơn hàng chưa xử lý lần nào
+                        DataTable dt = data.DanhSachChiTiet(ID);
+                        if (dt.Rows.Count > 0)
                         {
-                            string MaHang = dr1["MaHang"].ToString();
-                            string IDHangHoa = dr1["IDHangHoa"].ToString();
-                            string IDDonViTinh = dr1["IDDonViTinh"].ToString();
-                            string TrongLuong = dr1["TrongLuong"].ToString();
-                            string SoLuong = dr1["SoLuong"].ToString();
-                            string TonKho = dr1["TonKho"].ToString();
-                            string GhiChu = dr1["GhiChu"].ToString();
-                            string TrangThai = dr1["TrangThai"].ToString();
-                            string IDDonHangChiNhanh = dr1["IDDonHangChiNhanh"].ToString();
-                            string IDKho = dr1["IDKho"].ToString();
-                            data = new dtDuyetDonHangChiNhanh();
-                            DataTable dbt = data.KTChiTietDonHang_Temp(IDHangHoa, IDDonHangChiNhanh, IDTemp);
-                            if (dbt.Rows.Count == 0)
+                            foreach (DataRow dr1 in dt.Rows)
                             {
-                                data.ThemChiTietDonHang_Temp(ID, MaHang, IDHangHoa, IDDonViTinh, TrongLuong, SoLuong, TonKho, GhiChu, TrangThai, IDKho, IDTemp);
+                                string MaHang = dr1["MaHang"].ToString();
+                                string IDHangHoa = dr1["IDHangHoa"].ToString();
+                                string IDDonViTinh = dr1["IDDonViTinh"].ToString();
+                                string TrongLuong = dr1["TrongLuong"].ToString();
+                                string SoLuong = dr1["SoLuong"].ToString();
+                                string TonKho = dr1["TonKho"].ToString();
+                                string GhiChu = dr1["GhiChu"].ToString();
+                                string TrangThai = dr1["TrangThai"].ToString();
+                                string IDDonHangChiNhanh = dr1["IDDonHangChiNhanh"].ToString();
+                                string IDKho = dr1["IDKho"].ToString();
+                                data = new dtDuyetDonHangChiNhanh();
+                                DataTable dbt = data.KTChiTietDonHang_Temp(IDHangHoa, IDDonHangChiNhanh, IDTemp);
+                                if (dbt.Rows.Count == 0)
+                                {
+                                    data.ThemChiTietDonHang_Temp(ID, MaHang, IDHangHoa, IDDonViTinh, TrongLuong, SoLuong, TonKho, GhiChu, TrangThai, IDKho, IDTemp);
+                                }
                             }
+                            LoadDanhSach(ID, IDTemp);
                         }
-                        LoadDanhSach(ID, IDTemp);
+                        else
+                        {
+                            Response.Write("<script language='JavaScript'> alert('Danh sách hàng hóa trống.'); </script>");
+                            return;
+                        }
                     }
                     else
                     {
-                        Response.Write("<script language='JavaScript'> alert('Danh sách hàng hóa trống.'); </script>");
-                        return;
+                        //đơn hàng đã xử lý 1 phần. lấy dữ liệu trong bảng log
+                        data = new dtDuyetDonHangChiNhanh();
+                        DataTable dt = data.DanhSachChiTiet_LOG(cmbSoDonHang.Text.ToString().Trim(), cmbSoDonHang.Value.ToString());
+                        if (dt.Rows.Count > 0)
+                        {
+                            foreach (DataRow dr1 in dt.Rows)
+                            {
+                                string MaHang = dr1["MaHang"].ToString();
+                                string IDHangHoa = dr1["IDHangHoa"].ToString();
+                                string IDDonViTinh = dr1["IDDonViTinh"].ToString();
+                                string TrongLuong = dr1["TrongLuong"].ToString();
+                                string SoLuong = dr1["SoLuong"].ToString();
+                                data = new dtDuyetDonHangChiNhanh();
+                                data.ThemChiTietDonHang_Temp(ID, MaHang, IDHangHoa, IDDonViTinh, TrongLuong, SoLuong, "0", "", "0", "1", IDTemp);
+                            }
+                            LoadDanhSach(ID, IDTemp);
+                        }
+                        else
+                        {
+                            Response.Write("<script language='JavaScript'> alert('Danh sách hàng hóa trống.'); </script>");
+                        }
                     }
                 }
                 else
@@ -204,100 +245,175 @@ namespace BanHang
 
         protected void btnThem_Click(object sender, EventArgs e)
         {
-           // if (cmbSoDonHang.Text != "")
-           // {
-            //    string SoDonHang = cmbSoDonHang.Text.Trim();
-            //    string IDNguoiLap = cmbNguoiLap.Value.ToString();
-            //    DateTime NgayLap = DateTime.Parse(txtNgayLap.Text);
-            //    string TongTrongLuong = txtTongTrongLuong.Text;
-            //    string TongTien = txtTongTien.Text;
-            //    string IDKhoLap = cmbKhoLap.Value.ToString();
-            //    string IDKhoDuyet = cmbKhoDuyet.Value.ToString();
-            //    string IDNguoiDuyet = Session["IDNhanVien"].ToString();
-            //    DateTime NgayDuyet = DateTime.Parse(txtNgayDuyet.Text);
-            //    string GhiChu = txtGhiChu.Text == null ? "" : txtGhiChu.Text.ToString();
-
-            //    if (dtSetting.KT_ChuyenAm() == 1)
-            //    {
-            //        DataTable db = data.DanhSachChiTiet_Temp(cmbSoDonHang.Value.ToString());
-            //        data = new dtDuyetDonHangChiNhanh();
-            //        object ID = data.ThemDuyetDonHang(SoDonHang, IDNguoiLap, TongTrongLuong, TongTien, IDKhoLap, IDKhoDuyet, IDNguoiDuyet, GhiChu, NgayLap, NgayDuyet);
-            //        if (ID != null)
-            //        {
-            //            data = new dtDuyetDonHangChiNhanh();
-            //            foreach (DataRow dr1 in db.Rows)
-            //            {
-            //                string IDHangHoa = dr1["IDHangHoa"].ToString();
-            //                string MaHang = dr1["MaHang"].ToString();
-            //                string IDDonViTinh = dr1["IDDonViTinh"].ToString();
-            //                string TrongLuong = dr1["TrongLuong"].ToString();
-            //                string SoLuong = dr1["SoLuong"].ToString();
-            //                string DonGia = dr1["DonGia"].ToString();
-            //                string ThanhTien = dr1["ThanhTien"].ToString();
-            //                data = new dtDuyetDonHangChiNhanh();
-            //                dtCapNhatTonKho.TruTonKho(IDHangHoa, SoLuong, IDKhoDuyet);
-            //                dtCapNhatTonKho.CongTonKho(IDHangHoa, SoLuong, IDKhoLap);
-            //                data.ThemChiTietDonHang_Duyet(ID, MaHang, IDHangHoa, IDDonViTinh, TrongLuong, SoLuong, DonGia, ThanhTien);
-            //            }
-            //            data = new dtDuyetDonHangChiNhanh();
-            //            data.CapNhatTrangThaiClient(cmbSoDonHang.Value.ToString());
-            //            data.Xoa_ALL_Temp();
-            //        }
-
-            //        dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Đơn hàng chi nhánh", Session["IDKho"].ToString(), "Nhập xuất tồn", "Duyệt");
-            //        Response.Redirect("DonHangDaDuyet.aspx");
-            //    }
-            //    else
-            //    {
-            //        int kt = 0;
-            //        DataTable db = data.DanhSachChiTiet_Temp(cmbSoDonHang.Value.ToString());
-            //        foreach (DataRow dr1 in db.Rows)
-            //        {
-            //            string IDHangHoa = dr1["IDHangHoa"].ToString();
-            //            int SoLuong = Int32.Parse(dr1["SoLuong"].ToString());
-            //            int SLTon = dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, Session["IDKho"].ToString());
-            //            if (SLTon < SoLuong)
-            //            {
-            //                kt = 1;
-            //                ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Lỗi: Số lượng tồn kho không đủ:" + dtHangHoa.LayTenHangHoa(IDHangHoa) + "');", true);
-            //                //throw new Exception("Lỗi: Số lượng tồn kho không đủ: " + dtHangHoa.LayTenHangHoa(IDHangHoa));
-            //                return;
-            //            }
-            //        }
-            //        if (kt == 0)
-            //        {
-            //            data = new dtDuyetDonHangChiNhanh();
-            //            object ID = data.ThemDuyetDonHang(SoDonHang, IDNguoiLap, TongTrongLuong, TongTien, IDKhoLap, IDKhoDuyet, IDNguoiDuyet, GhiChu, NgayLap, NgayDuyet);
-            //            if (ID != null)
-            //            {
-            //                data = new dtDuyetDonHangChiNhanh();
-            //                foreach (DataRow dr1 in db.Rows)
-            //                {
-            //                    string IDHangHoa = dr1["IDHangHoa"].ToString();
-            //                    string MaHang = dr1["MaHang"].ToString();
-            //                    string IDDonViTinh = dr1["IDDonViTinh"].ToString();
-            //                    string TrongLuong = dr1["TrongLuong"].ToString();
-            //                    string SoLuong = dr1["SoLuong"].ToString();
-            //                    string DonGia = dr1["DonGia"].ToString();
-            //                    string ThanhTien = dr1["ThanhTien"].ToString();
-            //                    data = new dtDuyetDonHangChiNhanh();
-            //                    dtCapNhatTonKho.TruTonKho(IDHangHoa, SoLuong, IDKhoDuyet);
-            //                    dtCapNhatTonKho.CongTonKho(IDHangHoa, SoLuong, IDKhoLap);
-            //                    data.ThemChiTietDonHang_Duyet(ID, MaHang, IDHangHoa, IDDonViTinh, TrongLuong, SoLuong, DonGia, ThanhTien);
-            //                }
-            //                data = new dtDuyetDonHangChiNhanh();
-            //                data.CapNhatTrangThaiClient(cmbSoDonHang.Value.ToString());
-
-            //                data.Xoa_ALL_Temp();
-            //            }
-
-            //            dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Đơn hàng chi nhánh", Session["IDKho"].ToString(), "Nhập xuất tồn", "Duyệt");
-            //            Response.Redirect("DonHangDaDuyet.aspx");
-            //        }
-            //    }
-            //}
+            if (dtSetting.KT_ChuyenAm() == 1) // kiểm tra âm kho
+            {
+                XuLyDuLieu();
+            }
+            else
+            {
+                int kt = 0;
+                string IDTemp = IDDonHangDuyet_Temp.Value.ToString();
+                DataTable db = data.DanhSachChiTiet_Temp(cmbSoDonHang.Value.ToString(), IDTemp, Session["IDKho"].ToString());
+                foreach (DataRow dr1 in db.Rows)
+                {
+                    string IDHangHoa = dr1["IDHangHoa"].ToString();
+                    int SoLuong = Int32.Parse(dr1["ThucTe"].ToString());
+                    int SLTon = dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, Session["IDKho"].ToString());
+                    if (SoLuong > SLTon)
+                    {
+                        kt = 1;
+                        ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Lỗi: Số lượng tồn kho không đủ:" + dtHangHoa.LayTenHangHoa(IDHangHoa) + "');", true);
+                        return;
+                    }
+                }
+                if (kt == 0)
+                {
+                    XuLyDuLieu();
+                }
+            }
         }
+        public void XuLyDuLieu()
+        {
+            if (cmbSoDonHang.Text != "")
+            {
+                string IDDonHang = cmbSoDonHang.Value.ToString();
+                string SoDonHang = cmbSoDonHang.Text.Trim();
+                string IDNguoiLap = cmbNguoiLap.Value.ToString();
+                DateTime NgayDat = DateTime.Parse(txtNgayDatHang.Text);
+                string IDNguoiDuyet = Session["IDNhanVien"].ToString();
+                DateTime NgayDuyet = DateTime.Parse(txtNgayDuyet.Text);
+                DateTime NgayGiao = DateTime.Parse(txtNgayGiao.Text.ToString());
+                int TrangThaiXuLu = Int32.Parse(cmbTrangThaiDonHang.Value.ToString());
+                string IDKhoLap = cmbChiNhanhLap.Value.ToString();
+                string IDKhoDuyet = cmbChiNhanhDuyet.Value.ToString();
+                string GhiChu = txtGhiChu.Text == null ? "" : txtGhiChu.Text.ToString();
+                string TongTrongLuong = TinhTrongLuong().ToString();
+                string ChungTu = "";
+                if (Page.IsValid && uploadfile.HasFile)
+                {
+                    ChungTu = "ChungTu/" + DateTime.Now.ToString("ddMMyyyy_hhmmss_tt_") + uploadfile.FileName;
+                    string filePath = MapPath(ChungTu);
+                    uploadfile.SaveAs(filePath);
+                }
+                string IDTemp = IDDonHangDuyet_Temp.Value.ToString();
+                if (TrangThaiXuLu != 4)
+                {
+                    // đơn hàng k treo. xử lý hết 1 lượt
+                    data = new dtDuyetDonHangChiNhanh();
+                    object ID = data.ThemDuyetDonHang(IDDonHang, SoDonHang, IDNguoiLap, NgayDat, IDNguoiDuyet, NgayDuyet, NgayGiao, TrangThaiXuLu.ToString(), IDKhoLap, IDKhoDuyet, GhiChu, TongTrongLuong, ChungTu);
+                    if (ID != null)
+                    {
+                        DataTable db = data.DanhSachChiTiet_Temp(cmbSoDonHang.Value.ToString(), IDTemp, Session["IDKho"].ToString());
+                        data = new dtDuyetDonHangChiNhanh();
+                        foreach (DataRow dr1 in db.Rows)
+                        {
+                            int kt = 0;
+                            string MaHang = dr1["MaHang"].ToString();
+                            string IDHangHoa = dr1["IDHangHoa"].ToString();
+                            string IDDonViTinh = dr1["IDDonViTinh"].ToString();
+                            string TrongLuong = dr1["TrongLuong"].ToString();
+                            string SoLuong = dr1["SoLuong"].ToString();
+                           
+                            string TrangThai = dr1["TrangThai"].ToString();
+                            string GhiChuHH = dr1["GhiChu"].ToString();
+                            string ChenhLech = dr1["ChenhLech"].ToString();
+                            string ThucTe = dr1["ThucTe"].ToString();
+                            string IDKho = dr1["IDKho"].ToString();
+                            data = new dtDuyetDonHangChiNhanh();
+                            // xử lý hàng sẽ cho cửa hàng trước thấy và xác nhận. if không xác nhận thì đơn hàng tự đổi trạng thái và hàng vào kho, trừ kho tổng
+                            data.ThemChiTietDonHang_Duyet(ID, MaHang, IDHangHoa, IDDonViTinh, TrongLuong, SoLuong, TrangThai, GhiChuHH, IDKho, ChenhLech, ThucTe);
+                            if (Int32.Parse(SoLuong) != Int32.Parse(ThucTe))
+                            {
+                                kt = 1;
+                            }
+                            if (kt == 1)
+                            {
+                                data = new dtDuyetDonHangChiNhanh();
+                                //cho biết đơn hàng xử lý có chênh lệch hay không
+                                data.CapNhatChenhLech(ID);
+                            }
+                            DataTable LOG = data.KiemTra_LOG(SoDonHang, IDHangHoa, IDDonHang);
+                            if (LOG.Rows.Count != 0)
+                            {
+                                // đơn hàng đang xử lý hoàn tất, nếu đơn hàng đang treo thì xóa đơn hàng đó.
+                                data = new dtDuyetDonHangChiNhanh();
+                                data.Xoa_LOG(SoDonHang, IDHangHoa, IDDonHang);
+                            }
+                        }
+                        data = new dtDuyetDonHangChiNhanh();
+                        data.CapNhatTrangThaiClient(cmbSoDonHang.Value.ToString());
+                        data.Xoa_Temp_ID(IDTemp);
+                        Response.Redirect("DonDatHangChiNhanh.aspx");
+                        return;
+                        // dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Đơn hàng chi nhánh", Session["IDKho"].ToString(), "Nhập xuất tồn", "Duyệt");
+                    }
+                }
+                else
+                {
+                    // đơn hàng treo, xử lý 1 phần, lưu vào bàng GPM_Log_DuyetHangChiNhanh
+                    data = new dtDuyetDonHangChiNhanh();
+                    object ID = data.ThemDuyetDonHang(IDDonHang, SoDonHang, IDNguoiLap, NgayDat, IDNguoiDuyet, NgayDuyet, NgayGiao, TrangThaiXuLu.ToString(), IDKhoLap, IDKhoDuyet, GhiChu, TongTrongLuong, ChungTu);
+                    if (ID != null)
+                    {
+                        DataTable db = data.DanhSachChiTiet_Temp_LuuLOG(cmbSoDonHang.Value.ToString(), IDTemp, Session["IDKho"].ToString());
+                        data = new dtDuyetDonHangChiNhanh();
+                        foreach (DataRow dr1 in db.Rows)
+                        {
+                            int kt = 0;
+                            string MaHang = dr1["MaHang"].ToString();
+                            string IDHangHoa = dr1["IDHangHoa"].ToString();
+                            string IDDonViTinh = dr1["IDDonViTinh"].ToString();
+                            string TrongLuong = dr1["TrongLuong"].ToString();
+                            string SoLuong = dr1["SoLuong"].ToString();
+                            string IDDuyetHangChiNhanh = dr1["IDDuyetHangChiNhanh"].ToString();
+                            string TrangThai = dr1["TrangThai"].ToString();
+                            string GhiChuHH = dr1["GhiChu"].ToString();
+                            string ChenhLech = dr1["ChenhLech"].ToString();
+                            string ThucTe = dr1["ThucTe"].ToString();
+                            string IDKho = dr1["IDKho"].ToString();
+                            if (Int32.Parse(SoLuong) != Int32.Parse(ThucTe))
+                            {
+                                kt = 1;
+                            }
+                            if (kt == 1)
+                            {
+                                data = new dtDuyetDonHangChiNhanh();
+                                //cho biết đơn hàng xử lý có chênh lệch hay không
+                                data.CapNhatChenhLech(ID);
+                            }
 
+                            data = new dtDuyetDonHangChiNhanh();
+                            // xử lý hàng sẽ cho cửa hàng trước thấy và xác nhận. if không xác nhận thì đơn hàng tự đổi trạng thái và hàng vào kho, trừ kho tổng
+                            data.ThemChiTietDonHang_Duyet(ID, MaHang, IDHangHoa, IDDonViTinh, TrongLuong, SoLuong, TrangThai, GhiChuHH, IDKho, ChenhLech, ThucTe);
+
+                            DataTable LOG = data.KiemTra_LOG(SoDonHang, IDHangHoa, IDDonHang);
+                            //thêm dữ liệu vào bảng log
+                            if (LOG.Rows.Count == 0)
+                            {
+                                data = new dtDuyetDonHangChiNhanh();
+                                data.ThemChiTietDonHang_LOG(SoDonHang, MaHang, IDHangHoa, IDDonViTinh, TrongLuong, ChenhLech, IDDonHang);
+                            }
+                            else
+                            {
+                                // nếu tồn tại cập nhật số lượng lại
+                                data = new dtDuyetDonHangChiNhanh();
+                                data.CapNhatChiTietDonHang_LOG(SoDonHang, IDHangHoa, ChenhLech, IDDonHang);
+                            }
+                        }
+                        data = new dtDuyetDonHangChiNhanh();
+                        data.CapNhatTrangThaiClient(cmbSoDonHang.Value.ToString());
+                        data.Xoa_Temp_ID(IDTemp);
+                        Response.Redirect("DonDatHangChiNhanh.aspx");
+                        return;
+                        //        dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Đơn hàng chi nhánh", Session["IDKho"].ToString(), "Nhập xuất tồn", "Duyệt");
+                    }
+                }
+            }
+            else
+            {
+                Response.Write("<script language='JavaScript'> alert('Vui lòng chọn số đơn hàng để thực hiện thao tác? '); </script>");
+            }
+        }
         protected void btnHuy_Click(object sender, EventArgs e)
         {
             string IDTemp = IDDonHangDuyet_Temp.Value.ToString();
