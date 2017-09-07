@@ -75,14 +75,14 @@ namespace BanHang.Data
                 }
             }
         }
-        public void Xoa_LOG(string SoDonHang, string IDHangHoa, string IDDonHangThuMua)
+        public void Xoa_LOG(string SoDonHang, string IDHangHoa, string IDSoDonHang)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
                 try
                 {
                     myConnection.Open();
-                    string cmdText = "DELETE [GPM_Log_DuyetHangChiNhanh]  WHERE [IDHangHoa] = '" + IDHangHoa + "' AND  [SoDonHang] = N'" + SoDonHang + "' AND [IDDonHangThuMua] = '" + IDDonHangThuMua + "'";
+                    string cmdText = "DELETE [GPM_Log_DuyetHangChiNhanh]  WHERE [IDHangHoa] = '" + IDHangHoa + "' AND  [SoDonHang] = N'" + SoDonHang + "' AND [IDSoDonHang] = '" + IDSoDonHang + "'";
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
                         myCommand.ExecuteNonQuery();
@@ -170,7 +170,7 @@ namespace BanHang.Data
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "SELECT * FROM [GPM_DuyetHangChiNhanh] WHERE ( '" + IDKho + "' = 1 OR [IDKhoLap] = '" + IDKho + "') ORDER BY [ID] DESC";
+                string cmdText = "SELECT * FROM [GPM_DuyetHangChiNhanh] WHERE ( '" + IDKho + "' = 1 OR [IDKhoLap] = '" + IDKho + "') AND [GPM_DuyetHangChiNhanh].IDTrangThaiXuLy != 2 AND [GPM_DuyetHangChiNhanh].TrangThaiDuyet = 0  ORDER BY [ID] DESC";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
@@ -193,11 +193,11 @@ namespace BanHang.Data
                     {
                         myCommand.ExecuteNonQuery();
                     }
-                    cmdText = " UPDATE [GPM_DonHangChiNhanh_ChiTiet] SET [TrangThai] = 1 WHERE [IDDonHangChiNhanh] = " + ID;
-                    using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
-                    {
-                        myCommand.ExecuteNonQuery();
-                    }
+                    //cmdText = " UPDATE [GPM_DonHangChiNhanh_ChiTiet] SET [TrangThai] = 1 WHERE [IDDonHangChiNhanh] = " + ID;
+                    //using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
+                    //{
+                    //    myCommand.ExecuteNonQuery();
+                    //}
                     myConnection.Close();
                 }
                 catch(Exception ex)

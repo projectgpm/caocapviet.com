@@ -8,9 +8,9 @@ using System.Web.UI.WebControls;
 
 namespace BanHang
 {
-    public partial class DonHangDaDuyet : System.Web.UI.Page
+    public partial class DonHangDaHuy : System.Web.UI.Page
     {
-        dtDuyetDonHangChiNhanh data = new dtDuyetDonHangChiNhanh();
+        dtDonHangHuy data = new dtDonHangHuy();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["KTDangNhap"] != "GPM")
@@ -24,13 +24,13 @@ namespace BanHang
                 {
                     gridDonDatHang.Columns["ChungTu"].Visible = false;
                 }
-                LoadGrid(IDKho.ToString());
+                LoadGrid(Session["IDKho"].ToString());
             }
-        }
 
+        }
         private void LoadGrid(string p)
         {
-            data = new dtDuyetDonHangChiNhanh();
+            data = new dtDonHangHuy();
             gridDonDatHang.DataSource = data.LayDanhSachDonHangDuyet(p);
             gridDonDatHang.DataBind();
         }

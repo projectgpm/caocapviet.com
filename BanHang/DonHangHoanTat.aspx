@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Root.master" AutoEventWireup="true" CodeBehind="DonHangDaDuyet.aspx.cs" Inherits="BanHang.DonHangDaDuyet" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Root.master" AutoEventWireup="true" CodeBehind="DonHangHoanTat.aspx.cs" Inherits="BanHang.DonHangHoanTat" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
      <script type="text/javascript">
          function OnMoreInfoClick(element, key) {
@@ -43,7 +43,7 @@
             <EditForm HorizontalAlign="WindowCenter" Modal="True" VerticalAlign="WindowCenter" />
         </SettingsPopup>
         <SettingsSearchPanel Visible="True" />
-        <SettingsText CommandDelete="Xóa" CommandEdit="Sửa" CommandNew="Thêm" ConfirmDelete="Bạn có chắc chắn muốn xóa không?" PopupEditFormCaption="Thông tin đơn vị tính" Title="DANH SÁCH ĐƠN ĐẶT HÀNG ĐÃ XỬ LÝ" EmptyDataRow="Danh sách đơn hàng trống." SearchPanelEditorNullText=" Nhập thông tin cần tìm.." />
+        <SettingsText CommandDelete="Xóa" CommandEdit="Sửa" CommandNew="Thêm" ConfirmDelete="Bạn có chắc chắn muốn xóa không?" PopupEditFormCaption="Thông tin đơn vị tính" Title="DANH SÁCH ĐƠN ĐẶT HÀNG HOÀN TẤT" EmptyDataRow="Danh sách đơn hàng trống." SearchPanelEditorNullText=" Nhập thông tin cần tìm.." />
          <Columns>
              <dx:GridViewDataButtonEditColumn Caption="Xem Chi Tiết" VisibleIndex="14">
                 
@@ -129,10 +129,9 @@
             </TitlePanel>
         </Styles>
     </dx:ASPxGridView>
-     <asp:SqlDataSource ID="SqlTrangThaiXuLy" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" SelectCommand="SELECT [ID], [TenTrangThai] FROM [GPM_TrangThaiDonHang] WHERE (([ID] &lt;&gt; @ID) AND ([ID] &lt;&gt; @ID2))">
+     <asp:SqlDataSource ID="SqlTrangThaiXuLy" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" SelectCommand="SELECT [ID], [TenTrangThai] FROM [GPM_TrangThaiDonHang] WHERE ([ID] = @ID)">
          <SelectParameters>
-             <asp:Parameter DefaultValue="2" Name="ID" Type="Int32" />
-             <asp:Parameter DefaultValue="3" Name="ID2" Type="Int32" />
+             <asp:Parameter DefaultValue="1" Name="ID" Type="Int32" />
          </SelectParameters>
      </asp:SqlDataSource>
      <asp:SqlDataSource ID="SqlKho" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" SelectCommand="SELECT [ID], [TenCuaHang] FROM [GPM_Kho] WHERE ([DaXoa] = @DaXoa)">
@@ -150,4 +149,5 @@
          Height="600px" FooterText="Thông tin chi tiết hàng hóa combo"
         HeaderText="Thông tin chi tiết đơn hàng" ClientInstanceName="popup" EnableHierarchyRecreation="True" CloseAction="CloseButton">
     </dx:ASPxPopupControl>
+     
 </asp:Content>

@@ -320,8 +320,11 @@ namespace BanHang
                             string ThucTe = dr1["ThucTe"].ToString();
                             string IDKho = dr1["IDKho"].ToString();
                             data = new dtDuyetDonHangChiNhanh();
+                            // trừ tồn kho tổng
+
                             // xử lý hàng sẽ cho cửa hàng trước thấy và xác nhận. if không xác nhận thì đơn hàng tự đổi trạng thái và hàng vào kho, trừ kho tổng
                             data.ThemChiTietDonHang_Duyet(ID, MaHang, IDHangHoa, IDDonViTinh, TrongLuong, SoLuong, TrangThai, GhiChuHH, IDKho, ChenhLech, ThucTe);
+                            dtCapNhatTonKho.TruTonKho(IDHangHoa,ThucTe,Session["IDKho"].ToString());
                             if (Int32.Parse(SoLuong) != Int32.Parse(ThucTe))
                             {
                                 kt = 1;
@@ -355,7 +358,7 @@ namespace BanHang
                     object ID = data.ThemDuyetDonHang(IDDonHang, SoDonHang, IDNguoiLap, NgayDat, IDNguoiDuyet, NgayDuyet, NgayGiao, TrangThaiXuLu.ToString(), IDKhoLap, IDKhoDuyet, GhiChu, TongTrongLuong, ChungTu);
                     if (ID != null)
                     {
-                        DataTable db = data.DanhSachChiTiet_Temp_LuuLOG(cmbSoDonHang.Value.ToString(), IDTemp, Session["IDKho"].ToString());
+                        DataTable db = data.DanhSachChiTiet_Temp(cmbSoDonHang.Value.ToString(), IDTemp, Session["IDKho"].ToString());
                         data = new dtDuyetDonHangChiNhanh();
                         foreach (DataRow dr1 in db.Rows)
                         {
@@ -383,12 +386,14 @@ namespace BanHang
                             }
 
                             data = new dtDuyetDonHangChiNhanh();
+                            //trừ tồn kho tổng
                             // xử lý hàng sẽ cho cửa hàng trước thấy và xác nhận. if không xác nhận thì đơn hàng tự đổi trạng thái và hàng vào kho, trừ kho tổng
                             data.ThemChiTietDonHang_Duyet(ID, MaHang, IDHangHoa, IDDonViTinh, TrongLuong, SoLuong, TrangThai, GhiChuHH, IDKho, ChenhLech, ThucTe);
+                            dtCapNhatTonKho.TruTonKho(IDHangHoa, ThucTe, Session["IDKho"].ToString());
 
                             DataTable LOG = data.KiemTra_LOG(SoDonHang, IDHangHoa, IDDonHang);
                             //thêm dữ liệu vào bảng log
-                            if (LOG.Rows.Count == 0)
+                            if (LOG.Rows.Count == 0 && Int32.Parse(TrangThai) == 0)
                             {
                                 data = new dtDuyetDonHangChiNhanh();
                                 data.ThemChiTietDonHang_LOG(SoDonHang, MaHang, IDHangHoa, IDDonViTinh, TrongLuong, ChenhLech, IDDonHang);
