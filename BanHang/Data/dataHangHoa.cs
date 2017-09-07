@@ -76,9 +76,9 @@ namespace BanHang.Data
             return getData(cmd);
         }
 
-        public DataTable getDanhSachHangHoa_TonKho_ID(string ID)
+        public DataTable getDanhSachHangHoa_TonKho_ID(string ID, string IDKho)
         {
-            string cmd = "SELECT [GPM_HANGHOA].*,[GPM_HANGHOATONKHO].* FROM [GPM_HANGHOA],[GPM_HANGHOATONKHO] WHERE [GPM_HANGHOATONKHO].IDHangHoa = [GPM_HANGHOA].ID AND [GPM_HANGHOA].ID = '" + ID + "' AND [GPM_HANGHOA].TenHangHoa is not null";
+            string cmd = "select GPM_HangHoa.ID, GPM_HangHoa.IDDonViTinh, GPM_HangHoa.TrongLuong, GPM_HangHoaTonKho.SoLuongCon from GPM_HangHoa,GPM_HangHoaTonKho where GPM_HangHoa.ID = '" + ID + "' and GPM_HangHoa.ID = GPM_HangHoaTonKho.IDHangHoa and GPM_HangHoaTonKho.IDKho = '" + IDKho + "'";
             return getData(cmd);
         }
 
@@ -363,7 +363,7 @@ namespace BanHang.Data
                     }
 
                     dtKho dt = new dtKho();
-                    DataTable da = dt.LayDanhSachKho();
+                    DataTable da = dt.LayDanhSachKho_Khac1();
                     for (int i = 0; i < da.Rows.Count; i++)
                     {
                         strSQL = "INSERT GPM_HangHoaTonKho (IDHangHoa, SoLuongCon, GiaBan, GiaBan1, GiaBan2, GiaBan3, GiaBan4, GiaBan5, IDKho, NgayCapNhat) VALUES (@ID, @SoLuongCon, @GiaBan, @GiaBan1, @GiaBan2, @GiaBan3, @GiaBan4, @GiaBan5, @IDKho, getDATE())";

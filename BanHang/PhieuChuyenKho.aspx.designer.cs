@@ -157,15 +157,6 @@ namespace BanHang {
         protected global::DevExpress.Web.ASPxSpinEdit txtTrongLuong;
         
         /// <summary>
-        /// txtTongTien control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxSpinEdit txtTongTien;
-        
-        /// <summary>
         /// txtGhiChu control.
         /// </summary>
         /// <remarks>
@@ -274,22 +265,13 @@ namespace BanHang {
         protected global::DevExpress.Web.ASPxSpinEdit txtHHTrongLuong;
         
         /// <summary>
-        /// txtGiaBan control.
+        /// txtGhiChuHH control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxSpinEdit txtGiaBan;
-        
-        /// <summary>
-        /// txtTongTienHH control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxSpinEdit txtTongTienHH;
+        protected global::DevExpress.Web.ASPxTextBox txtGhiChuHH;
         
         /// <summary>
         /// fileUpload control.
@@ -373,12 +355,12 @@ namespace BanHang {
         protected global::DevExpress.Web.ASPxButton btnHuyPhieuChuyenKho;
         
         /// <summary>
-        /// IDPhieuChuyenKho_Temp control.
+        /// IDPhieuChuyenKho control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField IDPhieuChuyenKho_Temp;
+        protected global::System.Web.UI.WebControls.HiddenField IDPhieuChuyenKho;
     }
 }

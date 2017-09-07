@@ -10,7 +10,7 @@
 namespace BanHang {
     
     
-    public partial class DanhSachPhieuChuyenKho {
+    public partial class DanhSachPhieuChuyenKho_DangChuyen {
         
         /// <summary>
         /// form1 control.
@@ -101,6 +101,15 @@ namespace BanHang {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxFormLayout ASPxFormLayout1;
+        
+        /// <summary>
+        /// LayoutItemNestedControlContainer5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.LayoutItemNestedControlContainer LayoutItemNestedControlContainer5;
         
         /// <summary>
         /// gridPhieuChuyenKho control.

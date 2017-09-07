@@ -110,7 +110,7 @@
                                  <dx:ASPxComboBox ID="cmbNhomDatHang" runat="server" Width="100%" DataSourceID="sqlNhomDatHang"   ValueType="System.String"  DropDownWidth="400" DropDownStyle="DropDown" ValueField="ID">
                                     <Columns>
                                         <dx:ListBoxColumn Caption="ID" FieldName="ID" Width="100px" />
-                                        <dx:ListBoxColumn Caption="Nhóm đặt hàng" FieldName="TenNhom" Width="100%" />
+                                        <dx:ListBoxColumn Caption="Người đặt hàng" FieldName="TenNhom" Width="100%" />
                                     </Columns>
                                 </dx:ASPxComboBox>
                                  <asp:SqlDataSource ID="sqlNhomDatHang" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" SelectCommand="SELECT * FROM [GPM_NhomDatHang]"></asp:SqlDataSource>

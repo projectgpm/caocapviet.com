@@ -1,15 +1,15 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Root.master" AutoEventWireup="true" CodeBehind="DanhSachPhieuChuyenKho.aspx.cs" Inherits="BanHang.DanhSachPhieuChuyenKho" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Root.master" AutoEventWireup="true" CodeBehind="DanhSachPhieuChuyenKho_DangChuyen.aspx.cs" Inherits="BanHang.DanhSachPhieuChuyenKho_DangChuyen" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
-       <%--popup chi tiet don hang--%>
+    <%--popup chi tiet don hang--%>
      <script type="text/javascript">
          function OnMoreInfoClick(element, key) {
              popup.SetContentUrl("ChiTietPhieuChuyenKho.aspx?IDPhieuChuyenKho=" + key);
              popup.ShowAtElement();
              // alert(key);
-         };
-         
+         }
+
     </script>
-       <dx:ASPxFormLayout ID="form1" runat="server">
+    <dx:ASPxFormLayout ID="form1" runat="server">
            <Items>
                <dx:LayoutGroup Caption="Chức năng" ColCount="4" Width="40%">
                    <Items>
@@ -58,15 +58,15 @@
            </Items>
        </dx:ASPxFormLayout>
     <br />
-       <dx:ASPxFormLayout ID="ASPxFormLayout1" runat="server" Width="100%">
+    <dx:ASPxFormLayout ID="ASPxFormLayout1" runat="server" Width="100%">
            <Items>
                
                <dx:LayoutGroup Caption="Danh sách">
                    <Items>
                        <dx:LayoutItem Caption="">
                            <LayoutItemNestedControlCollection>
-                               <dx:LayoutItemNestedControlContainer runat="server">
-                                   <dx:ASPxGridView ID="gridPhieuChuyenKho" runat="server" AutoGenerateColumns="False" Width="100%" KeyFieldName="ID" OnRowDeleting="gridPhieuChuyenKho_RowDeleting">
+                               <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer5" runat="server">
+                                    <dx:ASPxGridView ID="gridPhieuChuyenKho" runat="server" AutoGenerateColumns="False" Width="100%" KeyFieldName="ID">
                                         <SettingsPager Mode="ShowAllRecords">
                                         </SettingsPager>
                                         <Settings ShowFilterRow="True" ShowTitlePanel="True" />
@@ -154,8 +154,6 @@
                                             </dx:GridViewDataComboBoxColumn>
                                             <dx:GridViewDataTextColumn Caption="Ghi Chú" FieldName="GhiChu" VisibleIndex="16">
                                             </dx:GridViewDataTextColumn>
-                                            <dx:GridViewCommandColumn ShowDeleteButton="True" VisibleIndex="1">
-                                            </dx:GridViewCommandColumn>
                                         </Columns>
                                         <Styles>
                                             <Header Font-Bold="True" HorizontalAlign="Center">
@@ -166,14 +164,13 @@
                                             </TitlePanel>
                                         </Styles>
                                     </dx:ASPxGridView>
-                               </dx:LayoutItemNestedControlContainer>
+                                </dx:LayoutItemNestedControlContainer>
                            </LayoutItemNestedControlCollection>
                        </dx:LayoutItem>
                    </Items>
                </dx:LayoutGroup>
            </Items>
        </dx:ASPxFormLayout>
-    
         <asp:SqlDataSource ID="sqlTrangThaiChuyenHang" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" SelectCommand="SELECT [ID], [TenTrangThai] FROM [GPM_TrangThaiChuyenHang]"></asp:SqlDataSource>
        <asp:SqlDataSource ID="sqlDNhanVien" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" SelectCommand="SELECT [ID], [TenNguoiDung] FROM [GPM_NguoiDung] WHERE ([DaXoa] = @DaXoa)">
            <SelectParameters>

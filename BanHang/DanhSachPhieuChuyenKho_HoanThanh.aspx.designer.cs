@@ -10,7 +10,7 @@
 namespace BanHang {
     
     
-    public partial class DanhSachPhieuChuyenKho {
+    public partial class DanhSachPhieuChuyenKho_HoanThanh {
         
         /// <summary>
         /// form1 control.
@@ -22,13 +22,13 @@ namespace BanHang {
         protected global::DevExpress.Web.ASPxFormLayout form1;
         
         /// <summary>
-        /// LayoutItemNestedControlContainer1 control.
+        /// LayoutItemNestedControlContainer2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.LayoutItemNestedControlContainer LayoutItemNestedControlContainer1;
+        protected global::DevExpress.Web.LayoutItemNestedControlContainer LayoutItemNestedControlContainer2;
         
         /// <summary>
         /// btnThemPhieuMoi control.
@@ -40,13 +40,13 @@ namespace BanHang {
         protected global::DevExpress.Web.ASPxButton btnThemPhieuMoi;
         
         /// <summary>
-        /// LayoutItemNestedControlContainer2 control.
+        /// LayoutItemNestedControlContainer3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.LayoutItemNestedControlContainer LayoutItemNestedControlContainer2;
+        protected global::DevExpress.Web.LayoutItemNestedControlContainer LayoutItemNestedControlContainer3;
         
         /// <summary>
         /// btnDanhSachDangChuyen control.
@@ -58,13 +58,13 @@ namespace BanHang {
         protected global::DevExpress.Web.ASPxButton btnDanhSachDangChuyen;
         
         /// <summary>
-        /// LayoutItemNestedControlContainer3 control.
+        /// LayoutItemNestedControlContainer4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.LayoutItemNestedControlContainer LayoutItemNestedControlContainer3;
+        protected global::DevExpress.Web.LayoutItemNestedControlContainer LayoutItemNestedControlContainer4;
         
         /// <summary>
         /// btnDanhSachHoanThanh control.
@@ -76,13 +76,13 @@ namespace BanHang {
         protected global::DevExpress.Web.ASPxButton btnDanhSachHoanThanh;
         
         /// <summary>
-        /// LayoutItemNestedControlContainer4 control.
+        /// LayoutItemNestedControlContainer5 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.LayoutItemNestedControlContainer LayoutItemNestedControlContainer4;
+        protected global::DevExpress.Web.LayoutItemNestedControlContainer LayoutItemNestedControlContainer5;
         
         /// <summary>
         /// btnPhieuHuy control.
@@ -101,6 +101,15 @@ namespace BanHang {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxFormLayout ASPxFormLayout1;
+        
+        /// <summary>
+        /// LayoutItemNestedControlContainer1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.LayoutItemNestedControlContainer LayoutItemNestedControlContainer1;
         
         /// <summary>
         /// gridPhieuChuyenKho control.

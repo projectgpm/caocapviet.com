@@ -135,7 +135,7 @@
                             <PropertiesComboBox DataSourceID="sqlThue" TextField="TenThue" ValueField="ID">
                             </PropertiesComboBox>
                         </dx:GridViewDataComboBoxColumn>
-                        <dx:GridViewDataComboBoxColumn Caption="Nhóm đặt hàng" FieldName="IDNhomDatHang" ShowInCustomizationForm="True" VisibleIndex="13">
+                        <dx:GridViewDataComboBoxColumn Caption="Người đặt hàng" FieldName="IDNhomDatHang" ShowInCustomizationForm="True" VisibleIndex="13">
                             <PropertiesComboBox DataSourceID="sqlNhomDatHang" TextField="TenNhom" ValueField="ID">
                             </PropertiesComboBox>
                         </dx:GridViewDataComboBoxColumn>
