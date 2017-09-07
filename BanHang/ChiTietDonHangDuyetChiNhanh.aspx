@@ -9,6 +9,21 @@
 <body>
     <form id="form1" runat="server">
     <div>
+
+        <dx:ASPxFormLayout ID="ASPxFormLayout1" runat="server" ColCount="6">
+            <Items>
+                <dx:LayoutItem Caption="">
+                    <LayoutItemNestedControlCollection>
+                        <dx:LayoutItemNestedControlContainer runat="server">
+                            <dx:ASPxButton ID="btnChapNhanDonHang" runat="server" OnClick="btnChapNhanDonHang_Click" Text="Chấp Nhận Đơn Hàng">
+                                <Image IconID="comments_nextcomment_32x32">
+                                </Image>
+                            </dx:ASPxButton>
+                        </dx:LayoutItemNestedControlContainer>
+                    </LayoutItemNestedControlCollection>
+                </dx:LayoutItem>
+            </Items>
+        </dx:ASPxFormLayout>
      <dx:ASPxGridView runat="server" AutoGenerateColumns="False" Width="100%" ID="gridChiTiet" KeyFieldName="ID" OnHtmlRowPrepared="gridChiTiet_HtmlRowPrepared">
         <SettingsEditing Mode="PopupEditForm">
         </SettingsEditing>

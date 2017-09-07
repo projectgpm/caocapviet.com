@@ -19,6 +19,11 @@ namespace BanHang
                 string IDDonHangChiNhanh = Request.QueryString["IDDonHangChiNhanh"];
                 if (IDDonHangChiNhanh != null)
                 {
+                    // lấy trangthaiduyet
+                    if (dtDuyetDonHangChiNhanh.LayTrangThai(IDDonHangChiNhanh) == 1)
+                    {
+                        btnChapNhanDonHang.Enabled = false;
+                    }
                     LoadGrid(IDDonHangChiNhanh.ToString());
                 }
             }
@@ -41,6 +46,11 @@ namespace BanHang
             int TrangThai = Convert.ToInt32(e.GetValue("TrangThai"));
             if (TrangThai == 1)
                 e.Row.BackColor = color;
+        }
+
+        protected void btnChapNhanDonHang_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
