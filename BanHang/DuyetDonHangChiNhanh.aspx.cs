@@ -78,29 +78,43 @@ namespace BanHang
         {
             if (cmbSoDonHang.Text != "")
             {
-                string ID = e.Keys[0].ToString();
-                data = new dtDuyetDonHangChiNhanh();
-                int SoLuong = Int32.Parse(e.NewValues["SoLuong"].ToString());
-                if (SoLuong >= 0)
+                if (e.NewValues["ThucTe"] == null)
                 {
-                    //string MaHang = e.NewValues["MaHang"].ToString();
-                    //string IDHangHoa = dtHangHoa.LayIDHangHoa_MaHang(MaHang.Trim());
-                    //float DonGia = dtHangHoa.LayGiaBanSauThue(IDHangHoa);
-                    //data = new dtDuyetDonHangChiNhanh();
-                    //data.CapNhatChiTietDonHang(ID, IDHangHoa, SoLuong, DonGia, DonGia * SoLuong);
-                    //txtTongTien.Text = TinhTongTien().ToString();
-                    //txtTongTrongLuong.Text = TinhTrongLuong().ToString();
+                    throw new Exception("Lỗi: Số lượng thực tế không được bỏ trống. ");
                 }
                 else
                 {
-                    throw new Exception("Lỗi: Số lượng không được âm? ");
+                    string ID = e.Keys[0].ToString();
+                    int SoLuongThucTe = Int32.Parse(e.NewValues["ThucTe"].ToString());
+                    int SoLuong = Int32.Parse(e.NewValues["SoLuong"].ToString());
+                    int TonKhoTong = Int32.Parse(e.NewValues["TonKhoTong"].ToString());
+                    if (SoLuongThucTe >= 0)
+                    {
+                        if (SoLuongThucTe > SoLuong)
+                        {
+                            throw new Exception("Lỗi: Số lượng thực tế phải nhỏ hơn hoặc bằng Số lượng đặt ");
+                        }
+                        else
+                        {
+                            string MaHang = e.NewValues["MaHang"].ToString();
+                            string IDHangHoa = dtHangHoa.LayIDHangHoa_MaHang(MaHang.Trim());
+                            data = new dtDuyetDonHangChiNhanh();
+                            string IDTemp = IDDonHangDuyet_Temp.Value.ToString();
+                            data.CapNhatChiTietDonHang(ID, IDHangHoa, IDTemp, SoLuongThucTe, SoLuong - SoLuongThucTe);
+                        }
+                        if (SoLuongThucTe > TonKhoTong)
+                        {
+                            // cập nhật ghi chú
+                        }
+                    }
+                    else
+                    {
+                        throw new Exception("Lỗi: Số lượng không được âm? Vui lòng kiểm tra lại. ");
+                    }
+                    e.Cancel = true;
+                    gridDanhSachHangHoa.CancelEdit();
+                    LoadDanhSach(cmbSoDonHang.Value.ToString(), IDDonHangDuyet_Temp.Value.ToString());
                 }
-                e.Cancel = true;
-                gridDanhSachHangHoa.CancelEdit();
-
-                LoadDanhSach(cmbSoDonHang.Value.ToString(), IDDonHangDuyet_Temp.Value.ToString());
-
-                dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Đơn hàng chi nhánh", Session["IDKho"].ToString(), "Nhập xuất tồn", "Cập nhật");
             }
         }
        

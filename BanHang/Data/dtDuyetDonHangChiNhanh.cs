@@ -155,21 +155,21 @@ namespace BanHang.Data
                 }
             }
         }
-        public void CapNhatChiTietDonHang(string ID, string IDHangHoa, int SoLuong, float DonGia, float ThanhTien)
+        public void CapNhatChiTietDonHang(string ID, string IDHangHoa, string IDTemp, int ThucTe, int ChenhLech)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
                 try
                 {
                     myConnection.Open();
-                    string cmdText = "UPDATE [GPM_DuyetHangChiNhanh_Temp] SET [SoLuong] = @SoLuong,[DonGia] = @DonGia,[ThanhTien] = @ThanhTien WHERE [IDHangHoa] = @IDHangHoa AND [ID] = @ID";
+                    string cmdText = "UPDATE [GPM_DuyetHangChiNhanh_Temp] SET [ThucTe] = @ThucTe,[ChenhLech] = @ChenhLech WHERE [IDHangHoa] = @IDHangHoa AND [ID] = @ID AND [IDTemp] = @IDTemp";
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
                         myCommand.Parameters.AddWithValue("@IDHangHoa", IDHangHoa);
                         myCommand.Parameters.AddWithValue("@ID", ID);
-                        myCommand.Parameters.AddWithValue("@SoLuong", SoLuong);
-                        myCommand.Parameters.AddWithValue("@DonGia", DonGia);
-                        myCommand.Parameters.AddWithValue("@ThanhTien", ThanhTien);
+                        myCommand.Parameters.AddWithValue("@ThucTe", ThucTe);
+                        myCommand.Parameters.AddWithValue("@ChenhLech", ChenhLech);
+                        myCommand.Parameters.AddWithValue("@IDTemp", IDTemp);
                         myCommand.ExecuteNonQuery();
                     }
                     myConnection.Close();
