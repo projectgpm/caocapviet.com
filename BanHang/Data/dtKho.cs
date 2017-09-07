@@ -88,6 +88,22 @@ namespace BanHang.Data
             }
         }
 
+        public DataTable LayDanhSachKho_Khac1()
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT * FROM [GPM_Kho] WHERE [DAXOA] = 0 AND ID != 1";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    return tb;
+                }
+            }
+        }
+
         public object ThemKho(string MaKho, string TenCuaHang, string SoSerial, string DiaChi, string DienThoai, DateTime NgayMo, string IDVung, string TrangThaiBanHang, string GiaApDung)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))

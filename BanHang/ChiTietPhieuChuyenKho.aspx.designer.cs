@@ -22,13 +22,22 @@ namespace BanHang {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// gridDanhSachHangHoa control.
+        /// ASPxFormLayout1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxGridView gridDanhSachHangHoa;
+        protected global::DevExpress.Web.ASPxFormLayout ASPxFormLayout1;
+        
+        /// <summary>
+        /// gridHangHoaChiTiet control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxGridView gridHangHoaChiTiet;
         
         /// <summary>
         /// sqlDonViTinh control.
@@ -40,39 +49,12 @@ namespace BanHang {
         protected global::System.Web.UI.WebControls.SqlDataSource sqlDonViTinh;
         
         /// <summary>
-        /// ASPxFormLayout1 control.
+        /// btnXacNhanChuyenKho control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxFormLayout ASPxFormLayout1;
-        
-        /// <summary>
-        /// btnDuyetXuat control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxButton btnDuyetXuat;
-        
-        /// <summary>
-        /// btnDuyetNhap control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxButton btnDuyetNhap;
-        
-        /// <summary>
-        /// btnDuyetPhieuChuyenKho control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxButton btnDuyetPhieuChuyenKho;
+        protected global::DevExpress.Web.ASPxButton btnXacNhanChuyenKho;
     }
 }

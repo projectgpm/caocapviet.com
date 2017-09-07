@@ -1,4 +1,5 @@
 ﻿using BanHang.Data;
+using DevExpress.Web;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -29,12 +30,13 @@ namespace BanHang
                     if (!IsPostBack)
                     {
                         dtPhieuChuyenKho data = new dtPhieuChuyenKho();
-                        object IDPhieuChuyenKho = data.ThemPhieuChuyenKho(Session["IDKho"].ToString());
-                        IDPhieuChuyenKho_Temp.Value = IDPhieuChuyenKho.ToString();
+                        object ID = data.ThemPhieuChuyenKho(Session["IDKho"].ToString());
+                        IDPhieuChuyenKho.Value = ID.ToString();
                         cmbNguoiLapPhieu.Text = Session["IDNhanVien"].ToString();
                         cmbTrangThaiPhieu.SelectedIndex = 0;
+                        cmbKhoXuat.Value = Session["IDKho"].ToString();
                     }
-                    LoadGrid(IDPhieuChuyenKho_Temp.Value.ToString());
+                    LoadGrid(IDPhieuChuyenKho.Value.ToString());
                 }
                 else
                 {
@@ -51,7 +53,7 @@ namespace BanHang
         private void LoadGrid(string IDPhieuChuyenKho)
         {
             dtPhieuChuyenKho data = new dtPhieuChuyenKho();
-            gridDanhSachHangHoa_Temp.DataSource = data.DanhSachChiTietPhieuChuyenKho_Temp(IDPhieuChuyenKho);
+            gridDanhSachHangHoa_Temp.DataSource = data.DanhSachChiTietPhieuChuyenKho(IDPhieuChuyenKho);
             gridDanhSachHangHoa_Temp.DataBind();
 
         }
@@ -64,36 +66,40 @@ namespace BanHang
                 string IDHH = cmbHangHoa.Value + "";
                 if (Int32.Parse(txtSoLuong.Value + "") <= Int32.Parse(txtTonKho.Value + ""))
                 {
-                    DataTable dx = dt.KiemTraHangHoa_Temp(IDPhieuChuyenKho_Temp.Value.ToString(), IDHH);
+                    DataTable dx = dt.KiemTraHangHoa(IDPhieuChuyenKho.Value.ToString(), IDHH);
                     if (dx.Rows.Count == 0)
                     {
-                        dt.ThemChiTietPhieuChuyenKho_Temp(IDPhieuChuyenKho_Temp.Value.ToString(), IDHH, txtSoLuong.Value + "", txtHHTrongLuong.Value + "", txtGiaBan.Value + "", txtTongTienHH.Value + "");
-                        DataTable da = dt.ChiTietTongSoLuongHangHoa(IDPhieuChuyenKho_Temp.Value.ToString());
+                        dt.ThemChiTietPhieuChuyenKho(IDPhieuChuyenKho.Value.ToString(), IDHH, txtSoLuong.Value + "", txtHHTrongLuong.Value + "", txtGhiChuHH.Value + "");
+                        DataTable da = dt.ChiTietTongSoLuongHangHoa(IDPhieuChuyenKho.Value.ToString());
                         if (da.Rows.Count != 0)
                         {
                             txtTrongLuong.Value = float.Parse(da.Rows[0]["TongTrongLuong"].ToString());
-                            txtTongTien.Value = float.Parse(da.Rows[0]["TongTien"].ToString());
                             txtSoMatHang.Value = Int32.Parse(da.Rows[0]["TongSoLuong"].ToString());
                         }
                     }
                     else
                     {
-                        dt.CapNhatChiTietPhieuChuyenKho_Temp(IDPhieuChuyenKho_Temp.Value.ToString(), IDHH, (Int32.Parse(dx.Rows[0]["SoLuong"].ToString()) + Int32.Parse(txtSoLuong.Value + "")) + "", (float.Parse(dx.Rows[0]["TrongLuong"].ToString()) + float.Parse(txtHHTrongLuong.Value + "")) + "", txtGiaBan.Value + "", ((Int32.Parse(dx.Rows[0]["SoLuong"].ToString()) + Int32.Parse(txtSoLuong.Value + "")) * float.Parse(txtGiaBan.Value + "")) + "");
-                        DataTable da = dt.ChiTietTongSoLuongHangHoa(IDPhieuChuyenKho_Temp.Value.ToString());
+                        dt.CapNhatChiTietPhieuChuyenKho(IDPhieuChuyenKho.Value.ToString(), IDHH, (Int32.Parse(dx.Rows[0]["SoLuong"].ToString()) + Int32.Parse(txtSoLuong.Value + "")) + "", (float.Parse(dx.Rows[0]["TrongLuong"].ToString()) + float.Parse(txtHHTrongLuong.Value + "")) + "", txtGhiChuHH.Value + "");
+                        DataTable da = dt.ChiTietTongSoLuongHangHoa(IDPhieuChuyenKho.Value.ToString());
                         if (da.Rows.Count != 0)
                         {
                             txtTrongLuong.Value = float.Parse(da.Rows[0]["TongTrongLuong"].ToString());
-                            txtTongTien.Value = float.Parse(da.Rows[0]["TongTien"].ToString());
                             txtSoMatHang.Value = Int32.Parse(da.Rows[0]["TongSoLuong"].ToString());
                         }
                     }
-                    LoadGrid(IDPhieuChuyenKho_Temp.Value.ToString());
+                    LoadGrid(IDPhieuChuyenKho.Value.ToString());
                 }
                 else
                 {
                     txtSoLuong.Value = txtTonKho.Value;
                     Response.Write("<script language='JavaScript'> alert('Hàng hóa không đủ số lượng.'); </script>");
                 }
+
+                cmbHangHoa.SelectedIndex = -1;
+                txtHHTrongLuong.Value = 0;
+                cmbDonViTinh.SelectedIndex = -1;
+                txtSoLuong.Value = 1; ;
+                txtTonKho.Value = 0;
             }
             else if (!string.IsNullOrEmpty(fileUpload.FileName))
             {
@@ -103,80 +109,63 @@ namespace BanHang
                 Response.Write("<script language='JavaScript'> alert('Chọn hàng hóa hoặc file Import.'); </script>");
         }
 
-        protected void gridDanhSachHangHoa_Temp_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
+        protected void BtnXoaHang_Click(object sender, EventArgs e)
         {
-            int ID = Int32.Parse(e.Keys[0].ToString());
+            string ID = (((ASPxButton)sender).CommandArgument).ToString();
             dtPhieuChuyenKho dt = new dtPhieuChuyenKho();
-            dt.XoaChiTietPhieuChuyenKho_Temp(ID + "");
-            e.Cancel = true;
-            gridDanhSachHangHoa_Temp.CancelEdit();
-            LoadGrid(IDPhieuChuyenKho_Temp.Value.ToString());
 
-            DataTable da = dt.ChiTietTongSoLuongHangHoa(IDPhieuChuyenKho_Temp.Value.ToString());
+            dt.XoaChiTietPhieuChuyenKho_Delete(ID + "");
+            DataTable da = dt.ChiTietTongSoLuongHangHoa(IDPhieuChuyenKho.Value.ToString());
             if (da.Rows.Count != 0)
             {
                 txtTrongLuong.Value = float.Parse(da.Rows[0]["TongTrongLuong"].ToString());
-                txtTongTien.Value = float.Parse(da.Rows[0]["TongTien"].ToString());
                 txtSoMatHang.Value = Int32.Parse(da.Rows[0]["TongSoLuong"].ToString());
             }
+            else
+            {
+                txtTrongLuong.Value = 0;
+                txtSoMatHang.Value = 0;
+            }
+
+            LoadGrid(IDPhieuChuyenKho.Value.ToString());
         }
 
         protected void cmbHangHoa_SelectedIndexChanged(object sender, EventArgs e)
         {
             string IDHH = cmbHangHoa.Value.ToString();
             dataHangHoa data = new dataHangHoa();
-            DataTable da = data.getDanhSachHangHoa_TonKho_ID(IDHH);
+            DataTable da = data.getDanhSachHangHoa_TonKho_ID(IDHH, Session["IDKho"].ToString());
             if (da.Rows.Count != 0)
             {
-                DataRow dr  = da.Rows[0];
+                DataRow dr = da.Rows[0];
                 string SoLuongCon = dr["SoLuongCon"].ToString();
                 string IDDọnViTinh = dr["IDDonViTinh"].ToString();
                 string TrongLuong = dr["TrongLuong"].ToString();
-                string giaBan = dr["GiaBan"].ToString();
                 txtHHTrongLuong.Value = TrongLuong;
                 cmbDonViTinh.Value = IDDọnViTinh;
                 txtSoLuong.Value = 1; ;
                 txtTonKho.Value = SoLuongCon;
-                txtGiaBan.Value = giaBan;
-                txtTongTienHH.Value = giaBan;
             }
         }
 
         protected void btnThemPhieuChuyenKho_Click(object sender, EventArgs e)
         {
-            string ID = IDPhieuChuyenKho_Temp.Value.ToString();
+            string ID = IDPhieuChuyenKho.Value.ToString();
             dtPhieuChuyenKho data = new dtPhieuChuyenKho();
             if (cmbKhoNhap.Value != null && cmbKhoXuat.Value != null)
             {
-                DataTable da = data.DanhSachChiTietPhieuChuyenKho_Temp(ID);
-                if (da.Rows.Count != 0)
-                {
-                    string IDKhoXuat = cmbKhoXuat.Value + "";
-                    string IDKhoNhap = cmbKhoNhap.Value + "";
-                    string IDNhanVienLap = Session["IDNhanVien"].ToString();
-                    string SoMatHang = txtSoMatHang.Value + "";
-                    string TrongLuong = txtTrongLuong.Value + "";
-                    string tongTien = txtTongTien.Value + "";
-                    data.CapNhatPhieuChuyenKho(ID, IDKhoXuat, IDKhoNhap, IDNhanVienLap, SoMatHang, TrongLuong, tongTien);
+                string IDKhoXuat = cmbKhoXuat.Value + "";
+                string IDKhoNhap = cmbKhoNhap.Value + "";
+                string IDNhanVienLap = Session["IDNhanVien"].ToString();
+                string SoMatHang = txtSoMatHang.Value + "";
+                string TrongLuong = txtTrongLuong.Value + "";
+                string GhiChu = txtGhiChu.Value + "";
 
-                    for (int i = 0; i < da.Rows.Count; i++)
-                    {
-                        DataRow dr = da.Rows[i];
-                        string IDHangHoa = dr["IDHangHoa"].ToString();
-                        string SoLuong = dr["SoLuong"].ToString();
-                        string TrongLuongHH = dr["TrongLuong"].ToString();
-                        string GiaBan = dr["GiaBan"].ToString();
-                        string TongTien = dr["TongTien"].ToString();
-                        data.ThemChiTietPhieuChuyenKho(ID, IDHangHoa, SoLuong, TrongLuongHH, GiaBan, TongTien);
-                    }
+                data.CapNhatPhieuChuyenKho(ID, IDKhoXuat, IDKhoNhap, IDNhanVienLap, SoMatHang, TrongLuong, GhiChu);
 
-                    dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Phiếu chuyển kho", Session["IDKho"].ToString(), "Nhập xuất tồn", "Thêm");
-                    Response.Redirect("DanhSachPhieuChuyenKho.aspx");
-                }
-                else
-                {
-                    Response.Write("<script language='JavaScript'> alert('Danh sách hàng hóa không được rỗng.'); </script>");
-                }
+                dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Phiếu chuyển kho", Session["IDKho"].ToString(), "Nhập xuất tồn", "Thêm");
+                Response.Redirect("DanhSachPhieuChuyenKho.aspx");
+
             }
             else
             {
@@ -192,25 +181,11 @@ namespace BanHang
         protected void btnHuyPhieuChuyenKho_Click(object sender, EventArgs e)
         {
             dtPhieuChuyenKho data = new dtPhieuChuyenKho();
-            data.XoaPhieuChuyenKho_Temp(IDPhieuChuyenKho_Temp.Value.ToString());
+            data.XoaPhieuChuyenKho(IDPhieuChuyenKho.Value.ToString());
+            data.XoaChiTietPhieuChuyenKho_Delete_Phieu(IDPhieuChuyenKho.Value.ToString());
             Response.Redirect("DanhSachPhieuChuyenKho.aspx");
         }
 
-        protected void txtSoLuong_NumberChanged(object sender, EventArgs e)
-        {
-            string IDHH = cmbHangHoa.Value.ToString();
-            dataHangHoa data = new dataHangHoa();
-            DataTable da = data.getDanhSachHangHoa_TonKho_ID(IDHH);
-            if (da.Rows.Count != 0)
-            {
-                DataRow dr = da.Rows[0];
-                float TrongLuong = float.Parse(dr["TrongLuong"].ToString());
-                float giaban = float.Parse(dr["GiaBan"].ToString());
-                int soLuongMoi = Int32.Parse(txtSoLuong.Value + "");
-                txtHHTrongLuong.Value = (soLuongMoi * TrongLuong);
-                txtTongTienHH.Value = (soLuongMoi * giaban);
-            }
-        }
 
         private void Import()
         {
@@ -249,32 +224,33 @@ namespace BanHang
                     DataRow dr = dataTable.Rows[i];
                     string MaHang = dr["Ma Hang"].ToString();
                     string soLuong = dr["So Luong"].ToString();
+                    string IDHH = dtHangHoa.LayIDHangHoa_MaHang(MaHang);
+                    float TrongLuong = dtHangHoa.LayTrongLuong(IDHH) * Int32.Parse(soLuong);
+
                     dataHangHoa d = new dataHangHoa();
-                    DataTable dataHH = d.getDanhSachHangHoa_MaHang(MaHang);
+                    DataTable dataHH = d.getDanhSachHangHoa_TonKho_ID(IDHH, Session["IDKho"].ToString());
                     if (dataHH.Rows.Count != 0)
                     {
                         if (Int32.Parse(soLuong) <= Int32.Parse(dataHH.Rows[0]["SoLuongCon"].ToString()))
                         {
-                            DataTable dataChiTiet_Temp = dt.KiemTraHangHoa_Temp(IDPhieuChuyenKho_Temp.Value.ToString(), dataHH.Rows[0]["ID"].ToString());
-                            if (dataChiTiet_Temp.Rows.Count == 0)
+                            DataTable dx = dt.KiemTraHangHoa(IDPhieuChuyenKho.Value.ToString(), IDHH);
+                            if (dx.Rows.Count == 0)
                             {
-                                dt.ThemChiTietPhieuChuyenKho_Temp(IDPhieuChuyenKho_Temp.Value.ToString(), dataHH.Rows[0]["ID"].ToString(), soLuong, (float.Parse(dataHH.Rows[0]["TrongLuong"].ToString()) * Int32.Parse(soLuong)) + "", dataHH.Rows[0]["GiaBan"].ToString(), (Int32.Parse(soLuong) * float.Parse(dataHH.Rows[0]["GiaBan"].ToString())) + "");
-                                DataTable da = dt.ChiTietTongSoLuongHangHoa(IDPhieuChuyenKho_Temp.Value.ToString());
+                                dt.ThemChiTietPhieuChuyenKho(IDPhieuChuyenKho.Value.ToString(), IDHH, soLuong, TrongLuong + "", txtGhiChuHH.Value + "");
+                                DataTable da = dt.ChiTietTongSoLuongHangHoa(IDPhieuChuyenKho.Value.ToString());
                                 if (da.Rows.Count != 0)
                                 {
                                     txtTrongLuong.Value = float.Parse(da.Rows[0]["TongTrongLuong"].ToString());
-                                    txtTongTien.Value = float.Parse(da.Rows[0]["TongTien"].ToString());
                                     txtSoMatHang.Value = Int32.Parse(da.Rows[0]["TongSoLuong"].ToString());
                                 }
                             }
                             else
                             {
-                                dt.CapNhatChiTietPhieuChuyenKho_Temp(IDPhieuChuyenKho_Temp.Value.ToString(), dataHH.Rows[0]["ID"].ToString(), (Int32.Parse(dataChiTiet_Temp.Rows[0]["SoLuong"].ToString()) + Int32.Parse(soLuong)) + "", ((Int32.Parse(dataChiTiet_Temp.Rows[0]["SoLuong"].ToString()) + Int32.Parse(soLuong)) * float.Parse(dataHH.Rows[0]["TrongLuong"].ToString())) + "", dataHH.Rows[0]["GiaBan"].ToString(), ((Int32.Parse(dataChiTiet_Temp.Rows[0]["SoLuong"].ToString()) + Int32.Parse(soLuong)) * float.Parse(dataHH.Rows[0]["GiaBan"].ToString())) + "");
-                                DataTable da = dt.ChiTietTongSoLuongHangHoa(IDPhieuChuyenKho_Temp.Value.ToString());
+                                dt.CapNhatChiTietPhieuChuyenKho(IDPhieuChuyenKho.Value.ToString(), IDHH, (Int32.Parse(dx.Rows[0]["SoLuong"].ToString()) + Int32.Parse(soLuong)) + "", (float.Parse(dx.Rows[0]["TrongLuong"].ToString()) + TrongLuong) + "", txtGhiChuHH.Value + "");
+                                DataTable da = dt.ChiTietTongSoLuongHangHoa(IDPhieuChuyenKho.Value.ToString());
                                 if (da.Rows.Count != 0)
                                 {
                                     txtTrongLuong.Value = float.Parse(da.Rows[0]["TongTrongLuong"].ToString());
-                                    txtTongTien.Value = float.Parse(da.Rows[0]["TongTien"].ToString());
                                     txtSoMatHang.Value = Int32.Parse(da.Rows[0]["TongSoLuong"].ToString());
                                 }
                             }
@@ -283,27 +259,26 @@ namespace BanHang
                         {
                             kt = 1;
                             soLuong = dataHH.Rows[0]["SoLuongCon"].ToString();
+                            if (Int32.Parse(soLuong) < 0) soLuong = "0";
 
-                            DataTable dataChiTiet_Temp = dt.KiemTraHangHoa_Temp(IDPhieuChuyenKho_Temp.Value.ToString(), dataHH.Rows[0]["ID"].ToString());
-                            if (dataChiTiet_Temp.Rows.Count == 0)
+                            DataTable dx = dt.KiemTraHangHoa(IDPhieuChuyenKho.Value.ToString(), IDHH);
+                            if (dx.Rows.Count == 0)
                             {
-                                dt.ThemChiTietPhieuChuyenKho_Temp(IDPhieuChuyenKho_Temp.Value.ToString(), dataHH.Rows[0]["ID"].ToString(), soLuong, (float.Parse(dataHH.Rows[0]["TrongLuong"].ToString()) * Int32.Parse(soLuong)) + "", dataHH.Rows[0]["GiaBan"].ToString(), (Int32.Parse(soLuong) * float.Parse(dataHH.Rows[0]["GiaBan"].ToString())) + "");
-                                DataTable da = dt.ChiTietTongSoLuongHangHoa(IDPhieuChuyenKho_Temp.Value.ToString());
+                                dt.ThemChiTietPhieuChuyenKho(IDPhieuChuyenKho.Value.ToString(), IDHH, soLuong, TrongLuong + "", txtGhiChuHH.Value + "");
+                                DataTable da = dt.ChiTietTongSoLuongHangHoa(IDPhieuChuyenKho.Value.ToString());
                                 if (da.Rows.Count != 0)
                                 {
                                     txtTrongLuong.Value = float.Parse(da.Rows[0]["TongTrongLuong"].ToString());
-                                    txtTongTien.Value = float.Parse(da.Rows[0]["TongTien"].ToString());
                                     txtSoMatHang.Value = Int32.Parse(da.Rows[0]["TongSoLuong"].ToString());
                                 }
                             }
                             else
                             {
-                                dt.CapNhatChiTietPhieuChuyenKho_Temp(IDPhieuChuyenKho_Temp.Value.ToString(), dataHH.Rows[0]["ID"].ToString(), (Int32.Parse(dataChiTiet_Temp.Rows[0]["SoLuong"].ToString()) + Int32.Parse(soLuong)) + "", ((Int32.Parse(dataChiTiet_Temp.Rows[0]["SoLuong"].ToString()) + Int32.Parse(soLuong)) * float.Parse(dataHH.Rows[0]["TrongLuong"].ToString())) + "", dataHH.Rows[0]["GiaBan"].ToString(), ((Int32.Parse(dataChiTiet_Temp.Rows[0]["SoLuong"].ToString()) + Int32.Parse(soLuong)) * float.Parse(dataHH.Rows[0]["GiaBan"].ToString())) + "");
-                                DataTable da = dt.ChiTietTongSoLuongHangHoa(IDPhieuChuyenKho_Temp.Value.ToString());
+                                dt.CapNhatChiTietPhieuChuyenKho(IDPhieuChuyenKho.Value.ToString(), IDHH, (Int32.Parse(dx.Rows[0]["SoLuong"].ToString()) + Int32.Parse(soLuong)) + "", (float.Parse(dx.Rows[0]["TrongLuong"].ToString()) + TrongLuong) + "", txtGhiChuHH.Value + "");
+                                DataTable da = dt.ChiTietTongSoLuongHangHoa(IDPhieuChuyenKho.Value.ToString());
                                 if (da.Rows.Count != 0)
                                 {
                                     txtTrongLuong.Value = float.Parse(da.Rows[0]["TongTrongLuong"].ToString());
-                                    txtTongTien.Value = float.Parse(da.Rows[0]["TongTien"].ToString());
                                     txtSoMatHang.Value = Int32.Parse(da.Rows[0]["TongSoLuong"].ToString());
                                 }
                             }
@@ -311,9 +286,9 @@ namespace BanHang
                     }
                 }
 
-                if(kt == 1)
+                if (kt == 1)
                     Response.Write("<script language='JavaScript'> alert('Có hàng hóa không đủ số lượng trong kho. Hệ thống lấy số lượng tối đa để cập nhật.'); </script>");
-                LoadGrid(IDPhieuChuyenKho_Temp.Value.ToString());
+                LoadGrid(IDPhieuChuyenKho.Value.ToString());
             }
         }
 
@@ -340,6 +315,14 @@ namespace BanHang
                 fileUpload.SaveAs(filein);
                 strFileExcel = ThangNam + "/" + strFileExcel;
             }
+        }
+
+        protected void txtSoLuong_ValueChanged(object sender, EventArgs e)
+        {
+            string IDHH = cmbHangHoa.Value + "";
+            float TrongLuong = dtHangHoa.LayTrongLuong(IDHH);
+            int SoLuong = Int32.Parse(txtSoLuong.Value + "");
+            txtHHTrongLuong.Value = SoLuong * TrongLuong;
         }
     }
 }

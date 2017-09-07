@@ -55,7 +55,7 @@ namespace BanHang.Data
                 }
             }
         }
-        public static void TruTonKho(string IDHangHoa, string SoLuongCon, string IDKho)
+        public static void TruTonKho(string IDHangHoa, string SoLuong, string IDKho)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
@@ -66,7 +66,7 @@ namespace BanHang.Data
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
                         myCommand.Parameters.AddWithValue("@IDHangHoa", IDHangHoa);
-                        myCommand.Parameters.AddWithValue("@SoLuongCon", SoLuongCon);
+                        myCommand.Parameters.AddWithValue("@SoLuongCon", SoLuong);
                         myCommand.Parameters.AddWithValue("@IDKho", IDKho);
                         myCommand.ExecuteNonQuery();
                     }
