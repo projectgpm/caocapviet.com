@@ -3,6 +3,7 @@ using DevExpress.Web;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -24,18 +25,26 @@ namespace BanHang
                 if (!IsPostBack)
                 {
                     data = new dtDuyetDonHangChiNhanh();
-                    data.Xoa_ALL_Temp();
+                    //data.Xoa_ALL_Temp();
                     txtNguoiDuyet.Text = Session["TenDangNhap"].ToString();
                     cmbChiNhanhDuyet.Value = Session["IDKho"].ToString();
-                       
+                    cmbHangHoa.Enabled = false;
+                    txtGhiChuHangHoa.Enabled = false;
+                    btnThem_Temp.Enabled = false;
+                    txtSoLuong.Enabled = false;
                 }
-                
+                if (cmbSoDonHang.Text != "")
+                {
+                    string IDTemp = IDDonHangDuyet_Temp.Value.ToString();
+                    string IDDonHangChiNhanh = cmbSoDonHang.Value.ToString();
+                    LoadDanhSach(IDDonHangChiNhanh, IDTemp);
+                }
             }
         }
-        public void LoadDanhSach(string SoDonHang)
+        public void LoadDanhSach(string SoDonHang, string IDTemp)
         {
             data = new dtDuyetDonHangChiNhanh();
-            gridDanhSachHangHoa.DataSource = data.DanhSachChiTiet_Temp(SoDonHang);
+            gridDanhSachHangHoa.DataSource = data.DanhSachChiTiet_Temp(SoDonHang, IDTemp, Session["IDKho"].ToString());
             gridDanhSachHangHoa.DataBind();
         }
         protected void txtNgayDuyet_Init(object sender, EventArgs e)
@@ -49,12 +58,19 @@ namespace BanHang
             {
                 string ID = e.Keys[0].ToString();
                 data = new dtDuyetDonHangChiNhanh();
-                data.Xoa_Temp(ID);
+                // lây trạng thái = 1 mới được xóa
+                int TrangThai  = dtDuyetDonHangChiNhanh.LayTrangThai(ID);
+                if (TrangThai == 1)
+                {
+                    data.Xoa_Temp(ID);
+                }
+                else
+                {
+                    throw new Exception("Lỗi: Chỉ xóa những cái Kho mới thêm? Vui lòng kiểm tra lại.  ");
+                }
                 e.Cancel = true;
                 gridDanhSachHangHoa.CancelEdit();
-                LoadDanhSach(cmbSoDonHang.Value.ToString());
-
-                dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Đơn hàng chi nhánh", Session["IDKho"].ToString(), "Nhập xuất tồn", "xóa");
+                LoadDanhSach(cmbSoDonHang.Value.ToString(), IDDonHangDuyet_Temp.Value.ToString());
             }
         }
 
@@ -81,38 +97,19 @@ namespace BanHang
                 }
                 e.Cancel = true;
                 gridDanhSachHangHoa.CancelEdit();
-                LoadDanhSach(cmbSoDonHang.Value.ToString());
+
+                LoadDanhSach(cmbSoDonHang.Value.ToString(), IDDonHangDuyet_Temp.Value.ToString());
 
                 dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Đơn hàng chi nhánh", Session["IDKho"].ToString(), "Nhập xuất tồn", "Cập nhật");
             }
         }
-        public double TinhTongTien()
-        {
-            if (cmbSoDonHang.Text != "")
-            {
-                data = new dtDuyetDonHangChiNhanh();
-                DataTable db = data.DanhSachChiTiet_Temp(cmbSoDonHang.Value.ToString());
-                if (db.Rows.Count != 0)
-                {
-                    double TongTien = 0;
-                    foreach (DataRow dr in db.Rows)
-                    {
-                        double ThanhTien = double.Parse(dr["ThanhTien"].ToString());
-                        TongTien = TongTien + ThanhTien;
-                    }
-                    return TongTien;
-                }
-                else
-                    return 0;
-            }
-            return 0;
-        }
+       
         public double TinhTrongLuong()
         {
             if (cmbSoDonHang.Text != "")
             {
                 data = new dtDuyetDonHangChiNhanh();
-                DataTable db = data.DanhSachChiTiet_Temp(cmbSoDonHang.Value.ToString());
+                DataTable db = data.DanhSachChiTiet_Temp(cmbSoDonHang.Value.ToString(), IDDonHangDuyet_Temp.Value.ToString(), Session["IDKho"].ToString());
                 if (db.Rows.Count != 0)
                 {
                     double Tong = 0;
@@ -135,40 +132,58 @@ namespace BanHang
             {
                 data = new dtDuyetDonHangChiNhanh();
                 //data.Xoa_ALL_Temp();
+                cmbHangHoa.Enabled = true;
+                txtGhiChuHangHoa.Enabled = true;
+                btnThem_Temp.Enabled = true;
+                txtSoLuong.Enabled = true;
+                data.Xoa_Temp_ID(IDDonHangDuyet_Temp.Value.ToString());
+                Random ran = new Random();
+                int Temp = ran.Next(1000, 9999);
+                IDDonHangDuyet_Temp.Value = Temp.ToString();
                 string ID = cmbSoDonHang.Value.ToString();
                 DataTable db = data.LayDanhSachDonHang_ID(ID);
                 if (db.Rows.Count > 0)
                 {
                     DataRow dr = db.Rows[0];
                     cmbNguoiLap.Value = dr["IDNguoiLap"].ToString();
-                    txtNgayLap.Text = dr["NgayLap"].ToString();
+                    txtNgayDatHang.Date = DateTime.Parse(dr["NgayDat"].ToString());
                     cmbChiNhanhLap.Value = dr["IDKho"].ToString();
                     txtGhiChu.Text = dr["GhiChu"].ToString();
                     DataTable dt = data.DanhSachChiTiet(ID);
-                    //if (dt.Rows.Count > 0)
-                    //{
-                    //    foreach (DataRow dr1 in dt.Rows)
-                    //    {
-                    //        string IDHangHoa = dr1["IDHangHoa"].ToString();
-                    //        string MaHang = dr1["MaHang"].ToString();
-                    //        string IDDonViTinh = dr1["IDDonViTinh"].ToString();
-                    //        string TrongLuong = dr1["TrongLuong"].ToString();
-                    //        string SoLuong = dr1["SoLuong"].ToString();
-                    //        string DonGia = dr1["DonGia"].ToString();
-                    //        string ThanhTien = dr1["ThanhTien"].ToString();
-                    //        data = new dtDuyetDonHangChiNhanh();
-                    //        data.ThemChiTietDonHang_Temp(ID, MaHang, IDHangHoa, IDDonViTinh, TrongLuong, SoLuong, DonGia, ThanhTien);
-                    //    }
-                    //    LoadDanhSach(ID);
-                    //}
-                    //else
-                    //{
-                    //    Response.Write("<script language='JavaScript'> alert('Danh sách hàng hóa trống.'); </script>");
-                    //}
+                    string IDTemp = IDDonHangDuyet_Temp.Value.ToString();
+                    if (dt.Rows.Count > 0)
+                    {
+                        foreach (DataRow dr1 in dt.Rows)
+                        {
+                            string MaHang = dr1["MaHang"].ToString();
+                            string IDHangHoa = dr1["IDHangHoa"].ToString();
+                            string IDDonViTinh = dr1["IDDonViTinh"].ToString();
+                            string TrongLuong = dr1["TrongLuong"].ToString();
+                            string SoLuong = dr1["SoLuong"].ToString();
+                            string TonKho = dr1["TonKho"].ToString();
+                            string GhiChu = dr1["GhiChu"].ToString();
+                            string TrangThai = dr1["TrangThai"].ToString();
+                            string IDDonHangChiNhanh = dr1["IDDonHangChiNhanh"].ToString();
+                            string IDKho = dr1["IDKho"].ToString();
+                            data = new dtDuyetDonHangChiNhanh();
+                            DataTable dbt = data.KTChiTietDonHang_Temp(IDHangHoa, IDDonHangChiNhanh, IDTemp);
+                            if (dbt.Rows.Count == 0)
+                            {
+                                data.ThemChiTietDonHang_Temp(ID, MaHang, IDHangHoa, IDDonViTinh, TrongLuong, SoLuong, TonKho, GhiChu, TrangThai, IDKho, IDTemp);
+                            }
+                        }
+                        LoadDanhSach(ID, IDTemp);
+                    }
+                    else
+                    {
+                        Response.Write("<script language='JavaScript'> alert('Danh sách hàng hóa trống.'); </script>");
+                        return;
+                    }
                 }
                 else
                 {
                     Response.Write("<script language='JavaScript'> alert('Thông tin đơn hàng rỗng.'); </script>");
+                    return;
                 }
             }
         }
@@ -271,54 +286,126 @@ namespace BanHang
 
         protected void btnHuy_Click(object sender, EventArgs e)
         {
+            string IDTemp = IDDonHangDuyet_Temp.Value.ToString();
+            data = new dtDuyetDonHangChiNhanh();
+            data.Xoa_Temp_ID(IDTemp);
             Response.Redirect("DonDatHangChiNhanh.aspx");
         }
-
-        protected void BtnSuaSoLuong_Click(object sender, EventArgs e)
-        {
-            //string ID = (((ASPxButton)sender).CommandArgument).ToString();
-            //LoadDanhSach(cmbSoDonHang.Value.ToString());
-            //object MaHang = gridDanhSachHangHoa.GetRowValuesByKeyValue(ID, "MaHang");
-            //object TenHang = gridDanhSachHangHoa.GetRowValuesByKeyValue(ID, "IDHangHoa");
-            //object SoLuong = gridDanhSachHangHoa.GetRowValuesByKeyValue(ID, "SoLuong");
-            //txtMaHangSua.Text = MaHang.ToString();
-            //txtTenHangSua.Text = dtHangHoa.LayTenHangHoa(TenHang.ToString());
-            //txtSoLuongSua.Text = SoLuong.ToString();
-            //hdfIDSuaSL.Value = ID;
-            //popupSuaSoLuong.ShowOnPageLoad = true;
-        }
-
-        protected void btnHuySuaSl_Click(object sender, EventArgs e)
-        {
-          //  popupSuaSoLuong.ShowOnPageLoad = false;
-        }
-
-        protected void btnLuuSuaSL_Click(object sender, EventArgs e)
-        {
-            //string ID = hdfIDSuaSL.Value;
-            //data = new dtDuyetDonHangChiNhanh();
-            //int SoLuong = Int32.Parse(txtSoLuongSua.Text);
-            //if (SoLuong >= 0)
-            //{
-            //    //string MaHang = txtMaHangSua.Text;
-            //    //string IDHangHoa = dtHangHoa.LayIDHangHoa_MaHang(MaHang.Trim());
-            //    //float DonGia = dtHangHoa.LayGiaBanSauThue(IDHangHoa);
-            //    //data = new dtDuyetDonHangChiNhanh();
-            //    //data.CapNhatChiTietDonHang(ID, IDHangHoa, SoLuong, DonGia, DonGia * SoLuong);
-            //    //txtTongTien.Text = TinhTongTien().ToString();
-            //    //txtTongTrongLuong.Text = TinhTrongLuong().ToString();
-            //}
-            //else
-            //{
-            //    throw new Exception("Lỗi: Số lượng không được âm? ");
-            //}
-            //LoadDanhSach(cmbSoDonHang.Value.ToString());
-            //popupSuaSoLuong.ShowOnPageLoad = false;
-        }
-
         protected void txtNgayGiao_Init(object sender, EventArgs e)
         {
             txtNgayGiao.Date = DateTime.Today;
         }
+
+        protected void gridDanhSachHangHoa_HtmlRowPrepared(object sender, ASPxGridViewTableRowEventArgs e)
+        {
+            Color color = (Color)ColorTranslator.FromHtml("#FF9797");
+            int TrangThai = Convert.ToInt32(e.GetValue("TrangThai"));
+            if (TrangThai == 1)
+                e.Row.BackColor = color;
+
+            int ThucTe = Convert.ToInt32(e.GetValue("ThucTe"));
+            float TonKhoTong = Convert.ToInt32(e.GetValue("TonKhoTong"));
+            if(ThucTe > TonKhoTong)
+                e.Row.BackColor = color;
+        }
+
+        protected void btnThem_Temp_Click(object sender, EventArgs e)
+        {
+            int SoLuong = Int32.Parse(txtSoLuong.Text.ToString());
+            string IDTemp = IDDonHangDuyet_Temp.Value.ToString();
+            string IDDonHangChiNhanh = cmbSoDonHang.Value.ToString();
+            if (SoLuong > 0)
+            {
+                string IDHangHoa = cmbHangHoa.Value.ToString();
+                string IDDonViTinh = dtHangHoa.LayIDDonViTinh(IDHangHoa);
+                string MaHang = dtHangHoa.LayMaHang(IDHangHoa);
+                float TrongLuong = dtHangHoa.LayTrongLuong(IDHangHoa);
+                string GhiChu = txtGhiChuHangHoa.Text == null ? "" : txtGhiChuHangHoa.Text.ToString();
+                data = new dtDuyetDonHangChiNhanh();
+                DataTable dbt = data.KTChiTietDonHang_Temp(IDHangHoa, IDDonHangChiNhanh, IDTemp);
+                if (dbt.Rows.Count == 0)
+                {
+                    string IDKho = "1";
+                    DataTable db = data.LayDanhSachDonHang_ID(IDDonHangChiNhanh);
+                    if (db.Rows.Count > 0)
+                    {
+                        DataRow dr = db.Rows[0];
+                        IDKho = dr["IDKho"].ToString();
+                    }
+                    data.ThemMoiChiTiet(IDDonHangChiNhanh, MaHang, IDHangHoa, IDDonViTinh, (TrongLuong * SoLuong).ToString(), SoLuong.ToString(), "0", GhiChu, "1", IDKho, IDTemp, "0", SoLuong.ToString());
+                }
+                else
+                {
+                    Response.Write("<script language='JavaScript'> alert('Hàng hóa đã tồn tại.Vui lòng kiểm tra lại? '); </script>");
+                    cmbHangHoa.Text = "";
+                    txtTonKho.Text = "";
+                    txtSoLuong.Text = "";
+                    txtGhiChuHangHoa.Text = "";
+                    LoadDanhSach(IDDonHangChiNhanh, IDTemp);
+                    return;
+                }
+                LoadDanhSach(IDDonHangChiNhanh, IDTemp);
+                cmbHangHoa.Text = "";
+                txtTonKho.Text = "";
+                txtSoLuong.Text = "";
+                txtGhiChuHangHoa.Text = "";
+            }
+            else
+            {
+                LoadDanhSach(IDDonHangChiNhanh, IDTemp);
+                Response.Write("<script language='JavaScript'> alert('Số Lượng phải > 0.'); </script>");
+                return;
+            }
+        }
+
+        protected void cmbHangHoa_ItemRequestedByValue(object source, ListEditItemRequestedByValueEventArgs e)
+        {
+            long value = 0;
+            if (e.Value == null || !Int64.TryParse(e.Value.ToString(), out value))
+                return;
+            ASPxComboBox comboBox = (ASPxComboBox)source;
+            dsHangHoa.SelectCommand = @"SELECT GPM_HangHoa.ID, GPM_HangHoa.MaHang, GPM_HangHoa.TenHangHoa, GPM_DonViTinh.TenDonViTinh 
+                                        FROM GPM_DonViTinh INNER JOIN GPM_HangHoa ON GPM_DonViTinh.ID = GPM_HangHoa.IDDonViTinh
+                                        WHERE (GPM_HangHoa.ID = @ID) AND  (GPM_HangHoa.IDTrangThaiHang = 1) AND (GPM_HangHoa.IDNhomDatHang != 3)";
+            dsHangHoa.SelectParameters.Clear();
+            dsHangHoa.SelectParameters.Add("ID", TypeCode.Int64, e.Value.ToString());
+            comboBox.DataSource = dsHangHoa;
+            comboBox.DataBind();
+        }
+
+        protected void cmbHangHoa_ItemsRequestedByFilterCondition(object source, ListEditItemsRequestedByFilterConditionEventArgs e)
+        {
+            ASPxComboBox comboBox = (ASPxComboBox)source;
+
+            dsHangHoa.SelectCommand = @"SELECT [ID], [MaHang], [TenHangHoa], [GiaMuaTruocThue] , [TenDonViTinh]
+                                        FROM (
+	                                        select GPM_HangHoa.ID, GPM_HangHoa.MaHang, GPM_HangHoa.TenHangHoa,GPM_HangHoa.GiaMuaTruocThue, GPM_DonViTinh.TenDonViTinh, 
+	                                        row_number()over(order by GPM_HangHoa.MaHang) as [rn] 
+	                                        FROM GPM_DonViTinh INNER JOIN GPM_HangHoa ON GPM_DonViTinh.ID = GPM_HangHoa.IDDonViTinh           
+	                                        WHERE ((GPM_HangHoa.MaHang LIKE @MaHang)) AND (GPM_HangHoa.DaXoa = 0) AND  ((GPM_HangHoa.IDTrangThaiHang = 1) OR (GPM_HangHoa.IDTrangThaiHang = 3) OR (GPM_HangHoa.IDTrangThaiHang = 6))
+	                                        ) as st 
+                                        where st.[rn] between @startIndex and @endIndex";
+
+            dsHangHoa.SelectParameters.Clear();
+            // dsHangHoa.SelectParameters.Add("TenHang", TypeCode.String, string.Format("%{0}%", e.Filter));
+            dsHangHoa.SelectParameters.Add("MaHang", TypeCode.String, string.Format("%{0}%", e.Filter));
+            dsHangHoa.SelectParameters.Add("IDKho", TypeCode.Int32, Session["IDKho"].ToString());
+            dsHangHoa.SelectParameters.Add("startIndex", TypeCode.Int64, (e.BeginIndex + 1).ToString());
+            dsHangHoa.SelectParameters.Add("endIndex", TypeCode.Int64, (e.EndIndex + 1).ToString());
+            comboBox.DataSource = dsHangHoa;
+            comboBox.DataBind();
+        }
+
+        protected void cmbHangHoa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbHangHoa.Text != "")
+            {
+                int TonKho = dtCapNhatTonKho.SoLuong_TonKho(cmbHangHoa.Value.ToString(), Session["IDKho"].ToString());
+                txtTonKho.Text = TonKho.ToString();
+                txtSoLuong.Text = "0";
+            }
+        }
+
+       
     }
 }

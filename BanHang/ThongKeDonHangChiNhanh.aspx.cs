@@ -1,6 +1,7 @@
 ﻿using BanHang.Data;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -39,5 +40,16 @@ namespace BanHang
         {
             XuatDuLieu.WriteXlsToResponse();
         }
+
+        protected void gridDanhSach_HtmlRowPrepared(object sender, DevExpress.Web.ASPxGridViewTableRowEventArgs e)
+        {
+              Color color = (Color)ColorTranslator.FromHtml("#FF9797");
+            int TonKhoTong = Convert.ToInt32(e.GetValue("TonKho"));// lấy giá trị
+            int SoLuongDat = Convert.ToInt32(e.GetValue("SoLuongDat"));
+            if (TonKhoTong < SoLuongDat)
+                e.Row.BackColor = color;
+        }
+
+       
     }
 }
