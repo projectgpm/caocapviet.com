@@ -224,8 +224,9 @@ namespace BanHang
                                 string IDDonViTinh = dr1["IDDonViTinh"].ToString();
                                 string TrongLuong = dr1["TrongLuong"].ToString();
                                 string SoLuong = dr1["SoLuong"].ToString();
+                                string GhiChuHH = dr1["GhiChu"].ToString();
                                 data = new dtDuyetDonHangChiNhanh();
-                                data.ThemChiTietDonHang_Temp(ID, MaHang, IDHangHoa, IDDonViTinh, TrongLuong, SoLuong, "0", "", "0", "1", IDTemp, SoLuong);
+                                data.ThemChiTietDonHang_Temp(ID, MaHang, IDHangHoa, IDDonViTinh, TrongLuong, SoLuong, "0", GhiChuHH, "0", "1", IDTemp, SoLuong);
                             }
                             LoadDanhSach(ID, IDTemp);
                         }
@@ -245,31 +246,39 @@ namespace BanHang
 
         protected void btnThem_Click(object sender, EventArgs e)
         {
-            if (dtSetting.KT_ChuyenAm() == 1) // kiểm tra âm kho
+            if (cmbTrangThaiDonHang.Text != "" && txtNgayGiao.Text != "")
             {
-                XuLyDuLieu();
-            }
-            else
-            {
-                int kt = 0;
-                string IDTemp = IDDonHangDuyet_Temp.Value.ToString();
-                DataTable db = data.DanhSachChiTiet_Temp(cmbSoDonHang.Value.ToString(), IDTemp, Session["IDKho"].ToString());
-                foreach (DataRow dr1 in db.Rows)
-                {
-                    string IDHangHoa = dr1["IDHangHoa"].ToString();
-                    int SoLuong = Int32.Parse(dr1["ThucTe"].ToString());
-                    int SLTon = dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, Session["IDKho"].ToString());
-                    if (SoLuong > SLTon)
-                    {
-                        kt = 1;
-                        ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Lỗi: Số lượng tồn kho không đủ:" + dtHangHoa.LayTenHangHoa(IDHangHoa) + "');", true);
-                        return;
-                    }
-                }
-                if (kt == 0)
+                if (dtSetting.KT_ChuyenAm() == 1) // kiểm tra âm kho
                 {
                     XuLyDuLieu();
                 }
+                else
+                {
+                    int kt = 0;
+                    string IDTemp = IDDonHangDuyet_Temp.Value.ToString();
+                    DataTable db = data.DanhSachChiTiet_Temp(cmbSoDonHang.Value.ToString(), IDTemp, Session["IDKho"].ToString());
+                    foreach (DataRow dr1 in db.Rows)
+                    {
+                        string IDHangHoa = dr1["IDHangHoa"].ToString();
+                        int SoLuong = Int32.Parse(dr1["ThucTe"].ToString());
+                        int SLTon = dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, Session["IDKho"].ToString());
+                        if (SoLuong > SLTon)
+                        {
+                            kt = 1;
+                            ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Lỗi: Số lượng tồn kho không đủ:" + dtHangHoa.LayTenHangHoa(IDHangHoa) + "');", true);
+                            return;
+                        }
+                    }
+                    if (kt == 0)
+                    {
+                        XuLyDuLieu();
+                    }
+                }
+            }
+            else
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Lỗi: Vui lòng nhập thông tin các trường có dấu (*)');", true);
+                return;
             }
         }
         public void XuLyDuLieu()
@@ -368,7 +377,6 @@ namespace BanHang
                             string IDDonViTinh = dr1["IDDonViTinh"].ToString();
                             string TrongLuong = dr1["TrongLuong"].ToString();
                             string SoLuong = dr1["SoLuong"].ToString();
-                           
                             string TrangThai = dr1["TrangThai"].ToString();
                             string GhiChuHH = dr1["GhiChu"].ToString();
                             string ChenhLech = dr1["ChenhLech"].ToString();
@@ -396,7 +404,7 @@ namespace BanHang
                             if (LOG.Rows.Count == 0 && Int32.Parse(TrangThai) == 0)
                             {
                                 data = new dtDuyetDonHangChiNhanh();
-                                data.ThemChiTietDonHang_LOG(SoDonHang, MaHang, IDHangHoa, IDDonViTinh, TrongLuong, ChenhLech, IDDonHang);
+                                data.ThemChiTietDonHang_LOG(SoDonHang, MaHang, IDHangHoa, IDDonViTinh, TrongLuong, ChenhLech, IDDonHang, GhiChuHH);
                             }
                             else
                             {

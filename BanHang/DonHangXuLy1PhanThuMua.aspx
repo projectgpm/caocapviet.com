@@ -1,20 +1,20 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Root.master" AutoEventWireup="true" CodeBehind="DanhSachDonHangThuMua.aspx.cs" Inherits="BanHang.DanhSachDonHangThuMua" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Root.master" AutoEventWireup="true" CodeBehind="DonHangXuLy1PhanThuMua.aspx.cs" Inherits="BanHang.DonHangXuLy1PhanThuMua" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
-     <script type="text/javascript">
-         function OnMoreInfoClick(element, key) {
-             popup.SetContentUrl("ChiTietDonHangThuMua.aspx?IDDonHangThuMua=" + key);
-             popup.ShowAtElement();
-             // alert(key);
-         }
+      <script type="text/javascript">
+          function OnMoreInfoClick(element, key) {
+              popup.SetContentUrl("ChiTietDonHangXuLy1PhanThuMua.aspx?IDDonHang=" + key);
+              popup.ShowAtElement();
+              // alert(key);
+          }
 
     </script>
-    <dx:ASPxFormLayout ID="ASPxFormLayout1" runat="server" ColCount="5">
+     <dx:ASPxFormLayout ID="ASPxFormLayout1" runat="server" ColCount="5">
         <Items>
             <dx:LayoutItem Caption="">
                 <LayoutItemNestedControlCollection>
                     <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer1" runat="server">
-                        <dx:ASPxButton ID="btnTaoDonHang" runat="server" Text="Tạo Đơn Hàng" HorizontalAlign="Right" VerticalAlign="Middle" PostBackUrl="ThuaMuaDatHang.aspx">
-                            <Image IconID="actions_add_32x32">
+                        <dx:ASPxButton ID="btnDuyetDonHang" runat="server" Text="Xử Lý Đơn Hàng" HorizontalAlign="Right" VerticalAlign="Middle" PostBackUrl="DuyetDonHangThuMua.aspx">
+                            <Image IconID="actions_converttorange_32x32">
                             </Image>
                             <Paddings Padding="4px" />
                         </dx:ASPxButton>
@@ -22,10 +22,21 @@
                 </LayoutItemNestedControlCollection>
             </dx:LayoutItem>
            
-            <dx:LayoutItem Caption="">
+              <dx:LayoutItem Caption="">
                 <LayoutItemNestedControlCollection>
                     <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer2" runat="server">
-                        <dx:ASPxButton ID="btnDonHangDaDuyet" runat="server" PostBackUrl="DonHangDaXuLyThuMua.aspx" Text="Xem đơn hàng đã xử lý">
+                        <dx:ASPxButton ID="btnDonhangXuLy1Phan" runat="server" PostBackUrl="DonHangXuLy1PhanThuMua.aspx" Text="Đơn Hàng Đã Xử Lý 1 Phần">
+                            <Image IconID="edit_copy_32x32">
+                            </Image>
+                        </dx:ASPxButton>
+                    </dx:LayoutItemNestedControlContainer>
+                </LayoutItemNestedControlCollection>
+            </dx:LayoutItem>
+           
+            <dx:LayoutItem Caption="">
+                <LayoutItemNestedControlCollection>
+                    <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer3" runat="server">
+                        <dx:ASPxButton ID="ASPxFormLayout1_E3" runat="server" Text="Đơn Hàng Đã Xử Lý" PostBackUrl="DonHangHoanTatThuMua.aspx">
                             <Image IconID="content_checkbox_32x32">
                             </Image>
                         </dx:ASPxButton>
@@ -33,30 +44,9 @@
                 </LayoutItemNestedControlCollection>
             </dx:LayoutItem>
            
-            <dx:LayoutItem Caption="">
-                <LayoutItemNestedControlCollection>
-                    <dx:LayoutItemNestedControlContainer runat="server">
-                        <dx:ASPxButton ID="ASPxFormLayout1_E3" runat="server" Text="Đơn Hàng Đã Hủy" PostBackUrl="DanhSachDonHangThuMuaHuy.aspx">
-                            <Image IconID="reports_deleteheader_32x32">
-                            </Image>
-                        </dx:ASPxButton>
-                    </dx:LayoutItemNestedControlContainer>
-                </LayoutItemNestedControlCollection>
-            </dx:LayoutItem>
-           
-            <dx:LayoutItem Caption="">
-                <LayoutItemNestedControlCollection>
-                    <dx:LayoutItemNestedControlContainer runat="server">
-                        <dx:ASPxButton ID="ASPxFormLayout1_E2" runat="server" PostBackUrl="ThongKeDonHangChiNhanh.aspx" Text="Đơn hàng chi nhánh">
-                            <Image IconID="chart_3dclusteredcolumn_32x32">
-                            </Image>
-                        </dx:ASPxButton>
-                    </dx:LayoutItemNestedControlContainer>
-                </LayoutItemNestedControlCollection>
-            </dx:LayoutItem>
-           
         </Items>
-      </dx:ASPxFormLayout> 
+      </dx:ASPxFormLayout>
+     
      <dx:ASPxGridView ID="gridDonDatHang" runat="server" AutoGenerateColumns="False" KeyFieldName="ID" Width="100%">
         <SettingsEditing Mode="PopupEditForm">
         </SettingsEditing>
@@ -108,11 +98,11 @@
                  <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy ">
                  </PropertiesDateEdit>
              </dx:GridViewDataDateColumn>
-             <dx:GridViewDataSpinEditColumn Caption="Tổng Tiền" FieldName="TongTien" VisibleIndex="7">
+             <dx:GridViewDataSpinEditColumn Caption="Tổng Tiền" FieldName="TongTien" VisibleIndex="7" Visible="False">
                  <PropertiesSpinEdit DisplayFormatString="{0:#,# đ}" NumberFormat="Custom">
                  </PropertiesSpinEdit>
              </dx:GridViewDataSpinEditColumn>
-             <dx:GridViewDataSpinEditColumn Caption="Tổng Trọng Lượng" FieldName="TongTrongLuong" VisibleIndex="9">
+             <dx:GridViewDataSpinEditColumn Caption="Tổng Trọng Lượng" FieldName="TongTrongLuong" VisibleIndex="9" Visible="False">
                  <PropertiesSpinEdit DisplayFormatString="{0:n} KG" NumberFormat="Custom">
                  </PropertiesSpinEdit>
                  <HeaderStyle Wrap="True" />
@@ -133,12 +123,12 @@
                 </DataItemTemplate>
                  <HeaderStyle Wrap="True" />
             </dx:GridViewDataButtonEditColumn>
-             <dx:GridViewDataSpinEditColumn Caption="Tổng Tiền Sau Chiết Khấu" FieldName="TongTienSauChietKhau" VisibleIndex="8">
+             <dx:GridViewDataSpinEditColumn Caption="Tổng Tiền Sau Chiết Khấu" FieldName="TongTienSauChietKhau" VisibleIndex="8" Visible="False">
                  <PropertiesSpinEdit DisplayFormatString="{0:#,# đ}" NumberFormat="Custom">
                  </PropertiesSpinEdit>
                  <HeaderStyle Wrap="True" />
              </dx:GridViewDataSpinEditColumn>
-             <dx:GridViewDataSpinEditColumn Caption="Tỷ Lệ Chiết Khấu" FieldName="ChietKhau" VisibleIndex="6">
+             <dx:GridViewDataSpinEditColumn Caption="Tỷ Lệ Chiết Khấu" FieldName="ChietKhau" VisibleIndex="6" Visible="False">
                  <PropertiesSpinEdit DisplayFormatString="N0" NumberFormat="Custom">
                  </PropertiesSpinEdit>
                  <HeaderStyle Wrap="True" />

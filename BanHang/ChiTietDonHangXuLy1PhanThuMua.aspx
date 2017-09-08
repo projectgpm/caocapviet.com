@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ChiTietDonHangDuyetThuMua.aspx.cs" Inherits="BanHang.ChiTietDonHangDuyetThuMua" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ChiTietDonHangXuLy1PhanThuMua.aspx.cs" Inherits="BanHang.ChiTietDonHangXuLy1PhanThuMua" %>
 
 <!DOCTYPE html>
 
@@ -9,7 +9,7 @@
 <body>
     <form id="form1" runat="server">
     <div>
-     <dx:ASPxGridView runat="server" AutoGenerateColumns="False" Width="100%" ID="gridChiTiet" KeyFieldName="ID">
+         <dx:ASPxGridView runat="server" AutoGenerateColumns="False" Width="100%" ID="gridChiTiet" KeyFieldName="ID" OnHtmlRowPrepared="gridChiTiet_HtmlRowPrepared">
         <SettingsEditing Mode="PopupEditForm">
         </SettingsEditing>
 <Settings ShowTitlePanel="True" ShowFooter="True"></Settings>
@@ -46,10 +46,10 @@
             <EditForm HorizontalAlign="WindowCenter" Modal="True" VerticalAlign="WindowCenter" />
         </SettingsPopup>
 
-<SettingsText Title="THÔNG TIN CHI TIẾT" CommandDelete="Xóa" ConfirmDelete="Bạn chắc chắn muốn xóa?" CommandEdit="Sửa"></SettingsText>
+<SettingsText Title="THÔNG TIN CHI TIẾT ĐƠN HÀNG" CommandDelete="Xóa" ConfirmDelete="Bạn chắc chắn muốn xóa?" CommandEdit="Sửa" EmptyDataRow="Chi tiết đơn hàng trống"></SettingsText>
 <Columns>
     
-    <dx:GridViewDataSpinEditColumn Caption="Số Lượng Đặt" FieldName="SoLuong" VisibleIndex="4">
+    <dx:GridViewDataSpinEditColumn Caption="Số Lượng Còn" FieldName="SoLuong" VisibleIndex="4">
         <propertiesspinedit DisplayFormatString="N0"></propertiesspinedit>
     </dx:GridViewDataSpinEditColumn>
     <dx:GridViewDataTextColumn Caption="Mã Hàng" FieldName="MaHang" VisibleIndex="0" ReadOnly="True">
@@ -66,21 +66,14 @@
         <PropertiesComboBox DataSourceID="SqlDonViTinh" TextField="TenDonViTinh" ValueField="ID">
         </PropertiesComboBox>
     </dx:GridViewDataComboBoxColumn>
-    <dx:GridViewDataSpinEditColumn Caption="Chênh Lệch" FieldName="ChenhLech" VisibleIndex="6">
-        <PropertiesSpinEdit DisplayFormatString="g">
-        </PropertiesSpinEdit>
-    </dx:GridViewDataSpinEditColumn>
-    <dx:GridViewDataSpinEditColumn Caption="Thực Tế" FieldName="ThucTe" VisibleIndex="5">
-        <PropertiesSpinEdit DisplayFormatString="g">
-        </PropertiesSpinEdit>
-    </dx:GridViewDataSpinEditColumn>
+    <dx:GridViewDataTextColumn Caption="Ghi Chú" FieldName="GhiChu" VisibleIndex="5">
+    </dx:GridViewDataTextColumn>
 </Columns>
 
-         <TotalSummary>
-             <dx:ASPxSummaryItem DisplayFormat="Tổng = {0}" FieldName="SoLuong" ShowInColumn="Số Lượng Đặt" SummaryType="Sum" />
-             <dx:ASPxSummaryItem DisplayFormat="Tổng = {0}" FieldName="ThucTe" ShowInColumn="Thực Tế" SummaryType="Sum" />
-             <dx:ASPxSummaryItem DisplayFormat="Tổng = {0}" FieldName="ChenhLech" ShowInColumn="Chênh Lệch" SummaryType="Sum" />
-         </TotalSummary>
+        <TotalSummary>
+            <dx:ASPxSummaryItem DisplayFormat="Tổng = {0}" FieldName="TrongLuong" ShowInColumn="Trọng Lượng" SummaryType="Sum" />
+            <dx:ASPxSummaryItem DisplayFormat="Tổng = {0}" FieldName="SoLuong" ShowInColumn="Số Lượng Còn" SummaryType="Sum" />
+        </TotalSummary>
 
 <Styles>
 <Header HorizontalAlign="Center" Font-Bold="True"></Header>

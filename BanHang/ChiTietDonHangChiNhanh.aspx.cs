@@ -33,10 +33,12 @@ namespace BanHang
                     }
                     if (dtChiTietDonHangChiNhanh.TrangThaiCuaHangTruong(IDDonHangChiNhanh) == 1)
                     {
+                        gridChiTiet.Columns["chucnang"].Visible = false;
                         btnCuaHangTruong.Enabled = false;
                     }
                     if (dtChiTietDonHangChiNhanh.TrangThaiGiamSat(IDDonHangChiNhanh) == 1)
                     {
+                        gridChiTiet.Columns["chucnang"].Visible = false;
                         btnGiamSat.Enabled = false;
                     }
                     LoadGrid(IDDonHangChiNhanh.ToString());
@@ -107,6 +109,8 @@ namespace BanHang
             data = new dtChiTietDonHangChiNhanh();
             data.GiamSatDuyet(IDDonHangChiNhanh); // ghi nhật ký
             btnGiamSat.Enabled = false;
+            gridChiTiet.Columns["chucnang"].Visible = false;
+            LoadGrid(IDDonHangChiNhanh.ToString());
         }
 
         protected void btnCuaHangTruong_Click(object sender, EventArgs e)
@@ -115,6 +119,9 @@ namespace BanHang
             data = new dtChiTietDonHangChiNhanh();
             data.CuaHangTruongDuyet(IDDonHangChiNhanh);
             btnCuaHangTruong.Enabled = false;
+            gridChiTiet.Columns["chucnang"].Visible = false;
+            LoadGrid(IDDonHangChiNhanh.ToString());
+            
         }
     }
 }

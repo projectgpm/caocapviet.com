@@ -108,16 +108,17 @@ namespace BanHang.Data
                 }
             }
         }
-        public void ThemChiTietDonHang_LOG(string SoDonHang, string MaHang, string IDHangHoa, string IDDonViTinh, string TrongLuong, string SoLuong, string IDSoDonHang)
+        public void ThemChiTietDonHang_LOG(string SoDonHang, string MaHang, string IDHangHoa, string IDDonViTinh, string TrongLuong, string SoLuong, string IDSoDonHang, string GhiChu)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
                 try
                 {
                     myConnection.Open();
-                    string cmdText = "INSERT INTO [GPM_Log_DuyetHangChiNhanh] ([SoDonHang],[MaHang],[IDHangHoa],[IDDonViTinh],[TrongLuong],[SoLuong],[IDSoDonHang]) VALUES (@SoDonHang,@MaHang,@IDHangHoa,@IDDonViTinh,@TrongLuong,@SoLuong,@IDSoDonHang)";
+                    string cmdText = "INSERT INTO [GPM_Log_DuyetHangChiNhanh] ([SoDonHang],[MaHang],[IDHangHoa],[IDDonViTinh],[TrongLuong],[SoLuong],[IDSoDonHang],[GhiChu]) VALUES (@SoDonHang,@MaHang,@IDHangHoa,@IDDonViTinh,@TrongLuong,@SoLuong,@IDSoDonHang,@GhiChu)";
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
+                        myCommand.Parameters.AddWithValue("@GhiChu", GhiChu);
                         myCommand.Parameters.AddWithValue("@SoDonHang", SoDonHang);
                         myCommand.Parameters.AddWithValue("@MaHang", MaHang);
                         myCommand.Parameters.AddWithValue("@IDDonViTinh", IDDonViTinh);

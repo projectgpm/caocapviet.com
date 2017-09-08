@@ -49,12 +49,12 @@
 <SettingsText Title="THÔNG TIN CHI TIẾT ĐƠN HÀNG" CommandDelete="Xóa" ConfirmDelete="Bạn chắc chắn muốn xóa?" CommandEdit="Sửa" EmptyDataRow="Chi tiết đơn hàng trống"></SettingsText>
 <Columns>
     
-    <dx:GridViewDataSpinEditColumn Caption="Số Lượng Còn" FieldName="SoLuong" VisibleIndex="5">
+    <dx:GridViewDataSpinEditColumn Caption="Số Lượng Còn" FieldName="SoLuong" VisibleIndex="4">
         <propertiesspinedit DisplayFormatString="N0"></propertiesspinedit>
     </dx:GridViewDataSpinEditColumn>
     <dx:GridViewDataTextColumn Caption="Mã Hàng" FieldName="MaHang" VisibleIndex="0" ReadOnly="True">
     </dx:GridViewDataTextColumn>
-    <dx:GridViewDataSpinEditColumn Caption="Trọng Lượng" FieldName="TrongLuong" VisibleIndex="4" ReadOnly="True">
+    <dx:GridViewDataSpinEditColumn Caption="Trọng Lượng" FieldName="TrongLuong" VisibleIndex="3" ReadOnly="True">
         <PropertiesSpinEdit DisplayFormatString="{0:n} KG" NumberFormat="Custom">
         </PropertiesSpinEdit>
     </dx:GridViewDataSpinEditColumn>
@@ -66,6 +66,8 @@
         <PropertiesComboBox DataSourceID="SqlDonViTinh" TextField="TenDonViTinh" ValueField="ID">
         </PropertiesComboBox>
     </dx:GridViewDataComboBoxColumn>
+    <dx:GridViewDataTextColumn Caption="Ghi Chú" FieldName="GhiChu" VisibleIndex="5">
+    </dx:GridViewDataTextColumn>
 </Columns>
 
         <TotalSummary>

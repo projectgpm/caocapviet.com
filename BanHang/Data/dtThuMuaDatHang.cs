@@ -9,6 +9,21 @@ namespace BanHang.Data
 {
     public class dtThuMuaDatHang
     {
+        public DataTable LayDanhSachDonHangXuLy1Phan()
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT * FROM [GPM_ThuMua_DonHang] WHERE [TrangThai] = 1 AND IDTrangThaiDonHang = 4  AND [IDNguoiLap] is not null ";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    return tb;
+                }
+            }
+        }
         public void CapNhatTrangThaiDonHang(string ID)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
@@ -158,7 +173,7 @@ namespace BanHang.Data
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "SELECT * FROM [GPM_ThuMua_DonHang] WHERE TrangThaiDonHang = 0  AND [SoDonHang] is not null AND [IDKhoLap] = '" + IDKho + "'";
+                string cmdText = "SELECT * FROM [GPM_ThuMua_DonHang] WHERE TrangThai = 0 AND TrangThaiDonHang = 0  AND [SoDonHang] is not null AND [IDKhoLap] = '" + IDKho + "'";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {

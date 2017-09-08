@@ -25,7 +25,7 @@
             <dx:LayoutItem Caption="">
                 <LayoutItemNestedControlCollection>
                     <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer2" runat="server">
-                        <dx:ASPxButton ID="btnDonHangDaDuyet" runat="server" PostBackUrl="DonHangDaXuLy.aspx" Text="Xem đơn hàng đã xử lý">
+                        <dx:ASPxButton ID="btnDonHangDaDuyet" runat="server" PostBackUrl="DonHangDaXuLyThuMua.aspx" Text="Xem đơn hàng đã xử lý">
                             <Image IconID="content_checkbox_32x32">
                             </Image>
                         </dx:ASPxButton>
