@@ -199,7 +199,7 @@ namespace BanHang
                                 DataTable dbt = data.KTChiTietDonHang_Temp(IDHangHoa, IDDonHangChiNhanh, IDTemp);
                                 if (dbt.Rows.Count == 0)
                                 {
-                                    data.ThemChiTietDonHang_Temp(ID, MaHang, IDHangHoa, IDDonViTinh, TrongLuong, SoLuong, TonKho, GhiChu, TrangThai, IDKho, IDTemp);
+                                    data.ThemChiTietDonHang_Temp(ID, MaHang, IDHangHoa, IDDonViTinh, TrongLuong, SoLuong, TonKho, GhiChu, TrangThai, IDKho, IDTemp, SoLuong);
                                 }
                             }
                             LoadDanhSach(ID, IDTemp);
@@ -225,7 +225,7 @@ namespace BanHang
                                 string TrongLuong = dr1["TrongLuong"].ToString();
                                 string SoLuong = dr1["SoLuong"].ToString();
                                 data = new dtDuyetDonHangChiNhanh();
-                                data.ThemChiTietDonHang_Temp(ID, MaHang, IDHangHoa, IDDonViTinh, TrongLuong, SoLuong, "0", "", "0", "1", IDTemp);
+                                data.ThemChiTietDonHang_Temp(ID, MaHang, IDHangHoa, IDDonViTinh, TrongLuong, SoLuong, "0", "", "0", "1", IDTemp, SoLuong);
                             }
                             LoadDanhSach(ID, IDTemp);
                         }
