@@ -10,7 +10,7 @@
 namespace BanHang {
     
     
-    public partial class DonHangDaHuy {
+    public partial class DonHangXuLy1Phan {
         
         /// <summary>
         /// ASPxFormLayout1 control.
@@ -20,24 +20,6 @@ namespace BanHang {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxFormLayout ASPxFormLayout1;
-        
-        /// <summary>
-        /// LayoutItemNestedControlContainer5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.LayoutItemNestedControlContainer LayoutItemNestedControlContainer5;
-        
-        /// <summary>
-        /// btnTaoDonHang control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxButton btnTaoDonHang;
         
         /// <summary>
         /// LayoutItemNestedControlContainer1 control.
@@ -76,13 +58,13 @@ namespace BanHang {
         protected global::DevExpress.Web.ASPxButton btnDonHangDaDuyet;
         
         /// <summary>
-        /// LayoutItemNestedControlContainer6 control.
+        /// LayoutItemNestedControlContainer3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.LayoutItemNestedControlContainer LayoutItemNestedControlContainer6;
+        protected global::DevExpress.Web.LayoutItemNestedControlContainer LayoutItemNestedControlContainer3;
         
         /// <summary>
         /// btnDonhangXuLy1Phan control.
@@ -94,13 +76,13 @@ namespace BanHang {
         protected global::DevExpress.Web.ASPxButton btnDonhangXuLy1Phan;
         
         /// <summary>
-        /// LayoutItemNestedControlContainer3 control.
+        /// LayoutItemNestedControlContainer4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.LayoutItemNestedControlContainer LayoutItemNestedControlContainer3;
+        protected global::DevExpress.Web.LayoutItemNestedControlContainer LayoutItemNestedControlContainer4;
         
         /// <summary>
         /// ASPxFormLayout1_E3 control.
@@ -112,13 +94,13 @@ namespace BanHang {
         protected global::DevExpress.Web.ASPxButton ASPxFormLayout1_E3;
         
         /// <summary>
-        /// LayoutItemNestedControlContainer4 control.
+        /// LayoutItemNestedControlContainer5 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.LayoutItemNestedControlContainer LayoutItemNestedControlContainer4;
+        protected global::DevExpress.Web.LayoutItemNestedControlContainer LayoutItemNestedControlContainer5;
         
         /// <summary>
         /// ASPxFormLayout1_E2 control.
@@ -137,15 +119,6 @@ namespace BanHang {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxGridView gridDonDatHang;
-        
-        /// <summary>
-        /// SqlTrangThaiXuLy control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlTrangThaiXuLy;
         
         /// <summary>
         /// SqlKho control.

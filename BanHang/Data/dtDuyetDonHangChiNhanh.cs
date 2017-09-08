@@ -606,6 +606,21 @@ namespace BanHang.Data
                 }
             }
         }
+        public DataTable LayDanhSachDonHangXuLy1Phan()
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT * FROM [GPM_DonHangChiNhanh] WHERE [TrangThai] = 1 AND IDTrangThaiDonHang = 4 AND [GiamSatDuyet] = 1  AND [IDNguoiLap] is not null ";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    return tb;
+                }
+            }
+        }
         public DataTable LayDanhSachDonHang_ID(string ID)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))

@@ -19,11 +19,14 @@ namespace BanHang
                 string IDDonHangThuMua = Request.QueryString["IDDonHangThuMua"];
                 if (IDDonHangThuMua != null)
                 {
-                    if (dtThuMuaDatHang.LayTrangThaiDonHang(IDDonHangThuMua) == 1)
+                    if (dtThuMuaDatHang.LayTrangThaiDonHang(IDDonHangThuMua) == 1 || dtThuMuaDatHang.DonHangHuy(IDDonHangThuMua) == 1)
                     {
-                        btnHuyDonHang.Enabled = false;
+                        btnHuyDonHang.Visible = false;
                         gridChiTiet.Columns["chucnang"].Visible = false;
                     }
+                    
+
+
                     LoadGrid(IDDonHangThuMua.ToString());
                 }
             }

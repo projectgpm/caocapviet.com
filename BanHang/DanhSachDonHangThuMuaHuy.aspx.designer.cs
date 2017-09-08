@@ -10,7 +10,7 @@
 namespace BanHang {
     
     
-    public partial class DonHangDaHuy {
+    public partial class DanhSachDonHangThuMuaHuy {
         
         /// <summary>
         /// ASPxFormLayout1 control.
@@ -22,24 +22,6 @@ namespace BanHang {
         protected global::DevExpress.Web.ASPxFormLayout ASPxFormLayout1;
         
         /// <summary>
-        /// LayoutItemNestedControlContainer5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.LayoutItemNestedControlContainer LayoutItemNestedControlContainer5;
-        
-        /// <summary>
-        /// btnTaoDonHang control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxButton btnTaoDonHang;
-        
-        /// <summary>
         /// LayoutItemNestedControlContainer1 control.
         /// </summary>
         /// <remarks>
@@ -49,13 +31,13 @@ namespace BanHang {
         protected global::DevExpress.Web.LayoutItemNestedControlContainer LayoutItemNestedControlContainer1;
         
         /// <summary>
-        /// btnDuyetDonHang control.
+        /// btnTaoDonHang control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxButton btnDuyetDonHang;
+        protected global::DevExpress.Web.ASPxButton btnTaoDonHang;
         
         /// <summary>
         /// LayoutItemNestedControlContainer2 control.
@@ -74,24 +56,6 @@ namespace BanHang {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxButton btnDonHangDaDuyet;
-        
-        /// <summary>
-        /// LayoutItemNestedControlContainer6 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.LayoutItemNestedControlContainer LayoutItemNestedControlContainer6;
-        
-        /// <summary>
-        /// btnDonhangXuLy1Phan control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxButton btnDonhangXuLy1Phan;
         
         /// <summary>
         /// LayoutItemNestedControlContainer3 control.
@@ -139,22 +103,22 @@ namespace BanHang {
         protected global::DevExpress.Web.ASPxGridView gridDonDatHang;
         
         /// <summary>
-        /// SqlTrangThaiXuLy control.
+        /// SqlTrangThaiThanhToan control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlTrangThaiXuLy;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlTrangThaiThanhToan;
         
         /// <summary>
-        /// SqlKho control.
+        /// SqlNhaCungCap control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlKho;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlNhaCungCap;
         
         /// <summary>
         /// SqlNguoiDung control.

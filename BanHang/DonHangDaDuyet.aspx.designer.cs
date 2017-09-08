@@ -76,6 +76,24 @@ namespace BanHang {
         protected global::DevExpress.Web.ASPxButton btnDonHangDaDuyet;
         
         /// <summary>
+        /// LayoutItemNestedControlContainer6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.LayoutItemNestedControlContainer LayoutItemNestedControlContainer6;
+        
+        /// <summary>
+        /// btnDonhangXuLy1Phan control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxButton btnDonhangXuLy1Phan;
+        
+        /// <summary>
         /// LayoutItemNestedControlContainer3 control.
         /// </summary>
         /// <remarks>

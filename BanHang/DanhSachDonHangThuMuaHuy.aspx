@@ -1,11 +1,11 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Root.master" AutoEventWireup="true" CodeBehind="DanhSachDonHangThuMua.aspx.cs" Inherits="BanHang.DanhSachDonHangThuMua" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Root.master" AutoEventWireup="true" CodeBehind="DanhSachDonHangThuMuaHuy.aspx.cs" Inherits="BanHang.DanhSachDonHangThuMuaHuy" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
-     <script type="text/javascript">
-         function OnMoreInfoClick(element, key) {
-             popup.SetContentUrl("ChiTietDonHangThuMua.aspx?IDDonHangThuMua=" + key);
-             popup.ShowAtElement();
-             // alert(key);
-         }
+    <script type="text/javascript">
+        function OnMoreInfoClick(element, key) {
+            popup.SetContentUrl("ChiTietDonHangThuMua.aspx?IDDonHangThuMua=" + key);
+            popup.ShowAtElement();
+            // alert(key);
+        }
 
     </script>
     <dx:ASPxFormLayout ID="ASPxFormLayout1" runat="server" ColCount="5">
@@ -35,7 +35,7 @@
            
             <dx:LayoutItem Caption="">
                 <LayoutItemNestedControlCollection>
-                    <dx:LayoutItemNestedControlContainer runat="server">
+                    <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer3" runat="server">
                         <dx:ASPxButton ID="ASPxFormLayout1_E3" runat="server" Text="Đơn Hàng Đã Hủy" PostBackUrl="DanhSachDonHangThuMuaHuy.aspx">
                             <Image IconID="reports_deleteheader_32x32">
                             </Image>
@@ -46,7 +46,7 @@
            
             <dx:LayoutItem Caption="">
                 <LayoutItemNestedControlCollection>
-                    <dx:LayoutItemNestedControlContainer runat="server">
+                    <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer4" runat="server">
                         <dx:ASPxButton ID="ASPxFormLayout1_E2" runat="server" PostBackUrl="ThongKeDonHangChiNhanh.aspx" Text="Đơn hàng chi nhánh">
                             <Image IconID="chart_3dclusteredcolumn_32x32">
                             </Image>
@@ -92,7 +92,7 @@
             <EditForm HorizontalAlign="WindowCenter" Modal="True" VerticalAlign="WindowCenter" />
         </SettingsPopup>
         <SettingsSearchPanel Visible="True" />
-        <SettingsText CommandDelete="Xóa" CommandEdit="Sửa" CommandNew="Thêm" ConfirmDelete="Bạn có chắc chắn muốn xóa không?" PopupEditFormCaption="Thông tin đơn vị tính" Title="DANH SÁCH ĐƠN ĐẶT HÀNG THU MUA" EmptyDataRow="Danh sách đơn hàng trống" SearchPanelEditorNullText="Nhập thông tin cần tìm..." />
+        <SettingsText CommandDelete="Xóa" CommandEdit="Sửa" CommandNew="Thêm" ConfirmDelete="Bạn có chắc chắn muốn xóa không?" PopupEditFormCaption="Thông tin đơn vị tính" Title="DANH SÁCH ĐƠN ĐẶT HÀNG THU MUA ĐÃ HỦY" EmptyDataRow="Danh sách đơn hàng trống" SearchPanelEditorNullText="Nhập thông tin cần tìm..." />
          <Columns>
              <dx:GridViewDataTextColumn Caption="Số Đơn Hàng" FieldName="SoDonHang" VisibleIndex="0">
                  <HeaderStyle Wrap="True" />
