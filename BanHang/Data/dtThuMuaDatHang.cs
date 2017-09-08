@@ -9,6 +9,26 @@ namespace BanHang.Data
 {
     public class dtThuMuaDatHang
     {
+        public void CapNhatTrangThaiDonHang(string ID)
+        {
+            using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
+            {
+                try
+                {
+                    myConnection.Open();
+                    string cmdText = "UPDATE [GPM_ThuMua_DonHang] SET [TrangThaiDonHang] = 1, [NgayCapNhat] = getdate() WHERE [ID] = @ID";
+                    using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
+                    {
+                        myCommand.ExecuteNonQuery();
+                    }
+                    myConnection.Close();
+                }
+                catch
+                {
+                    throw new Exception("Lỗi: Quá trình cập nhật dữ liệu gặp lỗi");
+                }
+            }
+        }
         public static int LayTyLeChietKhau(string IDDonHangThuMua)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))

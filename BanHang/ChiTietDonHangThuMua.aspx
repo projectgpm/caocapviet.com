@@ -9,6 +9,20 @@
 <body>
     <form id="form1" runat="server">
     <div>
+        <dx:ASPxFormLayout ID="ASPxFormLayout1" runat="server" ColCount="5">
+            <Items>
+                <dx:LayoutItem Caption="">
+                    <LayoutItemNestedControlCollection>
+                        <dx:LayoutItemNestedControlContainer runat="server">
+                            <dx:ASPxButton ID="btnHuyDonHang" runat="server" OnClick="btnHuyDonHang_Click" Text="Hủy Đơn Hàng">
+                                <Image IconID="edit_delete_32x32">
+                                </Image>
+                            </dx:ASPxButton>
+                        </dx:LayoutItemNestedControlContainer>
+                    </LayoutItemNestedControlCollection>
+                </dx:LayoutItem>
+            </Items>
+        </dx:ASPxFormLayout>
         <dx:ASPxGridView runat="server" AutoGenerateColumns="False" Width="100%" ID="gridChiTiet" KeyFieldName="ID" OnRowUpdating="gridChiTiet_RowUpdating">
         <SettingsEditing Mode="PopupEditForm">
         </SettingsEditing>

@@ -82,7 +82,6 @@
              <dx:GridViewDataComboBoxColumn Caption="Trạng Thái" FieldName="TrangThai" VisibleIndex="9">
                  <PropertiesComboBox>
                      <Items>
-                         <dx:ListEditItem Text="Chưa xử lý" Value="0" />
                          <dx:ListEditItem Text="Đã xử lý" Value="1" />
                      </Items>
                  </PropertiesComboBox>

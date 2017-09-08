@@ -62,31 +62,6 @@
         </SettingsPopup>
         <SettingsSearchPanel Visible="True" />
         <SettingsText CommandCancel="Hủy bỏ thao tác" CommandDelete="Xóa" CommandEdit="Sửa" CommandNew="Thêm" CommandUpdate="Lưu" ConfirmDelete="Bạn có chắc chắn muốn xóa không?. Thao tác này có thể xóa Hàng Hóa thuộc nhà cung cấp!." PopupEditFormCaption="Thông tin nhà cung cấp" Title="DANH SÁCH MÃ HÀNG CHI NHÁNH ĐẶT" EmptyDataRow="Không có dữ liệu hiển thị" SearchPanelEditorNullText="Nhập thông tin cần tìm..." />
-        <EditFormLayoutProperties>
-            <Items>
-<dx:GridViewColumnLayoutItem ColumnName="Mã NCC"></dx:GridViewColumnLayoutItem>
-                <dx:GridViewColumnLayoutItem ColumnName="Tên NCC" Name="TenNhaCungCap">
-                </dx:GridViewColumnLayoutItem>
-                <dx:GridViewColumnLayoutItem ColumnName="Địa Chỉ" Name="DienThoai">
-                </dx:GridViewColumnLayoutItem>
-                <dx:GridViewColumnLayoutItem ColumnName="Mã số thuế" Name="Fax">
-                </dx:GridViewColumnLayoutItem>
-                <dx:GridViewColumnLayoutItem ColumnName="Điện Thoại" Name="Email">
-                </dx:GridViewColumnLayoutItem>
-                <dx:GridViewColumnLayoutItem ColumnName="Fax" Name="DiaChi">
-                </dx:GridViewColumnLayoutItem>
-                <dx:GridViewColumnLayoutItem ColumnName="Email" Name="NguoiLienHe">
-                </dx:GridViewColumnLayoutItem>
-                <dx:GridViewColumnLayoutItem ColumnName="Người Liên Hệ" Name="MaSoThue">
-                </dx:GridViewColumnLayoutItem>
-                <dx:GridViewColumnLayoutItem ColumnName="Lĩnh Vực Kinh Doanh" Name="LinhVucKinhDoanh">
-                </dx:GridViewColumnLayoutItem>
-                <dx:GridViewColumnLayoutItem ColumnName="Ghi chú" Name="GhiChu">
-                </dx:GridViewColumnLayoutItem>
-                <dx:EditModeCommandLayoutItem HorizontalAlign="Right">
-                </dx:EditModeCommandLayoutItem>
-            </Items>
-        </EditFormLayoutProperties>
         <Columns>
             <dx:GridViewDataTextColumn Caption="Mã Hàng" FieldName="MaHang" VisibleIndex="0">
             </dx:GridViewDataTextColumn>

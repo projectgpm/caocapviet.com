@@ -50,6 +50,8 @@ namespace BanHang
                 e.Row.BackColor = color;
         }
 
+      
+
        
     }
 }

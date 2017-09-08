@@ -9,6 +9,46 @@ namespace BanHang.Data
 {
     public class dtDuyetDonHangChiNhanh
     {
+        public static string LayIDKhoLapPhieu(string ID)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT IDKhoLap FROM [GPM_DuyetHangChiNhanh] WHERE ID  = '" + ID + "'";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    if (tb.Rows.Count != 0)
+                    {
+                        DataRow dr = tb.Rows[0];
+                        return dr["IDKhoLap"].ToString();
+                    }
+                    else return "1";
+                }
+            }
+        }
+        public void CapNhatDonHangHoanTat(string IDDonHang)
+        {
+            using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
+            {
+                try
+                {
+                    myConnection.Open();
+                    string cmdText = "UPDATE [GPM_DuyetHangChiNhanh] SET [TrangThaiDuyet] = 1 WHERE [ID] = '" + IDDonHang + "'";
+                    using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
+                    {
+                        myCommand.ExecuteNonQuery();
+                    }
+                    myConnection.Close();
+                }
+                catch
+                {
+                    throw new Exception("Lỗi: Quá trình thêm dữ liệu gặp lỗi");
+                }
+            }
+        }
         public static int TrangThaiDuyet(string ID)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
@@ -155,7 +195,7 @@ namespace BanHang.Data
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "SELECT TrangThai FROM [GPM_DuyetHangChiNhanh_Temp] WHERE [ID] = '" + ID + "'";
+                string cmdText = "SELECT TrangThaiDuyet FROM [GPM_DuyetHangChiNhanh] WHERE [ID] = '" + ID + "'";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
@@ -164,7 +204,7 @@ namespace BanHang.Data
                     if (tb.Rows.Count != 0)
                     {
                         DataRow dr = tb.Rows[0];
-                        return Int32.Parse(dr["TrangThai"].ToString());
+                        return Int32.Parse(dr["TrangThaiDuyet"].ToString());
                     }
                     else return 0;
                 }

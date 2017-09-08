@@ -21,6 +21,7 @@ namespace BanHang
                 {
                     if (dtThuMuaDatHang.LayTrangThaiDonHang(IDDonHangThuMua) == 1)
                     {
+                        btnHuyDonHang.Enabled = false;
                         gridChiTiet.Columns["chucnang"].Visible = false;
                     }
                     LoadGrid(IDDonHangThuMua.ToString());
@@ -104,6 +105,19 @@ namespace BanHang
             }
             else
                 return 0;
+        }
+
+        protected void btnHuyDonHang_Click(object sender, EventArgs e)
+        {
+            string IDDonHangThuMua = Request.QueryString["IDDonHangThuMua"];
+            if (IDDonHangThuMua != null)
+            {
+                data = new dtThuMuaDatHang();
+                data.CapNhatTrangThaiDonHang(IDDonHangThuMua);
+                btnHuyDonHang.Enabled = false;
+                gridChiTiet.Columns["chucnang"].Visible = false;
+                LoadGrid(IDDonHangThuMua.ToString());
+            }
         }
     }
 }
