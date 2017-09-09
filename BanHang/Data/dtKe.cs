@@ -29,6 +29,26 @@ namespace BanHang.Data
                 }
             }
         }
+        public void XoaALL_Temp(string IDTemp)
+        {
+            using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
+            {
+                try
+                {
+                    myConnection.Open();
+                    string strSQL = "DELETE [GPM_ChiTietKe_Temp]  WHERE [IDTemp] = @IDTemp";
+                    using (SqlCommand myCommand = new SqlCommand(strSQL, myConnection))
+                    {
+                        myCommand.Parameters.AddWithValue("@IDTemp", IDTemp);
+                        myCommand.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Lỗi: Quá trình Xóa dữ liệu gặp lỗi, hãy tải lại trang");
+                }
+            }
+        }
         public void XoaChiTietKe(string ID)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
@@ -69,12 +89,12 @@ namespace BanHang.Data
                 }
             }
         }
-        public static DataTable KTHangTrongKe_Temp(string IDHangHoa, string IDKe)
+        public static DataTable KTHangTrongKe_Temp(string IDHangHoa, string IDKe, string IDTemp)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "SELECT * FROM [GPM_ChiTietKe_Temp] WHERE [IDHangHoa]= '" + IDHangHoa + "' AND [IDKe] = '" + IDKe + "' ";
+                string cmdText = "SELECT * FROM [GPM_ChiTietKe_Temp] WHERE [IDHangHoa]= '" + IDHangHoa + "' AND [IDKe] = '" + IDKe + "' AND [IDTemp] = '" + IDTemp + "' ";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
@@ -99,12 +119,12 @@ namespace BanHang.Data
                 }
             }
         }
-        public DataTable DanhSachKe_Temp(string IDKe)
+        public DataTable DanhSachKe_Temp(string IDTemp)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "SELECT * FROM [GPM_ChiTietKe_Temp] WHERE [IDKe] = " + IDKe;
+                string cmdText = "SELECT [GPM_DonViTinh].TenDonViTinh,[GPM_HangHoa].MaHang,[GPM_HangHoa].TenHangHoa,[GPM_Ke].TenKe AS TenKeHang FROM [GPM_ChiTietKe_Temp],[GPM_HangHoa],[GPM_Ke],[GPM_DonViTinh] WHERE [GPM_DonViTinh].ID  = [GPM_HangHoa].IDDonViTinh AND [GPM_Ke].ID =  [GPM_ChiTietKe_Temp].IDKe  AND [GPM_HangHoa].ID = [GPM_ChiTietKe_Temp].IDHangHoa AND [IDTemp] = '" + IDTemp + "'";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
@@ -129,19 +149,18 @@ namespace BanHang.Data
                 }
             }
         }
-        public void ThemHangVaoKe_Temp(string IDHangHoa, string IDKe, string IDonViTinh, string MaHang)
+        public void ThemHangVaoKe_Temp(string IDHangHoa, string IDKe, string IDTemp)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
                 try
                 {
                     myConnection.Open();
-                    string cmdText = "INSERT INTO [GPM_ChiTietKe_Temp] ([IDHangHoa],[IDKe],[IDonViTinh],[MaHang]) VALUES (@IDHangHoa,@IDKe,@IDonViTinh,@MaHang)";
+                    string cmdText = "INSERT INTO [GPM_ChiTietKe_Temp] ([IDHangHoa],[IDKe],[IDTemp]) VALUES (@IDHangHoa,@IDKe,@IDonViTinh,@MaHang,@IDTemp)";
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
-                        myCommand.Parameters.AddWithValue("@MaHang", MaHang);
-                        myCommand.Parameters.AddWithValue("@IDonViTinh", IDonViTinh);
                         myCommand.Parameters.AddWithValue("@IDKe", IDKe);
+                        myCommand.Parameters.AddWithValue("@IDTemp", IDTemp);
                         myCommand.Parameters.AddWithValue("@IDHangHoa", IDHangHoa);
                         myCommand.ExecuteNonQuery();
                     }
