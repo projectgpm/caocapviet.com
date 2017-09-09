@@ -306,7 +306,7 @@ namespace BanHang
                                     if (LOG.Rows.Count == 0)
                                     {
                                         data = new dtDuyetDonHangThuMua();
-                                        data.ThemChiTietDonHang_LOG(IDDonHang, SoDonHang, MaHang, IDHangHoa, IDDonViTinh, TrongLuong, SoLuong, GhiChuHH);
+                                        data.ThemChiTietDonHang_LOG(IDDonHang, SoDonHang, MaHang, IDHangHoa, IDDonViTinh, TrongLuong, ChenhLech, GhiChuHH);
                                     }
                                     else
                                     {
