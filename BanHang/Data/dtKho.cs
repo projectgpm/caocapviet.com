@@ -88,6 +88,36 @@ namespace BanHang.Data
             }
         }
 
+        public string LayTenKho_ID(string ID)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT TenCuaHang FROM [GPM_Kho] WHERE [ID] = '" + ID + "'";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    return tb.Rows[0]["TenCuaHang"].ToString();
+                }
+            }
+        }
+        public string LayMaKho_ID(string ID)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT MaKho FROM [GPM_Kho] WHERE [ID] = '" + ID + "'";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    return tb.Rows[0]["MaKho"].ToString();
+                }
+            }
+        }
         public DataTable LayDanhSachKho_Khac1()
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))

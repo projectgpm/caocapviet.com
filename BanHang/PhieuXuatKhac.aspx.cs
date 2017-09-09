@@ -138,7 +138,7 @@ namespace BanHang
         private void LoadGrid(string IDPhieuXuatKhac)
         {
             data = new dtPhieuXuatKhac();
-            gridDanhSachHangHoa_Temp.DataSource = data.LayDanhSachPhieuXuatKhac_Temp(IDPhieuXuatKhac);
+            gridDanhSachHangHoa_Temp.DataSource = data.LayDanhSachPhieuXuatKhac(IDPhieuXuatKhac);
             gridDanhSachHangHoa_Temp.DataBind();
 
         }
@@ -160,7 +160,7 @@ namespace BanHang
             if (cmbLyDoXuat.Text != "")
             {
                 string IDPhieuXuatKhac = IDPhieuXuatKhac_Temp.Value.ToString();
-                DataTable db = data.LayDanhSachPhieuXuatKhac_Temp(IDPhieuXuatKhac);
+                DataTable db = data.LayDanhSachPhieuXuatKhac(IDPhieuXuatKhac);
                 if (db.Rows.Count != 0)
                 {
                     string IDNguoiLapPhieu = cmbNguoiLapPhieu.Value.ToString();
