@@ -80,7 +80,6 @@ namespace BanHang
             DataTable dt = data.DanhSachChiTietPhieuKiemKho_IDPhieuKiemKho(Int32.Parse(IDPhieuKiemKho));
             if (dt.Rows.Count > 0)
             {
-
                 string IDKho = dtKiemKho.LayIDKho_PhieuKiem(IDPhieuKiemKho);
                 if (IDKho != "")
                 {

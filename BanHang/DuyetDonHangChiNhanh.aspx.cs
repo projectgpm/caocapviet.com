@@ -163,7 +163,7 @@ namespace BanHang
                 txtSoLuong.Enabled = true;
                 data.Xoa_Temp_ID(IDDonHangDuyet_Temp.Value.ToString());
                 Random ran = new Random();
-                int Temp = ran.Next(1000, 9999);
+                int Temp = ran.Next(100000, 999999);
                 IDDonHangDuyet_Temp.Value = Temp.ToString();
                 string ID = cmbSoDonHang.Value.ToString();
                 DataTable db = data.LayDanhSachDonHang_ID(ID);

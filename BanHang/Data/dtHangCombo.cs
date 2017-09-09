@@ -218,7 +218,7 @@ namespace BanHang.Data
             }
         }
 
-        public void ThemHangHoa(int IDHangHoaCombo, string IDHangHoa, string SoLuong, string GiaBanTruocThue, string ThanhTien, string IDDonViTinh, string MaHang, string TrongLuong, string GiaBanSauThue, string GiaMuaTruocThue, string GiaMuaSauThue, string GhiChu)
+        public void ThemHangHoa(object IDHangHoaCombo, string IDHangHoa, string SoLuong, string GiaBanTruocThue, string ThanhTien, string IDDonViTinh, string MaHang, string TrongLuong, string GiaBanSauThue, string GiaMuaTruocThue, string GiaMuaSauThue, string GhiChu)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
@@ -342,7 +342,7 @@ namespace BanHang.Data
             }
         }
 
-        public void CapNhatHangHoa(int ID, string MaHang, string TenHangHoa, string IDNhomHang, string IDDonViTinh, string GiaMuaTruocThue, string GiaBanTruocThue, string GiaMuaSauThue, string GiaBanSauThue, string TrongLuong, string GhiChu, string HanSuDung)
+        public void CapNhatHangHoa(object ID, string MaHang, string TenHangHoa, string IDNhomHang, string IDDonViTinh, string GiaMuaTruocThue, string GiaBanTruocThue, string GiaMuaSauThue, string GiaBanSauThue, string TrongLuong, string GhiChu, string HanSuDung)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {

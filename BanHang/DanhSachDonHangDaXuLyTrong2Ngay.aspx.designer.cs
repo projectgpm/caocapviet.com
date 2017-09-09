@@ -10,7 +10,7 @@
 namespace BanHang {
     
     
-    public partial class DanhSachPhieuDatHang {
+    public partial class DanhSachDonHangDaXuLyTrong2Ngay {
         
         /// <summary>
         /// ASPxFormLayout1 control.
@@ -76,6 +76,15 @@ namespace BanHang {
         protected global::DevExpress.Web.ASPxButton ASPxFormLayout1_E3;
         
         /// <summary>
+        /// LayoutItemNestedControlContainer4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.LayoutItemNestedControlContainer LayoutItemNestedControlContainer4;
+        
+        /// <summary>
         /// ASPxFormLayout1_E2 control.
         /// </summary>
         /// <remarks>
@@ -94,22 +103,22 @@ namespace BanHang {
         protected global::DevExpress.Web.ASPxGridView gridDonDatHang;
         
         /// <summary>
-        /// SqlTrangThaiThanhToan control.
+        /// SqlTrangThaiXuLy control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlTrangThaiThanhToan;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlTrangThaiXuLy;
         
         /// <summary>
-        /// SqlNhaCungCap control.
+        /// SqlKho control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlNhaCungCap;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlKho;
         
         /// <summary>
         /// SqlNguoiDung control.
@@ -119,15 +128,6 @@ namespace BanHang {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlNguoiDung;
-        
-        /// <summary>
-        /// ASPxPopupControl1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxPopupControl ASPxPopupControl1;
         
         /// <summary>
         /// popup control.

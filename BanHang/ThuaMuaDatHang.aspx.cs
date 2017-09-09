@@ -32,7 +32,7 @@ namespace BanHang
                    // data = new dtThuMuaDatHang();
                    // object IDPhieuDatHang = data.ThemPhieuDatHang();
                     Random ran = new Random();
-                    int Temp = ran.Next(1000, 9999);
+                    int Temp = ran.Next(100000, 999999);
                     IDThuMuaDatHang_Temp.Value = Temp.ToString();
                     cmbKhoLap.Value = Session["IDKho"].ToString();
                     txtNguoiLap.Text = Session["TenDangNhap"].ToString();
