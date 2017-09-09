@@ -46,15 +46,16 @@
 
         
 
-        <SettingsText CommandDelete="Xóa" CommandEdit="Sửa" CommandNew="Thêm" Title="DANH SÁCH KIỂM KHO" ConfirmDelete="Bạn chắc chắn muốn xóa?"/>
+        <SettingsText CommandDelete="Xóa" CommandEdit="Sửa" CommandNew="Thêm" Title="DANH SÁCH KIỂM KHO" ConfirmDelete="Bạn chắc chắn muốn xóa?" EmptyDataRow="Danh sách kiểm kho trống." SearchPanelEditorNullText="Nhập thông tin cần tìm..."/>
         <Columns>
             <dx:GridViewDataButtonEditColumn Caption="Xem Chi Tiết" VisibleIndex="6">
                 
                 <DataItemTemplate>
                     <a href="javascript:void(0);" onclick="OnMoreInfoClick(this, '<%# Container.KeyValue %>')">Xem </a>
                 </DataItemTemplate>
+                <HeaderStyle Wrap="True" />
             </dx:GridViewDataButtonEditColumn>
-            <dx:GridViewDataComboBoxColumn Caption="Chi Nhánh" FieldName="IDKho" VisibleIndex="0">
+            <dx:GridViewDataComboBoxColumn Caption="Chi Nhánh Điều Chỉnh" FieldName="IDKho" VisibleIndex="0">
                 <PropertiesComboBox DataSourceID="sqlKhoHang" TextField="TenCuaHang" ValueField="ID">
                 </PropertiesComboBox>
             </dx:GridViewDataComboBoxColumn>

@@ -51,50 +51,29 @@
                     </dx:LayoutItem>
                 </Items>
             </dx:LayoutGroup>
-            <dx:LayoutGroup Caption="Thông tin hàng hóa" ColCount="4" ColSpan="4">
+            <dx:LayoutGroup Caption="Kệ Hàng" ColCount="4" ColSpan="4">
                 <Items>
-                    <dx:LayoutItem Caption="Hàng Hóa" ColSpan="2">
+                    <dx:LayoutItem Caption="Chọn Kệ Hàng" ColSpan="4">
                         <LayoutItemNestedControlCollection>
                             <dx:LayoutItemNestedControlContainer runat="server">
-                                <asp:Button ID="btnInsertHang" runat="server" OnClick="btnInsertHang_Click" Style="display: none"/>
-                                <dx:ASPxComboBox ID="txtBarcode" runat="server" ValueType="System.String" 
-                                        DropDownWidth="600" DropDownStyle="DropDown" 
-                                        ValueField="ID"
-                                        NullText="Nhập Barcode hoặc mã hàng ......." Width="100%" TextFormatString="{0} - {1}"
-                                        EnableCallbackMode="true" CallbackPageSize="10" 
-                                        OnItemsRequestedByFilterCondition="txtBarcode_ItemsRequestedByFilterCondition"
-                                        OnItemRequestedByValue="txtBarcode_ItemRequestedByValue" 
+                                <dx:ASPxComboBox ID="cmbKe" runat="server" ValueType="System.String" 
+                                        DropDownWidth="600" 
+                                        ValueField="ID" Width="100%"
+                                        EnableCallbackMode="true" AutoPostBack="True" DataSourceID="SqlDanhSachKe" OnSelectedIndexChanged="cmbKe_SelectedIndexChanged" TextField="TenKe" 
                                         
                                         >                                    
                                         <Columns>
-                                            <dx:ListBoxColumn FieldName="MaHang" Width="80px" Caption="Mã Hàng" />
-                                            <dx:ListBoxColumn FieldName="TenHangHoa" Width="200px" Caption="Tên Hàng Hóa"/>
-                                            <dx:ListBoxColumn FieldName="TenDonViTinh" Width="100px" Caption="Đơn Vị Tính"/>
+                                            <dx:ListBoxColumn FieldName="TenKe" Width="150px" Caption="Tên Kệ" />
+                                            <dx:ListBoxColumn FieldName="ViTri" Width="200px" Caption="Vị Trí"/>
+                                            <dx:ListBoxColumn FieldName="MoTa" Width="100%" Caption="Mô Tả"/>
                                            
                                         </Columns>
-                                        <DropDownButton Visible="False">
-                                        </DropDownButton>
                                     </dx:ASPxComboBox>
-                                    <asp:SqlDataSource ID="dsHangHoa" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" >                                       
+                                    <asp:SqlDataSource ID="SqlDanhSachKe" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" SelectCommand="SELECT * FROM [GPM_Ke] WHERE ([IDKho] = @IDKho)" >                                       
+                                        <SelectParameters>
+                                            <asp:SessionParameter Name="IDKho" SessionField="IDKho" Type="Int32" />
+                                        </SelectParameters>
                                     </asp:SqlDataSource>
-                            </dx:LayoutItemNestedControlContainer>
-                        </LayoutItemNestedControlCollection>
-                    </dx:LayoutItem>
-                    <dx:LayoutItem Caption="Chọn Kệ Hàng" ColSpan="2">
-                        <LayoutItemNestedControlCollection>
-                            <dx:LayoutItemNestedControlContainer runat="server">
-                                <dx:ASPxComboBox ID="cmbKe" runat="server" AutoPostBack="True" DataSourceID="SqlDanhSachKe" OnSelectedIndexChanged="cmbKe_SelectedIndexChanged" TextField="TenKe" ValueField="ID" Width="100%" DropDownWidth="600px" DropDownStyle="DropDownList"  EnableCallbackMode="true"  >
-                                     <Columns>
-                                        <dx:ListBoxColumn FieldName="TenKe" Width="150px" Caption="Tên Kệ" />
-                                         <dx:ListBoxColumn FieldName="ViTri" Width="200px" Caption="Vị Trí" />
-                                         <dx:ListBoxColumn FieldName="MoTa" Width="100%" Caption="Mô Tả" />
-                                    </Columns>
-                                </dx:ASPxComboBox>
-                                <asp:SqlDataSource ID="SqlDanhSachKe" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" SelectCommand="SELECT * FROM [GPM_Ke] WHERE ([IDKho] = @IDKho)">
-                                    <SelectParameters>
-                                        <asp:SessionParameter Name="IDKho" SessionField="IDKho" Type="Int32" />
-                                    </SelectParameters>
-                                </asp:SqlDataSource>
                             </dx:LayoutItemNestedControlContainer>
                         </LayoutItemNestedControlCollection>
                     </dx:LayoutItem>

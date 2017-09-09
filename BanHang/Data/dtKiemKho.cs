@@ -50,6 +50,26 @@ namespace BanHang.Data
                 }
             }
         }
+        public static string LayIDKho_PhieuKiem(string ID)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT IDKho FROM [GPM_KiemKho] WHERE [ID] = '" + ID + "'";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    if (tb.Rows.Count != 0)
+                    {
+                        DataRow dr = tb.Rows[0];
+                        return dr["IDKho"].ToString().Trim();
+                    }
+                    return "";
+                }
+            }
+        }
         public static int LayIDKhoKiemKho(string ID)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
@@ -105,7 +125,7 @@ namespace BanHang.Data
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "SELECT * FROM [GPM_KiemKho_ChiTiet_Temp] WHERE [IDPhieuKiemKho] =" + IDPhieuKiemKho;
+                string cmdText = "SELECT * FROM [GPM_KiemKho_ChiTiet_Temp] WHERE [IDPhieuKiemKho] = '" + IDPhieuKiemKho + "' ";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
@@ -137,12 +157,12 @@ namespace BanHang.Data
                 }
             }
         }
-        public DataTable KTChiTietPhieuKiemKho_Temp(string IDHangHoa, string IDPhieuKiemKho)
+        public DataTable KTChiTietPhieuKiemKho_Temp(string IDHangHoa, string IDPhieuKiemKho, string IDKe)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "SELECT * FROM [GPM_KiemKho_ChiTiet_Temp] WHERE [IDHangHoa]= '" + IDHangHoa + "' AND [IDPhieuKiemKho] = " + IDPhieuKiemKho;
+                string cmdText = "SELECT * FROM [GPM_KiemKho_ChiTiet_Temp] WHERE [IDHangHoa]= '" + IDHangHoa + "' AND  [IDKe] = '" + IDKe + "' AND [IDPhieuKiemKho] = '" + IDPhieuKiemKho + "'";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
@@ -312,7 +332,7 @@ namespace BanHang.Data
                 }
             }
         }
-        public void CapNhatPhieuKiemKho(string ID, string IDNguoiDung, DateTime NgayKiemKho, string IDKho, string GhiChu)
+        public void CapNhatPhieuKiemKho(object ID, string IDNguoiDung, DateTime NgayKiemKho, string IDKho, string GhiChu)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
@@ -337,7 +357,7 @@ namespace BanHang.Data
                 }
             }
         }
-        public void ThemPhieuKiemKho(string IDPhieuKiemKho, string IDHangHoa, string TonKho, string ChenhLech, string ThucTe, string MaHang, string IDDonViTinh,string IDKe)
+        public void ThemPhieuKiemKho(object IDPhieuKiemKho, string IDHangHoa, string TonKho, string ChenhLech, string ThucTe, string MaHang, string IDDonViTinh,string IDKe)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
