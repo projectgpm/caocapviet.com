@@ -63,9 +63,9 @@
         <SettingsText CommandDelete="Xóa" CommandEdit="Sửa" CommandNew="Thêm" ConfirmDelete="Bạn có chắc chắn muốn xóa không?" PopupEditFormCaption="Thông tin đơn vị tính" Title="DANH SÁCH KỆ CỦA CỬA HÀNG" EmptyDataRow="Không có dữ liệu hiển thị" SearchPanelEditorNullText="Nhập thông tin cần tìm..." />
          <EditFormLayoutProperties>
              <Items>
-                 <dx:GridViewColumnLayoutItem ColumnName="Tên Kệ">
+                 <dx:GridViewColumnLayoutItem ColumnName="Tên Kệ Hàng">
                  </dx:GridViewColumnLayoutItem>
-                 <dx:GridViewColumnLayoutItem ColumnName="Vị Trí">
+                 <dx:GridViewColumnLayoutItem ColumnName="Vị Trí Kệ Hàng">
                  </dx:GridViewColumnLayoutItem>
                  <dx:GridViewColumnLayoutItem ColumnName="Mô Tả">
                  </dx:GridViewColumnLayoutItem>

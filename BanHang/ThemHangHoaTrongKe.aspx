@@ -7,11 +7,16 @@
                 <dx:LayoutItem Caption="Hàng Hóa">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer3" runat="server">
-                            <dx:ASPxComboBox ID="cmbHangHoa" runat="server" DropDownWidth="750px" EnableCallbackMode="True" NullText="Vui lòng chọn hàng hóa.........." OnItemRequestedByValue="cmbHangHoa_ItemRequestedByValue" OnItemsRequestedByFilterCondition="cmbHangHoa_ItemsRequestedByFilterCondition" TextFormatString="{0} - {1}" ValueField="ID" Width="100%">
+                            <dx:ASPxComboBox ID="cmbHangHoa" runat="server" DropDownWidth="750px" EnableCallbackMode="True"
+                                 NullText="Vui lòng chọn hàng hóa.........." 
+                                OnItemRequestedByValue="cmbHangHoa_ItemRequestedByValue"
+                                 OnItemsRequestedByFilterCondition="cmbHangHoa_ItemsRequestedByFilterCondition" 
+                                TextFormatString="{0}" ValueField="ID" Width="100%">
                                 <Columns>
-                                    <dx:ListBoxColumn Caption="Mã Hàng" FieldName="MaHang" Width="70px" />
-                                    <dx:ListBoxColumn Caption="Vị Trí" FieldName="ViTri" Width="200px" />
-                                    <dx:ListBoxColumn Caption="Mô Tả" FieldName="MoTa" Width="100%" />
+                                   <dx:ListBoxColumn Caption="Mã Hàng" FieldName="MaHang" Width="70px" />
+                                    <dx:ListBoxColumn Caption="Tên Hàng Hóa" FieldName="TenHangHoa" Width="100%" />
+                                    <dx:ListBoxColumn Caption="ĐVT" FieldName="TenDonViTinh" Width="100px" />
+
                                 </Columns>
                             </dx:ASPxComboBox>
                             <asp:SqlDataSource ID="dsHangHoa" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>">
@@ -25,7 +30,7 @@
                 <dx:LayoutItem Caption="Chọn File">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer runat="server">
-                            <dx:ASPxUploadControl ID="UploadFileExcel" runat="server" AllowedFileExtensions=".xls">
+                            <dx:ASPxUploadControl ID="UploadFileExcel" runat="server" AllowedFileExtensions=".xls" Width ="100%">
                             </dx:ASPxUploadControl>
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
@@ -33,7 +38,7 @@
                 <dx:LayoutItem Caption="Chọn Kệ Hàng">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer1" runat="server">
-                            <dx:ASPxComboBox ID="cmbKe" runat="server" DataSourceID="SqlDanhSachKe" TextField="TenKe" ValueField="ID" AutoPostBack="True"  Width="100%" DropDownWidth="600px" DropDownStyle="DropDownList" >
+                            <dx:ASPxComboBox ID="cmbKe" runat="server" DataSourceID="SqlDanhSachKe" TextField="TenKe" ValueField="ID"  Width="100%" DropDownWidth="600px" DropDownStyle="DropDownList" >
                                 <Columns>
                                         <dx:ListBoxColumn FieldName="TenKe" Width="150px" Caption="Tên Kệ" />
                                          <dx:ListBoxColumn FieldName="ViTri" Width="200px" Caption="Vị Trí" />
@@ -65,16 +70,6 @@
                 <dx:LayoutItem Caption="" ColSpan="2">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer11" runat="server">
-                            <dx:ASPxButton ID="btnThem" runat="server" OnClick="btnThem_Click" Text="Lưu">
-                                <Image IconID="save_saveto_32x32">
-                                </Image>
-                            </dx:ASPxButton>
-                        </dx:LayoutItemNestedControlContainer>
-                    </LayoutItemNestedControlCollection>
-                </dx:LayoutItem>
-                <dx:LayoutItem Caption="" HorizontalAlign="Right">
-                    <LayoutItemNestedControlCollection>
-                        <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer10" runat="server">
                             <dx:ASPxGridView ID="gridDanhSachHangHoa" runat="server" AutoGenerateColumns="False" KeyFieldName="ID" OnRowDeleting="gridDanhSachHangHoa_RowDeleting" Width="100%">
                                 <SettingsBehavior ConfirmDelete="True" />
                                 <SettingsCommandButton>
@@ -125,7 +120,7 @@
                                     </TitlePanel>
                                 </Styles>
                             </dx:ASPxGridView>
-                            <asp:SqlDataSource ID="SqlDonViTinh" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" SelectCommand="SELECT [ID], [TenDonViTinh] FROM [GPM_DonViTinh] WHERE ([DaXoa] = @DaXoa)" >
+                            <asp:SqlDataSource ID="SqlDonViTinh" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" SelectCommand="SELECT [ID], [TenDonViTinh] FROM [GPM_DonViTinh] WHERE ([DaXoa] = @DaXoa)">
                                 <SelectParameters>
                                     <asp:Parameter DefaultValue="0" Name="DaXoa" Type="Int32" />
                                 </SelectParameters>
@@ -135,6 +130,16 @@
                                     <asp:Parameter DefaultValue="0" Name="DaXoa" Type="Int32" />
                                 </SelectParameters>
                             </asp:SqlDataSource>
+                        </dx:LayoutItemNestedControlContainer>
+                    </LayoutItemNestedControlCollection>
+                </dx:LayoutItem>
+                <dx:LayoutItem Caption="" HorizontalAlign="Right">
+                    <LayoutItemNestedControlCollection>
+                        <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer10" runat="server">
+                            <dx:ASPxButton ID="btnThem" runat="server" OnClick="btnThem_Click" Text="Lưu">
+                                <Image IconID="save_saveto_32x32">
+                                </Image>
+                            </dx:ASPxButton>
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
                 </dx:LayoutItem>

@@ -69,17 +69,17 @@ namespace BanHang.Data
                 }
             }
         }
-        public void XoaKe_IDke_Temp(string IDKe)
+        public void XoaKe_IDke_Temp(string IDTemp)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
                 try
                 {
                     myConnection.Open();
-                    string strSQL = "DELETE [GPM_ChiTietKe_Temp]  WHERE [IDKe] = @IDKe";
+                    string strSQL = "DELETE [GPM_ChiTietKe_Temp]  WHERE [IDTemp] = @IDTemp";
                     using (SqlCommand myCommand = new SqlCommand(strSQL, myConnection))
                     {
-                        myCommand.Parameters.AddWithValue("@IDKe", IDKe);
+                        myCommand.Parameters.AddWithValue("@IDTemp", IDTemp);
                         myCommand.ExecuteNonQuery();
                     }
                 }
@@ -124,7 +124,22 @@ namespace BanHang.Data
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "SELECT [GPM_DonViTinh].TenDonViTinh,[GPM_HangHoa].MaHang,[GPM_HangHoa].TenHangHoa,[GPM_Ke].TenKe AS TenKeHang FROM [GPM_ChiTietKe_Temp],[GPM_HangHoa],[GPM_Ke],[GPM_DonViTinh] WHERE [GPM_DonViTinh].ID  = [GPM_HangHoa].IDDonViTinh AND [GPM_Ke].ID =  [GPM_ChiTietKe_Temp].IDKe  AND [GPM_HangHoa].ID = [GPM_ChiTietKe_Temp].IDHangHoa AND [IDTemp] = '" + IDTemp + "'";
+                string cmdText = "SELECT [GPM_DonViTinh].TenDonViTinh,[GPM_HangHoa].MaHang,[GPM_HangHoa].TenHangHoa,[GPM_Ke].TenKe AS TenKeHang,[GPM_ChiTietKe_Temp].ID FROM [GPM_ChiTietKe_Temp],[GPM_HangHoa],[GPM_Ke],[GPM_DonViTinh] WHERE [GPM_DonViTinh].ID  = [GPM_HangHoa].IDDonViTinh AND [GPM_Ke].ID =  [GPM_ChiTietKe_Temp].IDKe  AND [GPM_HangHoa].ID = [GPM_ChiTietKe_Temp].IDHangHoa AND [IDTemp] = '" + IDTemp + "'";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    return tb;
+                }
+            }
+        }
+        public DataTable DanhSachKe_Temp_ALL(string IDTemp)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT * FROM [GPM_ChiTietKe_Temp] WHERE [IDTemp] = '" + IDTemp + "'";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
@@ -156,7 +171,7 @@ namespace BanHang.Data
                 try
                 {
                     myConnection.Open();
-                    string cmdText = "INSERT INTO [GPM_ChiTietKe_Temp] ([IDHangHoa],[IDKe],[IDTemp]) VALUES (@IDHangHoa,@IDKe,@IDonViTinh,@MaHang,@IDTemp)";
+                    string cmdText = "INSERT INTO [GPM_ChiTietKe_Temp] ([IDHangHoa],[IDKe],[IDTemp]) VALUES (@IDHangHoa,@IDKe,@IDTemp)";
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
                         myCommand.Parameters.AddWithValue("@IDKe", IDKe);
@@ -172,17 +187,16 @@ namespace BanHang.Data
                 }
             }
         }
-        public void ThemHangVaoKe(string IDHangHoa, string IDKe, string IDonViTinh, string MaHang, string IDNhanVien)
+        public void ThemHangVaoKe(string IDHangHoa, string IDKe, string IDonViTinh, string MaHang)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
                 try
                 {
                     myConnection.Open();
-                    string cmdText = "INSERT INTO [GPM_ChiTietKe] ([IDHangHoa],[IDKe],[IDonViTinh],[MaHang],[IDNhanVien],[NgayCapNhat]) VALUES (@IDHangHoa,@IDKe,@IDonViTinh,@MaHang,@IDNhanVien,getdate())";
+                    string cmdText = "INSERT INTO [GPM_ChiTietKe] ([IDHangHoa],[IDKe],[IDonViTinh],[MaHang]) VALUES (@IDHangHoa,@IDKe,@IDonViTinh,@MaHang)";
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
-                        myCommand.Parameters.AddWithValue("@IDNhanVien", IDNhanVien);
                         myCommand.Parameters.AddWithValue("@MaHang", MaHang);
                         myCommand.Parameters.AddWithValue("@IDonViTinh", IDonViTinh);
                         myCommand.Parameters.AddWithValue("@IDKe", IDKe);
