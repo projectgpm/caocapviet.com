@@ -89,6 +89,24 @@ namespace BanHang.Data
             }
         }
 
+        public string TongSoHDCuaKhoNhan(string NgayBD, string NgayKT, string IDKhoXuat, string IDKhoNhan)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "select IDKhoXuat, count(IDKhoXuat) as Tong from GPM_PhieuChuyenKho where NgayLap >= '" + DateTime.Parse(NgayBD) + "' and NgayLap <= '" + DateTime.Parse(NgayKT) + "' and IDKhoXuat = '" + IDKhoXuat + "' and ('" + IDKhoNhan + "' = -1 or IDKhoNhap = '" + IDKhoNhan + "') group by IDKhoXuat";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    if (tb.Rows.Count != 0)
+                        return tb.Rows[0]["Tong"].ToString();
+                    return 0 +"";
+                }
+            }
+        }
+
         public DataTable DanhSachPhieuChuyenKho_Kho(string IDPhieuChuyenKho)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
@@ -362,14 +380,14 @@ namespace BanHang.Data
             }
         }
 
-        public void CapNhatPhieuChuyenKho(string ID, string IDKhoXuat, string IDKhoNhap, string IDNhanVienLap, string SoMatHang, string TrongLuong, string GhiChu)
+        public void CapNhatPhieuChuyenKho(string ID, string IDKhoXuat, string IDKhoNhap, string IDNhanVienLap, string SoMatHang, string TrongLuong, string GhiChu, string NguoiGiao, string SoDonHang, string NgayDatDonHang, string SoPhieuHeThong, string file)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
                 try
                 {
                     myConnection.Open();
-                    string cmdText = "update GPM_PhieuChuyenKho set [IDKhoXuat] = @IDKhoXuat, [IDKhoNhap] = @IDKhoNhap, [IDNhanVienLap] = @IDNhanVienLap, [SoMatHang] = @SoMatHang, [TrongLuong] = @TrongLuong, [NgayLap] = getDATE(), [NgayCapNhat] = getDATE(), [GhiChu] = @GhiChu where ID = @ID";
+                    string cmdText = "update GPM_PhieuChuyenKho set [FileChungTu] = @FileChungTu, [SoPhieuHeThong] = @SoPhieuHeThong, [SoDonHang] = @SoDonHang, [NgayDatDonHang] = @NgayDatDonHang, [IDKhoXuat] = @IDKhoXuat, [IDKhoNhap] = @IDKhoNhap, [IDNhanVienLap] = @IDNhanVienLap, [SoMatHang] = @SoMatHang, [TrongLuong] = @TrongLuong, [NgayLap] = getDATE(), [NgayCapNhat] = getDATE(), [GhiChu] = @GhiChu, NguoiGiao = @NguoiGiao where ID = @ID";
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
                         myCommand.Parameters.AddWithValue("@ID", ID);
@@ -379,6 +397,11 @@ namespace BanHang.Data
                         myCommand.Parameters.AddWithValue("@SoMatHang", SoMatHang);
                         myCommand.Parameters.AddWithValue("@TrongLuong", TrongLuong);
                         myCommand.Parameters.AddWithValue("@GhiChu", GhiChu);
+                        myCommand.Parameters.AddWithValue("@NguoiGiao", NguoiGiao);
+                        myCommand.Parameters.AddWithValue("@SoDonHang", SoDonHang);
+                        myCommand.Parameters.AddWithValue("@SoPhieuHeThong", SoPhieuHeThong);
+                        myCommand.Parameters.AddWithValue("@NgayDatDonHang", NgayDatDonHang);
+                        myCommand.Parameters.AddWithValue("@FileChungTu", file);
                         myCommand.ExecuteNonQuery();
                     }
                     myConnection.Close();

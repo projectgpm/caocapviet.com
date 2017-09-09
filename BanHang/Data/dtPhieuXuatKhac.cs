@@ -133,12 +133,12 @@ namespace BanHang.Data
                 }
             }
         }
-        public DataTable LayDanhSachPhieuXuatKhac_Temp(string IDPhieuXuatKhac)
+        public DataTable LayDanhSachPhieuXuatKhac(string IDPhieuXuatKhac)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = " SELECT * FROM [GPM_ChiTietPhieuXuatKhac_Temp] WHERE [IDPhieuXuatKhac] = '" + IDPhieuXuatKhac + "'";
+                string cmdText = " SELECT * FROM [GPM_PhieuXuatKhac_ChiTiet] WHERE [IDPhieuXuatKhac] = '" + IDPhieuXuatKhac + "'";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {

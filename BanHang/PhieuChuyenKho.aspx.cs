@@ -160,12 +160,37 @@ namespace BanHang
                 string SoMatHang = txtSoMatHang.Value + "";
                 string TrongLuong = txtTrongLuong.Value + "";
                 string GhiChu = txtGhiChu.Value + "";
+                string NguoiGiao = txtNguoiGiao.Value + "";
+                string SoDonHang = txtSoDonHang.Value + "";
+                string NgayDat = dateNgayDat.Value + "";
 
-                data.CapNhatPhieuChuyenKho(ID, IDKhoXuat, IDKhoNhap, IDNhanVienLap, SoMatHang, TrongLuong, GhiChu);
+                DateTime date = DateTime.Now;
+                int thang = date.Month;
+                int year = date.Year;
+                string ngayBD = year + "-" + thang + "-01 00:00:00.000";
+                string ngayKT = year + "-" + thang + "-" + dtSetting.tinhSoNgay(thang, year) + " 00:00:00.000";
+
+                dtKho dt = new dtKho();
+                string MaKhoNhap = dt.LayMaKho_ID(IDKhoNhap);
+                string MaKhoXuat = dt.LayMaKho_ID(IDKhoXuat);
+                string ngaythangnam = date.ToString("ddMMyyyy");
+
+                int soHDKhoNhap = Int32.Parse(data.TongSoHDCuaKhoNhan(ngayBD, ngayKT, IDKhoXuat, IDKhoNhap)) + 1;
+                int soHDKhoXuat = Int32.Parse(data.TongSoHDCuaKhoNhan(ngayBD, ngayKT, IDKhoXuat, -1 + ""));
+
+                string MaHD = MaKhoNhap + "-" + soHDKhoNhap + "-" + soHDKhoXuat + "-" + MaKhoXuat + "-" + ngaythangnam;
+
+                if (!string.IsNullOrEmpty(txtFileChungTu.FileName))
+                {
+                    UploadFile();
+                }
+
+                data.CapNhatPhieuChuyenKho(ID, IDKhoXuat, IDKhoNhap, IDNhanVienLap, SoMatHang, TrongLuong, GhiChu, NguoiGiao, SoDonHang, NgayDat, MaHD, strFileExcel);
 
                 dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Phiếu chuyển kho", Session["IDKho"].ToString(), "Nhập xuất tồn", "Thêm");
                 Response.Redirect("DanhSachPhieuChuyenKho.aspx");
 
+            
             }
             else
             {
@@ -193,9 +218,9 @@ namespace BanHang
             {
                 return;
             }
-
+            
             UploadFile();
-            string Excel = Server.MapPath("~/Uploads/") + strFileExcel;
+            string Excel = Server.MapPath("~/Uploads/ChuyenKho") + strFileExcel;
 
             string excelConnectionString = string.Empty;
             excelConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + Excel + ";Extended Properties=Excel 8.0;";
@@ -209,7 +234,6 @@ namespace BanHang
             DataTable dataTable = new DataTable();
             dataTable.Load(dReader);
             Import_Temp(dataTable);
-
         }
 
         private void Import_Temp(DataTable dataTable)

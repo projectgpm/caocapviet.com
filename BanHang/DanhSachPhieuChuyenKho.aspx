@@ -152,10 +152,12 @@
                                                 <PropertiesComboBox DataSourceID="sqlDNhanVien" TextField="TenNguoiDung" ValueField="ID">
                                                 </PropertiesComboBox>
                                             </dx:GridViewDataComboBoxColumn>
-                                            <dx:GridViewDataTextColumn Caption="Ghi Chú" FieldName="GhiChu" VisibleIndex="16">
+                                            <dx:GridViewDataTextColumn Caption="Ghi Chú" FieldName="GhiChu" VisibleIndex="17">
                                             </dx:GridViewDataTextColumn>
                                             <dx:GridViewCommandColumn ShowDeleteButton="True" VisibleIndex="1">
                                             </dx:GridViewCommandColumn>
+                                            <dx:GridViewDataTextColumn Caption="Người giao" FieldName="NguoiGiao" ShowInCustomizationForm="True" VisibleIndex="16">
+                                            </dx:GridViewDataTextColumn>
                                         </Columns>
                                         <Styles>
                                             <Header Font-Bold="True" HorizontalAlign="Center">
