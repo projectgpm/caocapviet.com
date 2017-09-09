@@ -8,7 +8,7 @@
          }
 
     </script>
-    <dx:ASPxFormLayout ID="ASPxFormLayout1" runat="server" ColCount="3">
+    <dx:ASPxFormLayout ID="ASPxFormLayout1" runat="server" ColCount="5">
         <Items>
             <dx:LayoutItem Caption="">
                 <LayoutItemNestedControlCollection>
@@ -25,8 +25,19 @@
             <dx:LayoutItem Caption="">
                 <LayoutItemNestedControlCollection>
                     <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer2" runat="server">
-                        <dx:ASPxButton ID="btnDonHangDaDuyet" runat="server" PostBackUrl="DonHangDaXuLy.aspx" Text="Xem đơn hàng đã xử lý">
+                        <dx:ASPxButton ID="btnDonHangDaDuyet" runat="server" PostBackUrl="DonHangDaXuLyThuMua.aspx" Text="Xem đơn hàng đã xử lý">
                             <Image IconID="content_checkbox_32x32">
+                            </Image>
+                        </dx:ASPxButton>
+                    </dx:LayoutItemNestedControlContainer>
+                </LayoutItemNestedControlCollection>
+            </dx:LayoutItem>
+           
+            <dx:LayoutItem Caption="">
+                <LayoutItemNestedControlCollection>
+                    <dx:LayoutItemNestedControlContainer runat="server">
+                        <dx:ASPxButton ID="ASPxFormLayout1_E3" runat="server" Text="Đơn Hàng Đã Hủy" PostBackUrl="DanhSachDonHangThuMuaHuy.aspx">
+                            <Image IconID="reports_deleteheader_32x32">
                             </Image>
                         </dx:ASPxButton>
                     </dx:LayoutItemNestedControlContainer>
@@ -151,7 +162,7 @@
                  </PropertiesComboBox>
                  <HeaderStyle Wrap="True" />
              </dx:GridViewDataComboBoxColumn>
-             <dx:GridViewDataComboBoxColumn Caption="Hinh Thức Thanh Toán" FieldName="IDThanhToan" VisibleIndex="12">
+             <dx:GridViewDataComboBoxColumn Caption="Hình Thức Thanh Toán" FieldName="IDThanhToan" VisibleIndex="12">
                  <PropertiesComboBox DataSourceID="SqlTrangThaiThanhToan" TextField="TenHinhThuc" ValueField="ID">
                  </PropertiesComboBox>
                  <HeaderStyle Wrap="True" />

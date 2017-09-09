@@ -8,12 +8,12 @@
          }
 
     </script>
-    <dx:ASPxFormLayout ID="ASPxFormLayout1" runat="server" ColCount="4">
+    <dx:ASPxFormLayout ID="ASPxFormLayout1" runat="server" ColCount="5">
         <Items>
             <dx:LayoutItem Caption="">
                 <LayoutItemNestedControlCollection>
                     <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer1" runat="server">
-                        <dx:ASPxButton ID="btnDuyetDonHang" runat="server" Text="Xử lý đơn hàng" HorizontalAlign="Right" VerticalAlign="Middle" PostBackUrl="DuyetDonHangChiNhanh.aspx">
+                        <dx:ASPxButton ID="btnDuyetDonHang" runat="server" Text="Xử Lý Đơn Hàng" HorizontalAlign="Right" VerticalAlign="Middle" PostBackUrl="DuyetDonHangChiNhanh.aspx">
                             <Image IconID="actions_converttorange_32x32">
                             </Image>
                             <Paddings Padding="4px" />
@@ -25,7 +25,27 @@
              <dx:LayoutItem Caption="">
                 <LayoutItemNestedControlCollection>
                     <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer2" runat="server">
-                        <dx:ASPxButton ID="btnDonHangDaDuyet" runat="server" PostBackUrl="DonHangDaDuyet.aspx" Text="Đơn hàng đã xử lý">
+                        <dx:ASPxButton ID="btnDonHangDaDuyet" runat="server" PostBackUrl="DonHangDaDuyet.aspx" Text="Đơn Hàng Chờ Xử Lý">
+                            <Image IconID="businessobjects_bofileattachment_32x32">
+                            </Image>
+                        </dx:ASPxButton>
+                    </dx:LayoutItemNestedControlContainer>
+                </LayoutItemNestedControlCollection>
+            </dx:LayoutItem>
+            <dx:LayoutItem Caption="">
+                <LayoutItemNestedControlCollection>
+                    <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer3" runat="server">
+                        <dx:ASPxButton ID="btnDonhangXuLy1Phan" runat="server" PostBackUrl="DonHangXuLy1Phan.aspx" Text="Đơn Hàng Đã Xử Lý 1 Phần">
+                            <Image IconID="edit_copy_32x32">
+                            </Image>
+                        </dx:ASPxButton>
+                    </dx:LayoutItemNestedControlContainer>
+                </LayoutItemNestedControlCollection>
+            </dx:LayoutItem>
+            <dx:LayoutItem Caption="">
+                <LayoutItemNestedControlCollection>
+                    <dx:LayoutItemNestedControlContainer runat="server">
+                        <dx:ASPxButton ID="ASPxFormLayout1_E3" runat="server" Text="Đơn Hàng Hoàn Tất" PostBackUrl="DonHangHoanTat.aspx">
                             <Image IconID="content_checkbox_32x32">
                             </Image>
                         </dx:ASPxButton>
@@ -36,7 +56,7 @@
             <dx:LayoutItem Caption="">
                 <LayoutItemNestedControlCollection>
                     <dx:LayoutItemNestedControlContainer runat="server">
-                        <dx:ASPxButton ID="ASPxFormLayout1_E2" runat="server" Text="Đơn hàng đã hủy">
+                        <dx:ASPxButton ID="ASPxFormLayout1_E2" runat="server" Text="Đơn Hàng Đã Hủy" PostBackUrl="DonHangDaHuy.aspx">
                             <Image IconID="reports_deleteheader_32x32">
                             </Image>
                         </dx:ASPxButton>

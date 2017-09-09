@@ -22,9 +22,7 @@ namespace BanHang
             {
                 if (Int32.Parse(Session["IDKho"].ToString()) != 1)
                 {
-                    btnDonHangDaDuyet.Visible = false;
                     btnDuyetDonHang.Visible = false;
-                    btnThemDonHang.Visible = false;
                 }
                 LoadGrid();
             }

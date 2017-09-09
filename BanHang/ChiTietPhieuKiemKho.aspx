@@ -28,7 +28,7 @@
              <dx:ASPxGridView runat="server" AutoGenerateColumns="False" Width="100%" ID="gridChiTietPhieuKiemKho" KeyFieldName="ID" OnRowDeleting="gridChiTietPhieuKiemKho_RowDeleting" OnRowUpdating="gridChiTietPhieuKiemKho_RowUpdating">
         <SettingsEditing Mode="PopupEditForm">
         </SettingsEditing>
-<Settings ShowTitlePanel="True"></Settings>
+<Settings ShowTitlePanel="True" ShowFooter="True"></Settings>
 
         <SettingsBehavior ConfirmDelete="True" />
 
@@ -103,6 +103,10 @@
     </dx:GridViewDataSpinEditColumn>
     
 </Columns>
+
+                 <TotalSummary>
+                     <dx:ASPxSummaryItem DisplayFormat="Tổng mặt hàng : {0}" FieldName="MaHang" ShowInColumn="Hàng Hóa" SummaryType="Count" />
+                 </TotalSummary>
 
 <Styles>
 <Header HorizontalAlign="Center" Font-Bold="True"></Header>

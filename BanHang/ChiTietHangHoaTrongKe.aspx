@@ -12,7 +12,7 @@
     <dx:ASPxGridView runat="server" AutoGenerateColumns="False" Width="100%" ID="gridChiTietHangHoa" KeyFieldName="ID" OnRowDeleting="gridChiTietHangHoa_RowDeleting">
         <SettingsEditing Mode="PopupEditForm">
         </SettingsEditing>
-<Settings ShowTitlePanel="True"></Settings>
+<Settings ShowTitlePanel="True" ShowFooter="True"></Settings>
 
         <SettingsBehavior ConfirmDelete="True" />
 
@@ -46,7 +46,7 @@
             <EditForm HorizontalAlign="WindowCenter" Modal="True" VerticalAlign="WindowCenter" />
         </SettingsPopup>
 
-<SettingsText Title="THÔNG TIN CHI TIẾT" CommandDelete="Xóa" ConfirmDelete="Bạn chắc chắn muốn xóa?" CommandEdit="Sửa"></SettingsText>
+<SettingsText Title="THÔNG TIN CHI TIẾT" CommandDelete="Xóa" ConfirmDelete="Bạn chắc chắn muốn xóa?" CommandEdit="Sửa" EmptyDataRow="Danh sách hàng hóa trống"></SettingsText>
 <Columns>
     
     <dx:GridViewCommandColumn ShowDeleteButton="True" VisibleIndex="6">
@@ -62,6 +62,10 @@
         </PropertiesComboBox>
     </dx:GridViewDataComboBoxColumn>
 </Columns>
+
+        <TotalSummary>
+            <dx:ASPxSummaryItem DisplayFormat="Tổng mặt hàng : {0}" FieldName="MaHang" ShowInColumn="Hàng Hóa" SummaryType="Count" />
+        </TotalSummary>
 
 <Styles>
 <Header HorizontalAlign="Center" Font-Bold="True"></Header>

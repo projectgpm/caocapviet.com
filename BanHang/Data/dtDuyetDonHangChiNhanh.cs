@@ -9,6 +9,66 @@ namespace BanHang.Data
 {
     public class dtDuyetDonHangChiNhanh
     {
+        public static string LayIDKhoLapPhieu(string ID)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT IDKhoLap FROM [GPM_DuyetHangChiNhanh] WHERE ID  = '" + ID + "'";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    if (tb.Rows.Count != 0)
+                    {
+                        DataRow dr = tb.Rows[0];
+                        return dr["IDKhoLap"].ToString();
+                    }
+                    else return "1";
+                }
+            }
+        }
+        public void CapNhatDonHangHoanTat(string IDDonHang)
+        {
+            using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
+            {
+                try
+                {
+                    myConnection.Open();
+                    string cmdText = "UPDATE [GPM_DuyetHangChiNhanh] SET [TrangThaiDuyet] = 1 WHERE [ID] = '" + IDDonHang + "'";
+                    using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
+                    {
+                        myCommand.ExecuteNonQuery();
+                    }
+                    myConnection.Close();
+                }
+                catch
+                {
+                    throw new Exception("Lỗi: Quá trình thêm dữ liệu gặp lỗi");
+                }
+            }
+        }
+        public static int TrangThaiDuyet(string ID)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT TrangThaiDuyet FROM [GPM_DuyetHangChiNhanh] WHERE ID  = '" + ID + "'";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    if (tb.Rows.Count != 0)
+                    {
+                        DataRow dr = tb.Rows[0];
+                        return Int32.Parse(dr["TrangThaiDuyet"].ToString());
+                    }
+                    else return -1;
+                }
+            }
+        }
         public DataTable DanhSachChiTiet_LOG(string SoDonHang, string IDSoDonHang)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
@@ -48,16 +108,17 @@ namespace BanHang.Data
                 }
             }
         }
-        public void ThemChiTietDonHang_LOG(string SoDonHang, string MaHang, string IDHangHoa, string IDDonViTinh, string TrongLuong, string SoLuong, string IDSoDonHang)
+        public void ThemChiTietDonHang_LOG(string SoDonHang, string MaHang, string IDHangHoa, string IDDonViTinh, string TrongLuong, string SoLuong, string IDSoDonHang, string GhiChu)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
                 try
                 {
                     myConnection.Open();
-                    string cmdText = "INSERT INTO [GPM_Log_DuyetHangChiNhanh] ([SoDonHang],[MaHang],[IDHangHoa],[IDDonViTinh],[TrongLuong],[SoLuong],[IDSoDonHang]) VALUES (@SoDonHang,@MaHang,@IDHangHoa,@IDDonViTinh,@TrongLuong,@SoLuong,@IDSoDonHang)";
+                    string cmdText = "INSERT INTO [GPM_Log_DuyetHangChiNhanh] ([SoDonHang],[MaHang],[IDHangHoa],[IDDonViTinh],[TrongLuong],[SoLuong],[IDSoDonHang],[GhiChu]) VALUES (@SoDonHang,@MaHang,@IDHangHoa,@IDDonViTinh,@TrongLuong,@SoLuong,@IDSoDonHang,@GhiChu)";
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
+                        myCommand.Parameters.AddWithValue("@GhiChu", GhiChu);
                         myCommand.Parameters.AddWithValue("@SoDonHang", SoDonHang);
                         myCommand.Parameters.AddWithValue("@MaHang", MaHang);
                         myCommand.Parameters.AddWithValue("@IDDonViTinh", IDDonViTinh);
@@ -75,14 +136,14 @@ namespace BanHang.Data
                 }
             }
         }
-        public void Xoa_LOG(string SoDonHang, string IDHangHoa, string IDDonHangThuMua)
+        public void Xoa_LOG(string SoDonHang, string IDHangHoa, string IDSoDonHang)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
                 try
                 {
                     myConnection.Open();
-                    string cmdText = "DELETE [GPM_Log_DuyetHangChiNhanh]  WHERE [IDHangHoa] = '" + IDHangHoa + "' AND  [SoDonHang] = N'" + SoDonHang + "' AND [IDDonHangThuMua] = '" + IDDonHangThuMua + "'";
+                    string cmdText = "DELETE [GPM_Log_DuyetHangChiNhanh]  WHERE [IDHangHoa] = '" + IDHangHoa + "' AND  [SoDonHang] = N'" + SoDonHang + "' AND [IDSoDonHang] = '" + IDSoDonHang + "'";
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
                         myCommand.ExecuteNonQuery();
@@ -135,7 +196,7 @@ namespace BanHang.Data
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "SELECT TrangThai FROM [GPM_DuyetHangChiNhanh_Temp] WHERE [ID] = '" + ID + "'";
+                string cmdText = "SELECT TrangThaiDuyet FROM [GPM_DuyetHangChiNhanh] WHERE [ID] = '" + ID + "'";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
@@ -144,7 +205,7 @@ namespace BanHang.Data
                     if (tb.Rows.Count != 0)
                     {
                         DataRow dr = tb.Rows[0];
-                        return Int32.Parse(dr["TrangThai"].ToString());
+                        return Int32.Parse(dr["TrangThaiDuyet"].ToString());
                     }
                     else return 0;
                 }
@@ -170,7 +231,7 @@ namespace BanHang.Data
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "SELECT * FROM [GPM_DuyetHangChiNhanh] WHERE ( '" + IDKho + "' = 1 OR [IDKhoLap] = '" + IDKho + "') ORDER BY [ID] DESC";
+                string cmdText = "SELECT * FROM [GPM_DuyetHangChiNhanh] WHERE ( '" + IDKho + "' = 1 OR [IDKhoLap] = '" + IDKho + "') AND [GPM_DuyetHangChiNhanh].IDTrangThaiXuLy != 2 AND [GPM_DuyetHangChiNhanh].TrangThaiDuyet = 0  ORDER BY [ID] DESC";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
@@ -193,11 +254,11 @@ namespace BanHang.Data
                     {
                         myCommand.ExecuteNonQuery();
                     }
-                    cmdText = " UPDATE [GPM_DonHangChiNhanh_ChiTiet] SET [TrangThai] = 1 WHERE [IDDonHangChiNhanh] = " + ID;
-                    using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
-                    {
-                        myCommand.ExecuteNonQuery();
-                    }
+                    //cmdText = " UPDATE [GPM_DonHangChiNhanh_ChiTiet] SET [TrangThai] = 1 WHERE [IDDonHangChiNhanh] = " + ID;
+                    //using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
+                    //{
+                    //    myCommand.ExecuteNonQuery();
+                    //}
                     myConnection.Close();
                 }
                 catch(Exception ex)
@@ -329,17 +390,18 @@ namespace BanHang.Data
                 }
             }
         }
-        public void ThemChiTietDonHang_Temp(string IDDonHangChiNhanh, string MaHang, string IDHangHoa, string IDDonViTinh, string TrongLuong, string SoLuong, string TonKho, string GhiChu, string TrangThai, string IDKho, string IDTemp)
+        public void ThemChiTietDonHang_Temp(string IDDonHangChiNhanh, string MaHang, string IDHangHoa, string IDDonViTinh, string TrongLuong, string SoLuong, string TonKho, string GhiChu, string TrangThai, string IDKho, string IDTemp, string ChenhLech)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
                 try
                 {
                     myConnection.Open();
-                    string cmdText = "INSERT INTO [GPM_DuyetHangChiNhanh_Temp] ([IDDonHangChiNhanh],[MaHang],[IDHangHoa],[IDDonViTinh],[TrongLuong],[SoLuong],[TonKho],[GhiChu],[TrangThai],[IDKho],[IDTemp]) VALUES (@IDDonHangChiNhanh,@MaHang,@IDHangHoa,@IDDonViTinh,@TrongLuong,@SoLuong,@TonKho,@GhiChu,@TrangThai,@IDKho,@IDTemp)";
+                    string cmdText = "INSERT INTO [GPM_DuyetHangChiNhanh_Temp] ([ChenhLech],[IDDonHangChiNhanh],[MaHang],[IDHangHoa],[IDDonViTinh],[TrongLuong],[SoLuong],[TonKho],[GhiChu],[TrangThai],[IDKho],[IDTemp]) VALUES (@ChenhLech,@IDDonHangChiNhanh,@MaHang,@IDHangHoa,@IDDonViTinh,@TrongLuong,@SoLuong,@TonKho,@GhiChu,@TrangThai,@IDKho,@IDTemp)";
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
                         myCommand.Parameters.AddWithValue("@IDDonHangChiNhanh", IDDonHangChiNhanh);
+                        myCommand.Parameters.AddWithValue("@ChenhLech", ChenhLech);
                         myCommand.Parameters.AddWithValue("@MaHang", MaHang);
                         myCommand.Parameters.AddWithValue("@IDHangHoa", IDHangHoa);
                         myCommand.Parameters.AddWithValue("@IDDonViTinh", IDDonViTinh);
@@ -537,6 +599,21 @@ namespace BanHang.Data
             {
                 con.Open();
                 string cmdText = "SELECT * FROM [GPM_DonHangChiNhanh] WHERE [TrangThai] = 0 AND [GiamSatDuyet] = 1  AND [IDNguoiLap] is not null ";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    return tb;
+                }
+            }
+        }
+        public DataTable LayDanhSachDonHangXuLy1Phan()
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT * FROM [GPM_DonHangChiNhanh] WHERE [TrangThai] = 1 AND IDTrangThaiDonHang = 4 AND [GiamSatDuyet] = 1  AND [IDNguoiLap] is not null ";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {

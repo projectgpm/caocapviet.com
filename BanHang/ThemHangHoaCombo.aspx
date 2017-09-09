@@ -224,6 +224,8 @@
                         <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer14" runat="server">
                                                 
                             <dx:ASPxGridView ID="gridDanhSachHangHoa" runat="server" AutoGenerateColumns="False" KeyFieldName="ID" Width="100%">
+                                 <SettingsPager Mode="ShowAllRecords">
+                                 </SettingsPager>
                                  <Settings ShowFooter="True" />
                                  <SettingsBehavior ConfirmDelete="True" />
                                  <SettingsCommandButton>

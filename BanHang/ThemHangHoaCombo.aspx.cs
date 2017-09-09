@@ -27,10 +27,8 @@ namespace BanHang
                 {
                     if (!IsPostBack)
                     {
-                        data = new dtHangCombo();
-                        //data.XoaHangHoa_Null();
-                        object IDHangHoaComBo = data.ThemIDHangHoa_Temp();
-                        IDHangHoaComBo_Temp.Value = IDHangHoaComBo.ToString();
+                        Random ran = new Random();
+                        IDHangHoaComBo_Temp.Value = ran.Next(100000, 999999).ToString();
                         txtSoLuong.Text = "0";
                         txtMaHang.Text = dtHangCombo.Dem_Max().ToString();
                     }
@@ -48,7 +46,6 @@ namespace BanHang
             data = new dtHangCombo();
             int IDHangHoaComBo = Int32.Parse(IDHangHoaComBo_Temp.Value.ToString());
             data.XoaHangHoa_Temp_IDHangCombo(IDHangHoaComBo);
-            //data.XoaHangHoa_Null();
             Response.Redirect("DanhMucCombo.aspx");
         }
 
@@ -81,37 +78,41 @@ namespace BanHang
                         if (dtHangHoa.KiemTraBarcode(Barcode) == false)
                         {
                             data = new dtHangCombo();
-                            data.CapNhatHangHoa(IDHangHoaComBo, MaHang, txtTenHangComBo, IDNhomHang, IDDonViTinh, TongGiaMuaTruocThue, TongGiaBanTruocThue, TongGiaMuaSauThue, TongGiaBanSauThue, TongTrongLuong, GhiChu, HanSuDung);
-                            data.ThemBarCode(IDHangHoaComBo, Barcode);
-                            //Thêm hàng hóa vào các kho....
-                            DataTable dta = data.LayDanhSachKho();
-                            for (int i = 0; i < dta.Rows.Count; i++)
+                            object ID = data.ThemIDHangHoa_Temp();
+                            if (ID != null)
                             {
-                                DataRow dr = dta.Rows[i];
-                                int IDKho = Int32.Parse(dr["ID"].ToString());
-                                data = new dtHangCombo();
-                                data.ThemHangVaoTonKho(IDKho, (int)IDHangHoaComBo, "0", GiaBanTong, GiaBanTong, GiaBanTong, GiaBanTong, GiaBanTong, GiaBanTong);
-                            }
+                                data.CapNhatHangHoa(ID, MaHang, txtTenHangComBo, IDNhomHang, IDDonViTinh, TongGiaMuaTruocThue, TongGiaBanTruocThue, TongGiaMuaSauThue, TongGiaBanSauThue, TongTrongLuong, GhiChu, HanSuDung);
+                                data.ThemBarCode(ID, Barcode);
+                                //Thêm hàng hóa vào các kho....
+                                DataTable dta = data.LayDanhSachKho();
+                                for (int i = 0; i < dta.Rows.Count; i++)
+                                {
+                                    DataRow dr = dta.Rows[i];
+                                    int IDKho = Int32.Parse(dr["ID"].ToString());
+                                    data = new dtHangCombo();
+                                    data.ThemHangVaoTonKho(IDKho, (int)ID, "0", GiaBanTong, GiaBanTong, GiaBanTong, GiaBanTong, GiaBanTong, GiaBanTong);
+                                }
 
-                            foreach (DataRow dr in dt.Rows)
-                            {
-                                string IDHangHoa1 = dr["IDHangHoa"].ToString();
-                                string SoLuong1 = dr["SoLuong"].ToString();
-                                string GiaBanTruocThue1 = dr["GiaBanTruocThue"].ToString();
-                                string ThanhTien1 = dr["ThanhTien"].ToString();
-                                string IDDonViTinh1 = dr["IDDonViTinh"].ToString();
-                                string MaHang1 = dr["MaHang"].ToString();
-                                string TrongLuong1 = dr["TrongLuong"].ToString();
-                                string GiaBanSauThue1 = dr["GiaBanSauThue"].ToString();
-                                string GiaMuaTruocThue1 = dr["GiaMuaTruocThue"].ToString();
-                                string GiaMuaSauThue1 = dr["GiaMuaSauThue"].ToString();
-                                string GhiChu1 = dr["GhiChu"].ToString();
-                                data = new dtHangCombo();
-                                data.ThemHangHoa(IDHangHoaComBo, IDHangHoa1, SoLuong1, GiaBanTruocThue1, ThanhTien1, IDDonViTinh1, MaHang1, TrongLuong1, GiaBanSauThue1, GiaMuaTruocThue1, GiaMuaSauThue1, GhiChu1);
+                                foreach (DataRow dr in dt.Rows)
+                                {
+                                    string IDHangHoa1 = dr["IDHangHoa"].ToString();
+                                    string SoLuong1 = dr["SoLuong"].ToString();
+                                    string GiaBanTruocThue1 = dr["GiaBanTruocThue"].ToString();
+                                    string ThanhTien1 = dr["ThanhTien"].ToString();
+                                    string IDDonViTinh1 = dr["IDDonViTinh"].ToString();
+                                    string MaHang1 = dr["MaHang"].ToString();
+                                    string TrongLuong1 = dr["TrongLuong"].ToString();
+                                    string GiaBanSauThue1 = dr["GiaBanSauThue"].ToString();
+                                    string GiaMuaTruocThue1 = dr["GiaMuaTruocThue"].ToString();
+                                    string GiaMuaSauThue1 = dr["GiaMuaSauThue"].ToString();
+                                    string GhiChu1 = dr["GhiChu"].ToString();
+                                    data = new dtHangCombo();
+                                    data.ThemHangHoa(ID, IDHangHoa1, SoLuong1, GiaBanTruocThue1, ThanhTien1, IDDonViTinh1, MaHang1, TrongLuong1, GiaBanSauThue1, GiaMuaTruocThue1, GiaMuaSauThue1, GhiChu1);
+                                }
+                                data.XoaHangHoa_Temp_IDHangCombo(IDHangHoaComBo);
+                                dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Hàng hóa combo", Session["IDKho"].ToString(), "Danh Mục", "Thêm");
+                                Response.Redirect("DanhMucCombo.aspx");
                             }
-                            data.XoaHangHoa_Temp_IDHangCombo(IDHangHoaComBo);
-                            dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Hàng hóa combo", Session["IDKho"].ToString(), "Danh Mục", "Thêm");
-                            Response.Redirect("DanhMucCombo.aspx");
                         }
                         else
                         {

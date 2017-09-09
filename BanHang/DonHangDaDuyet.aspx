@@ -8,6 +8,76 @@
          }
 
     </script>
+    <dx:ASPxFormLayout ID="ASPxFormLayout1" runat="server" ColCount="6">
+        <Items>
+             <dx:LayoutItem Caption="">
+                <LayoutItemNestedControlCollection>
+                    <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer5" runat="server">
+                        <dx:ASPxButton ID="btnTaoDonHang" runat="server" Text="Tạo Đơn Hàng" HorizontalAlign="Right" VerticalAlign="Middle" PostBackUrl="ThemDonHangChiNhanh.aspx">
+                            <Image IconID="actions_add_32x32">
+                            </Image>
+                            <Paddings Padding="4px" />
+                        </dx:ASPxButton>
+                    </dx:LayoutItemNestedControlContainer>
+                </LayoutItemNestedControlCollection>
+            </dx:LayoutItem>
+            <dx:LayoutItem Caption="">
+                <LayoutItemNestedControlCollection>
+                    <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer1" runat="server">
+                        <dx:ASPxButton ID="btnDuyetDonHang" runat="server" Text="Xử Lý Đơn Hàng" HorizontalAlign="Right" VerticalAlign="Middle" PostBackUrl="DuyetDonHangChiNhanh.aspx">
+                            <Image IconID="actions_converttorange_32x32">
+                            </Image>
+                            <Paddings Padding="4px" />
+                        </dx:ASPxButton>
+                    </dx:LayoutItemNestedControlContainer>
+                </LayoutItemNestedControlCollection>
+            </dx:LayoutItem>
+             <dx:LayoutItem Caption="">
+                <LayoutItemNestedControlCollection>
+                    <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer2" runat="server">
+                        <dx:ASPxButton ID="btnDonHangDaDuyet" runat="server" PostBackUrl="DonHangDaDuyet.aspx" Text="Đơn Hàng Chờ Xử Lý">
+                            <Image IconID="businessobjects_bofileattachment_32x32">
+                            </Image>
+                        </dx:ASPxButton>
+                    </dx:LayoutItemNestedControlContainer>
+                </LayoutItemNestedControlCollection>
+            </dx:LayoutItem>
+           
+           <dx:LayoutItem Caption="">
+                <LayoutItemNestedControlCollection>
+                    <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer6" runat="server">
+                        <dx:ASPxButton ID="btnDonhangXuLy1Phan" runat="server" PostBackUrl="DonHangXuLy1Phan.aspx" Text="Đơn Hàng Đã Xử Lý 1 Phần">
+                            <Image IconID="edit_copy_32x32">
+                            </Image>
+                        </dx:ASPxButton>
+                    </dx:LayoutItemNestedControlContainer>
+                </LayoutItemNestedControlCollection>
+            </dx:LayoutItem>
+           
+            <dx:LayoutItem Caption="">
+                <LayoutItemNestedControlCollection>
+                    <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer3" runat="server">
+                        <dx:ASPxButton ID="ASPxFormLayout1_E3" runat="server" Text="Đơn Hàng Hoàn Tất" PostBackUrl="DonHangHoanTat.aspx">
+                            <Image IconID="content_checkbox_32x32">
+                            </Image>
+                        </dx:ASPxButton>
+                    </dx:LayoutItemNestedControlContainer>
+                </LayoutItemNestedControlCollection>
+            </dx:LayoutItem>
+           
+            <dx:LayoutItem Caption="">
+                <LayoutItemNestedControlCollection>
+                    <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer4" runat="server">
+                        <dx:ASPxButton ID="ASPxFormLayout1_E2" runat="server" Text="Đơn Hàng Đã Hủy" PostBackUrl="DonHangDaHuy.aspx">
+                            <Image IconID="reports_deleteheader_32x32">
+                            </Image>
+                        </dx:ASPxButton>
+                    </dx:LayoutItemNestedControlContainer>
+                </LayoutItemNestedControlCollection>
+            </dx:LayoutItem>
+           
+        </Items>
+      </dx:ASPxFormLayout> 
     <dx:ASPxGridView ID="gridDonDatHang" runat="server" AutoGenerateColumns="False" KeyFieldName="ID" Width="100%">
         <SettingsEditing Mode="PopupEditForm">
         </SettingsEditing>
@@ -116,7 +186,7 @@
                  </PropertiesComboBox>
                  <HeaderStyle Wrap="True" />
              </dx:GridViewDataComboBoxColumn>
-             <dx:GridViewDataHyperLinkColumn Caption="Chứng Từ" FieldName="ChungTu" VisibleIndex="12" UnboundType="String">
+             <dx:GridViewDataHyperLinkColumn Caption="Chứng Từ" FieldName="ChungTu" VisibleIndex="12" UnboundType="String" Name="ChungTu">
                   <PropertiesHyperLinkEdit ImageUrl="image/download.png" ImageWidth="90" ImageHeight="60"></PropertiesHyperLinkEdit>       
              </dx:GridViewDataHyperLinkColumn>
          </Columns>
@@ -129,7 +199,12 @@
             </TitlePanel>
         </Styles>
     </dx:ASPxGridView>
-     <asp:SqlDataSource ID="SqlTrangThaiXuLy" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" SelectCommand="SELECT [ID], [TenTrangThai] FROM [GPM_TrangThaiDonHang]"></asp:SqlDataSource>
+     <asp:SqlDataSource ID="SqlTrangThaiXuLy" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" SelectCommand="SELECT [ID], [TenTrangThai] FROM [GPM_TrangThaiDonHang] WHERE (([ID] &lt;&gt; @ID) AND ([ID] &lt;&gt; @ID2))">
+         <SelectParameters>
+             <asp:Parameter DefaultValue="2" Name="ID" Type="Int32" />
+             <asp:Parameter DefaultValue="3" Name="ID2" Type="Int32" />
+         </SelectParameters>
+     </asp:SqlDataSource>
      <asp:SqlDataSource ID="SqlKho" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" SelectCommand="SELECT [ID], [TenCuaHang] FROM [GPM_Kho] WHERE ([DaXoa] = @DaXoa)">
          <SelectParameters>
              <asp:Parameter DefaultValue="0" Name="DaXoa" Type="Int32" />

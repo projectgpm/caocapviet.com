@@ -172,6 +172,21 @@ namespace BanHang.Data
                 }
             }
         }
+        public DataTable DanhSachChiTietXuLy1Phan(string IDSoDonHang)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT * FROM [GPM_Log_DuyetHangChiNhanh] WHERE IDSoDonHang =" + IDSoDonHang;
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    return tb;
+                }
+            }
+        }
         public static int LayIDKho(string ID)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))

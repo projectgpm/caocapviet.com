@@ -9,6 +9,7 @@ namespace BanHang.Data
 {
     public class dtDonHangChiNhanh
     {
+
         public static int TuanSuatBanHang(DateTime NgayHomNay, string IDHangHoa, int SoNgay, string IDKho)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
@@ -38,7 +39,7 @@ namespace BanHang.Data
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "SELECT * FROM [GPM_DonHangChiNhanh] WHERE [IDKho] = '" + IDKho + "' ORDER BY [ID] DESC";
+                string cmdText = "SELECT * FROM [GPM_DonHangChiNhanh] WHERE  [TrangThai] = 0 AND [IDKho] = '" + IDKho + "' ORDER BY [ID] DESC";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
@@ -48,7 +49,7 @@ namespace BanHang.Data
                 }
             }
         }
-        public void ThemChiTietDonHangClient(string IDDonHangChiNhanh, string MaHang, string IDHangHoa, string IDDonViTinh, string TrongLuong, string SoLuong, string TonKho, string GhiChu, string TrangThai, string IDKho)
+        public void ThemChiTietDonHangClient(object IDDonHangChiNhanh, string MaHang, string IDHangHoa, string IDDonViTinh, string TrongLuong, string SoLuong, string TonKho, string GhiChu, string TrangThai, string IDKho)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
@@ -78,7 +79,7 @@ namespace BanHang.Data
                 }
             }
         }
-        public void CapNhatDonDatHangClient(string ID, string SoDonHang, string IDNguoiLap, DateTime NgayLap, string TongTrongLuong, string IDKho, string GhiChu, DateTime NgayDat, DateTime NgayGiaoDuKien, string MucDoUuTien)
+        public void CapNhatDonDatHangClient(object ID, string SoDonHang, string IDNguoiLap, DateTime NgayLap, string TongTrongLuong, string IDKho, string GhiChu, DateTime NgayDat, DateTime NgayGiaoDuKien, string MucDoUuTien)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {

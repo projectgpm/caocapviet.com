@@ -22,7 +22,7 @@
                                     <dx:ListBoxColumn Caption="Chi Nhánh" FieldName="TenCuaHang" Width="100%" />          
                                 </Columns>
                             </dx:ASPxComboBox>
-                            <asp:SqlDataSource ID="SqlSoDonHangThuMua" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" SelectCommand="SELECT [GPM_DonHangChiNhanh].[SoDonHang], [GPM_DonHangChiNhanh].[ID], FORMAT([GPM_DonHangChiNhanh].[NgayDat],'dd/MM/yyyy') AS NgayDat,FORMAT([GPM_DonHangChiNhanh].[NgayGiaoDuKien],'dd/MM/yyyy') AS NgayGiao,[GPM_NguoiDung].TenNguoiDung,[GPM_Kho].TenCuaHang,REPLACE(REPLACE(REPLACE([GPM_DonHangChiNhanh].MucDoUuTien,1,N'Ưu Tiên') + REPLACE([GPM_DonHangChiNhanh].MucDoUuTien,0,N'Không Ưu Tiên'),N'0Không Ưu Tiên',N'Không Ưu Tiên'),N'Ưu Tiên1',N'Ưu Tiên') AS UuTien FROM [GPM_DonHangChiNhanh],[GPM_NguoiDung],[GPM_Kho] WHERE (([GPM_DonHangChiNhanh].[GiamSatDuyet] = 1) AND ([GPM_DonHangChiNhanh].[TrangThai] = 0) AND ([GPM_DonHangChiNhanh].[IDTrangThaiDonHang] > 2) AND ([GPM_DonHangChiNhanh].[SoDonHang] IS NOT NULL) AND ([GPM_DonHangChiNhanh].[IDNguoiLap] IS NOT NULL)) AND [GPM_NguoiDung].ID = [GPM_DonHangChiNhanh].IDNguoiLap AND [GPM_Kho].ID = [GPM_DonHangChiNhanh].IDKho">
+                            <asp:SqlDataSource ID="SqlSoDonHangThuMua" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" SelectCommand="SELECT [GPM_DonHangChiNhanh].[SoDonHang], [GPM_DonHangChiNhanh].[ID], FORMAT([GPM_DonHangChiNhanh].[NgayDat],'dd/MM/yyyy') AS NgayDat,FORMAT([GPM_DonHangChiNhanh].[NgayGiaoDuKien],'dd/MM/yyyy') AS NgayGiao,[GPM_NguoiDung].TenNguoiDung,[GPM_Kho].TenCuaHang,REPLACE(REPLACE(REPLACE([GPM_DonHangChiNhanh].MucDoUuTien,1,N'Ưu Tiên') + REPLACE([GPM_DonHangChiNhanh].MucDoUuTien,0,N'Không Ưu Tiên'),N'0Không Ưu Tiên',N'Không Ưu Tiên'),N'Ưu Tiên1',N'Ưu Tiên') AS UuTien FROM [GPM_DonHangChiNhanh],[GPM_NguoiDung],[GPM_Kho] WHERE (([GPM_DonHangChiNhanh].[GiamSatDuyet] = 1) AND ([GPM_DonHangChiNhanh].[IDTrangThaiDonHang] > 2) AND ([GPM_DonHangChiNhanh].[SoDonHang] IS NOT NULL) AND ([GPM_DonHangChiNhanh].[IDNguoiLap] IS NOT NULL)) AND [GPM_NguoiDung].ID = [GPM_DonHangChiNhanh].IDNguoiLap AND [GPM_Kho].ID = [GPM_DonHangChiNhanh].IDKho">
                                 <SelectParameters>
                                     <asp:Parameter DefaultValue="1" Name="GiamSatDuyet" Type="Int32" />
                                     <asp:Parameter DefaultValue="0" Name="TrangThai" Type="Int32" />
@@ -198,6 +198,8 @@
                         <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer15" runat="server">
                                                 
                             <dx:ASPxGridView ID="gridDanhSachHangHoa" runat="server" AutoGenerateColumns="False" KeyFieldName="ID" Width="100%" OnRowUpdating="gridDanhSachHangHoa_RowUpdating" OnHtmlRowPrepared="gridDanhSachHangHoa_HtmlRowPrepared" OnRowDeleting="gridDanhSachHangHoa_RowDeleting">
+                                 <SettingsPager Mode="ShowAllRecords">
+                                 </SettingsPager>
                                  <SettingsEditing Mode="Batch">
                                  </SettingsEditing>
                                  <Settings ShowFooter="True" />

@@ -23,17 +23,21 @@ namespace BanHang
             }
             else
             {
-                txtNhanVien.Text = Session["TenDangNhap"].ToString();
+                LoadGrid(IDTemp.Value.ToString());
+            }
+            if (!IsPostBack)
+            {
+                Random ran = new Random();
+                IDTemp.Value = ran.Next(100000, 999999).ToString();
             }
         }
-
         protected void cmbHangHoa_ItemRequestedByValue(object source, DevExpress.Web.ListEditItemRequestedByValueEventArgs e)
         {
             long value = 0;
             if (e.Value == null || !Int64.TryParse(e.Value.ToString(), out value))
                 return;
             ASPxComboBox comboBox = (ASPxComboBox)source;
-            dsHangHoa.SelectCommand = @"SELECT GPM_HangHoa.ID, GPM_HangHoa.MaHang, GPM_HangHoa.TenHangHoa, GPM_HangHoa.GiaBanSauThue, GPM_DonViTinh.TenDonViTinh 
+            dsHangHoa.SelectCommand = @"SELECT GPM_HangHoa.ID, GPM_HangHoa.MaHang, GPM_HangHoa.TenHangHoa, GPM_DonViTinh.TenDonViTinh 
                                         FROM GPM_DonViTinh INNER JOIN GPM_HangHoa ON GPM_DonViTinh.ID = GPM_HangHoa.IDDonViTinh
                                         WHERE (GPM_HangHoa.ID = @ID) AND  (GPM_HangHoa.IDTrangThaiHang = 1 OR GPM_HangHoa.IDTrangThaiHang = 3 OR GPM_HangHoa.IDTrangThaiHang = 6)";
             dsHangHoa.SelectParameters.Clear();
@@ -46,9 +50,9 @@ namespace BanHang
         {
             ASPxComboBox comboBox = (ASPxComboBox)source;
 
-            dsHangHoa.SelectCommand = @"SELECT [ID], [MaHang], [TenHangHoa], [GiaBanSauThue] , [TenDonViTinh]
+            dsHangHoa.SelectCommand = @"SELECT [ID], [MaHang], [TenHangHoa], [TenDonViTinh]
                                         FROM (
-	                                        select GPM_HangHoa.ID, GPM_HangHoa.MaHang, GPM_HangHoa.TenHangHoa,GPM_HangHoa.GiaBanSauThue, GPM_DonViTinh.TenDonViTinh, 
+	                                        select GPM_HangHoa.ID, GPM_HangHoa.MaHang, GPM_HangHoa.TenHangHoa, GPM_DonViTinh.TenDonViTinh, 
 	                                        row_number()over(order by GPM_HangHoa.MaHang) as [rn] 
 	                                        FROM GPM_DonViTinh INNER JOIN GPM_HangHoa ON GPM_DonViTinh.ID = GPM_HangHoa.IDDonViTinh 
                                                               
@@ -68,45 +72,52 @@ namespace BanHang
 
         protected void btnThem_Temp_Click(object sender, EventArgs e)
         {
-            if (cmbHangHoa.Text != "" && UploadFileExcel.FileName.ToString() != "")
+            if (cmbKe.Text != "")
             {
-                 Response.Write("<script language='JavaScript'> alert('Vui lòng chỉ chọn 1 hình thức thêm hàng hóa.'); </script>");
-                 return;
-            }
-            else if (UploadFileExcel.FileName.ToString() != "")
-            {
-                Import();
-            }
-            else if (cmbHangHoa.Text != "")
-            {
-                string IDHangHoa = cmbHangHoa.Value.ToString();
-                string IDKe = cmbKe.Value.ToString();
-                string IDDonViTinh = dtHangHoa.LayIDDonViTinh(IDHangHoa);
-                string MaHang = dtHangHoa.LayMaHang(IDHangHoa);
-                data = new dtKe();
-                DataTable db = dtKe.KTHangTrongKe_Temp(IDHangHoa, IDKe);
-                if (db.Rows.Count == 0)
+                if (cmbHangHoa.Text != "" && UploadFileExcel.FileName.ToString() != "")
                 {
-                    data.ThemHangVaoKe_Temp(IDHangHoa, IDKe, IDDonViTinh, MaHang);
+                    Response.Write("<script language='JavaScript'> alert('Vui lòng chỉ chọn 1 hình thức thêm hàng hóa.'); </script>");
+                    return;
+                }
+                else if (UploadFileExcel.FileName.ToString() != "")
+                {
+                    Import();
+                }
+                else if (cmbHangHoa.Text != "")
+                {
+                    string IDHangHoa = cmbHangHoa.Value.ToString();
+                    string IDKe = cmbKe.Value.ToString();
+                    data = new dtKe();
+                    string Temp = IDTemp.Value.ToString();
+                    DataTable db = dtKe.KTHangTrongKe_Temp(IDHangHoa, IDKe, Temp);
+                    if (db.Rows.Count == 0)
+                    {
+                        data.ThemHangVaoKe_Temp(IDHangHoa, IDKe, Temp);
+                    }
+                    else
+                    {
+                        Response.Write("<script language='JavaScript'> alert('Hàng hóa đã tồn tại trong kệ này.'); </script>");
+                    }
+                    cmbHangHoa.Text = "";
+                    LoadGrid(Temp);
                 }
                 else
                 {
-                    Response.Write("<script language='JavaScript'> alert('Hàng hóa đã tồn tại .'); </script>");
+                    Response.Write("<script language='JavaScript'> alert('Vui lòng chọn hàng hóa.'); </script>");
+                    return;
                 }
-                cmbHangHoa.Text = "";
-                LoadGrid(IDKe);
             }
             else
             {
-                Response.Write("<script language='JavaScript'> alert('Vui lòng chọn hàng hóa.'); </script>");
+                Response.Write("<script language='JavaScript'> alert('Vui lòng chọn kệ hàng.'); </script>");
                 return;
             }
         }
 
-        private void LoadGrid(string IDKe)
+        private void LoadGrid(string IDTemp)
         {
             data = new dtKe();
-            gridDanhSachHangHoa.DataSource = data.DanhSachKe_Temp(IDKe);
+            gridDanhSachHangHoa.DataSource = data.DanhSachKe_Temp(IDTemp);
             gridDanhSachHangHoa.DataBind();
         }
         private void Import()
@@ -163,25 +174,24 @@ namespace BanHang
             int intRow = datatable.Rows.Count;
             if (datatable.Columns.Contains("MaHang") && datatable.Columns.Contains("TenHangHoa"))
             {
+                string Temp = IDTemp.Value.ToString();
                 if (intRow != 0)
                 {
                     for (int i = 0; i <= intRow - 1; i++)
                     {
                         DataRow dr = datatable.Rows[i];
                         string MaHang = dr["MaHang"].ToString().Trim();
-                        string TenHangHoa = dr["TenHangHoa"].ToString();
                         string IDHangHoa = dtHangHoa.LayIDHangHoa_MaHang(MaHang.Trim());
-                        string IDDonViTinh = dtHangHoa.LayIDDonViTinh(IDHangHoa);
                         string IDKe = cmbKe.Value.ToString();
-                        DataTable db = dtKe.KTHangTrongKe_Temp(IDHangHoa, IDKe);
+                        DataTable db = dtKe.KTHangTrongKe_Temp(IDHangHoa, IDKe, Temp);
                         if (db.Rows.Count == 0)
                         {
                             data = new dtKe();
-                            data.ThemHangVaoKe_Temp(IDHangHoa, IDKe, IDDonViTinh, MaHang);
+                            data.ThemHangVaoKe_Temp(IDHangHoa, IDKe, Temp);
                             cmbHangHoa.Text = "";
                         }
                     }
-                    LoadGrid(cmbKe.Value.ToString());
+                    LoadGrid(Temp);
                 }
             }
             else
@@ -191,17 +201,6 @@ namespace BanHang
 
         }
         public string strFileExcel { get; set; }
-
-        protected void cmbKe_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cmbKe.Text != "")
-            {
-                cmbHangHoa.Enabled = true;
-                btnThem_Temp.Enabled = true;
-                UploadFileExcel.Enabled = true;
-            }
-        }
-
         protected void gridDanhSachHangHoa_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
         {
             string ID = e.Keys[0].ToString();
@@ -209,49 +208,42 @@ namespace BanHang
             data.XoaKe_Temp(ID);
             e.Cancel = true;
             gridDanhSachHangHoa.CancelEdit();
-            LoadGrid(cmbKe.Value.ToString());
+            LoadGrid(IDTemp.Value.ToString());
         }
 
         protected void btnThem_Click(object sender, EventArgs e)
         {
-            if (cmbKe.Text != "")
+            data = new dtKe();
+            DataTable db = data.DanhSachKe_Temp_ALL(IDTemp.Value.ToString());
+            if (db.Rows.Count > 0)
             {
-                data = new dtKe();
-                DataTable db = data.DanhSachKe_Temp(cmbKe.Value.ToString());
-                if (db.Rows.Count > 0)
+                foreach (DataRow dr in db.Rows)
                 {
-                    foreach (DataRow dr in db.Rows)
+                    string IDHangHoa = dr["IDHangHoa"].ToString();
+                    string IDKe = dr["IDKe"].ToString();
+                    string MaHang = dtHangHoa.LayMaHang(IDHangHoa);
+                    string IDDonViTinh = dtHangHoa.LayIDDonViTinh(IDHangHoa);
+                    DataTable dt = dtKe.KTHangTrongKe(IDHangHoa, cmbKe.Value.ToString());
+                    if (dt.Rows.Count == 0)
                     {
-                        string MaHang = dr["MaHang"].ToString();
-                        string IDHangHoa = dr["IDHangHoa"].ToString();
-                        string IDDonViTinh = dr["IDonViTinh"].ToString();
-                        DataTable dt = dtKe.KTHangTrongKe(IDHangHoa, cmbKe.Value.ToString());
-                        if (dt.Rows.Count == 0)
-                        {
-                            data = new dtKe();
-                            data.ThemHangVaoKe(IDHangHoa, cmbKe.Value.ToString(), IDDonViTinh, MaHang, Session["IDNhanVien"].ToString());
-                        }
+                        data = new dtKe();
+                        data.ThemHangVaoKe(IDHangHoa, IDKe, IDDonViTinh, MaHang);
                     }
-                    data = new dtKe();
-                    data.XoaKe_IDke_Temp(cmbKe.Value.ToString());
-                    LoadGrid(cmbKe.Value.ToString());
-
-                    dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Danh sách kệ", Session["IDKho"].ToString(), "Danh mục", "Thêm");
-                    Response.Redirect("DanhSachKe.aspx");
                 }
-                else
-                {
-                    Response.Write("<script language='JavaScript'> alert('Danh sách hàng hóa trống.'); </script>");
-                }
+                data = new dtKe();
+                data.XoaKe_IDke_Temp(IDTemp.Value.ToString());
+                Response.Redirect("DanhSachKe.aspx");
             }
             else
             {
-                Response.Write("<script language='JavaScript'> alert('Vui lòng chọn kệ.'); </script>");
+                Response.Write("<script language='JavaScript'> alert('Danh sách hàng hóa trống.'); </script>");
             }
         }
 
         protected void btnHuy_Click(object sender, EventArgs e)
         {
+            data = new dtKe();
+            data.XoaALL_Temp(IDTemp.Value.ToString());
             Response.Redirect("DanhSachKe.aspx");
         }
     }

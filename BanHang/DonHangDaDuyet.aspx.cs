@@ -19,7 +19,20 @@ namespace BanHang
             }
             else
             {
-                LoadGrid(Session["IDKho"].ToString());
+                int IDKho = Int32.Parse(Session["IDKho"].ToString());
+                if (IDKho != 1)
+                {
+                    gridDonDatHang.Columns["ChungTu"].Visible = false;
+                    btnDuyetDonHang.Visible = false;
+                    btnTaoDonHang.Visible = true;
+                }
+                else
+                {
+                    gridDonDatHang.Columns["ChungTu"].Visible = true;
+                    btnDuyetDonHang.Visible = true;
+                    btnTaoDonHang.Visible = false;
+                }
+                LoadGrid(IDKho.ToString());
             }
         }
 

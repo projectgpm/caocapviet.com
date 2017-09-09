@@ -1,6 +1,7 @@
 ﻿using BanHang.Data;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Web;
@@ -19,6 +20,11 @@ namespace BanHang
                 string IDDonHangChiNhanh = Request.QueryString["IDDonHangChiNhanh"];
                 if (IDDonHangChiNhanh != null)
                 {
+                    // lấy trangthaiduyet
+                    if (dtDuyetDonHangChiNhanh.LayTrangThai(IDDonHangChiNhanh) == 1)
+                    {
+                        btnChapNhanDonHang.Visible = false;
+                    }
                     LoadGrid(IDDonHangChiNhanh.ToString());
                 }
             }
@@ -41,6 +47,39 @@ namespace BanHang
             int TrangThai = Convert.ToInt32(e.GetValue("TrangThai"));
             if (TrangThai == 1)
                 e.Row.BackColor = color;
+        }
+
+        protected void btnChapNhanDonHang_Click(object sender, EventArgs e)
+        {
+            string IDDonHangChiNhanh = Request.QueryString["IDDonHangChiNhanh"];
+            if (IDDonHangChiNhanh != null)
+            {
+                // cập nhật số lượng kho chi nhánh đặt hàng.
+                data = new dtDuyetDonHangChiNhanh();
+                DataTable db = data.DanhSachChiTietDuyet(IDDonHangChiNhanh);
+                if (db.Rows.Count > 0)
+                {
+                    string IDKho = dtDuyetDonHangChiNhanh.LayIDKhoLapPhieu(IDDonHangChiNhanh);
+                    // cập nhật số lượng
+                    foreach (DataRow dr in db.Rows)
+                    {
+                        string IDHangHoa = dr["IDHangHoa"].ToString();
+                        int SoLuong = Int32.Parse(dr["ThucTe"].ToString());
+                        dtCapNhatTonKho.CongTonKho(IDHangHoa, SoLuong.ToString(), IDKho);
+                    }
+                    // cập nhật xong đổi trạng thái thành đơn hàng hoàn tất
+                    data = new dtDuyetDonHangChiNhanh();
+                    data.CapNhatDonHangHoanTat(IDDonHangChiNhanh);
+                    btnChapNhanDonHang.Enabled = false;
+
+                }
+                else
+                {
+                    // danh sách đơn hàng trống.
+                    Response.Write("<script language='JavaScript'> alert('Đơn hàng trống. Vui lòng kiểm tra lại? '); </script>");
+                    return;
+                }
+            }
         }
     }
 }

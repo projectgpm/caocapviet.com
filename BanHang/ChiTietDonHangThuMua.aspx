@@ -9,10 +9,24 @@
 <body>
     <form id="form1" runat="server">
     <div>
+        <dx:ASPxFormLayout ID="ASPxFormLayout1" runat="server" ColCount="5">
+            <Items>
+                <dx:LayoutItem Caption="">
+                    <LayoutItemNestedControlCollection>
+                        <dx:LayoutItemNestedControlContainer runat="server">
+                            <dx:ASPxButton ID="btnHuyDonHang" runat="server" OnClick="btnHuyDonHang_Click" Text="Hủy Đơn Hàng">
+                                <Image IconID="edit_delete_32x32">
+                                </Image>
+                            </dx:ASPxButton>
+                        </dx:LayoutItemNestedControlContainer>
+                    </LayoutItemNestedControlCollection>
+                </dx:LayoutItem>
+            </Items>
+        </dx:ASPxFormLayout>
         <dx:ASPxGridView runat="server" AutoGenerateColumns="False" Width="100%" ID="gridChiTiet" KeyFieldName="ID" OnRowUpdating="gridChiTiet_RowUpdating">
         <SettingsEditing Mode="PopupEditForm">
         </SettingsEditing>
-<Settings ShowTitlePanel="True" ShowFooter="True"></Settings>
+<Settings ShowTitlePanel="True" ShowFooter="True" ShowFilterRow="True"></Settings>
 
         <SettingsBehavior ConfirmDelete="True" />
 
@@ -46,7 +60,9 @@
             <EditForm HorizontalAlign="WindowCenter" Modal="True" VerticalAlign="WindowCenter" />
         </SettingsPopup>
 
-<SettingsText Title="THÔNG TIN CHI TIẾT" CommandDelete="Xóa" ConfirmDelete="Bạn chắc chắn muốn xóa?" CommandEdit="Sửa"></SettingsText>
+            <SettingsSearchPanel Visible="True" />
+
+<SettingsText Title="THÔNG TIN CHI TIẾT" CommandDelete="Xóa" ConfirmDelete="Bạn chắc chắn muốn xóa?" CommandEdit="Sửa" EmptyDataRow="Danh sách hàng hóa trống." SearchPanelEditorNullText="Nhập thông tin cần tìm..."></SettingsText>
         <EditFormLayoutProperties>
             <Items>
                 <dx:GridViewColumnLayoutItem ColumnName="Mã Hàng">
@@ -63,7 +79,7 @@
         </EditFormLayoutProperties>
 <Columns>
     
-    <dx:GridViewCommandColumn Name="chucnang" ShowEditButton="True" VisibleIndex="7">
+    <dx:GridViewCommandColumn Name="chucnang" ShowEditButton="True" VisibleIndex="7" ShowClearFilterButton="True">
     </dx:GridViewCommandColumn>
     
     <dx:GridViewDataSpinEditColumn Caption="Số Lượng" FieldName="SoLuong" VisibleIndex="4">
@@ -94,6 +110,7 @@
             <TotalSummary>
                 <dx:ASPxSummaryItem DisplayFormat="Tổng = {0:N0}" FieldName="ThanhTien" ShowInColumn="Thành Tiền" SummaryType="Sum" />
                 <dx:ASPxSummaryItem DisplayFormat="Tổng = {0:N0}" FieldName="SoLuong" ShowInColumn="Số Lượng" SummaryType="Sum" />
+                <dx:ASPxSummaryItem DisplayFormat="Tổng mặt hàng : {0}" FieldName="MaHang" ShowInColumn="Hàng Hóa" SummaryType="Count" />
             </TotalSummary>
 
 <Styles>

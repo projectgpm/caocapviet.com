@@ -14,7 +14,7 @@
             <dx:LayoutItem Caption="">
                 <LayoutItemNestedControlCollection>
                     <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer1" runat="server">
-                        <dx:ASPxButton ID="btnThemHangHoaVaoKe" runat="server" Text="Thêm Hàng Hóa Vào Kệ" HorizontalAlign="Right" VerticalAlign="Middle" PostBackUrl="ThemHangHoaTrongKe.aspx" Visible="False">
+                        <dx:ASPxButton ID="btnThemHangHoaVaoKe" runat="server" Text="Thêm Hàng Hóa Vào Kệ" HorizontalAlign="Right" VerticalAlign="Middle" PostBackUrl="ThemHangHoaTrongKe.aspx">
                             <Image IconID="actions_add_32x32">
                             </Image>
                             <Paddings Padding="4px" />
@@ -63,9 +63,9 @@
         <SettingsText CommandDelete="Xóa" CommandEdit="Sửa" CommandNew="Thêm" ConfirmDelete="Bạn có chắc chắn muốn xóa không?" PopupEditFormCaption="Thông tin đơn vị tính" Title="DANH SÁCH KỆ CỦA CỬA HÀNG" EmptyDataRow="Không có dữ liệu hiển thị" SearchPanelEditorNullText="Nhập thông tin cần tìm..." />
          <EditFormLayoutProperties>
              <Items>
-                 <dx:GridViewColumnLayoutItem ColumnName="Tên Kệ">
+                 <dx:GridViewColumnLayoutItem ColumnName="Tên Kệ Hàng">
                  </dx:GridViewColumnLayoutItem>
-                 <dx:GridViewColumnLayoutItem ColumnName="Vị Trí">
+                 <dx:GridViewColumnLayoutItem ColumnName="Vị Trí Kệ Hàng">
                  </dx:GridViewColumnLayoutItem>
                  <dx:GridViewColumnLayoutItem ColumnName="Mô Tả">
                  </dx:GridViewColumnLayoutItem>
@@ -74,11 +74,11 @@
              </Items>
          </EditFormLayoutProperties>
         <Columns>
-            <dx:GridViewCommandColumn ShowClearFilterButton="True" ShowDeleteButton="True" ShowEditButton="True" ShowNewButtonInHeader="True" VisibleIndex="6" Name="iconaction">
+            <dx:GridViewCommandColumn ShowClearFilterButton="True" ShowDeleteButton="True" ShowEditButton="True" ShowNewButtonInHeader="True" VisibleIndex="9" Name="iconaction">
             </dx:GridViewCommandColumn>
-            <dx:GridViewDataTextColumn Caption="Tên Kệ" FieldName="TenKe" VisibleIndex="1">
+            <dx:GridViewDataTextColumn Caption="Tên Kệ Hàng" FieldName="TenKe" VisibleIndex="1">
             </dx:GridViewDataTextColumn>
-            <dx:GridViewDataTextColumn Caption="Vị Trí" FieldName="ViTri" VisibleIndex="2">
+            <dx:GridViewDataTextColumn Caption="Vị Trí Kệ Hàng" FieldName="ViTri" VisibleIndex="2">
             </dx:GridViewDataTextColumn>
             <dx:GridViewDataTextColumn Caption="Mô Tả" FieldName="MoTa" VisibleIndex="3">
             </dx:GridViewDataTextColumn>
@@ -86,13 +86,15 @@
                 <PropertiesComboBox DataSourceID="SqlChiNhanh" TextField="TenCuaHang" ValueField="ID">
                 </PropertiesComboBox>
             </dx:GridViewDataComboBoxColumn>
-            <dx:GridViewDataDateColumn Caption="Ngày Cập Nhật" FieldName="NgayCapNhat" VisibleIndex="5">
+            <dx:GridViewDataDateColumn Caption="Ngày Cập Nhật" FieldName="NgayCapNhat" VisibleIndex="6">
                 <propertiesdateedit displayformatstring="dd/MM/yyyy"></propertiesdateedit>
+                <HeaderStyle Wrap="True" />
             </dx:GridViewDataDateColumn>
-            <dx:GridViewDataButtonEditColumn Caption="Xem Chi Tiết" VisibleIndex="9" Visible="False">
+            <dx:GridViewDataButtonEditColumn Caption="Xem Chi Tiết" VisibleIndex="5">
                 <DataItemTemplate>
                     <a href="javascript:void(0);" onclick="OnMoreInfoClick(this, '<%# Container.KeyValue %>')">Xem </a>
                 </DataItemTemplate>
+                <HeaderStyle Wrap="True" />
             </dx:GridViewDataButtonEditColumn>
         </Columns>
         <Styles>

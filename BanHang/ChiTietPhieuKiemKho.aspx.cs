@@ -75,25 +75,27 @@ namespace BanHang
 
         protected void btnDuyet_Click(object sender, EventArgs e)
         {
+            data = new dtKiemKho();
             string IDPhieuKiemKho = Request.QueryString["IDPhieuKiemKho"];
             DataTable dt = data.DanhSachChiTietPhieuKiemKho_IDPhieuKiemKho(Int32.Parse(IDPhieuKiemKho));
             if (dt.Rows.Count > 0)
             {
-                foreach (DataRow dr in dt.Rows)
+                string IDKho = dtKiemKho.LayIDKho_PhieuKiem(IDPhieuKiemKho);
+                if (IDKho != "")
                 {
-                    string ThucTe = dr["ThucTe"].ToString();
-                    string IDHangHoa = dr["IDHangHoa"].ToString();
-                    dtCapNhatTonKho.CapNhatKho(IDHangHoa, ThucTe, Session["IDKho"].ToString());
-                    // chưa ghi lịch sử
-                }
-                data = new dtKiemKho();
-                data.CapNhatTrangThai(IDPhieuKiemKho);
-               // Response.Redirect("DanhSachKiemKho.aspx");
-                // chưa ghi lịch sử
-                btnDuyet.Enabled = false;
-                gridChiTietPhieuKiemKho.Columns["chucnang"].Visible = false;
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        string ThucTe = dr["ThucTe"].ToString();
+                        string IDHangHoa = dr["IDHangHoa"].ToString();
+                        dtCapNhatTonKho.CapNhatKho(IDHangHoa, ThucTe, IDKho);
+                    }
+                    data = new dtKiemKho();
+                    data.CapNhatTrangThai(IDPhieuKiemKho);
+                    btnDuyet.Enabled = false;
+                    gridChiTietPhieuKiemKho.Columns["chucnang"].Visible = false;
 
-                dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Chi tiết phiếu kiểm kho", Session["IDKho"].ToString(), "Nhập xuất tồn", "Duyệt");
+                  //  dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Chi tiết phiếu kiểm kho", Session["IDKho"].ToString(), "Nhập xuất tồn", "Duyệt");
+                }
             }
             else
             {

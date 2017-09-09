@@ -100,7 +100,7 @@
                     <dx:ASPxSummaryItem DisplayFormat="Tổng: {0:N0}" FieldName="GiaBanSauThue" ShowInColumn="Giá Bán Sau Thuế" SummaryType="Sum" />
                     <dx:ASPxSummaryItem DisplayFormat="Tổng: {0:N0}" FieldName="GiaMuaTruocThue" ShowInColumn="Giá Mua Trước Thuế" SummaryType="Sum" />
                     <dx:ASPxSummaryItem DisplayFormat="Tổng: {0:N0}" FieldName="GiaMuaSauThue" ShowInColumn="Giá Mua Sau Thuế" SummaryType="Sum" />
-                    <dx:ASPxSummaryItem DisplayFormat="Tổng SLH: {0}" FieldName="MaHang" ShowInColumn="Mã Hàng" SummaryType="Count" />
+                    <dx:ASPxSummaryItem DisplayFormat="Tổng mặt hàng : {0}" FieldName="MaHang" ShowInColumn="Hàng Hóa" SummaryType="Count" />
                 </TotalSummary>
 
 <Styles>
