@@ -10,6 +10,8 @@
     <form id="form1" runat="server">
     <div>
        <dx:ASPxGridView runat="server" AutoGenerateColumns="False" Width="100%" ID="gridChiTiet" KeyFieldName="ID" OnHtmlRowPrepared="gridChiTiet_HtmlRowPrepared" OnRowUpdating="gridChiTiet_RowUpdating">
+           <SettingsPager Mode="ShowAllRecords">
+           </SettingsPager>
         <SettingsEditing Mode="Batch">
         </SettingsEditing>
 <Settings ShowTitlePanel="True" ShowFooter="True" ShowFilterRow="True"></Settings>
