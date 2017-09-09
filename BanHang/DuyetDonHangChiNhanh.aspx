@@ -198,6 +198,8 @@
                         <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer15" runat="server">
                                                 
                             <dx:ASPxGridView ID="gridDanhSachHangHoa" runat="server" AutoGenerateColumns="False" KeyFieldName="ID" Width="100%" OnRowUpdating="gridDanhSachHangHoa_RowUpdating" OnHtmlRowPrepared="gridDanhSachHangHoa_HtmlRowPrepared" OnRowDeleting="gridDanhSachHangHoa_RowDeleting">
+                                 <SettingsPager Mode="ShowAllRecords">
+                                 </SettingsPager>
                                  <SettingsEditing Mode="Batch">
                                  </SettingsEditing>
                                  <Settings ShowFooter="True" />

@@ -27,6 +27,8 @@
     <dx:ASPxGridViewExporter ID="XuatDuLieu" runat="server">
     </dx:ASPxGridViewExporter>
     <dx:ASPxGridView ID="gridDanhSach" runat="server" AutoGenerateColumns="False" Width="100%" KeyFieldName="ID" OnHtmlRowPrepared="gridDanhSach_HtmlRowPrepared">
+        <SettingsPager Mode="ShowAllRecords">
+        </SettingsPager>
         <SettingsEditing Mode="PopupEditForm">
         </SettingsEditing>
         <Settings AutoFilterCondition="Contains" ShowFilterRow="True" ShowTitlePanel="True" />
@@ -82,6 +84,10 @@
                 </PropertiesComboBox>
             </dx:GridViewDataComboBoxColumn>
         </Columns>
+
+         <TotalSummary>
+             <dx:ASPxSummaryItem DisplayFormat="Tổng : {0}" FieldName="SoLuongDat" ShowInColumn="Tổng Số Lượng Đặt" SummaryType="Sum" />
+        </TotalSummary>
 
          <Styles>
             <Header Font-Bold="True" HorizontalAlign="Center">

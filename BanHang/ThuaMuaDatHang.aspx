@@ -229,6 +229,8 @@
                         <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer15" runat="server">
                                                 
                             <dx:ASPxGridView ID="gridDanhSachHangHoa" runat="server" AutoGenerateColumns="False" KeyFieldName="ID" Width="100%">
+                                 <SettingsPager Mode="ShowAllRecords">
+                                 </SettingsPager>
                                  <SettingsEditing Mode="PopupEditForm">
                                  </SettingsEditing>
                                  <Settings ShowFooter="True" />

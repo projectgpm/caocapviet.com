@@ -49,6 +49,24 @@ namespace BanHang {
         protected global::DevExpress.Web.ASPxTextBox FormLayout1_E2;
         
         /// <summary>
+        /// cmbKho control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxComboBox cmbKho;
+        
+        /// <summary>
+        /// SqlChiNhanh control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlChiNhanh;
+        
+        /// <summary>
         /// txtGhiChu control.
         /// </summary>
         /// <remarks>

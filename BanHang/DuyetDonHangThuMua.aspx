@@ -138,6 +138,8 @@
                         <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer16" runat="server">
                                                 
                             <dx:ASPxGridView ID="gridDanhSachHangHoa" runat="server" AutoGenerateColumns="False" KeyFieldName="ID" Width="100%" OnRowUpdating="gridDanhSachHangHoa_RowUpdating">
+                                 <SettingsPager Mode="ShowAllRecords">
+                                 </SettingsPager>
                                  <SettingsEditing Mode="Batch">
                                  </SettingsEditing>
                                  <Settings ShowFooter="True" />
