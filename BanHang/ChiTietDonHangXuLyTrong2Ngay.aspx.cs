@@ -69,7 +69,7 @@ namespace BanHang
                             int SLThayDoi = SoLuongThucTeCu - SoLuongThucTeMoi;
                             data = new dtCapNhatPhieuNhapHang();
                             data.CapNhatChiTietDonHang(ID, SoLuongThucTeMoi);
-                            //ghi nhật ký ở đâyIDHangHoa
+                            //ghi nhật ký ở đây
                             dtCapNhatTonKho.TruTonKho(e.NewValues["IDHangHoa"].ToString(), SLThayDoi.ToString(), Session["IDKho"].ToString());
                         }
                     }
