@@ -13,7 +13,7 @@ namespace BanHang.Data
 {
     public class dtSetting
     {
-<<<<<<< HEAD
+
         public static int tinhSoNgay(int thang, int nam)
         {
             if (thang == 1 || thang == 3 || thang == 5 || thang == 7 || thang == 8 || thang == 10 || thang == 12)
@@ -24,7 +24,7 @@ namespace BanHang.Data
             if (nam % 4 == 0 && nam % 100 != 0 || nam % 400 == 0)
                 return 29;
             else return 28;
-=======
+        }
         public static int LaySoNgayDuocSuaDonHangDaXuLy()
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
@@ -44,7 +44,7 @@ namespace BanHang.Data
                     else return 0;
                 }
             }
->>>>>>> 2a7feec3e47742a79d9150012d8f89538b0384c6
+        
         }
         public static int KT_ChuyenAm()
         {
