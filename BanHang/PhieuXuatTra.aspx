@@ -4,6 +4,14 @@
             <Items>
                 <dx:LayoutGroup Caption="Thông tin phiếu xuất trả" ColCount="3" ColSpan="3" RowSpan="3">
                     <Items>
+                        <dx:LayoutItem Caption="Số Đơn Xuất">
+                            <LayoutItemNestedControlCollection>
+                                <dx:LayoutItemNestedControlContainer runat="server">
+                                    <dx:ASPxTextBox ID="txtSoDonXuat" runat="server" Enabled="False" Width =" 100%">
+                                    </dx:ASPxTextBox>
+                                </dx:LayoutItemNestedControlContainer>
+                            </LayoutItemNestedControlCollection>
+                        </dx:LayoutItem>
                         <dx:LayoutItem Caption="Nhà Cung Cấp">
                             <LayoutItemNestedControlCollection>
                                 <dx:LayoutItemNestedControlContainer runat="server">
@@ -26,7 +34,7 @@
                                 </dx:LayoutItemNestedControlContainer>
                             </LayoutItemNestedControlCollection>
                         </dx:LayoutItem>
-                        <dx:LayoutItem Caption="Kho Lập">
+                        <dx:LayoutItem Caption="Kho Lập Phiếu">
                             <LayoutItemNestedControlCollection>
                                 <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer3" runat="server">
                                     <dx:ASPxComboBox ID="cmbKho" runat="server" DataSourceID="sqlKhoHang" TextField="TenCuaHang" ValueField="ID" ReadOnly="true" Enabled="False" Width="100%">
@@ -42,8 +50,24 @@
                         <dx:LayoutItem Caption="Ngày Lập Phiếu">
                             <LayoutItemNestedControlCollection>
                                 <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer2" runat="server">
-                                    <dx:ASPxDateEdit ID="cmbNgayLapPhieu" runat="server" DateOnError="Today" DisplayFormatString="dd/MM/yyyy" OnInit="cmbNgayLapPhieu_Init" Width="100%">
+                                    <dx:ASPxDateEdit ID="cmbNgayLapPhieu" runat="server" DateOnError="Today" DisplayFormatString="dd/MM/yyyy" OnInit="cmbNgayLapPhieu_Init" Width="100%" Enabled="False">
                                     </dx:ASPxDateEdit>
+                                </dx:LayoutItemNestedControlContainer>
+                            </LayoutItemNestedControlCollection>
+                        </dx:LayoutItem>
+                        <dx:LayoutItem Caption="Ngày Xuất">
+                            <LayoutItemNestedControlCollection>
+                                <dx:LayoutItemNestedControlContainer runat="server">
+                                    <dx:ASPxDateEdit ID="txtNgayXuat" runat="server" Width =" 100%" DisplayFormatString="dd/MM/yyyy" OnInit="txtNgayXuat_Init">
+                                    </dx:ASPxDateEdit>
+                                </dx:LayoutItemNestedControlContainer>
+                            </LayoutItemNestedControlCollection>
+                        </dx:LayoutItem>
+                        <dx:LayoutItem Caption="Chứng Từ:">
+                            <LayoutItemNestedControlCollection>
+                                <dx:LayoutItemNestedControlContainer runat="server">
+                                    <dx:ASPxUploadControl ID="uploadfile" runat="server" Width =" 100%">
+                                    </dx:ASPxUploadControl>
                                 </dx:LayoutItemNestedControlContainer>
                             </LayoutItemNestedControlCollection>
                         </dx:LayoutItem>
@@ -75,7 +99,7 @@
                                 <dx:ListBoxColumn FieldName="MaHang" Width="80px" Caption="Mã Hàng" />
                                 <dx:ListBoxColumn FieldName="TenHangHoa" Width="200px" Caption="Tên Hàng Hóa"/>
                                 <dx:ListBoxColumn FieldName="TenDonViTinh" Width="100px" Caption="Đơn Vị Tính"/>
-                                <dx:ListBoxColumn FieldName="GiaMuaSauThue" Width="120px" Caption="Giá Mua Sau Thuế" />
+                             
                             </Columns>
                             <DropDownButton Visible="False">
                             </DropDownButton>
@@ -115,11 +139,11 @@
                                 </dx:LayoutItemNestedControlContainer>
                             </LayoutItemNestedControlCollection>
                         </dx:LayoutItem>
-                        <dx:LayoutItem Caption="Đơn Giá">
+                        <dx:LayoutItem Caption="Ghi Chú">
                             <LayoutItemNestedControlCollection>
                                 <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer9" runat="server">
-                                    <dx:ASPxSpinEdit ID="txtDonGia" runat="server" AutoPostBack="True" DisplayFormatString="N0" Width="100%">
-                                    </dx:ASPxSpinEdit>
+                                    <dx:ASPxTextBox ID="txtGhiChuHH" runat="server" Width =" 100%">
+                                    </dx:ASPxTextBox>
                                 </dx:LayoutItemNestedControlContainer>
                             </LayoutItemNestedControlCollection>
                         </dx:LayoutItem>
@@ -141,7 +165,10 @@
                             <LayoutItemNestedControlCollection>
                                 <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer14" runat="server">
                                                 
-                                    <dx:ASPxGridView ID="gridDanhSachHangHoa_Temp" runat="server" AutoGenerateColumns="False" KeyFieldName="ID" OnRowDeleting="gridDanhSachHangHoa_Temp_RowDeleting" Width="100%">
+                                    <dx:ASPxGridView ID="gridDanhSachHangHoa_Temp" runat="server" AutoGenerateColumns="False" KeyFieldName="ID" OnRowDeleting="gridDanhSachHangHoa_Temp_RowDeleting" Width="100%" OnHtmlRowPrepared="gridDanhSachHangHoa_Temp_HtmlRowPrepared">
+                                        <SettingsPager Mode="ShowAllRecords">
+                                        </SettingsPager>
+                                        <Settings ShowFooter="True" />
                                         <SettingsBehavior ProcessSelectionChangedOnServer="True" ConfirmDelete="True" />
                                         <SettingsCommandButton>
                                             <ShowAdaptiveDetailButton ButtonType="Image">
@@ -159,18 +186,10 @@
                                                 <PropertiesComboBox DataSourceID="sqlDanhSachHangHoa" TextField="TenHangHoa" ValueField="ID">
                                                 </PropertiesComboBox>
                                             </dx:GridViewDataComboBoxColumn>
-                                            <dx:GridViewCommandColumn ShowDeleteButton="True" ShowInCustomizationForm="True" VisibleIndex="6">
+                                            <dx:GridViewCommandColumn ShowDeleteButton="True" ShowInCustomizationForm="True" VisibleIndex="7">
                                             </dx:GridViewCommandColumn>
-                                            <dx:GridViewDataSpinEditColumn Caption="Giá Mua" FieldName="GiaMua" ShowInCustomizationForm="True" VisibleIndex="4">
-                                                <PropertiesSpinEdit DisplayFormatString="N0" >
-                                                </PropertiesSpinEdit>
-                                            </dx:GridViewDataSpinEditColumn>
-                                            <dx:GridViewDataSpinEditColumn Caption="Thành Tiền" FieldName="ThanhTien" ShowInCustomizationForm="True" VisibleIndex="5">
-                                                <PropertiesSpinEdit DisplayFormatString="N0">
-                                                </PropertiesSpinEdit>
-                                            </dx:GridViewDataSpinEditColumn>
-                                            <dx:GridViewDataSpinEditColumn Caption="Số Lượng" FieldName="SoLuong" ShowInCustomizationForm="True" VisibleIndex="3">
-                                                <PropertiesSpinEdit DisplayFormatString="g">
+                                            <dx:GridViewDataSpinEditColumn Caption="Số Lượng" FieldName="SoLuong" ShowInCustomizationForm="True" VisibleIndex="5">
+                                                <PropertiesSpinEdit DisplayFormatString="g" >
                                                 </PropertiesSpinEdit>
                                             </dx:GridViewDataSpinEditColumn>
                                             <dx:GridViewDataComboBoxColumn Caption="ĐVT" FieldName="IDDonViTinh" ShowInCustomizationForm="True" VisibleIndex="2">
@@ -179,7 +198,18 @@
                                             </dx:GridViewDataComboBoxColumn>
                                             <dx:GridViewDataTextColumn Caption="Mã Hàng" FieldName="MaHang" ShowInCustomizationForm="True" VisibleIndex="0">
                                             </dx:GridViewDataTextColumn>
+                                            <dx:GridViewDataTextColumn Caption="Trọng Lượng" ShowInCustomizationForm="True" VisibleIndex="3" FieldName="TrongLuong">
+                                            </dx:GridViewDataTextColumn>
+                                            <dx:GridViewDataTextColumn Caption="Ghi Chú" FieldName="GhiChu" ShowInCustomizationForm="True" VisibleIndex="6">
+                                            </dx:GridViewDataTextColumn>
+                                            <dx:GridViewDataSpinEditColumn Caption="Tồn Kho" FieldName="TonKho" ShowInCustomizationForm="True" VisibleIndex="4">
+                                                <PropertiesSpinEdit DisplayFormatString="g">
+                                                </PropertiesSpinEdit>
+                                            </dx:GridViewDataSpinEditColumn>
                                         </Columns>
+                                        <TotalSummary>
+                                            <dx:ASPxSummaryItem DisplayFormat="Tổng mặt hàng : {0}" FieldName="MaHang" ShowInColumn="Tên Hàng" SummaryType="Count" />
+                                        </TotalSummary>
                                         <Styles>
                                             <Header Font-Bold="True" HorizontalAlign="Center">
                                             </Header>
