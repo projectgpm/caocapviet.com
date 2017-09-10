@@ -4,6 +4,14 @@
         <Items>
             <dx:LayoutGroup Caption="Thông tin phiếu xuất khác" ColCount="3" ColSpan="3" RowSpan="3">
                 <Items>
+                    <dx:LayoutItem Caption="Số Đơn Xuất">
+                        <LayoutItemNestedControlCollection>
+                            <dx:LayoutItemNestedControlContainer runat="server">
+                                <dx:ASPxTextBox ID="txtSoDonXuat" runat="server" Enabled="False" Width="100%">
+                                </dx:ASPxTextBox>
+                            </dx:LayoutItemNestedControlContainer>
+                        </LayoutItemNestedControlCollection>
+                    </dx:LayoutItem>
                     <dx:LayoutItem Caption="Người Lập Phiếu">
                         <LayoutItemNestedControlCollection>
                             <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer1" runat="server">
@@ -31,9 +39,6 @@
                                 <dx:ASPxComboBox ID="cmbKho" Width="100%" runat="server" DataSourceID="sqlKhoHang" TextField="TenCuaHang" ValueField="ID" ReadOnly="true" Enabled="False">
                                 </dx:ASPxComboBox>
                                 <asp:SqlDataSource ID="sqlKhoHang" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" SelectCommand="SELECT [ID], [TenCuaHang] FROM [GPM_Kho] WHERE ([DaXoa] = @DaXoa)">
-                                    <SelectParameters>
-                                        <asp:Parameter DefaultValue="0" Name="DaXoa" Type="Int32" />
-                                    </SelectParameters>
                                 </asp:SqlDataSource>
                             </dx:LayoutItemNestedControlContainer>
                         </LayoutItemNestedControlCollection>
@@ -47,7 +52,15 @@
                             </dx:LayoutItemNestedControlContainer>
                         </LayoutItemNestedControlCollection>
                     </dx:LayoutItem>
-                    <dx:LayoutItem Caption="Ghi Chú" ColSpan="2">
+                    <dx:LayoutItem Caption="Chứng Từ">
+                        <LayoutItemNestedControlCollection>
+                            <dx:LayoutItemNestedControlContainer runat="server">
+                                <dx:ASPxUploadControl ID="uploadfile" runat="server" Width="100%">
+                                </dx:ASPxUploadControl>
+                            </dx:LayoutItemNestedControlContainer>
+                        </LayoutItemNestedControlCollection>
+                    </dx:LayoutItem>
+                    <dx:LayoutItem Caption="Ghi Chú" ColSpan="3">
                         <LayoutItemNestedControlCollection>
                             <dx:LayoutItemNestedControlContainer runat="server">
                                 <dx:ASPxTextBox ID="txtGhiChu" runat="server" Width="100%">
@@ -59,7 +72,7 @@
             </dx:LayoutGroup>
             <dx:LayoutGroup Caption="Thông tin hàng hóa" ColCount="3" ColSpan="3" RowSpan="3">
                 <Items>
-                    <dx:LayoutItem Caption="Hàng Hóa" ColSpan="2">
+                    <dx:LayoutItem Caption="Hàng Hóa">
                         <LayoutItemNestedControlCollection>
                             <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer5" runat="server">
                                 <dx:ASPxComboBox ID="cmbHangHoa" runat="server" ValueType="System.String" 
@@ -111,6 +124,14 @@
                             </dx:LayoutItemNestedControlContainer>
                         </LayoutItemNestedControlCollection>
                     </dx:LayoutItem>
+                    <dx:LayoutItem Caption="Ghi Chú">
+                        <LayoutItemNestedControlCollection>
+                            <dx:LayoutItemNestedControlContainer runat="server">
+                                <dx:ASPxTextBox ID="txtGhiChuHH" runat="server" Width="100%">
+                                </dx:ASPxTextBox>
+                            </dx:LayoutItemNestedControlContainer>
+                        </LayoutItemNestedControlCollection>
+                    </dx:LayoutItem>
                     <dx:LayoutItem Caption="" HorizontalAlign="Left">
                         <LayoutItemNestedControlCollection>
                             <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer13" runat="server">
@@ -147,19 +168,10 @@
                                             <PropertiesComboBox DataSourceID="sqlDanhSachHangHoa" TextField="TenHangHoa" ValueField="ID">
                                             </PropertiesComboBox>
                                         </dx:GridViewDataComboBoxColumn>
-                                        <dx:GridViewCommandColumn ShowDeleteButton="True" ShowInCustomizationForm="True" VisibleIndex="6">
+                                        <dx:GridViewCommandColumn ShowDeleteButton="True" ShowInCustomizationForm="True" VisibleIndex="7">
                                         </dx:GridViewCommandColumn>
-                                        <dx:GridViewDataSpinEditColumn Caption="Đơn Giá" FieldName="DonGia" ShowInCustomizationForm="True" VisibleIndex="4">
-                                            <PropertiesSpinEdit DisplayFormatString="N0">
-                                            </PropertiesSpinEdit>
-                                        </dx:GridViewDataSpinEditColumn>
-                                        <dx:GridViewDataSpinEditColumn Caption="Thành Tiền" FieldName="ThanhTien" ShowInCustomizationForm="True" VisibleIndex="5">
-                                            <PropertiesSpinEdit DisplayFormatString="N0">
-                                            </PropertiesSpinEdit>
-                                        </dx:GridViewDataSpinEditColumn>
-                                        <dx:GridViewDataSpinEditColumn Caption="Số Lượng" FieldName="SoLuong" ShowInCustomizationForm="True" VisibleIndex="3">
-                                            <PropertiesSpinEdit DisplayFormatString="g">
-                                            </PropertiesSpinEdit>
+                                        <dx:GridViewDataSpinEditColumn Caption="Số Lượng Xuất" FieldName="SoLuongXuat" ShowInCustomizationForm="True" VisibleIndex="5">
+<PropertiesSpinEdit DisplayFormatString="g"></PropertiesSpinEdit>
                                         </dx:GridViewDataSpinEditColumn>
                                         <dx:GridViewDataTextColumn Caption="Mã Hàng" FieldName="MaHang" ShowInCustomizationForm="True" VisibleIndex="0">
                                         </dx:GridViewDataTextColumn>
@@ -167,6 +179,16 @@
                                             <PropertiesComboBox DataSourceID="sqlDonViTinh" TextField="TenDonViTinh" ValueField="ID">
                                             </PropertiesComboBox>
                                         </dx:GridViewDataComboBoxColumn>
+                                        <dx:GridViewDataTextColumn Caption="Trọng Lượng" FieldName="TrongLuong" ShowInCustomizationForm="True" VisibleIndex="3">
+                                        </dx:GridViewDataTextColumn>
+                                        <dx:GridViewDataTextColumn Caption="Ghi Chú" FieldName="GhiChu" ShowInCustomizationForm="True" VisibleIndex="6">
+                                        </dx:GridViewDataTextColumn>
+                                        <dx:GridViewDataSpinEditColumn Caption="Tồn Kho" FieldName="TonKho" ShowInCustomizationForm="True" VisibleIndex="4">
+                                            <PropertiesSpinEdit DisplayFormatString="g">
+                                            </PropertiesSpinEdit>
+                                            <PropertiesSpinEdit DisplayFormatString="N0" NumberFormat="Custom">
+                                            </PropertiesSpinEdit>
+                                        </dx:GridViewDataSpinEditColumn>
                                     </Columns>
                                     <Styles>
                                         <Header Font-Bold="True" HorizontalAlign="Center">

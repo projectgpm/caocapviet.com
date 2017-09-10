@@ -22,6 +22,15 @@ namespace BanHang {
         protected global::DevExpress.Web.ASPxFormLayout ASPxFormLayout1;
         
         /// <summary>
+        /// txtSoDonXuat control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxTextBox txtSoDonXuat;
+        
+        /// <summary>
         /// LayoutItemNestedControlContainer1 control.
         /// </summary>
         /// <remarks>
@@ -121,6 +130,15 @@ namespace BanHang {
         protected global::System.Web.UI.WebControls.SqlDataSource SqlLyDoXuat;
         
         /// <summary>
+        /// uploadfile control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxUploadControl uploadfile;
+        
+        /// <summary>
         /// txtGhiChu control.
         /// </summary>
         /// <remarks>
@@ -209,6 +227,15 @@ namespace BanHang {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxSpinEdit txtSoLuong;
+        
+        /// <summary>
+        /// txtGhiChuHH control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxTextBox txtGhiChuHH;
         
         /// <summary>
         /// LayoutItemNestedControlContainer13 control.
