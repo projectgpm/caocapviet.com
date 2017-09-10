@@ -9,6 +9,46 @@ namespace BanHang.Data
 {
     public class dtCapNhatPhieuNhapHang
     {
+        public void CapNhatChiTietDonHang(string ID, int ThucTe)
+        {
+            using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
+            {
+                try
+                {
+                    myConnection.Open();
+                    string cmdText = "UPDATE [GPM_DuyetHangThuMua_ChiTiet] SET [ThucTe] = '" + ThucTe + "',[ChenhLech] = [SoLuong]  - '" + ThucTe + "' WHERE  [ID] = '" + ID + "' ";
+                    using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
+                    {
+                        myCommand.ExecuteNonQuery();
+                    }
+                    myConnection.Close();
+                }
+                catch
+                {
+                    throw new Exception("Lỗi: Quá trình cập nhật dữ liệu gặp lỗi");
+                }
+            }
+        }
+        public static int SoLuongThucTeCu(string ID)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT ThucTe FROM [GPM_DuyetHangThuMua_ChiTiet] WHERE [ID] = '" + ID + "'";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    if (tb.Rows.Count != 0)
+                    {
+                        DataRow dr = tb.Rows[0];
+                        return Int32.Parse(dr["ThucTe"].ToString());
+                    }
+                    else return 0;
+                }
+            }
+        }
         public DataTable DanhSachChiTiet_Duyet_ThuMua(string IDDonHangThuMua)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))

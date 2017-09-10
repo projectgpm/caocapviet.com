@@ -3,6 +3,7 @@ using DevExpress.Web;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -21,24 +22,25 @@ namespace BanHang
             }
             else
             {
-                if (dtSetting.LayTrangThaiMenu_ChucNang(Session["IDNhom"].ToString(), 18) == 1)
-                    Response.Redirect("Default.aspx");
-                if (dtSetting.LayTrangThaiMenu(Session["IDNhom"].ToString(), 18) == 1)
-                {
+                //if (dtSetting.LayTrangThaiMenu_ChucNang(Session["IDNhom"].ToString(), 18) == 1)
+                //    Response.Redirect("Default.aspx");
+                //if (dtSetting.LayTrangThaiMenu(Session["IDNhom"].ToString(), 18) == 1)
+                //{
                     if (!IsPostBack)
                     {
-                        data = new dtPhieuXuatTra();
-                        object IDPhieuXuatTra = data.ThemPhieuXuatTra_Temp();
-                        IDPhieuXuatTra_Temp.Value = IDPhieuXuatTra.ToString();
+                   
+                        Random ran = new Random();
+                        IDPhieuXuatTra_Temp.Value = ran.Next(100000, 999999).ToString();
                         cmbKho.Text = Session["IDKho"].ToString();
                         txtNguoiLapPhieu.Text = Session["TenDangNhap"].ToString();
+                        txtSoDonXuat.Text = (Int32.Parse(Session["IDKho"].ToString())).ToString().Replace(".", "") + "-" + (DateTime.Now.ToString("ddMMyyyy-hhmmss"));
                     }
                     LoadGrid(IDPhieuXuatTra_Temp.Value.ToString());
-                }
-                else
-                {
-                    Response.Redirect("Default.aspx");
-                }
+                //}
+                //else
+                //{
+                //    Response.Redirect("Default.aspx");
+                //}
             }
         }
        
@@ -53,44 +55,8 @@ namespace BanHang
             {
                 txtTonKho.Text = dtCapNhatTonKho.SoLuong_TonKho(cmbHangHoa.Value.ToString(),Session["IDKho"].ToString())+"";
                 txtSoLuong.Text = "0";
-                txtDonGia.Text = dtHangHoa.LayGiaMuaSauThue(cmbHangHoa.Value.ToString())+"";
                 cmbDonViTinh.Value = dtHangHoa.LayIDDonViTinh(cmbHangHoa.Value.ToString());
             }  
-        }
-
-        protected void txtSoLuong_NumberChanged(object sender, EventArgs e)
-        {
-            //if (cmbHangHoa.Value != null)
-            //{
-            //    if (dtSetting.KT_ChuyenAm() == 0)
-            //    {
-            //        int SoLuong = Int32.Parse(txtSoLuong.Text.ToString());
-            //        double GiaMua = double.Parse(txtDonGia.Text.ToString());
-            //        txtThanhTien.Text = (SoLuong * GiaMua).ToString();
-
-            //    }
-            //    else
-            //    {
-            //        int SoLuong = Int32.Parse(txtSoLuong.Text.ToString());
-            //        int IDHangHoa = Int32.Parse(cmbHangHoa.Value.ToString());
-            //        int SLTOn = Int32.Parse(txtTonKho.Text);
-            //        if (SoLuong > SLTOn)
-            //        {
-            //            Response.Write("<script language='JavaScript'> alert('Số lượng vượt quá cho phép.'); </script>");
-            //            txtSoLuong.Text = SLTOn.ToString();
-            //            double GiaMua = double.Parse(txtDonGia.Text.ToString());
-            //            txtThanhTien.Text = (SLTOn * GiaMua).ToString();
-
-            //        }
-            //        else
-            //        {
-            //            double GiaMua = double.Parse(txtDonGia.Text.ToString());
-            //            txtThanhTien.Text = (SoLuong * GiaMua).ToString();
-            //        }
-
-            //    }
-
-            //}
         }
 
         protected void btnThem_Click(object sender, EventArgs e)
@@ -101,6 +67,11 @@ namespace BanHang
                 if (SoLuong > 0)
                 {
                     int SLTon = Int32.Parse(txtTonKho.Text);
+                    string IDHangHoa = cmbHangHoa.Value.ToString();
+                    string IDPhieuXuatTra = IDPhieuXuatTra_Temp.Value.ToString();
+                    string TrongLuong = dtHangHoa.LayTrongLuong(IDHangHoa).ToString();
+                    string GhiChu = txtGhiChuHH.Text == null ? "" : txtGhiChuHH.Text.ToString();
+                    string TonKho = txtTonKho.Text.ToString();
                     if (dtSetting.KT_ChuyenAm() == 0)
                     {
                         if (SLTon < SoLuong)
@@ -110,20 +81,18 @@ namespace BanHang
                         }
                         else
                         {
-                            string IDHangHoa = cmbHangHoa.Value.ToString();
-                            string IDPhieuXuatTra = IDPhieuXuatTra_Temp.Value.ToString();
+                            
                             DataTable db = data.KTChiTietPhieuXuatTra_Temp(IDHangHoa, IDPhieuXuatTra);
-                            float GiaMua = float.Parse(txtDonGia.Text.ToString());
                             if (db.Rows.Count == 0)
                             {
                                 data = new dtPhieuXuatTra();
-                                data.ThemChiTietPhieuXuatTra_Temp(IDPhieuXuatTra, IDHangHoa, cmbDonViTinh.Value.ToString(), SoLuong, GiaMua, (GiaMua * SoLuong), dtHangHoa.LayMaHang(IDHangHoa));
+                                data.ThemChiTietPhieuXuatTra_Temp(IDPhieuXuatTra, IDHangHoa, cmbDonViTinh.Value.ToString(), SoLuong, TrongLuong, GhiChu, dtHangHoa.LayMaHang(IDHangHoa), TonKho);
                                 Clear();
                             }
                             else
                             {
                                 data = new dtPhieuXuatTra();
-                                data.UpdatePhieuXuatTra_temp(IDPhieuXuatTra, IDHangHoa, SoLuong, GiaMua, (SoLuong * GiaMua));                        
+                                data.UpdatePhieuXuatTra_temp(IDPhieuXuatTra, IDHangHoa, SoLuong, GhiChu);             
                                 Clear();
                             }
 
@@ -133,20 +102,17 @@ namespace BanHang
                     }
                     else
                     {
-                        string IDHangHoa = cmbHangHoa.Value.ToString();
-                        string IDPhieuXuatTra = IDPhieuXuatTra_Temp.Value.ToString();
                         DataTable db = data.KTChiTietPhieuXuatTra_Temp(IDHangHoa, IDPhieuXuatTra);
-                        float GiaMua = float.Parse(txtDonGia.Text.ToString());
                         if (db.Rows.Count == 0)
                         {
                             data = new dtPhieuXuatTra();
-                            data.ThemChiTietPhieuXuatTra_Temp(IDPhieuXuatTra, IDHangHoa, cmbDonViTinh.Value.ToString(), SoLuong, GiaMua, (GiaMua * SoLuong), dtHangHoa.LayMaHang(IDHangHoa));
+                            data.ThemChiTietPhieuXuatTra_Temp(IDPhieuXuatTra, IDHangHoa, cmbDonViTinh.Value.ToString(), SoLuong, TrongLuong, GhiChu, dtHangHoa.LayMaHang(IDHangHoa), TonKho);
                             Clear();
                         }
                         else
                         {
                             data = new dtPhieuXuatTra();
-                            data.UpdatePhieuXuatTra_temp(IDPhieuXuatTra, IDHangHoa, SoLuong, GiaMua, (SoLuong * GiaMua));
+                            data.UpdatePhieuXuatTra_temp(IDPhieuXuatTra, IDHangHoa, SoLuong, GhiChu);
                             Clear();
                         }
                         if (SLTon < SoLuong)
@@ -165,7 +131,6 @@ namespace BanHang
             {
                 Response.Write("<script language='JavaScript'> alert('Bạn chưa chọn hàng hóa.'); </script>");
             }
-            
         }
 
         private void LoadGrid(string IDPhieuXuatTra)
@@ -187,43 +152,56 @@ namespace BanHang
 
         protected void btnThemPhieuXuat_Click(object sender, EventArgs e)
         {
-            if (cmbNhaCungCap.Text != "")
+            if (cmbNhaCungCap.Text != "" && txtNgayXuat.Text != "")
             {
                 string IDPhieuXuatTra = IDPhieuXuatTra_Temp.Value.ToString();
                 data = new dtPhieuXuatTra();
                 DataTable db = data.LayDanhSachPhieuXuatTra_Temp(IDPhieuXuatTra);
                 if (db.Rows.Count != 0)
                 {
+                    string SoDonXuat = txtSoDonXuat.Text.ToString();
                     string IDNhaCungCap = cmbNhaCungCap.Value.ToString();
-                    DateTime NgayLapPhieu = DateTime.Parse(cmbNgayLapPhieu.Text.ToString());
-                    string GhiChu = txtGhiChu.Text == null ? "" : txtGhiChu.Text.ToString();
                     string IDNhanVien = Session["IDNhanVien"].ToString();
-                    float TongTien = 0;
+                    string IDKhoLap = Session["IDKho"].ToString();
+                    DateTime NgayLapPhieu = DateTime.Parse(cmbNgayLapPhieu.Text);
+                    DateTime NgayXuat = DateTime.Parse(txtNgayXuat.Text);
+                    string GhiChu = txtGhiChu.Text == null ? "" : txtGhiChu.Text.ToString();
+                    string ChungTu = "";
+                    if (Page.IsValid && uploadfile.HasFile)
+                    {
+                        ChungTu = "ChungTu/" + DateTime.Now.ToString("ddMMyyyy_hhmmss_tt_") + uploadfile.FileName;
+                        string filePath = MapPath(ChungTu);
+                        uploadfile.SaveAs(filePath);
+                    }
+                    float TongTrongLuong = 0;
                     foreach (DataRow dr in db.Rows)
                     {
-                        float ThanhTien = float.Parse(dr["ThanhTien"].ToString());
-                        TongTien = TongTien + ThanhTien;
+                        float TrongLuong = float.Parse(dr["TrongLuong"].ToString());
+                        int SL = Int32.Parse(dr["SoLuong"].ToString());
+                        TongTrongLuong = TongTrongLuong + (TrongLuong * SL);
                     }
                     data = new dtPhieuXuatTra();
-                    data.CapNhatPhieuXuatTra_ID(IDPhieuXuatTra, Session["IDKho"].ToString(), IDNhaCungCap, TongTien, NgayLapPhieu, GhiChu, IDNhanVien);
-                    foreach (DataRow dr in db.Rows)
+                    object ID = data.ThemPhieuXuatTra_Temp(SoDonXuat, IDKhoLap, IDNhanVien, NgayLapPhieu, NgayXuat, TongTrongLuong.ToString(), GhiChu, IDNhaCungCap, ChungTu);
+                    if (ID != null)
                     {
-                        string IDHangHoa = dr["IDHangHoa"].ToString();
-                        string SoLuong = dr["SoLuong"].ToString();
-                        string GiaMua = dr["GiaMua"].ToString();
-                        string IDDonViTinh = dr["IDDonViTinh"].ToString();
-                        string ThanhTien = dr["ThanhTien"].ToString();
-                        string MaHang = dr["MaHang"].ToString();
-                        string SLTon = dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, Session["IDKho"].ToString()).ToString();
+                        foreach (DataRow dr in db.Rows)
+                        {
+                            string IDHangHoa = dr["IDHangHoa"].ToString();
+                            string SoLuong = dr["SoLuong"].ToString();
+                            string MaHang = dr["MaHang"].ToString();
+                            string TrongLuong = dr["TrongLuong"].ToString();
+                            string GhiChuHH = dr["GhiChu"].ToString();
+                            string TonKho = dr["TonKho"].ToString();
+                            string IDDonViTinh = dr["IDDonViTinh"].ToString();
+                            data = new dtPhieuXuatTra();
+                            data.ThemChiTietPhieuXuatTra(ID, IDHangHoa, IDDonViTinh, SoLuong, MaHang, TrongLuong, GhiChu, TonKho);
+                            dtCapNhatTonKho.TruTonKho(IDHangHoa, SoLuong, Session["IDKho"].ToString());
+                        }
+                       // dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Phiếu Xuất Trả", Session["IDKho"].ToString(), "Nhập xuất tồn", "Thêm");
                         data = new dtPhieuXuatTra();
-                        data.ThemChiTietPhieuXuatTra(IDPhieuXuatTra, IDHangHoa, IDDonViTinh, SoLuong, GiaMua, ThanhTien,MaHang,SLTon);
-                        dtLichSuKho.ThemLichSu(IDHangHoa, Session["IDNhanVien"].ToString(), SoLuong, "Thêm Phiếu Xuất trả",Session["IDKho"].ToString());
-                        dtCapNhatTonKho.TruTonKho(IDHangHoa, SoLuong, Session["IDKho"].ToString());
+                        data.XoaChiTietPhieuXuatTra_Temp(IDPhieuXuatTra);
+                        Response.Redirect("DanhSachPhieuXuatTra.aspx");
                     }
-                    dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Phiếu Xuất Trả", Session["IDKho"].ToString(), "Nhập xuất tồn", "Thêm");
-                    data = new dtPhieuXuatTra();
-                    data.XoaChiTietPhieuXuatTra_Temp(IDPhieuXuatTra);
-                    Response.Redirect("DanhSachPhieuXuatTra.aspx");
                 }
                 else
                 {
@@ -240,12 +218,10 @@ namespace BanHang
         {
             data = new dtPhieuXuatTra();
             int ID = Int32.Parse(IDPhieuXuatTra_Temp.Value.ToString());
-            if (ID != null)
-            {
-                data.XoaPhieuXuatTra_Temp(ID);
-                data.XoaChiTietPhieuXuatTra_Temp(IDPhieuXuatTra_Temp.Value.ToString());
-                Response.Redirect("DanhSachPhieuXuatTra.aspx");
-            }
+            data.XoaPhieuXuatTra_Temp(ID);
+            data.XoaChiTietPhieuXuatTra_Temp(IDPhieuXuatTra_Temp.Value.ToString());
+            Response.Redirect("DanhSachPhieuXuatTra.aspx");
+
         }
         public void Clear()
         {
@@ -253,26 +229,25 @@ namespace BanHang
             txtSoLuong.Text = "";
             txtTonKho.Text = "";
             cmbDonViTinh.Text = "";
-            txtDonGia.Text = "";
+            txtGhiChuHH.Text = "";
         }
 
         protected void cmbHangHoa_ItemsRequestedByFilterCondition(object source, DevExpress.Web.ListEditItemsRequestedByFilterConditionEventArgs e)
         {
             ASPxComboBox comboBox = (ASPxComboBox)source;
-
-            sqlHangHoa.SelectCommand = @"SELECT [ID], [MaHang], [TenHangHoa], [GiaMuaSauThue] , [TenDonViTinh]
+            // <5 vì hàng combo không xuất được
+            sqlHangHoa.SelectCommand = @"SELECT [ID], [MaHang], [TenHangHoa], [TenDonViTinh]
                                         FROM (
-	                                        select GPM_HangHoa.ID, GPM_HangHoa.MaHang, GPM_HangHoa.TenHangHoa, GPM_HangHoa.GiaMuaSauThue, GPM_DonViTinh.TenDonViTinh, 
+	                                        select GPM_HangHoa.ID, GPM_HangHoa.MaHang, GPM_HangHoa.TenHangHoa,GPM_DonViTinh.TenDonViTinh, 
 	                                        row_number()over(order by GPM_HangHoa.MaHang) as [rn] 
-	                                        FROM GPM_DonViTinh INNER JOIN GPM_HangHoa ON GPM_DonViTinh.ID = GPM_HangHoa.IDDonViTinh 
-                                                               INNER JOIN GPM_HangHoaTonKho ON GPM_HangHoaTonKho.IDHangHoa = GPM_HangHoa.ID
-	                                        WHERE (GPM_HangHoa.MaHang LIKE @MaHang OR  GPM_HangHoa.TenHangHoa LIKE @TenHang) AND (GPM_HangHoaTonKho.IDKho = @IDKho) AND (GPM_HangHoaTonKho.DaXoa = 0) AND (GPM_HangHoa.IDTrangThaiHang < 5)
+	                                        FROM GPM_DonViTinh INNER JOIN GPM_HangHoa ON GPM_DonViTinh.ID = GPM_HangHoa.IDDonViTinh           
+	                                        WHERE (GPM_HangHoa.MaHang LIKE @MaHang) AND (GPM_HangHoa.DaXoa = 0) AND  GPM_HangHoa.IDTrangThaiHang < 5
 	                                        ) as st 
                                         where st.[rn] between @startIndex and @endIndex";
 
             sqlHangHoa.SelectParameters.Clear();
+            // dsHangHoa.SelectParameters.Add("TenHang", TypeCode.String, string.Format("%{0}%", e.Filter));
             sqlHangHoa.SelectParameters.Add("MaHang", TypeCode.String, string.Format("%{0}%", e.Filter));
-            sqlHangHoa.SelectParameters.Add("TenHang", TypeCode.String, string.Format("%{0}%", e.Filter));
             sqlHangHoa.SelectParameters.Add("IDKho", TypeCode.Int32, Session["IDKho"].ToString());
             sqlHangHoa.SelectParameters.Add("startIndex", TypeCode.Int64, (e.BeginIndex + 1).ToString());
             sqlHangHoa.SelectParameters.Add("endIndex", TypeCode.Int64, (e.EndIndex + 1).ToString());
@@ -286,15 +261,27 @@ namespace BanHang
             if (e.Value == null || !Int64.TryParse(e.Value.ToString(), out value))
                 return;
             ASPxComboBox comboBox = (ASPxComboBox)source;
-            sqlHangHoa.SelectCommand = @"SELECT GPM_HangHoa.ID, GPM_HangHoa.MaHang, GPM_HangHoa.TenHangHoa, GPM_HangHoa.GiaMuaSauThue, GPM_DonViTinh.TenDonViTinh 
-                                        FROM GPM_DonViTinh INNER JOIN GPM_HangHoa ON GPM_DonViTinh.ID = GPM_HangHoa.IDDonViTinh 
-                                                           INNER JOIN GPM_HangHoaTonKho ON GPM_HangHoaTonKho.IDHangHoa = GPM_HangHoa.ID 
-                                        WHERE (GPM_HangHoa.ID = @ID) AND (GPM_HangHoa.IDTrangThaiHang < 5)";
-
+            sqlHangHoa.SelectCommand = @"SELECT GPM_HangHoa.ID, GPM_HangHoa.MaHang, GPM_HangHoa.TenHangHoa, GPM_DonViTinh.TenDonViTinh 
+                                        FROM GPM_DonViTinh INNER JOIN GPM_HangHoa ON GPM_DonViTinh.ID = GPM_HangHoa.IDDonViTinh
+                                        WHERE (GPM_HangHoa.ID = @ID) AND  (GPM_HangHoa.IDTrangThaiHang < 5 )";
             sqlHangHoa.SelectParameters.Clear();
             sqlHangHoa.SelectParameters.Add("ID", TypeCode.Int64, e.Value.ToString());
             comboBox.DataSource = sqlHangHoa;
             comboBox.DataBind();
+        }
+
+        protected void txtNgayXuat_Init(object sender, EventArgs e)
+        {
+            txtNgayXuat.Date = DateTime.Now;
+        }
+
+        protected void gridDanhSachHangHoa_Temp_HtmlRowPrepared(object sender, ASPxGridViewTableRowEventArgs e)
+        {
+            Color color = (Color)ColorTranslator.FromHtml("#FF9797");
+            int TonKho = Convert.ToInt32(e.GetValue("TonKho"));
+            int SoLuong = Convert.ToInt32(e.GetValue("SoLuong"));
+            if (TonKho < SoLuong)
+                e.Row.BackColor = color;
         }
     }
 }

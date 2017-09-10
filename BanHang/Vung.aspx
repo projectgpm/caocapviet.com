@@ -10,7 +10,7 @@
             </ShowAdaptiveDetailButton>
             <HideAdaptiveDetailButton ButtonType="Image">
             </HideAdaptiveDetailButton>
-            <NewButton ButtonType="Image" RenderMode="Image">
+            <NewButton>
                 <Image IconID="actions_add_16x16" ToolTip="Thêm mới">
                 </Image>
             </NewButton>
@@ -22,11 +22,11 @@
                 <Image IconID="actions_close_32x32" ToolTip="Hủy thao tác">
                 </Image>
             </CancelButton>
-            <EditButton ButtonType="Image" RenderMode="Image">
+            <EditButton>
                 <Image IconID="actions_edit_16x16devav" ToolTip="Sửa">
                 </Image>
             </EditButton>
-            <DeleteButton ButtonType="Image" RenderMode="Image">
+            <DeleteButton>
                 <Image IconID="actions_cancel_16x16" ToolTip="Xóa">
                 </Image>
             </DeleteButton>
@@ -35,7 +35,7 @@
             <EditForm HorizontalAlign="WindowCenter" Modal="True" VerticalAlign="WindowCenter" />
         </SettingsPopup>
         <SettingsSearchPanel Visible="True" />
-        <SettingsText CommandDelete="Xóa" CommandEdit="Sửa" CommandNew="Thêm" ConfirmDelete="Bạn có chắc chắn muốn xóa không?." PopupEditFormCaption="Thông tin vùng" Title="DANH SÁCH VÙNG" />
+        <SettingsText CommandDelete="Xóa" CommandEdit="Sửa" CommandNew="Thêm" ConfirmDelete="Bạn có chắc chắn muốn xóa không?." PopupEditFormCaption="Thông tin vùng" Title="DANH SÁCH VÙNG" EmptyDataRow="Danh sách trống." SearchPanelEditorNullText="Nhập thông tin cần tìm..." />
         <EditFormLayoutProperties>
             <Items>
                 <dx:GridViewColumnLayoutItem ColumnName="Mã Vùng">

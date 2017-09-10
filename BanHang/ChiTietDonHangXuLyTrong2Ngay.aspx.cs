@@ -53,22 +53,26 @@ namespace BanHang
             {
                 string IDDonHang = Request.QueryString["IDDonHang"];
                 string ID = e.Keys[0].ToString();
-                int SoLuongThucTe = Int32.Parse(e.NewValues["ThucTe"].ToString());
-                int SoLuong = Int32.Parse(e.NewValues["SoLuong"].ToString());
-                if (SoLuongThucTe >= 0)
+                int SoLuongThucTeMoi = Int32.Parse(e.NewValues["ThucTe"].ToString());
+                int SoLuongThucTeCu = dtCapNhatPhieuNhapHang.SoLuongThucTeCu(ID);
+                if (SoLuongThucTeMoi >= 0)
                 {
-                    // xử lý cập nhật ở đây
-                    //if (SoLuongThucTe > SoLuong)
-                    //{
-                    //    throw new Exception("Lỗi: Số lượng thực tế phải nhỏ hơn hoặc bằng Số lượng đặt ");
-                    //}
-                    //else
-                    //{
-                    //    string MaHang = e.NewValues["MaHang"].ToString();
-                    //    string IDHangHoa = dtHangHoa.LayIDHangHoa_MaHang(MaHang.Trim());
-                    //    data = new dtDuyetDonHangThuMua();
-                    //    data.CapNhatChiTietDonHang(ID, IDHangHoa, IDTemp, SoLuongThucTe, SoLuong - SoLuongThucTe);
-                    //}
+                    if (SoLuongThucTeMoi > SoLuongThucTeCu)
+                    {
+                        throw new Exception("Lỗi: Số lượng thực tế mới phải nhỏ hơn hoặc bằng số lượng thực tế củ. ");
+                    }
+                    else
+                    {
+                        if (SoLuongThucTeCu != SoLuongThucTeMoi)
+                        {
+                            // xử lý cập nhật ở đây
+                            int SLThayDoi = SoLuongThucTeCu - SoLuongThucTeMoi;
+                            data = new dtCapNhatPhieuNhapHang();
+                            data.CapNhatChiTietDonHang(ID, SoLuongThucTeMoi);
+                            //ghi nhật ký ở đây
+                            dtCapNhatTonKho.TruTonKho(e.NewValues["IDHangHoa"].ToString(), SLThayDoi.ToString(), Session["IDKho"].ToString());
+                        }
+                    }
                 }
                 else
                 {

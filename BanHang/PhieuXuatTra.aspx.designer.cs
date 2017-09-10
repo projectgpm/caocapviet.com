@@ -22,6 +22,15 @@ namespace BanHang {
         protected global::DevExpress.Web.ASPxFormLayout ASPxFormLayout1;
         
         /// <summary>
+        /// txtSoDonXuat control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxTextBox txtSoDonXuat;
+        
+        /// <summary>
         /// cmbNhaCungCap control.
         /// </summary>
         /// <remarks>
@@ -92,6 +101,24 @@ namespace BanHang {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxDateEdit cmbNgayLapPhieu;
+        
+        /// <summary>
+        /// txtNgayXuat control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxDateEdit txtNgayXuat;
+        
+        /// <summary>
+        /// uploadfile control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxUploadControl uploadfile;
         
         /// <summary>
         /// txtGhiChu control.
@@ -202,13 +229,13 @@ namespace BanHang {
         protected global::DevExpress.Web.LayoutItemNestedControlContainer LayoutItemNestedControlContainer9;
         
         /// <summary>
-        /// txtDonGia control.
+        /// txtGhiChuHH control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxSpinEdit txtDonGia;
+        protected global::DevExpress.Web.ASPxTextBox txtGhiChuHH;
         
         /// <summary>
         /// LayoutItemNestedControlContainer12 control.
