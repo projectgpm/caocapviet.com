@@ -26,7 +26,7 @@
            
         </Items>
         </dx:ASPxFormLayout>
-    <dx:ASPxGridView ID="gridPhieuXuatKhac" runat="server" AutoGenerateColumns="False" Width="100%" KeyFieldName="ID" OnRowDeleting="gridPhieuXuatKhac_RowDeleting">
+    <dx:ASPxGridView ID="gridPhieuXuatKhac" runat="server" AutoGenerateColumns="False" Width="100%" KeyFieldName="ID">
         <SettingsPager Mode="ShowAllRecords">
         </SettingsPager>
         <Settings ShowFilterRow="True" ShowTitlePanel="True" />
@@ -46,34 +46,49 @@
         <SettingsSearchPanel Visible="True" />
         <SettingsText CommandDelete="Xóa" CommandEdit="Sửa" CommandNew="Thêm" Title="DANH SÁCH PHIẾU XUẤT KHÁC" ConfirmDelete="Bạn chắc chắn muốn xóa?" EmptyDataRow="Danh sách phiếu xuất trống" SearchPanelEditorNullText="Nhập thông tin cần tìm..."/>
         <Columns>
-            <dx:GridViewDataTextColumn Caption="Ghi Chú" VisibleIndex="4" FieldName="GhiChu">
+            <dx:GridViewDataTextColumn Caption="Ghi Chú" VisibleIndex="6" FieldName="GhiChu">
             </dx:GridViewDataTextColumn>
-            <dx:GridViewDataComboBoxColumn Caption="Nhân Viên Lập Phiếu" VisibleIndex="1" FieldName="IDNhanVien">
+            <dx:GridViewDataComboBoxColumn Caption="Nhân Viên Lập Phiếu" VisibleIndex="2" FieldName="IDNhanVien">
                 <PropertiesComboBox DataSourceID="SqlNhanVien" TextField="TenNguoiDung" ValueField="ID">
                 </PropertiesComboBox>
+                <HeaderStyle Wrap="True" />
             </dx:GridViewDataComboBoxColumn>
-            <dx:GridViewDataDateColumn Caption="Ngày Lập Phiếu" VisibleIndex="3" FieldName="NgayLapPhieu">
+            <dx:GridViewDataDateColumn Caption="Ngày Lập Phiếu" VisibleIndex="4" FieldName="NgayLapPhieu">
                 <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy">
                 </PropertiesDateEdit>
+                <HeaderStyle Wrap="True" />
             </dx:GridViewDataDateColumn>
-            <dx:GridViewDataDateColumn Caption="Ngày Cập Nhật" VisibleIndex="5" FieldName="NgayCapNhat">
+            <dx:GridViewDataDateColumn Caption="Ngày Cập Nhật" VisibleIndex="8" FieldName="NgayCapNhat">
                 <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy hh:mm:ss tt">
                 </PropertiesDateEdit>
+                <HeaderStyle Wrap="True" />
             </dx:GridViewDataDateColumn>
-            <dx:GridViewDataButtonEditColumn Caption="Xem Chi Tiết" VisibleIndex="6">
+            <dx:GridViewDataButtonEditColumn Caption="Xem Chi Tiết" VisibleIndex="9">
                 
                 <DataItemTemplate>
                     <a href="javascript:void(0);" onclick="OnMoreInfoClick(this, '<%# Container.KeyValue %>')">Xem </a>
                 </DataItemTemplate>
+                <HeaderStyle Wrap="True" />
             </dx:GridViewDataButtonEditColumn>
             <dx:GridViewDataComboBoxColumn Caption="Chi Nhánh" FieldName="IDKho" VisibleIndex="0">
                 <PropertiesComboBox DataSourceID="SqlKho" TextField="TenCuaHang" ValueField="ID">
                 </PropertiesComboBox>
             </dx:GridViewDataComboBoxColumn>
-            <dx:GridViewDataComboBoxColumn Caption="Lý Do Xuất" FieldName="IDTrangThaiPhieuXuatKhac" VisibleIndex="2">
+            <dx:GridViewDataComboBoxColumn Caption="Lý Do Xuất" FieldName="IDTrangThaiPhieuXuatKhac" VisibleIndex="3">
                 <PropertiesComboBox DataSourceID="SqlLyDoXuat" TextField="TenTrangThai" ValueField="ID">
                 </PropertiesComboBox>
+                <HeaderStyle Wrap="True" />
             </dx:GridViewDataComboBoxColumn>
+            <dx:GridViewDataTextColumn Caption="Số Đơn Xuất" FieldName="SoDonXuat" VisibleIndex="1">
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataHyperLinkColumn Caption="Chứng Từ" FieldName="ChungTu" VisibleIndex="7">
+                 <PropertiesHyperLinkEdit ImageUrl="image/download.png" ImageWidth="90" ImageHeight="60"></PropertiesHyperLinkEdit>
+            </dx:GridViewDataHyperLinkColumn>
+            <dx:GridViewDataTextColumn Caption="Tổng Trọng Lượng" FieldName="TongTrongLuong" VisibleIndex="5">
+                <PropertiesTextEdit DisplayFormatString="{0} KG">
+                </PropertiesTextEdit>
+                <HeaderStyle Wrap="True" />
+            </dx:GridViewDataTextColumn>
         </Columns>
         <Styles>
             <Header Font-Bold="True" HorizontalAlign="Center">

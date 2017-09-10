@@ -75,7 +75,7 @@
                             <Image IconID="actions_edit_16x16devav" ToolTip="Sửa">
                             </Image>
                         </EditButton>
-                        <DeleteButton ButtonType="Image" RenderMode="Image">
+                        <DeleteButton ButtonType="Link" RenderMode="Link">
                             <Image IconID="actions_cancel_16x16" ToolTip="Xóa">
                             </Image>
                         </DeleteButton>
@@ -84,7 +84,7 @@
                         <EditForm HorizontalAlign="WindowCenter" Modal="True" VerticalAlign="WindowCenter" />
                     </SettingsPopup>
                     <SettingsSearchPanel Visible="True" />
-                    <SettingsText CommandDelete="Xóa" CommandEdit="Sửa" CommandNew="Thêm" ConfirmDelete="Bạn có chắc chắn muốn xóa không?" PopupEditFormCaption="Thông tin hàng hóa" Title="DANH SÁCH HÀNG HÓA" />
+                    <SettingsText CommandDelete="Xóa" CommandEdit="Sửa" CommandNew="Thêm" ConfirmDelete="Bạn có chắc chắn muốn xóa không?" PopupEditFormCaption="Thông tin hàng hóa" Title="DANH SÁCH HÀNG HÓA" EmptyDataRow="Danh sách hàng hóa trống" SearchPanelEditorNullText="Nhập thông tin cần tìm..." />
                     <Columns>
                         <dx:GridViewCommandColumn ShowDeleteButton="True" ShowInCustomizationForm="True" VisibleIndex="4">
                         </dx:GridViewCommandColumn>

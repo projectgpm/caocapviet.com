@@ -51,6 +51,7 @@ namespace BanHang
             txtSoLuong.Text = "";
             txtTonKho.Text = "";
             cmbDonViTinh.Text = "";
+            txtGhiChuHH.Text = "";
           
         }
         protected void cmbNgayLapPhieu_Init(object sender, EventArgs e)
@@ -153,7 +154,6 @@ namespace BanHang
         {
             data = new dtPhieuXuatKhac();
             int ID = Int32.Parse(IDPhieuXuatKhac_Temp.Value.ToString());
-            data.XoaPhieuXuatKhac_Temp(ID);
             data.XoaChiTietPhieuXuatKhac_Temp(IDPhieuXuatKhac_Temp.Value.ToString());
             Response.Redirect("DanhSachPhieuXuatKhac.aspx");
 
@@ -173,7 +173,7 @@ namespace BanHang
                     string IDLyDoXuat = cmbLyDoXuat.Value.ToString();
                     string GhiChu = txtGhiChu == null ? "" : txtGhiChu.Text.ToString();
                     string SoDonXuat = txtSoDonXuat.Text.ToString();
-
+                    string IDNhanVien = Session["IDNhanVien"].ToString();
                     string ChungTu = "";
                     if (Page.IsValid && uploadfile.HasFile)
                     {
@@ -189,21 +189,23 @@ namespace BanHang
                         TongTrongLuong = TongTrongLuong + (TrongLuong * SL);
                     }
                     data = new dtPhieuXuatKhac();
-                    object ID = data.ThemPhieuXuatKhac_Temp();
+                    object ID = data.ThemPhieuXuatKhac(IDKho, IDNhanVien, IDLyDoXuat, GhiChu, NgayLapPhieu, SoDonXuat, ChungTu, TongTrongLuong.ToString());
                     if (ID != null)
                     {
                         foreach (DataRow dr in db.Rows)
                         {
-                            string IDHangHoa = dr["IDHangHoa"].ToString();
-                            string SoLuong = dr["SoLuong"].ToString();
-                            string SoLuongCon = dr["SoLuongCon"].ToString();
                             string MaHang = dr["MaHang"].ToString();
+                            string IDHangHoa = dr["IDHangHoa"].ToString();
                             string IDDonViTinh = dr["IDDonViTinh"].ToString();
+                            string TrongLuong = dr["TrongLuong"].ToString();
+                            string TonKho = dr["TonKho"].ToString();
+                            string SoLuongXuat = dr["SoLuongXuat"].ToString();
+                            string GhiChuHH = dr["GhiChu"].ToString();
                             data = new dtPhieuXuatKhac();
-                            data.ThemChiTietPhieuXuatKhac(ID, IDHangHoa, SoLuong, MaHang, IDDonViTinh, SoLuongCon);
+                            data.ThemChiTietPhieuXuatKhac(ID, MaHang, IDHangHoa, IDDonViTinh, TrongLuong, TonKho, SoLuongXuat, GhiChuHH);
                            // dtLichSuKho.ThemLichSu(IDHangHoa, Session["IDNhanVien"].ToString(), SoLuong, "Phiếu xuất khác", Session["IDKho"].ToString());
                            // dtLichSuKho.ThemLichSuXuat(IDHangHoa, Session["IDNhanVien"].ToString(), SoLuong, Session["IDKho"].ToString());
-                            dtCapNhatTonKho.TruTonKho(IDHangHoa, SoLuong, Session["IDKho"].ToString());
+                            dtCapNhatTonKho.TruTonKho(IDHangHoa, SoLuongXuat, Session["IDKho"].ToString());
                         }
                         dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Phiếu Xuất Khác", Session["IDKho"].ToString(), "Nhập xuất tồn", "Thêm");
                         data = new dtPhieuXuatKhac();
