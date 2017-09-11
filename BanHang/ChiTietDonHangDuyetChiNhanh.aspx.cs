@@ -65,7 +65,12 @@ namespace BanHang
                     {
                         string IDHangHoa = dr["IDHangHoa"].ToString();
                         int SoLuong = Int32.Parse(dr["ThucTe"].ToString());
-                        dtCapNhatTonKho.CongTonKho(IDHangHoa, SoLuong.ToString(), IDKho);
+                        object TheKho = dtTheKho.ThemTheKho(dtDuyetDonHangChiNhanh.LaySoDonHang(IDDonHangChiNhanh), "Xác nhận đơn hàng ", SoLuong.ToString(), "0", (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, Session["IDKho"].ToString()).ToString()) + SoLuong).ToString(), Session["IDNhanVien"].ToString(), Session["IDKho"].ToString(), IDHangHoa);
+                        if (TheKho != null)
+                        {
+                            dtCapNhatTonKho.CongTonKho(IDHangHoa, SoLuong.ToString(), IDKho);
+                        }
+                       
                     }
                     // cập nhật xong đổi trạng thái thành đơn hàng hoàn tất
                     data = new dtDuyetDonHangChiNhanh();

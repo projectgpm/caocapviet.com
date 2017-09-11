@@ -205,7 +205,13 @@ namespace BanHang
                             data.ThemChiTietPhieuXuatKhac(ID, MaHang, IDHangHoa, IDDonViTinh, TrongLuong, TonKho, SoLuongXuat, GhiChuHH);
                            // dtLichSuKho.ThemLichSu(IDHangHoa, Session["IDNhanVien"].ToString(), SoLuong, "Phiếu xuất khác", Session["IDKho"].ToString());
                            // dtLichSuKho.ThemLichSuXuat(IDHangHoa, Session["IDNhanVien"].ToString(), SoLuong, Session["IDKho"].ToString());
-                            dtCapNhatTonKho.TruTonKho(IDHangHoa, SoLuongXuat, Session["IDKho"].ToString());
+
+                            // xuất khác qua giám đốc duyệt
+                            //object TheKho = dtTheKho.ThemTheKho(SoDonXuat, "Phiếu xuất khác ", "0", SoLuongXuat, (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, Session["IDKho"].ToString()).ToString()) - Int32.Parse(SoLuongXuat)).ToString(), Session["IDNhanVien"].ToString(), Session["IDKho"].ToString(), IDHangHoa);
+                            //if (TheKho != null)
+                            //{
+                            //    dtCapNhatTonKho.TruTonKho(IDHangHoa, SoLuongXuat, Session["IDKho"].ToString());
+                            //}
                         }
                         dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Phiếu Xuất Khác", Session["IDKho"].ToString(), "Nhập xuất tồn", "Thêm");
                         data = new dtPhieuXuatKhac();
