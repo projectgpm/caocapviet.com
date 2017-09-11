@@ -30,6 +30,20 @@ namespace BanHang
                 cmbKho.ValueField = "ID";
                 cmbKho.DataBind();
                 cmbKho.SelectedIndex = da.Rows.Count;
+
+                dataNganhHang dtNH = new dataNganhHang();
+                DataTable daNH = dtNH.getDanhSachNganhHang();
+                daNH.Rows.Add(-1, null, "Tất cả ngành hàng", null, null, null);
+                cmbNganhHang.DataSource = daNH;
+                cmbNganhHang.TextField = "TenNganhHang";
+                cmbNganhHang.ValueField = "ID";
+                cmbNganhHang.DataBind();
+                cmbNganhHang.SelectedIndex = daNH.Rows.Count;
+
+                dataNhomHang dtNhomH = new dataNhomHang();
+                DataTable daNhomH = dtNhomH.getDanhSachNhomHang();
+                daNhomH.Rows.Add(-1, null, "Tất cả ngành hàng", null, null, null);
+
             }
         }
 
@@ -39,6 +53,16 @@ namespace BanHang
 
             //popup.ContentUrl = "~/BaoCaoChuyenKho_In.aspx?ngayBD=" + ngayBD + "&ngayKT=" + ngayKT + "&IDKho=" + IDKho;
             //popup.ShowOnPageLoad = true;
+        }
+
+        protected void cmbNganhHang_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void cmbNhomHang_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
     <dx:ASPxFormLayout ID="ASPxFormLayout1" runat="server" Width="100%">
         <Items>
-            <dx:LayoutGroup Caption="Thông tin bảng kê" ColCount="3" HorizontalAlign="Center">
+            <dx:LayoutGroup Caption="Thông tin báo cáo" ColCount="3" HorizontalAlign="Center">
                 <Items>
                     <dx:LayoutItem Caption="Theo năm">
                         <LayoutItemNestedControlCollection>
