@@ -140,11 +140,6 @@
                  </PropertiesSpinEdit>
                  <HeaderStyle Wrap="True" />
              </dx:GridViewDataSpinEditColumn>
-             <dx:GridViewDataSpinEditColumn Caption="Tỷ Lệ Chiết Khấu" FieldName="ChietKhau" VisibleIndex="6">
-                 <PropertiesSpinEdit DisplayFormatString="N0" NumberFormat="Custom">
-                 </PropertiesSpinEdit>
-                 <HeaderStyle Wrap="True" />
-             </dx:GridViewDataSpinEditColumn>
              <dx:GridViewDataDateColumn Caption="Ngày Đặt" FieldName="NgayDat" VisibleIndex="4">
                  <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy ">
                  </PropertiesDateEdit>
@@ -169,6 +164,11 @@
                  </PropertiesComboBox>
                  <HeaderStyle Wrap="True" />
              </dx:GridViewDataComboBoxColumn>
+             <dx:GridViewDataTextColumn Caption="Tỷ Lệ Chiết Khấu" FieldName="ChietKhau" VisibleIndex="6">
+                 <PropertiesTextEdit DisplayFormatString="{0} %">
+                 </PropertiesTextEdit>
+                 <HeaderStyle Wrap="True" />
+             </dx:GridViewDataTextColumn>
          </Columns>
         <Styles>
             <Header Font-Bold="True" HorizontalAlign="Center">
