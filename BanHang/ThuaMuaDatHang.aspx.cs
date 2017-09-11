@@ -29,8 +29,8 @@ namespace BanHang
                 //IDTrangThaiDonHang: là lấy id trong bảng trạng thái hàng, do kho cập nhât
                 if (!IsPostBack)
                 {
-                   // data = new dtThuMuaDatHang();
-                   // object IDPhieuDatHang = data.ThemPhieuDatHang();
+                    // data = new dtThuMuaDatHang();
+                    // object IDPhieuDatHang = data.ThemPhieuDatHang();
                     Random ran = new Random();
                     int Temp = ran.Next(100000, 999999);
                     IDThuMuaDatHang_Temp.Value = Temp.ToString();
@@ -40,8 +40,12 @@ namespace BanHang
                     txtTongTien.Text = "0";
                     txtTongTienSauCk.Text = "0";
                     txtTongTrongLuong.Text = "0";
-
-                    txtSoDonHang.Text = (dtSetting.LayMaKho(Session["IDKho"].ToString())+ "-" + (DateTime.Now.ToString("ddMMyyyy-hhmmss")));
+                    DateTime date = DateTime.Now;
+                    int thang = date.Month;
+                    int year = date.Year;
+                    string ngayBD = year + "-" + thang + "-01 00:00:00.000";
+                    string ngayKT = year + "-" + thang + "-" + dtSetting.tinhSoNgay(thang, year) + " 00:00:00.000";
+                    txtSoDonHang.Text = (dtSetting.LayMaKho(Session["IDKho"].ToString()) + "-" + dtThuMuaDatHang.TongSoXuatTrongThang(ngayBD, ngayKT, Session["IDKho"].ToString()) + "-" + (DateTime.Now.ToString("ddMMyyyy")));
                 }
                 LoadGrid(IDThuMuaDatHang_Temp.Value.ToString());
             }

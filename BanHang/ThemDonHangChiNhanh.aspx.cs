@@ -31,7 +31,12 @@ namespace BanHang
                     txtNguoiLap.Text = Session["TenDangNhap"].ToString();
                     txtTongTrongLuong.Text = "0";
                     cmbMucDoUuTien.SelectedIndex = 0;
-                    txtSoDonHang.Text = (dtSetting.LayMaKho(Session["IDKho"].ToString()) + "-" + (DateTime.Now.ToString("ddMMyyyy-hhmmss")));
+                    DateTime date = DateTime.Now;
+                    int thang = date.Month;
+                    int year = date.Year;
+                    string ngayBD = year + "-" + thang + "-01 00:00:00.000";
+                    string ngayKT = year + "-" + thang + "-" + dtSetting.tinhSoNgay(thang, year) + " 00:00:00.000";
+                    txtSoDonHang.Text = (dtSetting.LayMaKho(Session["IDKho"].ToString()) + "-" + dtDonHangChiNhanh.TongSoXuatTrongThang(ngayBD, ngayKT, Session["IDKho"].ToString()).ToString() + "-" + (DateTime.Now.ToString("ddMMyyyy")));
                 }
                 LoadGrid(IDDonDatHang_Temp.Value.ToString());
             }
