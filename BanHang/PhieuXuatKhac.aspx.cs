@@ -29,10 +29,15 @@ namespace BanHang
                     {
                         //data = new dtPhieuXuatKhac();
                        // object IDPhieuXuatKhac = data.ThemPhieuXuatKhac_Temp();
+                        DateTime date = DateTime.Now;
+                        int thang = date.Month;
+                        int year = date.Year;
+                        string ngayBD = year + "-" + thang + "-01 00:00:00.000";
+                        string ngayKT = year + "-" + thang + "-" + dtSetting.tinhSoNgay(thang, year) + " 00:00:00.000";
 
                         Random ran = new Random();
                         IDPhieuXuatKhac_Temp.Value = ran.Next(100000, 999999).ToString();
-                        txtSoDonXuat.Text = (Int32.Parse(Session["IDKho"].ToString())).ToString().Replace(".", "") + "-" + (DateTime.Now.ToString("ddMMyyyy-hhmmss"));
+                        txtSoDonXuat.Text = (dtSetting.LayMaKho(Session["IDKho"].ToString()) + "-" + dtPhieuXuatKhac.TongSoXuatTrongThang(ngayBD,ngayKT,Session["IDKho"].ToString()) + "-" + (DateTime.Now.ToString("ddMMyyyy")));
                         cmbNguoiLapPhieu.Text = Session["IDNhanVien"].ToString();
                         cmbKho.Text = Session["IDKho"].ToString();
                     }

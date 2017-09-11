@@ -51,7 +51,7 @@ namespace BanHang
                     {
                         string SoLuongXuat = dr["SoLuongXuat"].ToString();
                         string IDHangHoa = dr["IDHangHoa"].ToString();
-                        object TheKho = dtTheKho.ThemTheKho(dtPhieuXuatKhac.LaySoDonXuat(IDPhieuXuatKhac), "Phiếu xuất khác ", "0", SoLuongXuat, (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, Session["IDKho"].ToString()).ToString()) - Int32.Parse(SoLuongXuat)).ToString(), Session["IDNhanVien"].ToString(), Session["IDKho"].ToString(), IDHangHoa);
+                        object TheKho = dtTheKho.ThemTheKho(dtPhieuXuatKhac.LaySoDonXuat(IDPhieuXuatKhac), "Phiếu xuất khác ", "0", SoLuongXuat, (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, Session["IDKho"].ToString()).ToString()) - Int32.Parse(SoLuongXuat)).ToString(), Session["IDNhanVien"].ToString(), Session["IDKho"].ToString(), IDHangHoa,"Xuất");
                         if (TheKho != null)
                         {
                             dtCapNhatTonKho.TruTonKho(IDHangHoa, SoLuongXuat, Session["IDKho"].ToString());

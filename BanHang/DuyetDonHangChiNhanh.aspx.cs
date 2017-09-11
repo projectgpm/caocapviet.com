@@ -334,7 +334,7 @@ namespace BanHang
                             
                             // xử lý hàng sẽ cho cửa hàng trước thấy và xác nhận. if không xác nhận thì đơn hàng tự đổi trạng thái và hàng vào kho, trừ kho tổng
                             data.ThemChiTietDonHang_Duyet(ID, MaHang, IDHangHoa, IDDonViTinh, TrongLuong, SoLuong, TrangThai, GhiChuHH, IDKho, ChenhLech, ThucTe);
-                            object TheKho = dtTheKho.ThemTheKho(SoDonHang, "Xử Lý Đơn Hàng Chi Nhánh " + dtTheKho.LayTenKho_ID(IDKhoLap), "0", ThucTe, (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, Session["IDKho"].ToString()).ToString()) - Int32.Parse(ThucTe)).ToString(), Session["IDNhanVien"].ToString(), Session["IDKho"].ToString(), IDHangHoa);
+                            object TheKho = dtTheKho.ThemTheKho(SoDonHang, "Xử Lý Đơn Hàng Chi Nhánh " + dtTheKho.LayTenKho_ID(IDKhoLap), "0", ThucTe, (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, Session["IDKho"].ToString()).ToString()) - Int32.Parse(ThucTe)).ToString(), Session["IDNhanVien"].ToString(), Session["IDKho"].ToString(), IDHangHoa,"Xuất");
                             if (TheKho != null)
                             {
                                 dtCapNhatTonKho.TruTonKho(IDHangHoa, ThucTe, Session["IDKho"].ToString());
@@ -402,7 +402,7 @@ namespace BanHang
                             //trừ tồn kho tổng
                             // xử lý hàng sẽ cho cửa hàng trước thấy và xác nhận. if không xác nhận thì đơn hàng tự đổi trạng thái và hàng vào kho, trừ kho tổng
                             data.ThemChiTietDonHang_Duyet(ID, MaHang, IDHangHoa, IDDonViTinh, TrongLuong, SoLuong, TrangThai, GhiChuHH, IDKho, ChenhLech, ThucTe);
-                            object TheKho = dtTheKho.ThemTheKho(SoDonHang, "Xử Lý Đơn Hàng Chi Nhánh " + dtTheKho.LayTenKho_ID(IDKhoLap), "0", ThucTe, (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, Session["IDKho"].ToString()).ToString()) - Int32.Parse(ThucTe)).ToString(), Session["IDNhanVien"].ToString(), Session["IDKho"].ToString(), IDHangHoa);
+                            object TheKho = dtTheKho.ThemTheKho(SoDonHang, "Xử Lý Đơn Hàng Chi Nhánh " + dtTheKho.LayTenKho_ID(IDKhoLap), "0", ThucTe, (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, Session["IDKho"].ToString()).ToString()) - Int32.Parse(ThucTe)).ToString(), Session["IDNhanVien"].ToString(), Session["IDKho"].ToString(), IDHangHoa,"Xuất");
                             if (TheKho != null)
                             {
                                 dtCapNhatTonKho.TruTonKho(IDHangHoa, ThucTe, Session["IDKho"].ToString());

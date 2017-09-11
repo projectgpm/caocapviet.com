@@ -31,7 +31,7 @@ namespace BanHang
                     txtNguoiLap.Text = Session["TenDangNhap"].ToString();
                     txtTongTrongLuong.Text = "0";
                     cmbMucDoUuTien.SelectedIndex = 0;
-                    txtSoDonHang.Text = (Int32.Parse(Session["IDKho"].ToString())).ToString().Replace(".", "") + "-" + (DateTime.Now.ToString("ddMMyyyy-hhmmss"));
+                    txtSoDonHang.Text = (dtSetting.LayMaKho(Session["IDKho"].ToString()) + "-" + (DateTime.Now.ToString("ddMMyyyy-hhmmss")));
                 }
                 LoadGrid(IDDonDatHang_Temp.Value.ToString());
             }
