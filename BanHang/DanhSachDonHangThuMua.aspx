@@ -139,7 +139,7 @@
                  <HeaderStyle Wrap="True" />
              </dx:GridViewDataSpinEditColumn>
              <dx:GridViewDataSpinEditColumn Caption="Tỷ Lệ Chiết Khấu" FieldName="ChietKhau" VisibleIndex="6">
-                 <PropertiesSpinEdit DisplayFormatString="N0" NumberFormat="Custom">
+                 <PropertiesSpinEdit DisplayFormatString="{0} %" NumberFormat="Custom">
                  </PropertiesSpinEdit>
                  <HeaderStyle Wrap="True" />
              </dx:GridViewDataSpinEditColumn>

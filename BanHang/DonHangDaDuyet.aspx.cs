@@ -25,12 +25,14 @@ namespace BanHang
                     gridDonDatHang.Columns["ChungTu"].Visible = false;
                     btnDuyetDonHang.Visible = false;
                     btnTaoDonHang.Visible = true;
+                    btnDonhangXuLy1Phan.Visible = false;
                 }
                 else
                 {
                     gridDonDatHang.Columns["ChungTu"].Visible = true;
                     btnDuyetDonHang.Visible = true;
                     btnTaoDonHang.Visible = false;
+                    btnDonhangXuLy1Phan.Visible = true;
                 }
                 LoadGrid(IDKho.ToString());
             }
