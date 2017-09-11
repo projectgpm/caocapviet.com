@@ -9,6 +9,26 @@ namespace BanHang.Data
 {
     public class dtDuyetDonHangChiNhanh
     {
+        public static string LaySoDonHang(string ID)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT SoDonHang FROM [GPM_DuyetHangChiNhanh] WHERE [ID] = '" + ID + "'";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    if (tb.Rows.Count != 0)
+                    {
+                        DataRow dr = tb.Rows[0];
+                        return dr["SoDonHang"].ToString();
+                    }
+                    else return null;
+                }
+            }
+        }
         public static string LayIDKhoLapPhieu(string ID)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))

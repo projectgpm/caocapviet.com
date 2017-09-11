@@ -9,6 +9,36 @@ namespace BanHang.Data
 {
     public class dtPhieuXuatKhac
     {
+        public static string LaySoDonXuat(string ID)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT SoDonXuat FROM [GPM_PhieuXuatKhac] WHERE [ID] = '" + ID + "'";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    return tb.Rows[0]["SoDonXuat"].ToString();
+                }
+            }
+        }
+        public static int LayTrangThaiDonXuat(string ID)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT TrangThai FROM [GPM_PhieuXuatKhac] WHERE [ID] = '" + ID + "'";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    return Int32.Parse(tb.Rows[0]["TrangThai"].ToString());
+                }
+            }
+        }
         public object ThemPhieuXuatKhac(string IDKho, string IDNhanVien, string IDTrangThaiPhieuXuatKhac, string GhiChu, DateTime NgayLapPhieu, string SoDonXuat, string ChungTu, string TongTrongLuong)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
