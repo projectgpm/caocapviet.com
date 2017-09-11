@@ -115,6 +115,12 @@ namespace BanHang.Data
             return getData(cmd);
         }
 
+        public DataTable getDanhSachNhomHang_IDNganhHang(string IDNganhHang)
+        {
+            string cmd = "SELECT * FROM [GPM_NHOMHANG] WHERE [DAXOA] = 0 AND (('" + IDNganhHang + "' = -1) OR (IDNganhHang = '" + IDNganhHang + "'))";
+            return getData(cmd);
+        }
+
         public void XoaNhomHang(int ID)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))

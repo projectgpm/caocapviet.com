@@ -42,26 +42,86 @@ namespace BanHang
 
                 dataNhomHang dtNhomH = new dataNhomHang();
                 DataTable daNhomH = dtNhomH.getDanhSachNhomHang();
-                daNhomH.Rows.Add(-1, null, "Tất cả ngành hàng", null, null, null);
+                daNhomH.Rows.Add(-1, 1, null, "Tất cả nhóm hàng", null, null, null);
 
+                cmbNhomHang.DataSource = daNhomH;
+                cmbNhomHang.TextField = "TenNhomHang";
+                cmbNhomHang.ValueField = "ID";
+                cmbNhomHang.DataBind();
+                cmbNhomHang.SelectedIndex = daNhomH.Rows.Count;
+
+                dataHangHoa dtHH = new dataHangHoa();
+                DataTable daHH = dtHH.getDanhSachHangHoa_Ten_ID();
+                daHH.Rows.Add(-1, "Tất cả hàng hóa");
+
+                cmbHangHoa.DataSource = daHH;
+                cmbHangHoa.TextField = "TenHangHoa";
+                cmbHangHoa.ValueField = "ID";
+                cmbHangHoa.DataBind();
+                cmbHangHoa.SelectedIndex = daHH.Rows.Count;
             }
         }
 
         protected void btnXemBaoCao_Click(object sender, EventArgs e)
         {
             string IDKho = cmbKho.Value + "";
+            string IDHH = cmbHangHoa.Value + "";
+            string IDNH = cmbNhomHang.Value + "";
+            string IDNganhH = cmbNganhHang.Value + "";
 
-            //popup.ContentUrl = "~/BaoCaoChuyenKho_In.aspx?ngayBD=" + ngayBD + "&ngayKT=" + ngayKT + "&IDKho=" + IDKho;
-            //popup.ShowOnPageLoad = true;
+            popup.ContentUrl = "~/BaoCaoTonKho_In.aspx?IDKho=" + IDKho + "&IDHH=" + IDHH + "&IDNH=" + IDNH + "&IDNganhH=" + IDNganhH;
+            popup.ShowOnPageLoad = true;
         }
 
         protected void cmbNganhHang_SelectedIndexChanged(object sender, EventArgs e)
         {
+            dataNhomHang dtNhomH = new dataNhomHang();
+            DataTable daNhomH = dtNhomH.getDanhSachNhomHang_IDNganhHang(cmbNganhHang.Value + "");
+            daNhomH.Rows.Add(-1, 1, null, "Tất cả nhóm hàng", null, null, null);
 
+            cmbNhomHang.DataSource = daNhomH;
+            cmbNhomHang.TextField = "TenNhomHang";
+            cmbNhomHang.ValueField = "ID";
+            cmbNhomHang.DataBind();
+            cmbNhomHang.SelectedIndex = daNhomH.Rows.Count;
+
+            dataHangHoa dtHH = new dataHangHoa();
+            DataTable daHH = dtHH.getDanhSachHangHoa_IDNganhHang(cmbNganhHang.Value + "");
+            daHH.Rows.Add(-1, "Tất cả hàng hóa");
+
+            cmbHangHoa.DataSource = daHH;
+            cmbHangHoa.TextField = "TenHangHoa";
+            cmbHangHoa.ValueField = "ID";
+            cmbHangHoa.DataBind();
+            cmbHangHoa.SelectedIndex = daHH.Rows.Count;
         }
 
         protected void cmbNhomHang_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (Int32.Parse(cmbNhomHang.Value + "") == -1)
+            {
+                dataHangHoa dtHH = new dataHangHoa();
+                DataTable daHH = dtHH.getDanhSachHangHoa_IDNganhHang(cmbNganhHang.Value + "");
+                daHH.Rows.Add(-1, "Tất cả hàng hóa");
+
+                cmbHangHoa.DataSource = daHH;
+                cmbHangHoa.TextField = "TenHangHoa";
+                cmbHangHoa.ValueField = "ID";
+                cmbHangHoa.DataBind();
+                cmbHangHoa.SelectedIndex = daHH.Rows.Count;
+            }
+            else
+            {
+                dataHangHoa dtHH = new dataHangHoa();
+                DataTable daHH = dtHH.getDanhSachHangHoa_IDNhomHang(cmbNhomHang.Value + "");
+                daHH.Rows.Add(-1, "Tất cả hàng hóa");
+
+                cmbHangHoa.DataSource = daHH;
+                cmbHangHoa.TextField = "TenHangHoa";
+                cmbHangHoa.ValueField = "ID";
+                cmbHangHoa.DataBind();
+                cmbHangHoa.SelectedIndex = daHH.Rows.Count;
+            }
 
         }
     }
