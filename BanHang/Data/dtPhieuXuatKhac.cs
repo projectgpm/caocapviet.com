@@ -9,6 +9,27 @@ namespace BanHang.Data
 {
     public class dtPhieuXuatKhac
     {
+        public static void CapNhatTrangThai(string ID)
+        {
+            using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
+            {
+                try
+                {
+                    myConnection.Open();
+                    string cmdText = "UPDATE [GPM_PhieuXuatKhac] SET [TrangThai] = 1 WHERE [ID] = '" + ID + "'";
+                    using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
+                    {
+                       
+                        myCommand.ExecuteNonQuery();
+                    }
+                    myConnection.Close();
+                }
+                catch
+                {
+                    throw new Exception("Lỗi: Quá trình cập nhật dữ liệu gặp lỗi");
+                }
+            }
+        }
         public static string LaySoDonXuat(string ID)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))

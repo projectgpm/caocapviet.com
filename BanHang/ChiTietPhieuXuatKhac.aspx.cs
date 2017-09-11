@@ -57,6 +57,7 @@ namespace BanHang
                             dtCapNhatTonKho.TruTonKho(IDHangHoa, SoLuongXuat, Session["IDKho"].ToString());
                         }
                     }
+                    dtPhieuXuatKhac.CapNhatTrangThai(IDPhieuXuatKhac);
                     btnDuyetPhieuXuat.Enabled = false;
                 }
                 else

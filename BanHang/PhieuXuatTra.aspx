@@ -175,12 +175,12 @@
                                             </ShowAdaptiveDetailButton>
                                             <HideAdaptiveDetailButton ButtonType="Image">
                                             </HideAdaptiveDetailButton>
-                                            <DeleteButton ButtonType="Image" RenderMode="Image">
+                                            <DeleteButton>
                                                 <Image IconID="actions_cancel_16x16" ToolTip="Xóa">
                                                 </Image>
                                             </DeleteButton>
                                         </SettingsCommandButton>
-                                        <SettingsText CommandDelete="Xóa" ConfirmDelete="Bạn chắc chắn muốn xóa?" />
+                                        <SettingsText CommandDelete="Xóa" ConfirmDelete="Bạn chắc chắn muốn xóa?" EmptyDataRow="Danh sách hàng hóa trống" />
                                         <Columns>
                                             <dx:GridViewDataComboBoxColumn Caption="Tên Hàng" FieldName="IDHangHoa" ShowInCustomizationForm="True" VisibleIndex="1">
                                                 <PropertiesComboBox DataSourceID="sqlDanhSachHangHoa" TextField="TenHangHoa" ValueField="ID">

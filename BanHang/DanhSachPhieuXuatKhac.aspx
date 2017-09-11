@@ -58,12 +58,12 @@
                 </PropertiesDateEdit>
                 <HeaderStyle Wrap="True" />
             </dx:GridViewDataDateColumn>
-            <dx:GridViewDataDateColumn Caption="Ngày Cập Nhật" VisibleIndex="8" FieldName="NgayCapNhat">
+            <dx:GridViewDataDateColumn Caption="Ngày Cập Nhật" VisibleIndex="9" FieldName="NgayCapNhat">
                 <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy hh:mm:ss tt">
                 </PropertiesDateEdit>
                 <HeaderStyle Wrap="True" />
             </dx:GridViewDataDateColumn>
-            <dx:GridViewDataButtonEditColumn Caption="Xem Chi Tiết" VisibleIndex="9">
+            <dx:GridViewDataButtonEditColumn Caption="Xem Chi Tiết" VisibleIndex="10">
                 
                 <DataItemTemplate>
                     <a href="javascript:void(0);" onclick="OnMoreInfoClick(this, '<%# Container.KeyValue %>')">Xem </a>
@@ -82,13 +82,21 @@
             <dx:GridViewDataTextColumn Caption="Số Đơn Xuất" FieldName="SoDonXuat" VisibleIndex="1">
             </dx:GridViewDataTextColumn>
             <dx:GridViewDataHyperLinkColumn Caption="Chứng Từ" FieldName="ChungTu" VisibleIndex="7">
-                 <PropertiesHyperLinkEdit ImageUrl="image/download.png" ImageWidth="90" ImageHeight="60"></PropertiesHyperLinkEdit>
+                  <PropertiesHyperLinkEdit ImageUrl="image/download.png" ImageWidth="90" ImageHeight="60"></PropertiesHyperLinkEdit>     
             </dx:GridViewDataHyperLinkColumn>
             <dx:GridViewDataTextColumn Caption="Tổng Trọng Lượng" FieldName="TongTrongLuong" VisibleIndex="5">
                 <PropertiesTextEdit DisplayFormatString="{0} KG">
                 </PropertiesTextEdit>
                 <HeaderStyle Wrap="True" />
             </dx:GridViewDataTextColumn>
+            <dx:GridViewDataComboBoxColumn Caption="Trạng Thái" FieldName="TrangThai" VisibleIndex="8">
+                <PropertiesComboBox>
+                    <Items>
+                        <dx:ListEditItem Text="Chưa Duyệt" Value="0" />
+                        <dx:ListEditItem Text="Đã Duyệt" Value="1" />
+                    </Items>
+                </PropertiesComboBox>
+            </dx:GridViewDataComboBoxColumn>
         </Columns>
         <Styles>
             <Header Font-Bold="True" HorizontalAlign="Center">
