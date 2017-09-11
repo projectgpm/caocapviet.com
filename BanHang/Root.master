@@ -93,13 +93,9 @@
                                                             </dx:RibbonDropDownButtonItem>
                                                             <dx:RibbonDropDownButtonItem Name="nganh_hang" NavigateUrl="NganhHang.aspx" 
                                                                 Text="Ngành Hàng">
-                                                                <SmallImage IconID="businessobjects_boproductgroup_16x16">
-                                                                </SmallImage>
                                                             </dx:RibbonDropDownButtonItem>
                                                             <dx:RibbonDropDownButtonItem Name="nhom_hang" 
                                                                 NavigateUrl="NhomHang.aspx" Text="Nhóm Hàng">
-                                                                <SmallImage IconID="businessobjects_boproduct_16x16">
-                                                                </SmallImage>
                                                             </dx:RibbonDropDownButtonItem>
                                                             <dx:RibbonDropDownButtonItem Name="hang_hoa" Text="Mã Hàng" NavigateUrl="HangHoa.aspx">
                                                             </dx:RibbonDropDownButtonItem>
