@@ -22,7 +22,7 @@
                                   
                                 </Columns>
                             </dx:ASPxComboBox>
-                            <asp:SqlDataSource ID="SqlSoDonHangThuMua" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" SelectCommand="  SELECT GPM_ThuMua_DonHang.ID,GPM_ThuMua_DonHang.SoDonHang,FORMAT([GPM_ThuMua_DonHang].NgayDat,'dd/MM/yyyy') AS NgayDat, FORMAT([GPM_ThuMua_DonHang].NgayGiaoDuKien,'dd/MM/yyyy') AS NgayGiaoDuKien,[GPM_NhaCungCap].TenNhaCungCap,replace(convert (varchar, convert (money, GPM_ThuMua_DonHang.TongTienSauChietKhau), 1), '.00','') AS TongTien FROM [GPM_ThuMua_DonHang],[GPM_NhaCungCap] WHERE [GPM_ThuMua_DonHang].TrangThaiDonHang = 0 AND [GPM_NhaCungCap].ID = [GPM_ThuMua_DonHang].IDNhaCungCap">
+                            <asp:SqlDataSource ID="SqlSoDonHangThuMua" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" SelectCommand="  SELECT GPM_ThuMua_DonHang.ID,GPM_ThuMua_DonHang.SoDonHang,FORMAT([GPM_ThuMua_DonHang].NgayDat,'dd/MM/yyyy') AS NgayDat, FORMAT([GPM_ThuMua_DonHang].NgayGiaoDuKien,'dd/MM/yyyy') AS NgayGiaoDuKien,[GPM_NhaCungCap].TenNhaCungCap,replace(convert (varchar, convert (money, GPM_ThuMua_DonHang.TongTienSauChietKhau), 1), '.00','') AS TongTien FROM [GPM_ThuMua_DonHang],[GPM_NhaCungCap] WHERE [GPM_ThuMua_DonHang].TrangThaiDonHang = 0 AND  [GPM_ThuMua_DonHang].IDTrangThaiDonHang > 2  AND[GPM_NhaCungCap].ID = [GPM_ThuMua_DonHang].IDNhaCungCap">
                                
                             </asp:SqlDataSource>
                         </dx:LayoutItemNestedControlContainer>

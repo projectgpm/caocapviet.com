@@ -24,6 +24,7 @@ namespace BanHang
                 {
                     gridDonDatHang.Columns["ChungTu"].Visible = false;
                     btnDuyetDonHang.Visible = false;
+                    btnDonhangXuLy1Phan.Visible = false;
                     btnTaoDonHang.Visible = true;
                 }
                 else
@@ -31,6 +32,7 @@ namespace BanHang
                     gridDonDatHang.Columns["ChungTu"].Visible = true;
                     btnDuyetDonHang.Visible = true;
                     btnTaoDonHang.Visible = false;
+                    btnDonhangXuLy1Phan.Visible = true;
                 }
                 LoadGrid(Session["IDKho"].ToString());
             }
