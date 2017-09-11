@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace BanHang
 {
-    public partial class BaoCaoChuyenKho : System.Web.UI.Page
+    public partial class BangKePhieuXuatKhac : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -23,7 +23,7 @@ namespace BanHang
 
                 dtKho dt = new dtKho();
                 DataTable da = dt.LayDanhSachKho();
-                da.Rows.Add(-1,"","Tất cả cửa hàng",null,null,null,null,null,null,null,null,null);
+                da.Rows.Add(-1, "", "Tất cả cửa hàng", null, null, null, null, null, null, null, null, null);
 
                 cmbKhoXuat.DataSource = da;
                 cmbKhoXuat.TextField = "TenCuaHang";
@@ -31,11 +31,14 @@ namespace BanHang
                 cmbKhoXuat.DataBind();
                 cmbKhoXuat.SelectedIndex = da.Rows.Count;
 
-                cmbKhoNhap.DataSource = da;
-                cmbKhoNhap.TextField = "TenCuaHang";
-                cmbKhoNhap.ValueField = "ID";
-                cmbKhoNhap.DataBind();
-                cmbKhoNhap.SelectedIndex = da.Rows.Count;
+                dtPhieuXuatKhac dt1 = new dtPhieuXuatKhac();
+                DataTable da1 = dt1.DanhSachLyDoXuat();
+                da1.Rows.Add(-1, "Tất cả");
+                cmbLyDoXuat.DataSource = da1;
+                cmbLyDoXuat.TextField = "TenTrangThai";
+                cmbLyDoXuat.ValueField = "ID";
+                cmbLyDoXuat.DataBind();
+                cmbLyDoXuat.SelectedIndex = da1.Rows.Count;
             }
         }
 
@@ -99,9 +102,9 @@ namespace BanHang
             ngayKT = ngayKT + "23:59:59.999";
 
             string IDKhoXuat = cmbKhoXuat.Value + "";
-            string IDKhoNhap = cmbKhoNhap.Value + "";
+            string IDLyDoXuat = cmbLyDoXuat.Value + "";
 
-            popup.ContentUrl = "~/BaoCaoChuyenKho_In.aspx?ngayBD=" + ngayBD + "&ngayKT=" + ngayKT + "&IDKhoXuat=" + IDKhoXuat + "&IDKhoNhap=" + IDKhoNhap;
+            popup.ContentUrl = "~/BangKePhieuXuatKhac_In.aspx?ngayBD=" + ngayBD + "&ngayKT=" + ngayKT + "&IDKhoXuat=" + IDKhoXuat + "&IDLyDoXuat=" + IDLyDoXuat;
             popup.ShowOnPageLoad = true;
         }
     }

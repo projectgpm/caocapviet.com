@@ -380,14 +380,14 @@ namespace BanHang.Data
             }
         }
 
-        public void CapNhatPhieuChuyenKho(string ID, string IDKhoXuat, string IDKhoNhap, string IDNhanVienLap, string SoMatHang, string TrongLuong, string GhiChu, string NguoiGiao, string SoDonHang, string NgayDatDonHang, string SoPhieuHeThong, string file)
+        public void CapNhatPhieuChuyenKho(string ID, string IDKhoXuat, string IDKhoNhap, string IDNhanVienLap, string SoMatHang, string TrongLuong, string GhiChu, string NguoiGiao, string MaSoPhieu, string SoPhieuHeThong, string file)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
                 try
                 {
                     myConnection.Open();
-                    string cmdText = "update GPM_PhieuChuyenKho set [FileChungTu] = @FileChungTu, [SoPhieuHeThong] = @SoPhieuHeThong, [SoDonHang] = @SoDonHang, [NgayDatDonHang] = @NgayDatDonHang, [IDKhoXuat] = @IDKhoXuat, [IDKhoNhap] = @IDKhoNhap, [IDNhanVienLap] = @IDNhanVienLap, [SoMatHang] = @SoMatHang, [TrongLuong] = @TrongLuong, [NgayLap] = getDATE(), [NgayCapNhat] = getDATE(), [GhiChu] = @GhiChu, NguoiGiao = @NguoiGiao where ID = @ID";
+                    string cmdText = "update GPM_PhieuChuyenKho set [FileChungTu] = @FileChungTu, [SoPhieuHeThong] = @SoPhieuHeThong, [MaPhieuChuyenKho] = @MaPhieuChuyenKho, [IDKhoXuat] = @IDKhoXuat, [IDKhoNhap] = @IDKhoNhap, [IDNhanVienLap] = @IDNhanVienLap, [SoMatHang] = @SoMatHang, [TrongLuong] = @TrongLuong, [NgayLap] = getDATE(), [NgayCapNhat] = getDATE(), [GhiChu] = @GhiChu, NguoiGiao = @NguoiGiao where ID = @ID";
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
                         myCommand.Parameters.AddWithValue("@ID", ID);
@@ -398,9 +398,8 @@ namespace BanHang.Data
                         myCommand.Parameters.AddWithValue("@TrongLuong", TrongLuong);
                         myCommand.Parameters.AddWithValue("@GhiChu", GhiChu);
                         myCommand.Parameters.AddWithValue("@NguoiGiao", NguoiGiao);
-                        myCommand.Parameters.AddWithValue("@SoDonHang", SoDonHang);
+                        myCommand.Parameters.AddWithValue("@MaPhieuChuyenKho", MaSoPhieu);
                         myCommand.Parameters.AddWithValue("@SoPhieuHeThong", SoPhieuHeThong);
-                        myCommand.Parameters.AddWithValue("@NgayDatDonHang", NgayDatDonHang);
                         myCommand.Parameters.AddWithValue("@FileChungTu", file);
                         myCommand.ExecuteNonQuery();
                     }

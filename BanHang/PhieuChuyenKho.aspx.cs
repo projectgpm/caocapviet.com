@@ -161,8 +161,6 @@ namespace BanHang
                 string TrongLuong = txtTrongLuong.Value + "";
                 string GhiChu = txtGhiChu.Value + "";
                 string NguoiGiao = txtNguoiGiao.Value + "";
-                string SoDonHang = txtSoDonHang.Value + "";
-                string NgayDat = dateNgayDat.Value + "";
 
                 DateTime date = DateTime.Now;
                 int thang = date.Month;
@@ -185,7 +183,9 @@ namespace BanHang
                     UploadFile();
                 }
 
-                data.CapNhatPhieuChuyenKho(ID, IDKhoXuat, IDKhoNhap, IDNhanVienLap, SoMatHang, TrongLuong, GhiChu, NguoiGiao, SoDonHang, NgayDat, MaHD, strFileExcel);
+                string MaSoPhieu = MaKhoXuat + "-" + soHDKhoXuat + ngaythangnam;
+
+                data.CapNhatPhieuChuyenKho(ID, IDKhoXuat, IDKhoNhap, IDNhanVienLap, SoMatHang, TrongLuong, GhiChu, NguoiGiao, MaSoPhieu, MaHD, strFileExcel);
 
                 dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Phiếu chuyển kho", Session["IDKho"].ToString(), "Nhập xuất tồn", "Thêm");
                 Response.Redirect("DanhSachPhieuChuyenKho.aspx");
