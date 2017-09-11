@@ -33,7 +33,7 @@ namespace BanHang
                         IDPhieuXuatTra_Temp.Value = ran.Next(100000, 999999).ToString();
                         cmbKho.Text = Session["IDKho"].ToString();
                         txtNguoiLapPhieu.Text = Session["TenDangNhap"].ToString();
-                        txtSoDonXuat.Text = (Int32.Parse(Session["IDKho"].ToString())).ToString().Replace(".", "") + "-" + (DateTime.Now.ToString("ddMMyyyy-hhmmss"));
+                        txtSoDonXuat.Text = (dtSetting.LayMaKho(Session["IDKho"].ToString()) + "-" + (DateTime.Now.ToString("ddMMyyyy-hhmmss")));
                     }
                     LoadGrid(IDPhieuXuatTra_Temp.Value.ToString());
                 //}
@@ -195,7 +195,7 @@ namespace BanHang
                             string IDDonViTinh = dr["IDDonViTinh"].ToString();
                             data = new dtPhieuXuatTra();
                             data.ThemChiTietPhieuXuatTra(ID, IDHangHoa, IDDonViTinh, SoLuong, MaHang, TrongLuong, GhiChu, TonKho);
-                            object TheKho = dtTheKho.ThemTheKho(SoDonXuat, "Phiếu xuất trả ", "0", SoLuong, (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, Session["IDKho"].ToString()).ToString()) - Int32.Parse(SoLuong)).ToString(), Session["IDNhanVien"].ToString(), Session["IDKho"].ToString(), IDHangHoa);
+                            object TheKho = dtTheKho.ThemTheKho(SoDonXuat, "Phiếu xuất trả ", "0", SoLuong, (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, Session["IDKho"].ToString()).ToString()) - Int32.Parse(SoLuong)).ToString(), Session["IDNhanVien"].ToString(), Session["IDKho"].ToString(), IDHangHoa,"Xuất");
                             if (TheKho != null)
                             {
                                 dtCapNhatTonKho.TruTonKho(IDHangHoa, SoLuong, Session["IDKho"].ToString());

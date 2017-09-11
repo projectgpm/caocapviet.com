@@ -65,6 +65,27 @@ namespace BanHang.Data
                 }
             }
         }
+
+        public static string LayMaKho(string IDKho)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT MaKho FROM [GPM_Kho] WHERE ID = '" + IDKho + "'";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    if (tb.Rows.Count != 0)
+                    {
+                        DataRow dr = tb.Rows[0];
+                        return dr["MaKho"].ToString();
+                    }
+                    else return null;
+                }
+            }
+        }
         public static int LaySoNgayBanHang()
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
