@@ -99,6 +99,8 @@
                                                             </dx:RibbonDropDownButtonItem>
                                                             <dx:RibbonDropDownButtonItem Name="hang_hoa" Text="Mã Hàng" NavigateUrl="HangHoa.aspx">
                                                             </dx:RibbonDropDownButtonItem>
+                                                            <dx:RibbonDropDownButtonItem Name="Tra Cứu Mã Hàng" NavigateUrl="TraCuuMaHang.aspx" Text="Tra Cứu Mã Hàng">
+                                                            </dx:RibbonDropDownButtonItem>
                                                             <dx:RibbonDropDownButtonItem Name="Danh mục Combo" NavigateUrl="DanhMucCombo.aspx" Text="Danh Mục Combo">
                                                             </dx:RibbonDropDownButtonItem>
                                                             <dx:RibbonDropDownButtonItem Name="Danh sách hàng hóa theo vùng" NavigateUrl="DanhSachGiaTheoVung.aspx" Text="Giá Theo Vùng">
@@ -135,6 +137,8 @@
                                                             <dx:RibbonDropDownButtonItem Name="Phiếu chuyển kho" Text="Phiếu Chuyển Kho" NavigateUrl="DanhSachPhieuChuyenKho.aspx">
                                                             </dx:RibbonDropDownButtonItem>
                                                             <dx:RibbonDropDownButtonItem Name="Kiểm Kho" NavigateUrl="DanhSachKiemKho.aspx" Text="Kiểm Kho">
+                                                            </dx:RibbonDropDownButtonItem>
+                                                            <dx:RibbonDropDownButtonItem Name="Thẻ Kho" NavigateUrl="TheKho.aspx" Text="Thẻ Kho">
                                                             </dx:RibbonDropDownButtonItem>
                                                         </Items>
                                                         <LargeImage Url="~/image/nhapxuat.png">
