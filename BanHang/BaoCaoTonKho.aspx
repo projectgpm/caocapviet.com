@@ -7,7 +7,7 @@
                     <dx:LayoutItem Caption="Ngành hàng">
                         <LayoutItemNestedControlCollection>
                             <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer2" runat="server">
-                                <dx:ASPxComboBox ID="cmbNganhHang" runat="server" OnSelectedIndexChanged="cmbNganhHang_SelectedIndexChanged" Width="100%">
+                                <dx:ASPxComboBox ID="cmbNganhHang" runat="server" OnSelectedIndexChanged="cmbNganhHang_SelectedIndexChanged" Width="100%" AutoPostBack="True">
                                 </dx:ASPxComboBox>
                             </dx:LayoutItemNestedControlContainer>
                         </LayoutItemNestedControlCollection>
@@ -15,7 +15,7 @@
                     <dx:LayoutItem Caption="Nhóm hàng">
                         <LayoutItemNestedControlCollection>
                             <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer1" runat="server">
-                                <dx:ASPxComboBox ID="cmbNhomHang" runat="server" OnSelectedIndexChanged="cmbNhomHang_SelectedIndexChanged" Width="100%">
+                                <dx:ASPxComboBox ID="cmbNhomHang" runat="server" OnSelectedIndexChanged="cmbNhomHang_SelectedIndexChanged" Width="100%" AutoPostBack="True">
                                 </dx:ASPxComboBox>
                             </dx:LayoutItemNestedControlContainer>
                         </LayoutItemNestedControlCollection>

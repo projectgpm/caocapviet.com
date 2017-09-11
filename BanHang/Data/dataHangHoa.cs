@@ -35,6 +35,12 @@ namespace BanHang.Data
             return getData(cmd);
         }
 
+        public DataTable getDanhSachHangHoa_Ten_ID()
+        {
+            string cmd = "SELECT ID,TenHangHoa FROM GPM_HangHoa WHERE DaXoa = 0";
+            return getData(cmd);
+        }
+
         public string getTenHH(string ID)
         {
             string cmd = "SELECT TenHangHoa FROM [GPM_HANGHOA] WHERE ID = '" + ID + "'";
@@ -55,6 +61,18 @@ namespace BanHang.Data
         public DataTable getDanhSachHangHoa_ID(string ID)
         {
             string cmd = "SELECT * FROM [GPM_HANGHOA] WHERE ID = '" + ID + "' AND TenHangHoa is not null";
+            return getData(cmd);
+        }
+
+        public DataTable getDanhSachHangHoa_IDNhomHang(string IDNhomHang)
+        {
+            string cmd = "SELECT ID,TenHangHoa FROM [GPM_HANGHOA] WHERE DaXoa = 0 AND (('" + IDNhomHang + "' = -1) OR (IDNhomHang = '" + IDNhomHang + "'))";
+            return getData(cmd);
+        }
+
+        public DataTable getDanhSachHangHoa_IDNganhHang(string IDNganhHang)
+        {
+            string cmd = "SELECT GPM_HANGHOA.ID,GPM_HANGHOA.TenHangHoa FROM [GPM_HANGHOA],[GPM_NHOMHANG] WHERE GPM_HANGHOA.DaXoa = 0 AND GPM_HANGHOA.IDNhomHang = GPM_NHOMHANG.ID AND (('" + IDNganhHang + "' = -1) OR (GPM_NHOMHANG.IDNganhHang = '" + IDNganhHang + "'))";
             return getData(cmd);
         }
 

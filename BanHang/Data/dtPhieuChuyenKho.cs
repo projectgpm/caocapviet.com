@@ -199,7 +199,7 @@ namespace BanHang.Data
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = " SELECT * FROM [GPM_PhieuChuyenKho] WHERE IDKhoXuat is not null AND IDKhoNhap is not null AND SoMatHang is not null AND DaXoa = 0 AND (IDTrangThai = 2 OR IDTrangThai = 3) AND TrangThai = 1 AND (IDKhoXuat = '" + IDKho + "' OR IDKhoNhap = '" + IDKho + "') ORDER BY [ID] DESC";
+                string cmdText = " SELECT * FROM [GPM_PhieuChuyenKho] WHERE IDKhoXuat is not null AND IDKhoNhap is not null AND SoMatHang is not null AND DaXoa = 0 AND (IDTrangThai = 2 OR IDTrangThai = 3) AND (IDKhoXuat = '" + IDKho + "' OR IDKhoNhap = '" + IDKho + "') ORDER BY [ID] DESC";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
