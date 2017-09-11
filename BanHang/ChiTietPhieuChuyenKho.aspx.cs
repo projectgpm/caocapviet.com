@@ -192,9 +192,6 @@ namespace BanHang
                         dtCapNhatTonKho.TruTonKho(IDHangHoa, SoLuong, IDKhoXuat + "");
                         dtCapNhatTonKho.CongTonKho(IDHangHoa, SoLuong, IDKhoNhan + "");
                     }
-
-                   
-                   
                 }
             }
 
