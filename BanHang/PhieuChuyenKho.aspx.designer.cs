@@ -166,24 +166,6 @@ namespace BanHang {
         protected global::DevExpress.Web.ASPxTextBox txtNguoiGiao;
         
         /// <summary>
-        /// txtSoDonHang control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox txtSoDonHang;
-        
-        /// <summary>
-        /// dateNgayDat control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxDateEdit dateNgayDat;
-        
-        /// <summary>
         /// txtFileChungTu control.
         /// </summary>
         /// <remarks>

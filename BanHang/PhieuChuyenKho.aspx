@@ -79,31 +79,15 @@
                             </dx:LayoutItemNestedControlContainer>
                         </LayoutItemNestedControlCollection>
                     </dx:LayoutItem>
-                    <dx:LayoutItem Caption="Số đơn hàng">
-                        <LayoutItemNestedControlCollection>
-                            <dx:LayoutItemNestedControlContainer runat="server">
-                                <dx:ASPxTextBox ID="txtSoDonHang" runat="server" Width="100%">
-                                </dx:ASPxTextBox>
-                            </dx:LayoutItemNestedControlContainer>
-                        </LayoutItemNestedControlCollection>
-                    </dx:LayoutItem>
-                    <dx:LayoutItem Caption="Ngày đặt đơn hàng">
-                        <LayoutItemNestedControlCollection>
-                            <dx:LayoutItemNestedControlContainer runat="server">
-                                <dx:ASPxDateEdit ID="dateNgayDat" runat="server" Width="100%" DisplayFormatString="dd/MM/yyyy">
-                                </dx:ASPxDateEdit>
-                            </dx:LayoutItemNestedControlContainer>
-                        </LayoutItemNestedControlCollection>
-                    </dx:LayoutItem>
                     <dx:LayoutItem Caption="File Chứng từ">
                         <LayoutItemNestedControlCollection>
                             <dx:LayoutItemNestedControlContainer runat="server">
-                                <dx:ASPxUploadControl ID="txtFileChungTu" runat="server">
+                                <dx:ASPxUploadControl ID="txtFileChungTu" runat="server" Width="100%">
                                 </dx:ASPxUploadControl>
                             </dx:LayoutItemNestedControlContainer>
                         </LayoutItemNestedControlCollection>
                     </dx:LayoutItem>
-                    <dx:LayoutItem Caption="Ghi Chú">
+                    <dx:LayoutItem Caption="Ghi Chú" ColSpan="3">
                         <LayoutItemNestedControlCollection>
                             <dx:LayoutItemNestedControlContainer runat="server">
                                 <dx:ASPxTextBox ID="txtGhiChu" runat="server" Width="100%">

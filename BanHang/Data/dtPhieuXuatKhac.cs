@@ -140,6 +140,23 @@ namespace BanHang.Data
                 }
             }
         }
+
+        public string LayTenLyDo_ID(string ID)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT TenTrangThai FROM [GPM_TrangThaiPhieuXuatKhac] WHERE [ID] = '" + ID + "'";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    return tb.Rows[0]["TenTrangThai"].ToString();
+                }
+            }
+        }
+
         public void ThemChiTietPhieuXuatKhac(object IDPhieuXuatKhac, string MaHang, string IDHangHoa, string IDDonViTinh, string TrongLuong, string TonKho, string SoLuongXuat, string GhiChu)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
@@ -205,6 +222,23 @@ namespace BanHang.Data
                 }
             }
         }
+
+        public DataTable DanhSachLyDoXuat()
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = " SELECT * FROM [GPM_TrangThaiPhieuXuatKhac]";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    return tb;
+                }
+            }
+        }
+
         public DataTable DanhSachChiTietPhieuXuatKhac_ID(string IDPhieuXuatKhac)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
