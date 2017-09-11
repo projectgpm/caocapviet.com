@@ -65,26 +65,44 @@ namespace BanHang
                     }
                     else
                     {
+                        Clear();
                         Response.Write("<script language='JavaScript'> alert('Không tìm thấy mã hàng " + MaHang + " .'); </script>");
-                        txtMaHangTraCuu.Text = "";
-                        txtMaHangTraCuu.Focus();
                         return;
                     }
                 }
                 else
                 {
-                    txtMaHangTraCuu.Text = "";
-                    txtMaHangTraCuu.Focus();
+                    Clear();
                     Response.Write("<script language='JavaScript'> alert('Mã hàng phải là số.'); </script>");
                     return;
                 }
             }
             else
             {
-                txtMaHangTraCuu.Focus();
+                Clear();
                 Response.Write("<script language='JavaScript'> alert('Vui lòng nhập mã hàng cần tìm.'); </script>");
                 return;
             }
+        }
+        public void Clear()
+        {
+            txtMaHangTraCuu.Text = "";
+            txtMaHangTraCuu.Focus();
+            gridHangQuiDoi.DataSource = null;
+            gridBarcode.DataSource = null;
+            gridBarcode.DataBind();
+            gridHangQuiDoi.DataBind();
+            cmbNhomHang.Text = "";
+            txtMaHang.Text = "";
+            txtTenHangHoa.Text = "";
+            cmbDonViTinh.Text = "";
+            txtHeSo.Text = "";
+            cmbHangSanXuat.Text = "";
+            cmbThue.Text = "";
+            cmbNguoiDatHang.Text = "";
+            txtTrongLuong.Text = "";
+            cmbTrangThaiHang.Text = "";
+            txtHangSuDung.Text = "";
         }
     }
 }

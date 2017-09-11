@@ -355,15 +355,6 @@ namespace BanHang {
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDanhSachHangHoa;
         
         /// <summary>
-        /// LayoutItemNestedControlContainer7 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.LayoutItemNestedControlContainer LayoutItemNestedControlContainer7;
-        
-        /// <summary>
         /// gridBarcode control.
         /// </summary>
         /// <remarks>

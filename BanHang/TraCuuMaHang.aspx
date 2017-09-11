@@ -131,16 +131,15 @@
                 </dx:LayoutItem>
             </Items>
         </dx:LayoutGroup>
-        <dx:LayoutGroup ColSpan="3" Caption="Danh Sách Hàng Quy Đổi" ColCount="3">
+        <dx:LayoutGroup ColSpan="3" Caption="Thông Tin Hàng hóa qui đổi &amp; Barcode" ColCount="3">
             <Items>
-                <dx:LayoutItem Caption="" ColSpan="3">
+                <dx:LayoutItem Caption="" ColSpan="2">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer19" runat="server">
                                                 
-                            <dx:ASPxGridView ID="gridHangQuiDoi" runat="server" AutoGenerateColumns="False" KeyFieldName="ID" Width="100%" DataSourceID="SqlDanhSachHangHoa">
+                            <dx:ASPxGridView ID="gridHangQuiDoi" runat="server" AutoGenerateColumns="False" KeyFieldName="ID" Width="100%">
                                  <SettingsPager Mode="ShowAllRecords">
                                  </SettingsPager>
-                                 <Settings ShowFooter="True" />
                                  <SettingsBehavior ConfirmDelete="True" />
                                  <SettingsCommandButton>
                                     <ShowAdaptiveDetailButton ButtonType="Image">
@@ -170,13 +169,13 @@
                                 </SettingsCommandButton>
                                 <SettingsText CommandBatchEditCancel="Hủy tất cả" CommandBatchEditUpdate="Lưu tất cả" Title="DANH SÁCH HÀNG HÓA GIÁ THEO CHI NHÁNH" ConfirmDelete="Bạn chắc chắn muốn xóa?" EmptyDataRow="Danh sách hàng hóa trống." />
                                 <Columns>                                    
-                                    <dx:GridViewDataTextColumn Caption="Mã Hàng" ShowInCustomizationForm="True" VisibleIndex="0">
+                                    <dx:GridViewDataTextColumn Caption="Mã Hàng" ShowInCustomizationForm="True" VisibleIndex="0" FieldName="MaHangHoa">
                                     </dx:GridViewDataTextColumn>
-                                    <dx:GridViewDataComboBoxColumn Caption="Tên Hàng Hóa" FieldName="IDHangQuyDoi" ShowInCustomizationForm="True" VisibleIndex="1">
+                                    <dx:GridViewDataComboBoxColumn Caption="Tên Hàng Hóa" ShowInCustomizationForm="True" VisibleIndex="1" FieldName="IDHangQuyDoi">
                                         <PropertiesComboBox DataSourceID="SqlDanhSachHangHoa" TextField="TenHangHoa" ValueField="ID">
                                         </PropertiesComboBox>
                                     </dx:GridViewDataComboBoxColumn>
-                                    <dx:GridViewDataComboBoxColumn Caption="ĐVT" FieldName="IDDonViTinh" ShowInCustomizationForm="True" VisibleIndex="2">
+                                    <dx:GridViewDataComboBoxColumn Caption="ĐVT" ShowInCustomizationForm="True" VisibleIndex="2" FieldName="IDDonViTinh">
                                         <PropertiesComboBox DataSourceID="SqlDVT" TextField="TenDonViTinh" ValueField="ID">
                                         </PropertiesComboBox>
                                     </dx:GridViewDataComboBoxColumn>
@@ -197,18 +196,12 @@
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
                 </dx:LayoutItem>
-            </Items>
-        </dx:LayoutGroup>
-        <dx:LayoutGroup Caption="Danh Sách Barcode" ColCount="3" ColSpan="3">
-             <Items>
-                <dx:LayoutItem Caption="" ColSpan="3">
+                <dx:LayoutItem Caption="">
                     <LayoutItemNestedControlCollection>
-                        <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer7" runat="server">
-                                                
+                        <dx:LayoutItemNestedControlContainer runat="server">
                             <dx:ASPxGridView ID="gridBarcode" runat="server" AutoGenerateColumns="False" KeyFieldName="ID" Width="100%">
                                  <SettingsPager Mode="ShowAllRecords">
                                  </SettingsPager>
-                                 <Settings ShowFooter="True" />
                                  <SettingsBehavior ConfirmDelete="True" />
                                  <SettingsCommandButton>
                                     <ShowAdaptiveDetailButton ButtonType="Image">
@@ -242,6 +235,10 @@
                                     </dx:GridViewDataTextColumn>
                                 </Columns>
                               
+                                 <TotalSummary>
+                                     <dx:ASPxSummaryItem />
+                                 </TotalSummary>
+                              
                                  <Styles>
                                     <Header Font-Bold="True" HorizontalAlign="Center">
                                     </Header>
@@ -251,7 +248,6 @@
                                     </TitlePanel>
                                 </Styles>
                             </dx:ASPxGridView>
-                                                
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
                 </dx:LayoutItem>
