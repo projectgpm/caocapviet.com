@@ -31,13 +31,13 @@ namespace BanHang {
         protected global::DevExpress.Web.LayoutItemNestedControlContainer LayoutItemNestedControlContainer2;
         
         /// <summary>
-        /// ASPxFormLayout1_E2 control.
+        /// cmbNganhHang control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxComboBox ASPxFormLayout1_E2;
+        protected global::DevExpress.Web.ASPxComboBox cmbNganhHang;
         
         /// <summary>
         /// LayoutItemNestedControlContainer1 control.
@@ -49,13 +49,13 @@ namespace BanHang {
         protected global::DevExpress.Web.LayoutItemNestedControlContainer LayoutItemNestedControlContainer1;
         
         /// <summary>
-        /// ASPxFormLayout1_E1 control.
+        /// cmbNhomHang control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxComboBox ASPxFormLayout1_E1;
+        protected global::DevExpress.Web.ASPxComboBox cmbNhomHang;
         
         /// <summary>
         /// LayoutItemNestedControlContainer3 control.
@@ -67,13 +67,13 @@ namespace BanHang {
         protected global::DevExpress.Web.LayoutItemNestedControlContainer LayoutItemNestedControlContainer3;
         
         /// <summary>
-        /// ASPxFormLayout1_E3 control.
+        /// cmbHangHoa control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxComboBox ASPxFormLayout1_E3;
+        protected global::DevExpress.Web.ASPxComboBox cmbHangHoa;
         
         /// <summary>
         /// LayoutItemNestedControlContainer8 control.

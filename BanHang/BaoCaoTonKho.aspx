@@ -7,7 +7,7 @@
                     <dx:LayoutItem Caption="Ngành hàng">
                         <LayoutItemNestedControlCollection>
                             <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer2" runat="server">
-                                <dx:ASPxComboBox ID="ASPxFormLayout1_E2" runat="server">
+                                <dx:ASPxComboBox ID="cmbNganhHang" runat="server" OnSelectedIndexChanged="cmbNganhHang_SelectedIndexChanged" Width="100%">
                                 </dx:ASPxComboBox>
                             </dx:LayoutItemNestedControlContainer>
                         </LayoutItemNestedControlCollection>
@@ -15,7 +15,7 @@
                     <dx:LayoutItem Caption="Nhóm hàng">
                         <LayoutItemNestedControlCollection>
                             <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer1" runat="server">
-                                <dx:ASPxComboBox ID="ASPxFormLayout1_E1" runat="server">
+                                <dx:ASPxComboBox ID="cmbNhomHang" runat="server" OnSelectedIndexChanged="cmbNhomHang_SelectedIndexChanged" Width="100%">
                                 </dx:ASPxComboBox>
                             </dx:LayoutItemNestedControlContainer>
                         </LayoutItemNestedControlCollection>
@@ -23,12 +23,12 @@
                     <dx:LayoutItem Caption="Hàng Hóa">
                         <LayoutItemNestedControlCollection>
                             <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer3" runat="server">
-                                <dx:ASPxComboBox ID="ASPxFormLayout1_E3" runat="server">
+                                <dx:ASPxComboBox ID="cmbHangHoa" runat="server" Width="100%">
                                 </dx:ASPxComboBox>
                             </dx:LayoutItemNestedControlContainer>
                         </LayoutItemNestedControlCollection>
                     </dx:LayoutItem>
-                    <dx:LayoutItem Caption="Kho">
+                    <dx:LayoutItem Caption="Kho hàng">
                         <LayoutItemNestedControlCollection>
                             <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer8" runat="server">
                                 <dx:ASPxComboBox ID="cmbKho" runat="server" Width="100%">

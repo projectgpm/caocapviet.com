@@ -85,6 +85,22 @@ namespace BanHang.Data
             }
         }
 
+        public string LayTenNhaCC_ID(string ID)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT TenNhaCungCap FROM [GPM_NhaCungCap] WHERE [ID] = '" + ID + "'";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    return tb.Rows[0]["TenNhaCungCap"].ToString();
+                }
+            }
+        }
+
         public void ThemNhaCungCap(string MaNCC , string TenNhaCungCap, string DienThoai, string Fax, string Email, string DiaChi, string NguoiLienHe, string MaSoThue, string LinhVucKinhDoanh, DateTime NgayCapNhat, string GhiChu)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
