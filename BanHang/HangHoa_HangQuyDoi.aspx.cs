@@ -53,7 +53,7 @@ namespace BanHang
                         e.Cancel = true;
                         gridHangHoaQuyDoi.CancelEdit();
                     }
-                    else throw new Exception("Mã hàng đã có trong danh sách.");
+                    else throw new Exception("Mã hàng đã có trong danh sách hoặc là hàng combo.");
                 }
                 else throw new Exception("Mã hàng không tồn tại.");
             }

@@ -53,7 +53,7 @@ namespace BanHang.Data
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "select * from GPM_HangHoa_QuyDoi where IDHangHoa = '" + IDHangHoa + "' AND IDHangQuyDoi = '" + IDHangQuyDoi + "'";
+                string cmdText = "select GPM_HangHoa_QuyDoi.* from GPM_HangHoa_QuyDoi,GPM_HangHoa where GPM_HangHoa_QuyDoi.IDHangQuyDoi = GPM_HangHoa.ID and (GPM_HangHoa.IDTrangThaiHang = 1 or GPM_HangHoa.IDTrangThaiHang = 3) and GPM_HangHoa_QuyDoi.IDHangHoa = '" + IDHangHoa + "' AND GPM_HangHoa_QuyDoi.IDHangQuyDoi = '" + IDHangQuyDoi + "'";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
@@ -67,6 +67,7 @@ namespace BanHang.Data
                 }
             }
         }
+
         public static void ThemLichSuThayDoiGia(string IDHangHoa, string IDDonViTinh, float GiaCu, float GiaMoi, string IDNguoiDung, string MaHang)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))

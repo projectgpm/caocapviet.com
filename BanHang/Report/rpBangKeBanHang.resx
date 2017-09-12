@@ -117,42 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="sqlDataSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <data name="customSqlQuery1.Sql" xml:space="preserve">
-    <value>select SUM("democcv2.GPM_ChiTietPhieuKhachHangTraHang"."SoLuong") as SoLuong,
-       SUM("democcv2.GPM_ChiTietPhieuKhachHangTraHang"."ThanhTien") as ThanhTien,
-       "democcv2.GPM_ChiTietPhieuKhachHangTraHang"."GiaBan",
-       "democcv2.GPM_HangHoa"."MaHang",
-       "democcv2.GPM_HangHoa"."TenHangHoa",
-       "democcv2.GPM_HangHoa"."HeSo",
-       "democcv2.GPM_HangHoa"."ID",
-       "democcv2.GPM_DonViTinh"."TenDonViTinh"
-  from ((("democcv2"."GPM_PhieuKhachHangTraHang"
-       "democcv2.GPM_PhieuKhachHangTraHang"
-  inner join "democcv2"."GPM_ChiTietPhieuKhachHangTraHang"
-       "democcv2.GPM_ChiTietPhieuKhachHangTraHang"
-       on ("democcv2.GPM_ChiTietPhieuKhachHangTraHang"."IDPhieuKhachHangTraHang" = "democcv2.GPM_PhieuKhachHangTraHang"."ID"))
-  inner join "democcv2"."GPM_HangHoa"
-       "democcv2.GPM_HangHoa"
-       on ("democcv2.GPM_HangHoa"."ID" = "democcv2.GPM_ChiTietPhieuKhachHangTraHang"."IDHangHoa"))
-  inner join "democcv2"."GPM_DonViTinh"
-       "democcv2.GPM_DonViTinh"
-       on ("democcv2.GPM_DonViTinh"."ID" = "democcv2.GPM_HangHoa"."IDDonViTinh"))
- where
-       (("democcv2.GPM_PhieuKhachHangTraHang"."NgayDoi" &gt;= @NgayBD)
-       and ("democcv2.GPM_PhieuKhachHangTraHang"."NgayDoi" &lt;= @NgayKT)
-       and ((@IDKhoNhap = -1) OR ("democcv2.GPM_PhieuKhachHangTraHang"."IDKho" = @IDKhoNhap))
-       and ((@IDKhachHang = -1) OR ("democcv2.GPM_PhieuKhachHangTraHang"."IDKhachHang" = @IDKhachHang)))
-group by "democcv2.GPM_ChiTietPhieuKhachHangTraHang"."GiaBan",
-       "democcv2.GPM_HangHoa"."MaHang",
-       "democcv2.GPM_HangHoa"."TenHangHoa",
-       "democcv2.GPM_HangHoa"."HeSo",
-       "democcv2.GPM_HangHoa"."ID",
-       "democcv2.GPM_DonViTinh"."TenDonViTinh"</value>
-  </data>
-  <data name="sqlDataSource1.ResultSchemaSerializable" xml:space="preserve">
-    <value>PERhdGFTZXQgTmFtZT0ic3FsRGF0YVNvdXJjZTEiPjxWaWV3IE5hbWU9ImRlbW9jY3YyX0dQTV9QaGlldUtoYWNoSGFuZ1RyYUhhbmciPjxGaWVsZCBOYW1lPSJTb0x1b25nIiBUeXBlPSJJbnQzMiIgLz48RmllbGQgTmFtZT0iVGhhbmhUaWVuIiBUeXBlPSJEb3VibGUiIC8+PEZpZWxkIE5hbWU9IkdpYUJhbiIgVHlwZT0iRG91YmxlIiAvPjxGaWVsZCBOYW1lPSJNYUhhbmciIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iVGVuSGFuZ0hvYSIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJIZVNvIiBUeXBlPSJJbnQzMiIgLz48RmllbGQgTmFtZT0iSUQiIFR5cGU9IkludDMyIiAvPjxGaWVsZCBOYW1lPSJUZW5Eb25WaVRpbmgiIFR5cGU9IlN0cmluZyIgLz48L1ZpZXc+PFZpZXcgTmFtZT0iZGVtb2NjdjJfU2V0dGluZyI+PEZpZWxkIE5hbWU9IklEIiBUeXBlPSJJbnQzMiIgLz48RmllbGQgTmFtZT0iSW5UaWV1RGUiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iSW5Db25nVHkiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iRGF0YWJhc2VOYW1lIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IktleUtpY2hIb2F0IiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9Ik5ndW9pS2ljaEhvYXQiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iQ2h1eWVuRG9pRGF1IiBUeXBlPSJJbnQzMiIgLz48RmllbGQgTmFtZT0iQ2h1eWVuQW0iIFR5cGU9IkludDMyIiAvPjxGaWVsZCBOYW1lPSJTb05nYXlUcmFIYW5nIiBUeXBlPSJJbnQzMiIgLz48RmllbGQgTmFtZT0iVHVhblN1YXRCYW5IYW5nIiBUeXBlPSJJbnQzMiIgLz48RmllbGQgTmFtZT0iQ2FwTmhhdERvbkhhbmdYdUx5IiBUeXBlPSJJbnQzMiIgLz48RmllbGQgTmFtZT0iSHV5RG9uSGFuZ1RodU11YSIgVHlwZT0iSW50MzIiIC8+PC9WaWV3PjwvRGF0YVNldD4=</value>
-  </data>
 </root>

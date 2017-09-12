@@ -148,6 +148,8 @@
                                                         <Items>
                                                             <dx:RibbonDropDownButtonItem Name="phieuxuatkhac" Text="Phiếu xuất khác" NavigateUrl="BangKePhieuXuatKhac.aspx">
                                                             </dx:RibbonDropDownButtonItem>
+                                                            <dx:RibbonDropDownButtonItem Name="bangkekhachhangtrahang" NavigateUrl="BangKeKhachHangTraHang.aspx" Text="Khách hàng trả hàng">
+                                                            </dx:RibbonDropDownButtonItem>
                                                         </Items>
                                                         <LargeImage Url="~/image/bao-cao-thong-ke.png">
                                                         </LargeImage>
@@ -161,6 +163,8 @@
                                                             <dx:RibbonDropDownButtonItem Name="baocaonhaphang" Text="Báo cáo nhập hàng" NavigateUrl="BaoCaoNhapHang.aspx">
                                                             </dx:RibbonDropDownButtonItem>
                                                             <dx:RibbonDropDownButtonItem Name="baocaotonkho" Text="Báo cáo tồn kho" NavigateUrl="BaoCaoTonKho.aspx">
+                                                            </dx:RibbonDropDownButtonItem>
+                                                            <dx:RibbonDropDownButtonItem Name="baocaokhachhangtrahang" NavigateUrl="BaoCaoKhachHangTraHang.aspx" Text="Khách hàng trả hàng">
                                                             </dx:RibbonDropDownButtonItem>
                                                         </Items>
                                                         <LargeImage Url="~/image/baocao.png">

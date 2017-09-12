@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace BanHang
 {
-    public partial class BaoCaoKhachHangTraHang_In : System.Web.UI.Page
+    public partial class BangKeKhachHangTraHang_In : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -30,7 +30,7 @@ namespace BanHang
 
             string strNgay = DateTime.Parse(NgayBD).ToString("dd-MM-yyyy") + " - " + DateTime.Parse(NgayKT).ToString("dd-MM-yyyy");
 
-            rpBaoCaoKhachHangTraHang rp = new rpBaoCaoKhachHangTraHang();
+            rpBangKeKhachHangTraHang rp = new rpBangKeKhachHangTraHang();
 
             rp.Parameters["strNgay"].Value = strNgay;
             rp.Parameters["strNgay"].Visible = false;
