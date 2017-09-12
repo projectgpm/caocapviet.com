@@ -169,52 +169,11 @@ namespace BanHang
 
                     if (tbThongTin.Rows.Count > 0)
                     {
-                        //ban đầu
-                        //ThemHangVaoChiTietHoaDon(tbThongTin);
-                        //BindGridChiTietHoaDon();
-                        //endbandau
-
-                        //==============================
                         // kiểm tra kho âm
-                        // Bắt đầu Sửa
                         string IDKho = Session["IDKho"].ToString();
                         if (dtSetting.KT_BanHang(Session["IDKho"].ToString()) == 1)
                         {
-                            DataRow dr = tbThongTin.Rows[0];
-                            int IDHangHoa = Int32.Parse(dr["ID"].ToString());
-                            int SLMua = Int32.Parse(txtSoLuong.Text.ToString());
-                            int SLTonKhoHienTai = 0;
-                            SLTonKhoHienTai = dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa.ToString(), IDKho);
-                            int MaHang = int.Parse(tbThongTin.Rows[0]["MaHang"].ToString());
-                            int MaHoaDon = tabControlSoHoaDon.ActiveTabIndex;
-                            var exitHang = DanhSachHoaDon[MaHoaDon].ListChiTietHoaDon.FirstOrDefault(item => item.MaHang == MaHang);
-                            if (exitHang != null)
-                            {
-                                int SoLuong = exitHang.SoLuong;
-                                SLTonKhoHienTai = SLTonKhoHienTai - SoLuong;
-                            }
-                            if (SLTonKhoHienTai < SLMua)
-                            {
-                                if (dtHangHoa.HangHoaQuiDoi(IDHangHoa.ToString()) != IDHangHoa)
-                                {
-                                    int IDHangHoaQuiDoi = dtHangHoa.HangHoaQuiDoi(IDHangHoa.ToString());
-                                    int ToKhoQuiDoi = dtCapNhatTonKho.SoLuong_TonKho(IDHangHoaQuiDoi.ToString(), IDKho);
-                                    int HeSo = dtHangHoa.HeSoQuyDoi(IDHangHoaQuiDoi.ToString());
-                                    int TongQuiDoi = (ToKhoQuiDoi * HeSo) + SLTonKhoHienTai;
-                                    if (TongQuiDoi >= SLMua)
-                                    {
-                                        HienThiThongBao("Cảnh báo: Hàng hóa đang qui đổi?");
-                                    }
-                                    else
-                                    {
-                                        HienThiThongBao("Cảnh báo: Hàng quy đổi không đủ số lượng: Tổng qui đổi:" + TongQuiDoi);
-                                    }
-                                }
-                                else
-                                {
-                                    HienThiThongBao("Số lượng tồn kho hiện tại không đủ bán");
-                                }
-                            }
+                            //1: bán âm , 0: bán không âm
                             ThemHangVaoChiTietHoaDon(tbThongTin);
                             BindGridChiTietHoaDon();
                         }
@@ -225,8 +184,6 @@ namespace BanHang
                             int SLMua = Int32.Parse(txtSoLuong.Text.ToString());
                             int SLTonKhoHienTai = 0;
                             SLTonKhoHienTai = dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa.ToString(), IDKho);
-
-
                             // lấy sl có trong lưới
                             int MaHang = int.Parse(tbThongTin.Rows[0]["MaHang"].ToString());
                             int MaHoaDon = tabControlSoHoaDon.ActiveTabIndex;
@@ -236,7 +193,6 @@ namespace BanHang
                                 int SoLuong = exitHang.SoLuong;
                                 SLTonKhoHienTai = SLTonKhoHienTai - SoLuong;
                             }
-
                             if (SLTonKhoHienTai >= SLMua)
                             {
                                 ThemHangVaoChiTietHoaDon(tbThongTin);
@@ -244,33 +200,10 @@ namespace BanHang
                             }
                             else
                             {
-                                if (dtHangHoa.HangHoaQuiDoi(IDHangHoa.ToString()) != IDHangHoa)
-                                {
-                                    int IDHangHoaQuiDoi = dtHangHoa.HangHoaQuiDoi(IDHangHoa.ToString());
-                                    int ToKhoQuiDoi = dtCapNhatTonKho.SoLuong_TonKho(IDHangHoaQuiDoi.ToString(), IDKho);
-                                    int HeSo = dtHangHoa.HeSoQuyDoi(IDHangHoaQuiDoi.ToString());
-                                    int TongQuiDoi = (ToKhoQuiDoi * HeSo) + SLTonKhoHienTai;
-                                    if (TongQuiDoi >= SLMua)
-                                    {
-                                        ThemHangVaoChiTietHoaDon(tbThongTin);
-                                        BindGridChiTietHoaDon();
-                                        HienThiThongBao("Cảnh báo: Hàng hóa đang qui đổi?");
-                                    }
-                                    else
-                                    {
-                                        txtSoLuong.Text = TongQuiDoi + "";
-                                        HienThiThongBao("Cảnh báo: Hàng quy đổi không đủ số lượng: Tổng qui đổi:" + TongQuiDoi);
-                                    }
-                                }
-                                else
-                                {
-                                    txtSoLuong.Text = SLTonKhoHienTai + "";
-                                    HienThiThongBao("Số lượng tồn kho không đủ bán? Vui lòng liên hệ kho tổng");
-
-                                }
+                                txtSoLuong.Text = SLTonKhoHienTai + "";
+                                HienThiThongBao("Số lượng tồn kho không đủ bán? Vui lòng liên hệ kho tổng.");
                             }
                         }
-                        //end Luân Sửa
                     }
                     else
                         HienThiThongBao("Mã hàng không tồn tại!!");
@@ -304,46 +237,12 @@ namespace BanHang
                 object SoLuong = gridChiTietHoaDon.GetRowValues(i, "SoLuong");
                 ASPxSpinEdit spineditSoLuong = gridChiTietHoaDon.FindRowCellTemplateControl(i, (GridViewDataColumn)gridChiTietHoaDon.Columns["SoLuong"], "txtSoLuongChange") as ASPxSpinEdit;
                 object SoLuongMoi = spineditSoLuong.Value;
-                //int STT = Convert.ToInt32(gridChiTietHoaDon.GetRowValues(i, "STT"));
-                //var exitHang = DanhSachHoaDon[MaHoaDon].ListChiTietHoaDon.FirstOrDefault(item => item.STT == STT);
-                //int SoLuongOld = exitHang.SoLuong;
-                //float ThanhTienOld = exitHang.ThanhTien;
-                //exitHang.SoLuong = Convert.ToInt32(SoLuongMoi);
-                //exitHang.ThanhTien = Convert.ToInt32(SoLuongMoi) * exitHang.DonGia;
-                //DanhSachHoaDon[MaHoaDon].TongTien += exitHang.ThanhTien - ThanhTienOld;
-                //DanhSachHoaDon[MaHoaDon].KhachCanTra = DanhSachHoaDon[MaHoaDon].TongTien - DanhSachHoaDon[MaHoaDon].GiamGia;
-
                 //sửa bán âm 
                 if (SoLuong != SoLuongMoi)
                 {
                     if (dtSetting.KT_BanHang(IDKho) == 1)
                     {
-                        int MaHang = Convert.ToInt32(gridChiTietHoaDon.GetRowValues(i, "MaHang"));
-                        dtHangHoa dtt = new dtHangHoa();
-                        int IDHangHoa = Int32.Parse(dtHangHoa.LayIDHangHoa_MaHang(MaHang + ""));
-                        int SLTonKhoHienTai = dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa.ToString(), IDKho);
-                        if (SLTonKhoHienTai < Int32.Parse(SoLuongMoi + ""))
-                        {
-                            if (dtHangHoa.HangHoaQuiDoi(IDHangHoa.ToString()) != IDHangHoa)
-                            {
-                                int IDHangHoaQuiDoi = dtHangHoa.HangHoaQuiDoi(IDHangHoa.ToString());
-                                int HeSo = dtHangHoa.HeSoQuyDoi(IDHangHoaQuiDoi.ToString());
-                                int ToKhoQuiDoi = dtCapNhatTonKho.SoLuong_TonKho(IDHangHoaQuiDoi.ToString(), IDKho);
-                                int TongQuiDoi = (ToKhoQuiDoi * HeSo) + SLTonKhoHienTai;
-                                if (TongQuiDoi >= Int32.Parse(SoLuongMoi + ""))
-                                {
-                                    HienThiThongBao("Cảnh báo: Hàng hóa đang qui đổi?");
-                                }
-                                else
-                                {
-                                    HienThiThongBao("Cảnh báo: Hàng quy đổi không đủ số lượng: Tổng qui đổi:" + TongQuiDoi);
-                                }
-                            }
-                            else
-                            {
-                                HienThiThongBao("Số lượng tồn kho hiện tại không đủ bán");
-                            }
-                        }
+                        //bán âm
                         int STT = Convert.ToInt32(gridChiTietHoaDon.GetRowValues(i, "STT"));
                         var exitHang = DanhSachHoaDon[MaHoaDon].ListChiTietHoaDon.FirstOrDefault(item => item.STT == STT);
                         int SoLuongOld = exitHang.SoLuong;
@@ -355,11 +254,11 @@ namespace BanHang
                     }
                     else
                     {
+                        //không bán âm
                         int MaHang = Convert.ToInt32(gridChiTietHoaDon.GetRowValues(i, "MaHang"));
                         dtHangHoa dtt = new dtHangHoa();
                         int IDHangHoa = Int32.Parse(dtHangHoa.LayIDHangHoa_MaHang(MaHang + ""));
                         int SLTonKhoHienTai = dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa.ToString(), IDKho);
-
                         if (SLTonKhoHienTai >= Int32.Parse(SoLuongMoi + ""))
                         {
                             int STT = Convert.ToInt32(gridChiTietHoaDon.GetRowValues(i, "STT"));
@@ -373,35 +272,8 @@ namespace BanHang
                         }
                         else
                         {
-                            if (dtHangHoa.HangHoaQuiDoi(IDHangHoa.ToString()) != IDHangHoa)
-                            {
-                                int IDHangHoaQuiDoi = dtHangHoa.HangHoaQuiDoi(IDHangHoa.ToString());
-                                int ToKhoQuiDoi = dtCapNhatTonKho.SoLuong_TonKho(IDHangHoaQuiDoi.ToString(), IDKho);
-                                int HeSo = dtHangHoa.HeSoQuyDoi(IDHangHoaQuiDoi.ToString());
-                                int TongQuiDoi = (ToKhoQuiDoi * HeSo) + SLTonKhoHienTai;
-                                if (TongQuiDoi >= Int32.Parse(SoLuongMoi.ToString()))
-                                {
-                                    int STT = Convert.ToInt32(gridChiTietHoaDon.GetRowValues(i, "STT"));
-                                    var exitHang = DanhSachHoaDon[MaHoaDon].ListChiTietHoaDon.FirstOrDefault(item => item.STT == STT);
-                                    int SoLuongOld = exitHang.SoLuong;
-                                    float ThanhTienOld = exitHang.ThanhTien;
-                                    exitHang.SoLuong = Convert.ToInt32(SoLuongMoi);
-                                    exitHang.ThanhTien = Convert.ToInt32(SoLuongMoi) * exitHang.DonGia;
-                                    DanhSachHoaDon[MaHoaDon].TongTien += exitHang.ThanhTien - ThanhTienOld;
-                                    DanhSachHoaDon[MaHoaDon].KhachCanTra = DanhSachHoaDon[MaHoaDon].TongTien - DanhSachHoaDon[MaHoaDon].GiamGia;
-                                    HienThiThongBao("Cảnh báo: Hàng hóa đang qui đổi?");
-                                }
-                                else
-                                {
-                                    HienThiThongBao("Cảnh báo: Hàng quy đổi không đủ số lượng: Tổng qui đổi:" + TongQuiDoi);
-                                }
-                            }
-                            else
-                            {
-                                txtSoLuong.Text = SLTonKhoHienTai + "";
-                                HienThiThongBao("Số lượng tồn kho không đủ bán? Vui lòng liên hệ kho tổng");
-
-                            }
+                            txtSoLuong.Text = SLTonKhoHienTai + "";
+                            HienThiThongBao("Số lượng tồn kho không đủ bán? Vui lòng liên hệ kho tổng.");
                         }
                     }
 
@@ -480,78 +352,11 @@ namespace BanHang
             string IDKhachHang = "1";
             if (ccbKhachHang.Value != null)
                 IDKhachHang = ccbKhachHang.Value.ToString();
-            if (dtSetting.KT_BanHang(IDKho) == 1)
-            {
-                foreach (ChiTietHoaDon cthd in DanhSachHoaDon[MaHoaDon].ListChiTietHoaDon)
-                {
-                    string IDHangHoa = dtHangHoa.LayIDHangHoa_MaHang(cthd.MaHang + "");
-                    string IDHangHoaQuiDoi = dtHangHoa.HangHoaQuiDoi(IDHangHoa) + "";
-
-                    int SLTonHangBan = dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, IDKho);
-                    int SLTonHangQuiDoi = dtCapNhatTonKho.SoLuong_TonKho(IDHangHoaQuiDoi, IDKho);
-                    int SLHangMua = cthd.SoLuong;
-                    if (SLHangMua > SLTonHangBan)
-                    {
-                        // thực hiện qui đổi
-                        int HeSo = dtHangHoa.HeSoQuyDoi(IDHangHoaQuiDoi);
-                        int SoLanDoi = dtHangHoa.KTSoNguyen(SLHangMua - SLTonHangBan, HeSo);
-                        dtCapNhatTonKho.TruTonKho(IDHangHoaQuiDoi, SoLanDoi + "", IDKho);
-                        dtCapNhatTonKho.CongTonKho(IDHangHoa, HeSo * SoLanDoi + "", IDKho);
-                    }
-                }
-                object IDHoaDon = dt.InsertHoaDon(IDKho, IDNhanVien, IDKhachHang, DanhSachHoaDon[MaHoaDon]);
-                HuyHoaDon();
-                ccbKhachHang.Text = "";
-                string jsInHoaDon = "window.open(\"InHoaDonBanLe.aspx?IDHoaDon=" + IDHoaDon + "\", \"PrintingFrame\");";
-                ClientScript.RegisterStartupScript(this.GetType(), "Print", jsInHoaDon, true);
-            }
-            else
-            {
-                // bán hàng không đc âm
-                int kt = 0;
-                foreach (ChiTietHoaDon cthd in DanhSachHoaDon[MaHoaDon].ListChiTietHoaDon)
-                {
-                    string IDHangHoa = dtHangHoa.LayIDHangHoa_MaHang(cthd.MaHang + "");
-                    string IDHangHoaQuiDoi = dtHangHoa.HangHoaQuiDoi(IDHangHoa) + "";
-                    int SLTonHangBan = dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, IDKho);
-                    int SLTonHangQuiDoi = dtCapNhatTonKho.SoLuong_TonKho(IDHangHoaQuiDoi, IDKho);
-                    int SLHangMua = cthd.SoLuong;
-                    if (SLHangMua > SLTonHangBan)
-                    {
-                        // thực hiện qui đổi
-                        int HeSo = dtHangHoa.HeSoQuyDoi(IDHangHoaQuiDoi);
-                        int SoLanDoi = dtHangHoa.KTSoNguyen(SLHangMua - SLTonHangBan, HeSo);
-                        if (SoLanDoi > SLTonHangQuiDoi)
-                        {
-                            kt = 1;
-                        }
-                        // trường hợp không âm chưa làm xong
-                    }
-                }
-                if (kt == 0)
-                {
-                    foreach (ChiTietHoaDon cthd in DanhSachHoaDon[MaHoaDon].ListChiTietHoaDon)
-                    {
-                        string IDHangHoa = dtHangHoa.LayIDHangHoa_MaHang(cthd.MaHang + "");
-                        string IDHangHoaQuiDoi = dtHangHoa.HangHoaQuiDoi(IDHangHoa) + "";
-                        int HeSo = dtHangHoa.HeSoQuyDoi(IDHangHoaQuiDoi);
-                        int SLHangMua = cthd.SoLuong;
-                        int SLTonHangBan = dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, IDKho);
-                        int SoLanDoi = dtHangHoa.KTSoNguyen(SLHangMua - SLTonHangBan, HeSo);
-                        dtCapNhatTonKho.TruTonKho(IDHangHoaQuiDoi, SoLanDoi + "", IDKho);
-                        dtCapNhatTonKho.CongTonKho(IDHangHoa, HeSo * SoLanDoi + "", IDKho);
-                    }
-                    object IDHoaDon = dt.InsertHoaDon(IDKho, IDNhanVien, IDKhachHang, DanhSachHoaDon[MaHoaDon]);
-                    HuyHoaDon();
-                    ccbKhachHang.Text = "";
-                    string jsInHoaDon = "window.open(\"InHoaDonBanLe.aspx?IDHoaDon=" + IDHoaDon + "\", \"PrintingFrame\");";
-                    ClientScript.RegisterStartupScript(this.GetType(), "Print", jsInHoaDon, true);
-                }
-                else
-                {
-                    HienThiThongBao("Hàng qui đổi không đủ?"); return;
-                }
-            }
+            object IDHoaDon = dt.InsertHoaDon(IDKho, IDNhanVien, IDKhachHang, DanhSachHoaDon[MaHoaDon]);
+            HuyHoaDon();
+            ccbKhachHang.Text = "";
+            string jsInHoaDon = "window.open(\"InHoaDonBanLe.aspx?IDHoaDon=" + IDHoaDon + "\", \"PrintingFrame\");";
+            ClientScript.RegisterStartupScript(this.GetType(), "Print", jsInHoaDon, true);
         }
 
         protected void btnHuyKhachHang_Click(object sender, EventArgs e)
@@ -634,14 +439,54 @@ namespace BanHang
             if (e.Value == null || !Int64.TryParse(e.Value.ToString(), out value))
                 return;
             ASPxComboBox comboBox = (ASPxComboBox)source;
-            dsHangHoa.SelectCommand = @"SELECT GPM_HangHoa.ID, GPM_HangHoa.MaHang, GPM_HangHoa.TenHangHoa, GPM_HangHoaTonKho.GiaBan, GPM_DonViTinh.TenDonViTinh 
-                                        FROM GPM_DonViTinh INNER JOIN GPM_HangHoa ON GPM_DonViTinh.ID = GPM_HangHoa.IDDonViTinh 
-                                                           INNER JOIN GPM_HangHoaTonKho ON GPM_HangHoaTonKho.IDHangHoa = GPM_HangHoa.ID 
-                                        WHERE (GPM_HangHoa.ID = @ID) AND (GPM_HangHoa.IDTrangThaiHang = 1 OR GPM_HangHoa.IDTrangThaiHang = 3 OR GPM_HangHoa.IDTrangThaiHang = 6)";
+            dsHangHoa.SelectCommand = @"SELECT TenKhachHang,DienThoai,DiaChi
+                                        FROM GPM_KhachHang
+                                        WHERE (GPM_KhachHang.ID = @ID)";
 
             dsHangHoa.SelectParameters.Clear();
             dsHangHoa.SelectParameters.Add("ID", TypeCode.Int64, e.Value.ToString());
             comboBox.DataSource = dsHangHoa;
+            comboBox.DataBind();
+        }
+
+        protected void ccbKhachHang_ItemsRequestedByFilterCondition(object source, ListEditItemsRequestedByFilterConditionEventArgs e)
+        {
+            ASPxComboBox comboBox = (ASPxComboBox)source;
+
+            sqlKhachHang.SelectCommand = @"SELECT TenKhachHang,DienThoai,DiaChi
+                                        FROM (
+	                                        select TenKhachHang, DienThoai,DiaChi, row_number()over(order by MaKhachHang) as [rn] 
+	                                        FROM GPM_KhachHang
+	                                        WHERE ((TenKhachHang LIKE @TenKhachHang) OR (DienThoai LIKE @DienThoai) OR (DiaChi LIKE @DiaChi)) AND (IDKho = @IDKho) AND (DaXoa = 0)	
+	                                        ) as st 
+                                        where st.[rn] between @startIndex and @endIndex";
+
+            sqlKhachHang.SelectParameters.Clear();
+            sqlKhachHang.SelectParameters.Add("TenKhachHang", TypeCode.String, string.Format("%{0}%", e.Filter));
+            sqlKhachHang.SelectParameters.Add("DienThoai", TypeCode.String, string.Format("%{0}%", e.Filter));
+            sqlKhachHang.SelectParameters.Add("DiaChi", TypeCode.String, string.Format("%{0}%", e.Filter));
+            sqlKhachHang.SelectParameters.Add("IDKho", TypeCode.Int32, Session["IDKho"].ToString());
+            sqlKhachHang.SelectParameters.Add("startIndex", TypeCode.Int64, (e.BeginIndex + 1).ToString());
+            sqlKhachHang.SelectParameters.Add("endIndex", TypeCode.Int64, (e.EndIndex + 1).ToString());
+            comboBox.DataSource = sqlKhachHang;
+            comboBox.DataBind();
+        }
+        
+
+        protected void ccbKhachHang_ItemRequestedByValue(object source, ListEditItemRequestedByValueEventArgs e)
+        {
+            long value = 0;
+            if (e.Value == null || !Int64.TryParse(e.Value.ToString(), out value))
+                return;
+            ASPxComboBox comboBox = (ASPxComboBox)source;
+            sqlKhachHang.SelectCommand = @"SELECT GPM_HangHoa.ID, GPM_HangHoa.MaHang, GPM_HangHoa.TenHangHoa, GPM_HangHoaTonKho.GiaBan, GPM_DonViTinh.TenDonViTinh 
+                                        FROM GPM_DonViTinh INNER JOIN GPM_HangHoa ON GPM_DonViTinh.ID = GPM_HangHoa.IDDonViTinh 
+                                                           INNER JOIN GPM_HangHoaTonKho ON GPM_HangHoaTonKho.IDHangHoa = GPM_HangHoa.ID 
+                                        WHERE (GPM_HangHoa.ID = @ID) AND (GPM_HangHoa.IDTrangThaiHang = 1 OR GPM_HangHoa.IDTrangThaiHang = 3 OR GPM_HangHoa.IDTrangThaiHang = 6)";
+
+            sqlKhachHang.SelectParameters.Clear();
+            sqlKhachHang.SelectParameters.Add("ID", TypeCode.Int64, e.Value.ToString());
+            comboBox.DataSource = sqlKhachHang;
             comboBox.DataBind();
         }
 

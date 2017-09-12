@@ -59,7 +59,7 @@
                                      
                         <table width="95%">
                             <tr>
-                                <td width="80%">
+                                <td width="70%">
                                     <asp:Button ID="btnInsertHang" runat="server" OnClick="btnInsertHang_Click" Style="display: none"/>                                                                                        
                                     <dx:ASPxComboBox ID="txtBarcode" runat="server" ValueType="System.String" 
                                         DropDownWidth="600" DropDownStyle="DropDown" 
@@ -87,6 +87,11 @@
                                 </td>
                                 <td width="15%">                            
                                     <dx:ASPxSpinEdit ID="txtSoLuong" ClientInstanceName="txtSoLuong" runat="server" Caption="Số lượng" TabIndex="0"
+                                        Font-Bold="True" Number="1" Width="100px" NumberType="Integer">                                    
+                                    </dx:ASPxSpinEdit>
+                                </td> 
+                                <td width="10%">                            
+                                    <dx:ASPxSpinEdit ID="ASPxSpinEdit1" ClientInstanceName="txtSoLuong" runat="server" Caption="Số lượng" TabIndex="0"
                                         Font-Bold="True" Number="1" Width="100px" NumberType="Integer">                                    
                                     </dx:ASPxSpinEdit>
                                 </td> 
@@ -229,7 +234,7 @@
                             <td width="85%">
                                 <dx:ASPxComboBox ID="ccbKhachHang" runat="server" ValueType="System.String" 
                                     NullText="Nhập sdt hoặc tên khách hàng trong danh sách." Width="100%" 
-                                    DropDownWidth="550px" DropDownStyle="DropDown"  >
+                                    DropDownWidth="550px" OnItemRequestedByValue="ccbKhachHang_ItemRequestedByValue" OnItemsRequestedByFilterCondition="ccbKhachHang_ItemsRequestedByFilterCondition"  >
                                      <Columns>
                                         <dx:ListBoxColumn FieldName="TenKhachHang" Width="100%"  Caption="Tên khách hàng"/>
                                          <dx:ListBoxColumn FieldName="DienThoai" Width="100px" Caption="Số điện thoại" />    
@@ -237,10 +242,8 @@
                                                                             
                                     </Columns>
                                 </dx:ASPxComboBox>
-                                <asp:SqlDataSource ID="dsKhachHang" runat="server" 
-                                    ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" 
-                                    SelectCommand="SELECT [ID], [TenKhachHang], [DiaChi], [DienThoai] FROM [GPM_KhachHang]">
-                                </asp:SqlDataSource>
+                                 <asp:SqlDataSource ID="sqlKhachHang" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" >                                       
+                                    </asp:SqlDataSource>
                             </td>
                             <td width="15%" align="right">
                                 <dx:ASPxButton ID="ASPxButton1" runat="server" RenderMode="Link" OnClick="ASPxButton1_Click">
