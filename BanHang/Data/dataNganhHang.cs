@@ -94,6 +94,22 @@ namespace BanHang.Data
             return getData(cmd);
         }
 
+        public string LayTenNganhHang_ID(string ID)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT TenNganhHang FROM [GPM_NganhHang] WHERE [ID] = '" + ID + "'";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    return tb.Rows[0]["TenNganhHang"].ToString();
+                }
+            }
+        }
+
         public void XoaNganhHang(int ID)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))

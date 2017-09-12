@@ -115,6 +115,22 @@ namespace BanHang.Data
             return getData(cmd);
         }
 
+        public string LayTenNhomHang_ID(string ID)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT TenNhomHang FROM [GPM_NhomHang] WHERE [ID] = '" + ID + "'";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    return tb.Rows[0]["TenNhomHang"].ToString();
+                }
+            }
+        }
+
         public DataTable getDanhSachNhomHang_IDNganhHang(string IDNganhHang)
         {
             string cmd = "SELECT * FROM [GPM_NHOMHANG] WHERE [DAXOA] = 0 AND (('" + IDNganhHang + "' = -1) OR (IDNganhHang = '" + IDNganhHang + "'))";
