@@ -227,6 +227,11 @@
                                     <Image IconID="businessobjects_boorderitem_32x32">
                                     </Image>
                                 </dx:ASPxButton> 
+                                <dx:ASPxButton ID="btnThoat" runat="server"
+                                    RenderMode="Link" Text="Thoát" PostBackUrl="DangXuat.aspx">
+                                    <Image IconID="edit_delete_32x32">
+                                    </Image>
+                                </dx:ASPxButton> 
                             </td>
                         </tr>
                     </table>
