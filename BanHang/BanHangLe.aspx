@@ -218,7 +218,11 @@
                                 </dx:ASPxButton>                                
                             </td>
                             <td align="right" width="50%">
-                                
+                                 <dx:ASPxButton ID="btnQuyDoiHangHoa" runat="server"
+                                    RenderMode="Link" Text="Quy Đổi Mã Hàng" OnClick="btnQuyDoiHangHoa_Click">
+                                    <Image IconID="businessobjects_boorderitem_32x32">
+                                    </Image>
+                                </dx:ASPxButton> 
                             </td>
                         </tr>
                     </table>
@@ -518,10 +522,62 @@
   </dx:PopupControlContentControl>
 </ContentCollection>
     </dx:ASPxPopupControl>
+        <dx:ASPxPopupControl ID="ASPxPopupControl1" runat="server" AllowDragging="True" AllowResize="True" 
+         PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter"  Width="600px"
+         Height="300px"
+        HeaderText="Quy Đổi Hàng Hóa" ClientInstanceName="popupThemKhachHang" CloseAction="CloseButton">
+         <ContentCollection>
+    <dx:PopupControlContentControl ID="PopupControlContentControl2" runat="server">
+    <dx:ASPxFormLayout ID="ASPxFormLayout3" runat="server" ColCount="2" Width="100%">
+        <Items>
+            <dx:LayoutItem Caption="Tìm Mã Hàng" ColSpan="2">
+                <LayoutItemNestedControlCollection>
+                    <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer11" runat="server">
+                        <dx:ASPxComboBox ID="cmbMaHang" runat="server" Width="80%">
+                        </dx:ASPxComboBox>
+                    </dx:LayoutItemNestedControlContainer>
+                </LayoutItemNestedControlCollection>
+            </dx:LayoutItem>
+            <dx:LayoutItem Caption="Hàng Hóa Quy Đổi" ColSpan="2">
+                <LayoutItemNestedControlCollection>
+                    <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer12" runat="server">
+                        <dx:ASPxComboBox ID="cmbHangHoaQuyDoi" Width="80%" runat="server">
+                        </dx:ASPxComboBox>
+                    </dx:LayoutItemNestedControlContainer>
+                </LayoutItemNestedControlCollection>
+            </dx:LayoutItem>
+            <dx:LayoutItem Caption="Số Lượng Quy Đổi" ColSpan="2">
+                <LayoutItemNestedControlCollection>
+                    <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer13" runat="server">
+                        <dx:ASPxSpinEdit ID="txtSoLuongQuyDoi" runat="server" Width="100%">
+                        </dx:ASPxSpinEdit>
+                    </dx:LayoutItemNestedControlContainer>
+                </LayoutItemNestedControlCollection>
+            </dx:LayoutItem>
+            <dx:LayoutItem Caption="">
+                <LayoutItemNestedControlCollection>
+                    <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer14" runat="server">
+                        <dx:ASPxButton ID="ASPxFormLayout3_E12" runat="server">
+                        </dx:ASPxButton>
+                    </dx:LayoutItemNestedControlContainer>
+                </LayoutItemNestedControlCollection>
+            </dx:LayoutItem>
+            <dx:LayoutItem Caption="">
+                <LayoutItemNestedControlCollection>
+                    <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer15" runat="server">
+                        <dx:ASPxButton ID="ASPxFormLayout3_E10" runat="server">
+                        </dx:ASPxButton>
+                    </dx:LayoutItemNestedControlContainer>
+                </LayoutItemNestedControlCollection>
+            </dx:LayoutItem>
+        </Items>
+    </dx:ASPxFormLayout>
+  </dx:PopupControlContentControl>
+</ContentCollection>
+    </dx:ASPxPopupControl>
         <dx:ASPxPopupControl ID="chitietbuilInLai" runat="server" AllowDragging="True" AllowResize="True" 
          PopupHorizontalAlign="WindowCenter" ClientInstanceName="chitietbuilInLai" PopupVerticalAlign="WindowCenter"  Width="1000px" Height="600px" HeaderText="Chi tiết hóa đơn">
         </dx:ASPxPopupControl>
-
         <iframe name="PrintingFrame" style="display: block; width:0px; height:0px;"></iframe>
     </form>    
     </body>
