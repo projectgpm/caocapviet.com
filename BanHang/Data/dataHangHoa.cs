@@ -651,7 +651,7 @@ namespace BanHang.Data
                 {
                     object IDHH = -1;
                     myConnection.Open();
-                    string cmdText = "update GPM_HangHoa_QuyDoi set DaXoa = 1 where ID = @ID";
+                    string cmdText = "delete GPM_HangHoa_QuyDoi where ID = @ID";
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
 
