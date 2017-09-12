@@ -591,7 +591,7 @@
             <dx:LayoutItem Caption="">
                 <LayoutItemNestedControlCollection>
                     <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer14" runat="server">
-                        <dx:ASPxButton ID="btnQuiDoi" runat="server" Text="Qui Đổi">
+                        <dx:ASPxButton ID="btnQuiDoi" runat="server" Text="Qui Đổi" OnClick="btnQuiDoi_Click">
                             <Image IconID="actions_apply_32x32">
                             </Image>
                         </dx:ASPxButton>

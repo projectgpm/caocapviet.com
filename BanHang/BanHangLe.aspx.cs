@@ -542,7 +542,6 @@ namespace BanHang
             comboBox.DataSource = SqlQuiDoi;
             comboBox.DataBind();
         }
-
         protected void cmbMaHang_ItemRequestedByValue(object source, ListEditItemRequestedByValueEventArgs e)
         {
             long value = 0;
@@ -553,13 +552,11 @@ namespace BanHang
                                         FROM GPM_DonViTinh INNER JOIN GPM_HangHoa ON GPM_DonViTinh.ID = GPM_HangHoa.IDDonViTinh 
                                                            INNER JOIN GPM_HangHoaTonKho ON GPM_HangHoaTonKho.IDHangHoa = GPM_HangHoa.ID 
                                         WHERE (GPM_HangHoa.ID = @ID) AND (GPM_HangHoa.IDTrangThaiHang = 1 OR GPM_HangHoa.IDTrangThaiHang = 3)";
-
             SqlQuiDoi.SelectParameters.Clear();
             SqlQuiDoi.SelectParameters.Add("ID", TypeCode.Int64, e.Value.ToString());
             comboBox.DataSource = SqlQuiDoi;
             comboBox.DataBind();
         }
-
         protected void cmbMaHang_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -616,7 +613,31 @@ namespace BanHang
         {
             if (cmbHangHoaQuyDoi.Text != "")
             {
+                txtSoLuongQuyDoi.Text = "0";
                 txtTonKhoB.Text = dtCapNhatTonKho.SoLuong_TonKho(cmbHangHoaQuyDoi.Value.ToString(), Session["IDKho"].ToString()).ToString();
+            }
+        }
+
+        protected void btnQuiDoi_Click(object sender, EventArgs e)
+        {
+            if (txtSoLuongQuyDoi.Text != "")
+            {
+                int SoLuongQuiDoi = Int32.Parse(txtSoLuongQuyDoi.Text.ToString());// số lượng cần qui đổi
+                int SLTonQuiDoi = Int32.Parse(txtTonKhoB.Text.ToString());// số lượng tồn của mặt hàng qui đổi
+                if (SoLuongQuiDoi > SLTonQuiDoi)
+                {
+                    HienThiThongBao("Số lượng hàng qui đổi không đủ !!");
+                }
+                else
+                {
+                    int SLTonHienTai = Int32.Parse(txtTonKhoA.Text.ToString());// số lượng tồn của hàng hóa cần qui đổi.
+
+                }
+            }
+            else
+            {
+                txtSoLuongQuyDoi.Focus();
+                HienThiThongBao("Vui lòng nhập số lượng?");
             }
         }
 
