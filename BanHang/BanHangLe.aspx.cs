@@ -501,6 +501,12 @@ namespace BanHang
                 HienThiThongBao("Vui lòng nhập thông tin cần tìm?");
             }
         }
+
+        protected void btnQuyDoiHangHoa_Click(object sender, EventArgs e)
+        {
+
+        }
+      
     }
     [Serializable]
     public class HoaDon
