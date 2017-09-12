@@ -162,6 +162,8 @@
                                                             </dx:RibbonDropDownButtonItem>
                                                             <dx:RibbonDropDownButtonItem Name="baocaotonkho" Text="Báo cáo tồn kho" NavigateUrl="BaoCaoTonKho.aspx">
                                                             </dx:RibbonDropDownButtonItem>
+                                                            <dx:RibbonDropDownButtonItem Name="baocaokhachhangtrahang" NavigateUrl="BaoCaoKhachHangTraHang.aspx" Text="Khách hàng trả hàng">
+                                                            </dx:RibbonDropDownButtonItem>
                                                         </Items>
                                                         <LargeImage Url="~/image/baocao.png">
                                                         </LargeImage>
