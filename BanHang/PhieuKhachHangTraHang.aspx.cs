@@ -67,48 +67,56 @@ namespace BanHang
 
         protected void btnThem_Click(object sender, EventArgs e)
         {
-            string IDHoaDon = cmbHoaDon.Value + "";
-            dtPhieuKhachHangTraHang dt = new dtPhieuKhachHangTraHang();
-            cmbHangHoa.DataSource = dt.DanhSachHangHoa_HoaDon(IDHoaDon);
-            cmbHangHoa.DataBind();
-
             string IDPhieuTraHang = IDPhieuKhachHangTraHangTem_Temp.Value + "";
-            string IDChiTiet = cmbHangHoa.Value + "";
-            string IDHangHoa = 0 + "";
-            int soLuongBan = 0;
-            DataTable dta = dt.ChiTietHangHoa(IDChiTiet);
-            if (dta.Rows.Count != 0)
-            {
-                DataRow dr = dta.Rows[0];
-                IDHangHoa = dr["IDHangHoa"].ToString();
-                soLuongBan = Int32.Parse(dr["SoLuong"].ToString());
-            }
 
-            DataTable tHH = dt.ChiTietHangHoa_ID(IDHangHoa, IDPhieuTraHang);
-            if (tHH.Rows.Count == 0)
+            if (cmbHoaDon.Value != null && cmbLyDoTra.Value != null)
             {
-                string GiaBan = txtGiaBan.Value + "";
-                string SoLuong = txtSoLuong.Value + "";
-                string tongTien = txtTongTienHH.Value + "";
-                string lyDoTra = txtLyDoTra.Value + "";
-                dt.ThemChiTietPhieuKhachHangTraHang_Temp(IDPhieuTraHang, IDHangHoa, GiaBan, SoLuong, tongTien, lyDoTra);
-            }
-            else
-            {
-                string GiaBan = txtGiaBan.Value + "";
-                string SoLuong = txtSoLuong.Value + "";
-                string lyDoTra = txtLyDoTra.Value + "";
+                string IDHoaDon = cmbHoaDon.Value + "";
+                dtPhieuKhachHangTraHang dt = new dtPhieuKhachHangTraHang();
+                cmbHangHoa.DataSource = dt.DanhSachHangHoa_HoaDon(IDHoaDon);
+                cmbHangHoa.DataBind();
 
-                int SoLuong2 = Int32.Parse(tHH.Rows[0]["SoLuong"].ToString()) + Int32.Parse(SoLuong);
-                if (soLuongBan < SoLuong2)
+                string IDChiTiet = cmbHangHoa.Value + "";
+                string IDHangHoa = 0 + "";
+                int soLuongBan = 0;
+                DataTable dta = dt.ChiTietHangHoa(IDChiTiet);
+                if (dta.Rows.Count != 0)
                 {
-                    txtSoLuong.Value = soLuongBan - Int32.Parse(tHH.Rows[0]["SoLuong"].ToString());
-                    Response.Write("<script language='JavaScript'> alert('Không được vượt số lượng mua.'); </script>");
+                    DataRow dr = dta.Rows[0];
+                    IDHangHoa = dr["IDHangHoa"].ToString();
+                    soLuongBan = Int32.Parse(dr["SoLuong"].ToString());
+                }
+
+                DataTable tHH = dt.ChiTietHangHoa_ID(IDHangHoa, IDPhieuTraHang);
+                if (tHH.Rows.Count == 0)
+                {
+                    string GiaBan = txtGiaBan.Value + "";
+                    string SoLuong = txtSoLuong.Value + "";
+                    string tongTien = txtTongTienHH.Value + "";
+                    string lyDoTra = cmbLyDoTra.Text + "";
+                    dt.ThemChiTietPhieuKhachHangTraHang_Temp(IDPhieuTraHang, IDHangHoa, GiaBan, SoLuong, tongTien, lyDoTra);
                 }
                 else
                 {
-                    dt.CapNhatChiTietPhieuKhachHangTraHang_Temp(IDPhieuTraHang, IDHangHoa, GiaBan, SoLuong2 + "", (SoLuong2 * Int32.Parse(GiaBan)) + "", lyDoTra);
+                    string GiaBan = txtGiaBan.Value + "";
+                    string SoLuong = txtSoLuong.Value + "";
+                    string lyDoTra = cmbLyDoTra.Text + "";
+
+                    int SoLuong2 = Int32.Parse(tHH.Rows[0]["SoLuong"].ToString()) + Int32.Parse(SoLuong);
+                    if (soLuongBan < SoLuong2)
+                    {
+                        txtSoLuong.Value = soLuongBan - Int32.Parse(tHH.Rows[0]["SoLuong"].ToString());
+                        Response.Write("<script language='JavaScript'> alert('Không được vượt số lượng mua.'); </script>");
+                    }
+                    else
+                    {
+                        dt.CapNhatChiTietPhieuKhachHangTraHang_Temp(IDPhieuTraHang, IDHangHoa, GiaBan, SoLuong2 + "", (SoLuong2 * Int32.Parse(GiaBan)) + "", lyDoTra);
+                    }
                 }
+            }
+            else
+            {
+                Response.Write("<script language='JavaScript'> alert('Chọn hàng hóa và lý do trả.'); </script>");
             }
             LoadGrid(IDPhieuTraHang);
         }

@@ -158,11 +158,18 @@
                             </dx:LayoutItemNestedControlContainer>
                         </LayoutItemNestedControlCollection>
                     </dx:LayoutItem>
-                    <dx:LayoutItem Caption="Lý do trả" ColSpan="2">
+                    <dx:LayoutItem Caption="Lý do trả">
                         <LayoutItemNestedControlCollection>
                             <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer11" runat="server">
-                                <dx:ASPxTextBox ID="txtLyDoTra" runat="server" Width="100%">
-                                </dx:ASPxTextBox>
+                                <dx:ASPxComboBox ID="cmbLyDoTra" runat="server" DataSourceID="sqlLyDoTra" TextField="LyDoTra" ValueField="ID" Width="100%">
+                                </dx:ASPxComboBox>
+                                <asp:SqlDataSource ID="sqlLyDoTra" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" SelectCommand="SELECT * FROM [GPM_TrangThaiHangKhachTra]"></asp:SqlDataSource>
+                            </dx:LayoutItemNestedControlContainer>
+                        </LayoutItemNestedControlCollection>
+                    </dx:LayoutItem>
+                    <dx:LayoutItem Caption="">
+                        <LayoutItemNestedControlCollection>
+                            <dx:LayoutItemNestedControlContainer runat="server">
                             </dx:LayoutItemNestedControlContainer>
                         </LayoutItemNestedControlCollection>
                     </dx:LayoutItem>

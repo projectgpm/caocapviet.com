@@ -47,6 +47,23 @@ namespace BanHang.Data
                 }
             }
         }
+
+        public string LayTenKhachHang_ID(string ID)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT TenKhachHang FROM [GPM_Kho] WHERE [ID] = '" + ID + "'";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    return tb.Rows[0]["TenKhachHang"].ToString();
+                }
+            }
+        }
+
         public DataTable LayDanhSachKhachHang( string IDKho)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
@@ -62,7 +79,22 @@ namespace BanHang.Data
                 }
             }
         }
-       
+
+        public DataTable LayDanhSachKhachHang_BaoCao(string IDKho)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT ID,TenKhachHang FROM [GPM_KHACHHANG] WHERE [GPM_KHACHHANG].DaXoa = 0  AND ('" + IDKho + "' = 1 OR IDKho = '" + IDKho + "') ORDER BY [ID] DESC";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    return tb;
+                }
+            }
+        }
       
         public object ThemKhachHang(int IDNhomKhachHang, string MaKhachHang, string TenKhachHang, DateTime NgaySinh, string CMND, string DiaChi, string DienThoai, string Email, string Barcode, string GhiChu, string IDKho)
         {

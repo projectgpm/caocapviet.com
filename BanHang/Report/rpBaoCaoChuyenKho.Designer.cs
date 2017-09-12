@@ -913,7 +913,7 @@
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell32.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
             new DevExpress.XtraReports.UI.XRBinding("Text", null, "democcv2_GPM_PhieuChuyenKho.democcv2_GPM_PhieuChuyenKhodemoccv2_GPM_PhieuChuyenKh" +
-                    "o_ChiTiet.GiaBanTruocThue")});
+                    "o_ChiTiet.GiaBanTruocThue", "{0:#,#}")});
             this.xrTableCell32.Dpi = 254F;
             this.xrTableCell32.Name = "xrTableCell32";
             this.xrTableCell32.StylePriority.UseBorders = false;
@@ -937,7 +937,7 @@
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell34.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
             new DevExpress.XtraReports.UI.XRBinding("Text", null, "democcv2_GPM_PhieuChuyenKho.democcv2_GPM_PhieuChuyenKhodemoccv2_GPM_PhieuChuyenKh" +
-                    "o_ChiTiet.GiaTriDonHang")});
+                    "o_ChiTiet.GiaTriDonHang", "{0:#,#}")});
             this.xrTableCell34.Dpi = 254F;
             this.xrTableCell34.Name = "xrTableCell34";
             this.xrTableCell34.StylePriority.UseBorders = false;
@@ -961,7 +961,7 @@
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell36.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
             new DevExpress.XtraReports.UI.XRBinding("Text", null, "democcv2_GPM_PhieuChuyenKho.democcv2_GPM_PhieuChuyenKhodemoccv2_GPM_PhieuChuyenKh" +
-                    "o_ChiTiet.GiaTriDonHang")});
+                    "o_ChiTiet.GiaTriDonHang", "{0:#,#}")});
             this.xrTableCell36.Dpi = 254F;
             this.xrTableCell36.Name = "xrTableCell36";
             this.xrTableCell36.StylePriority.UseBorders = false;
@@ -1100,6 +1100,7 @@
             this.xrTableCell44.Dpi = 254F;
             this.xrTableCell44.Name = "xrTableCell44";
             this.xrTableCell44.StylePriority.UseBorders = false;
+            xrSummary4.FormatString = "{0:#,# VND}";
             xrSummary4.Running = DevExpress.XtraReports.UI.SummaryRunning.Report;
             this.xrTableCell44.Summary = xrSummary4;
             this.xrTableCell44.Weight = 1.0932034416573631D;
@@ -1128,6 +1129,7 @@
             this.xrTableCell46.Dpi = 254F;
             this.xrTableCell46.Name = "xrTableCell46";
             this.xrTableCell46.StylePriority.UseBorders = false;
+            xrSummary6.FormatString = "{0:#,# VND}";
             xrSummary6.Running = DevExpress.XtraReports.UI.SummaryRunning.Report;
             this.xrTableCell46.Summary = xrSummary6;
             this.xrTableCell46.Weight = 1.1494575332186188D;

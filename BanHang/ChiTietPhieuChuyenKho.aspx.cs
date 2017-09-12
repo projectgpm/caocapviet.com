@@ -47,17 +47,25 @@ namespace BanHang
             if (IDTrangThai == 4 || DaXoa == 1) btnXacNhanChuyenKho.Enabled = false;
             if (IDTrangThai > 1) gridHangHoaChiTiet.Columns["chucnang"].Visible = false;
             if (IDKho != IDKhoXuat) gridHangHoaChiTiet.Columns["chucnang"].Visible = false;
+            
             if (IDKhoXuat == IDKho)
             {
                 if (IDTrangThai != 1) btnXacNhanChuyenKho.Enabled = false;
+                if (IDKho == 1 && IDTrangThai == 3) btnXacNhanChuyenKho.Enabled = true;
             }
             else if (IDKhoNhan == IDKho)
             {
                 if (IDTrangThai != 2) btnXacNhanChuyenKho.Enabled = false;
+                if (IDKho == 1 && IDTrangThai == 3) btnXacNhanChuyenKho.Enabled = true;
             }
             else if (IDKho == 1)
             {
                 if (IDTrangThai != 3) btnXacNhanChuyenKho.Enabled = false;
+            }
+
+            if (IDNhom != 3 && IDNhom != 4)
+            {
+                btnXacNhanChuyenKho.Enabled = false;
             }
         }
 
@@ -141,8 +149,10 @@ namespace BanHang
             DataTable da = dt.DanhSachPhieuChuyenKho_Kho(IDPhieuChuyenKho);
             int IDKhoXuat = Int32.Parse(da.Rows[0]["IDKhoXuat"].ToString());
             int IDKhoNhan = Int32.Parse(da.Rows[0]["IDKhoNhap"].ToString());
+            int IDTrangThai = Int32.Parse(da.Rows[0]["IDTrangThai"].ToString());
+            int DaXoa = Int32.Parse(da.Rows[0]["DaXoa"].ToString());
 
-            if (IDKhoXuat == IDKho)
+            if (IDKhoXuat == IDKho && IDKho != 1)
             {
                 if (IDNhom == 3)
                 {
@@ -151,13 +161,9 @@ namespace BanHang
                 else if (IDNhom == 4)
                 {
                     dt.DuyetChuyenKho_Xuat_GS1(IDPhieuChuyenKho, IDNhanVien + "");
-                }
-                else if (IDKho == 1)
-                {
-                    dt.DuyetChuyenKho_Xuat_GS1(IDPhieuChuyenKho, IDNhanVien + "");
-                }
+                } 
             }
-            else if (IDKhoNhan == IDKho)
+            else if (IDKhoNhan == IDKho && IDKho != 1)
             {
                 if (IDNhom == 3)
                 {
@@ -167,30 +173,101 @@ namespace BanHang
                 {
                     dt.DuyetChuyenKho_Nhap_GS1(IDPhieuChuyenKho, IDNhanVien + "");
                 }
-                else if (IDKho == 1)
+            }
+            else if (IDKhoXuat == IDKho && IDKho == 1) // kho tổng là kho xuất.
+            {
+                if (IDTrangThai == 1)
                 {
-                    dt.DuyetChuyenKho_Nhap_GS1(IDPhieuChuyenKho, IDNhanVien + "");
+                    if (IDNhom == 3)
+                    {
+                        dt.DuyetChuyenKho_Xuat_CH1(IDPhieuChuyenKho, IDNhanVien + "");
+                    }
+                    else if (IDNhom == 4)
+                    {
+                        dt.DuyetChuyenKho_Xuat_GS1(IDPhieuChuyenKho, IDNhanVien + "");
+                    }
+                }
+                else if (IDTrangThai == 3)
+                {
+                    dt.DuyetChuyenKho_HoanThanh(IDPhieuChuyenKho, IDNhanVien + "");
+
+                    // Cộng, trừ tồn kho của 2 hệ thống...
+                    DataTable dataChiTiet = dt.DanhSachChiTietPhieuChuyenKho(IDPhieuChuyenKho);
+                    string SoPhieu = dtPhieuChuyenKho.MaPhieuChuyenKho(IDPhieuChuyenKho);
+                    for (int i = 0; i < dataChiTiet.Rows.Count; i++)
+                    {
+                        string IDHangHoa = dataChiTiet.Rows[i]["IDHangHoa"].ToString();
+                        string SoLuong = dataChiTiet.Rows[i]["SoLuong"].ToString();
+                        //dtCapNhatTonKho.TruTonKho(IDHangHoa, SoLuong, IDKhoXuat + "");
+                        //dtCapNhatTonKho.CongTonKho(IDHangHoa, SoLuong, IDKhoNhan + "");
+                        object TheKho1 = dtTheKho.ThemTheKho(SoPhieu, "Chuyển Kho " + dtTheKho.LayTenKho_ID(IDKhoXuat.ToString()) + " Sang " + dtTheKho.LayTenKho_ID(IDKhoNhan.ToString()), SoLuong, "0", (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, IDKhoNhan.ToString()).ToString()) + Int32.Parse(SoLuong)).ToString(), Session["IDNhanVien"].ToString(), Session["IDKho"].ToString(), IDHangHoa, "Nhập");
+                        object TheKho2 = dtTheKho.ThemTheKho(SoPhieu, "Chuyển Kho " + dtTheKho.LayTenKho_ID(IDKhoXuat.ToString()) + " Sang " + dtTheKho.LayTenKho_ID(IDKhoNhan.ToString()), "0", SoLuong, (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, IDKhoXuat.ToString()).ToString()) - Int32.Parse(SoLuong)).ToString(), Session["IDNhanVien"].ToString(), Session["IDKho"].ToString(), IDHangHoa, "Xuất");
+                        if (TheKho1 != null && TheKho2 != null)
+                        {
+                            dtCapNhatTonKho.TruTonKho(IDHangHoa, SoLuong, IDKhoXuat + "");
+                            dtCapNhatTonKho.CongTonKho(IDHangHoa, SoLuong, IDKhoNhan + "");
+                        }
+                    }
+                }
+            }
+            else if (IDKhoNhan == IDKho && IDKho == 1)
+            {
+                if (IDTrangThai == 2)
+                {
+                    if (IDNhom == 3)
+                    {
+                        dt.DuyetChuyenKho_Xuat_CH1(IDPhieuChuyenKho, IDNhanVien + "");
+                    }
+                    else if (IDNhom == 4)
+                    {
+                        dt.DuyetChuyenKho_Xuat_GS1(IDPhieuChuyenKho, IDNhanVien + "");
+                    }
+                }
+                else if (IDTrangThai == 3)
+                {
+                    dt.DuyetChuyenKho_HoanThanh(IDPhieuChuyenKho, IDNhanVien + "");
+
+                    // Cộng, trừ tồn kho của 2 hệ thống...
+                    DataTable dataChiTiet = dt.DanhSachChiTietPhieuChuyenKho(IDPhieuChuyenKho);
+                    string SoPhieu = dtPhieuChuyenKho.MaPhieuChuyenKho(IDPhieuChuyenKho);
+                    for (int i = 0; i < dataChiTiet.Rows.Count; i++)
+                    {
+                        string IDHangHoa = dataChiTiet.Rows[i]["IDHangHoa"].ToString();
+                        string SoLuong = dataChiTiet.Rows[i]["SoLuong"].ToString();
+                        //dtCapNhatTonKho.TruTonKho(IDHangHoa, SoLuong, IDKhoXuat + "");
+                        //dtCapNhatTonKho.CongTonKho(IDHangHoa, SoLuong, IDKhoNhan + "");
+                        object TheKho1 = dtTheKho.ThemTheKho(SoPhieu, "Chuyển Kho " + dtTheKho.LayTenKho_ID(IDKhoXuat.ToString()) + " Sang " + dtTheKho.LayTenKho_ID(IDKhoNhan.ToString()), SoLuong, "0", (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, IDKhoNhan.ToString()).ToString()) + Int32.Parse(SoLuong)).ToString(), Session["IDNhanVien"].ToString(), Session["IDKho"].ToString(), IDHangHoa, "Nhập");
+                        object TheKho2 = dtTheKho.ThemTheKho(SoPhieu, "Chuyển Kho " + dtTheKho.LayTenKho_ID(IDKhoXuat.ToString()) + " Sang " + dtTheKho.LayTenKho_ID(IDKhoNhan.ToString()), "0", SoLuong, (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, IDKhoXuat.ToString()).ToString()) - Int32.Parse(SoLuong)).ToString(), Session["IDNhanVien"].ToString(), Session["IDKho"].ToString(), IDHangHoa, "Xuất");
+                        if (TheKho1 != null && TheKho2 != null)
+                        {
+                            dtCapNhatTonKho.TruTonKho(IDHangHoa, SoLuong, IDKhoXuat + "");
+                            dtCapNhatTonKho.CongTonKho(IDHangHoa, SoLuong, IDKhoNhan + "");
+                        }
+                    }
                 }
             }
             else if (IDKho == 1)
             {
-                dt.DuyetChuyenKho_HoanThanh(IDPhieuChuyenKho, IDNhanVien + "");
-
-                // Cộng, trừ tồn kho của 2 hệ thống...
-                DataTable dataChiTiet = dt.DanhSachChiTietPhieuChuyenKho(IDPhieuChuyenKho);
-                string SoPhieu = dtPhieuChuyenKho.MaPhieuChuyenKho(IDPhieuChuyenKho);
-                for (int i = 0; i < dataChiTiet.Rows.Count; i++)
+                if (IDTrangThai == 3)
                 {
-                    string IDHangHoa = dataChiTiet.Rows[i]["IDHangHoa"].ToString();
-                    string SoLuong = dataChiTiet.Rows[i]["SoLuong"].ToString();
-                    //dtCapNhatTonKho.TruTonKho(IDHangHoa, SoLuong, IDKhoXuat + "");
-                    //dtCapNhatTonKho.CongTonKho(IDHangHoa, SoLuong, IDKhoNhan + "");
-                    object TheKho1 = dtTheKho.ThemTheKho(SoPhieu, "Chuyển Kho " + dtTheKho.LayTenKho_ID(IDKhoXuat.ToString()) + " Sang " + dtTheKho.LayTenKho_ID(IDKhoNhan.ToString()), SoLuong, "0", (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, IDKhoNhan.ToString()).ToString()) + Int32.Parse(SoLuong)).ToString(), Session["IDNhanVien"].ToString(), Session["IDKho"].ToString(), IDHangHoa,"Nhập");
-                    object TheKho2 = dtTheKho.ThemTheKho(SoPhieu, "Chuyển Kho " + dtTheKho.LayTenKho_ID(IDKhoXuat.ToString()) + " Sang " + dtTheKho.LayTenKho_ID(IDKhoNhan.ToString()), "0", SoLuong, (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, IDKhoXuat.ToString()).ToString()) - Int32.Parse(SoLuong)).ToString(), Session["IDNhanVien"].ToString(), Session["IDKho"].ToString(), IDHangHoa,"Xuất");
-                    if (TheKho1 != null && TheKho2 != null)
+                    dt.DuyetChuyenKho_HoanThanh(IDPhieuChuyenKho, IDNhanVien + "");
+
+                    // Cộng, trừ tồn kho của 2 hệ thống...
+                    DataTable dataChiTiet = dt.DanhSachChiTietPhieuChuyenKho(IDPhieuChuyenKho);
+                    string SoPhieu = dtPhieuChuyenKho.MaPhieuChuyenKho(IDPhieuChuyenKho);
+                    for (int i = 0; i < dataChiTiet.Rows.Count; i++)
                     {
-                        dtCapNhatTonKho.TruTonKho(IDHangHoa, SoLuong, IDKhoXuat + "");
-                        dtCapNhatTonKho.CongTonKho(IDHangHoa, SoLuong, IDKhoNhan + "");
+                        string IDHangHoa = dataChiTiet.Rows[i]["IDHangHoa"].ToString();
+                        string SoLuong = dataChiTiet.Rows[i]["SoLuong"].ToString();
+                        //dtCapNhatTonKho.TruTonKho(IDHangHoa, SoLuong, IDKhoXuat + "");
+                        //dtCapNhatTonKho.CongTonKho(IDHangHoa, SoLuong, IDKhoNhan + "");
+                        object TheKho1 = dtTheKho.ThemTheKho(SoPhieu, "Chuyển Kho " + dtTheKho.LayTenKho_ID(IDKhoXuat.ToString()) + " Sang " + dtTheKho.LayTenKho_ID(IDKhoNhan.ToString()), SoLuong, "0", (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, IDKhoNhan.ToString()).ToString()) + Int32.Parse(SoLuong)).ToString(), Session["IDNhanVien"].ToString(), Session["IDKho"].ToString(), IDHangHoa, "Nhập");
+                        object TheKho2 = dtTheKho.ThemTheKho(SoPhieu, "Chuyển Kho " + dtTheKho.LayTenKho_ID(IDKhoXuat.ToString()) + " Sang " + dtTheKho.LayTenKho_ID(IDKhoNhan.ToString()), "0", SoLuong, (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, IDKhoXuat.ToString()).ToString()) - Int32.Parse(SoLuong)).ToString(), Session["IDNhanVien"].ToString(), Session["IDKho"].ToString(), IDHangHoa, "Xuất");
+                        if (TheKho1 != null && TheKho2 != null)
+                        {
+                            dtCapNhatTonKho.TruTonKho(IDHangHoa, SoLuong, IDKhoXuat + "");
+                            dtCapNhatTonKho.CongTonKho(IDHangHoa, SoLuong, IDKhoNhan + "");
+                        }
                     }
                 }
             }

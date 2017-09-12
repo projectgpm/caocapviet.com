@@ -148,14 +148,14 @@
                                             <PropertiesComboBox DataSourceID="sqlDNhanVien" TextField="TenNguoiDung" ValueField="ID">
                                             </PropertiesComboBox>
                                         </dx:GridViewDataComboBoxColumn>
-                                        <dx:GridViewDataComboBoxColumn Caption="Nhân viên kho tổng" FieldName="IDNhanVienKho1" VisibleIndex="9">
-                                            <PropertiesComboBox DataSourceID="sqlDNhanVien" TextField="TenNguoiDung" ValueField="ID">
-                                            </PropertiesComboBox>
-                                        </dx:GridViewDataComboBoxColumn>
                                         <dx:GridViewDataTextColumn Caption="Ghi Chú" FieldName="GhiChu" VisibleIndex="16">
                                         </dx:GridViewDataTextColumn>
                                         <dx:GridViewDataTextColumn Caption="Người giao" FieldName="NguoiGiao" ShowInCustomizationForm="True" VisibleIndex="15">
                                         </dx:GridViewDataTextColumn>
+                                        <dx:GridViewDataComboBoxColumn Caption="Giám sát kho tổng" FieldName="IDNhanVienKho1" ShowInCustomizationForm="True" VisibleIndex="9">
+                                            <PropertiesComboBox DataSourceID="sqlDNhanVien" TextField="TenNguoiDung" ValueField="ID">
+                                            </PropertiesComboBox>
+                                        </dx:GridViewDataComboBoxColumn>
                                     </Columns>
                                     <Styles>
                                         <Header Font-Bold="True" HorizontalAlign="Center">
