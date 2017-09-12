@@ -9,6 +9,22 @@ namespace BanHang.Data
 {
     public class dtHeThongQuyDoi
     {
+        public DataTable DanhSachHangHoaQuiDoi(string IDHangHoa)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT [GPM_HangHoa].TenHangHoa,[GPM_HangHoa].MaHang,[GPM_DonViTinh].TenDonViTinh,[GPM_HangHoa].ID FROM [GPM_HangHoa_QuyDoi],[GPM_HangHoa],[GPM_DonViTinh] WHERE [GPM_HangHoa_QuyDoi].IDHangQuyDoi = [GPM_HangHoa].ID AND [GPM_DonViTinh].ID = [GPM_HangHoa].IDDonViTinh AND [GPM_HangHoa_QuyDoi].DaXoa = 0 AND [GPM_HangHoa_QuyDoi].IDHangHoa = '" + IDHangHoa + "'";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    return tb;
+                }
+            }
+        }
+
         public DataTable DanhSachHangCanQuiDoi(string IDKho)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))

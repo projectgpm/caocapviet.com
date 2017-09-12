@@ -562,13 +562,13 @@ namespace BanHang {
         protected global::DevExpress.Web.ASPxButton btnHuyKhachHang;
         
         /// <summary>
-        /// ASPxPopupControl1 control.
+        /// popupQuiDoi control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxPopupControl ASPxPopupControl1;
+        protected global::DevExpress.Web.ASPxPopupControl popupQuiDoi;
         
         /// <summary>
         /// PopupControlContentControl2 control.
@@ -607,6 +607,24 @@ namespace BanHang {
         protected global::DevExpress.Web.ASPxComboBox cmbMaHang;
         
         /// <summary>
+        /// txtTonKhoA control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxLabel txtTonKhoA;
+        
+        /// <summary>
+        /// SqlQuiDoi control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlQuiDoi;
+        
+        /// <summary>
         /// LayoutItemNestedControlContainer12 control.
         /// </summary>
         /// <remarks>
@@ -623,6 +641,15 @@ namespace BanHang {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxComboBox cmbHangHoaQuyDoi;
+        
+        /// <summary>
+        /// txtTonKhoB control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxLabel txtTonKhoB;
         
         /// <summary>
         /// LayoutItemNestedControlContainer13 control.
@@ -652,13 +679,13 @@ namespace BanHang {
         protected global::DevExpress.Web.LayoutItemNestedControlContainer LayoutItemNestedControlContainer14;
         
         /// <summary>
-        /// ASPxFormLayout3_E12 control.
+        /// btnQuiDoi control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxButton ASPxFormLayout3_E12;
+        protected global::DevExpress.Web.ASPxButton btnQuiDoi;
         
         /// <summary>
         /// LayoutItemNestedControlContainer15 control.
@@ -670,13 +697,13 @@ namespace BanHang {
         protected global::DevExpress.Web.LayoutItemNestedControlContainer LayoutItemNestedControlContainer15;
         
         /// <summary>
-        /// ASPxFormLayout3_E10 control.
+        /// btnHuyQuiDoi control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxButton ASPxFormLayout3_E10;
+        protected global::DevExpress.Web.ASPxButton btnHuyQuiDoi;
         
         /// <summary>
         /// chitietbuilInLai control.
