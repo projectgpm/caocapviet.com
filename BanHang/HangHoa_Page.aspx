@@ -45,7 +45,6 @@
                             <dx:LayoutItemNestedControlContainer runat="server">
                                 <dx:ASPxComboBox ID="cmbDonViTinh" runat="server" Width="100%" DataSourceID="sqlDonVitinh"   ValueType="System.String"  DropDownWidth="400" DropDownStyle="DropDown" ValueField="ID" AutoPostBack="True" OnSelectedIndexChanged="cmbDonViTinh_SelectedIndexChanged">
                                     <Columns>
-                                        <dx:ListBoxColumn Caption="ID" FieldName="ID" Width="100px" />
                                         <dx:ListBoxColumn Caption="Mã ĐVT" FieldName="MaDonVi" Width="100%" />
                                         <dx:ListBoxColumn Caption="Tên đơn vị tính" FieldName="TenDonViTinh" Width="100px" />
                                         <dx:ListBoxColumn Caption="Mô tả" FieldName="MoTa" Width="100%" />
@@ -72,7 +71,6 @@
                             <dx:LayoutItemNestedControlContainer runat="server">
                                 <dx:ASPxComboBox ID="cmbHangSX" runat="server" Width="100%" DataSourceID="sqlHangSX"   ValueType="System.String"  DropDownWidth="400" DropDownStyle="DropDown" ValueField="ID">
                                     <Columns>
-                                        <dx:ListBoxColumn Caption="ID" FieldName="ID" Width="100px" />
                                         <dx:ListBoxColumn Caption="Mã hãng SX" FieldName="MaNSX" Width="100px" />
                                         <dx:ListBoxColumn Caption="Tên hãng SX" FieldName="TenNSX" Width="100px" />
                                         <dx:ListBoxColumn Caption="SĐT" FieldName="DienThoai" Width="100px" />
@@ -89,9 +87,8 @@
                     <dx:LayoutItem Caption="Thuế (*)">
                         <LayoutItemNestedControlCollection>
                             <dx:LayoutItemNestedControlContainer runat="server">
-                                <dx:ASPxComboBox ID="cmbThue" runat="server" Width="100%" DataSourceID="sqlThue"   ValueType="System.String"  DropDownWidth="400" DropDownStyle="DropDown" ValueField="ID" OnSelectedIndexChanged="cmbThue_SelectedIndexChanged">
+                                <dx:ASPxComboBox ID="cmbThue" runat="server" Width="100%" DataSourceID="sqlThue"   ValueType="System.String"  DropDownWidth="400" DropDownStyle="DropDown" ValueField="ID" OnSelectedIndexChanged="cmbThue_SelectedIndexChanged" AutoPostBack="True">
                                     <Columns>
-                                        <dx:ListBoxColumn Caption="ID" FieldName="ID" Width="100px" />
                                         <dx:ListBoxColumn Caption="Thuế" FieldName="TenThue" Width="100%" />
                                         <dx:ListBoxColumn Caption="Tỉ lệ" FieldName="TiLe" Width="100px" />
                                     </Columns>
@@ -120,7 +117,7 @@
                     <dx:LayoutItem Caption="Giá mua trước thuế">
                         <LayoutItemNestedControlCollection>
                             <dx:LayoutItemNestedControlContainer runat="server">
-                                <dx:ASPxSpinEdit ID="txtGiaMuaTruocThue" runat="server" NullText="0" Width="100%" AutoPostBack="True" OnValueChanged="txtGiaMuaTruocThue_ValueChanged">
+                                <dx:ASPxSpinEdit ID="txtGiaMuaTruocThue" runat="server" NullText="0" Width="100%" AutoPostBack="True" OnValueChanged="txtGiaMuaTruocThue_ValueChanged" DisplayFormatString="{0:#,#} đ">
                                 </dx:ASPxSpinEdit>
                             </dx:LayoutItemNestedControlContainer>
                         </LayoutItemNestedControlCollection>
@@ -128,7 +125,7 @@
                     <dx:LayoutItem Caption="Giá mua sau thuế">
                         <LayoutItemNestedControlCollection>
                             <dx:LayoutItemNestedControlContainer runat="server">
-                                <dx:ASPxSpinEdit ID="txtGiaMuaSauThue" runat="server" NullText="0" Width="100%" AutoPostBack="True" OnValueChanged="txtGiaMuaSauThue_ValueChanged">
+                                <dx:ASPxSpinEdit ID="txtGiaMuaSauThue" runat="server" NullText="0" Width="100%" AutoPostBack="True" OnValueChanged="txtGiaMuaSauThue_ValueChanged" DisplayFormatString="{0:#,#} đ">
                                 </dx:ASPxSpinEdit>
                             </dx:LayoutItemNestedControlContainer>
                         </LayoutItemNestedControlCollection>
@@ -136,7 +133,7 @@
                     <dx:LayoutItem Caption="Giá bán trước thuế">
                         <LayoutItemNestedControlCollection>
                             <dx:LayoutItemNestedControlContainer runat="server">
-                                <dx:ASPxSpinEdit ID="txtGiaBanTruocThue" runat="server" NullText="0" Width="100%" AutoPostBack="True" OnValueChanged="txtGiaBanTruocThue_ValueChanged">
+                                <dx:ASPxSpinEdit ID="txtGiaBanTruocThue" runat="server" NullText="0" Width="100%" AutoPostBack="True" OnValueChanged="txtGiaBanTruocThue_ValueChanged" DisplayFormatString="{0:#,#} đ">
                                 </dx:ASPxSpinEdit>
                             </dx:LayoutItemNestedControlContainer>
                         </LayoutItemNestedControlCollection>
@@ -144,7 +141,7 @@
                     <dx:LayoutItem Caption="Giá bán sau thuế">
                         <LayoutItemNestedControlCollection>
                             <dx:LayoutItemNestedControlContainer runat="server">
-                                <dx:ASPxSpinEdit ID="txtGiaBanSauThue" runat="server" NullText="0" Width="100%" AutoPostBack="True" OnValueChanged="txtGiaBanSauThue_ValueChanged">
+                                <dx:ASPxSpinEdit ID="txtGiaBanSauThue" runat="server" NullText="0" Width="100%" AutoPostBack="True" OnValueChanged="txtGiaBanSauThue_ValueChanged" DisplayFormatString="{0:#,#} đ">
                                 </dx:ASPxSpinEdit>
                             </dx:LayoutItemNestedControlContainer>
                         </LayoutItemNestedControlCollection>
@@ -152,7 +149,7 @@
                     <dx:LayoutItem Caption="Trọng lượng (Kg)">
                         <LayoutItemNestedControlCollection>
                             <dx:LayoutItemNestedControlContainer runat="server">
-                                <dx:ASPxSpinEdit ID="txtTrongLuong" runat="server" NullText="0" Width="100%">
+                                <dx:ASPxSpinEdit ID="txtTrongLuong" runat="server" NullText="0" Width="100%" DisplayFormatString="{0:#,#} đ">
                                 </dx:ASPxSpinEdit>
                             </dx:LayoutItemNestedControlContainer>
                         </LayoutItemNestedControlCollection>
@@ -193,7 +190,7 @@
                     <dx:LayoutItem Caption="Giá bán 1">
                         <LayoutItemNestedControlCollection>
                             <dx:LayoutItemNestedControlContainer runat="server">
-                                <dx:ASPxSpinEdit ID="txtGiaBan1" runat="server" NullText="0" Width="100%">
+                                <dx:ASPxSpinEdit ID="txtGiaBan1" runat="server" NullText="0" Width="100%" DisplayFormatString="{0:#,#} đ">
                                 </dx:ASPxSpinEdit>
                             </dx:LayoutItemNestedControlContainer>
                         </LayoutItemNestedControlCollection>
@@ -201,7 +198,7 @@
                     <dx:LayoutItem Caption="Giá bán 2">
                         <LayoutItemNestedControlCollection>
                             <dx:LayoutItemNestedControlContainer runat="server">
-                                <dx:ASPxSpinEdit ID="txtGiaBan2" runat="server" NullText="0" Width="100%">
+                                <dx:ASPxSpinEdit ID="txtGiaBan2" runat="server" NullText="0" Width="100%" DisplayFormatString="{0:#,#} đ">
                                 </dx:ASPxSpinEdit>
                             </dx:LayoutItemNestedControlContainer>
                         </LayoutItemNestedControlCollection>
@@ -209,7 +206,7 @@
                     <dx:LayoutItem Caption="Giá bán 3">
                         <LayoutItemNestedControlCollection>
                             <dx:LayoutItemNestedControlContainer runat="server">
-                                <dx:ASPxSpinEdit ID="txtGiaBan3" runat="server" NullText="0" Width="100%">
+                                <dx:ASPxSpinEdit ID="txtGiaBan3" runat="server" NullText="0" Width="100%" DisplayFormatString="{0:#,#} đ">
                                 </dx:ASPxSpinEdit>
                             </dx:LayoutItemNestedControlContainer>
                         </LayoutItemNestedControlCollection>
@@ -217,7 +214,7 @@
                     <dx:LayoutItem Caption="Giá bán 4">
                         <LayoutItemNestedControlCollection>
                             <dx:LayoutItemNestedControlContainer runat="server">
-                                <dx:ASPxSpinEdit ID="txtGiaBan4" runat="server" NullText="0" Width="100%">
+                                <dx:ASPxSpinEdit ID="txtGiaBan4" runat="server" NullText="0" Width="100%" DisplayFormatString="{0:#,#} đ">
                                 </dx:ASPxSpinEdit>
                             </dx:LayoutItemNestedControlContainer>
                         </LayoutItemNestedControlCollection>
@@ -225,7 +222,7 @@
                     <dx:LayoutItem Caption="Giá bán 5">
                         <LayoutItemNestedControlCollection>
                             <dx:LayoutItemNestedControlContainer runat="server">
-                                <dx:ASPxSpinEdit ID="txtGiaBan5" runat="server" Width="100%" NullText="0">
+                                <dx:ASPxSpinEdit ID="txtGiaBan5" runat="server" Width="100%" NullText="0" DisplayFormatString="{0:#,#} đ">
                                 </dx:ASPxSpinEdit>
                             </dx:LayoutItemNestedControlContainer>
                         </LayoutItemNestedControlCollection>

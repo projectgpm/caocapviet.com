@@ -30,7 +30,7 @@ namespace BanHang
 
             string strNgay = DateTime.Parse(NgayBD).ToString("dd-MM-yyyy") + " - " + DateTime.Parse(NgayKT).ToString("dd-MM-yyyy");
 
-            rpBangKeKhachHangTraHang rp = new rpBangKeKhachHangTraHang();
+            rpBangKeBanHang rp = new rpBangKeBanHang();
 
             rp.Parameters["strNgay"].Value = strNgay;
             rp.Parameters["strNgay"].Visible = false;
