@@ -106,7 +106,7 @@
                             <dx:LayoutItemNestedControlContainer runat="server">
                                  <dx:ASPxComboBox ID="cmbNhomDatHang" runat="server" Width="100%" DataSourceID="sqlNhomDatHang"   ValueType="System.String"  DropDownWidth="400" DropDownStyle="DropDown" ValueField="ID">
                                     <Columns>
-                                        <dx:ListBoxColumn Caption="ID" FieldName="ID" Width="100px" />
+                                        <%--<dx:ListBoxColumn Caption="ID" FieldName="ID" Width="100px" />--%>
                                         <dx:ListBoxColumn Caption="Người đặt hàng" FieldName="TenNhom" Width="100%" />
                                     </Columns>
                                 </dx:ASPxComboBox>
@@ -167,7 +167,7 @@
                             <dx:LayoutItemNestedControlContainer runat="server">
                                 <dx:ASPxComboBox ID="cmbTrangThaiHang" runat="server" Width="100%" DataSourceID="sqlTrangThaiHang"   ValueType="System.String"  DropDownWidth="400" DropDownStyle="DropDown" ValueField="ID">
                                     <Columns>
-                                        <dx:ListBoxColumn Caption="ID" FieldName="ID" Width="100px" />
+                                        <%--<dx:ListBoxColumn Caption="ID" FieldName="ID" Width="100px" />--%>
                                         <dx:ListBoxColumn Caption="Trạng thái" FieldName="TenTrangThai" Width="100%" />
                                     </Columns>
                                 </dx:ASPxComboBox>

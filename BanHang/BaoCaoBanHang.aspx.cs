@@ -114,7 +114,7 @@ namespace BanHang
             else if (rbTheoThang.Checked == true)
             {
                 ngayBD = nam + "-" + thang + "-01 ";
-                ngayKT = nam + "-" + thang + dtSetting.tinhSoNgay(thang, nam);
+                ngayKT = nam + "-" + thang + "-" + dtSetting.tinhSoNgay(thang, nam) + " ";
             }
             else if (rbTuyChon.Checked == true)
             {
