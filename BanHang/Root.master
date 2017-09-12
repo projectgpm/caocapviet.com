@@ -148,6 +148,8 @@
                                                         <Items>
                                                             <dx:RibbonDropDownButtonItem Name="phieuxuatkhac" Text="Phiếu xuất khác" NavigateUrl="BangKePhieuXuatKhac.aspx">
                                                             </dx:RibbonDropDownButtonItem>
+                                                            <dx:RibbonDropDownButtonItem Name="bangkekhachhangtrahang" NavigateUrl="BangKeKhachHangTraHang.aspx" Text="Khách hàng trả hàng">
+                                                            </dx:RibbonDropDownButtonItem>
                                                         </Items>
                                                         <LargeImage Url="~/image/bao-cao-thong-ke.png">
                                                         </LargeImage>
