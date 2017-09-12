@@ -59,5 +59,41 @@ namespace BanHang.Data
                 }
             }
         }
+
+        public DataTable DanhSachDonHangThuMua(DateTime NgayHomNay, int SoNgayHuy)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT ID FROM [GPM_ThuMua_DonHang] WHERE TrangThai = 0 AND TrangThaiDonHang = 0 AND NgayLap < '" + NgayHomNay.AddDays(-SoNgayHuy).ToString("yyyy-MM-dd") + "'  AND [SoDonHang] is not null";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    return tb;
+                }
+            }
+        }
+        public void CapNhatTrangThaiHuyDonHangThuMua(string ID)
+        {
+            using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
+            {
+                try
+                {
+                    myConnection.Open();
+                    string cmdText = "UPDATE [GPM_ThuMua_DonHang] SET [TrangThaiDonHang] = 1, [NgayCapNhat] = getdate() WHERE [ID] = '" + ID + "'";
+                    using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
+                    {
+                        myCommand.ExecuteNonQuery();
+                    }
+                    myConnection.Close();
+                }
+                catch
+                {
+                    throw new Exception("Lỗi: Quá trình cập nhật dữ liệu gặp lỗi");
+                }
+            }
+        }
     }
 }
