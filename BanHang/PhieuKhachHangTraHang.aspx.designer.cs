@@ -301,13 +301,22 @@ namespace BanHang {
         protected global::DevExpress.Web.LayoutItemNestedControlContainer LayoutItemNestedControlContainer11;
         
         /// <summary>
-        /// txtLyDoTra control.
+        /// cmbLyDoTra control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox txtLyDoTra;
+        protected global::DevExpress.Web.ASPxComboBox cmbLyDoTra;
+        
+        /// <summary>
+        /// sqlLyDoTra control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource sqlLyDoTra;
         
         /// <summary>
         /// LayoutItemNestedControlContainer17 control.
