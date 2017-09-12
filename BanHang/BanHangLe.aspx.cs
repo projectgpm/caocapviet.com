@@ -631,13 +631,23 @@ namespace BanHang
                 else
                 {
                     int SLTonHienTai = Int32.Parse(txtTonKhoA.Text.ToString());// số lượng tồn của hàng hóa cần qui đổi.
-
+                    dtHeThongQuyDoi dt = new dtHeThongQuyDoi();
+                    int HeSo = dt.LayHeSoHangHoa(cmbHangHoaQuyDoi.Value.ToString());
+                    int SLDaDoi = SoLuongQuiDoi * HeSo;
+                    object TheKho1 = dtTheKho.ThemTheKho("", "Qui đổi hàng hóa: " + dtTheKho.LayTenKho_ID(Session["IDKho"].ToString()), SLDaDoi.ToString(), "0", (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(cmbMaHang.Value.ToString(), Session["IDKho"].ToString()).ToString()) + SLDaDoi).ToString(), Session["IDNhanVien"].ToString(), Session["IDKho"].ToString(), cmbMaHang.Value.ToString(), "Nhập");
+                    object TheKho2 = dtTheKho.ThemTheKho("", "Qui đổi hàng hóa : " + dtTheKho.LayTenKho_ID(Session["IDKho"].ToString()), "0", SoLuongQuiDoi.ToString(), (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(cmbHangHoaQuyDoi.Value.ToString(), Session["IDKho"].ToString()).ToString()) - SoLuongQuiDoi).ToString(), Session["IDNhanVien"].ToString(), Session["IDKho"].ToString(), cmbHangHoaQuyDoi.Value.ToString(), "Xuất");
+                    if (TheKho1 != null && TheKho2 != null)
+                    {
+                        dtCapNhatTonKho.TruTonKho(cmbHangHoaQuyDoi.Value.ToString(), SoLuongQuiDoi.ToString(), Session["IDKho"].ToString());
+                        dtCapNhatTonKho.CongTonKho(cmbMaHang.Value.ToString(), SLDaDoi.ToString(), Session["IDKho"].ToString());
+                    }
+                    HienThiThongBao("Qui đổi hàng hóa thành công !!");
                 }
             }
             else
             {
                 txtSoLuongQuyDoi.Focus();
-                HienThiThongBao("Vui lòng nhập số lượng?");
+                HienThiThongBao("Vui lòng nhập số lượng !!");
             }
         }
 

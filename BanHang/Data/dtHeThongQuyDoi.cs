@@ -9,7 +9,7 @@ namespace BanHang.Data
 {
     public class dtHeThongQuyDoi
     {
-        public static int LayHeSoHangHoa(string IDHangHoa)
+        public  int LayHeSoHangHoa(string IDHangHoa)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
