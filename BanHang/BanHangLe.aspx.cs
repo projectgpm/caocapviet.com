@@ -342,6 +342,7 @@ namespace BanHang
             ccbKhachHang.Text = "";
             string jsInHoaDon = "window.open(\"InHoaDonBanLe.aspx?IDHoaDon=" + IDHoaDon + "\", \"PrintingFrame\");";
             ClientScript.RegisterStartupScript(this.GetType(), "Print", jsInHoaDon, true);
+            txtBarcode.Focus();
         }
 
         protected void btnHuyKhachHang_Click(object sender, EventArgs e)

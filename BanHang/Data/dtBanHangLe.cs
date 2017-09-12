@@ -206,7 +206,7 @@ namespace BanHang.Data
                     object MaHoaDon;
                     using (SqlCommand cmd = new SqlCommand(CompuMaHoaDon, con, trans))
                     {
-                        cmd.Parameters.AddWithValue("@IDKho", IDKho);
+                        cmd.Parameters.AddWithValue("@IDKho", dtSetting.LayMaKho(IDKho));
                         MaHoaDon = cmd.ExecuteScalar();
                     }
                     if (MaHoaDon != null)
