@@ -9,10 +9,13 @@ using System.Web.UI.WebControls;
 
 namespace BanHang
 {
-    public partial class BaoCaoTonKho_In : System.Web.UI.Page
+    public partial class BaoCaoBanHang_In : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            string NgayBD = Request.QueryString["NgayBD"];
+            string NgayKT = Request.QueryString["NgayKT"];
+
             string IDKho = Request.QueryString["IDKho"];
             string IDHH = Request.QueryString["IDHH"];
             string IDNH = Request.QueryString["IDNH"];
@@ -38,7 +41,17 @@ namespace BanHang
             if (Int32.Parse(IDHH) != -1)
                 strHangHoa = dt4.LayTenHangHoa_ID(IDHH);
 
-            rpBaoCaoTonKho rp = new rpBaoCaoTonKho();
+            string strNgay = DateTime.Parse(NgayBD).ToString("dd-MM-yyyy") + " - " + DateTime.Parse(NgayKT).ToString("dd-MM-yyyy");
+
+            rpBaoCaoBanHang rp = new rpBaoCaoBanHang();
+
+            rp.Parameters["NgayBD"].Value = NgayBD;
+            rp.Parameters["NgayBD"].Visible = false;
+            rp.Parameters["NgayKT"].Value = NgayKT;
+            rp.Parameters["NgayKT"].Visible = false;
+            rp.Parameters["strNgay"].Value = strNgay;
+            rp.Parameters["strNgay"].Visible = false;
+
             rp.Parameters["IDKho"].Value = IDKho;
             rp.Parameters["IDKho"].Visible = false;
             rp.Parameters["IDHH"].Value = IDHH;

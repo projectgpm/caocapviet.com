@@ -750,6 +750,22 @@ namespace BanHang.Data
             return dt;
         }
 
+        public string LayTenHangHoa_ID(string ID)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT TenHangHoa FROM [GPM_HangHoa] WHERE [ID] = '" + ID + "'";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    return tb.Rows[0]["TenHangHoa"].ToString();
+                }
+            }
+        }
+
         public void CapNhatBarCode(int ID, object IDHangHoa, string IDTrangThaiBarcode, string BarCode)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))

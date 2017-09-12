@@ -154,6 +154,8 @@
                                                     </dx:RibbonDropDownButtonItem>
                                                     <dx:RibbonDropDownButtonItem Name="Bao_Cao" Size="Large" Text="Báo cáo">
                                                         <Items>
+                                                            <dx:RibbonDropDownButtonItem Name="baocaobanhang" NavigateUrl="BaoCaoBanHang.aspx" Text="Báo cáo bán hàng">
+                                                            </dx:RibbonDropDownButtonItem>
                                                             <dx:RibbonDropDownButtonItem Name="baocaochuyenkho" Text="Báo cáo chuyển kho" NavigateUrl="BaoCaoChuyenKho.aspx">
                                                             </dx:RibbonDropDownButtonItem>
                                                             <dx:RibbonDropDownButtonItem Name="baocaonhaphang" Text="Báo cáo nhập hàng" NavigateUrl="BaoCaoNhapHang.aspx">
