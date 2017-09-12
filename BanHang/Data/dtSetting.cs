@@ -45,6 +45,26 @@ namespace BanHang.Data
                 }
             }
         }
+        public static int SoNgayHuyDonHangThuMua()
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT HuyDonHangThuMua FROM [Setting]";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    if (tb.Rows.Count != 0)
+                    {
+                        DataRow dr = tb.Rows[0];
+                        return Int32.Parse(dr["HuyDonHangThuMua"].ToString());
+                    }
+                    else return 7;
+                }
+            }
+        }
         public static int KT_ChuyenAm()
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))

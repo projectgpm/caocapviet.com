@@ -59,5 +59,21 @@ namespace BanHang.Data
                 }
             }
         }
+
+        public DataTable DanhSachDonHangThuMua(DateTime NgayHomNay)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT ID,SoDonHang,IDKhoLap FROM [GPM_DuyetHangChiNhanh] WHERE [GPM_DuyetHangChiNhanh].IDTrangThaiXuLy != 2 AND [GPM_DuyetHangChiNhanh].TrangThaiDuyet = 0 AND [NgayDuyet] < '" + NgayHomNay.ToString("yyyy-MM-dd") + "'";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    return tb;
+                }
+            }
+        }
     }
 }

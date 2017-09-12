@@ -19,7 +19,8 @@ namespace BanHang {
             }
             else
             {
-                XuLyDonHangChiNhanh();
+                //XuLyDonHangChiNhanh();
+                //HuyDonHangThuMua();
                 lblChao.Text = "Xin Chào: " + Session["TenDangNhap"].ToString();
                 ASPxLabel2.Text = Server.HtmlDecode("Copyrights &copy;") + DateTime.Now.Year + Server.HtmlDecode(". All Rights Reserved. Designed by GPM.VN");
             }
@@ -53,6 +54,10 @@ namespace BanHang {
                     }
                 }
             }
+        }
+        public void HuyDonHangThuMua()
+        {
+
         }
     }
 }
