@@ -641,12 +641,13 @@ namespace BanHang
                         dtCapNhatTonKho.TruTonKho(cmbHangHoaQuyDoi.Value.ToString(), SoLuongQuiDoi.ToString(), Session["IDKho"].ToString());
                         dtCapNhatTonKho.CongTonKho(cmbMaHang.Value.ToString(), SLDaDoi.ToString(), Session["IDKho"].ToString());
                     }
+                    HienThiThongBao("Qui đổi hàng hóa thành công !!");
                 }
             }
             else
             {
                 txtSoLuongQuyDoi.Focus();
-                HienThiThongBao("Vui lòng nhập số lượng?");
+                HienThiThongBao("Vui lòng nhập số lượng !!");
             }
         }
 
