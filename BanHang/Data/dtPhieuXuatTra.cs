@@ -9,6 +9,23 @@ namespace BanHang.Data
 {
     public class dtPhieuXuatTra
     {
+        public static string TongSoXuatTrongThang(string NgayBD, string NgayKT, string IDKhoLap)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "select [IDKhoLap], count(IDKhoLap) as Tong from [GPM_PhieuXuatTra] where [NgayLap] >= '" + DateTime.Parse(NgayBD).ToString("yyyy-MM-dd hh:mm:ss tt") + "' and [NgayLap] <= '" + DateTime.Parse(NgayKT).ToString("yyyy-MM-dd hh:mm:ss tt") + "' and [IDKhoLap] = '" + IDKhoLap + "' group by IDKhoLap";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    if (tb.Rows.Count != 0)
+                        return (Int32.Parse(tb.Rows[0]["Tong"].ToString()) + 1).ToString();
+                    return "1";
+                }
+            }
+        }
 
         public DataTable DanhSachPhieuXuatTra()
         {

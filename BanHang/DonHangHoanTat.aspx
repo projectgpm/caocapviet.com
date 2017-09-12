@@ -162,7 +162,7 @@
                  <HeaderStyle Wrap="True" />
              </dx:GridViewDataComboBoxColumn>
              <dx:GridViewDataSpinEditColumn Caption="Tổng Trọng Lượng" FieldName="TongTrongLuong" VisibleIndex="6">
-                 <PropertiesSpinEdit DisplayFormatString="g">
+                 <PropertiesSpinEdit DisplayFormatString="{0} KG" NumberFormat="Custom">
                  </PropertiesSpinEdit>
                  <HeaderStyle Wrap="True" />
              </dx:GridViewDataSpinEditColumn>

@@ -123,11 +123,6 @@
                  </PropertiesDateEdit>
                  <HeaderStyle Wrap="True" />
              </dx:GridViewDataDateColumn>
-             <dx:GridViewDataSpinEditColumn Caption="Tổng Trọng Lượng" FieldName="TongTrongLuong" VisibleIndex="6">
-                 <PropertiesSpinEdit DisplayFormatString="{0:n} KG" NumberFormat="Custom">
-                 </PropertiesSpinEdit>
-                 <HeaderStyle Wrap="True" />
-             </dx:GridViewDataSpinEditColumn>
              <dx:GridViewDataComboBoxColumn Caption="Trạng Thái" FieldName="TrangThai" VisibleIndex="9">
                  <PropertiesComboBox>
                      <Items>
@@ -162,6 +157,11 @@
                  </PropertiesComboBox>
                  <HeaderStyle Wrap="True" />
              </dx:GridViewDataComboBoxColumn>
+             <dx:GridViewDataSpinEditColumn Caption="Tổng Trọng Lượng" FieldName="TongTrongLuong" VisibleIndex="6">
+                 <PropertiesSpinEdit DisplayFormatString="{0} KG" NumberFormat="Custom">
+                 </PropertiesSpinEdit>
+                 <HeaderStyle Wrap="True" />
+             </dx:GridViewDataSpinEditColumn>
          </Columns>
         <Styles>
             <Header Font-Bold="True" HorizontalAlign="Center">

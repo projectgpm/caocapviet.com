@@ -113,7 +113,7 @@
                  </PropertiesSpinEdit>
              </dx:GridViewDataSpinEditColumn>
              <dx:GridViewDataSpinEditColumn Caption="Tổng Trọng Lượng" FieldName="TongTrongLuong" VisibleIndex="9">
-                 <PropertiesSpinEdit DisplayFormatString="{0:n} KG" NumberFormat="Custom">
+                 <PropertiesSpinEdit DisplayFormatString="{0} KG" NumberFormat="Custom">
                  </PropertiesSpinEdit>
                  <HeaderStyle Wrap="True" />
              </dx:GridViewDataSpinEditColumn>
@@ -139,7 +139,7 @@
                  <HeaderStyle Wrap="True" />
              </dx:GridViewDataSpinEditColumn>
              <dx:GridViewDataSpinEditColumn Caption="Tỷ Lệ Chiết Khấu" FieldName="ChietKhau" VisibleIndex="6">
-                 <PropertiesSpinEdit DisplayFormatString="N0" NumberFormat="Custom">
+                 <PropertiesSpinEdit DisplayFormatString="{0} %" NumberFormat="Custom">
                  </PropertiesSpinEdit>
                  <HeaderStyle Wrap="True" />
              </dx:GridViewDataSpinEditColumn>
