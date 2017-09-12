@@ -20,7 +20,7 @@ namespace BanHang {
             else
             {
                 //XuLyDonHangChiNhanh();
-                //HuyDonHangThuMua();
+                HuyDonHangThuMua();
                 lblChao.Text = "Xin Chào: " + Session["TenDangNhap"].ToString();
                 ASPxLabel2.Text = Server.HtmlDecode("Copyrights &copy;") + DateTime.Now.Year + Server.HtmlDecode(". All Rights Reserved. Designed by GPM.VN");
             }
@@ -41,6 +41,7 @@ namespace BanHang {
                         DataTable dt = data.DanhSachChiTietDuyet(ID);
                         foreach (DataRow dr1 in dt.Rows)
                         {
+                            // tự động xử lý đơn hàng chi nhánh sau 1 ngày
                             string IDHangHoa = dr1["IDHangHoa"].ToString();
                             int SoLuong = Int32.Parse(dr1["ThucTe"].ToString());
                             object TheKho = dtTheKho.ThemTheKho(dtDuyetDonHangChiNhanh.LaySoDonHang(ID), "Xác nhận đơn hàng tự động ", SoLuong.ToString(), "0", (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, IDKho).ToString()) + SoLuong).ToString(), "1", IDKho, IDHangHoa, "Nhập");
@@ -57,7 +58,21 @@ namespace BanHang {
         }
         public void HuyDonHangThuMua()
         {
-
+            int SoNgayHuy = dtSetting.SoNgayHuyDonHangThuMua();
+            DataTable db = data.DanhSachDonHangThuMua(DateTime.Now, SoNgayHuy);
+            if (db.Rows.Count > 0)
+            {
+                foreach (DataRow dr in db.Rows)
+                {
+                    string ID = dr["ID"].ToString();
+                    if (ID != "")
+                    {
+                        //cập nhật thành đơn hàng hủy
+                        data = new dtMasterPage();
+                        data.CapNhatTrangThaiHuyDonHangThuMua(ID);
+                    }
+                }
+            }
         }
     }
 }
