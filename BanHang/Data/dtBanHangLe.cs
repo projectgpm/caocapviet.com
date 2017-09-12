@@ -62,12 +62,12 @@ namespace BanHang.Data
                 }
             }
         }
-        public DataTable LayThongHoaDon()
+        public DataTable LayThongHoaDon(string TuKhoa)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "select TOP 10 GPM_HoaDon.ID,GPM_HoaDon.TongTien,GPM_KhachHang.TenKhachHang,GPM_HoaDon.NgayBan from GPM_HoaDon,GPM_KhachHang WHERE GPM_HoaDon.IDKhachHang = GPM_KhachHang.ID ORDER BY GPM_HoaDon.ID DESC";
+                string cmdText = "select TOP 10 GPM_HoaDon.ID,GPM_HoaDon.[MaHoaDon],GPM_KhachHang.TenKhachHang,GPM_HoaDon.NgayBan from GPM_HoaDon,GPM_KhachHang WHERE GPM_HoaDon.IDKhachHang = GPM_KhachHang.ID AND (GPM_HoaDon.[MaHoaDon] = '" + TuKhoa + "' OR GPM_KhachHang.TenKhachHang = N'" + TuKhoa + "') ORDER BY GPM_HoaDon.ID DESC";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 {
                     using (SqlDataReader reader = command.ExecuteReader())
@@ -234,17 +234,18 @@ namespace BanHang.Data
                             {
                                 dtHangHoa dtHH = new dtHangHoa();
 
-                                string InsertChiTietHoaDon = "INSERT INTO [GPM_ChiTietHoaDon] ([IDHoaDon],[IDHangHoa],[GiaMua],[GiaBan] ,[SoLuong],[ChietKhau],[ThanhTien]) " +
-                                                             "VALUES (@IDHoaDon, @IDHangHoa, @GiaMua, @GiaBan, @SoLuong, @ChietKhau, @ThanhTien)";
+                                string InsertChiTietHoaDon = "INSERT INTO [GPM_ChiTietHoaDon] ([IDHoaDon],[IDHangHoa],[GiaMua],[GiaBan] ,[SoLuong],[ChietKhau],[ThanhTien],[NgayBan],[IDKho]) " +
+                                                             "VALUES (@IDHoaDon, @IDHangHoa, @GiaMua, @GiaBan, @SoLuong, @ChietKhau, @ThanhTien,getdate(),@IDKho)";
                                 using (SqlCommand cmd = new SqlCommand(InsertChiTietHoaDon, con, trans))
                                 {
                                     cmd.Parameters.AddWithValue("@IDHoaDon", IDHoaDon);
-                                    cmd.Parameters.AddWithValue("@IDHangHoa", dtHangHoa.LayIDHangHoa_MaHang(cthd.MaHang + ""));
+                                    cmd.Parameters.AddWithValue("@IDHangHoa", cthd.IDHangHoa);
                                     cmd.Parameters.AddWithValue("@GiaMua", cthd.GiaMua);
                                     cmd.Parameters.AddWithValue("@GiaBan", cthd.DonGia);
                                     cmd.Parameters.AddWithValue("@SoLuong", cthd.SoLuong);
                                     cmd.Parameters.AddWithValue("@ChietKhau", 0.0);
                                     cmd.Parameters.AddWithValue("@ThanhTien", cthd.ThanhTien);
+                                    cmd.Parameters.AddWithValue("@IDKho", IDKho);
                                     cmd.ExecuteNonQuery();
                                 }
                                 string UpdateLichSuBanHang = "DECLARE @SoLuongCu INT = 0 " +
@@ -255,12 +256,13 @@ namespace BanHang.Data
                                 using (SqlCommand cmd = new SqlCommand(UpdateLichSuBanHang, con, trans))
                                 {
                                     cmd.Parameters.AddWithValue("@SoLuongBan", cthd.SoLuong);
-                                    cmd.Parameters.AddWithValue("@IDHangHoa", dtHangHoa.LayIDHangHoa_MaHang(cthd.MaHang + ""));
+                                    cmd.Parameters.AddWithValue("@IDHangHoa", cthd.IDHangHoa);
                                     cmd.Parameters.AddWithValue("@IDKho", IDKho);
                                     cmd.Parameters.AddWithValue("@IDNhanVien", IDNhanVien);
                                     cmd.Parameters.AddWithValue("@NoiDung", "Bán hàng lẻ");
                                     cmd.ExecuteNonQuery();
                                 }
+                                //ghi thẻ kho
                             }
                         }
                     }

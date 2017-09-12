@@ -29,24 +29,6 @@ namespace BanHang
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            dtBanHangLe dt = new dtBanHangLe();
-            ASPxGridViewInBuil.DataSource = dt.LayThongHoaDon();
-            ASPxGridViewInBuil.DataBind();
-            txtBarcode.Focus();
-            //if (Session["KTBanLe"] == "GPMBanLe")
-            //{
-            //    if (!IsPostBack)
-            //    {
-            //        DanhSachHoaDon = new List<HoaDon>();
-            //        ThemHoaDonMoi();
-            //        ConnectServer.updateDatabase();
-            //    }
-            //    btnNhanVien.Text = Session["TenThuNgan"].ToString();                
-            //}
-            //else
-            //{
-            //    Response.Redirect("DangNhap.aspx");
-            //}
             if (Session["KTBanLe"] == "GPMBanLe")
             {
                 if (!IsPostBack)
@@ -54,6 +36,7 @@ namespace BanHang
                     DanhSachHoaDon = new List<HoaDon>();
                     ThemHoaDonMoi();
                     btnNhanVien.Text = Session["TenThuNgan"].ToString();
+                    txtBarcode.Focus();
                 }
                 DanhSachKhachHang();
             }
@@ -109,9 +92,10 @@ namespace BanHang
         }
         public void ThemHangVaoChiTietHoaDon(DataTable tbThongTin)
         {
-            int MaHang = int.Parse(tbThongTin.Rows[0]["MaHang"].ToString());
+            string MaHang = tbThongTin.Rows[0]["MaHang"].ToString();
+            int IDHangHoa = Int32.Parse(tbThongTin.Rows[0]["ID"].ToString());
             int MaHoaDon = tabControlSoHoaDon.ActiveTabIndex;
-            var exitHang = DanhSachHoaDon[MaHoaDon].ListChiTietHoaDon.FirstOrDefault(item => item.MaHang == MaHang);
+            var exitHang = DanhSachHoaDon[MaHoaDon].ListChiTietHoaDon.FirstOrDefault(item => item.IDHangHoa == IDHangHoa);
             if (exitHang != null)
             {
                 int SoLuong = exitHang.SoLuong + int.Parse(txtSoLuong.Text);
@@ -125,6 +109,7 @@ namespace BanHang
             {
                 ChiTietHoaDon cthd = new ChiTietHoaDon();
                 cthd.STT = DanhSachHoaDon[MaHoaDon].ListChiTietHoaDon.Count + 1;
+                cthd.IDHangHoa = IDHangHoa;
                 cthd.MaHang = MaHang;
                 cthd.TenHang = tbThongTin.Rows[0]["TenHangHoa"].ToString();
                 cthd.SoLuong = int.Parse(txtSoLuong.Text);
@@ -187,7 +172,7 @@ namespace BanHang
                             // lấy sl có trong lưới
                             int MaHang = int.Parse(tbThongTin.Rows[0]["MaHang"].ToString());
                             int MaHoaDon = tabControlSoHoaDon.ActiveTabIndex;
-                            var exitHang = DanhSachHoaDon[MaHoaDon].ListChiTietHoaDon.FirstOrDefault(item => item.MaHang == MaHang);
+                            var exitHang = DanhSachHoaDon[MaHoaDon].ListChiTietHoaDon.FirstOrDefault(item => item.IDHangHoa == IDHangHoa);
                             if (exitHang != null)
                             {
                                 int SoLuong = exitHang.SoLuong;
@@ -392,12 +377,12 @@ namespace BanHang
                 cmbNhomKhachHang.Text = "";
                 txtSoDienThoai.Text = "";
                 txtDiaChi.Text = "";
-                HienThiThongBao("Thêm khách hàng thành công !!"); return;
-                popupThemKhachHang.ShowOnPageLoad = false;
+                HienThiThongBao("Thêm khách hàng thành công !!");
+                popupThemKhachHang.ShowOnPageLoad = false; return;
             }
             else
             {
-                HienThiThongBao("Vui lòng nhập thông tin đầy đủ !!"); return;
+                HienThiThongBao("Vui lòng nhập thông tin đầy đủ (*) !!"); return;
             }
         }
         public void DanhSachKhachHang()
@@ -412,7 +397,6 @@ namespace BanHang
         protected void txtBarcode_ItemsRequestedByFilterCondition(object source, ListEditItemsRequestedByFilterConditionEventArgs e)
         {
             ASPxComboBox comboBox = (ASPxComboBox)source;
-
             dsHangHoa.SelectCommand = @"SELECT [ID], [MaHang], [TenHangHoa], [GiaBan] , [TenDonViTinh]
                                         FROM (
 	                                        select GPM_HangHoa.ID, GPM_HangHoa.MaHang, GPM_HangHoa.TenHangHoa, GPM_HangHoaTonKho.GiaBan, GPM_DonViTinh.TenDonViTinh, 
@@ -422,7 +406,6 @@ namespace BanHang
 	                                        WHERE ((GPM_HangHoa.MaHang LIKE @MaHang) OR GPM_HangHoa.TenHangHoa LIKE @TenHang) AND (GPM_HangHoa.IDTrangThaiHang = 1 OR GPM_HangHoa.IDTrangThaiHang = 3 OR GPM_HangHoa.IDTrangThaiHang = 6) AND (GPM_HangHoaTonKho.IDKho = @IDKho) AND (GPM_HangHoaTonKho.DaXoa = 0)	
 	                                        ) as st 
                                         where st.[rn] between @startIndex and @endIndex";
-
             dsHangHoa.SelectParameters.Clear();
             dsHangHoa.SelectParameters.Add("MaHang", TypeCode.String, string.Format("%{0}%", e.Filter));
             dsHangHoa.SelectParameters.Add("TenHang", TypeCode.String, string.Format("%{0}%", e.Filter));
@@ -435,13 +418,15 @@ namespace BanHang
 
         protected void txtBarcode_ItemRequestedByValue(object source, ListEditItemRequestedByValueEventArgs e)
         {
+
             long value = 0;
             if (e.Value == null || !Int64.TryParse(e.Value.ToString(), out value))
                 return;
             ASPxComboBox comboBox = (ASPxComboBox)source;
-            dsHangHoa.SelectCommand = @"SELECT TenKhachHang,DienThoai,DiaChi
-                                        FROM GPM_KhachHang
-                                        WHERE (GPM_KhachHang.ID = @ID)";
+            dsHangHoa.SelectCommand = @"SELECT GPM_HangHoa.ID, GPM_HangHoa.MaHang, GPM_HangHoa.TenHangHoa, GPM_HangHoaTonKho.GiaBan, GPM_DonViTinh.TenDonViTinh 
+                                        FROM GPM_DonViTinh INNER JOIN GPM_HangHoa ON GPM_DonViTinh.ID = GPM_HangHoa.IDDonViTinh 
+                                                           INNER JOIN GPM_HangHoaTonKho ON GPM_HangHoaTonKho.IDHangHoa = GPM_HangHoa.ID 
+                                        WHERE (GPM_HangHoa.ID = @ID) AND (GPM_HangHoa.IDTrangThaiHang = 1 OR GPM_HangHoa.IDTrangThaiHang = 3 OR GPM_HangHoa.IDTrangThaiHang = 6)";
 
             dsHangHoa.SelectParameters.Clear();
             dsHangHoa.SelectParameters.Add("ID", TypeCode.Int64, e.Value.ToString());
@@ -453,14 +438,13 @@ namespace BanHang
         {
             ASPxComboBox comboBox = (ASPxComboBox)source;
 
-            sqlKhachHang.SelectCommand = @"SELECT TenKhachHang,DienThoai,DiaChi
+            sqlKhachHang.SelectCommand = @"SELECT ID,TenKhachHang,DienThoai,DiaChi
                                         FROM (
-	                                        select TenKhachHang, DienThoai,DiaChi, row_number()over(order by MaKhachHang) as [rn] 
-	                                        FROM GPM_KhachHang
-	                                        WHERE ((TenKhachHang LIKE @TenKhachHang) OR (DienThoai LIKE @DienThoai) OR (DiaChi LIKE @DiaChi)) AND (IDKho = @IDKho) AND (DaXoa = 0)	
+	                                            select ID,TenKhachHang, DienThoai,DiaChi, row_number()over(order by MaKhachHang) as [rn] 
+	                                            FROM GPM_KhachHang
+	                                            WHERE ((TenKhachHang LIKE @TenKhachHang) OR (DienThoai LIKE @DienThoai) OR (DiaChi LIKE @DiaChi)) AND (IDKho = @IDKho) AND (DaXoa = 0)	
 	                                        ) as st 
                                         where st.[rn] between @startIndex and @endIndex";
-
             sqlKhachHang.SelectParameters.Clear();
             sqlKhachHang.SelectParameters.Add("TenKhachHang", TypeCode.String, string.Format("%{0}%", e.Filter));
             sqlKhachHang.SelectParameters.Add("DienThoai", TypeCode.String, string.Format("%{0}%", e.Filter));
@@ -479,19 +463,43 @@ namespace BanHang
             if (e.Value == null || !Int64.TryParse(e.Value.ToString(), out value))
                 return;
             ASPxComboBox comboBox = (ASPxComboBox)source;
-            sqlKhachHang.SelectCommand = @"SELECT GPM_HangHoa.ID, GPM_HangHoa.MaHang, GPM_HangHoa.TenHangHoa, GPM_HangHoaTonKho.GiaBan, GPM_DonViTinh.TenDonViTinh 
-                                        FROM GPM_DonViTinh INNER JOIN GPM_HangHoa ON GPM_DonViTinh.ID = GPM_HangHoa.IDDonViTinh 
-                                                           INNER JOIN GPM_HangHoaTonKho ON GPM_HangHoaTonKho.IDHangHoa = GPM_HangHoa.ID 
-                                        WHERE (GPM_HangHoa.ID = @ID) AND (GPM_HangHoa.IDTrangThaiHang = 1 OR GPM_HangHoa.IDTrangThaiHang = 3 OR GPM_HangHoa.IDTrangThaiHang = 6)";
-
+            sqlKhachHang.SelectCommand = @"SELECT ID,TenKhachHang,DienThoai,DiaChi
+                                        FROM GPM_KhachHang
+                                        WHERE (GPM_KhachHang.ID = @ID)";
             sqlKhachHang.SelectParameters.Clear();
             sqlKhachHang.SelectParameters.Add("ID", TypeCode.Int64, e.Value.ToString());
             comboBox.DataSource = sqlKhachHang;
             comboBox.DataBind();
         }
 
-
-
+        protected void btnTimKiem_Click(object sender, EventArgs e)
+        {
+            if (txtTimKiem.Text != "")
+            {
+                string TuKhoa = txtTimKiem.Text.ToString();
+                dtBanHangLe dt = new dtBanHangLe();
+                DataTable db = dt.LayThongHoaDon(TuKhoa);
+                if (db.Rows.Count > 0)
+                {
+                     ASPxGridViewInBuil.DataSource = dt.LayThongHoaDon(TuKhoa);
+                    ASPxGridViewInBuil.DataBind();
+                }
+                else
+                {
+                    txtTimKiem.Focus();
+                    ASPxGridViewInBuil.DataSource = null;
+                    ASPxGridViewInBuil.DataBind();
+                    HienThiThongBao("Không tìm thấy dữ liệu cần tìm?");
+                }
+            }
+            else
+            {
+                txtTimKiem.Focus();
+                ASPxGridViewInBuil.DataSource = null;
+                ASPxGridViewInBuil.DataBind();
+                HienThiThongBao("Vui lòng nhập thông tin cần tìm?");
+            }
+        }
     }
     [Serializable]
     public class HoaDon
@@ -519,7 +527,8 @@ namespace BanHang
     public class ChiTietHoaDon
     {
         public int STT { get; set; }
-        public int MaHang { get; set; }
+        public string MaHang { get; set; }
+        public int IDHangHoa { get; set; }
         public string TenHang { get; set; }
         public int MaDonViTinh { get; set; }
         public string DonViTinh { get; set; }
