@@ -88,9 +88,11 @@
                 <asp:Parameter DefaultValue="0" Name="DaXoa" Type="Int32" />
             </SelectParameters>
         </asp:SqlDataSource>
-        <asp:SqlDataSource ID="sqlHangHoa" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" SelectCommand="SELECT [ID], [MaHang], [TenHangHoa] FROM [GPM_HangHoa] WHERE ([DaXoa] = @DaXoa)">
+        <asp:SqlDataSource ID="sqlHangHoa" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" SelectCommand="SELECT * FROM [GPM_HangHoa] WHERE (([DaXoa] = @DaXoa) AND (([IDTrangThaiHang] = @IDTrangThaiHang) OR ([IDTrangThaiHang] = @IDTrangThaiHang2)))">
             <SelectParameters>
                 <asp:Parameter DefaultValue="0" Name="DaXoa" Type="Int32" />
+                <asp:Parameter DefaultValue="1" Name="IDTrangThaiHang" />
+                <asp:Parameter DefaultValue="3" Name="IDTrangThaiHang2" />
             </SelectParameters>
         </asp:SqlDataSource>
     </div>
