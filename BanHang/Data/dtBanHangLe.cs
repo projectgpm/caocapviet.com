@@ -9,6 +9,43 @@ namespace BanHang.Data
 {
     public class dtBanHangLe
     {
+        public float LayGiaBanTheoSoLuong(int IDHangHoa, int SLMua)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT GiaBan FROM GPM_HangHoa_GiaTheoSL WHERE IDHangHoa = '" + IDHangHoa + "' AND '" + SLMua + "' >= SoLuongBD AND '" + SLMua + "' <= SoLuongKT AND DaXoa = 0";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    if (tb.Rows.Count != 0)
+                    {
+                        DataRow dr = tb.Rows[0];
+                        return float.Parse(dr["GiaBan"].ToString().Trim());
+                    }
+                    return -1;
+                }
+            }
+        }
+        public DataTable DanhSachGiaTheoSoLuong(int IDHangHoa)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT GiaBan FROM GPM_HangHoa_GiaTheoSL WHERE IDHangHoa = '" + IDHangHoa + "' AND DaXoa = 0";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        DataTable tb = new DataTable();
+                        tb.Load(reader);
+                        return tb;
+                    }
+                }
+            }
+        }
         public void ThemHangQuyDoi(int IDHangHoaQuiDoi, int SoLuong, int SoLuongCon, string IDKho, string IDNguoiDung, int IDHangHoa, int MaHoaDon)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
