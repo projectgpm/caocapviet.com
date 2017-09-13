@@ -52,53 +52,6 @@ namespace BanHang
             gridDanhSachHangHoa_Temp.CancelEdit();
             LoadGrid(IDPhieuKiemKho);
         }
-        //protected void btnInsertHang_Click(object sender, EventArgs e)
-        //{
-        //    try
-        //    {
-        //        if (txtBarcode.Text.Trim() != "")
-        //        {
-        //            int IDPhieuKiemKho = Int32.Parse(IDPhieuKiemKho_Temp.Value);
-        //            int IDHangHoa = -1;
-        //            if (dtKiemKho.LayIDHangHoa_Barcode(txtBarcode.Text.ToString()) != -1)
-        //            {
-        //                IDHangHoa = dtKiemKho.LayIDHangHoa_Barcode(txtBarcode.Text.ToString());
-        //            }
-        //            else if (dtKiemKho.LayIDHangHoa_HangHoa(txtBarcode.Value.ToString()) != -1)
-        //            {
-        //                IDHangHoa = dtKiemKho.LayIDHangHoa_HangHoa(txtBarcode.Value.ToString());
-        //            }
-        //            if (IDHangHoa != -1)
-        //            {
-        //                int TonKho = dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa.ToString(), Session["IDKho"].ToString());
-        //                int ChechLech = -TonKho;
-        //                string MaHang = dtHangHoa.LayMaHang(IDHangHoa.ToString());
-        //                string IDDonViTinh = dtHangHoa.LayIDDonViTinh(IDHangHoa.ToString());
-        //                DataTable dt = data.KTChiTietPhieuKiemKho_Temp(IDHangHoa.ToString(), IDPhieuKiemKho.ToString());
-        //                if (dt.Rows.Count == 0)
-        //                {
-        //                    data = new dtKiemKho();
-        //                    data.ThemPhieuKiemKho_Temp(IDPhieuKiemKho.ToString(), IDHangHoa.ToString(), TonKho, ChechLech, MaHang, IDDonViTinh,"0");
-        //                    LoadGrid(IDPhieuKiemKho.ToString());
-        //                }
-        //            }
-        //            else
-        //                ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Mã hàng không tồn tại!!');", true);
-        //        }
-        //        txtBarcode.Focus();
-        //        txtBarcode.Text = "";
-        //        txtBarcode.Value = "";
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        txtBarcode.Focus();
-        //        txtBarcode.Text = "";
-        //        txtBarcode.Value = "";
-        //        ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Mã hàng không tồn tại!!');", true);
-        //    }
-        //}
-        
-
         protected void btnHuy_Click(object sender, EventArgs e)
         {
             data = new dtKiemKho();
@@ -132,47 +85,6 @@ namespace BanHang
                 throw new Exception("Lỗi: Số lượng thực tế phải  >= 0");
             }
         }
-
-//        protected void txtBarcode_ItemRequestedByValue(object source, DevExpress.Web.ListEditItemRequestedByValueEventArgs e)
-//        {
-//            long value = 0;
-//            if (e.Value == null || !Int64.TryParse(e.Value.ToString(), out value))
-//                return;
-//            ASPxComboBox comboBox = (ASPxComboBox)source;
-//            dsHangHoa.SelectCommand = @"SELECT GPM_HangHoa.ID, GPM_HangHoa.MaHang, GPM_HangHoa.TenHangHoa, GPM_HangHoa.GiaMuaSauThue, GPM_DonViTinh.TenDonViTinh 
-//                                        FROM GPM_DonViTinh INNER JOIN GPM_HangHoa ON GPM_DonViTinh.ID = GPM_HangHoa.IDDonViTinh 
-//                                                           INNER JOIN GPM_HangHoaTonKho ON GPM_HangHoaTonKho.IDHangHoa = GPM_HangHoa.ID 
-//                                        WHERE (GPM_HangHoa.ID = @ID)";
-
-//            dsHangHoa.SelectParameters.Clear();
-//            dsHangHoa.SelectParameters.Add("ID", TypeCode.Int64, e.Value.ToString());
-//            comboBox.DataSource = dsHangHoa;
-//            comboBox.DataBind();
-//        }
-
-//        protected void txtBarcode_ItemsRequestedByFilterCondition(object source, DevExpress.Web.ListEditItemsRequestedByFilterConditionEventArgs e)
-//        {
-//            ASPxComboBox comboBox = (ASPxComboBox)source;
-
-//            dsHangHoa.SelectCommand = @"SELECT [ID], [MaHang], [TenHangHoa], [GiaMuaSauThue] , [TenDonViTinh]
-//                                        FROM (
-//	                                        select GPM_HangHoa.ID, GPM_HangHoa.MaHang, GPM_HangHoa.TenHangHoa, GPM_HangHoa.GiaMuaSauThue, GPM_DonViTinh.TenDonViTinh, 
-//	                                        row_number()over(order by GPM_HangHoa.MaHang) as [rn] 
-//	                                        FROM GPM_DonViTinh INNER JOIN GPM_HangHoa ON GPM_DonViTinh.ID = GPM_HangHoa.IDDonViTinh 
-//                                                               INNER JOIN GPM_HangHoaTonKho ON GPM_HangHoaTonKho.IDHangHoa = GPM_HangHoa.ID
-//	                                        WHERE (GPM_HangHoa.MaHang LIKE @MaHang OR GPM_HangHoa.TenHangHoa LIKE @TenHang) AND (GPM_HangHoaTonKho.IDKho = @IDKho) AND (GPM_HangHoaTonKho.DaXoa = 0)	
-//	                                        ) as st 
-//                                        where st.[rn] between @startIndex and @endIndex";
-
-//            dsHangHoa.SelectParameters.Clear();
-//            dsHangHoa.SelectParameters.Add("MaHang", TypeCode.String, string.Format("%{0}%", e.Filter));
-//            dsHangHoa.SelectParameters.Add("TenHang", TypeCode.String, string.Format("%{0}%", e.Filter));
-//            dsHangHoa.SelectParameters.Add("IDKho", TypeCode.Int32, Session["IDKho"].ToString());
-//            dsHangHoa.SelectParameters.Add("startIndex", TypeCode.Int64, (e.BeginIndex + 1).ToString());
-//            dsHangHoa.SelectParameters.Add("endIndex", TypeCode.Int64, (e.EndIndex + 1).ToString());
-//            comboBox.DataSource = dsHangHoa;
-//            comboBox.DataBind();
-//        }
 
         protected void cmbKe_SelectedIndexChanged(object sender, EventArgs e)
         {

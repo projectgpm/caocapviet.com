@@ -87,7 +87,24 @@ namespace BanHang
                     {
                         string ThucTe = dr["ThucTe"].ToString();
                         string IDHangHoa = dr["IDHangHoa"].ToString();
-                        dtCapNhatTonKho.CapNhatKho(IDHangHoa, ThucTe, IDKho);
+                        // lấy chênh lệch lưu lại thẻ kho
+                        int ChenhLech = Int32.Parse(dr["ChenhLech"].ToString());
+                        if (ChenhLech > 0)
+                        {
+                            object TheKho1 = dtTheKho.ThemTheKho("", "Kiểm kho: " + dtTheKho.LayTenKho_ID(IDKho), "0", "0", (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, IDKho).ToString()) + ChenhLech).ToString(), Session["IDNhanVien"].ToString(), IDKho, IDHangHoa, "Nhập", "0", "0", ChenhLech.ToString());
+                            if (TheKho1 != null)
+                            {
+                                dtCapNhatTonKho.CapNhatKho(IDHangHoa, ThucTe, IDKho);
+                            }
+                        }
+                        else if (ChenhLech < 0)
+                        {
+                            object TheKho2 = dtTheKho.ThemTheKho("", "Kiểm kho: " + dtTheKho.LayTenKho_ID(IDKho), "0", "0", (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, IDKho).ToString()) + ChenhLech).ToString(), Session["IDNhanVien"].ToString(), IDKho, IDHangHoa, "Xuất", "0", "0", ChenhLech.ToString());
+                            if (TheKho2 != null)
+                            {
+                                dtCapNhatTonKho.CapNhatKho(IDHangHoa, ThucTe, IDKho);
+                            }
+                        }
                     }
                     data = new dtKiemKho();
                     data.CapNhatTrangThai(IDPhieuKiemKho);
