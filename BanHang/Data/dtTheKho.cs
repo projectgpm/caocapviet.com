@@ -24,7 +24,7 @@ namespace BanHang.Data
                 }
             }
         }
-        public static object ThemTheKho(string MaDonHang, string DienGiai, string NhapTrongKy, string XuatTrongKy, string TonCuoiKy, string IDNhanVien, string IDKho, string IDHangHoa, string LoaiPhieu)
+        public static object ThemTheKho(string MaDonHang, string DienGiai, string NhapTrongKy, string XuatTrongKy, string TonCuoiKy, string IDNhanVien, string IDKho, string IDHangHoa, string LoaiPhieu, string XuatKhac, string XuatTra, string KiemKho)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
@@ -32,9 +32,12 @@ namespace BanHang.Data
                 {
                     object ID = null;
                     myConnection.Open();
-                    string cmdText = "INSERT INTO [GPM_TheKho] ([MaDonHang], [NgayLap], [DienGiai], [NhapTrongKy],[XuatTrongKy],[TonCuoiKy], [IDNhanVien],[IDKho],[IDHangHoa],[LoaiPhieu])  OUTPUT INSERTED.ID  VALUES (@MaDonHang,getdate(),@DienGiai, @NhapTrongKy,@XuatTrongKy,@TonCuoiKy,@IDNhanVien,@IDKho,@IDHangHoa,@LoaiPhieu)";
+                    string cmdText = "INSERT INTO [GPM_TheKho] ([MaDonHang], [NgayLap], [DienGiai], [NhapTrongKy],[XuatTrongKy],[TonCuoiKy], [IDNhanVien],[IDKho],[IDHangHoa],[LoaiPhieu],[XuatKhac],[XuatTra],[KiemKho])  OUTPUT INSERTED.ID  VALUES (@MaDonHang,getdate(),@DienGiai, @NhapTrongKy,@XuatTrongKy,@TonCuoiKy,@IDNhanVien,@IDKho,@IDHangHoa,@LoaiPhieu,@XuatKhac,@XuatTra,@KiemKho)";
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
+                        myCommand.Parameters.AddWithValue("@XuatKhac", XuatKhac);
+                        myCommand.Parameters.AddWithValue("@XuatTra", XuatTra);
+                        myCommand.Parameters.AddWithValue("@KiemKho", KiemKho);
                         myCommand.Parameters.AddWithValue("@LoaiPhieu", LoaiPhieu);
                         myCommand.Parameters.AddWithValue("@IDHangHoa", IDHangHoa);
                         myCommand.Parameters.AddWithValue("@MaDonHang", MaDonHang);

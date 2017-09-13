@@ -266,6 +266,25 @@ namespace BanHang
                         int SoLuongOld = exitHang.SoLuong;
                         float ThanhTienOld = exitHang.ThanhTien;
                         exitHang.SoLuong = Convert.ToInt32(SoLuongMoi);
+                        float GiaBanSL = BanTheoSoLuong(exitHang.IDHangHoa, exitHang.SoLuong);
+                        if (GiaBanSL != -1)
+                        {
+                            exitHang.DonGia = GiaBanSL;
+                        }
+                        else
+                        {
+                            int KT_GiaApDung = dtBanHangLe.KT_GiaApDung(Session["IDKho"].ToString());
+                            
+                            switch (KT_GiaApDung)
+                            {
+                                case 1: exitHang.DonGia = dtHangHoa.GiaBan1((exitHang.IDHangHoa).ToString(), IDKho); break;
+                                case 2: exitHang.DonGia = dtHangHoa.GiaBan2((exitHang.IDHangHoa).ToString(), IDKho); break;
+                                case 3: exitHang.DonGia = dtHangHoa.GiaBan3((exitHang.IDHangHoa).ToString(), IDKho); break;
+                                case 4: exitHang.DonGia = dtHangHoa.GiaBan4((exitHang.IDHangHoa).ToString(), IDKho); break;
+                                case 5: exitHang.DonGia = dtHangHoa.GiaBan5((exitHang.IDHangHoa).ToString(), IDKho); break;
+                                default: exitHang.DonGia = dtHangHoa.GiaBan0((exitHang.IDHangHoa).ToString(), IDKho); break;
+                            }
+                        }
                         exitHang.ThanhTien = Convert.ToInt32(SoLuongMoi) * exitHang.DonGia;
                         DanhSachHoaDon[MaHoaDon].TongTien += exitHang.ThanhTien - ThanhTienOld;
                         DanhSachHoaDon[MaHoaDon].KhachCanTra = DanhSachHoaDon[MaHoaDon].TongTien - DanhSachHoaDon[MaHoaDon].GiamGia;
@@ -284,6 +303,24 @@ namespace BanHang
                             int SoLuongOld = exitHang.SoLuong;
                             float ThanhTienOld = exitHang.ThanhTien;
                             exitHang.SoLuong = Convert.ToInt32(SoLuongMoi);
+                            float GiaBanSL = BanTheoSoLuong(exitHang.IDHangHoa, SoLuongOld);
+                            if (GiaBanSL != -1)
+                            {
+                                exitHang.DonGia = GiaBanSL;
+                            }
+                            else
+                            {
+                                int KT_GiaApDung = dtBanHangLe.KT_GiaApDung(Session["IDKho"].ToString());
+                                switch (KT_GiaApDung)
+                                {
+                                    case 1: exitHang.DonGia = dtHangHoa.GiaBan1((exitHang.IDHangHoa).ToString(), IDKho); break;
+                                    case 2: exitHang.DonGia = dtHangHoa.GiaBan2((exitHang.IDHangHoa).ToString(), IDKho); break;
+                                    case 3: exitHang.DonGia = dtHangHoa.GiaBan3((exitHang.IDHangHoa).ToString(), IDKho); break;
+                                    case 4: exitHang.DonGia = dtHangHoa.GiaBan4((exitHang.IDHangHoa).ToString(), IDKho); break;
+                                    case 5: exitHang.DonGia = dtHangHoa.GiaBan5((exitHang.IDHangHoa).ToString(), IDKho); break;
+                                    default: exitHang.DonGia = dtHangHoa.GiaBan0((exitHang.IDHangHoa).ToString(), IDKho); break;
+                                }
+                            }
                             exitHang.ThanhTien = Convert.ToInt32(SoLuongMoi) * exitHang.DonGia;
                             DanhSachHoaDon[MaHoaDon].TongTien += exitHang.ThanhTien - ThanhTienOld;
                             DanhSachHoaDon[MaHoaDon].KhachCanTra = DanhSachHoaDon[MaHoaDon].TongTien - DanhSachHoaDon[MaHoaDon].GiamGia;
@@ -311,7 +348,6 @@ namespace BanHang
             DanhSachHoaDon[MaHoaDon].KhachThanhToan = TienKhachThanhToan;
             DanhSachHoaDon[MaHoaDon].TienThua = TienKhachThanhToan - DanhSachHoaDon[MaHoaDon].TongTien;
             txtTienThua.Text = DanhSachHoaDon[MaHoaDon].TienThua.ToString();
-
         }
 
         protected void BtnXoaHang_Click(object sender, EventArgs e)
@@ -623,12 +659,14 @@ namespace BanHang
                         else
                         {
                             ClearQuiDoi();
+                            cmbMaHang.Focus();
                             HienThiThongBao("Không có hàng qui đổi?");
                         }
                     }
                     else
                     {
                         ClearQuiDoi();
+                        cmbMaHang.Focus();
                         HienThiThongBao("Mã hàng không tồn tại!!");
                     }
                 }
@@ -651,13 +689,19 @@ namespace BanHang
 
         protected void btnQuiDoi_Click(object sender, EventArgs e)
         {
-            if (txtSoLuongQuyDoi.Text != "")
+            if (txtSoLuongQuyDoi.Text != "" && cmbMaHang.Text != "" && cmbHangHoaQuyDoi.Text != "")
             {
                 int SoLuongQuiDoi = Int32.Parse(txtSoLuongQuyDoi.Text.ToString());// số lượng cần qui đổi
                 int SLTonQuiDoi = Int32.Parse(txtTonKhoB.Text.ToString());// số lượng tồn của mặt hàng qui đổi
                 if (SoLuongQuiDoi > SLTonQuiDoi)
                 {
+                    txtSoLuongQuyDoi.Focus();
                     HienThiThongBao("Số lượng hàng qui đổi không đủ !!");
+                }
+                else if (SoLuongQuiDoi <= 0)
+                {
+                    txtSoLuongQuyDoi.Focus();
+                    HienThiThongBao("Số lượng qui đổi phải lớn hơn 0 !!");
                 }
                 else
                 {
@@ -665,8 +709,8 @@ namespace BanHang
                     dtHeThongQuyDoi dt = new dtHeThongQuyDoi();
                     int HeSo = dt.LayHeSoHangHoa(cmbHangHoaQuyDoi.Value.ToString());
                     int SLDaDoi = SoLuongQuiDoi * HeSo;
-                    object TheKho1 = dtTheKho.ThemTheKho("", "Qui đổi hàng hóa: " + dtTheKho.LayTenKho_ID(Session["IDKho"].ToString()), SLDaDoi.ToString(), "0", (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(cmbMaHang.Value.ToString(), Session["IDKho"].ToString()).ToString()) + SLDaDoi).ToString(), Session["IDNhanVien"].ToString(), Session["IDKho"].ToString(), cmbMaHang.Value.ToString(), "Nhập");
-                    object TheKho2 = dtTheKho.ThemTheKho("", "Qui đổi hàng hóa : " + dtTheKho.LayTenKho_ID(Session["IDKho"].ToString()), "0", SoLuongQuiDoi.ToString(), (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(cmbHangHoaQuyDoi.Value.ToString(), Session["IDKho"].ToString()).ToString()) - SoLuongQuiDoi).ToString(), Session["IDNhanVien"].ToString(), Session["IDKho"].ToString(), cmbHangHoaQuyDoi.Value.ToString(), "Xuất");
+                    object TheKho1 = dtTheKho.ThemTheKho("", "Qui đổi hàng hóa: " + dtTheKho.LayTenKho_ID(Session["IDKho"].ToString()), SLDaDoi.ToString(), "0", (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(cmbMaHang.Value.ToString(), Session["IDKho"].ToString()).ToString()) + SLDaDoi).ToString(), Session["IDNhanVien"].ToString(), Session["IDKho"].ToString(), cmbMaHang.Value.ToString(), "Nhập", "0", "0", "0");
+                    object TheKho2 = dtTheKho.ThemTheKho("", "Qui đổi hàng hóa : " + dtTheKho.LayTenKho_ID(Session["IDKho"].ToString()), "0", SoLuongQuiDoi.ToString(), (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(cmbHangHoaQuyDoi.Value.ToString(), Session["IDKho"].ToString()).ToString()) - SoLuongQuiDoi).ToString(), Session["IDNhanVien"].ToString(), Session["IDKho"].ToString(), cmbHangHoaQuyDoi.Value.ToString(), "Xuất", "0", "0", "0");
                     if (TheKho1 != null && TheKho2 != null)
                     {
                         dtCapNhatTonKho.TruTonKho(cmbHangHoaQuyDoi.Value.ToString(), SoLuongQuiDoi.ToString(), Session["IDKho"].ToString());
@@ -677,13 +721,10 @@ namespace BanHang
             }
             else
             {
-                txtSoLuongQuyDoi.Focus();
-                HienThiThongBao("Vui lòng nhập số lượng !!");
+                //txtSoLuongQuyDoi.Focus();
+                HienThiThongBao("Vui lòng nhập đầy đủ thông tin !!");
             }
         }
-
-   
-      
     }
     [Serializable]
     public class HoaDon
