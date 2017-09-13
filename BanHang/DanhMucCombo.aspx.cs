@@ -167,7 +167,7 @@ namespace BanHang
                                     int SL_SUM = (SLTon_SUM - (SLMoi * SLHang));
                                     if (SLHang > 0)
                                     {
-                                        object TheKho = dtTheKho.ThemTheKho("", "Gộp Hàng Hóa ComBo " + txtTenHangSua.Text, "0", SLHang.ToString(), (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, Session["IDKho"].ToString()).ToString()) - SLHang).ToString(), Session["IDNhanVien"].ToString(), Session["IDKho"].ToString(), IDHangHoa, "Xuất", "0", "0", "0");
+                                        object TheKho = dtTheKho.ThemTheKho("", "Gộp Hàng Hóa ComBo " + txtTenHangSua.Text, "0", (SLHang * SLMoi).ToString(), (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, Session["IDKho"].ToString()).ToString()) - (SLHang * SLMoi)).ToString(), Session["IDNhanVien"].ToString(), Session["IDKho"].ToString(), IDHangHoa, "Xuất", "0", "0", "0");
                                         if (TheKho != null)
                                         {
                                             dtLichSuKho.ThemLichSu(IDHangHoa, Session["IDNhanVien"].ToString(), ((-1) * (SL_SUM - SLTon)).ToString(), "Gộp Hàng Combo:" + dtHangHoa.LayTenHangHoa(IDHangHoa) + "", Session["IDKho"].ToString());
@@ -176,7 +176,7 @@ namespace BanHang
                                     }
                                 }
                             }
-                            object TheKho1 = dtTheKho.ThemTheKho("", "Gộp Hàng Hóa ComBo " + txtTenHangSua.Text, SLMoi.ToString(), "0", (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(dtHangHoa.LayIDHangHoa_MaHang(txtMaHangSua.Text), Session["IDKho"].ToString()).ToString()) - SLMoi).ToString(), Session["IDNhanVien"].ToString(), Session["IDKho"].ToString(), dtHangHoa.LayIDHangHoa_MaHang(txtMaHangSua.Text), "Nhập", "0", "0", "0");
+                            object TheKho1 = dtTheKho.ThemTheKho("", "Gộp Hàng Hóa ComBo " + txtTenHangSua.Text, SLMoi.ToString(), "0", (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(dtHangHoa.LayIDHangHoa_MaHang(txtMaHangSua.Text), Session["IDKho"].ToString()).ToString()) + SLMoi).ToString(), Session["IDNhanVien"].ToString(), Session["IDKho"].ToString(), dtHangHoa.LayIDHangHoa_MaHang(txtMaHangSua.Text), "Nhập", "0", "0", "0");
                             if (TheKho1 != null)
                             {
                                 dtLichSuKho.ThemLichSu(ID.ToString(), Session["IDNhanVien"].ToString(), ((-1) * (SLMoi - SLTonKho)).ToString(), "Cập nhật số lượng hàng combo:" + dtHangHoa.LayTenHangHoa(ID.ToString()) + "", Session["IDKho"].ToString());
@@ -204,7 +204,7 @@ namespace BanHang
                             int SLTon_SUM = (SLTachHang * SLHang) + SLTon; //(5 * 7) + 10 = 45
                             if (SLHang > 0)
                             {
-                                object TheKho = dtTheKho.ThemTheKho("", "Tách Hàng Hóa ComBo " + txtTenHangSua.Text, SLHang.ToString(), "0", (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, Session["IDKho"].ToString()).ToString()) - SLHang).ToString(), Session["IDNhanVien"].ToString(), Session["IDKho"].ToString(), IDHangHoa, "Nhập", "0", "0", "0");
+                                object TheKho = dtTheKho.ThemTheKho("", "Tách Hàng Hóa ComBo " + txtTenHangSua.Text, (SLTachHang * SLHang).ToString(), "0", (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, Session["IDKho"].ToString()).ToString()) + (SLTachHang * SLHang)).ToString(), Session["IDNhanVien"].ToString(), Session["IDKho"].ToString(), IDHangHoa, "Nhập", "0", "0", "0");
                                 if (TheKho != null)
                                 {
                                     dtCapNhatTonKho.CapNhatKho(IDHangHoa, SLTon_SUM.ToString(), Session["IDKho"].ToString()); // vd: 45
@@ -213,7 +213,7 @@ namespace BanHang
                             }
 
                         }
-                        object TheKho1 = dtTheKho.ThemTheKho("", "Tách Hàng Hóa ComBo " + txtTenHangSua.Text, "0", SLMoi.ToString(), (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(dtHangHoa.LayIDHangHoa_MaHang(txtMaHangSua.Text), Session["IDKho"].ToString()).ToString()) - SLMoi).ToString(), Session["IDNhanVien"].ToString(), Session["IDKho"].ToString(), dtHangHoa.LayIDHangHoa_MaHang(txtMaHangSua.Text), "Xuất", "0", "0", "0");
+                        object TheKho1 = dtTheKho.ThemTheKho("", "Tách Hàng Hóa ComBo " + txtTenHangSua.Text, "0", SLTachHang.ToString(), (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(dtHangHoa.LayIDHangHoa_MaHang(txtMaHangSua.Text), Session["IDKho"].ToString()).ToString()) - SLTachHang).ToString(), Session["IDNhanVien"].ToString(), Session["IDKho"].ToString(), dtHangHoa.LayIDHangHoa_MaHang(txtMaHangSua.Text), "Xuất", "0", "0", "0");
                         if (TheKho1 != null)
                         {
                             dtLichSuKho.ThemLichSu(ID.ToString(), Session["IDNhanVien"].ToString(), ((-1) * (SLTachHang)).ToString(), "Cập nhật số lượng hàng combo:" + dtHangHoa.LayTenHangHoa(ID.ToString()) + "", Session["IDKho"].ToString());
