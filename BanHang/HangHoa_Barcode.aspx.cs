@@ -54,8 +54,6 @@ namespace BanHang
                     gridHangHoaBarcode.CancelEdit();
                 }
                 else throw new Exception("Barcode đã tồn tại.");
-
-                
             }
             else throw new Exception("Không được bỏ trống dữ liệu.");
 
