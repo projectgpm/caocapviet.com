@@ -211,7 +211,7 @@
             // 
             this.xrTableCell14.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell14.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "democcv2_GPM_PhieuChuyenKho.MaPhieuChuyenKho")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "GPM_PhieuChuyenKho.MaPhieuChuyenKho")});
             this.xrTableCell14.Dpi = 254F;
             this.xrTableCell14.Name = "xrTableCell14";
             this.xrTableCell14.StylePriority.UseBorders = false;
@@ -221,7 +221,7 @@
             // 
             this.xrTableCell15.Borders = DevExpress.XtraPrinting.BorderSide.Bottom;
             this.xrTableCell15.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "democcv2_GPM_PhieuChuyenKho.NgayLap", "{0:dd/MM/yyyy}")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "GPM_PhieuChuyenKho.NgayLap", "{0:dd/MM/yyyy}")});
             this.xrTableCell15.Dpi = 254F;
             this.xrTableCell15.Name = "xrTableCell15";
             this.xrTableCell15.StylePriority.UseBorders = false;
@@ -231,7 +231,7 @@
             // 
             this.xrTableCell16.Borders = DevExpress.XtraPrinting.BorderSide.Bottom;
             this.xrTableCell16.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "democcv2_GPM_PhieuChuyenKho.TenCuaHang")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "GPM_PhieuChuyenKho.TenCuaHang")});
             this.xrTableCell16.Dpi = 254F;
             this.xrTableCell16.Name = "xrTableCell16";
             this.xrTableCell16.StylePriority.UseBorders = false;
@@ -241,7 +241,7 @@
             // 
             this.xrTableCell17.Borders = DevExpress.XtraPrinting.BorderSide.Bottom;
             this.xrTableCell17.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "democcv2_GPM_PhieuChuyenKho.MaKho")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "GPM_PhieuChuyenKho.MaKho")});
             this.xrTableCell17.Dpi = 254F;
             this.xrTableCell17.Name = "xrTableCell17";
             this.xrTableCell17.StylePriority.UseBorders = false;
@@ -251,7 +251,7 @@
             // 
             this.xrTableCell18.Borders = DevExpress.XtraPrinting.BorderSide.Bottom;
             this.xrTableCell18.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "democcv2_GPM_PhieuChuyenKho.democcv2.GPM_Kho_1_MaKho")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "GPM_PhieuChuyenKho.GPM_Kho_1_MaKho")});
             this.xrTableCell18.Dpi = 254F;
             this.xrTableCell18.Name = "xrTableCell18";
             this.xrTableCell18.StylePriority.UseBorders = false;
@@ -261,7 +261,7 @@
             // 
             this.xrTableCell19.Borders = DevExpress.XtraPrinting.BorderSide.Bottom;
             this.xrTableCell19.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "democcv2_GPM_PhieuChuyenKho.SoPhieuHeThong")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "GPM_PhieuChuyenKho.SoPhieuHeThong")});
             this.xrTableCell19.Dpi = 254F;
             this.xrTableCell19.Name = "xrTableCell19";
             this.xrTableCell19.StylePriority.UseBorders = false;
@@ -271,7 +271,7 @@
             // 
             this.xrTableCell20.Borders = DevExpress.XtraPrinting.BorderSide.Bottom;
             this.xrTableCell20.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "democcv2_GPM_PhieuChuyenKho.TenNguoiDung")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "GPM_PhieuChuyenKho.TenNguoiDung")});
             this.xrTableCell20.Dpi = 254F;
             this.xrTableCell20.Name = "xrTableCell20";
             this.xrTableCell20.StylePriority.UseBorders = false;
@@ -281,7 +281,7 @@
             // 
             this.xrTableCell21.Borders = DevExpress.XtraPrinting.BorderSide.Bottom;
             this.xrTableCell21.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "democcv2_GPM_PhieuChuyenKho.NgayXuat", "{0:dd/MM/yyyy}")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "GPM_PhieuChuyenKho.NgayXuat", "{0:dd/MM/yyyy}")});
             this.xrTableCell21.Dpi = 254F;
             this.xrTableCell21.Name = "xrTableCell21";
             this.xrTableCell21.StylePriority.UseBorders = false;
@@ -291,7 +291,7 @@
             // 
             this.xrTableCell22.Borders = DevExpress.XtraPrinting.BorderSide.Bottom;
             this.xrTableCell22.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "democcv2_GPM_PhieuChuyenKho.NguoiGiao")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "GPM_PhieuChuyenKho.NguoiGiao")});
             this.xrTableCell22.Dpi = 254F;
             this.xrTableCell22.Name = "xrTableCell22";
             this.xrTableCell22.StylePriority.UseBorders = false;
@@ -647,7 +647,7 @@
             // xrLabel2
             // 
             this.xrLabel2.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "democcv2_Setting.InCongTy")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Setting.InCongTy")});
             this.xrLabel2.Dpi = 254F;
             this.xrLabel2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold);
             this.xrLabel2.LocationFloat = new DevExpress.Utils.PointFloat(500.3421F, 148.0676F);
@@ -661,7 +661,7 @@
             // xrLabel1
             // 
             this.xrLabel1.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "democcv2_Setting.InTieuDe")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Setting.InTieuDe")});
             this.xrLabel1.Dpi = 254F;
             this.xrLabel1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold);
             this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(500.3421F, 89.64768F);
@@ -692,12 +692,12 @@
             // 
             this.sqlDataSource1.ConnectionName = "BanHangConnectionString";
             this.sqlDataSource1.Name = "sqlDataSource1";
-            table1.Name = "democcv2.Setting";
+            table1.Name = "Setting";
             allColumns1.Table = table1;
             selectQuery1.Columns.Add(allColumns1);
-            selectQuery1.Name = "democcv2_Setting";
+            selectQuery1.Name = "Setting";
             selectQuery1.Tables.Add(table1);
-            customSqlQuery1.Name = "democcv2_GPM_PhieuChuyenKho";
+            customSqlQuery1.Name = "GPM_PhieuChuyenKho";
             queryParameter1.Name = "NgayBD";
             queryParameter1.Type = typeof(DevExpress.DataAccess.Expression);
             queryParameter1.Value = new DevExpress.DataAccess.Expression("[Parameters.NgayBD]", typeof(string));
@@ -716,7 +716,7 @@
             customSqlQuery1.Parameters.Add(queryParameter4);
             customSqlQuery1.Sql = resources.GetString("customSqlQuery1.Sql");
             columnExpression1.ColumnName = "GhiChu";
-            table2.Name = "democcv2.GPM_PhieuChuyenKho_ChiTiet";
+            table2.Name = "GPM_PhieuChuyenKho_ChiTiet";
             columnExpression1.Table = table2;
             column1.Expression = columnExpression1;
             columnExpression2.ColumnName = "TrongLuong";
@@ -729,17 +729,17 @@
             columnExpression4.Table = table2;
             column4.Expression = columnExpression4;
             columnExpression5.ColumnName = "MaHang";
-            table3.Name = "democcv2.GPM_HangHoa";
+            table3.Name = "GPM_HangHoa";
             columnExpression5.Table = table3;
             column5.Expression = columnExpression5;
             columnExpression6.ColumnName = "TenHangHoa";
             columnExpression6.Table = table3;
             column6.Expression = columnExpression6;
             columnExpression7.ColumnName = "TenDonViTinh";
-            table4.Name = "democcv2.GPM_DonViTinh";
+            table4.Name = "GPM_DonViTinh";
             columnExpression7.Table = table4;
             column7.Expression = columnExpression7;
-            column8.Alias = "democcv2.GPM_HangHoa_TrongLuong";
+            column8.Alias = "GPM_HangHoa_TrongLuong";
             columnExpression8.ColumnName = "TrongLuong";
             columnExpression8.Table = table3;
             column8.Expression = columnExpression8;
@@ -763,7 +763,7 @@
             selectQuery2.Columns.Add(column9);
             selectQuery2.Columns.Add(column10);
             selectQuery2.Columns.Add(column11);
-            selectQuery2.Name = "democcv2_GPM_PhieuChuyenKho_ChiTiet";
+            selectQuery2.Name = "GPM_PhieuChuyenKho_ChiTiet";
             relationColumnInfo1.NestedKeyColumn = "ID";
             relationColumnInfo1.ParentKeyColumn = "IDHangHoa";
             join1.KeyColumns.Add(relationColumnInfo1);
@@ -783,11 +783,11 @@
             selectQuery1,
             customSqlQuery1,
             selectQuery2});
-            masterDetailInfo1.DetailQueryName = "democcv2_GPM_PhieuChuyenKho_ChiTiet";
+            masterDetailInfo1.DetailQueryName = "GPM_PhieuChuyenKho_ChiTiet";
             relationColumnInfo3.NestedKeyColumn = "IDPhieuChuyenKho";
             relationColumnInfo3.ParentKeyColumn = "ID";
             masterDetailInfo1.KeyColumns.Add(relationColumnInfo3);
-            masterDetailInfo1.MasterQueryName = "democcv2_GPM_PhieuChuyenKho";
+            masterDetailInfo1.MasterQueryName = "GPM_PhieuChuyenKho";
             this.sqlDataSource1.Relations.AddRange(new DevExpress.DataAccess.Sql.MasterDetailInfo[] {
             masterDetailInfo1});
             this.sqlDataSource1.ResultSchemaSerializable = resources.GetString("sqlDataSource1.ResultSchemaSerializable");
@@ -796,8 +796,7 @@
             // 
             this.DetailReport.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
             this.Detail1});
-            this.DetailReport.DataMember = "democcv2_GPM_PhieuChuyenKho.democcv2_GPM_PhieuChuyenKhodemoccv2_GPM_PhieuChuyenKh" +
-    "o_ChiTiet";
+            this.DetailReport.DataMember = "GPM_PhieuChuyenKho.GPM_PhieuChuyenKhoGPM_PhieuChuyenKho_ChiTiet";
             this.DetailReport.DataSource = this.sqlDataSource1;
             this.DetailReport.Dpi = 254F;
             this.DetailReport.Level = 0;
@@ -849,8 +848,7 @@
             this.xrTableCell27.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell27.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "democcv2_GPM_PhieuChuyenKho.democcv2_GPM_PhieuChuyenKhodemoccv2_GPM_PhieuChuyenKh" +
-                    "o_ChiTiet.ID")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "GPM_PhieuChuyenKho.GPM_PhieuChuyenKhoGPM_PhieuChuyenKho_ChiTiet.ID")});
             this.xrTableCell27.Dpi = 254F;
             this.xrTableCell27.Name = "xrTableCell27";
             this.xrTableCell27.StylePriority.UseBorders = false;
@@ -864,8 +862,7 @@
             this.xrTableCell28.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell28.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "democcv2_GPM_PhieuChuyenKho.democcv2_GPM_PhieuChuyenKhodemoccv2_GPM_PhieuChuyenKh" +
-                    "o_ChiTiet.MaHang")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "GPM_PhieuChuyenKho.GPM_PhieuChuyenKhoGPM_PhieuChuyenKho_ChiTiet.MaHang")});
             this.xrTableCell28.Dpi = 254F;
             this.xrTableCell28.Name = "xrTableCell28";
             this.xrTableCell28.StylePriority.UseBorders = false;
@@ -876,8 +873,7 @@
             this.xrTableCell29.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell29.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "democcv2_GPM_PhieuChuyenKho.democcv2_GPM_PhieuChuyenKhodemoccv2_GPM_PhieuChuyenKh" +
-                    "o_ChiTiet.TenHangHoa")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "GPM_PhieuChuyenKho.GPM_PhieuChuyenKhoGPM_PhieuChuyenKho_ChiTiet.TenHangHoa")});
             this.xrTableCell29.Dpi = 254F;
             this.xrTableCell29.Name = "xrTableCell29";
             this.xrTableCell29.StylePriority.UseBorders = false;
@@ -888,8 +884,7 @@
             this.xrTableCell30.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell30.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "democcv2_GPM_PhieuChuyenKho.democcv2_GPM_PhieuChuyenKhodemoccv2_GPM_PhieuChuyenKh" +
-                    "o_ChiTiet.TenDonViTinh")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "GPM_PhieuChuyenKho.GPM_PhieuChuyenKhoGPM_PhieuChuyenKho_ChiTiet.TenDonViTinh")});
             this.xrTableCell30.Dpi = 254F;
             this.xrTableCell30.Name = "xrTableCell30";
             this.xrTableCell30.StylePriority.UseBorders = false;
@@ -900,8 +895,8 @@
             this.xrTableCell31.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell31.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "democcv2_GPM_PhieuChuyenKho.democcv2_GPM_PhieuChuyenKhodemoccv2_GPM_PhieuChuyenKh" +
-                    "o_ChiTiet.democcv2.GPM_HangHoa_TrongLuong")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "GPM_PhieuChuyenKho.GPM_PhieuChuyenKhoGPM_PhieuChuyenKho_ChiTiet.GPM_HangHoa_Trong" +
+                    "Luong")});
             this.xrTableCell31.Dpi = 254F;
             this.xrTableCell31.Name = "xrTableCell31";
             this.xrTableCell31.StylePriority.UseBorders = false;
@@ -912,8 +907,7 @@
             this.xrTableCell32.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell32.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "democcv2_GPM_PhieuChuyenKho.democcv2_GPM_PhieuChuyenKhodemoccv2_GPM_PhieuChuyenKh" +
-                    "o_ChiTiet.GiaBanTruocThue", "{0:#,#}")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "GPM_PhieuChuyenKho.GPM_PhieuChuyenKhoGPM_PhieuChuyenKho_ChiTiet.GiaBanTruocThue", "{0:#,#}")});
             this.xrTableCell32.Dpi = 254F;
             this.xrTableCell32.Name = "xrTableCell32";
             this.xrTableCell32.StylePriority.UseBorders = false;
@@ -924,8 +918,7 @@
             this.xrTableCell33.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell33.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "democcv2_GPM_PhieuChuyenKho.democcv2_GPM_PhieuChuyenKhodemoccv2_GPM_PhieuChuyenKh" +
-                    "o_ChiTiet.SoLuong")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "GPM_PhieuChuyenKho.GPM_PhieuChuyenKhoGPM_PhieuChuyenKho_ChiTiet.SoLuong")});
             this.xrTableCell33.Dpi = 254F;
             this.xrTableCell33.Name = "xrTableCell33";
             this.xrTableCell33.StylePriority.UseBorders = false;
@@ -936,8 +929,7 @@
             this.xrTableCell34.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell34.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "democcv2_GPM_PhieuChuyenKho.democcv2_GPM_PhieuChuyenKhodemoccv2_GPM_PhieuChuyenKh" +
-                    "o_ChiTiet.GiaTriDonHang", "{0:#,#}")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "GPM_PhieuChuyenKho.GPM_PhieuChuyenKhoGPM_PhieuChuyenKho_ChiTiet.GiaTriDonHang", "{0:#,#}")});
             this.xrTableCell34.Dpi = 254F;
             this.xrTableCell34.Name = "xrTableCell34";
             this.xrTableCell34.StylePriority.UseBorders = false;
@@ -948,8 +940,7 @@
             this.xrTableCell35.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell35.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "democcv2_GPM_PhieuChuyenKho.democcv2_GPM_PhieuChuyenKhodemoccv2_GPM_PhieuChuyenKh" +
-                    "o_ChiTiet.SoLuong")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "GPM_PhieuChuyenKho.GPM_PhieuChuyenKhoGPM_PhieuChuyenKho_ChiTiet.SoLuong")});
             this.xrTableCell35.Dpi = 254F;
             this.xrTableCell35.Name = "xrTableCell35";
             this.xrTableCell35.StylePriority.UseBorders = false;
@@ -960,8 +951,7 @@
             this.xrTableCell36.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell36.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "democcv2_GPM_PhieuChuyenKho.democcv2_GPM_PhieuChuyenKhodemoccv2_GPM_PhieuChuyenKh" +
-                    "o_ChiTiet.GiaTriDonHang", "{0:#,#}")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "GPM_PhieuChuyenKho.GPM_PhieuChuyenKhoGPM_PhieuChuyenKho_ChiTiet.GiaTriDonHang", "{0:#,#}")});
             this.xrTableCell36.Dpi = 254F;
             this.xrTableCell36.Name = "xrTableCell36";
             this.xrTableCell36.StylePriority.UseBorders = false;
@@ -982,8 +972,7 @@
             this.xrTableCell38.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell38.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "democcv2_GPM_PhieuChuyenKho.democcv2_GPM_PhieuChuyenKhodemoccv2_GPM_PhieuChuyenKh" +
-                    "o_ChiTiet.TrongLuong")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "GPM_PhieuChuyenKho.GPM_PhieuChuyenKhoGPM_PhieuChuyenKho_ChiTiet.TrongLuong")});
             this.xrTableCell38.Dpi = 254F;
             this.xrTableCell38.Name = "xrTableCell38";
             this.xrTableCell38.StylePriority.UseBorders = false;
@@ -994,8 +983,7 @@
             this.xrTableCell39.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell39.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "democcv2_GPM_PhieuChuyenKho.democcv2_GPM_PhieuChuyenKhodemoccv2_GPM_PhieuChuyenKh" +
-                    "o_ChiTiet.GhiChu")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "GPM_PhieuChuyenKho.GPM_PhieuChuyenKhoGPM_PhieuChuyenKho_ChiTiet.GhiChu")});
             this.xrTableCell39.Dpi = 254F;
             this.xrTableCell39.Name = "xrTableCell39";
             this.xrTableCell39.StylePriority.UseBorders = false;
@@ -1003,8 +991,7 @@
             // 
             // GiaTriDonHang
             // 
-            this.GiaTriDonHang.DataMember = "democcv2_GPM_PhieuChuyenKho.democcv2_GPM_PhieuChuyenKhodemoccv2_GPM_PhieuChuyenKh" +
-    "o_ChiTiet";
+            this.GiaTriDonHang.DataMember = "GPM_PhieuChuyenKho.GPM_PhieuChuyenKhoGPM_PhieuChuyenKho_ChiTiet";
             this.GiaTriDonHang.Expression = "[SoLuong] * [GiaBanTruocThue]";
             this.GiaTriDonHang.Name = "GiaTriDonHang";
             // 
@@ -1081,8 +1068,7 @@
             this.xrTableCell43.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell43.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "democcv2_GPM_PhieuChuyenKho.democcv2_GPM_PhieuChuyenKhodemoccv2_GPM_PhieuChuyenKh" +
-                    "o_ChiTiet.SoLuong")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "GPM_PhieuChuyenKho.GPM_PhieuChuyenKhoGPM_PhieuChuyenKho_ChiTiet.SoLuong")});
             this.xrTableCell43.Dpi = 254F;
             this.xrTableCell43.Name = "xrTableCell43";
             this.xrTableCell43.StylePriority.UseBorders = false;
@@ -1095,8 +1081,7 @@
             this.xrTableCell44.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell44.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "democcv2_GPM_PhieuChuyenKho.democcv2_GPM_PhieuChuyenKhodemoccv2_GPM_PhieuChuyenKh" +
-                    "o_ChiTiet.GiaTriDonHang")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "GPM_PhieuChuyenKho.GPM_PhieuChuyenKhoGPM_PhieuChuyenKho_ChiTiet.GiaTriDonHang")});
             this.xrTableCell44.Dpi = 254F;
             this.xrTableCell44.Name = "xrTableCell44";
             this.xrTableCell44.StylePriority.UseBorders = false;
@@ -1110,8 +1095,7 @@
             this.xrTableCell45.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell45.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "democcv2_GPM_PhieuChuyenKho.democcv2_GPM_PhieuChuyenKhodemoccv2_GPM_PhieuChuyenKh" +
-                    "o_ChiTiet.SoLuong")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "GPM_PhieuChuyenKho.GPM_PhieuChuyenKhoGPM_PhieuChuyenKho_ChiTiet.SoLuong")});
             this.xrTableCell45.Dpi = 254F;
             this.xrTableCell45.Name = "xrTableCell45";
             this.xrTableCell45.StylePriority.UseBorders = false;
@@ -1124,8 +1108,7 @@
             this.xrTableCell46.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell46.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "democcv2_GPM_PhieuChuyenKho.democcv2_GPM_PhieuChuyenKhodemoccv2_GPM_PhieuChuyenKh" +
-                    "o_ChiTiet.GiaTriDonHang")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "GPM_PhieuChuyenKho.GPM_PhieuChuyenKhoGPM_PhieuChuyenKho_ChiTiet.GiaTriDonHang")});
             this.xrTableCell46.Dpi = 254F;
             this.xrTableCell46.Name = "xrTableCell46";
             this.xrTableCell46.StylePriority.UseBorders = false;
@@ -1174,7 +1157,7 @@
             this.GiaTriDonHang});
             this.ComponentStorage.AddRange(new System.ComponentModel.IComponent[] {
             this.sqlDataSource1});
-            this.DataMember = "democcv2_GPM_PhieuChuyenKho";
+            this.DataMember = "GPM_PhieuChuyenKho";
             this.DataSource = this.sqlDataSource1;
             this.Dpi = 254F;
             this.Landscape = true;
