@@ -13,8 +13,14 @@ namespace BanHang
         dtDonViTinh data = new dtDonViTinh();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (Session["KTDangNhap"] != "GPM")
+            {
+                Response.Redirect("DangNhap.aspx");
+            }
+            else
+            {
                 LoadGrid();
+            }
         }
         public void LoadGrid()
         {

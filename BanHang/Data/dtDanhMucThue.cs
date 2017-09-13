@@ -98,7 +98,7 @@ namespace BanHang.Data
                 try
                 {
                     myConnection.Open();
-                    string strSQL = "UPDATE [GPM_Thue] SET [GhiChu] = @ GhiChu,[TenThue] = @TenThue, [TiLe] = @TiLe, [NgayCapNhat] = getdate() WHERE [ID] = @ID";
+                    string strSQL = "UPDATE [GPM_Thue] SET [GhiChu] = @GhiChu,[TenThue] = @TenThue, [TiLe] = @TiLe, [NgayCapNhat] = getdate() WHERE [ID] = @ID";
                     using (SqlCommand myCommand = new SqlCommand(strSQL, myConnection))
                     {
                         myCommand.Parameters.AddWithValue("@GhiChu", GhiChu);
