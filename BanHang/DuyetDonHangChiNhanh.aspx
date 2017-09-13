@@ -267,7 +267,7 @@
                                     <dx:GridViewDataTextColumn Caption="Ghi Chú" FieldName="GhiChu" ShowInCustomizationForm="True" VisibleIndex="9">
                                     </dx:GridViewDataTextColumn>
 
-                                    <dx:GridViewDataSpinEditColumn Caption="Tồn Kho Tổng" FieldName="TonKhoTong" ShowInCustomizationForm="True" VisibleIndex="4">
+                                    <dx:GridViewDataSpinEditColumn Caption="Tồn Kho Tổng" FieldName="TonKhoTong" ShowInCustomizationForm="True" VisibleIndex="4" ReadOnly="True">
                                         <PropertiesSpinEdit DisplayFormatString="g">
                                         </PropertiesSpinEdit>
                                     </dx:GridViewDataSpinEditColumn>

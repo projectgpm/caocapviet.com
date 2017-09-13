@@ -300,8 +300,22 @@ namespace BanHang.Data
                                     cmd.ExecuteNonQuery();
                                 }
                                 //ghi thẻ kho
+                                int TonKhoHangHoa = 0;
+                                string cmdText1 = " SELECT SoLuongCon FROM [GPM_HangHoaTonKho] WHERE [IDHangHoa] = '" + cthd.IDHangHoa + "' AND IDKho =" + IDKho;
+                                using (SqlCommand cmd1 = new SqlCommand(cmdText1, con, trans))
+                                using (SqlDataReader reade1r = cmd1.ExecuteReader())
+                                {
+                                    DataTable tb1 = new DataTable();
+                                    tb1.Load(reade1r);
+                                    if (tb1.Rows.Count != 0)
+                                    {
+                                        DataRow dr1 = tb1.Rows[0];
+                                        TonKhoHangHoa = Int32.Parse(dr1["SoLuongCon"].ToString());
+                                    }
+                                    else TonKhoHangHoa = 0;
+                                }
 
-                                string cmdText = "INSERT INTO [GPM_TheKho] ([MaDonHang], [NgayLap], [DienGiai], [NhapTrongKy],[XuatTrongKy],[TonCuoiKy], [IDNhanVien],[IDKho],[IDHangHoa],[LoaiPhieu],[XuatKhac],[XuatTra],[KiemKho])  OUTPUT INSERTED.ID  VALUES (@MaDonHang,getdate(),@DienGiai, @NhapTrongKy,@XuatTrongKy,@TonCuoiKy,@IDNhanVien,@IDKho,@IDHangHoa,@LoaiPhieu,@XuatKhac,@XuatTra,@KiemKho)";
+                                string cmdText = "INSERT INTO [GPM_TheKho] ([MaDonHang], [NgayLap], [DienGiai], [NhapTrongKy],[XuatTrongKy],[TonCuoiKy], [IDNhanVien],[IDKho],[IDHangHoa],[LoaiPhieu],[XuatKhac],[XuatTra],[KiemKho]) OUTPUT INSERTED.ID  VALUES (@MaDonHang,getdate(),@DienGiai, @NhapTrongKy,@XuatTrongKy,@TonCuoiKy,@IDNhanVien,@IDKho,@IDHangHoa,@LoaiPhieu,@XuatKhac,@XuatTra,@KiemKho)";
                                 using (SqlCommand cmd = new SqlCommand(cmdText, con, trans))
                                 {
                                     cmd.Parameters.AddWithValue("@XuatKhac", 0);
@@ -312,8 +326,8 @@ namespace BanHang.Data
                                     cmd.Parameters.AddWithValue("@MaDonHang", MaHoaDon);
                                     cmd.Parameters.AddWithValue("@DienGiai", "Bán Hàng Lẻ");
                                     cmd.Parameters.AddWithValue("@NhapTrongKy", 0);
-                                    cmd.Parameters.AddWithValue("@XuatTrongKy", 0);
-                                    cmd.Parameters.AddWithValue("@TonCuoiKy", dtCapNhatTonKho.SoLuong_TonKho((cthd.IDHangHoa).ToString(), IDKho) - cthd.SoLuong);
+                                    cmd.Parameters.AddWithValue("@XuatTrongKy", cthd.SoLuong);
+                                    cmd.Parameters.AddWithValue("@TonCuoiKy", (TonKhoHangHoa));
                                     cmd.Parameters.AddWithValue("@IDNhanVien", IDNhanVien);
                                     cmd.Parameters.AddWithValue("@IDKho", IDKho);
                                     cmd.ExecuteNonQuery();

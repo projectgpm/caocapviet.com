@@ -716,6 +716,7 @@ namespace BanHang
                         dtCapNhatTonKho.TruTonKho(cmbHangHoaQuyDoi.Value.ToString(), SoLuongQuiDoi.ToString(), Session["IDKho"].ToString());
                         dtCapNhatTonKho.CongTonKho(cmbMaHang.Value.ToString(), SLDaDoi.ToString(), Session["IDKho"].ToString());
                     }
+                    popupQuiDoi.ShowOnPageLoad = false;
                     HienThiThongBao("Qui đổi hàng hóa thành công !!");
                 }
             }

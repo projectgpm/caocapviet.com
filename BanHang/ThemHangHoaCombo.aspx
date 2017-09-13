@@ -66,7 +66,7 @@
                 <dx:LayoutItem Caption="Tổng Giá Mua Trước Thuế">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer runat="server">
-                            <dx:ASPxSpinEdit ID="txtGiaMuaTruocThue" runat="server" Enabled="False" Width ="100%" DisplayFormatString="N0">
+                            <dx:ASPxSpinEdit ID="txtGiaMuaTruocThue" runat="server" Enabled="False" Width ="100%" DisplayFormatString="{0:#,#} đ">
                             </dx:ASPxSpinEdit>
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
@@ -74,7 +74,7 @@
                 <dx:LayoutItem Caption="Tổng Giá Mua Sau Thuế">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer runat="server">
-                            <dx:ASPxSpinEdit ID="txtGiaMuaSauThue" runat="server" Enabled="False" Width ="100%" DisplayFormatString="N0">
+                            <dx:ASPxSpinEdit ID="txtGiaMuaSauThue" runat="server" Enabled="False" Width ="100%" DisplayFormatString="{0:#,#} đ">
                             </dx:ASPxSpinEdit>
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
@@ -82,14 +82,14 @@
                 <dx:LayoutItem Caption="Tổng Giá Bán Trước Thuế">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer runat="server">
-                            <dx:ASPxSpinEdit ID="txtGiaBanTruocThue" runat="server" Enabled="False" Width ="100%" DisplayFormatString="N0">
+                            <dx:ASPxSpinEdit ID="txtGiaBanTruocThue" runat="server" Enabled="False" Width ="100%" DisplayFormatString="{0:#,#} đ">
                             </dx:ASPxSpinEdit>
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
                 </dx:LayoutItem>
 <dx:LayoutItem Caption="Tổng Giá Bán Sau Thuế"><LayoutItemNestedControlCollection>
 <dx:LayoutItemNestedControlContainer runat="server">
-                            <dx:ASPxSpinEdit ID="txtGiaBanSauThue" runat="server" Enabled="False" Width ="100%" DisplayFormatString="N0">
+                            <dx:ASPxSpinEdit ID="txtGiaBanSauThue" runat="server" Enabled="False" Width ="100%" DisplayFormatString="{0:#,#} đ">
                             </dx:ASPxSpinEdit>
 
                         </dx:LayoutItemNestedControlContainer>
@@ -98,7 +98,7 @@
                 <dx:LayoutItem Caption="Giá Bán Tổng(*)">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer5" runat="server">
-                            <dx:ASPxSpinEdit ID="txtGiaBanTong" runat="server" DisplayFormatString="N0" Width="100%">
+                            <dx:ASPxSpinEdit ID="txtGiaBanTong" runat="server" DisplayFormatString="{0:#,#} đ" Width="100%">
                             </dx:ASPxSpinEdit>
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
@@ -106,7 +106,7 @@
                 <dx:LayoutItem Caption="Tổng Trọng Lượng (kg)">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer runat="server">
-                            <dx:ASPxSpinEdit ID="txtTrongLuong" runat="server" Width="100%">
+                            <dx:ASPxSpinEdit ID="txtTrongLuong" runat="server" Width="100%" DisplayFormatString="{0} KG">
                             </dx:ASPxSpinEdit>
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
@@ -122,7 +122,7 @@
                 <dx:LayoutItem Caption="Hạng sủ dụng(*)">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer runat="server">
-                            <dx:ASPxSpinEdit ID="txtHanSuDung" runat="server" Width="100%">
+                            <dx:ASPxSpinEdit ID="txtHanSuDung" runat="server" Width="100%" DisplayFormatString="{0}/thang">
                             </dx:ASPxSpinEdit>
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
@@ -192,7 +192,7 @@
                 <dx:LayoutItem Caption="Giá Bán Sau Thuế">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer runat="server">
-                            <dx:ASPxSpinEdit ID="txtGiaBanST" runat="server" Enabled="False" Width="100%" DisplayFormatString="N0">
+                            <dx:ASPxSpinEdit ID="txtGiaBanST" runat="server" Enabled="False" Width="100%" DisplayFormatString="{0:#,#} đ">
                             </dx:ASPxSpinEdit>
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
