@@ -105,84 +105,6 @@ namespace BanHang
             e.Cancel = true;
             gridDanhMucCombo.CancelEdit();
             LoadGrid();
-            //---------------------------------------------------------------------------------------------------
-            //int ID = Int32.Parse(e.Keys[0].ToString());
-            //string TenHangHoa = e.NewValues["TenHangHoa"] == null ? "" : e.NewValues["TenHangHoa"].ToString();
-            //if (TenHangHoa != "")
-            //{
-            //    string TrangThai = e.NewValues["IDTrangThaiHang"].ToString();
-            //    string TrongLuong = e.NewValues["TrongLuong"].ToString();
-            //    string TongTien = e.NewValues["GiaBanSauThue"].ToString();
-            //    string HanSuDung = e.NewValues["HanSuDung"].ToString();
-            //    int SLMoi = Int32.Parse(e.NewValues["SoLuongCon"].ToString());
-            //    int SLTonKho =  dtCapNhatTonKho.SoLuong_TonKho(ID.ToString(),Session["IDKho"].ToString());
-            //    float GiaBanSauVAT = dtHangHoa.LayGiaBanSauThue(ID.ToString());
-            //    if (SLTonKho != SLMoi)
-            //    {
-            //        DataTable db = data.DanhSachHangHoaCombo_IDHangHoaComBo(ID.ToString());
-            //        if (db.Rows.Count > 0)
-            //        {
-            //            int kt = 0;
-            //            foreach (DataRow dr in db.Rows)
-            //            {
-            //                string IDHangHoa = dr["IDHangHoa"].ToString();
-            //                int SLHang = Int32.Parse(dr["SoLuong"].ToString());
-            //                int SLTon = dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa,Session["IDKho"].ToString());
-            //                int SLTon_SUM = (SLTonKho * SLHang) + SLTon; // số lượng tồn của từng hàng hóa trong combo
-            //                if (SLHang * SLMoi > SLTon_SUM)
-            //                {
-            //                    kt = 1;
-            //                    throw new Exception("Lỗi: Hàng tồn kho không đủ: " + dtHangHoa.LayTenHangHoa(IDHangHoa) + " : Số lượng cần(" + (SLHang * SLMoi) + ") :  Số lượng tồn(" + SLTon_SUM + ")");
-            //                }
-            //            }
-            //            if (kt == 0)
-            //            {
-            //                //throw new Exception("đủ hàng:");
-            //                foreach (DataRow dr in db.Rows)
-            //                {
-            //                    string IDHangHoa = dr["IDHangHoa"].ToString();
-            //                    int SLHang = Int32.Parse(dr["SoLuong"].ToString());
-            //                    int SLTon = dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, Session["IDKho"].ToString());
-            //                    int SLTon_SUM = (SLTonKho * SLHang) + SLTon; // số lượng tổng tồn của từng hàng hóa trong combo, đã gã hàng
-            //                    if (SLHang * SLMoi <= SLTon_SUM)
-            //                    {
-            //                        //đủ hàng
-            //                        int SL_SUM = (SLTon_SUM - (SLMoi * SLHang));
-            //                        dtLichSuKho.ThemLichSu(IDHangHoa, Session["IDNhanVien"].ToString(), ((-1) * (SL_SUM - SLTon)).ToString(), "Cập nhật số lượng chi tiết hàng combo:" + dtHangHoa.LayTenHangHoa(IDHangHoa) + "", Session["IDKho"].ToString());
-            //                        dtCapNhatTonKho.CapNhatKho(IDHangHoa, SL_SUM.ToString(), Session["IDKho"].ToString());
-            //                    }
-            //                }
-            //                dtLichSuKho.ThemLichSu(ID.ToString(), Session["IDNhanVien"].ToString(), ((-1) * (SLMoi - SLTonKho)).ToString(), "Cập nhật số lượng hàng combo:" + dtHangHoa.LayTenHangHoa(ID.ToString()) + "", Session["IDKho"].ToString());
-            //                dtCapNhatTonKho.CapNhatKho(ID.ToString(), SLMoi.ToString(), Session["IDKho"].ToString());
-            //            }
-            //        }
-            //        else
-            //        {
-            //            throw new Exception("Lỗi: Không có hàng hóa trong combo?");
-            //        }
-            //        dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Danh Mục Combo:" + TenHangHoa, Session["IDKho"].ToString(), "Danh Mục", "Cập nhật số lượng");  
-            //    }
-            //    else if (GiaBanSauVAT != float.Parse(TongTien))
-            //    {
-            //        dtHangHoa.ThemLichSuThayDoiGia(ID.ToString(), dtHangHoa.LayIDDonViTinh(ID.ToString()), dtHangHoa.LayGiaBanSauThue(ID.ToString()), float.Parse(TongTien), Session["IDNhanVien"].ToString(), dtHangHoa.LayMaHang(ID.ToString()));
-            //        data = new dtHangCombo();
-            //        data.CapNhatHangHoa_Combo(ID, TrangThai, TrongLuong, TongTien, HanSuDung, TenHangHoa);
-            //        dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Danh Mục Combo:" + TenHangHoa, Session["IDKho"].ToString(), "Danh Mục", "Cập nhật thông tin");
-            //    }
-            //    else
-            //    {
-            //        data = new dtHangCombo();
-            //        data.CapNhatHangHoa_Combo(ID, TrangThai, TrongLuong, TongTien, HanSuDung, TenHangHoa);
-            //        dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Danh Mục Combo:" + TenHangHoa, Session["IDKho"].ToString(), "Danh Mục", "Cập nhật thông tin");
-            //    }
-            //}
-            //else
-            //{
-            //    throw new Exception("Lỗi: Vui lòng nhập Tên hàng hóa");
-            //}
-            //e.Cancel = true;
-            //gridDanhMucCombo.CancelEdit();
-            //LoadGrid();
         }
 
 
@@ -243,12 +165,23 @@ namespace BanHang
                                 {
                                     //đủ hàng
                                     int SL_SUM = (SLTon_SUM - (SLMoi * SLHang));
-                                    dtLichSuKho.ThemLichSu(IDHangHoa, Session["IDNhanVien"].ToString(), ((-1) * (SL_SUM - SLTon)).ToString(), "Gộp Hàng Combo:" + dtHangHoa.LayTenHangHoa(IDHangHoa) + "", Session["IDKho"].ToString());
-                                    dtCapNhatTonKho.CapNhatKho(IDHangHoa, SL_SUM.ToString(), Session["IDKho"].ToString());
+                                    if (SLHang > 0)
+                                    {
+                                        object TheKho = dtTheKho.ThemTheKho("", "Gộp Hàng Hóa ComBo " + txtTenHangSua.Text, "0", SLHang.ToString(), (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, Session["IDKho"].ToString()).ToString()) - SLHang).ToString(), Session["IDNhanVien"].ToString(), Session["IDKho"].ToString(), IDHangHoa, "Xuất", "0", "0", "0");
+                                        if (TheKho != null)
+                                        {
+                                            dtLichSuKho.ThemLichSu(IDHangHoa, Session["IDNhanVien"].ToString(), ((-1) * (SL_SUM - SLTon)).ToString(), "Gộp Hàng Combo:" + dtHangHoa.LayTenHangHoa(IDHangHoa) + "", Session["IDKho"].ToString());
+                                            dtCapNhatTonKho.CapNhatKho(IDHangHoa, SL_SUM.ToString(), Session["IDKho"].ToString());
+                                        }
+                                    }
                                 }
                             }
-                            dtLichSuKho.ThemLichSu(ID.ToString(), Session["IDNhanVien"].ToString(), ((-1) * (SLMoi - SLTonKho)).ToString(), "Cập nhật số lượng hàng combo:" + dtHangHoa.LayTenHangHoa(ID.ToString()) + "", Session["IDKho"].ToString());
-                            dtCapNhatTonKho.CapNhatKho(ID.ToString(), SLMoi.ToString(), Session["IDKho"].ToString());
+                            object TheKho1 = dtTheKho.ThemTheKho("", "Gộp Hàng Hóa ComBo " + txtTenHangSua.Text, SLMoi.ToString(), "0", (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(dtHangHoa.LayIDHangHoa_MaHang(txtMaHangSua.Text), Session["IDKho"].ToString()).ToString()) - SLMoi).ToString(), Session["IDNhanVien"].ToString(), Session["IDKho"].ToString(), dtHangHoa.LayIDHangHoa_MaHang(txtMaHangSua.Text), "Nhập", "0", "0", "0");
+                            if (TheKho1 != null)
+                            {
+                                dtLichSuKho.ThemLichSu(ID.ToString(), Session["IDNhanVien"].ToString(), ((-1) * (SLMoi - SLTonKho)).ToString(), "Cập nhật số lượng hàng combo:" + dtHangHoa.LayTenHangHoa(ID.ToString()) + "", Session["IDKho"].ToString());
+                                dtCapNhatTonKho.CapNhatKho(ID.ToString(), SLMoi.ToString(), Session["IDKho"].ToString());
+                            }
                         }
                     }
                     else 
@@ -269,11 +202,23 @@ namespace BanHang
                             int SLHang = Int32.Parse(dr["SoLuong"].ToString());//vd: 7
                             int SLTon = dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, Session["IDKho"].ToString());// vd: 10
                             int SLTon_SUM = (SLTachHang * SLHang) + SLTon; //(5 * 7) + 10 = 45
-                            dtCapNhatTonKho.CapNhatKho(IDHangHoa, SLTon_SUM.ToString(), Session["IDKho"].ToString()); // vd: 45
-                            dtLichSuKho.ThemLichSu(IDHangHoa, Session["IDNhanVien"].ToString(), (SLHang * SLTachHang).ToString(), "Tách Hàng Combo:" + dtHangHoa.LayTenHangHoa(IDHangHoa) + "", Session["IDKho"].ToString());
+                            if (SLHang > 0)
+                            {
+                                object TheKho = dtTheKho.ThemTheKho("", "Tách Hàng Hóa ComBo " + txtTenHangSua.Text, SLHang.ToString(), "0", (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, Session["IDKho"].ToString()).ToString()) - SLHang).ToString(), Session["IDNhanVien"].ToString(), Session["IDKho"].ToString(), IDHangHoa, "Nhập", "0", "0", "0");
+                                if (TheKho != null)
+                                {
+                                    dtCapNhatTonKho.CapNhatKho(IDHangHoa, SLTon_SUM.ToString(), Session["IDKho"].ToString()); // vd: 45
+                                    dtLichSuKho.ThemLichSu(IDHangHoa, Session["IDNhanVien"].ToString(), (SLHang * SLTachHang).ToString(), "Tách Hàng Combo:" + dtHangHoa.LayTenHangHoa(IDHangHoa) + "", Session["IDKho"].ToString());
+                                }
+                            }
+
                         }
-                        dtLichSuKho.ThemLichSu(ID.ToString(), Session["IDNhanVien"].ToString(), ((-1) * (SLTachHang)).ToString(), "Cập nhật số lượng hàng combo:" + dtHangHoa.LayTenHangHoa(ID.ToString()) + "", Session["IDKho"].ToString());
-                        dtCapNhatTonKho.CapNhatKho(ID.ToString(), SLMoi.ToString(), Session["IDKho"].ToString());
+                        object TheKho1 = dtTheKho.ThemTheKho("", "Tách Hàng Hóa ComBo " + txtTenHangSua.Text, "0", SLMoi.ToString(), (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(dtHangHoa.LayIDHangHoa_MaHang(txtMaHangSua.Text), Session["IDKho"].ToString()).ToString()) - SLMoi).ToString(), Session["IDNhanVien"].ToString(), Session["IDKho"].ToString(), dtHangHoa.LayIDHangHoa_MaHang(txtMaHangSua.Text), "Xuất", "0", "0", "0");
+                        if (TheKho1 != null)
+                        {
+                            dtLichSuKho.ThemLichSu(ID.ToString(), Session["IDNhanVien"].ToString(), ((-1) * (SLTachHang)).ToString(), "Cập nhật số lượng hàng combo:" + dtHangHoa.LayTenHangHoa(ID.ToString()) + "", Session["IDKho"].ToString());
+                            dtCapNhatTonKho.CapNhatKho(ID.ToString(), SLMoi.ToString(), Session["IDKho"].ToString());
+                        }
                     }
                     else
                     {
