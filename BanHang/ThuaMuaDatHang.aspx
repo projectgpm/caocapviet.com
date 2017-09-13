@@ -47,7 +47,7 @@
                 <dx:LayoutItem Caption="Tổng Trọng Lượng (kg)">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer5" runat="server">
-                            <dx:ASPxSpinEdit ID="txtTongTrongLuong" runat="server" Width="100%" Enabled="False">
+                            <dx:ASPxSpinEdit ID="txtTongTrongLuong" runat="server" Width="100%" Enabled="False" DisplayFormatString="{0} KG">
                             </dx:ASPxSpinEdit>
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
@@ -94,7 +94,7 @@
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer3" runat="server">
                             <dx:ASPxButton ID="ASPxButton1" runat="server" Text="ASPxButton" OnClick="ASPxButton1_Click" Visible="False"></dx:ASPxButton>
-                            <dx:ASPxSpinEdit ID="txtChietKhau" runat="server"  Width="100%" AutoPostBack="True" OnNumberChanged="txtChietKhau_NumberChanged">
+                            <dx:ASPxSpinEdit ID="txtChietKhau" runat="server"  Width="100%" AutoPostBack="True" OnNumberChanged="txtChietKhau_NumberChanged" DisplayFormatString="{0} %">
                             </dx:ASPxSpinEdit>
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
@@ -102,7 +102,7 @@
                 <dx:LayoutItem Caption="Tổng Tiền">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer2" runat="server">
-                            <dx:ASPxSpinEdit ID="txtTongTien" runat="server" AutoPostBack="True" Width="100%" DisplayFormatString="N0" Enabled="False">
+                            <dx:ASPxSpinEdit ID="txtTongTien" runat="server" AutoPostBack="True" Width="100%" DisplayFormatString="{0:#,#} đ" Enabled="False">
                             </dx:ASPxSpinEdit>
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
@@ -110,7 +110,7 @@
                 <dx:LayoutItem Caption="Tổng Tiền Sau CK">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer runat="server">
-                            <dx:ASPxSpinEdit ID="txtTongTienSauCk" runat="server" Enabled="False" Width ="100%" DisplayFormatString="N0">
+                            <dx:ASPxSpinEdit ID="txtTongTienSauCk" runat="server" Enabled="False" Width ="100%" DisplayFormatString="{0:#,#} đ">
                             </dx:ASPxSpinEdit>
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
