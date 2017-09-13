@@ -200,12 +200,15 @@ namespace BanHang
                         string SoLuong = dataChiTiet.Rows[i]["SoLuong"].ToString();
                         //dtCapNhatTonKho.TruTonKho(IDHangHoa, SoLuong, IDKhoXuat + "");
                         //dtCapNhatTonKho.CongTonKho(IDHangHoa, SoLuong, IDKhoNhan + "");
-                        object TheKho1 = dtTheKho.ThemTheKho(SoPhieu, "Chuyển Kho " + dtTheKho.LayTenKho_ID(IDKhoXuat.ToString()) + " Sang " + dtTheKho.LayTenKho_ID(IDKhoNhan.ToString()), SoLuong, "0", (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, IDKhoNhan.ToString()).ToString()) + Int32.Parse(SoLuong)).ToString(), Session["IDNhanVien"].ToString(), Session["IDKho"].ToString(), IDHangHoa, "Nhập","0","0","0");
-                        object TheKho2 = dtTheKho.ThemTheKho(SoPhieu, "Chuyển Kho " + dtTheKho.LayTenKho_ID(IDKhoXuat.ToString()) + " Sang " + dtTheKho.LayTenKho_ID(IDKhoNhan.ToString()), "0", SoLuong, (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, IDKhoXuat.ToString()).ToString()) - Int32.Parse(SoLuong)).ToString(), Session["IDNhanVien"].ToString(), Session["IDKho"].ToString(), IDHangHoa, "Xuất","0","0","0");
-                        if (TheKho1 != null && TheKho2 != null)
+                        if (Int32.Parse(SoLuong) > 0)
                         {
-                            dtCapNhatTonKho.TruTonKho(IDHangHoa, SoLuong, IDKhoXuat + "");
-                            dtCapNhatTonKho.CongTonKho(IDHangHoa, SoLuong, IDKhoNhan + "");
+                            object TheKho1 = dtTheKho.ThemTheKho(SoPhieu, "Chuyển Kho " + dtTheKho.LayTenKho_ID(IDKhoXuat.ToString()) + " Sang " + dtTheKho.LayTenKho_ID(IDKhoNhan.ToString()), SoLuong, "0", (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, IDKhoNhan.ToString()).ToString()) + Int32.Parse(SoLuong)).ToString(), Session["IDNhanVien"].ToString(), Session["IDKho"].ToString(), IDHangHoa, "Nhập", "0", "0", "0");
+                            object TheKho2 = dtTheKho.ThemTheKho(SoPhieu, "Chuyển Kho " + dtTheKho.LayTenKho_ID(IDKhoXuat.ToString()) + " Sang " + dtTheKho.LayTenKho_ID(IDKhoNhan.ToString()), "0", SoLuong, (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, IDKhoXuat.ToString()).ToString()) - Int32.Parse(SoLuong)).ToString(), Session["IDNhanVien"].ToString(), Session["IDKho"].ToString(), IDHangHoa, "Xuất", "0", "0", "0");
+                            if (TheKho1 != null && TheKho2 != null)
+                            {
+                                dtCapNhatTonKho.TruTonKho(IDHangHoa, SoLuong, IDKhoXuat + "");
+                                dtCapNhatTonKho.CongTonKho(IDHangHoa, SoLuong, IDKhoNhan + "");
+                            }
                         }
                     }
                 }
