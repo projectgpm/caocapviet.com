@@ -155,39 +155,39 @@
                         </PropertiesSpinEdit>
                     </dx:GridViewDataSpinEditColumn>
                     <dx:GridViewDataTextColumn Caption="Giá mua trước thuế" FieldName="GiaMuaTruocThue" ShowInCustomizationForm="True" VisibleIndex="11">
-                        <PropertiesTextEdit DisplayFormatString="{0:#,# VND}">
+                        <PropertiesTextEdit DisplayFormatString="{0:#,# đ}">
                         </PropertiesTextEdit>
                     </dx:GridViewDataTextColumn>
                     <dx:GridViewDataTextColumn Caption="Giá bán trước thuế" FieldName="GiaBanTruocThue" ShowInCustomizationForm="True" VisibleIndex="12">
-                        <PropertiesTextEdit DisplayFormatString="{0:#,# VND}">
+                        <PropertiesTextEdit DisplayFormatString="{0:#,# đ}">
                         </PropertiesTextEdit>
                     </dx:GridViewDataTextColumn>
                     <dx:GridViewDataTextColumn Caption="Giá mua sau thuế" FieldName="GiaMuaSauThue" ShowInCustomizationForm="True" VisibleIndex="13">
-                        <PropertiesTextEdit DisplayFormatString="{0:#,# VND}">
+                        <PropertiesTextEdit DisplayFormatString="{0:#,# đ}">
                         </PropertiesTextEdit>
                     </dx:GridViewDataTextColumn>
                     <dx:GridViewDataTextColumn Caption="Giá bán sau thuế" FieldName="GiaBanSauThue" ShowInCustomizationForm="True" VisibleIndex="14">
-                        <PropertiesTextEdit DisplayFormatString="{0:#,# VND}">
+                        <PropertiesTextEdit DisplayFormatString="{0:#,# đ}">
                         </PropertiesTextEdit>
                     </dx:GridViewDataTextColumn>
                     <dx:GridViewDataTextColumn Caption="Giá bán 1" FieldName="GiaBan1" ShowInCustomizationForm="True" VisibleIndex="15">
-                        <PropertiesTextEdit DisplayFormatString="{0:#,# VND}">
+                        <PropertiesTextEdit DisplayFormatString="{0:#,# đ}">
                         </PropertiesTextEdit>
                     </dx:GridViewDataTextColumn>
                     <dx:GridViewDataTextColumn Caption="Giá bán 2" FieldName="GiaBan2" ShowInCustomizationForm="True" VisibleIndex="16">
-                        <PropertiesTextEdit DisplayFormatString="{0:#,# VND}">
+                        <PropertiesTextEdit DisplayFormatString="{0:#,# đ}">
                         </PropertiesTextEdit>
                     </dx:GridViewDataTextColumn>
                     <dx:GridViewDataTextColumn Caption="Giá bán 3" FieldName="GiaBan3" ShowInCustomizationForm="True" VisibleIndex="17">
-                        <PropertiesTextEdit DisplayFormatString="{0:#,# VND}">
+                        <PropertiesTextEdit DisplayFormatString="{0:#,# đ}">
                         </PropertiesTextEdit>
                     </dx:GridViewDataTextColumn>
                     <dx:GridViewDataTextColumn Caption="Giá bán 4" FieldName="GiaBan4" ShowInCustomizationForm="True" VisibleIndex="18">
-                        <PropertiesTextEdit DisplayFormatString="{0:#,# VND}">
+                        <PropertiesTextEdit DisplayFormatString="{0:#,# đ}">
                         </PropertiesTextEdit>
                     </dx:GridViewDataTextColumn>
                     <dx:GridViewDataTextColumn Caption="Giá bán 5" FieldName="GiaBan5" ShowInCustomizationForm="True" VisibleIndex="19">
-                        <PropertiesTextEdit DisplayFormatString="{0:#,# VND}">
+                        <PropertiesTextEdit DisplayFormatString="{0:#,# đ}">
                         </PropertiesTextEdit>
                     </dx:GridViewDataTextColumn>
                 </Columns>

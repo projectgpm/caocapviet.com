@@ -177,8 +177,8 @@
                         </dx:GridViewDataSpinEditColumn>
                         <dx:GridViewDataTextColumn FieldName="GhiChu" ShowInCustomizationForm="True" VisibleIndex="26" Caption="Ghi chú">
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataSpinEditColumn Caption="Trọng lượng" FieldName="TrongLuong" ShowInCustomizationForm="True" VisibleIndex="23">
-                            <PropertiesSpinEdit DisplayFormatString="{0:#,#} KG" DisplayFormatInEditMode="True" NumberFormat="Custom">
+                        <dx:GridViewDataSpinEditColumn Caption="Trọng lượng (Kg)" FieldName="TrongLuong" ShowInCustomizationForm="True" VisibleIndex="23">
+                            <PropertiesSpinEdit DisplayFormatString="" NumberFormat="Custom">
                             </PropertiesSpinEdit>
                         </dx:GridViewDataSpinEditColumn>
                         <dx:GridViewDataSpinEditColumn Caption="Hạn sử dụng" FieldName="HanSuDung" ShowInCustomizationForm="True" VisibleIndex="24">

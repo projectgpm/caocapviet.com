@@ -54,10 +54,12 @@ namespace BanHang
         protected void btnLuuHangHoa_Click(object sender, EventArgs e)
         {
             O_HangHoa hh = new O_HangHoa();
+            dataHangHoa data = new dataHangHoa();
+            string IDHangHoa = Request.QueryString["IDHangHoa"];
 
             if (cmbNhomHang.Value != null && txtMaHang.Value != null && txtTenHang.Value != null && cmbDonViTinh.Value != null && txtHeSo.Value != null && cmbHangSX.Value != null && cmbThue.Value != null)
             {
-                if (!dtHangHoa.KiemTraMaHang(txtMaHang.Value + ""))
+                if (!data.KiemTraMaHang(IDHangHoa, txtMaHang.Value + ""))
                 {
                     hh.IDNhomHang = cmbNhomHang.Value + "";
                     hh.MaHang = txtMaHang.Value + "";
@@ -82,9 +84,7 @@ namespace BanHang
                     hh.GiaBan4 = txtGiaBan4.Value + "";
                     hh.GiaBan5 = txtGiaBan5.Value + "";
 
-                    string IDHangHoa = Request.QueryString["IDHangHoa"];
-                    dataHangHoa data = new dataHangHoa();
-                    data.updateHangHoa(IDHangHoa, hh);
+                    data.updateHangHoa_update(IDHangHoa, hh);
                 }
                 else Response.Write("<script language='JavaScript'> alert('Mã hàng đã tồn tại.'); </script>");
 

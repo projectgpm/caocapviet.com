@@ -28,13 +28,13 @@
                                         <dx:GridViewDataTextColumn ShowInCustomizationForm="True" VisibleIndex="0" Caption="Mã Hàng" FieldName="MaHang">
                                         </dx:GridViewDataTextColumn>
                                         <dx:GridViewDataTextColumn ShowInCustomizationForm="True" VisibleIndex="3" Caption="Giá bán" FieldName="GiaBan">
-                                            <PropertiesTextEdit DisplayFormatString="{0:#,# VND}">
+                                            <PropertiesTextEdit DisplayFormatString="{0:#,# đ}">
                                             </PropertiesTextEdit>
                                         </dx:GridViewDataTextColumn>
                                         <dx:GridViewDataTextColumn ShowInCustomizationForm="True" VisibleIndex="4" Caption="Số lượng" FieldName="SoLuong">
                                         </dx:GridViewDataTextColumn>
                                         <dx:GridViewDataTextColumn ShowInCustomizationForm="True" VisibleIndex="5" Caption="Thành tiền" FieldName="ThanhTien">
-                                            <PropertiesTextEdit DisplayFormatString="{0:#,# VND}">
+                                            <PropertiesTextEdit DisplayFormatString="{0:#,# đ}">
                                             </PropertiesTextEdit>
                                         </dx:GridViewDataTextColumn>
                                         <dx:GridViewDataTextColumn Caption="Lý do đổi" FieldName="LyDoDoi" ShowInCustomizationForm="True" VisibleIndex="6">
