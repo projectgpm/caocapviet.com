@@ -233,10 +233,13 @@ namespace BanHang
                                     data = new dtDuyetDonHangThuMua();
                                     // cộng tồn kho tổng
                                     data.ThemChiTietDonHang_Duyet(ID, MaHang, IDHangHoa, IDDonViTinh, TrongLuong, SoLuong, GhiChuHH, ChenhLech, ThucTe);
-                                    object TheKho = dtTheKho.ThemTheKho(SoDonHang, "Phiếu nhập hàng", ThucTe, "0", (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, Session["IDKho"].ToString()).ToString()) + Int32.Parse(ThucTe)).ToString(), Session["IDNhanVien"].ToString(), Session["IDKho"].ToString(), IDHangHoa, "Nhập", "0", "0", "0");
-                                    if (TheKho != null)
+                                    if (Int32.Parse(ThucTe) > 0)
                                     {
-                                        dtCapNhatTonKho.CongTonKho(IDHangHoa, ThucTe, Session["IDKho"].ToString());
+                                        object TheKho = dtTheKho.ThemTheKho(SoDonHang, "Phiếu nhập hàng", ThucTe, "0", (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, Session["IDKho"].ToString()).ToString()) + Int32.Parse(ThucTe)).ToString(), Session["IDNhanVien"].ToString(), Session["IDKho"].ToString(), IDHangHoa, "Nhập", "0", "0", "0");
+                                        if (TheKho != null)
+                                        {
+                                            dtCapNhatTonKho.CongTonKho(IDHangHoa, ThucTe, Session["IDKho"].ToString());
+                                        }
                                     }
                                     if (Int32.Parse(SoLuong) != Int32.Parse(ThucTe))
                                     {
@@ -304,10 +307,13 @@ namespace BanHang
                                     }
                                     data = new dtDuyetDonHangThuMua();
                                     data.ThemChiTietDonHang_Duyet(ID, MaHang, IDHangHoa, IDDonViTinh, TrongLuong, SoLuong, GhiChuHH, ChenhLech, ThucTe);
-                                    object TheKho = dtTheKho.ThemTheKho(SoDonHang, "Phiếu nhập hàng", ThucTe, "0", (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, Session["IDKho"].ToString()).ToString()) + Int32.Parse(ThucTe)).ToString(), Session["IDNhanVien"].ToString(), Session["IDKho"].ToString(), IDHangHoa, "Nhập", "0", "0", "0");
-                                    if (TheKho != null)
+                                    if (Int32.Parse(ThucTe) > 0)
                                     {
-                                        dtCapNhatTonKho.CongTonKho(IDHangHoa, ThucTe, Session["IDKho"].ToString());
+                                        object TheKho = dtTheKho.ThemTheKho(SoDonHang, "Phiếu nhập hàng", ThucTe, "0", (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, Session["IDKho"].ToString()).ToString()) + Int32.Parse(ThucTe)).ToString(), Session["IDNhanVien"].ToString(), Session["IDKho"].ToString(), IDHangHoa, "Nhập", "0", "0", "0");
+                                        if (TheKho != null)
+                                        {
+                                            dtCapNhatTonKho.CongTonKho(IDHangHoa, ThucTe, Session["IDKho"].ToString());
+                                        }
                                     }
                                     DataTable LOG = data.KiemTra_LOG(SoDonHang, IDHangHoa, IDDonHang);
                                     //thêm dữ liệu vào bảng log
