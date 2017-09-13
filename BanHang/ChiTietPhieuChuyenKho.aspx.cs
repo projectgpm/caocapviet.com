@@ -272,6 +272,8 @@ namespace BanHang
                 }
             }
 
+
+            LoadGrid(IDPhieuChuyenKho);
            
         }
     }

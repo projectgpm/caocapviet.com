@@ -62,7 +62,7 @@
                 </PropertiesSpinEdit>
             </dx:GridViewDataSpinEditColumn>
             <dx:GridViewDataSpinEditColumn Caption="Tổng tiền" FieldName="TongTienTra" VisibleIndex="7">
-                <PropertiesSpinEdit DisplayFormatString="{0:#,# VND}" NumberFormat="Custom">
+                <PropertiesSpinEdit DisplayFormatString="{0:#,# đ}" NumberFormat="Custom">
                 </PropertiesSpinEdit>
             </dx:GridViewDataSpinEditColumn>
             <dx:GridViewDataDateColumn Caption="Ngày lập" FieldName="NgayDoi" VisibleIndex="4">

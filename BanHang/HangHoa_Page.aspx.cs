@@ -17,7 +17,13 @@ namespace BanHang
             if (!IsPostBack)
             {
                 dataHangHoa data = new dataHangHoa();
-                IDHangHoa.Value = data.insertHangHoa_Temp() + "";
+                DataTable da = data.getHangHoa_Null();
+                if (da.Rows.Count != 0)
+                {
+                    IDHangHoa.Value = da.Rows[0]["ID"].ToString();
+                    txtMaHang.Value = da.Rows[0]["MaHang"].ToString();
+
+                }else IDHangHoa.Value = data.insertHangHoa_Temp() + "";
 
                 cmbTrangThaiHang.SelectedIndex = 0;
                 cmbNhomDatHang.SelectedIndex = 0;
@@ -201,7 +207,7 @@ namespace BanHang
                         e.Cancel = true;
                         gridHangHoaQuyDoi.CancelEdit();
                     }
-                    else throw new Exception("Mã hàng đã có trong danh sách.");
+                    else throw new Exception("Mã hàng đã có trong danh sách hoặc trạng thái hàng không được phép sử dụng.");
                 }
                 else throw new Exception("Mã hàng không tồn tại.");
             }
@@ -226,7 +232,7 @@ namespace BanHang
                         e.Cancel = true;
                         gridHangHoaQuyDoi.CancelEdit();
                     }
-                    else throw new Exception("Mã hàng đã có trong danh sách.");
+                    else throw new Exception("Mã hàng đã có trong danh sách hoặc trạng thái hàng không được phép sử dụng.");
                 }
                 else throw new Exception("Mã hàng không tồn tại.");
             }
@@ -326,7 +332,9 @@ namespace BanHang
                 hh.GiaBan5 = txtGiaBan5.Value + "";
 
                 dataHangHoa data = new dataHangHoa();
-                data.updateHangHoa(IDHangHoa.Value + "", hh);
+                if (!data.KiemTraMaHang(IDHangHoa.Value + "", hh.MaHang))
+                    data.updateHangHoa(IDHangHoa.Value + "", hh);
+                else Response.Write("<script language='JavaScript'> alert('Mã hàng đã tồn tại'); </script>");
 
                 Response.Redirect("HangHoa.aspx");
             }

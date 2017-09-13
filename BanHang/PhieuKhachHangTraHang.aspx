@@ -83,7 +83,7 @@
                     <dx:LayoutItem Caption="Tổng tiền">
                         <LayoutItemNestedControlCollection>
                             <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer8" runat="server">
-                                <dx:ASPxSpinEdit ID="txtTongTien" runat="server" DisplayFormatString="{0:#,# VND}" ReadOnly="True" HorizontalAlign="Right" NullText="0" Width="100%">
+                                <dx:ASPxSpinEdit ID="txtTongTien" runat="server" DisplayFormatString="{0:#,# đ}" ReadOnly="True" HorizontalAlign="Right" NullText="0" Width="100%">
                                 </dx:ASPxSpinEdit>
                             </dx:LayoutItemNestedControlContainer>
                         </LayoutItemNestedControlCollection>
@@ -145,7 +145,7 @@
                     <dx:LayoutItem Caption="Giá bán">
                         <LayoutItemNestedControlCollection>
                             <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer15" runat="server">
-                                <dx:ASPxSpinEdit ID="txtGiaBan" runat="server" DisplayFormatString="{0:#,# VND}" ReadOnly="True" Width="100%">
+                                <dx:ASPxSpinEdit ID="txtGiaBan" runat="server" DisplayFormatString="{0:#,# đ}" ReadOnly="True" Width="100%">
                                 </dx:ASPxSpinEdit>
                             </dx:LayoutItemNestedControlContainer>
                         </LayoutItemNestedControlCollection>
@@ -153,7 +153,7 @@
                     <dx:LayoutItem Caption="Tổng tiền">
                         <LayoutItemNestedControlCollection>
                             <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer16" runat="server">
-                                <dx:ASPxSpinEdit ID="txtTongTienHH" runat="server" DisplayFormatString="{0:#,# VND}" ReadOnly="True" Width="100%">
+                                <dx:ASPxSpinEdit ID="txtTongTienHH" runat="server" DisplayFormatString="{0:#,# đ}" ReadOnly="True" Width="100%">
                                 </dx:ASPxSpinEdit>
                             </dx:LayoutItemNestedControlContainer>
                         </LayoutItemNestedControlCollection>
@@ -208,13 +208,13 @@
                                         <dx:GridViewDataTextColumn ShowInCustomizationForm="True" VisibleIndex="0" Caption="Mã Hàng" FieldName="MaHang">
                                         </dx:GridViewDataTextColumn>
                                         <dx:GridViewDataTextColumn ShowInCustomizationForm="True" VisibleIndex="3" Caption="Giá bán" FieldName="GiaBan">
-                                            <PropertiesTextEdit DisplayFormatString="{0:#,# VND}">
+                                            <PropertiesTextEdit DisplayFormatString="{0:#,# đ}">
                                             </PropertiesTextEdit>
                                         </dx:GridViewDataTextColumn>
                                         <dx:GridViewDataTextColumn ShowInCustomizationForm="True" VisibleIndex="4" Caption="Số lượng" FieldName="SoLuong">
                                         </dx:GridViewDataTextColumn>
                                         <dx:GridViewDataTextColumn ShowInCustomizationForm="True" VisibleIndex="5" Caption="Thành tiền" FieldName="ThanhTien">
-                                            <PropertiesTextEdit DisplayFormatString="{0:#,# VND}">
+                                            <PropertiesTextEdit DisplayFormatString="{0:#,# đ}">
                                             </PropertiesTextEdit>
                                         </dx:GridViewDataTextColumn>
                                         <dx:GridViewDataTextColumn Caption="Lý do đổi" FieldName="LyDoDoi" ShowInCustomizationForm="True" VisibleIndex="6">

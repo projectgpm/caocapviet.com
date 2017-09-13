@@ -118,12 +118,13 @@ namespace BanHang.Data
                 }
             }
         }
-        public DataTable LayDanhSachKho_Khac1()
+
+        public DataTable LayDanhSachKho_2()
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "SELECT * FROM [GPM_Kho] WHERE [DAXOA] = 0 AND ID != 1";
+                string cmdText = "SELECT * FROM [GPM_Kho]";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {

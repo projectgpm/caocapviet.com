@@ -240,7 +240,11 @@ namespace BanHang.Data
                 try
                 {
                     myConnection.Open();
-                    string strSQL = "UPDATE [GPM_HANGHOA] SET [DAXOA] = 1 WHERE [ID] = @ID";
+                    string strSQL = "UPDATE [GPM_HANGHOA] SET [DAXOA] = 1 WHERE [ID] = @ID " +
+                        " UPDATE [GPM_HangHoaTonKho] SET [DAXOA] = 1 WHERE [IDHangHoa] = @ID " +
+                        " UPDATE [GPM_HangHoa_Barcode] SET [DAXOA] = 1 WHERE [IDHangHoa] = @ID " +
+                        " UPDATE [GPM_HangHoa_GiaTheoSL] SET [DAXOA] = 1 WHERE [IDHangHoa] = @ID " +
+                        " UPDATE [GPM_HangHoa_QuyDoi] SET [DAXOA] = 1 WHERE [IDHangHoa] = @ID ";
                     using (SqlCommand myCommand = new SqlCommand(strSQL, myConnection))
                     {
                         myCommand.Parameters.AddWithValue("@ID", ID);
@@ -346,8 +350,7 @@ namespace BanHang.Data
                 try
                 {
                     myConnection.Open();
-                    string strSQL = "UPDATE GPM_HangHoa SET IDNhomHang = @IDNhomHang,MaHang = @MaHang, TenHangHoa = @TenHangHoa, IDDonViTinh = @IDDonViTinh, HeSo = @HeSo, IDHangSanXuat = @IDHangSanXuat, IDThue = @IDThue, IDNhomDatHang = @IDNhomDatHang, GiaMuaTruocThue = @GiaMuaTruocThue, GiaBanTruocThue = @GiaBanTruocThue, GiaMuaSauThue = @GiaMuaSauThue, TrongLuong = @TrongLuong, HanSuDung = @HanSuDung, IDTrangThaiHang = @IDTrangThaiHang, GhiChu = @GhiChu, NgayCapNhat = getDATE() WHERE [ID] = @ID " +
-                        "INSERT GPM_HangHoaTonKho (IDHangHoa, SoLuongCon, GiaBan, GiaBan1, GiaBan2, GiaBan3, GiaBan4, GiaBan5, IDKho, NgayCapNhat) VALUES (@ID, @SoLuongCon, @GiaBan, @GiaBan1, @GiaBan2, @GiaBan3, @GiaBan4, @GiaBan5, @IDKho, getDATE())";
+                    string strSQL = "UPDATE GPM_HangHoa SET IDNhomHang = @IDNhomHang,MaHang = @MaHang, TenHangHoa = @TenHangHoa, IDDonViTinh = @IDDonViTinh, HeSo = @HeSo, IDHangSanXuat = @IDHangSanXuat, IDThue = @IDThue, IDNhomDatHang = @IDNhomDatHang, GiaMuaTruocThue = @GiaMuaTruocThue, GiaBanTruocThue = @GiaBanTruocThue, GiaMuaSauThue = @GiaMuaSauThue, TrongLuong = @TrongLuong, HanSuDung = @HanSuDung, IDTrangThaiHang = @IDTrangThaiHang, GhiChu = @GhiChu, NgayCapNhat = getDATE() WHERE [ID] = @ID ";
                     using (SqlCommand myCommand = new SqlCommand(strSQL, myConnection))
                     {
                         myCommand.Parameters.AddWithValue("@ID", ID);
@@ -381,7 +384,7 @@ namespace BanHang.Data
                     }
 
                     dtKho dt = new dtKho();
-                    DataTable da = dt.LayDanhSachKho_Khac1();
+                    DataTable da = dt.LayDanhSachKho_2();
                     for (int i = 0; i < da.Rows.Count; i++)
                     {
                         strSQL = "INSERT GPM_HangHoaTonKho (IDHangHoa, SoLuongCon, GiaBan, GiaBan1, GiaBan2, GiaBan3, GiaBan4, GiaBan5, IDKho, NgayCapNhat) VALUES (@ID, @SoLuongCon, @GiaBan, @GiaBan1, @GiaBan2, @GiaBan3, @GiaBan4, @GiaBan5, @IDKho, getDATE())";
@@ -396,6 +399,74 @@ namespace BanHang.Data
                             myCommand.Parameters.AddWithValue("@GiaBan5", hh.GiaBan5);
 
                             myCommand.Parameters.AddWithValue("@SoLuongCon", 0);
+                            myCommand.Parameters.AddWithValue("@IDKho", da.Rows[i]["ID"].ToString());
+                            myCommand.ExecuteNonQuery();
+                        }
+                    }
+
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Lỗi: Quá trình cập nhật dữ liệu gặp lỗi, hãy tải lại trang");
+                }
+            }
+        }
+
+        public void updateHangHoa_update(string ID, O_HangHoa hh)
+        {
+            using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
+            {
+                try
+                {
+                    myConnection.Open();
+                    string strSQL = "UPDATE GPM_HangHoa SET IDNhomHang = @IDNhomHang,MaHang = @MaHang, TenHangHoa = @TenHangHoa, IDDonViTinh = @IDDonViTinh, HeSo = @HeSo, IDHangSanXuat = @IDHangSanXuat, IDThue = @IDThue, IDNhomDatHang = @IDNhomDatHang, GiaMuaTruocThue = @GiaMuaTruocThue, GiaBanTruocThue = @GiaBanTruocThue, GiaMuaSauThue = @GiaMuaSauThue, TrongLuong = @TrongLuong, HanSuDung = @HanSuDung, IDTrangThaiHang = @IDTrangThaiHang, GhiChu = @GhiChu, NgayCapNhat = getDATE() WHERE [ID] = @ID ";
+                    using (SqlCommand myCommand = new SqlCommand(strSQL, myConnection))
+                    {
+                        myCommand.Parameters.AddWithValue("@ID", ID);
+                        myCommand.Parameters.AddWithValue("@IDNhomHang", hh.IDNhomHang);
+                        myCommand.Parameters.AddWithValue("@MaHang", hh.MaHang);
+                        myCommand.Parameters.AddWithValue("@TenHangHoa", hh.TenHangHoa);
+                        myCommand.Parameters.AddWithValue("@IDDonViTinh", hh.IDDonViTinh);
+                        myCommand.Parameters.AddWithValue("@HeSo", hh.HeSo);
+                        myCommand.Parameters.AddWithValue("@IDHangSanXuat", hh.IDHangSanXuat);
+                        myCommand.Parameters.AddWithValue("@IDThue", hh.IDThue);
+                        myCommand.Parameters.AddWithValue("@IDNhomDatHang", hh.IDNhomDatHang);
+                        myCommand.Parameters.AddWithValue("@GiaMuaTruocThue", hh.GiaMuaTruocThue);
+                        myCommand.Parameters.AddWithValue("@GiaBanTruocThue", hh.GiaBanTruocThue);
+                        myCommand.Parameters.AddWithValue("@GiaMuaSauThue", hh.GiaMuaSauThue);
+                        myCommand.Parameters.AddWithValue("@TrongLuong", hh.TrongLuong);
+                        myCommand.Parameters.AddWithValue("@HanSuDung", hh.HanSuDung);
+                        myCommand.Parameters.AddWithValue("@IDTrangThaiHang", hh.IDTrangThaiHang);
+                        myCommand.Parameters.AddWithValue("@GhiChu", hh.GhiChu);
+
+                        myCommand.Parameters.AddWithValue("@GiaBan", hh.GiaBanSauThue);
+                        myCommand.Parameters.AddWithValue("@GiaBan1", hh.GiaBan1);
+                        myCommand.Parameters.AddWithValue("@GiaBan2", hh.GiaBan2);
+                        myCommand.Parameters.AddWithValue("@GiaBan3", hh.GiaBan3);
+                        myCommand.Parameters.AddWithValue("@GiaBan4", hh.GiaBan4);
+                        myCommand.Parameters.AddWithValue("@GiaBan5", hh.GiaBan5);
+
+                        myCommand.Parameters.AddWithValue("@SoLuongCon", 0);
+                        myCommand.Parameters.AddWithValue("@IDKho", 1);
+
+                        myCommand.ExecuteNonQuery();
+                    }
+
+                    dtKho dt = new dtKho();
+                    DataTable da = dt.LayDanhSachKho_2();
+                    for (int i = 0; i < da.Rows.Count; i++)
+                    {
+                        strSQL = "update GPM_HangHoaTonKho set GiaBan = @GiaBan, GiaBan1 = @GiaBan1, GiaBan2 = @GiaBan2, GiaBan3 = @GiaBan3, GiaBan4 = @GiaBan4, GiaBan5 = @GiaBan5 where IDHangHoa = @ID and IDKho = @IDKho";
+                        using (SqlCommand myCommand = new SqlCommand(strSQL, myConnection))
+                        {
+                            myCommand.Parameters.AddWithValue("@ID", ID);
+                            myCommand.Parameters.AddWithValue("@GiaBan", hh.GiaBanSauThue);
+                            myCommand.Parameters.AddWithValue("@GiaBan1", hh.GiaBan1);
+                            myCommand.Parameters.AddWithValue("@GiaBan2", hh.GiaBan2);
+                            myCommand.Parameters.AddWithValue("@GiaBan3", hh.GiaBan3);
+                            myCommand.Parameters.AddWithValue("@GiaBan4", hh.GiaBan4);
+                            myCommand.Parameters.AddWithValue("@GiaBan5", hh.GiaBan5);
+
                             myCommand.Parameters.AddWithValue("@IDKho", da.Rows[i]["ID"].ToString());
                             myCommand.ExecuteNonQuery();
                         }
@@ -429,6 +500,12 @@ namespace BanHang.Data
                     throw new Exception("Lỗi: Quá trình cập nhật dữ liệu gặp lỗi, hãy tải lại trang");
                 }
             }
+        }
+
+        public DataTable getHangHoa_Null()
+        {
+            string cmd = "select ID, MaHang from GPM_HangHoa where IDNhomHang is null and TenHangHoa is null and IDDonViTinh is null";
+            return getData(cmd);
         }
 
         public object insertHangHoa_Temp()
@@ -654,7 +731,6 @@ namespace BanHang.Data
                     string cmdText = "delete GPM_HangHoa_QuyDoi where ID = @ID";
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
-
                         myCommand.Parameters.AddWithValue("@ID", ID);
                         myCommand.ExecuteScalar();
                     }
@@ -786,6 +862,26 @@ namespace BanHang.Data
                 catch (Exception e)
                 {
                     throw new Exception("Lỗi: Quá trình cập nhật dữ liệu gặp lỗi, hãy tải lại trang");
+                }
+            }
+        }
+
+        public bool KiemTraMaHang(string IDHH,string MaHang)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT MaHang FROM [GPM_HangHoa] WHERE ID != '" + IDHH + "' AND  [MaHang] = '" + MaHang + "'";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    if (tb.Rows.Count != 0)
+                    {
+                        return true;
+                    }
+                    return false;
                 }
             }
         }

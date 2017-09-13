@@ -29,6 +29,7 @@ namespace BanHang.Data
                 }
             }
         }
+
         public static bool KiemTraBarcode(string Barcode)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
@@ -53,7 +54,7 @@ namespace BanHang.Data
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "select GPM_HangHoa_QuyDoi.* from GPM_HangHoa_QuyDoi,GPM_HangHoa where GPM_HangHoa_QuyDoi.IDHangQuyDoi = GPM_HangHoa.ID and (GPM_HangHoa.IDTrangThaiHang = 1 or GPM_HangHoa.IDTrangThaiHang = 3) and GPM_HangHoa_QuyDoi.IDHangHoa = '" + IDHangHoa + "' AND GPM_HangHoa_QuyDoi.IDHangQuyDoi = '" + IDHangQuyDoi + "'";
+                string cmdText = "select * from GPM_HangHoa where (IDTrangThaiHang = 1 or IDTrangThaiHang = 3) and DaXoa = 0 and ID = '" + IDHangQuyDoi + "'";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
@@ -61,9 +62,21 @@ namespace BanHang.Data
                     tb.Load(reader);
                     if (tb.Rows.Count != 0)
                     {
+                        cmdText = "select * from GPM_HangHoa_QuyDoi where IDHangHoa = '" + IDHangHoa + "' and IDHangQuyDoi = '" + IDHangQuyDoi + "'";
+                        using (SqlCommand command1 = new SqlCommand(cmdText, con))
+                        using (SqlDataReader reader1 = command1.ExecuteReader())
+                        {
+                            DataTable tb1 = new DataTable();
+                            tb1.Load(reader1);
+                            if (tb1.Rows.Count != 0)
+                                return true;
+                            return false;
+                        }
+                    }
+                    else
+                    {
                         return true;
                     }
-                    return false;
                 }
             }
         }
