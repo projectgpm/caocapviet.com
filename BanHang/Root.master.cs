@@ -19,6 +19,7 @@ namespace BanHang {
             }
             else
             {
+                XuLyThayDoiGiaTheoGio();
                 XuLyDonHangChiNhanh();
                 HuyDonHangThuMua();
                 lblChao.Text = "Xin Chào: " + Session["TenDangNhap"].ToString();
@@ -74,6 +75,61 @@ namespace BanHang {
                         data = new dtMasterPage();
                         data.CapNhatTrangThaiHuyDonHangThuMua(ID);
                         // ghi lịch sử
+                    }
+                }
+            }
+        }
+        public void XuLyThayDoiGiaTheoGio()
+        {
+            data = new dtMasterPage();
+            DataTable db = data.DanhSachHangHoaXuLyTheoGio(DateTime.Now);
+            if (db.Rows.Count > 0)
+            {
+                foreach (DataRow dr in db.Rows)
+                {
+                    string ID = dr["ID"].ToString(); // id dòng lấy cập nhật trạng thái
+                    string IDKho = dr["IDKho"].ToString();
+                    float Gia0 = float.Parse(dr["GiaBan"].ToString());
+                    float Gia1 = float.Parse(dr["GiaBan1"].ToString());
+                    float Gia2 = float.Parse(dr["GiaBan2"].ToString());
+                    float Gia3 = float.Parse(dr["GiaBan3"].ToString());
+                    float Gia4 = float.Parse(dr["GiaBan4"].ToString());
+                    float Gia5 = float.Parse(dr["GiaBan5"].ToString());
+                    string IDHangHoa = dr["IDHangHoa"].ToString();
+                    if (ID != "")
+                    {
+                        if (Gia0 != -1)
+                        {
+                            data = new dtMasterPage();
+                            data.CapNhat_GiaTheoGio(IDHangHoa, IDKho, Gia0.ToString(), "GiaBan");
+                        }
+                        if (Gia1 != -1)
+                        {
+                            data = new dtMasterPage();
+                            data.CapNhat_GiaTheoGio(IDHangHoa, IDKho, Gia1.ToString(), "GiaBan1");
+                        }
+                        if (Gia2 != -1)
+                        {
+                            data = new dtMasterPage();
+                            data.CapNhat_GiaTheoGio(IDHangHoa, IDKho, Gia2.ToString(), "GiaBan2");
+                        }
+                        if (Gia3 != -1)
+                        {
+                            data = new dtMasterPage();
+                            data.CapNhat_GiaTheoGio(IDHangHoa, IDKho, Gia3.ToString(), "GiaBan3");
+                        }
+                        if (Gia4 != -1)
+                        {
+                            data = new dtMasterPage();
+                            data.CapNhat_GiaTheoGio(IDHangHoa, IDKho, Gia4.ToString(), "GiaBan4");
+                        }
+                        if (Gia5 != -1)
+                        {
+                            data = new dtMasterPage();
+                            data.CapNhat_GiaTheoGio(IDHangHoa, IDKho, Gia5.ToString(), "GiaBan5");
+                        }
+                        data = new dtMasterPage();
+                        data.CapNhatGiaHoanTat(ID);
                     }
                 }
             }

@@ -10,43 +10,7 @@
 namespace BanHang {
     
     
-    public partial class GiaTheoGio {
-        
-        /// <summary>
-        /// ASPxFormLayout1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxFormLayout ASPxFormLayout1;
-        
-        /// <summary>
-        /// ASPxFormLayout1_E2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxButton ASPxFormLayout1_E2;
-        
-        /// <summary>
-        /// ASPxFormLayout1_E3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxButton ASPxFormLayout1_E3;
-        
-        /// <summary>
-        /// ASPxLabel1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxLabel ASPxLabel1;
+    public partial class DanhSachGiaTheoGio {
         
         /// <summary>
         /// gridHangHoa control.

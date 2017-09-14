@@ -218,7 +218,7 @@ namespace BanHang
                     dt = new dtGiaTheoGio();
                     //kiểm tra
                     DataTable db1 = dt.KT_ThemChiTiet(IDHangHoa, IDKho, DateTime.Parse(GioThayDoi));
-                    if (db.Rows.Count == 0)
+                    if (db1.Rows.Count == 0)
                     {
                         dt.ThemChiTiet(MaHang, IDHangHoa, IDDonViTinh, GiaBan, GiaBan1, GiaBan2, GiaBan3, GiaBan4, GiaBan5, DateTime.Parse(GioThayDoi), IDKho);
                     }

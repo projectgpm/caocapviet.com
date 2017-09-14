@@ -1,34 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Root.master" AutoEventWireup="true" CodeBehind="GiaTheoGio.aspx.cs" Inherits="BanHang.GiaTheoGio" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Root.master" AutoEventWireup="true" CodeBehind="DanhSachGiaTheoGio.aspx.cs" Inherits="BanHang.DanhSachGiaTheoGio" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
-    <dx:ASPxFormLayout ID="ASPxFormLayout1" runat="server" ColCount="5" Width="100%">
-        <Items>
-            <dx:LayoutItem Caption="">
-                <LayoutItemNestedControlCollection>
-                    <dx:LayoutItemNestedControlContainer runat="server">
-                        <dx:ASPxButton ID="ASPxFormLayout1_E2" runat="server" PostBackUrl="ThemThayDoiGia.aspx" Text="Thêm thay đổi giá">
-                            <Image IconID="actions_add_32x32">
-                            </Image>
-                        </dx:ASPxButton>
-                    </dx:LayoutItemNestedControlContainer>
-                </LayoutItemNestedControlCollection>
-            </dx:LayoutItem>
-            <dx:LayoutItem Caption="">
-                <LayoutItemNestedControlCollection>
-                    <dx:LayoutItemNestedControlContainer runat="server">
-                        <dx:ASPxButton ID="ASPxFormLayout1_E3" runat="server" PostBackUrl="DanhSachGiaTheoGio.aspx" Text="Danh Sách Giá Đã Thay Đổi Theo Giờ">
-                            <Image IconID="actions_apply_32x32">
-                            </Image>
-                        </dx:ASPxButton>
-                    </dx:LayoutItemNestedControlContainer>
-                </LayoutItemNestedControlCollection>
-            </dx:LayoutItem>
-        </Items>
-    </dx:ASPxFormLayout>
-      <dx:ASPxLabel ID="ASPxLabel1" runat="server" Text="Ghi Chú: Nếu không thay đổi giá vui lòng nhập -1. " Font-Bold="True" ForeColor="#FF3300"></dx:ASPxLabel>
-    <dx:ASPxGridView ID="gridHangHoa" runat="server" AutoGenerateColumns="False" KeyFieldName="ID" Width="100%" OnRowDeleting="gridHangHoa_RowDeleting" OnRowUpdating="gridHangHoa_RowUpdating">
-        <SettingsPager Mode="ShowAllRecords">
-        </SettingsPager>
-        <SettingsEditing Mode="Batch">
+    <dx:ASPxGridView ID="gridHangHoa" runat="server" AutoGenerateColumns="False" KeyFieldName="ID" Width="100%">
+        <SettingsEditing Mode="EditForm">
         </SettingsEditing>
         <Settings ShowFilterRow="True" ShowTitlePanel="True" />
         <SettingsCommandButton>
@@ -42,37 +15,35 @@
             </DeleteButton>
         </SettingsCommandButton>
         <SettingsSearchPanel Visible="True" />
-        <SettingsText CommandBatchEditCancel="Hủy tất cả" CommandBatchEditUpdate="Lưu tất cả" Title="DANH SÁCH HÀNG HÓA CHỜ THAY ĐỔI GIÁ " EmptyDataRow="Không có dữ liệu hiển thị" SearchPanelEditorNullText="Nhập thông tin cần tìm..." CommandDelete="Xóa" />
+        <SettingsText CommandBatchEditCancel="Hủy tất cả" CommandBatchEditUpdate="Lưu tất cả" Title="DANH SÁCH HÀNG HÓA THAY ĐỔI GIÁ THÀNH CÔNG" EmptyDataRow="Không có dữ liệu hiển thị" SearchPanelEditorNullText="Nhập thông tin cần tìm..." CommandDelete="Xóa" />
         <Columns>
-            <dx:GridViewCommandColumn ShowDeleteButton="True" VisibleIndex="11">
-            </dx:GridViewCommandColumn>
             <dx:GridViewDataComboBoxColumn Caption="ĐVT" FieldName="IDDonViTinh" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="3">
                 <PropertiesComboBox DataSourceID="sqlDonViTinh" TextField="TenDonViTinh" ValueField="ID">
                 </PropertiesComboBox>
             </dx:GridViewDataComboBoxColumn>
-            <dx:GridViewDataSpinEditColumn Caption="Giá Bán" FieldName="GiaBan" ShowInCustomizationForm="True" VisibleIndex="4">
+            <dx:GridViewDataSpinEditColumn Caption="Giá Bán" FieldName="GiaBan" ShowInCustomizationForm="True" VisibleIndex="4" ReadOnly="True">
                 <PropertiesSpinEdit DisplayFormatString="{0:#,# đ}" NumberFormat="Custom">
                 </PropertiesSpinEdit>
             </dx:GridViewDataSpinEditColumn>
-            <dx:GridViewDataSpinEditColumn Caption="Giá Bán 1" FieldName="GiaBan1" ShowInCustomizationForm="True" VisibleIndex="5" Name="giaban">
+            <dx:GridViewDataSpinEditColumn Caption="Giá Bán 1" FieldName="GiaBan1" ShowInCustomizationForm="True" VisibleIndex="5" Name="giaban" ReadOnly="True">
                 <PropertiesSpinEdit DisplayFormatString="{0:#,# đ}" NumberFormat="Custom">
                 </PropertiesSpinEdit>
             </dx:GridViewDataSpinEditColumn>
             <dx:GridViewDataTextColumn Caption="Mã Hàng" FieldName="MaHang" VisibleIndex="1" ReadOnly="True">
             </dx:GridViewDataTextColumn>
-            <dx:GridViewDataSpinEditColumn Caption="Giá Bán 2" FieldName="GiaBan2" VisibleIndex="6">
+            <dx:GridViewDataSpinEditColumn Caption="Giá Bán 2" FieldName="GiaBan2" VisibleIndex="6" ReadOnly="True">
                 <PropertiesSpinEdit DisplayFormatString="{0:#,# đ}" NumberFormat="Custom">
                 </PropertiesSpinEdit>
             </dx:GridViewDataSpinEditColumn>
-            <dx:GridViewDataSpinEditColumn Caption="Giá Bán 3" FieldName="GiaBan3" VisibleIndex="7">
+            <dx:GridViewDataSpinEditColumn Caption="Giá Bán 3" FieldName="GiaBan3" VisibleIndex="7" ReadOnly="True">
                 <PropertiesSpinEdit DisplayFormatString="{0:#,# đ}" NumberFormat="Custom">
                 </PropertiesSpinEdit>
             </dx:GridViewDataSpinEditColumn>
-            <dx:GridViewDataSpinEditColumn Caption="Giá Bán 4" FieldName="GiaBan4" VisibleIndex="8">
+            <dx:GridViewDataSpinEditColumn Caption="Giá Bán 4" FieldName="GiaBan4" VisibleIndex="8" ReadOnly="True">
                 <PropertiesSpinEdit DisplayFormatString="{0:#,# đ}" NumberFormat="Custom">
                 </PropertiesSpinEdit>
             </dx:GridViewDataSpinEditColumn>
-            <dx:GridViewDataSpinEditColumn Caption="Giá Bán 5" FieldName="GiaBan5" VisibleIndex="9">
+            <dx:GridViewDataSpinEditColumn Caption="Giá Bán 5" FieldName="GiaBan5" VisibleIndex="9" ReadOnly="True">
                 <PropertiesSpinEdit DisplayFormatString="{0:#,# đ}" NumberFormat="Custom">
                 </PropertiesSpinEdit>
             </dx:GridViewDataSpinEditColumn>
