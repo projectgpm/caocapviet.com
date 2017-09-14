@@ -79,6 +79,7 @@ namespace BanHang
                 TenHangHoa = dtSetting.convertDauSangKhongDau(TenHangHoa).ToUpper();
             if (dtSetting.IsNumber(MaHang) == true)
             {
+                
                 if (dtHangCombo.KiemTraMa_ID(MaHang, ID.ToString()) == true)
                 {
                     data = new dtHangCombo();
@@ -97,6 +98,7 @@ namespace BanHang
                         throw new Exception("Lỗi: Mã hàng đã tồn tại.");
                     }
                 }
+                
             }
             else
             {

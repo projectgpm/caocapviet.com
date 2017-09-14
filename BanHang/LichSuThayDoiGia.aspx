@@ -45,17 +45,17 @@
                 </PropertiesComboBox>
             </dx:GridViewDataComboBoxColumn>
             <dx:GridViewDataSpinEditColumn Caption="Giá Củ" VisibleIndex="5" FieldName="GiaCu">
-                <PropertiesSpinEdit DisplayFormatString="N0" NumberFormat="Custom">
+                <PropertiesSpinEdit DisplayFormatString="{0:#,#} đ" NumberFormat="Custom">
                 </PropertiesSpinEdit>
             </dx:GridViewDataSpinEditColumn>
             <dx:GridViewDataTextColumn Caption="Mã Hàng" FieldName="MaHang" VisibleIndex="0">
             </dx:GridViewDataTextColumn>
-            <dx:GridViewDataDateColumn Caption="Ngày Thay Đổi" FieldName="NgayThayDoi" VisibleIndex="7">
+            <dx:GridViewDataDateColumn Caption="Ngày Thay Đổi" FieldName="NgayThayDoi" VisibleIndex="8">
                 <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy hh:mm:ss tt">
                 </PropertiesDateEdit>
             </dx:GridViewDataDateColumn>
             <dx:GridViewDataSpinEditColumn Caption="Giá Mới" FieldName="GiaMoi" VisibleIndex="6">
-                <PropertiesSpinEdit DisplayFormatString="N0" NumberFormat="Custom">
+                <PropertiesSpinEdit DisplayFormatString="{0:#,#} đ" NumberFormat="Custom">
                 </PropertiesSpinEdit>
             </dx:GridViewDataSpinEditColumn>
             <dx:GridViewDataComboBoxColumn Caption="Tên Hàng Hóa" FieldName="IDHangHoa" VisibleIndex="1">
@@ -67,6 +67,8 @@
                 </PropertiesComboBox>
             </dx:GridViewDataComboBoxColumn>
             <dx:GridViewDataTextColumn Caption="Tên PC" FieldName="TenMay" VisibleIndex="4">
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn Caption="Ghi Chú" FieldName="GhiChu" VisibleIndex="7">
             </dx:GridViewDataTextColumn>
         </Columns>
         <Styles>

@@ -81,33 +81,33 @@ namespace BanHang.Data
             }
         }
 
-        public static void ThemLichSuThayDoiGia(string IDHangHoa, string IDDonViTinh, float GiaCu, float GiaMoi, string IDNguoiDung, string MaHang)
-        {
-            using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
-            {
-                try
-                {
-                    string TenMay = Environment.MachineName; // tên máy tinh
-                    myConnection.Open();
-                    string cmdText = "INSERT INTO [GPM_LichSuThayDoiGia] ([IDHangHoa],[IDDonViTinh],[GiaCu],[GiaMoi],[IDNguoiDung],[MaHang],[TenMay],[NgayThayDoi]) VALUES(@IDHangHoa, @IDDonViTinh,@GiaCu,@GiaMoi,@IDNguoiDung,@MaHang,@TenMay, getdate())";
-                    using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
-                    {
-                        myCommand.Parameters.AddWithValue("@MaHang", MaHang.Trim());
-                        myCommand.Parameters.AddWithValue("@IDHangHoa", IDHangHoa);
-                        myCommand.Parameters.AddWithValue("@GiaCu", GiaCu);
-                        myCommand.Parameters.AddWithValue("@IDDonViTinh", IDDonViTinh);
-                        myCommand.Parameters.AddWithValue("@GiaMoi", GiaMoi);
-                        myCommand.Parameters.AddWithValue("@IDNguoiDung", IDNguoiDung);
-                        myCommand.Parameters.AddWithValue("@TenMay", TenMay);
-                        myCommand.ExecuteNonQuery();
-                    }
-                }
-                catch (Exception e)
-                {
-                    throw new Exception("Lỗi: Quá trình cập nhật dữ liệu gặp lỗi, hãy tải lại trang");
-                }
-            }
-        }
+        //public static void ThemLichSuThayDoiGia(string IDHangHoa, string IDDonViTinh, float GiaCu, float GiaMoi, string IDNguoiDung, string MaHang)
+        //{
+        //    using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
+        //    {
+        //        try
+        //        {
+        //            string TenMay = Environment.MachineName; // tên máy tinh
+        //            myConnection.Open();
+        //            string cmdText = "INSERT INTO [GPM_LichSuThayDoiGia] ([IDHangHoa],[IDDonViTinh],[GiaCu],[GiaMoi],[IDNguoiDung],[MaHang],[TenMay],[NgayThayDoi]) VALUES(@IDHangHoa, @IDDonViTinh,@GiaCu,@GiaMoi,@IDNguoiDung,@MaHang,@TenMay, getdate())";
+        //            using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
+        //            {
+        //                myCommand.Parameters.AddWithValue("@MaHang", MaHang.Trim());
+        //                myCommand.Parameters.AddWithValue("@IDHangHoa", IDHangHoa);
+        //                myCommand.Parameters.AddWithValue("@GiaCu", GiaCu);
+        //                myCommand.Parameters.AddWithValue("@IDDonViTinh", IDDonViTinh);
+        //                myCommand.Parameters.AddWithValue("@GiaMoi", GiaMoi);
+        //                myCommand.Parameters.AddWithValue("@IDNguoiDung", IDNguoiDung);
+        //                myCommand.Parameters.AddWithValue("@TenMay", TenMay);
+        //                myCommand.ExecuteNonQuery();
+        //            }
+        //        }
+        //        catch (Exception e)
+        //        {
+        //            throw new Exception("Lỗi: Quá trình cập nhật dữ liệu gặp lỗi, hãy tải lại trang");
+        //        }
+        //    }
+        //}
         public static string LayIDHangHoa_MaHang(string MaHang)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))

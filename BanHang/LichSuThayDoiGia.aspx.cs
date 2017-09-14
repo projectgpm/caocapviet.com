@@ -29,11 +29,9 @@ namespace BanHang
                 }
             }
         }
-
         private void LoadGrid()
         {
             data = new dtThayDoiGia();
-
             gridLichSuThayDoiGia.DataSource = data.LayDanhSach();
             gridLichSuThayDoiGia.DataBind();
         }
