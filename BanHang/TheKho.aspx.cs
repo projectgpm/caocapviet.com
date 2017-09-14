@@ -23,13 +23,13 @@ namespace BanHang
 
                 dtKho dt = new dtKho();
                 DataTable da = dt.LayDanhSachKho();
-                da.Rows.Add(-1, "", "Tất cả cửa hàng", null, null, null, null, null, null, null, null, null);
+                //da.Rows.Add(-1, "", "Tất cả cửa hàng", null, null, null, null, null, null, null, null, null);
 
                 cmbKho.DataSource = da;
                 cmbKho.TextField = "TenCuaHang";
                 cmbKho.ValueField = "ID";
                 cmbKho.DataBind();
-                cmbKho.SelectedIndex = da.Rows.Count;
+                cmbKho.SelectedIndex = 0;
             }
         }
 
