@@ -54,16 +54,17 @@ namespace BanHang.Data
                 }
             }
         }
-        public void ThemChiTiet( string MaHang, string IDHangHoa, string IDDonViTinh, string GiaBan, string GiaBan1, string GiaBan2, string GiaBan3, string GiaBan4, string GiaBan5, DateTime GioThayDoi, string IDKho)
+        public void ThemChiTiet(string MaHang, string IDHangHoa, string IDDonViTinh, string GiaBan, string GiaBan1, string GiaBan2, string GiaBan3, string GiaBan4, string GiaBan5, DateTime GioThayDoi, string IDKho, string IDNhanVien)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
                 try
                 {
                     myConnection.Open();
-                    string cmdText = "INSERT INTO [GPM_GiaTheoGio] ([MaHang],[IDHangHoa],[IDDonViTinh],[GiaBan],[GiaBan1],[GiaBan2],[GiaBan3],[GiaBan4],[GiaBan5],[GioThayDoi],[IDKho]) VALUES (@MaHang,@IDHangHoa,@IDDonViTinh,@GiaBan,@GiaBan1,@GiaBan2,@GiaBan3,@GiaBan4,@GiaBan5,@GioThayDoi,@IDKho)";
+                    string cmdText = "INSERT INTO [GPM_GiaTheoGio] ([MaHang],[IDHangHoa],[IDDonViTinh],[GiaBan],[GiaBan1],[GiaBan2],[GiaBan3],[GiaBan4],[GiaBan5],[GioThayDoi],[IDKho],[IDNhanVien]) VALUES (@MaHang,@IDHangHoa,@IDDonViTinh,@GiaBan,@GiaBan1,@GiaBan2,@GiaBan3,@GiaBan4,@GiaBan5,@GioThayDoi,@IDKho,@IDNhanVien)";
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
+                        myCommand.Parameters.AddWithValue("@IDNhanVien", IDNhanVien);
                         myCommand.Parameters.AddWithValue("@GiaBan", GiaBan);
                         myCommand.Parameters.AddWithValue("@MaHang", MaHang);
                         myCommand.Parameters.AddWithValue("@IDDonViTinh", IDDonViTinh);

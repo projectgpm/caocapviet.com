@@ -215,12 +215,13 @@ namespace BanHang
                     string GiaBan5 = dr["GiaBan5"].ToString();
                     string GioThayDoi = dr["GioThayDoi"].ToString();
                     string IDKho = dr["IDKho"].ToString();
+                    string IDNhanVien = Session["IDNhanVien"].ToString();
                     dt = new dtGiaTheoGio();
                     //kiểm tra
                     DataTable db1 = dt.KT_ThemChiTiet(IDHangHoa, IDKho, DateTime.Parse(GioThayDoi));
                     if (db1.Rows.Count == 0)
                     {
-                        dt.ThemChiTiet(MaHang, IDHangHoa, IDDonViTinh, GiaBan, GiaBan1, GiaBan2, GiaBan3, GiaBan4, GiaBan5, DateTime.Parse(GioThayDoi), IDKho);
+                        dt.ThemChiTiet(MaHang, IDHangHoa, IDDonViTinh, GiaBan, GiaBan1, GiaBan2, GiaBan3, GiaBan4, GiaBan5, DateTime.Parse(GioThayDoi), IDKho, IDNhanVien);
                     }
                 }
                 dt = new dtGiaTheoGio();

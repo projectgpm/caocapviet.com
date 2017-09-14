@@ -65,7 +65,7 @@ namespace BanHang
 
         protected void gridDanhMucCombo_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
         {
-            int ID = Int32.Parse(e.Keys[0].ToString());
+            int ID = Int32.Parse(e.Keys[0].ToString());// IDHangHoa
             string MaHang = e.NewValues["MaHang"].ToString();
             string TenHangHoa = e.NewValues["TenHangHoa"].ToString();
             string IDDonViTinh = e.NewValues["IDDonViTinh"].ToString();
@@ -79,7 +79,12 @@ namespace BanHang
                 TenHangHoa = dtSetting.convertDauSangKhongDau(TenHangHoa).ToUpper();
             if (dtSetting.IsNumber(MaHang) == true)
             {
-                
+                float GiaBanCu = dtHangHoa.GiaBan0(ID.ToString(), Session["IDKho"].ToString());
+                if (GiaBanCu != float.Parse(GiaBanSauThue))
+                {
+                    //ghi lịch sử thay đổi giá
+                    dtThayDoiGia.ThemLichSu(MaHang, ID.ToString(), IDDonViTinh, GiaBanCu.ToString(), GiaBanSauThue, Session["IDKho"].ToString(), "Thay đổi giá hàng combo");
+                }
                 if (dtHangCombo.KiemTraMa_ID(MaHang, ID.ToString()) == true)
                 {
                     data = new dtHangCombo();
