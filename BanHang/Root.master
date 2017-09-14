@@ -194,7 +194,7 @@
                                                             </dx:RibbonDropDownButtonItem>
                                                             <dx:RibbonDropDownButtonItem Name="Lịch sử kho" NavigateUrl="LichSuKho.aspx" Text="Lịch Sử Kho">
                                                             </dx:RibbonDropDownButtonItem>
-                                                            <dx:RibbonDropDownButtonItem Name="Quản Lý Dữ Liệu" NavigateUrl="DuLieu.aspx" Text="Quản Lý Dữ Liệu">
+                                                            <dx:RibbonDropDownButtonItem Name="Quản Lý Dữ Liệu" NavigateUrl="DuLieu.aspx" Text="Quản Lý Dữ Liệu" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
                                                         </Items>
                                                         <LargeImage Url="~/image/hethong.png">
