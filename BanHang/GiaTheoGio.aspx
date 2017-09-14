@@ -1,46 +1,19 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Root.master" AutoEventWireup="true" CodeBehind="DanhSachGiaTheoVung.aspx.cs" Inherits="BanHang.DanhSachGiaTheoVung" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Root.master" AutoEventWireup="true" CodeBehind="GiaTheoGio.aspx.cs" Inherits="BanHang.GiaTheoGio" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
-    <dx:ASPxFormLayout ID="ASPxFormLayout1" runat="server" ColCount="3" Width="100%">
+    <dx:ASPxFormLayout ID="ASPxFormLayout1" runat="server" ColCount="5" Width="100%">
         <Items>
             <dx:LayoutItem Caption="">
                 <LayoutItemNestedControlCollection>
                     <dx:LayoutItemNestedControlContainer runat="server">
-                        <dx:ASPxButton ID="btnGiaTheoKho" runat="server" Text="Thay đổi giá theo vùng" PostBackUrl="GiaTheoKho.aspx">
-                            <Image IconID="actions_sortbyinvoice_32x32devav">
-                            </Image>
-                            <Paddings Padding="4px" />
-                        </dx:ASPxButton>
-                    </dx:LayoutItemNestedControlContainer>
-                </LayoutItemNestedControlCollection>
-            </dx:LayoutItem>
-           
-            <dx:LayoutItem Caption="">
-                <LayoutItemNestedControlCollection>
-                    <dx:LayoutItemNestedControlContainer runat="server">
-                        <dx:ASPxButton ID="ASPxFormLayout1_E2" runat="server" PostBackUrl="GiaTheoGio.aspx" Text="Thay đổi giá theo giờ">
-                            <Image IconID="scheduling_time_32x32">
+                        <dx:ASPxButton ID="ASPxFormLayout1_E2" runat="server" PostBackUrl="ThemThayDoiGia.aspx" Text="Thêm thay đổi giá">
+                            <Image IconID="actions_add_32x32">
                             </Image>
                         </dx:ASPxButton>
                     </dx:LayoutItemNestedControlContainer>
                 </LayoutItemNestedControlCollection>
             </dx:LayoutItem>
-           
-            <dx:LayoutItem Caption="Chi Nhánh">
-                <LayoutItemNestedControlCollection>
-                    <dx:LayoutItemNestedControlContainer runat="server">
-                        <dx:ASPxComboBox ID="cmbChiNhanh" runat="server" AutoPostBack="True" DataSourceID="sqlKho" DropDownWidth="400px" OnSelectedIndexChanged="cmbChiNhanh_SelectedIndexChanged" TextField="TenCuaHang" ValueField="ID" Width="100%">
-                            <Columns>
-                                <dx:ListBoxColumn Caption="Mã Chi Nhánh" FieldName="MaKho" Width="100px" />
-                                <dx:ListBoxColumn Caption="Tên Chi Nhánh" FieldName="TenCuaHang" Width="200px" />
-                                <dx:ListBoxColumn Caption="Địa Chỉ" FieldName="DiaChi" Width="100px" />
-                            </Columns>
-                        </dx:ASPxComboBox>
-                    </dx:LayoutItemNestedControlContainer>
-                </LayoutItemNestedControlCollection>
-            </dx:LayoutItem>
-           
         </Items>
-      </dx:ASPxFormLayout>
+    </dx:ASPxFormLayout>
     <dx:ASPxGridView ID="gridHangHoa" runat="server" AutoGenerateColumns="False" KeyFieldName="ID" Width="100%" OnRowUpdating="gridHangHoa_RowUpdating">
         <SettingsEditing Mode="Batch">
         </SettingsEditing>
@@ -52,7 +25,7 @@
             </HideAdaptiveDetailButton>
         </SettingsCommandButton>
         <SettingsSearchPanel Visible="True" />
-        <SettingsText CommandBatchEditCancel="Hủy tất cả" CommandBatchEditUpdate="Lưu tất cả" Title="DANH SÁCH HÀNG HÓA GIÁ THEO CHI NHÁNH" EmptyDataRow="Không có dữ liệu hiển thị" SearchPanelEditorNullText="Nhập thông tin cần tìm..." />
+        <SettingsText CommandBatchEditCancel="Hủy tất cả" CommandBatchEditUpdate="Lưu tất cả" Title="DANH SÁCH HÀNG HÓA CHỜ THAY ĐỔI GIÁ " EmptyDataRow="Không có dữ liệu hiển thị" SearchPanelEditorNullText="Nhập thông tin cần tìm..." />
         <Columns>
             <dx:GridViewDataTextColumn Caption="Tên Hàng Hóa" FieldName="TenHangHoa" ShowInCustomizationForm="True" VisibleIndex="1" ReadOnly="True">
             </dx:GridViewDataTextColumn>
@@ -86,6 +59,10 @@
                 <PropertiesSpinEdit DisplayFormatString="{0:#,# đ}" NumberFormat="Custom">
                 </PropertiesSpinEdit>
             </dx:GridViewDataSpinEditColumn>
+            <dx:GridViewDataDateColumn Caption="Ngày Thay Đổi" FieldName="NgayThayDoi" VisibleIndex="9">
+                <PropertiesDateEdit DisplayFormatString="">
+                </PropertiesDateEdit>
+            </dx:GridViewDataDateColumn>
         </Columns>
         <Styles>
             <Header Font-Bold="True" HorizontalAlign="Center">
