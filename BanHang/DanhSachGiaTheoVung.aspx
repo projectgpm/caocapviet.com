@@ -5,7 +5,7 @@
             <dx:LayoutItem Caption="">
                 <LayoutItemNestedControlCollection>
                     <dx:LayoutItemNestedControlContainer runat="server">
-                        <dx:ASPxButton ID="btnGiaTheoKho" runat="server" Text="Thay đổi giá theo kho - vùng" PostBackUrl="GiaTheoKho.aspx">
+                        <dx:ASPxButton ID="btnGiaTheoKho" runat="server" Text="Thay đổi giá theo vùng" PostBackUrl="GiaTheoKho.aspx">
                             <Image IconID="actions_sortbyinvoice_32x32devav">
                             </Image>
                             <Paddings Padding="4px" />
@@ -14,20 +14,26 @@
                 </LayoutItemNestedControlCollection>
             </dx:LayoutItem>
            
-            <dx:LayoutItem Caption="Chi Nhánh" ColSpan="2">
+            <dx:LayoutItem Caption="">
                 <LayoutItemNestedControlCollection>
                     <dx:LayoutItemNestedControlContainer runat="server">
-                        <dx:ASPxComboBox ID="cmbChiNhanh" runat="server" Width ="100%" DataSourceID="sqlKho" 
-                            TextField="TenCuaHang" ValueField="ID"
-                            ValueType="System.String" 
-                                        DropDownWidth="400" AutoPostBack="True" OnSelectedIndexChanged="cmbChiNhanh_SelectedIndexChanged" 
-                            >
-                         <Columns>
-                            <dx:ListBoxColumn FieldName="MaKho" Width="100px" Caption="Mã Chi Nhánh" />
-                            <dx:ListBoxColumn FieldName="TenCuaHang" Width="200px" Caption="Tên Chi Nhánh"/>
-                            <dx:ListBoxColumn FieldName="DiaChi" Width="100px" Caption="Địa Chỉ"/>
-                         
-                        </Columns>
+                        <dx:ASPxButton ID="ASPxFormLayout1_E2" runat="server" PostBackUrl="GiaTheoGio.aspx" Text="Thay đổi giá theo giờ">
+                            <Image IconID="scheduling_time_32x32">
+                            </Image>
+                        </dx:ASPxButton>
+                    </dx:LayoutItemNestedControlContainer>
+                </LayoutItemNestedControlCollection>
+            </dx:LayoutItem>
+           
+            <dx:LayoutItem Caption="Chi Nhánh">
+                <LayoutItemNestedControlCollection>
+                    <dx:LayoutItemNestedControlContainer runat="server">
+                        <dx:ASPxComboBox ID="cmbChiNhanh" runat="server" AutoPostBack="True" DataSourceID="sqlKho" DropDownWidth="400px" OnSelectedIndexChanged="cmbChiNhanh_SelectedIndexChanged" TextField="TenCuaHang" ValueField="ID" Width="100%">
+                            <Columns>
+                                <dx:ListBoxColumn Caption="Mã Chi Nhánh" FieldName="MaKho" Width="100px" />
+                                <dx:ListBoxColumn Caption="Tên Chi Nhánh" FieldName="TenCuaHang" Width="200px" />
+                                <dx:ListBoxColumn Caption="Địa Chỉ" FieldName="DiaChi" Width="100px" />
+                            </Columns>
                         </dx:ASPxComboBox>
                     </dx:LayoutItemNestedControlContainer>
                 </LayoutItemNestedControlCollection>
