@@ -159,7 +159,7 @@
                         <dx:LayoutItem Caption="Trọng lượng (Kg)">
                             <LayoutItemNestedControlCollection>
                                 <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer13" runat="server">
-                                    <dx:ASPxSpinEdit ID="txtTrongLuong" runat="server" NullText="0" Width="100%">
+                                    <dx:ASPxSpinEdit ID="txtTrongLuong" runat="server" NullText="0" Width="100%" DisplayFormatString="{0:n} KG">
                                     </dx:ASPxSpinEdit>
                                 </dx:LayoutItemNestedControlContainer>
                             </LayoutItemNestedControlCollection>

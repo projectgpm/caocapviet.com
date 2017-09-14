@@ -41,9 +41,11 @@ namespace BanHang
 
         protected void gridPhieuChuyenKho_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
         {
+            string IDNhanVien = Session["TenDangNhap"].ToString();
+
             int ID = Int32.Parse(e.Keys[0].ToString());
             dtPhieuChuyenKho dt = new dtPhieuChuyenKho();
-            dt.XoaPhieuChuyenKho_Update(ID + "");
+            dt.XoaPhieuChuyenKho_Update(ID + "", IDNhanVien);
 
             e.Cancel = true;
             gridPhieuChuyenKho.CancelEdit();

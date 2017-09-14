@@ -274,6 +274,22 @@ namespace BanHang.Data
             }
         }
 
+        public DataTable PhieuChuyenKho_Null(string IDKhoXuat)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT * FROM GPM_PhieuChuyenKho WHERE IDKhoXuat = '" + IDKhoXuat + "' and IDKhoNhap is null and SoMatHang is null and TrongLuong is null";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    return tb;
+                }
+            }
+        }
+
         public object ThemPhieuChuyenKho(string IDKho)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
@@ -317,14 +333,14 @@ namespace BanHang.Data
             }
         }
 
-        public void XoaPhieuChuyenKho_Update(string ID)
+        public void XoaPhieuChuyenKho_Update(string ID,string NV)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
                 try
                 {
                     myConnection.Open();
-                    string strSQL = "UPDATE [GPM_PhieuChuyenKho] SET DaXoa = 1 WHERE [ID] = '" + ID + "'";
+                    string strSQL = "UPDATE [GPM_PhieuChuyenKho] SET DaXoa = 1, GhiChu = N'Nhân viên: " + NV + " hủy phiếu.' WHERE [ID] = '" + ID + "'";
                     using (SqlCommand myCommand = new SqlCommand(strSQL, myConnection))
                     {
                         myCommand.ExecuteNonQuery();

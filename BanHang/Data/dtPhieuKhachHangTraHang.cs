@@ -30,7 +30,7 @@ namespace BanHang.Data
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "SELECT GPM_HangHoa.MaHang,GPM_HangHoa.IDDonViTinh,GPM_ChiTietPhieuKhachHangTraHang_Temp.* FROM GPM_ChiTietPhieuKhachHangTraHang_Temp, GPM_HangHoa WHERE GPM_HangHoa.ID = GPM_ChiTietPhieuKhachHangTraHang_Temp.IDHangHoa AND GPM_ChiTietPhieuKhachHangTraHang_Temp.IDPhieuKhachHangTraHang = '" + IDPhhieuTraHang + "'";
+                string cmdText = "SELECT GPM_HangHoa.MaHang,GPM_HangHoa.IDDonViTinh,GPM_PhieuKhachHangTraHang_ChiTiet_Temp.* FROM GPM_PhieuKhachHangTraHang_ChiTiet_Temp, GPM_HangHoa WHERE GPM_HangHoa.ID = GPM_PhieuKhachHangTraHang_ChiTiet_Temp.IDHangHoa AND GPM_PhieuKhachHangTraHang_ChiTiet_Temp.IDPhieuKhachHangTraHang = '" + IDPhhieuTraHang + "'";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
@@ -46,7 +46,7 @@ namespace BanHang.Data
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "SELECT GPM_HangHoa.MaHang,GPM_HangHoa.IDDonViTinh,GPM_ChiTietPhieuKhachHangTraHang.* FROM GPM_ChiTietPhieuKhachHangTraHang, GPM_HangHoa WHERE GPM_HangHoa.ID = GPM_ChiTietPhieuKhachHangTraHang.IDHangHoa AND GPM_ChiTietPhieuKhachHangTraHang.IDPhieuKhachHangTraHang = '" + IDPhhieuTraHang + "'";
+                string cmdText = "SELECT GPM_HangHoa.MaHang,GPM_HangHoa.IDDonViTinh,GPM_PhieuKhachHangTraHang_ChiTiet.* FROM GPM_PhieuKhachHangTraHang_ChiTiet, GPM_HangHoa WHERE GPM_HangHoa.ID = GPM_PhieuKhachHangTraHang_ChiTiet.IDHangHoa AND GPM_PhieuKhachHangTraHang_ChiTiet.IDPhieuKhachHangTraHang = '" + IDPhhieuTraHang + "'";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
@@ -89,7 +89,7 @@ namespace BanHang.Data
             }
         }
 
-        public void XoaPhieu_Temp(string IDPhieu)
+        public void XoaPhieu_(string IDPhieu)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
@@ -107,7 +107,7 @@ namespace BanHang.Data
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "delete from GPM_ChiTietPhieuKhachHangTraHang_Temp where IDPhieuKhachHangTraHang = '" + IDPhieu + "'";
+                string cmdText = "delete from GPM_PhieuKhachHangTraHang_ChiTiet_Temp where IDPhieuKhachHangTraHang = '" + IDPhieu + "'";
                 using (SqlCommand myCommand = new SqlCommand(cmdText, con))
                 {
                     myCommand.ExecuteNonQuery();
@@ -115,12 +115,12 @@ namespace BanHang.Data
             }
         }
 
-        public void XoaChiTiet_TempID(string ID)
+        public void XoaChiTiet_ID(string ID)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "delete from GPM_ChiTietPhieuKhachHangTraHang_Temp where ID = '" + ID + "'";
+                string cmdText = "delete from GPM_PhieuKhachHangTraHang_ChiTiet_Temp where ID = '" + ID + "'";
                 using (SqlCommand myCommand = new SqlCommand(cmdText, con))
                 {
                     myCommand.ExecuteNonQuery();
@@ -133,7 +133,7 @@ namespace BanHang.Data
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "select * from GPM_ChiTietPhieuKhachHangTraHang_Temp where IDHangHoa = '" + IDHangHoa + "' and IDPhieuKhachHangTraHang = '" + IDPhieu + "'";
+                string cmdText = "select * from GPM_PhieuKhachHangTraHang_ChiTiet_Temp where IDHangHoa = '" + IDHangHoa + "' and IDPhieuKhachHangTraHang = '" + IDPhieu + "'";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
@@ -148,7 +148,7 @@ namespace BanHang.Data
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "select IDPhieuKhachHangTraHang, SUM(SoLuong) as TongSoLuong, SUM(ThanhTien) as TongTien from GPM_ChiTietPhieuKhachHangTraHang_Temp where IDPhieuKhachHangTraHang = '" + IDPhieu + "' group by IDPhieuKhachHangTraHang";
+                string cmdText = "select IDPhieuKhachHangTraHang, SUM(SoLuong) as TongSoLuong, SUM(ThanhTien) as TongTien from GPM_PhieuKhachHangTraHang_ChiTiet_Temp where IDPhieuKhachHangTraHang = '" + IDPhieu + "' group by IDPhieuKhachHangTraHang";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
@@ -164,6 +164,22 @@ namespace BanHang.Data
             {
                 con.Open();
                 string cmdText = "select GPM_HangHoa.IDDonViTinh, GPM_ChiTietHoaDon.* from GPM_HangHoa,GPM_ChiTietHoaDon where GPM_ChiTietHoaDon.IDHangHoa = GPM_HangHoa.ID and GPM_ChiTietHoaDon.ID = '" + ID + "'";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    return tb;
+                }
+            }
+        }
+
+        public DataTable LayPhieuTraHang_Null(string IDKho)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "select * from GPM_PhieuKhachHangTraHang where IDKho = '" + IDKho + "' and IDHoaDon is null and IDNhanVien is null and IDKhachHang is null";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
@@ -205,7 +221,7 @@ namespace BanHang.Data
                 {
                     myConnection.Open();
                     object IDPhieuChuyenKho = null;
-                    string cmdText = "INSERT INTO [GPM_ChiTietPhieuKhachHangTraHang_Temp] ([IDPhieuKhachHangTraHang],[IDHangHoa],[GiaBan],[SoLuong],[ThanhTien],[LyDoDoi]) OUTPUT INSERTED.ID VALUES ('" + IDPhieuKhachHangTraHang + "','" + IDHangHoa + "','" + GiaBan + "','" + SoLuong + "','" + ThanhTien + "',N'" + LyDoDoi + "')";
+                    string cmdText = "INSERT INTO [GPM_PhieuKhachHangTraHang_ChiTiet_Temp] ([IDPhieuKhachHangTraHang],[IDHangHoa],[GiaBan],[SoLuong],[ThanhTien],[LyDoDoi]) OUTPUT INSERTED.ID VALUES ('" + IDPhieuKhachHangTraHang + "','" + IDHangHoa + "','" + GiaBan + "','" + SoLuong + "','" + ThanhTien + "',N'" + LyDoDoi + "')";
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
                         IDPhieuChuyenKho = myCommand.ExecuteScalar();
@@ -228,7 +244,7 @@ namespace BanHang.Data
                 {
                     myConnection.Open();
                     object IDPhieuChuyenKho = null;
-                    string cmdText = "INSERT INTO [GPM_ChiTietPhieuKhachHangTraHang] ([IDPhieuKhachHangTraHang],[IDHangHoa],[GiaBan],[SoLuong],[ThanhTien],[LyDoDoi]) OUTPUT INSERTED.ID VALUES ('" + IDPhieuKhachHangTraHang + "','" + IDHangHoa + "','" + GiaBan + "','" + SoLuong + "','" + ThanhTien + "',N'" + LyDoDoi + "')";
+                    string cmdText = "INSERT INTO [GPM_PhieuKhachHangTraHang_ChiTiet] ([IDPhieuKhachHangTraHang],[IDHangHoa],[GiaBan],[SoLuong],[ThanhTien],[LyDoDoi]) OUTPUT INSERTED.ID VALUES ('" + IDPhieuKhachHangTraHang + "','" + IDHangHoa + "','" + GiaBan + "','" + SoLuong + "','" + ThanhTien + "',N'" + LyDoDoi + "')";
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
                         IDPhieuChuyenKho = myCommand.ExecuteScalar();
@@ -250,7 +266,7 @@ namespace BanHang.Data
                 try
                 {
                     myConnection.Open();
-                    string cmdText = "update GPM_ChiTietPhieuKhachHangTraHang_Temp set GiaBan = '" + GiaBan + "', SoLuong = '" + SoLuong + "', ThanhTien = '" + ThanhTien + "', LyDoDoi = '" + LyDoDoi + "' where IDPhieuKhachHangTraHang = '" + IDPhieuKhachHangTraHang + "' and IDHangHoa = '" + IDHangHoa + "'";
+                    string cmdText = "update GPM_PhieuKhachHangTraHang_ChiTiet_Temp set GiaBan = '" + GiaBan + "', SoLuong = '" + SoLuong + "', ThanhTien = '" + ThanhTien + "', LyDoDoi = '" + LyDoDoi + "' where IDPhieuKhachHangTraHang = '" + IDPhieuKhachHangTraHang + "' and IDHangHoa = '" + IDHangHoa + "'";
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
                         myCommand.ExecuteScalar();

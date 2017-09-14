@@ -86,11 +86,11 @@
                                         <SettingsSearchPanel Visible="True" />
                                         <SettingsText CommandDelete="Xóa" CommandEdit="Sửa" CommandNew="Thêm" Title="DANH SÁCH PHIẾU CHUYỂN KHO" ConfirmDelete="Bạn chắc chắn muốn xóa?"/>
                                         <Columns>
-                                            <dx:GridViewDataComboBoxColumn Caption="Kho nhập" VisibleIndex="3" FieldName="IDKhoNhap">
+                                            <dx:GridViewDataComboBoxColumn Caption="Kho nhập" VisibleIndex="4" FieldName="IDKhoNhap">
                                                 <PropertiesComboBox DataSourceID="sqlKho" TextField="TenCuaHang" ValueField="ID">
                                                 </PropertiesComboBox>
                                             </dx:GridViewDataComboBoxColumn>
-                                            <dx:GridViewDataDateColumn Caption="Ngày xuất" VisibleIndex="11" FieldName="NgayXuat">
+                                            <dx:GridViewDataDateColumn Caption="Ngày xuất" VisibleIndex="12" FieldName="NgayXuat">
                                                 <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy">
                                                 </PropertiesDateEdit>
                                             </dx:GridViewDataDateColumn>
@@ -104,60 +104,62 @@
                                                 </DataItemTemplate>
                                                 <HeaderStyle Wrap="True" />
                                             </dx:GridViewDataButtonEditColumn>
-                                            <dx:GridViewDataComboBoxColumn Caption="Kho xuất" FieldName="IDKhoXuat" VisibleIndex="2">
+                                            <dx:GridViewDataComboBoxColumn Caption="Kho xuất" FieldName="IDKhoXuat" VisibleIndex="3">
                                                 <PropertiesComboBox DataSourceID="sqlKho" TextField="TenCuaHang" ValueField="ID">
                                                 </PropertiesComboBox>
                                             </dx:GridViewDataComboBoxColumn>
-                                            <dx:GridViewDataComboBoxColumn Caption="Cửa hàng kho xuất" FieldName="IDCuaHangTruong1" VisibleIndex="6">
+                                            <dx:GridViewDataComboBoxColumn Caption="Cửa hàng kho xuất" FieldName="IDCuaHangTruong1" VisibleIndex="7">
                                                 <PropertiesComboBox DataSourceID="sqlDNhanVien" TextField="TenNguoiDung" ValueField="ID">
                                                 </PropertiesComboBox>
                                             </dx:GridViewDataComboBoxColumn>
-                                            <dx:GridViewDataSpinEditColumn Caption="Số mặt hàng" FieldName="SoMatHang" VisibleIndex="13">
+                                            <dx:GridViewDataSpinEditColumn Caption="Số mặt hàng" FieldName="SoMatHang" VisibleIndex="15">
                                                 <PropertiesSpinEdit DisplayFormatString="g">
                                                 </PropertiesSpinEdit>
                                             </dx:GridViewDataSpinEditColumn>
-                                            <dx:GridViewDataSpinEditColumn Caption="Trọng lượng" FieldName="TrongLuong" VisibleIndex="14">
+                                            <dx:GridViewDataSpinEditColumn Caption="Trọng lượng" FieldName="TrongLuong" VisibleIndex="16">
                                                 <PropertiesSpinEdit DisplayFormatString="{0:n} KG" NumberFormat="Custom">
                                                 </PropertiesSpinEdit>
                                             </dx:GridViewDataSpinEditColumn>
-                                            <dx:GridViewDataComboBoxColumn Caption="Trạng thái chuyển hàng" FieldName="IDTrangThai" VisibleIndex="15">
+                                            <dx:GridViewDataComboBoxColumn Caption="Trạng thái chuyển hàng" FieldName="IDTrangThai" VisibleIndex="2">
                                                 <PropertiesComboBox DataSourceID="sqlTrangThaiChuyenHang" TextField="TenTrangThai" ValueField="ID">
                                                 </PropertiesComboBox>
                                             </dx:GridViewDataComboBoxColumn>
-                                            <dx:GridViewDataDateColumn Caption="Ngày nhập" FieldName="NgayNhap" VisibleIndex="12">
+                                            <dx:GridViewDataDateColumn Caption="Ngày nhập" FieldName="NgayNhap" VisibleIndex="13">
                                                 <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy">
                                                 </PropertiesDateEdit>
                                             </dx:GridViewDataDateColumn>
-                                            <dx:GridViewDataComboBoxColumn Caption="Người lập phiếu" FieldName="IDNhanVienLap" VisibleIndex="4">
+                                            <dx:GridViewDataComboBoxColumn Caption="Người lập phiếu" FieldName="IDNhanVienLap" VisibleIndex="5">
                                                 <PropertiesComboBox DataSourceID="sqlDNhanVien" TextField="TenNguoiDung" ValueField="ID">
                                                 </PropertiesComboBox>
                                             </dx:GridViewDataComboBoxColumn>
-                                            <dx:GridViewDataDateColumn Caption="Ngày lập" FieldName="NgayLap" VisibleIndex="5">
+                                            <dx:GridViewDataDateColumn Caption="Ngày lập" FieldName="NgayLap" VisibleIndex="6">
                                                 <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy">
                                                 </PropertiesDateEdit>
                                             </dx:GridViewDataDateColumn>
-                                            <dx:GridViewDataComboBoxColumn Caption="Giám sát kho xuất" FieldName="IDGiamSat1" VisibleIndex="7">
+                                            <dx:GridViewDataComboBoxColumn Caption="Giám sát kho xuất" FieldName="IDGiamSat1" VisibleIndex="8">
                                                 <PropertiesComboBox DataSourceID="sqlDNhanVien" TextField="TenNguoiDung" ValueField="ID">
                                                 </PropertiesComboBox>
                                             </dx:GridViewDataComboBoxColumn>
-                                            <dx:GridViewDataComboBoxColumn Caption="Cửu hàng kho nhận" FieldName="IDCuaHangTruong2" VisibleIndex="8">
+                                            <dx:GridViewDataComboBoxColumn Caption="Cửu hàng kho nhận" FieldName="IDCuaHangTruong2" VisibleIndex="9">
                                                 <PropertiesComboBox DataSourceID="sqlDNhanVien" TextField="TenNguoiDung" ValueField="ID">
                                                 </PropertiesComboBox>
                                             </dx:GridViewDataComboBoxColumn>
-                                            <dx:GridViewDataComboBoxColumn Caption="Giám sát kho nhận" FieldName="IDGiamSat2" VisibleIndex="9">
+                                            <dx:GridViewDataComboBoxColumn Caption="Giám sát kho nhận" FieldName="IDGiamSat2" VisibleIndex="10">
                                                 <PropertiesComboBox DataSourceID="sqlDNhanVien" TextField="TenNguoiDung" ValueField="ID">
                                                 </PropertiesComboBox>
                                             </dx:GridViewDataComboBoxColumn>
-                                            <dx:GridViewDataComboBoxColumn Caption="Nhân viên kho tổng" FieldName="IDNhanVienKho1" VisibleIndex="10">
+                                            <dx:GridViewDataComboBoxColumn Caption="Nhân viên kho tổng" FieldName="IDNhanVienKho1" VisibleIndex="11">
                                                 <PropertiesComboBox DataSourceID="sqlDNhanVien" TextField="TenNguoiDung" ValueField="ID">
                                                 </PropertiesComboBox>
                                             </dx:GridViewDataComboBoxColumn>
-                                            <dx:GridViewDataTextColumn Caption="Ghi Chú" FieldName="GhiChu" VisibleIndex="17">
+                                            <dx:GridViewDataTextColumn Caption="Ghi Chú" FieldName="GhiChu" VisibleIndex="18">
                                             </dx:GridViewDataTextColumn>
                                             <dx:GridViewCommandColumn ShowDeleteButton="True" VisibleIndex="1">
                                             </dx:GridViewCommandColumn>
-                                            <dx:GridViewDataTextColumn Caption="Người giao" FieldName="NguoiGiao" ShowInCustomizationForm="True" VisibleIndex="16">
+                                            <dx:GridViewDataTextColumn Caption="Người giao" FieldName="NguoiGiao" ShowInCustomizationForm="True" VisibleIndex="17">
                                             </dx:GridViewDataTextColumn>
+                                            <dx:GridViewDataHyperLinkColumn Caption="Chứng từ" FieldName="FileChungTu" ShowInCustomizationForm="True" VisibleIndex="14">
+                                            </dx:GridViewDataHyperLinkColumn>
                                         </Columns>
                                         <Styles>
                                             <Header Font-Bold="True" HorizontalAlign="Center">

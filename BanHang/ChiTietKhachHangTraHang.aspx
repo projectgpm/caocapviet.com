@@ -43,7 +43,7 @@
                                             <PropertiesComboBox DataSourceID="sqlHangHoa" TextField="TenHangHoa" ValueField="ID">
                                             </PropertiesComboBox>
                                         </dx:GridViewDataComboBoxColumn>
-                                        <dx:GridViewDataComboBoxColumn FieldName="IDDonViTinh" VisibleIndex="2">
+                                        <dx:GridViewDataComboBoxColumn FieldName="IDDonViTinh" VisibleIndex="2" Caption="Đơn vị tính">
                                             <PropertiesComboBox DataSourceID="sqlDonViTinh" TextField="TenDonViTinh" ValueField="ID">
                                             </PropertiesComboBox>
                                         </dx:GridViewDataComboBoxColumn>

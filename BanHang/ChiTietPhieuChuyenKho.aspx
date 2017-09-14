@@ -84,11 +84,11 @@
                                             <dx:GridViewDataTextColumn Caption="Ghi Chú" FieldName="GhiChu" ShowInCustomizationForm="True" VisibleIndex="6">
                                             </dx:GridViewDataTextColumn>
                                             <dx:GridViewDataSpinEditColumn Caption="Số Lượng" FieldName="SoLuong" ShowInCustomizationForm="True" VisibleIndex="3">
-                                                <PropertiesSpinEdit DisplayFormatString="g">
+                                                <PropertiesSpinEdit DisplayFormatString="" NumberFormat="Custom">
                                                 </PropertiesSpinEdit>
                                             </dx:GridViewDataSpinEditColumn>
                                             <dx:GridViewDataTextColumn Caption="Trọng Lượng" FieldName="TrongLuong" ShowInCustomizationForm="True" VisibleIndex="5">
-                                                <PropertiesTextEdit DisplayFormatInEditMode="True" DisplayFormatString="{0:#,#}  KG">
+                                                <PropertiesTextEdit DisplayFormatInEditMode="True" DisplayFormatString="{0:n} KG">
                                                 </PropertiesTextEdit>
                                             </dx:GridViewDataTextColumn>
                                         </Columns>

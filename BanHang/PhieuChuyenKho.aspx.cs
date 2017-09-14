@@ -30,8 +30,17 @@ namespace BanHang
                     if (!IsPostBack)
                     {
                         dtPhieuChuyenKho data = new dtPhieuChuyenKho();
-                        object ID = data.ThemPhieuChuyenKho(Session["IDKho"].ToString());
-                        IDPhieuChuyenKho.Value = ID.ToString();
+                        DataTable da = data.PhieuChuyenKho_Null(Session["IDKho"].ToString());
+                        if (da.Rows.Count != 0)
+                        {
+                            IDPhieuChuyenKho.Value = da.Rows[0]["ID"].ToString();
+                        }
+                        else
+                        {
+                            object ID = data.ThemPhieuChuyenKho(Session["IDKho"].ToString());
+                            IDPhieuChuyenKho.Value = ID.ToString();
+                        }
+                        
                         cmbNguoiLapPhieu.Text = Session["IDNhanVien"].ToString();
                         cmbTrangThaiPhieu.SelectedIndex = 0;
                         cmbKhoXuat.Value = Session["IDKho"].ToString();
@@ -44,10 +53,10 @@ namespace BanHang
                 //}
             }
 
-            if (Session["IDKho"].ToString().CompareTo("1") != 0)
-            {
-                Response.Redirect("DanhSachPhieuChuyenKho.aspx");
-            }
+            //if (Session["IDKho"].ToString().CompareTo("1") != 0)
+            //{
+            //    Response.Redirect("DanhSachPhieuChuyenKho.aspx");
+            //}
         }
 
         private void LoadGrid(string IDPhieuChuyenKho)
@@ -172,20 +181,23 @@ namespace BanHang
                 string MaKhoNhap = dt.LayMaKho_ID(IDKhoNhap);
                 string MaKhoXuat = dt.LayMaKho_ID(IDKhoXuat);
                 string ngaythangnam = date.ToString("ddMMyyyy");
-
+                
                 int soHDKhoNhap = Int32.Parse(data.TongSoHDCuaKhoNhan(ngayBD, ngayKT, IDKhoXuat, IDKhoNhap)) + 1;
                 int soHDKhoXuat = Int32.Parse(data.TongSoHDCuaKhoNhan(ngayBD, ngayKT, IDKhoXuat, -1 + ""));
-
+                
                 string MaHD = MaKhoNhap + "-" + soHDKhoNhap + "-" + soHDKhoXuat + "-" + MaKhoXuat + "-" + ngaythangnam;
 
-                if (!string.IsNullOrEmpty(txtFileChungTu.FileName))
+                string ChungTu = "";
+                if (Page.IsValid && txtFileChungTu.HasFile)
                 {
-                    UploadFile();
+                    ChungTu = "ChuyenKho/" + DateTime.Now.ToString("ddMMyyyy_hhmmss_tt_") + txtFileChungTu.FileName;
+                    string filePath = MapPath(ChungTu);
+                    fileUpload.SaveAs(filePath);
                 }
 
                 string MaSoPhieu = MaKhoXuat + "-" + soHDKhoXuat + ngaythangnam;
 
-                data.CapNhatPhieuChuyenKho(ID, IDKhoXuat, IDKhoNhap, IDNhanVienLap, SoMatHang, TrongLuong, GhiChu, NguoiGiao, MaSoPhieu, MaHD, strFileExcel);
+                data.CapNhatPhieuChuyenKho(ID, IDKhoXuat, IDKhoNhap, IDNhanVienLap, SoMatHang, TrongLuong, GhiChu, NguoiGiao, MaSoPhieu, MaHD, ChungTu);
 
                 dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Phiếu chuyển kho", Session["IDKho"].ToString(), "Nhập xuất tồn", "Thêm");
                 Response.Redirect("DanhSachPhieuChuyenKho.aspx");
