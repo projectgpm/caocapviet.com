@@ -119,6 +119,7 @@ namespace BanHang
                 //        default: exitHang.DonGia = float.Parse(tbThongTin.Rows[0]["GiaBan"].ToString()); break;
                 //    }
                 //}
+                //exitHang.TonKho = dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa.ToString(),Session["IDKho"].ToString());
                 exitHang.ThanhTien = SoLuong * exitHang.DonGia;
                 DanhSachHoaDon[MaHoaDon].TongTien += SoLuong * exitHang.DonGia - ThanhTienOld;
                 DanhSachHoaDon[MaHoaDon].KhachCanTra = DanhSachHoaDon[MaHoaDon].TongTien - DanhSachHoaDon[MaHoaDon].GiamGia;
@@ -129,6 +130,7 @@ namespace BanHang
                 cthd.STT = DanhSachHoaDon[MaHoaDon].ListChiTietHoaDon.Count + 1;
                 cthd.IDHangHoa = IDHangHoa;
                 cthd.MaHang = MaHang;
+                cthd.TonKho = dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa.ToString(), Session["IDKho"].ToString());
                 cthd.TenHang = tbThongTin.Rows[0]["TenHangHoa"].ToString();
                 cthd.SoLuong = int.Parse(txtSoLuong.Text);
                 cthd.DonViTinh = tbThongTin.Rows[0]["TenDonViTinh"].ToString();
@@ -285,6 +287,7 @@ namespace BanHang
                                 default: exitHang.DonGia = dtHangHoa.GiaBan0((exitHang.IDHangHoa).ToString(), IDKho); break;
                             }
                         }
+                        //exitHang.TonKho = dtCapNhatTonKho.SoLuong_TonKho(exitHang.IDHangHoa.ToString(), Session["IDKho"].ToString());
                         exitHang.ThanhTien = Convert.ToInt32(SoLuongMoi) * exitHang.DonGia;
                         DanhSachHoaDon[MaHoaDon].TongTien += exitHang.ThanhTien - ThanhTienOld;
                         DanhSachHoaDon[MaHoaDon].KhachCanTra = DanhSachHoaDon[MaHoaDon].TongTien - DanhSachHoaDon[MaHoaDon].GiamGia;
@@ -761,6 +764,7 @@ namespace BanHang
         public int IDHangHoa { get; set; }
         public string TenHang { get; set; }
         public int MaDonViTinh { get; set; }
+        public int TonKho { get; set; }
         public string DonViTinh { get; set; }
         public int SoLuong { get; set; }
         public float DonGia { get; set; }
@@ -769,6 +773,7 @@ namespace BanHang
 
         public ChiTietHoaDon()
         {
+            TonKho = 0;
             SoLuong = 0;
             DonGia = 0;
             ThanhTien = 0;

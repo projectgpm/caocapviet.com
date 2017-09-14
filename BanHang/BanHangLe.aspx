@@ -158,7 +158,7 @@
                                 <CellStyle HorizontalAlign="Center">
                                 </CellStyle>
                             </dx:GridViewDataTextColumn>
-                            <dx:GridViewDataSpinEditColumn Caption="Số lượng" FieldName="SoLuong" VisibleIndex="4" Width="100px">
+                            <dx:GridViewDataSpinEditColumn Caption="Số lượng" FieldName="SoLuong" VisibleIndex="5" Width="100px">
                             <PropertiesSpinEdit DisplayFormatString="g"></PropertiesSpinEdit>
                                 <DataItemTemplate>
                                     <dx:ASPxSpinEdit ID="txtSoLuongChange" runat="server" Width="100%" 
@@ -166,11 +166,11 @@
                                 </DataItemTemplate>
                             </dx:GridViewDataSpinEditColumn>
                             <dx:GridViewDataSpinEditColumn Caption="Đơn giá" FieldName="DonGia" 
-                                VisibleIndex="5" Width="80px">                                   
+                                VisibleIndex="6" Width="80px">                                   
                             <PropertiesSpinEdit DisplayFormatString="N0" NumberFormat="Custom"></PropertiesSpinEdit>
                             </dx:GridViewDataSpinEditColumn>
                             <dx:GridViewDataButtonEditColumn Caption="Xóa" ShowInCustomizationForm="True" Width="50px" 
-                                VisibleIndex="7">
+                                VisibleIndex="8">
                                 <DataItemTemplate>
                                     <dx:ASPxButton ID="BtnXoaHang" runat="server" CommandName="XoaHang"
                                         CommandArgument='<%# Eval("STT") %>' 
@@ -182,8 +182,12 @@
                                 <CellStyle HorizontalAlign="Center">
                                 </CellStyle>
                             </dx:GridViewDataButtonEditColumn>
-                            <dx:GridViewDataSpinEditColumn Caption="Thành tiền" FieldName="ThanhTien" ShowInCustomizationForm="True" UnboundType="Decimal" VisibleIndex="6" Width="120px">
+                            <dx:GridViewDataSpinEditColumn Caption="Thành tiền" FieldName="ThanhTien" ShowInCustomizationForm="True" UnboundType="Decimal" VisibleIndex="7" Width="120px">
                                 <PropertiesSpinEdit DisplayFormatString="N0" NumberFormat="Custom">
+                                </PropertiesSpinEdit>
+                            </dx:GridViewDataSpinEditColumn>
+                            <dx:GridViewDataSpinEditColumn Caption="Tồn Kho" FieldName="TonKho" ShowInCustomizationForm="True" VisibleIndex="4">
+                                <PropertiesSpinEdit DisplayFormatString="N0" NumberFormat="Custom" Width="100px">
                                 </PropertiesSpinEdit>
                             </dx:GridViewDataSpinEditColumn>
                         </columns>                                                  
