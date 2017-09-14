@@ -52,7 +52,7 @@
                                 <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer4" runat="server">
                                     <dx:ASPxComboBox ID="cmbDonViTinh" runat="server" Width="100%" DataSourceID="sqlDonVitinh"   ValueType="System.String"  DropDownWidth="400" DropDownStyle="DropDown" ValueField="ID" AutoPostBack="True" OnSelectedIndexChanged="cmbDonViTinh_SelectedIndexChanged">
                                         <Columns>
-                                            <dx:ListBoxColumn Caption="ID" FieldName="ID" Width="100px" />
+                                            <%--<dx:ListBoxColumn Caption="ID" FieldName="ID" Width="100px" />--%>
                                             <dx:ListBoxColumn Caption="Mã ĐVT" FieldName="MaDonVi" Width="100%" />
                                             <dx:ListBoxColumn Caption="Tên đơn vị tính" FieldName="TenDonViTinh" Width="100px" />
                                             <dx:ListBoxColumn Caption="Mô tả" FieldName="MoTa" Width="100%" />
@@ -79,7 +79,7 @@
                                 <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer6" runat="server">
                                     <dx:ASPxComboBox ID="cmbHangSX" runat="server" Width="100%" DataSourceID="sqlHangSX"   ValueType="System.String"  DropDownWidth="400" DropDownStyle="DropDown" ValueField="ID">
                                         <Columns>
-                                            <dx:ListBoxColumn Caption="ID" FieldName="ID" Width="100px" />
+                                           <%-- <dx:ListBoxColumn Caption="ID" FieldName="ID" Width="100px" />--%>
                                             <dx:ListBoxColumn Caption="Mã hãng SX" FieldName="MaNSX" Width="100px" />
                                             <dx:ListBoxColumn Caption="Tên hãng SX" FieldName="TenNSX" Width="100px" />
                                             <dx:ListBoxColumn Caption="SĐT" FieldName="DienThoai" Width="100px" />
@@ -98,7 +98,7 @@
                                 <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer7" runat="server">
                                     <dx:ASPxComboBox ID="cmbThue" runat="server" Width="100%" DataSourceID="sqlThue"   ValueType="System.String"  DropDownWidth="400" DropDownStyle="DropDown" ValueField="ID" OnSelectedIndexChanged="cmbThue_SelectedIndexChanged">
                                         <Columns>
-                                            <dx:ListBoxColumn Caption="ID" FieldName="ID" Width="100px" />
+                                            <%--<dx:ListBoxColumn Caption="ID" FieldName="ID" Width="100px" />--%>
                                             <dx:ListBoxColumn Caption="Thuế" FieldName="TenThue" Width="100%" />
                                             <dx:ListBoxColumn Caption="Tỉ lệ" FieldName="TiLe" Width="100px" />
                                         </Columns>

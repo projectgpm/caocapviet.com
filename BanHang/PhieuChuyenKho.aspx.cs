@@ -192,10 +192,10 @@ namespace BanHang
                 {
                     ChungTu = "ChuyenKho/" + DateTime.Now.ToString("ddMMyyyy_hhmmss_tt_") + txtFileChungTu.FileName;
                     string filePath = MapPath(ChungTu);
-                    fileUpload.SaveAs(filePath);
+                    txtFileChungTu.SaveAs(filePath);
                 }
 
-                string MaSoPhieu = MaKhoXuat + "-" + soHDKhoXuat + ngaythangnam;
+                string MaSoPhieu = MaKhoXuat + "-" + soHDKhoXuat + "-" + ngaythangnam;
 
                 data.CapNhatPhieuChuyenKho(ID, IDKhoXuat, IDKhoNhap, IDNhanVienLap, SoMatHang, TrongLuong, GhiChu, NguoiGiao, MaSoPhieu, MaHD, ChungTu);
 

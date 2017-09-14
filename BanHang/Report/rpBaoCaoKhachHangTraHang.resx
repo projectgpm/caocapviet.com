@@ -121,9 +121,9 @@
     <value>17, 17</value>
   </metadata>
   <data name="customSqlQuery1.Sql" xml:space="preserve">
-    <value>select SUM("GPM_ChiTietPhieuKhachHangTraHang"."SoLuong") as SoLuong,
-       SUM("GPM_ChiTietPhieuKhachHangTraHang"."ThanhTien") as ThanhTien,
-       "GPM_ChiTietPhieuKhachHangTraHang"."GiaBan",
+    <value>select SUM("GPM_PhieuKhachHangTraHang_ChiTiet"."SoLuong") as SoLuong,
+       SUM("GPM_PhieuKhachHangTraHang_ChiTiet"."ThanhTien") as ThanhTien,
+       "GPM_PhieuKhachHangTraHang_ChiTiet"."GiaBan",
        "GPM_HangHoa"."MaHang",
        "GPM_HangHoa"."TenHangHoa",
        "GPM_HangHoa"."HeSo",
@@ -131,12 +131,12 @@
        "GPM_DonViTinh"."TenDonViTinh"
   from ((("dbo"."GPM_PhieuKhachHangTraHang"
        "GPM_PhieuKhachHangTraHang"
-  inner join "dbo"."GPM_ChiTietPhieuKhachHangTraHang"
-       "GPM_ChiTietPhieuKhachHangTraHang"
-       on ("GPM_ChiTietPhieuKhachHangTraHang"."IDPhieuKhachHangTraHang" = "GPM_PhieuKhachHangTraHang"."ID"))
+  inner join "dbo"."GPM_PhieuKhachHangTraHang_ChiTiet"
+       "GPM_PhieuKhachHangTraHang_ChiTiet"
+       on ("GPM_PhieuKhachHangTraHang_ChiTiet"."IDPhieuKhachHangTraHang" = "GPM_PhieuKhachHangTraHang"."ID"))
   inner join "dbo"."GPM_HangHoa"
        "GPM_HangHoa"
-       on ("GPM_HangHoa"."ID" = "GPM_ChiTietPhieuKhachHangTraHang"."IDHangHoa"))
+       on ("GPM_HangHoa"."ID" = "GPM_PhieuKhachHangTraHang_ChiTiet"."IDHangHoa"))
   inner join "dbo"."GPM_DonViTinh"
        "GPM_DonViTinh"
        on ("GPM_DonViTinh"."ID" = "GPM_HangHoa"."IDDonViTinh"))
@@ -145,7 +145,7 @@
        and ("GPM_PhieuKhachHangTraHang"."NgayDoi" &lt;= @NgayKT)
        and ((@IDKhoNhap = -1) OR ("GPM_PhieuKhachHangTraHang"."IDKho" = @IDKhoNhap))
        and ((@IDKhachHang = -1) OR ("GPM_PhieuKhachHangTraHang"."IDKhachHang" = @IDKhachHang)))
-group by "GPM_ChiTietPhieuKhachHangTraHang"."GiaBan",
+group by "GPM_PhieuKhachHangTraHang_ChiTiet"."GiaBan",
        "GPM_HangHoa"."MaHang",
        "GPM_HangHoa"."TenHangHoa",
        "GPM_HangHoa"."HeSo",
