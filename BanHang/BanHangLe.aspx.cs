@@ -572,6 +572,7 @@ namespace BanHang
         protected void btnQuyDoiHangHoa_Click(object sender, EventArgs e)
         {
             ClearQuiDoi();
+            btnQuiDoi.Enabled = false;
             popupQuiDoi.ShowOnPageLoad = true;
         }
 
@@ -584,6 +585,8 @@ namespace BanHang
         {
             cmbMaHang.Focus();
             txtSoLuongQuyDoi.Text = "";
+            cmbMaHang.Text = "";
+            cmbHangHoaQuyDoi.Text = "";
             cmbHangHoaQuyDoi.DataSource = null;
             cmbHangHoaQuyDoi.DataBind();
         }
@@ -655,6 +658,7 @@ namespace BanHang
                             cmbHangHoaQuyDoi.DataBind();
                             cmbHangHoaQuyDoi.TextField = "TenHangHoa";
                             cmbHangHoaQuyDoi.ValueField = "ID";
+                            btnQuiDoi.Enabled = true;
                         }
                         else
                         {
