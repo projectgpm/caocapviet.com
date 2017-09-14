@@ -82,73 +82,80 @@ namespace BanHang
         }
         protected void gridHangHoa_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
         {
-            string ID = e.Keys[0].ToString();
-            string IDDonViTinh = e.NewValues["IDDonViTinh"].ToString();
-            string IDKho1 = cmbKho.Value.ToString();
-
-            if (DanhSachKho.SelectedItems.Count != 0)
+            if (e.NewValues["GiaBan"] != null && e.NewValues["GiaBan1"] != null && e.NewValues["GiaBan2"] != null && e.NewValues["GiaBan3"] != null && e.NewValues["GiaBan4"] != null && e.NewValues["GiaBan5"] != null)
             {
-                string IDHangHoa = dtCapNhatTonKho.LayIDHangHoa_HangHoaTonKho(ID).ToString();
-                float giacu0 = dtCapNhatTonKho.GiaBan_KhoChiNhanh(IDHangHoa, IDKho1);
-                float giacu1 = dtCapNhatTonKho.GiaBan1_KhoChiNhanh(IDHangHoa, IDKho1);
-                float giacu2 = dtCapNhatTonKho.GiaBan2_KhoChiNhanh(IDHangHoa, IDKho1);
-                float giacu3 = dtCapNhatTonKho.GiaBan3_KhoChiNhanh(IDHangHoa, IDKho1);
-                float giacu4 = dtCapNhatTonKho.GiaBan4_KhoChiNhanh(IDHangHoa, IDKho1);
-                float giacu5 = dtCapNhatTonKho.GiaBan5_KhoChiNhanh(IDHangHoa, IDKho1);
-                float GiaBan0 = float.Parse(e.NewValues["GiaBan"].ToString());
-                float GiaBan1 = float.Parse(e.NewValues["GiaBan1"].ToString());
-                float GiaBan2 = float.Parse(e.NewValues["GiaBan2"].ToString());
-                float GiaBan3 = float.Parse(e.NewValues["GiaBan3"].ToString());
-                float GiaBan4 = float.Parse(e.NewValues["GiaBan4"].ToString());
-                float GiaBan5 = float.Parse(e.NewValues["GiaBan5"].ToString());
-                for (int i = DanhSachKho.Items.Count - 1; i >= 0; i--)
+                string ID = e.Keys[0].ToString();
+                string IDDonViTinh = e.NewValues["IDDonViTinh"].ToString();
+                string IDKho1 = cmbKho.Value.ToString();
+
+                if (DanhSachKho.SelectedItems.Count != 0)
                 {
-                    if (DanhSachKho.Items[i].Selected == true)
+                    string IDHangHoa = dtCapNhatTonKho.LayIDHangHoa_HangHoaTonKho(ID).ToString();
+                    float giacu0 = dtCapNhatTonKho.GiaBan_KhoChiNhanh(IDHangHoa, IDKho1);
+                    float giacu1 = dtCapNhatTonKho.GiaBan1_KhoChiNhanh(IDHangHoa, IDKho1);
+                    float giacu2 = dtCapNhatTonKho.GiaBan2_KhoChiNhanh(IDHangHoa, IDKho1);
+                    float giacu3 = dtCapNhatTonKho.GiaBan3_KhoChiNhanh(IDHangHoa, IDKho1);
+                    float giacu4 = dtCapNhatTonKho.GiaBan4_KhoChiNhanh(IDHangHoa, IDKho1);
+                    float giacu5 = dtCapNhatTonKho.GiaBan5_KhoChiNhanh(IDHangHoa, IDKho1);
+                    float GiaBan0 = float.Parse(e.NewValues["GiaBan"].ToString());
+                    float GiaBan1 = float.Parse(e.NewValues["GiaBan1"].ToString());
+                    float GiaBan2 = float.Parse(e.NewValues["GiaBan2"].ToString());
+                    float GiaBan3 = float.Parse(e.NewValues["GiaBan3"].ToString());
+                    float GiaBan4 = float.Parse(e.NewValues["GiaBan4"].ToString());
+                    float GiaBan5 = float.Parse(e.NewValues["GiaBan5"].ToString());
+                    for (int i = DanhSachKho.Items.Count - 1; i >= 0; i--)
                     {
-                       
-                        // chưa lấy được giá bán củ
-                        string IDKhoMoi = DanhSachKho.Items[i].Value.ToString();
-                        if (giacu0 != GiaBan0)
+                        if (DanhSachKho.Items[i].Selected == true)
                         {
-                            data = new dtGiaTheoVung();
-                            data.CapNhat_GiaTheoVung_NhiuKho(IDHangHoa, IDKhoMoi, GiaBan0.ToString(), "GiaBan");
+
+                            // chưa lấy được giá bán củ
+                            string IDKhoMoi = DanhSachKho.Items[i].Value.ToString();
+                            if (giacu0 != GiaBan0)
+                            {
+                                data = new dtGiaTheoVung();
+                                data.CapNhat_GiaTheoVung_NhiuKho(IDHangHoa, IDKhoMoi, GiaBan0.ToString(), "GiaBan");
+                            }
+                            if (giacu1 != GiaBan1)
+                            {
+                                data = new dtGiaTheoVung();
+                                data.CapNhat_GiaTheoVung_NhiuKho(IDHangHoa, IDKhoMoi, GiaBan1.ToString(), "GiaBan1");
+                            }
+                            if (giacu2 != GiaBan2)
+                            {
+                                data = new dtGiaTheoVung();
+                                data.CapNhat_GiaTheoVung_NhiuKho(IDHangHoa, IDKhoMoi, GiaBan2.ToString(), "GiaBan2");
+                            }
+                            if (giacu3 != GiaBan3)
+                            {
+                                data = new dtGiaTheoVung();
+                                data.CapNhat_GiaTheoVung_NhiuKho(IDHangHoa, IDKhoMoi, GiaBan3.ToString(), "GiaBan3");
+                            }
+                            if (giacu4 != GiaBan4)
+                            {
+                                data = new dtGiaTheoVung();
+                                data.CapNhat_GiaTheoVung_NhiuKho(IDHangHoa, IDKhoMoi, GiaBan4.ToString(), "GiaBan4");
+                            }
+                            if (giacu5 != GiaBan5)
+                            {
+                                data = new dtGiaTheoVung();
+                                data.CapNhat_GiaTheoVung_NhiuKho(IDHangHoa, IDKhoMoi, GiaBan5.ToString(), "GiaBan5");
+                            }
+                            // ghi lịch sử cụ thể giá mấy thay đổi
                         }
-                        if (giacu1 != GiaBan1)
-                        {
-                            data = new dtGiaTheoVung();
-                            data.CapNhat_GiaTheoVung_NhiuKho(IDHangHoa, IDKhoMoi, GiaBan1.ToString(), "GiaBan1");
-                        }
-                        if (giacu2 != GiaBan2)
-                        {
-                            data = new dtGiaTheoVung();
-                            data.CapNhat_GiaTheoVung_NhiuKho(IDHangHoa, IDKhoMoi, GiaBan2.ToString(), "GiaBan2");
-                        }
-                        if (giacu3 != GiaBan3)
-                        {
-                            data = new dtGiaTheoVung();
-                            data.CapNhat_GiaTheoVung_NhiuKho(IDHangHoa, IDKhoMoi, GiaBan3.ToString(), "GiaBan3");
-                        }
-                        if (giacu4 != GiaBan4)
-                        {
-                            data = new dtGiaTheoVung();
-                            data.CapNhat_GiaTheoVung_NhiuKho(IDHangHoa, IDKhoMoi, GiaBan4.ToString(), "GiaBan4");
-                        }
-                        if (giacu5 != GiaBan5)
-                        {
-                            data = new dtGiaTheoVung();
-                            data.CapNhat_GiaTheoVung_NhiuKho(IDHangHoa, IDKhoMoi, GiaBan5.ToString(), "GiaBan5");
-                        }
-                      // ghi lịch sử cụ thể giá mấy thay đổi
                     }
+                    Session["updated"] = true;
+                    e.Cancel = true;
+                    gridHangHoa.CancelEdit();
+                    LoadGrid(cmbKho.Value.ToString());
                 }
-                Session["updated"] = true;
-                e.Cancel = true;
-                gridHangHoa.CancelEdit();
-                LoadGrid(cmbKho.Value.ToString());
+                else
+                {
+                    throw new Exception("Lỗi: Chưa chọn kho để áp dụng giá mới?");
+                }
             }
             else
             {
-                throw new Exception("Lỗi: Chưa chọn kho để áp dụng giá mới?");
+                throw new Exception("Lỗi: Giá không được bỏ trống? Vui lòng kiểm tra lại.");
             }
         }
 

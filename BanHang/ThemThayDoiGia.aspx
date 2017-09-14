@@ -93,7 +93,7 @@
                             <dx:LayoutItem Caption="" Width="100%">
                                 <LayoutItemNestedControlCollection>
                                     <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer4" runat="server">
-                                        <dx:ASPxLabel ID="ASPxLabel1" runat="server" Text="Ghi Chú: Nếu không thay đổi giá vui lòng nhập -1. Cảm ơn! " Font-Bold="True" ForeColor="#FF3300"></dx:ASPxLabel>
+                                        <dx:ASPxLabel ID="ASPxLabel1" runat="server" Text="Ghi Chú: Nếu không thay đổi giá vui lòng nhập -1." Font-Bold="True" ForeColor="#FF3300"></dx:ASPxLabel>
                                         <dx:ASPxGridView ID="gridHangHoa" runat="server" AutoGenerateColumns="False" KeyFieldName="ID" Width="100%" ClientInstanceName="gridHangHoa" OnRowDeleting="gridHangHoa_RowDeleting" OnRowUpdating="gridHangHoa_RowUpdating">
                                             
                                             <SettingsPager NumericButtonCount="20" Mode="ShowAllRecords">

@@ -9,6 +9,21 @@ namespace BanHang.Data
 {
     public class dtGiaTheoGio
     {
+        public DataTable DanhSachHoanTat()
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT TOP 1000 * FROM GPM_GiaTheoGio WHERE TrangThai = 1";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    return tb;
+                }
+            }
+        }
         public DataTable DanhSach()
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
