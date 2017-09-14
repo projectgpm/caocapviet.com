@@ -637,6 +637,7 @@ namespace BanHang
                 dtBanHangLe dt = new dtBanHangLe();
                 if (cmbMaHang.Text.Trim() != "")
                 {
+                    txtTonKhoB.Text = "";
                     DataTable tbThongTin;
                     if (cmbMaHang.Value == null)
                     {
@@ -714,8 +715,9 @@ namespace BanHang
                 {
                     int SLTonHienTai = Int32.Parse(txtTonKhoA.Text.ToString());// số lượng tồn của hàng hóa cần qui đổi.
                     dtHeThongQuyDoi dt = new dtHeThongQuyDoi();
-                    int HeSo = dt.LayHeSoHangHoa(cmbHangHoaQuyDoi.Value.ToString());
-                    int SLDaDoi = SoLuongQuiDoi * HeSo;
+                    int HeSoB = dt.LayHeSoHangHoa(cmbHangHoaQuyDoi.Value.ToString());
+                    int HeSoA = dt.LayHeSoHangHoa(cmbMaHang.Value.ToString());
+                    int SLDaDoi = SoLuongQuiDoi * (HeSoB / HeSoA);
                     object TheKho1 = dtTheKho.ThemTheKho("", "Qui đổi hàng hóa: " + dtTheKho.LayTenKho_ID(Session["IDKho"].ToString()), SLDaDoi.ToString(), "0", (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(cmbMaHang.Value.ToString(), Session["IDKho"].ToString()).ToString()) + SLDaDoi).ToString(), Session["IDNhanVien"].ToString(), Session["IDKho"].ToString(), cmbMaHang.Value.ToString(), "Nhập", "0", "0", "0");
                     object TheKho2 = dtTheKho.ThemTheKho("", "Qui đổi hàng hóa : " + dtTheKho.LayTenKho_ID(Session["IDKho"].ToString()), "0", SoLuongQuiDoi.ToString(), (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(cmbHangHoaQuyDoi.Value.ToString(), Session["IDKho"].ToString()).ToString()) - SoLuongQuiDoi).ToString(), Session["IDNhanVien"].ToString(), Session["IDKho"].ToString(), cmbHangHoaQuyDoi.Value.ToString(), "Xuất", "0", "0", "0");
                     if (TheKho1 != null && TheKho2 != null)

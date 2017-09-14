@@ -73,6 +73,7 @@ namespace BanHang {
                         //cập nhật thành đơn hàng hủy
                         data = new dtMasterPage();
                         data.CapNhatTrangThaiHuyDonHangThuMua(ID);
+                        // ghi lịch sử
                     }
                 }
             }
