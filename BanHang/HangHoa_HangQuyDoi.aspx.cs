@@ -35,6 +35,8 @@ namespace BanHang
             e.Cancel = true;
             gridHangHoaQuyDoi.CancelEdit();
             Load();
+
+            dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Hàng hóa quy đổi", Session["IDKho"].ToString(), "Danh mục", "Xóa");
         }
 
         protected void gridHangHoaQuyDoi_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
@@ -60,6 +62,7 @@ namespace BanHang
             else throw new Exception("Không được bỏ trống dữ liệu.");
 
             Load();
+            dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Hàng hóa quy đổi", Session["IDKho"].ToString(), "Danh mục", "Thêm");
         }
 
         protected void gridHangHoaQuyDoi_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
@@ -86,6 +89,7 @@ namespace BanHang
             else throw new Exception("Không được bỏ trống dữ liệu.");
 
             Load();
+            dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Hàng hóa quy đổi", Session["IDKho"].ToString(), "Danh mục", "Cập nhật");
         }
     }
 }

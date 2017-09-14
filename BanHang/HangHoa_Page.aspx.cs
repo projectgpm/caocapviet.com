@@ -29,6 +29,8 @@ namespace BanHang
                 cmbNhomDatHang.SelectedIndex = 0;
             }
             Load();
+
+            dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Hàng hóa", Session["IDKho"].ToString(), "Danh mục", "Thêm hàng hóa");
         }
 
         public void Load()
@@ -352,6 +354,8 @@ namespace BanHang
             }
             else Response.Write("<script language='JavaScript'> alert('Các trường (*) không được bỏ trống.'); </script>");
         }
+
+
     }
 
     //[Serializable]

@@ -275,9 +275,8 @@ namespace BanHang
                 }
             }
 
-
             LoadGrid(IDPhieuChuyenKho);
-           
+            dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Phiếu chuyển kho", Session["IDKho"].ToString(), "Nhập xuất tồn", "Duyệt chuyển kho");
         }
     }
 }

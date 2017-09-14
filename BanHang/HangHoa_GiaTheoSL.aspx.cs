@@ -34,6 +34,8 @@ namespace BanHang
             e.Cancel = true;
             gridHangHoaGiaTheoSL.CancelEdit();
             Load();
+
+            dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Hàng hóa giá theo SL", Session["IDKho"].ToString(), "Danh mục", "Xóa");
         }
 
         protected void gridHangHoaGiaTheoSL_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
@@ -54,6 +56,7 @@ namespace BanHang
             else throw new Exception("Không được bỏ trống dữ liệu.");
 
             Load();
+            dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Hàng hóa giá theo SL", Session["IDKho"].ToString(), "Danh mục", "Thêm");
         }
 
         protected void gridHangHoaGiaTheoSL_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
@@ -74,6 +77,7 @@ namespace BanHang
             else throw new Exception("Không được bỏ trống dữ liệu.");
 
             Load();
+            dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Hàng hóa giá theo SL", Session["IDKho"].ToString(), "Danh mục", "Cập nhật");
         }
     }
 }

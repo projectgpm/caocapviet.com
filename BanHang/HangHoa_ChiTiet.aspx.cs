@@ -84,12 +84,46 @@ namespace BanHang
                     hh.GiaBan4 = txtGiaBan4.Value + "";
                     hh.GiaBan5 = txtGiaBan5.Value + "";
 
+                    DataTable da = data.getDanhSachHangHoa_ID_2(IDHangHoa);
+                    string g1 = da.Rows[0]["GiaMuaTruocThue"].ToString();
+                    string g2 = da.Rows[0]["GiaBanTruocThue"].ToString();
+                    string g3 = da.Rows[0]["GiaMuaSauThue"].ToString();
+                    string g4 = da.Rows[0]["GiaBan"].ToString();
+                    string g5 = da.Rows[0]["GiaBan1"].ToString();
+                    string g6 = da.Rows[0]["GiaBan2"].ToString();
+                    string g7 = da.Rows[0]["GiaBan3"].ToString();
+                    string g8 = da.Rows[0]["GiaBan4"].ToString();
+                    string g9 = da.Rows[0]["GiaBan5"].ToString();
+
+                    string IDNV = Session["IDNhanVien"].ToString();
+
+                    if (float.Parse(g1) != float.Parse(hh.GiaMuaTruocThue))
+                        dtThayDoiGia.ThemLichSu(hh.MaHang, IDHangHoa, hh.IDDonViTinh, g1.ToString(), hh.GiaMuaTruocThue, IDNV, "Thay đổi giá mua trước thuế ");
+                    if (float.Parse(g2) != float.Parse(hh.GiaBanTruocThue))
+                        dtThayDoiGia.ThemLichSu(hh.MaHang, IDHangHoa, hh.IDDonViTinh, g2.ToString(), hh.GiaBanTruocThue, IDNV, "Thay đổi giá bán trước thuế ");
+                    if (float.Parse(g3) != float.Parse(hh.GiaMuaSauThue))
+                        dtThayDoiGia.ThemLichSu(hh.MaHang, IDHangHoa, hh.IDDonViTinh, g3.ToString(), hh.GiaMuaSauThue, IDNV, "Thay đổi giá mua sau thuế ");
+                    if (float.Parse(g4) != float.Parse(hh.GiaBanSauThue))
+                        dtThayDoiGia.ThemLichSu(hh.MaHang, IDHangHoa, hh.IDDonViTinh, g4.ToString(), hh.GiaBanSauThue, IDNV, "Thay đổi giá bán sau thuế ");
+                    if (float.Parse(g5) != float.Parse(hh.GiaBan1))
+                        dtThayDoiGia.ThemLichSu(hh.MaHang, IDHangHoa, hh.IDDonViTinh, g5.ToString(), hh.GiaBan1, IDNV, "Thay đổi giá bán 1");
+                    if (float.Parse(g6) != float.Parse(hh.GiaBan2))
+                        dtThayDoiGia.ThemLichSu(hh.MaHang, IDHangHoa, hh.IDDonViTinh, g6.ToString(), hh.GiaBan2, IDNV, "Thay đổi giá bán 2");
+                    if (float.Parse(g7) != float.Parse(hh.GiaBan3))
+                        dtThayDoiGia.ThemLichSu(hh.MaHang, IDHangHoa, hh.IDDonViTinh, g7.ToString(), hh.GiaBan3, IDNV, "Thay đổi giá bán 3");
+                    if (float.Parse(g8) != float.Parse(hh.GiaBan4))
+                        dtThayDoiGia.ThemLichSu(hh.MaHang, IDHangHoa, hh.IDDonViTinh, g8.ToString(), hh.GiaBan4, IDNV, "Thay đổi giá bán 4");
+                    if (float.Parse(g9) != float.Parse(hh.GiaBan5))
+                        dtThayDoiGia.ThemLichSu(hh.MaHang, IDHangHoa, hh.IDDonViTinh, g9.ToString(), hh.GiaBan5, IDNV, "Thay đổi giá bán 5");
+
                     data.updateHangHoa_update(IDHangHoa, hh);
                 }
                 else Response.Write("<script language='JavaScript'> alert('Mã hàng đã tồn tại.'); </script>");
 
             }
             else Response.Write("<script language='JavaScript'> alert('Các trường (*) không được bỏ trống.'); </script>");
+
+            dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Hàng hóa chi tiết", Session["IDKho"].ToString(), "Danh mục", "Cập nhật: " + IDHangHoa);
         }
 
         protected void cmbDonViTinh_SelectedIndexChanged(object sender, EventArgs e)

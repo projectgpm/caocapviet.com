@@ -35,6 +35,8 @@ namespace BanHang
             e.Cancel = true;
             gridHangHoaBarcode.CancelEdit();
             Load();
+
+            dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Hàng hóa barcode", Session["IDKho"].ToString(), "Danh mục", "Xóa");
         }
 
         protected void gridHangHoaBarcode_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
@@ -54,10 +56,14 @@ namespace BanHang
                     gridHangHoaBarcode.CancelEdit();
                 }
                 else throw new Exception("Barcode đã tồn tại.");
+
+
             }
             else throw new Exception("Không được bỏ trống dữ liệu.");
 
             Load();
+
+            dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Hàng hóa barcode", Session["IDKho"].ToString(), "Danh mục", "Thêm");
         }
 
         protected void gridHangHoaBarcode_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
@@ -81,6 +87,8 @@ namespace BanHang
             else throw new Exception("Không được bỏ trống dữ liệu.");
 
             Load();
+
+            dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Hàng hóa barcode", Session["IDKho"].ToString(), "Danh mục", "Cập nhật");
         }
     }
 }
