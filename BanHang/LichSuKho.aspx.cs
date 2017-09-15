@@ -19,14 +19,14 @@ namespace BanHang
             }
             else
             {
-                //if (dtSetting.LayTrangThaiMenu(Session["IDNhom"].ToString(), 43) == 1)
-                //{
+                if (dtSetting.LayChucNang_HienThi(Session["IDNhom"].ToString()) == true)
+                {
                     LoadGrid();
-                //}
-                //else
-                //{
-                //    Response.Redirect("Default.aspx");
-                //}
+                }
+                else
+                {
+                    Response.Redirect("Default.aspx");
+                }
             }
         }
 
