@@ -21,24 +21,15 @@ namespace BanHang
             }
             else
             {
-                //if (dtSetting.LayTrangThaiMenu_ChucNang(Session["IDNhom"].ToString(), 21) == 1)
-                //    Response.Redirect("Default.aspx");
-                //if (dtSetting.LayTrangThaiMenu(Session["IDNhom"].ToString(), 21) == 1)
-                //{
-                    if (!IsPostBack)
-                    {
-                        //data = new dtKiemKho();
-                       // object IDPhieuKiemKho = data.ThemPhieu_Temp();
-                       
-                        txtNguoiLapPhieu.Text = Session["TenDangNhap"].ToString();
-                        cmbKho.Value = Session["IDKho"].ToString();
-                    }
-                    LoadGrid(IDPhieuKiemKho_Temp.Value.ToString());
-                //}
-                //else
-                //{
-                //    Response.Redirect("Default.aspx");
-                //}
+                if (dtSetting.LayChucNangCha(Session["IDNhom"].ToString(), 72) == false)
+                    Response.Redirect("Default.aspx");
+                if (!IsPostBack)
+                {
+                    txtNguoiLapPhieu.Text = Session["TenDangNhap"].ToString();
+                    cmbKho.Value = Session["IDKho"].ToString();
+                }
+                LoadGrid(IDPhieuKiemKho_Temp.Value.ToString());
+
             }
         }
 

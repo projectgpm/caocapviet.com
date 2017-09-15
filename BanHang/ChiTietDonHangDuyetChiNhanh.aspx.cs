@@ -21,6 +21,10 @@ namespace BanHang
                 if (IDDonHangChiNhanh != null)
                 {
                     // lấy trangthaiduyet
+                    if (dtSetting.LayChucNangCha(Session["IDNhom"].ToString(), 67) == false)
+                    {
+                        btnChapNhanDonHang.Enabled = false;
+                    }
                     if (dtDuyetDonHangChiNhanh.LayTrangThai(IDDonHangChiNhanh) == 1)
                     {
                         btnChapNhanDonHang.Visible = false;

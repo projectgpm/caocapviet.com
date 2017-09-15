@@ -20,6 +20,8 @@ namespace BanHang
             else
             {
                 LoadGrid();
+                if (dtSetting.LayChucNangCha(Session["IDNhom"].ToString(), 66) == false)
+                    btnTaoDonHang.Enabled = false;
             }
         }
         private void LoadGrid()

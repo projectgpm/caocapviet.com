@@ -16,6 +16,11 @@ namespace BanHang
         {
             if (Session["KTDangNhap"] == "GPM")
             {
+                if (Int32.Parse(Session["IDNhom"].ToString()) != 6)
+                {
+                    btnDuyetPhieuXuat.Enabled = false;
+                }
+
                 string IDPhieuXuatKhac = Request.QueryString["IDPhieuXuatKhac"];
                 if (IDPhieuXuatKhac != null)
                 {

@@ -21,32 +21,24 @@ namespace BanHang
             }
             else
             {
-                //if (dtSetting.LayTrangThaiMenu_ChucNang(Session["IDNhom"].ToString(), 19) == 1)
-                //    Response.Redirect("Default.aspx");
-                //if (dtSetting.LayTrangThaiMenu(Session["IDNhom"].ToString(), 19) == 1)
-                //{
-                    if (!IsPostBack)
-                    {
-                        //data = new dtPhieuXuatKhac();
-                       // object IDPhieuXuatKhac = data.ThemPhieuXuatKhac_Temp();
-                        DateTime date = DateTime.Now;
-                        int thang = date.Month;
-                        int year = date.Year;
-                        string ngayBD = year + "-" + thang + "-01 00:00:00.000";
-                        string ngayKT = year + "-" + thang + "-" + dtSetting.tinhSoNgay(thang, year) + " 00:00:00.000";
+                if (dtSetting.LayChucNangCha(Session["IDNhom"].ToString(), 70) == false)
+                    Response.Redirect("Default.aspx");
+                if (!IsPostBack)
+                {
 
-                        Random ran = new Random();
-                        IDPhieuXuatKhac_Temp.Value = ran.Next(100000, 999999).ToString();
-                        txtSoDonXuat.Text = (dtSetting.LayMaKho(Session["IDKho"].ToString()) + "-" + dtPhieuXuatKhac.TongSoXuatTrongThang(ngayBD,ngayKT,Session["IDKho"].ToString()) + "-" + (DateTime.Now.ToString("ddMMyyyy")));
-                        cmbNguoiLapPhieu.Text = Session["IDNhanVien"].ToString();
-                        cmbKho.Text = Session["IDKho"].ToString();
-                    }
-                    LoadGrid(IDPhieuXuatKhac_Temp.Value.ToString());
-                //}
-                //else
-                //{
-                //    Response.Redirect("Default.aspx");
-                //}
+                    DateTime date = DateTime.Now;
+                    int thang = date.Month;
+                    int year = date.Year;
+                    string ngayBD = year + "-" + thang + "-01 00:00:00.000";
+                    string ngayKT = year + "-" + thang + "-" + dtSetting.tinhSoNgay(thang, year) + " 00:00:00.000";
+
+                    Random ran = new Random();
+                    IDPhieuXuatKhac_Temp.Value = ran.Next(100000, 999999).ToString();
+                    txtSoDonXuat.Text = (dtSetting.LayMaKho(Session["IDKho"].ToString()) + "-" + dtPhieuXuatKhac.TongSoXuatTrongThang(ngayBD, ngayKT, Session["IDKho"].ToString()) + "-" + (DateTime.Now.ToString("ddMMyyyy")));
+                    cmbNguoiLapPhieu.Text = Session["IDNhanVien"].ToString();
+                    cmbKho.Text = Session["IDKho"].ToString();
+                }
+                LoadGrid(IDPhieuXuatKhac_Temp.Value.ToString());
             }
         }
        

@@ -20,7 +20,16 @@ namespace BanHang
             }
             else
             {
-                LoadGrid();
+                if (dtSetting.LayChucNang_HienThi(Session["IDNhom"].ToString()) == true)
+                {
+                    LoadGrid();
+                    if (dtSetting.LayChucNang_ThemXoaSua(Session["IDNhom"].ToString()) == false)
+                    {
+                        btnDuyetDonHang.Enabled = false;
+                    }
+                }
+                else
+                    Response.Redirect("Default.aspx");
             }
         }
 

@@ -13,23 +13,37 @@ namespace BanHang
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (Session["KTDangNhap"] != "GPM")
             {
-                string IDNhanVien = "1"; // Session["IDThuNgan"].ToString();
-                if (Session["IDThuNgan"] != null)
-                    IDNhanVien = Session["IDThuNgan"].ToString();
-                if (Session["IDNhanVien"] != null)
-                    IDNhanVien = Session["IDNhanVien"].ToString();
+                Response.Redirect("DangNhap.aspx");
+            }
+            else
+            {
+                if (dtSetting.LayChucNang_HienThi(Session["IDNhom"].ToString()) == true)
+                {
+                    if (!IsPostBack)
+                    {
 
-                dtKho dt = new dtKho();
-                DataTable da = dt.LayDanhSachKho();
-                //da.Rows.Add(-1, "", "Tất cả cửa hàng", null, null, null, null, null, null, null, null, null);
+                        string IDNhanVien = "1"; // Session["IDThuNgan"].ToString();
+                        if (Session["IDThuNgan"] != null)
+                            IDNhanVien = Session["IDThuNgan"].ToString();
+                        if (Session["IDNhanVien"] != null)
+                            IDNhanVien = Session["IDNhanVien"].ToString();
 
-                cmbKho.DataSource = da;
-                cmbKho.TextField = "TenCuaHang";
-                cmbKho.ValueField = "ID";
-                cmbKho.DataBind();
-                cmbKho.SelectedIndex = 0;
+                        dtKho dt = new dtKho();
+                        DataTable da = dt.LayDanhSachKho();
+                        //da.Rows.Add(-1, "", "Tất cả cửa hàng", null, null, null, null, null, null, null, null, null);
+
+                        cmbKho.DataSource = da;
+                        cmbKho.TextField = "TenCuaHang";
+                        cmbKho.ValueField = "ID";
+                        cmbKho.DataBind();
+                        cmbKho.SelectedIndex = 0;
+                    }
+
+                }
+                else
+                    Response.Redirect("Default.aspx");
             }
         }
 

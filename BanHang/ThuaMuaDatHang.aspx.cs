@@ -23,6 +23,8 @@ namespace BanHang
             }
             else
             {
+                if (dtSetting.LayChucNangCha(Session["IDNhom"].ToString(), 66) == false)
+                    Response.Redirect("Default.aspx");
                // ghi chú
                 // TrangThaiDonHang : 1-> Đơn Hàng Hủy. 0-> Đơn Hàng Bình Thường. do thu mua cập nhật
                 //TrangThai: 0-> Đơn hàng chưa được xử lý, 1-> đơn hàng đã được kho xử lý., kho cập nhật
