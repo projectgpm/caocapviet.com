@@ -21,27 +21,25 @@ namespace BanHang
             }
             else
             {
-<<<<<<< HEAD
                 if (dtSetting.LayTrangThaiMenu_ChucNang(Session["IDNhom"].ToString(), 36) == 1)
                 {
                     gridNhomNguoiDung.Columns["chucnang"].Visible = false;
                     gridNhomNguoiDung.Columns["phanquyen"].Visible = false;
-=======
-                //if (dtSetting.LayTrangThaiMenu_ChucNang(Session["IDNhom"].ToString(), 36) == 1)
-                //{
-                //    gridNhomNguoiDung.Columns["iconaction"].Visible = false;
-                //    gridNhomNguoiDung.Columns["phanquyen"].Visible = false;
->>>>>>> 128132af86540ddda91427efbbae57f10089e629
+                    //if (dtSetting.LayTrangThaiMenu_ChucNang(Session["IDNhom"].ToString(), 36) == 1)
+                    //{
+                    //    gridNhomNguoiDung.Columns["iconaction"].Visible = false;
+                    //    gridNhomNguoiDung.Columns["phanquyen"].Visible = false;
 
-                //}
-                //if (dtSetting.LayTrangThaiMenu(Session["IDNhom"].ToString(), 36) == 1)
-                //{
+                    //}
+                    //if (dtSetting.LayTrangThaiMenu(Session["IDNhom"].ToString(), 36) == 1)
+                    //{
                     LoadGrid();
-                //}
-                //else
-                //{
-                //    Response.Redirect("Default.aspx");
-                //}
+                    //}
+                    //else
+                    //{
+                    //    Response.Redirect("Default.aspx");
+                    //}
+                }
             }
         }
         public void LoadGrid()
