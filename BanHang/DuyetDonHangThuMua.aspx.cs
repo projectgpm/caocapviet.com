@@ -20,6 +20,8 @@ namespace BanHang
             }
             else
             {
+                if (dtSetting.LayChucNangCha(Session["IDNhom"].ToString(), 64) == false)
+                    Response.Redirect("Default.aspx");
                 if (!IsPostBack)
                 {
                     txtNguoiDuyet.Text = Session["TenDangNhap"].ToString();

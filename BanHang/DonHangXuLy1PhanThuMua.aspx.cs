@@ -20,6 +20,11 @@ namespace BanHang
             }
             else
             {
+                if (dtSetting.LayChucNangCha(Session["IDNhom"].ToString(), 64) == false)
+                {
+                    btnDuyetDonHang.Enabled = false;
+                    btncapnhatdonhang.Enabled = false;
+                }
                 LoadGrid();
             }
         }

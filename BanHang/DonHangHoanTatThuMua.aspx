@@ -48,7 +48,7 @@
             <dx:LayoutItem Caption="">
                 <LayoutItemNestedControlCollection>
                     <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer4" runat="server">
-                        <dx:ASPxButton ID="ASPxFormLayout1_E2" runat="server" PostBackUrl="DanhSachDonHangDaXuLyTrong2Ngay.aspx" Text="Cập Nhật Đơn Hàng Đã Xử Lý" ToolTip="Đơn hàng đã xử lý trong 2 ngày">
+                        <dx:ASPxButton ID="btncapnhatdonhang" runat="server" PostBackUrl="DanhSachDonHangDaXuLyTrong2Ngay.aspx" Text="Cập Nhật Đơn Hàng Đã Xử Lý" ToolTip="Đơn hàng đã xử lý trong 2 ngày">
                             <Image IconID="edit_edit_32x32">
                             </Image>
                         </dx:ASPxButton>

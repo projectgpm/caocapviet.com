@@ -19,6 +19,11 @@ namespace BanHang
             }
             else
             {
+                if (dtSetting.LayChucNangCha(Session["IDNhom"].ToString(), 64) == false)
+                {
+                    btnDuyetDonHang.Enabled = false;
+                    btncapnhatdonhang.Enabled = false;
+                }
                 int IDKho = Int32.Parse(Session["IDKho"].ToString());
                 if (IDKho != 1)
                 {
