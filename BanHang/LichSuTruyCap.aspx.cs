@@ -19,18 +19,18 @@ namespace BanHang
             }
             else
             {
-                //if (dtSetting.LayTrangThaiMenu(Session["IDNhom"].ToString(), 41) == 1)
-                //{
-                    LoafGrid();
-                //}
-                //else
-                //{
-                //    Response.Redirect("Default.aspx");
-                //}
+                if (dtSetting.LayChucNang_HienThi(Session["IDNhom"].ToString()) == true)
+                {
+                    LoadGrid();
+                }
+                else
+                {
+                    Response.Redirect("Default.aspx");
+                }
             }
         }
 
-        private void LoafGrid()
+        private void LoadGrid()
         {
             data = new dtLichSuTruyCap();
             gridLichSuTruyCap.DataSource = data.LayDanhSach();

@@ -13,7 +13,25 @@ namespace BanHang
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            LoadGrid();
+            if (Session["KTDangNhap"] != "GPM")
+            {
+                Response.Redirect("DangNhap.aspx");
+            }
+            else
+            {
+                if (dtSetting.LayChucNang_HienThi(Session["IDNhom"].ToString()) == true)
+                {
+                    if (dtSetting.LayChucNang_ThemXoaSua(Session["IDNhom"].ToString()) == false)
+                    {
+                        gridThongTinCuaHangKho.Columns["chucnang"].Visible = false;
+                    }
+                    LoadGrid();
+                }
+                else
+                {
+                    Response.Redirect("Default.aspx");
+                }
+            }
         }
 
         private void LoadGrid()
