@@ -193,7 +193,7 @@
             <dx:GridViewDataTextColumn Caption="Ghi Chú" FieldName="GhiChu" VisibleIndex="13">
             </dx:GridViewDataTextColumn>
             <dx:GridViewDataButtonEditColumn Caption=" Cập Nhật SL" Width="150px" 
-                                        VisibleIndex="15">
+                                        VisibleIndex="15" Name="capnhatsoluong">
                 <DataItemTemplate>
                     <dx:ASPxButton ID="BtnSuaSoLuong" runat="server" CommandName="SuaSoLuongHang"
                         CommandArgument='<%# Eval("ID") %>' 

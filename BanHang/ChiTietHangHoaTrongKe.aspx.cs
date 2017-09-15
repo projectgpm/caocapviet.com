@@ -19,7 +19,6 @@ namespace BanHang
                 string IDKe = Request.QueryString["IDKe"];
                 if (IDKe != null)
                 {
-
                     LoadGrid(IDKe.ToString());
                 }
             }

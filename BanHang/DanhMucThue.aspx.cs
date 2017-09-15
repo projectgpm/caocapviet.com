@@ -13,17 +13,21 @@ namespace BanHang
         dtDanhMucThue data = new dtDanhMucThue();
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (dtSetting.LayTrangThaiMenu_ChucNang(Session["IDNhom"].ToString(), 5) == 1)
-            //    gridDanhMucThue.Columns["chucnang"].Visible = false;
-
-            //if (dtSetting.LayTrangThaiMenu(Session["IDNhom"].ToString(), 5) == 1)
-            //{
-                LoadGrid();
-            //}
-            //else
-            //{
-            //    Response.Redirect("Default.aspx");
-            //}
+            if (Session["KTDangNhap"] != "GPM")
+            {
+                Response.Redirect("DangNhap.aspx");
+            }
+            else
+            {
+                if (dtSetting.LayChucNang_HienThi(Session["IDNhom"].ToString()) == true)
+                {
+                    LoadGrid();
+                    if (dtSetting.LayChucNang_ThemXoaSua(Session["IDNhom"].ToString()) == false)
+                        gridDanhMucThue.Columns["chucnang"].Visible = false;
+                }
+                else
+                    Response.Redirect("Default.aspx");
+            }
         }
         public void LoadGrid()
         {

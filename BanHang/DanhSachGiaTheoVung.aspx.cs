@@ -19,22 +19,21 @@ namespace BanHang
             }
             else
             {
-                //if (dtSetting.LayTrangThaiMenu_ChucNang(Session["IDNhom"].ToString(), 9) == 1)
-                //{
-                //    gridHangHoa.Columns["giaban"].Visible = false;
-                //    btnGiaTheoKho.Enabled = false;
-                //}
-                //if (dtSetting.LayTrangThaiMenu(Session["IDNhom"].ToString(), 9) == 1)
-                //{
+                if (dtSetting.LayChucNang_HienThi(Session["IDNhom"].ToString()) == true)
+                {
+                    if (dtSetting.LayChucNang_ThemXoaSua(Session["IDNhom"].ToString()) == false)
+                    {
+                        cmbChiNhanh.Enabled = false;
+                        btnGiaTheoKho.Enabled = false;
+                        btnThayDoiGiaTheoGio.Enabled = false;
+                    }
                     if (cmbChiNhanh.Text != "")
                     {
                         LoadGrid(cmbChiNhanh.Value.ToString());
                     }
-                //}
-                //else
-                //{
-                //    Response.Redirect("Default.aspx");
-                //}
+                }
+                else
+                    Response.Redirect("Default.aspx");
             }
         }
 

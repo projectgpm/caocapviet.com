@@ -17,7 +17,7 @@
             <dx:LayoutItem Caption="">
                 <LayoutItemNestedControlCollection>
                     <dx:LayoutItemNestedControlContainer runat="server">
-                        <dx:ASPxButton ID="ASPxFormLayout1_E2" runat="server" PostBackUrl="GiaTheoGio.aspx" Text="Thay đổi giá theo giờ">
+                        <dx:ASPxButton ID="btnThayDoiGiaTheoGio" runat="server" PostBackUrl="GiaTheoGio.aspx" Text="Thay đổi giá theo giờ">
                             <Image IconID="scheduling_time_32x32">
                             </Image>
                         </dx:ASPxButton>

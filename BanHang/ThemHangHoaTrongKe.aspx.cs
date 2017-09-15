@@ -23,12 +23,19 @@ namespace BanHang
             }
             else
             {
-                LoadGrid(IDTemp.Value.ToString());
-            }
-            if (!IsPostBack)
-            {
-                Random ran = new Random();
-                IDTemp.Value = ran.Next(100000, 999999).ToString();
+                if (dtSetting.LayChucNang_ThemXoaSua(Session["IDNhom"].ToString()) == false)
+                {
+                    LoadGrid(IDTemp.Value.ToString());
+                }
+                else
+                {
+                    Response.Redirect("Default.aspx");
+                }
+                if (!IsPostBack)
+                {
+                    Random ran = new Random();
+                    IDTemp.Value = ran.Next(100000, 999999).ToString();
+                }
             }
         }
         protected void cmbHangHoa_ItemRequestedByValue(object source, DevExpress.Web.ListEditItemRequestedByValueEventArgs e)
