@@ -49,7 +49,6 @@ namespace BanHang
                 XuLyThayDoiGiaTheoGio();
                 XuLyDonHangChiNhanh();
                 HuyDonHangThuMua();
-
             }
         }
         protected RibbonItemBase getbyName(string name, ASPxRibbon ribbon)
