@@ -20,39 +20,31 @@ namespace BanHang
             }
             else
             {
-                //if (dtSetting.LayTrangThaiMenu_ChucNang(Session["IDNhom"].ToString(), 19) == 1)
-                //    Response.Redirect("Default.aspx");
-
+                if (dtSetting.LayChucNangCha(Session["IDNhom"].ToString(), 65) == false)
+                    Response.Redirect("Default.aspx");
                 int SoNgayTraHang = dtSetting.LaySoNgayTraHang();
                 DateTime date = DateTime.Now;
                 date = date.AddDays(SoNgayTraHang * (-1));
                 Session["NgayBatDau"] = date;
-
-                //if (dtSetting.LayTrangThaiMenu(Session["IDNhom"].ToString(), 19) == 1)
-                //{
-                    if (!IsPostBack)
+                if (!IsPostBack)
+                {
+                    dtPhieuKhachHangTraHang data = new dtPhieuKhachHangTraHang();
+                    DataTable da = data.LayPhieuTraHang_Null(Session["IDKho"].ToString());
+                    if (da.Rows.Count != 0)
                     {
-                        dtPhieuKhachHangTraHang data = new dtPhieuKhachHangTraHang();
-                        DataTable da = data.LayPhieuTraHang_Null(Session["IDKho"].ToString());
-                        if (da.Rows.Count != 0)
-                        {
-                            IDPhieuKhachHangTraHangTem_Temp.Value = da.Rows[0]["ID"].ToString();
-                            data.XoaChiTiet_Temp(IDPhieuKhachHangTraHangTem_Temp.Value);
-                        }
-                        else
-                        {
-                            object IDPhieuKhachHangTraHang = data.ThemPhieuKhachHangTraHang(Session["IDKho"].ToString());
-                            IDPhieuKhachHangTraHangTem_Temp.Value = IDPhieuKhachHangTraHang.ToString();
-                        }
-                        
-                        cmbNguoiLapPhieu.Text = Session["IDNhanVien"].ToString();
+                        IDPhieuKhachHangTraHangTem_Temp.Value = da.Rows[0]["ID"].ToString();
+                        data.XoaChiTiet_Temp(IDPhieuKhachHangTraHangTem_Temp.Value);
                     }
-                    LoadGrid(IDPhieuKhachHangTraHangTem_Temp.Value.ToString());
-                //}
-                //else
-                //{
-                //    Response.Redirect("Default.aspx");
-                //}
+                    else
+                    {
+                        object IDPhieuKhachHangTraHang = data.ThemPhieuKhachHangTraHang(Session["IDKho"].ToString());
+                        IDPhieuKhachHangTraHangTem_Temp.Value = IDPhieuKhachHangTraHang.ToString();
+                    }
+
+                    cmbNguoiLapPhieu.Text = Session["IDNhanVien"].ToString();
+                }
+                LoadGrid(IDPhieuKhachHangTraHangTem_Temp.Value.ToString());
+
             }
         }
 

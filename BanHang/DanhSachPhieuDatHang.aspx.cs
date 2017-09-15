@@ -20,11 +20,21 @@ namespace BanHang
 
             else
             {
-                if (Int32.Parse(Session["IDKho"].ToString()) != 1)
+                //if (Int32.Parse(Session["IDKho"].ToString()) != 1)
+                //{
+                //    btnDuyetDonHang.Visible = false;
+                //}
+                if (dtSetting.LayChucNang_HienThi(Session["IDNhom"].ToString()) == true)
                 {
-                    btnDuyetDonHang.Visible = false;
+                    LoadGrid();
+                    if (dtSetting.LayChucNang_ThemXoaSua(Session["IDNhom"].ToString()) == false)
+                    {
+                        btnCapNhatDonHang.Enabled = false;
+                        btnDuyetDonHang.Enabled = false;
+                    }
                 }
-                LoadGrid();
+                else
+                    Response.Redirect("Default.aspx");
             }
         }
 
