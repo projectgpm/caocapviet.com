@@ -19,6 +19,8 @@ namespace BanHang
         {
             if (Session["KTDangNhap"] == "GPM")
             {
+                if(dtSetting.LayChucNangCha(Session["IDNhom"].ToString(),51) == false)
+                    Response.Redirect("Default.aspx");
                 if (!IsPostBack)
                 {
                     data = new Import_NhaCungCap();

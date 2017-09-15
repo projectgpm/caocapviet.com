@@ -16,6 +16,8 @@ namespace BanHang
 
             if (Session["KTDangNhap"] == "GPM")
             {
+                if (dtSetting.LayChucNangCha(Session["IDNhom"].ToString(), 53) == false)
+                    gridChiTietHangHoa.Columns["chucnang"].Visible = false;
                 string IDKe = Request.QueryString["IDKe"];
                 if (IDKe != null)
                 {

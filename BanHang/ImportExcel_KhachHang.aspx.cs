@@ -23,20 +23,15 @@ namespace BanHang
             }
             else
             {
-                //if (dtSetting.LayTrangThaiMenu_ChucNang(Session["IDNhom"].ToString(), 3) != 1)
-                //{
-                    if (!IsPostBack)
-                    {
-                        data = new Import_KhachHang();
-                        data.XoaDuLieuTemp();
+                if (dtSetting.LayChucNangCha(Session["IDNhom"].ToString(), 49) == false)
+                    Response.Redirect("Default.aspx");
+                if (!IsPostBack)
+                {
+                    data = new Import_KhachHang();
+                    data.XoaDuLieuTemp();
+                }
+                LoadGrid();
 
-                    }
-                    LoadGrid();
-                //}
-                //else
-                //{
-                //    Response.Redirect("Default.aspx");
-                //}
             }
            
         }

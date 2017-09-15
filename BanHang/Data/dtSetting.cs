@@ -214,7 +214,29 @@ namespace BanHang.Data
                 }
             }
         }
-       
+        public static bool LayChucNangCha(string IDNhomNguoiDung, int IDMenu)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT ChucNang FROM [GPM_PhanQuyen] WHERE [IDNhomNguoiDung] = '" + IDNhomNguoiDung + "' AND [IDMenu] = '" + IDMenu + "'";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    if (tb.Rows.Count != 0)
+                    {
+                        DataRow dr = tb.Rows[0];
+                        if ((Int32.Parse(dr["ChucNang"].ToString())) == 1)
+                            return true;
+                        return false;
+
+                    }
+                    else return false;
+                }
+            }
+        }
         public static bool LayChucNang_HienThi(string IDNhomNguoiDung)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))

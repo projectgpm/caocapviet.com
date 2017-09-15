@@ -21,18 +21,15 @@ namespace BanHang
             }
             else
             {
-                if (dtSetting.LayChucNang_ThemXoaSua(Session["IDNhom"].ToString()) == true)
-                {
-                    if (!IsPostBack)
-                    {
-                        Random ran = new Random();
-                        ID_temp.Value = ran.Next(100000, 999999).ToString();
-                        DanhSachVung();
-                    }
-                    LoadGrid(ID_temp.Value.ToString());
-                }
-                else
+                if (dtSetting.LayChucNangCha(Session["IDNhom"].ToString(), 61) == false)
                     Response.Redirect("Default.aspx");
+                if (!IsPostBack)
+                {
+                    Random ran = new Random();
+                    ID_temp.Value = ran.Next(100000, 999999).ToString();
+                    DanhSachVung();
+                }
+                LoadGrid(ID_temp.Value.ToString());
             }
         }
         private void DanhSachVung()

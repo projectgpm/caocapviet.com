@@ -19,12 +19,9 @@ namespace BanHang
             }
             else
             {
-                if (dtSetting.LayChucNang_ThemXoaSua(Session["IDNhom"].ToString()) == true)
-                {
-                    Loadgrid();
-                }
-                else
+                if (dtSetting.LayChucNangCha(Session["IDNhom"].ToString(), 61) == false)
                     Response.Redirect("Default.aspx");
+                Loadgrid();
             }
         }
 
