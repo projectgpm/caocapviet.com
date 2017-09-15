@@ -19,12 +19,55 @@ namespace BanHang {
             }
             else
             {
-                XuLyThayDoiGiaTheoGio();
-                XuLyDonHangChiNhanh();
-                HuyDonHangThuMua();
-                lblChao.Text = "Xin Chào: " + Session["TenDangNhap"].ToString();
-                ASPxLabel2.Text = Server.HtmlDecode("Copyrights &copy;") + DateTime.Now.Year + Server.HtmlDecode(". All Rights Reserved. Designed by GPM.VN");
+                if (!IsPostBack)
+                {
+
+                    //RibbonItemBase a = getbyName("nhom_khach_hang", ribbonMenu);
+                    //a.Visible = false;
+                    lblChao.Text = "Xin Chào: " + Session["TenDangNhap"].ToString();
+                    ASPxLabel2.Text = Server.HtmlDecode("Copyrights &copy;") + DateTime.Now.Year + Server.HtmlDecode(". All Rights Reserved. Designed by GPM.VN");
+                }
+                else
+                {
+                    XuLyThayDoiGiaTheoGio();
+                    XuLyDonHangChiNhanh();
+                    HuyDonHangThuMua();
+                }
             }
+        }
+        protected RibbonItemBase getbyName(string name, ASPxRibbon ribbon)
+        {
+            foreach (RibbonTab tab in ribbon.Tabs)
+            {
+                foreach (RibbonGroup group in tab.Groups)
+                {
+                    foreach (RibbonItemBase item in group.Items)
+                    {
+                        if (item.Name.Trim() == name.Trim())
+                            return item;
+
+                        RibbonItemBase subItem = getbyNameSubItem(name, item);
+                        if (subItem != null)
+                            return subItem;
+                    }
+                }
+            }
+            return null;
+        }
+        private RibbonItemBase getbyNameSubItem(string name, RibbonItemBase item)
+        {
+            if (item is RibbonDropDownButtonItem)
+                foreach (RibbonDropDownButtonItem subItem in ((RibbonDropDownButtonItem)item).Items)
+                {
+                    if (subItem.Name.Trim() == name.Trim())
+                    {
+                        return subItem;
+                    }
+                    var subItemResult = getbyNameSubItem(name, subItem);
+                    if (subItemResult != null)
+                        return subItemResult;
+                }
+            return null;
         }
         public void XuLyDonHangChiNhanh()
         {
@@ -71,7 +114,7 @@ namespace BanHang {
                     string ID = dr["ID"].ToString();
                     if (ID != "")
                     {
-                        //cập nhật thành đơn hàng hủy
+                        //cập nhật thành đơn hàng hủy trong 7 ngày, số ngày lấy trong dtsetting
                         data = new dtMasterPage();
                         data.CapNhatTrangThaiHuyDonHangThuMua(ID);
                         // ghi lịch sử
