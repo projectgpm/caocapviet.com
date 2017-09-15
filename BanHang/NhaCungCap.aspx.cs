@@ -15,26 +15,26 @@ namespace BanHang
         dtNhaCungCap data = new dtNhaCungCap();
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (Session["KTDangNhap"] != "GPM")
-            //{
-            //    Response.Redirect("DangNhap.aspx");
-            //}
-            //else
-            //{
-            //    if (dtSetting.LayTrangThaiMenu_ChucNang(Session["IDNhom"].ToString(), 4) == 1)
-            //    {
-            //        gridNhaCungCap.Columns["chucnang"].Visible = false;
-            //        btnNhapExcel.Enabled = false;
-            //    }
-            //    if (dtSetting.LayTrangThaiMenu(Session["IDNhom"].ToString(), 4) == 1)
-            //    {
+            if (Session["KTDangNhap"] != "GPM")
+            {
+                Response.Redirect("DangNhap.aspx");
+            }
+            else
+            {
+                if (dtSetting.LayChucNang_HienThi(Session["IDNhom"].ToString()) == true)
+                {
                     LoadGrid();
-            //    }
-            //    else
-            //    {
-            //        Response.Redirect("Default.aspx");
-            //    }
-            //}
+                    if (dtSetting.LayChucNang_ThemXoaSua(Session["IDNhom"].ToString()) == false)
+                    {
+                        gridNhaCungCap.Columns["chucnang"].Visible = false;
+                        btnNhapExcel.Enabled = false;
+                    }
+                }
+                else
+                {
+                    Response.Redirect("Default.aspx");
+                }
+            }
         }
         public void LoadGrid()
         {

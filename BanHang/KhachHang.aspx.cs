@@ -19,13 +19,13 @@ namespace BanHang
             }
             else
             {
-                if (dtSetting.LayChucNang_ThemXoaSua(Session["IDNhom"].ToString()) == false)
-                {
-                    btnNhapExcel.Enabled = false;
-                    gridKhachHang.Columns["chucnang"].Visible = false;
-                }
                 if (dtSetting.LayChucNang_HienThi(Session["IDNhom"].ToString()) == true)
                 {
+                    if (dtSetting.LayChucNang_ThemXoaSua(Session["IDNhom"].ToString()) == false)
+                    {
+                        btnNhapExcel.Enabled = false;
+                        gridKhachHang.Columns["chucnang"].Visible = false;
+                    }
                     LoadGrid();
                 }
                 else

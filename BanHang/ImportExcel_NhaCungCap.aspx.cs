@@ -19,21 +19,11 @@ namespace BanHang
         {
             if (Session["KTDangNhap"] == "GPM")
             {
-
-                //if (dtSetting.LayTrangThaiMenu_ChucNang(Session["IDNhom"].ToString(), 4) != 1)
-                //{
-                    if (!IsPostBack)
-                    {
-                        // xóa dữ liệu bảng temp
-                        data = new Import_NhaCungCap();
-                        data.XoaDuLieuTemp();
-
-                    }
-                //}
-                //else
-                //{
-                //    Response.Redirect("Default.aspx");
-                //}
+                if (!IsPostBack)
+                {
+                    data = new Import_NhaCungCap();
+                    data.XoaDuLieuTemp();
+                }
             }
             else
             {

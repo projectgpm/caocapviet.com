@@ -14,15 +14,27 @@ namespace BanHang
         dtTraCuuMaHang data = new dtTraCuuMaHang();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (txtMaHangTraCuu.Text != "")
+            if (Session["KTDangNhap"] != "GPM")
             {
-                string MaHang = txtMaHangTraCuu.Text.ToString().Trim();
-                 DataTable db = data.TraCuuMaHang(MaHang);
-                 if (db.Rows.Count > 0)
-                 {
-                     LoadDanhSachBarcode(dtHangHoa.LayIDHangHoa_MaHang(MaHang));
-                     LoadDanhSachHangQuiDoi(dtHangHoa.LayIDHangHoa_MaHang(MaHang));
-                 }
+                Response.Redirect("DangNhap.aspx");
+            }
+            else
+            {
+                if (dtSetting.LayChucNang_HienThi(Session["IDNhom"].ToString()) == true)
+                {
+                    if (txtMaHangTraCuu.Text != "")
+                    {
+                        string MaHang = txtMaHangTraCuu.Text.ToString().Trim();
+                        DataTable db = data.TraCuuMaHang(MaHang);
+                        if (db.Rows.Count > 0)
+                        {
+                            LoadDanhSachBarcode(dtHangHoa.LayIDHangHoa_MaHang(MaHang));
+                            LoadDanhSachHangQuiDoi(dtHangHoa.LayIDHangHoa_MaHang(MaHang));
+                        }
+                    }
+                }
+                else
+                    Response.Redirect("Default.aspx");
             }
         }
         public void LoadDanhSachBarcode(string IDHangHoa)
