@@ -54,7 +54,7 @@
         </EditFormLayoutProperties>
         <Columns>
             <dx:GridViewCommandColumn ShowDeleteButton="True" ShowEditButton="True" 
-                VisibleIndex="10" ShowNewButtonInHeader="True" Name="iconaction">
+                VisibleIndex="10" ShowNewButtonInHeader="True" Name="chucnang">
             </dx:GridViewCommandColumn>
             <dx:GridViewDataDateColumn Caption="Ngày Cập Nhật" FieldName="NgayCapNhat" VisibleIndex="9">
                 <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy">

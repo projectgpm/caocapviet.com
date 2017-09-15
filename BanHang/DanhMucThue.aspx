@@ -49,7 +49,7 @@
             </Items>
         </EditFormLayoutProperties>
         <Columns>
-            <dx:GridViewCommandColumn ShowDeleteButton="True" ShowEditButton="True" ShowNewButtonInHeader="True" VisibleIndex="8" Name="iconaction">
+            <dx:GridViewCommandColumn ShowDeleteButton="True" ShowEditButton="True" ShowNewButtonInHeader="True" VisibleIndex="8" Name="chucnang">
             </dx:GridViewCommandColumn>
             <dx:GridViewDataTextColumn Caption="Mã Thuế" FieldName="ID" VisibleIndex="0" Visible="False">
             </dx:GridViewDataTextColumn>

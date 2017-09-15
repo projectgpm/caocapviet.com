@@ -23,7 +23,7 @@ namespace BanHang
             {
                 if (dtSetting.LayTrangThaiMenu_ChucNang(Session["IDNhom"].ToString(), 36) == 1)
                 {
-                    gridNhomNguoiDung.Columns["iconaction"].Visible = false;
+                    gridNhomNguoiDung.Columns["chucnang"].Visible = false;
                     gridNhomNguoiDung.Columns["phanquyen"].Visible = false;
 
                 }

@@ -44,7 +44,7 @@
         <SettingsSearchPanel Visible="True" />
         <SettingsText CommandBatchEditCancel="Hủy tất cả" CommandBatchEditUpdate="Lưu tất cả" Title="DANH SÁCH HÀNG HÓA CHỜ THAY ĐỔI GIÁ " EmptyDataRow="Không có dữ liệu hiển thị" SearchPanelEditorNullText="Nhập thông tin cần tìm..." CommandDelete="Xóa" />
         <Columns>
-            <dx:GridViewCommandColumn ShowDeleteButton="True" VisibleIndex="12">
+            <dx:GridViewCommandColumn ShowDeleteButton="True" VisibleIndex="12" Name="chucnang">
             </dx:GridViewCommandColumn>
             <dx:GridViewDataComboBoxColumn Caption="ĐVT" FieldName="IDDonViTinh" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="3">
                 <PropertiesComboBox DataSourceID="sqlDonViTinh" TextField="TenDonViTinh" ValueField="ID">

@@ -96,7 +96,7 @@
     <dx:GridViewDataSpinEditColumn Caption="Số Lượng Đặt" FieldName="SoLuong" VisibleIndex="5">
         <propertiesspinedit DisplayFormatString="N0"></propertiesspinedit>
     </dx:GridViewDataSpinEditColumn>
-    <dx:GridViewDataTextColumn Caption="Mã Hàng" FieldName="MaHang" VisibleIndex="0" ReadOnly="True">
+    <dx:GridViewDataTextColumn Caption="Mã Hàng" FieldName="MaHang" VisibleIndex="0" ReadOnly="True" Name="chucnang">
     </dx:GridViewDataTextColumn>
     <dx:GridViewDataSpinEditColumn Caption="Trọng Lượng" FieldName="TrongLuong" VisibleIndex="4" ReadOnly="True">
         <PropertiesSpinEdit DisplayFormatString="{0:n} KG" NumberFormat="Custom">

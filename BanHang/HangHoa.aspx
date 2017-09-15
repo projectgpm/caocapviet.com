@@ -86,7 +86,7 @@
                     <SettingsSearchPanel Visible="True" />
                     <SettingsText CommandDelete="Xóa" CommandEdit="Sửa" CommandNew="Thêm" ConfirmDelete="Bạn có chắc chắn muốn xóa không?" PopupEditFormCaption="Thông tin hàng hóa" Title="DANH SÁCH HÀNG HÓA" EmptyDataRow="Danh sách hàng hóa trống" SearchPanelEditorNullText="Nhập thông tin cần tìm..." />
                     <Columns>
-                        <dx:GridViewCommandColumn ShowDeleteButton="True" ShowInCustomizationForm="True" VisibleIndex="4">
+                        <dx:GridViewCommandColumn ShowDeleteButton="True" ShowInCustomizationForm="True" VisibleIndex="4" Name="chucnang">
                         </dx:GridViewCommandColumn>
                         <dx:GridViewDataTextColumn Caption="ID" FieldName="ID" ShowInCustomizationForm="True" VisibleIndex="5" Visible="False">
                         </dx:GridViewDataTextColumn>

@@ -23,7 +23,7 @@ namespace BanHang
             //{
             //    if (dtSetting.LayTrangThaiMenu_ChucNang(Session["IDNhom"].ToString(), 4) == 1)
             //    {
-            //        gridNhaCungCap.Columns["iconaction"].Visible = false;
+            //        gridNhaCungCap.Columns["chucnang"].Visible = false;
             //        btnNhapExcel.Enabled = false;
             //    }
             //    if (dtSetting.LayTrangThaiMenu(Session["IDNhom"].ToString(), 4) == 1)

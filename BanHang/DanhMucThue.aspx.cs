@@ -14,7 +14,7 @@ namespace BanHang
         protected void Page_Load(object sender, EventArgs e)
         {
             //if (dtSetting.LayTrangThaiMenu_ChucNang(Session["IDNhom"].ToString(), 5) == 1)
-            //    gridDanhMucThue.Columns["iconaction"].Visible = false;
+            //    gridDanhMucThue.Columns["chucnang"].Visible = false;
 
             //if (dtSetting.LayTrangThaiMenu(Session["IDNhom"].ToString(), 5) == 1)
             //{

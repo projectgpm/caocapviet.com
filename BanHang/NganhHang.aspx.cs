@@ -21,7 +21,7 @@ namespace BanHang
             else
             {
                 if (dtSetting.LayTrangThaiMenu_ChucNang(Session["IDNhom"].ToString(), 5) == 1)
-                    gridNganhHang.Columns["iconaction"].Visible = false;
+                    gridNganhHang.Columns["chucnang"].Visible = false;
 
                 if (dtSetting.LayTrangThaiMenu(Session["IDNhom"].ToString(), 5) == 1)
                 {
