@@ -1,6 +1,7 @@
 ﻿using BanHang.Data;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -54,6 +55,14 @@ namespace BanHang
             LoadGrid(Int32.Parse(Request.QueryString["IDNhomNguoiDung"]));
 
             dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Phân Quyền:" + ID, Session["IDKho"].ToString(), "Hệ Thống", "Cập Nhật"); 
+        }
+
+        protected void gridPhanQuyen_HtmlRowPrepared(object sender, DevExpress.Web.ASPxGridViewTableRowEventArgs e)
+        {
+            Color color = (Color)ColorTranslator.FromHtml("#FF9797");
+            string TrangThai = Convert.ToString(e.GetValue("Link"));
+            if (TrangThai == "")
+                e.Row.BackColor = color;
         }
     }
 }

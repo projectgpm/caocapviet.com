@@ -20,17 +20,17 @@ namespace BanHang
             }
             else
             {
-                if (dtSetting.LayTrangThaiMenu_ChucNang(Session["IDNhom"].ToString(), 37) == 1)
-                    gridQuanTriNguoiDung.Columns["iconaction"].Visible = false;
+                //if (dtSetting.LayTrangThaiMenu_ChucNang(Session["IDNhom"].ToString(), 37) == 1)
+                //    gridQuanTriNguoiDung.Columns["iconaction"].Visible = false;
 
-                if (dtSetting.LayTrangThaiMenu(Session["IDNhom"].ToString(), 37) == 1)
-                {
+                //if (dtSetting.LayTrangThaiMenu(Session["IDNhom"].ToString(), 37) == 1)
+                //{
                     LoadGrid();
-                }
-                else
-                {
-                    Response.Redirect("Default.aspx");
-                }
+                //}
+                //else
+                //{
+                //    Response.Redirect("Default.aspx");
+                //}
             }
         }
         public void LoadGrid()

@@ -10,7 +10,7 @@
     <form id="form1" runat="server">
     <div>
     
-        <dx:ASPxGridView ID="gridPhanQuyen" runat="server" Width="100%" AutoGenerateColumns="False" KeyFieldName="ID" OnRowUpdating="gridPhanQuyen_RowUpdating">
+        <dx:ASPxGridView ID="gridPhanQuyen" runat="server" Width="100%" AutoGenerateColumns="False" KeyFieldName="ID" OnRowUpdating="gridPhanQuyen_RowUpdating" OnHtmlRowPrepared="gridPhanQuyen_HtmlRowPrepared">
             <SettingsPager Mode="ShowAllRecords">
             </SettingsPager>
             <SettingsEditing Mode="Batch">
@@ -24,13 +24,13 @@
 
             <SettingsText CommandBatchEditCancel="Hủy thao tác" CommandBatchEditUpdate="Lưu tất cả" Title="DANH SÁCH QUYỀN " />
             <Columns>
-                <dx:GridViewDataTextColumn Caption="ID" FieldName="ID" VisibleIndex="0" ReadOnly="True">
+                <dx:GridViewDataTextColumn Caption="ID" FieldName="ID" VisibleIndex="0" ReadOnly="True" Visible="False">
                 </dx:GridViewDataTextColumn>
                 <dx:GridViewDataTextColumn Caption="Danh Mục" FieldName="TenDanhMuc" VisibleIndex="1" ReadOnly="True">
                 </dx:GridViewDataTextColumn>
-                <dx:GridViewDataCheckColumn Caption="Trạng Thái" FieldName="TrangThai" VisibleIndex="2">
+                <dx:GridViewDataCheckColumn Caption="Hiển Thị" FieldName="TrangThai" VisibleIndex="2">
                 </dx:GridViewDataCheckColumn>
-                <dx:GridViewDataCheckColumn Caption="Chức Năng" FieldName="ChucNang" VisibleIndex="3">
+                <dx:GridViewDataCheckColumn Caption="Thêm/ Xóa /Sửa" FieldName="ChucNang" VisibleIndex="3">
                 </dx:GridViewDataCheckColumn>
             </Columns>
             <Styles>
