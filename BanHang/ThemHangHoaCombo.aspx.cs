@@ -21,10 +21,10 @@ namespace BanHang
             }
             else
             {
-                if (dtSetting.LayTrangThaiMenu_ChucNang(Session["IDNhom"].ToString(), 8) == 1)
-                    Response.Redirect("Default.aspx");
-                if (dtSetting.LayTrangThaiMenu(Session["IDNhom"].ToString(), 8) == 1)
-                {
+                //if (dtSetting.LayTrangThaiMenu_ChucNang(Session["IDNhom"].ToString(), 8) == 1)
+                //    Response.Redirect("Default.aspx");
+                //if (dtSetting.LayTrangThaiMenu(Session["IDNhom"].ToString(), 8) == 1)
+                //{
                     if (!IsPostBack)
                     {
                         Random ran = new Random();
@@ -33,11 +33,11 @@ namespace BanHang
                         txtMaHang.Text = dtHangCombo.Dem_Max().ToString();
                     }
                     LoadGrid(Int32.Parse(IDHangHoaComBo_Temp.Value.ToString()));
-                }
-                else
-                {
-                    Response.Redirect("Default.aspx");
-                }
+                //}
+                //else
+                //{
+                //    Response.Redirect("Default.aspx");
+                //}
             }
         }
 

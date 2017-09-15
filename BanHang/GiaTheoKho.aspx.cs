@@ -20,19 +20,19 @@ namespace BanHang
             }
             else
             {
-                if (dtSetting.LayTrangThaiMenu_ChucNang(Session["IDNhom"].ToString(), 9) == 1)
-                    Response.Redirect("Default.aspx");
-                if (dtSetting.LayTrangThaiMenu(Session["IDNhom"].ToString(), 9) == 1)
-                {
+                //if (dtSetting.LayTrangThaiMenu_ChucNang(Session["IDNhom"].ToString(), 9) == 1)
+                //    Response.Redirect("Default.aspx");
+                //if (dtSetting.LayTrangThaiMenu(Session["IDNhom"].ToString(), 9) == 1)
+                //{
                     if (!IsPostBack)
                     {
                         DanhSachVung();
                     }
-                }
-                else
-                {
-                    Response.Redirect("Default.aspx");
-                }
+                //}
+                //else
+                //{
+                //    Response.Redirect("Default.aspx");
+                //}
                 if (cmbKho.Text != "")
                 {
                     LoadGrid(cmbKho.Value.ToString());

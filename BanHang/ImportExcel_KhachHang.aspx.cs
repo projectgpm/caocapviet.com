@@ -23,8 +23,8 @@ namespace BanHang
             }
             else
             {
-                if (dtSetting.LayTrangThaiMenu_ChucNang(Session["IDNhom"].ToString(), 3) != 1)
-                {
+                //if (dtSetting.LayTrangThaiMenu_ChucNang(Session["IDNhom"].ToString(), 3) != 1)
+                //{
                     if (!IsPostBack)
                     {
                         data = new Import_KhachHang();
@@ -32,11 +32,11 @@ namespace BanHang
 
                     }
                     LoadGrid();
-                }
-                else
-                {
-                    Response.Redirect("Default.aspx");
-                }
+                //}
+                //else
+                //{
+                //    Response.Redirect("Default.aspx");
+                //}
             }
            
         }

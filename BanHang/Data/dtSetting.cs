@@ -214,12 +214,14 @@ namespace BanHang.Data
                 }
             }
         }
-        public static int LayTrangThaiMenu(string IDNhomNguoiDung, int IDMenu)
+       
+        public static bool LayChucNang_HienThi(string IDNhomNguoiDung)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "SELECT TrangThai FROM [GPM_PhanQuyen] WHERE [IDNhomNguoiDung] = '" + IDNhomNguoiDung + "' AND [IDMenu] = '" + IDMenu + "'";
+                string Link = (HttpContext.Current.Request.Url.AbsolutePath).Replace("/","");
+                string cmdText = "SELECT [GPM_PhanQuyen].TrangThai,[GPM_Menu].Link FROM [GPM_PhanQuyen],[GPM_Menu] WHERE [GPM_PhanQuyen].[IDNhomNguoiDung] = '" + IDNhomNguoiDung + "' AND [GPM_PhanQuyen].IDMenu = [GPM_Menu].ID AND  [GPM_Menu].Link = '" + Link + "'";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
@@ -228,18 +230,21 @@ namespace BanHang.Data
                     if (tb.Rows.Count != 0)
                     {
                         DataRow dr = tb.Rows[0];
-                        return Int32.Parse(dr["TrangThai"].ToString());
+                        if (Int32.Parse(dr["TrangThai"].ToString()) == 1)
+                            return true;
+                        return false;
                     }
-                    else return -1;
+                    else return false;
                 }
             }
         }
-        public static int LayTrangThaiMenu_ChucNang(string IDNhomNguoiDung, int IDMenu)
+        public static bool LayChucNang_ThemXoaSua(string IDNhomNguoiDung)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "SELECT ChucNang FROM [GPM_PhanQuyen] WHERE [IDNhomNguoiDung] = '" + IDNhomNguoiDung + "' AND [IDMenu] = '" + IDMenu + "'";
+                string Link = (HttpContext.Current.Request.Url.AbsolutePath).Replace("/", "");
+                string cmdText = "SELECT [GPM_PhanQuyen].ChucNang,[GPM_Menu].Link FROM [GPM_PhanQuyen],[GPM_Menu] WHERE [GPM_PhanQuyen].[IDNhomNguoiDung] = '" + IDNhomNguoiDung + "' AND [GPM_PhanQuyen].IDMenu = [GPM_Menu].ID AND  [GPM_Menu].Link = '" + Link + "'";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
@@ -249,13 +254,12 @@ namespace BanHang.Data
                     {
                         DataRow dr = tb.Rows[0];
                         int KT = 0;
-                        KT = Int32.Parse(dr["ChucNang"].ToString());
-                        if (KT == 0)
-                            return 1;
-                        return 0;
+                        if (Int32.Parse(dr["ChucNang"].ToString()) == 1)
+                            return true;
+                        return false;
 
                     }
-                    else return -1;
+                    else return false;
                 }
             }
         }

@@ -19,12 +19,12 @@ namespace BanHang
             }
             else
             {
-                if (dtSetting.LayTrangThaiMenu_ChucNang(Session["IDNhom"].ToString(), 3) == 1)
+                if (dtSetting.LayChucNang_ThemXoaSua(Session["IDNhom"].ToString()) == false)
                 {
                     btnNhapExcel.Enabled = false;
                     gridKhachHang.Columns["chucnang"].Visible = false;
                 }
-                if (dtSetting.LayTrangThaiMenu(Session["IDNhom"].ToString(), 3) == 1)
+                if (dtSetting.LayChucNang_HienThi(Session["IDNhom"].ToString()) == true)
                 {
                     LoadGrid();
                 }

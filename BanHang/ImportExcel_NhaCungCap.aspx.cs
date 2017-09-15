@@ -20,8 +20,8 @@ namespace BanHang
             if (Session["KTDangNhap"] == "GPM")
             {
 
-                if (dtSetting.LayTrangThaiMenu_ChucNang(Session["IDNhom"].ToString(), 4) != 1)
-                {
+                //if (dtSetting.LayTrangThaiMenu_ChucNang(Session["IDNhom"].ToString(), 4) != 1)
+                //{
                     if (!IsPostBack)
                     {
                         // xóa dữ liệu bảng temp
@@ -29,11 +29,11 @@ namespace BanHang
                         data.XoaDuLieuTemp();
 
                     }
-                }
-                else
-                {
-                    Response.Redirect("Default.aspx");
-                }
+                //}
+                //else
+                //{
+                //    Response.Redirect("Default.aspx");
+                //}
             }
             else
             {

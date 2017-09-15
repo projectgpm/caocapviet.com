@@ -18,10 +18,10 @@ namespace BanHang
         protected void Page_Load(object sender, EventArgs e)
         {
             
-                if (Session["KTDangNhap"] == "GPM")
-                {
-                    if (dtSetting.LayTrangThaiMenu_ChucNang(Session["IDNhom"].ToString(), 7) != 1)
-                    {
+                //if (Session["KTDangNhap"] == "GPM")
+                //{
+                //    if (dtSetting.LayTrangThaiMenu_ChucNang(Session["IDNhom"].ToString(), 7) != 1)
+                //    {
                         if (!IsPostBack)
                         {
                             // xóa dữ liệu bảng temp
@@ -30,16 +30,16 @@ namespace BanHang
 
                         }
                         LoadGrid();
-                    }
-                    else
-                    {
-                        Response.Redirect("Default.aspx");
-                    }
-                }
-                else
-                {
-                    Response.Redirect("DangNhap.aspx");
-                }
+                //    }
+                //    else
+                //    {
+                //        Response.Redirect("Default.aspx");
+                //    }
+                //}
+                //else
+                //{
+                //    Response.Redirect("DangNhap.aspx");
+                //}
            
 
         }

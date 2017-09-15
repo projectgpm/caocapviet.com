@@ -21,8 +21,8 @@ namespace BanHang
             }
             else
             {
-                if (dtSetting.LayTrangThaiMenu(Session["IDNhom"].ToString(), 45) == 1)
-                {
+                //if (dtSetting.LayTrangThaiMenu(Session["IDNhom"].ToString(), 45) == 1)
+                //{
                     LoadDanhSacDonViTinh();
                     LoadDanhSachHangHoa();
                     LoadDanhSachKhachHang();
@@ -31,11 +31,11 @@ namespace BanHang
                     LoadDanhSachNhomHang();
                     LoadDanhSachVung();
                     LoadDanhSachKho();
-                }
-                else
-                {
-                    Response.Redirect("Default.aspx");
-                }
+                //}
+                //else
+                //{
+                //    Response.Redirect("Default.aspx");
+                //}
                
             }
         }
