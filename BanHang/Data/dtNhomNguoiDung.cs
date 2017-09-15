@@ -47,7 +47,7 @@ namespace BanHang.Data
                 try
                 {
                     myConnection.Open();
-                    string cmdText = "INSERT INTO [GPM_PhanQuyen] ([IDNhomNguoiDung],[IDMenu],[NgayCapNhat]) VALUES (@IDNhomNguoiDung,@IDMenu,getdate())";
+                    string cmdText = "INSERT INTO [GPM_PhanQuyen] ([IDNhomNguoiDung],[IDMenu]) VALUES (@IDNhomNguoiDung,@IDMenu)";
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
                         myCommand.Parameters.AddWithValue("@IDNhomNguoiDung", IDNhomNguoiDung);

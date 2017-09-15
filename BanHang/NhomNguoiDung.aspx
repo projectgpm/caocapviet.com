@@ -7,7 +7,20 @@
              // alert(key);
          }
 
-    </script>
+    </script><%--<dx:ASPxFormLayout ID="ASPxFormLayout1" runat="server" ColCount="6">
+         <Items>
+             <dx:LayoutItem Caption="">
+                 <LayoutItemNestedControlCollection>
+                     <dx:LayoutItemNestedControlContainer runat="server">
+                         <dx:ASPxButton ID="ASPxFormLayout1_E2" runat="server" PostBackUrl="ThemQuyen.aspx" Text="Thêm Quyền">
+                             <Image IconID="actions_add_32x32">
+                             </Image>
+                         </dx:ASPxButton>
+                     </dx:LayoutItemNestedControlContainer>
+                 </LayoutItemNestedControlCollection>
+             </dx:LayoutItem>
+         </Items>
+     </dx:ASPxFormLayout>--%>
     <dx:ASPxGridView ID="gridNhomNguoiDung" runat="server" AutoGenerateColumns="False" Width="100%" KeyFieldName="ID" OnRowDeleting="gridNhomNguoiDung_RowDeleting" OnRowInserting="gridNhomNguoiDung_RowInserting" OnRowUpdating="gridNhomNguoiDung_RowUpdating">
         <SettingsEditing Mode="PopupEditForm">
         </SettingsEditing>
