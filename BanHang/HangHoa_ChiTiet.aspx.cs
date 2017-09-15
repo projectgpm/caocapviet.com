@@ -14,9 +14,16 @@ namespace BanHang
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (Session["KTDangNhap"] != "GPM")
             {
-                Load();
+                Response.Redirect("DangNhap.aspx");
+            }
+            else
+            {
+                if (!IsPostBack)
+                {
+                    Load();
+                }
             }
         }
 

@@ -14,38 +14,40 @@ namespace BanHang
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (Session["KTDangNhap"] != "GPM")
             {
-                dataHangHoa data = new dataHangHoa();
-                DataTable da = data.getHangHoa_Null();
-                if (da.Rows.Count != 0)
-                {
-                    IDHangHoa.Value = da.Rows[0]["ID"].ToString();
-                    txtMaHang.Value = da.Rows[0]["MaHang"].ToString();
-
-                }else IDHangHoa.Value = data.insertHangHoa_Temp() + "";
-
-                cmbTrangThaiHang.SelectedIndex = 0;
-                cmbNhomDatHang.SelectedIndex = 0;
+                Response.Redirect("DangNhap.aspx");
             }
-            Load();
-
-            dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Hàng hóa", Session["IDKho"].ToString(), "Danh mục", "Thêm hàng hóa");
+            else
+            {
+                if (!IsPostBack)
+                {
+                    dataHangHoa data = new dataHangHoa();
+                    DataTable da = data.getHangHoa_Null();
+                    if (da.Rows.Count != 0)
+                    {
+                        IDHangHoa.Value = da.Rows[0]["ID"].ToString();
+                        txtMaHang.Value = da.Rows[0]["MaHang"].ToString();
+                    }
+                    else IDHangHoa.Value = data.insertHangHoa_Temp() + "";
+                    cmbTrangThaiHang.SelectedIndex = 0;
+                    cmbNhomDatHang.SelectedIndex = 0;
+                }
+                Load();
+            }
         }
-
         public void Load()
         {
             dataHangHoa data = new dataHangHoa();
 
             gridHangHoaBarcode.DataSource = data.GetListBarCode(IDHangHoa.Value);
             gridHangHoaBarcode.DataBind();
-
-            gridHangHoaGiaTheoSL.DataSource = data.GetListHangHoa_GiaTheoSL(IDHangHoa.Value); ;
+            
+            gridHangHoaGiaTheoSL.DataSource = data.GetListHangHoa_GiaTheoSL(IDHangHoa.Value);
             gridHangHoaGiaTheoSL.DataBind();
-
+            
             gridHangHoaQuyDoi.DataSource = data.GetListHangHoaQuyDoi(IDHangHoa.Value);
             gridHangHoaQuyDoi.DataBind();
-
         }
 
         protected void cmbDonViTinh_SelectedIndexChanged(object sender, EventArgs e)

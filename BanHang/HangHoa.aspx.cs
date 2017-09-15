@@ -17,27 +17,26 @@ namespace BanHang
         //dataHangHoa data = new dataHangHoa();
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (Session["KTDangNhap"] != "GPM")
-            //{
-            //    Response.Redirect("DangNhap.aspx");
-            //}
-            //else
-            //{
-            //    if (dtSetting.LayTrangThaiMenu_ChucNang(Session["IDNhom"].ToString(), 7) == 1)
-            //    {
-            //        gridHangHoa.Columns["chucnang"].Visible = false;
-            //        btnNhapExel.Enabled = false;
-            //    }
-
-            //    if (dtSetting.LayTrangThaiMenu(Session["IDNhom"].ToString(), 7) == 1)
-            //    {
+            if (Session["KTDangNhap"] != "GPM")
+            {
+                Response.Redirect("DangNhap.aspx");
+            }
+            else
+            {
+                if (dtSetting.LayChucNang_HienThi(Session["IDNhom"].ToString()) == true)
+                {
                     LoadGrid();
-            //    }
-            //    else
-            //    {
-            //        Response.Redirect("Default.aspx");
-            //    }
-            //}
+                    if (dtSetting.LayChucNang_ThemXoaSua(Session["IDNhom"].ToString()) == false)
+                    {
+                        gridHangHoa.Columns["chucnang1"].Visible = false;
+                        gridHangHoa.Columns["chucnang2"].Visible = false;
+                        btnTheMoi.Enabled = false;
+                        btnNhapExel.Enabled = false;
+                    }
+                }
+                else
+                    Response.Redirect("Default.aspx");
+            }
         }
         public void LoadGrid()
         {

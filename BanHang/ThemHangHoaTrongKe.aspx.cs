@@ -23,14 +23,9 @@ namespace BanHang
             }
             else
             {
-                if (dtSetting.LayChucNang_ThemXoaSua(Session["IDNhom"].ToString()) == false)
-                {
-                    LoadGrid(IDTemp.Value.ToString());
-                }
-                else
-                {
+                if (dtSetting.LayChucNangCha(Session["IDNhom"].ToString(), 53) == false)
                     Response.Redirect("Default.aspx");
-                }
+                LoadGrid(IDTemp.Value.ToString());
                 if (!IsPostBack)
                 {
                     Random ran = new Random();
