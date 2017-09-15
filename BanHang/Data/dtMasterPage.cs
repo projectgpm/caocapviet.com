@@ -14,7 +14,7 @@ namespace BanHang.Data
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "SELECT [GPM_Menu].Name  FROM [GPM_PhanQuyen],[GPM_Menu] WHERE [GPM_PhanQuyen].IDNhomNguoiDung = '" + IDNhomNguoiDung + "'  AND [GPM_PhanQuyen].TrangThai = 1 AND [GPM_Menu].ID = [GPM_PhanQuyen].IDMenu";
+                string cmdText = "SELECT [GPM_Menu].Name FROM [GPM_PhanQuyen],[GPM_Menu] WHERE [GPM_PhanQuyen].IDNhomNguoiDung = '" + IDNhomNguoiDung + "'  AND [GPM_PhanQuyen].TrangThai = 1 AND [GPM_Menu].ID = [GPM_PhanQuyen].IDMenu";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {

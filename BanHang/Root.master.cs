@@ -24,7 +24,6 @@ namespace BanHang
             {
                 if (!IsPostBack)
                 {
-
                     //dtNhomNguoiDung data1 = new dtNhomNguoiDung();
                     //DataTable db = data1.DanhSachMenu();
                     //foreach (DataRow dr in db.Rows)
@@ -47,12 +46,10 @@ namespace BanHang
                     lblChao.Text = "Xin Chào: " + Session["TenDangNhap"].ToString();
                     ASPxLabel2.Text = Server.HtmlDecode("Copyrights &copy;") + DateTime.Now.Year + Server.HtmlDecode(". All Rights Reserved. Designed by GPM.VN");
                 }
-                else
-                {
-                    XuLyThayDoiGiaTheoGio();
-                    XuLyDonHangChiNhanh();
-                    HuyDonHangThuMua();
-                }
+                XuLyThayDoiGiaTheoGio();
+                XuLyDonHangChiNhanh();
+                HuyDonHangThuMua();
+
             }
         }
         protected RibbonItemBase getbyName(string name, ASPxRibbon ribbon)
