@@ -48,15 +48,6 @@
                                         <Groups>
                                             <dx:RibbonGroup Text="Bàn hàng & Danh mục" Name="danh-muc-ban-hang">                                                                                        
                                                 <Items>
-<<<<<<< HEAD
-                                                    <dx:RibbonButtonItem Name="bang_hang_le" NavigateUrl="BanHangLe.aspx" 
-                                                        Size="Large" Text="Bán hàng lẻ">
-                                                        <LargeImage Url="~/image/banhang.png">
-                                                        </LargeImage>
-                                                    </dx:RibbonButtonItem>
-                                                    <dx:RibbonDropDownButtonItem Name="danh_muc" NavigateUrl="javascript:void(2)" 
-                                                        Size="Large" Text="Danh mục">
-=======
                                                     <dx:RibbonButtonItem Name="ban-hang-le" NavigateUrl="BanHangLe.aspx" 
                                                         Size="Large" Text="Bán Hàng Lẻ" Visible="False">
                                                         <LargeImage Url="~/image/banhang.png">
@@ -65,21 +56,14 @@
 
                                                     <dx:RibbonDropDownButtonItem Name="danh-muc" NavigateUrl="javascript:void(2)" 
                                                         Size="Large" Text="Danh Mục" Visible="False">
->>>>>>> 128132af86540ddda91427efbbae57f10089e629
                                                         <Items>
-                                                        <%--    em định duyệt menu rùi add vào đây..mà chưa có cách--%>
-
-
-
                                                             <dx:RibbonDropDownButtonItem Name="nhom-khach-hang" NavigateUrl="NhomKhachHang.aspx" Text="Nhóm Khách Hàng" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
-                                                            <dx:RibbonDropDownButtonItem Name="khach-hang" NavigateUrl="KhachHang.aspx" 
-                                                                Text="Khách Hàng" Visible="False">
+                                                            <dx:RibbonDropDownButtonItem Name="khach-hang" NavigateUrl="KhachHang.aspx" Text="Khách Hàng" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
                                                             <dx:RibbonDropDownButtonItem NavigateUrl="DonViTinh.aspx" Text="Đơn Vị Tính" Name="don-vi-tinh" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
-                                                            <dx:RibbonDropDownButtonItem Name="nha-cung-cap" 
-                                                                NavigateUrl="NhaCungCap.aspx" Text="Nhà Cung Cấp" Visible="False">
+                                                            <dx:RibbonDropDownButtonItem Name="nha-cung-cap" NavigateUrl="NhaCungCap.aspx" Text="Nhà Cung Cấp" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
                                                             <dx:RibbonDropDownButtonItem Name="hang-san-xuat" Text="Nhà Sản Xuất" Visible="False" NavigateUrl="HangSanXuat.aspx">
                                                             </dx:RibbonDropDownButtonItem>
@@ -91,11 +75,9 @@
                                                             </dx:RibbonDropDownButtonItem>
                                                             <dx:RibbonDropDownButtonItem Name="nhom-hang" NavigateUrl="NhomHang.aspx" Text="Nhóm Hàng" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
-                                                            <dx:RibbonDropDownButtonItem Name="nganh-hang" NavigateUrl="NganhHang.aspx" 
-                                                                Text="Ngành Hàng" Visible="False">
+                                                            <dx:RibbonDropDownButtonItem Name="nganh-hang" NavigateUrl="NganhHang.aspx" Text="Ngành Hàng" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
-                                                            <dx:RibbonDropDownButtonItem Name="ma-hang" 
-                                                                NavigateUrl="HangHoa.aspx" Text="Mã Hàng" Visible="False">
+                                                            <dx:RibbonDropDownButtonItem Name="ma-hang" NavigateUrl="HangHoa.aspx" Text="Mã Hàng" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
                                                             <dx:RibbonDropDownButtonItem Name="tra-cuu-ma-hang" Text="Tra Cứu Mã Hàng" NavigateUrl="TraCuuMaHang.aspx" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
@@ -110,6 +92,7 @@
                                                 </Items>
                                                 <Image IconID="businessobjects_bosale_32x32"></Image>
                                             </dx:RibbonGroup>
+
                                             <dx:RibbonGroup Text="Báo cáo & Kiểm tra" Name="bao-cao-kiem-tra">
                                                 <Image IconID="businessobjects_boreport_32x32"></Image>
                                                 <Items>
