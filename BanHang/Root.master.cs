@@ -69,11 +69,7 @@ namespace BanHang {
                             return subItem;
                     }
                 }
-            }
-<<<<<<< HEAD
-
-=======
-            return null;
+            }  return null;
         }
         private RibbonItemBase getbyNameSubItem(string name, RibbonItemBase item)
         {
@@ -89,7 +85,6 @@ namespace BanHang {
                         return subItemResult;
                 }
             return null;
->>>>>>> 128132af86540ddda91427efbbae57f10089e629
         }
         public void XuLyDonHangChiNhanh()
         {
