@@ -22,8 +22,25 @@ namespace BanHang {
                 if (!IsPostBack)
                 {
 
-                    //RibbonItemBase a = getbyName("nhom_khach_hang", ribbonMenu);
-                    //a.Visible = false;
+                    //dtNhomNguoiDung data1 = new dtNhomNguoiDung();
+                    //DataTable db = data1.DanhSachMenu();
+                    //foreach (DataRow dr in db.Rows)
+                    //{
+                    //    int IDMenu = Int32.Parse(dr["ID"].ToString());
+                    //    data1 = new dtNhomNguoiDung();
+                    //    data1.ThemMenu_IDNhomNguoiDung(7, IDMenu);
+                    //}
+                    data = new dtMasterPage();
+                    DataTable dbt = data.DanhSachMemuDuocHienThi(Session["IDNhom"].ToString());
+                    if (dbt.Rows.Count > 0)
+                    {
+                        foreach (DataRow dr in dbt.Rows)
+                        {
+                            string name = dr["Name"].ToString();
+                            RibbonItemBase kt = getbyName(name, ribbonMenu);
+                            kt.Visible = true;
+                        }
+                    }
                     lblChao.Text = "Xin Chào: " + Session["TenDangNhap"].ToString();
                     ASPxLabel2.Text = Server.HtmlDecode("Copyrights &copy;") + DateTime.Now.Year + Server.HtmlDecode(". All Rights Reserved. Designed by GPM.VN");
                 }

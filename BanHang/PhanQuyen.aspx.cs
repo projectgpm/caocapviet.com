@@ -20,18 +20,18 @@ namespace BanHang
             }
             else
             {
-                if (dtSetting.LayTrangThaiMenu(Session["IDNhom"].ToString(), 36) == 1)
-                {
+                //if (dtSetting.LayTrangThaiMenu(Session["IDNhom"].ToString(), 36) == 1)
+                //{
                     string IDNhomNguoiDung = Request.QueryString["IDNhomNguoiDung"];
                     if (IDNhomNguoiDung != null)
                     {
                         LoadGrid(Int32.Parse(IDNhomNguoiDung.ToString()));
                     }
-                }
-                else
-                {
-                    Response.Redirect("Default.aspx");
-                }
+                //}
+                //else
+                //{
+                //    Response.Redirect("Default.aspx");
+                //}
             }
         }
 

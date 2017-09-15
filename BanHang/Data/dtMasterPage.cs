@@ -9,6 +9,21 @@ namespace BanHang.Data
 {
     public class dtMasterPage
     {
+        public DataTable DanhSachMemuDuocHienThi(string IDNhomNguoiDung)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT [GPM_Menu].Name  FROM [GPM_PhanQuyen],[GPM_Menu] WHERE [GPM_PhanQuyen].IDNhomNguoiDung = '" + IDNhomNguoiDung + "'  AND [GPM_PhanQuyen].TrangThai = 1 AND [GPM_Menu].ID = [GPM_PhanQuyen].IDMenu";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    return tb;
+                }
+            }
+        }
         public void CapNhat_GiaTheoGio(string IDHangHoa, string IDKho, string GiaBan, string GiaThayDoi)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))

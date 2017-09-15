@@ -49,49 +49,49 @@
                                             <dx:RibbonGroup Text="Bàn hàng & Danh mục" Name="danh-muc-ban-hang">                                                                                        
                                                 <Items>
                                                     <dx:RibbonButtonItem Name="ban-hang-le" NavigateUrl="BanHangLe.aspx" 
-                                                        Size="Large" Text="Bán hàng lẻ">
+                                                        Size="Large" Text="Bán Hàng Lẻ" Visible="False">
                                                         <LargeImage Url="~/image/banhang.png">
                                                         </LargeImage>
                                                     </dx:RibbonButtonItem>
 
                                                     <dx:RibbonDropDownButtonItem Name="danh-muc" NavigateUrl="javascript:void(2)" 
-                                                        Size="Large" Text="Danh mục">
+                                                        Size="Large" Text="Danh Mục" Visible="False">
                                                         <Items>
                                                         <%--    em định duyệt menu rùi add vào đây..mà chưa có cách--%>
 
 
 
-                                                            <dx:RibbonDropDownButtonItem Name="nhom-khach-hang" NavigateUrl="NhomKhachHang.aspx" Text="Nhóm Khách Hàng">
+                                                            <dx:RibbonDropDownButtonItem Name="nhom-khach-hang" NavigateUrl="NhomKhachHang.aspx" Text="Nhóm Khách Hàng" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
                                                             <dx:RibbonDropDownButtonItem Name="khach-hang" NavigateUrl="KhachHang.aspx" 
-                                                                Text="Khách Hàng">
+                                                                Text="Khách Hàng" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
-                                                            <dx:RibbonDropDownButtonItem NavigateUrl="DonViTinh.aspx" Text="Đơn Vị Tính" Name="don-vi-tinh">
+                                                            <dx:RibbonDropDownButtonItem NavigateUrl="DonViTinh.aspx" Text="Đơn Vị Tính" Name="don-vi-tinh" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
                                                             <dx:RibbonDropDownButtonItem Name="nha-cung-cap" 
-                                                                NavigateUrl="NhaCungCap.aspx" Text="Nhà Cung Cấp">
+                                                                NavigateUrl="NhaCungCap.aspx" Text="Nhà Cung Cấp" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
-                                                            <dx:RibbonDropDownButtonItem Name="hang-san-xuat" Text="Nhà Sản Xuất" NavigateUrl="HangSanXuat.aspx">
+                                                            <dx:RibbonDropDownButtonItem Name="hang-san-xuat" Text="Nhà Sản Xuất" Visible="False" NavigateUrl="HangSanXuat.aspx">
                                                             </dx:RibbonDropDownButtonItem>
-                                                            <dx:RibbonDropDownButtonItem Name="danh-sach-ke" NavigateUrl="DanhSachKe.aspx" Text="Danh Sách Kệ Hàng Hóa">
+                                                            <dx:RibbonDropDownButtonItem Name="danh-sach-ke" NavigateUrl="DanhSachKe.aspx" Text="Danh Sách Kệ Hàng Hóa" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
-                                                            <dx:RibbonDropDownButtonItem Name="danh-muc-thue" NavigateUrl="DanhMucThue.aspx" Text="Danh Mục Thuế">
+                                                            <dx:RibbonDropDownButtonItem Name="danh-muc-thue" NavigateUrl="DanhMucThue.aspx" Text="Danh Mục Thuế" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
-                                                            <dx:RibbonDropDownButtonItem Name="hinh-thuc-thanh-toan" Text="Hình Thức Thanh Toán" NavigateUrl="HinhThucThanhToan.aspx">
+                                                            <dx:RibbonDropDownButtonItem Name="hinh-thuc-thanh-toan" Text="Hình Thức Thanh Toán" NavigateUrl="HinhThucThanhToan.aspx" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
-                                                            <dx:RibbonDropDownButtonItem Name="nhom-hang" NavigateUrl="NhomHang.aspx" Text="Nhóm Hàng">
+                                                            <dx:RibbonDropDownButtonItem Name="nhom-hang" NavigateUrl="NhomHang.aspx" Text="Nhóm Hàng" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
                                                             <dx:RibbonDropDownButtonItem Name="nganh-hang" NavigateUrl="NganhHang.aspx" 
-                                                                Text="Ngành Hàng">
+                                                                Text="Ngành Hàng" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
                                                             <dx:RibbonDropDownButtonItem Name="ma-hang" 
-                                                                NavigateUrl="HangHoa.aspx" Text="Mã Hàng">
+                                                                NavigateUrl="HangHoa.aspx" Text="Mã Hàng" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
-                                                            <dx:RibbonDropDownButtonItem Name="tra-cuu-ma-hang" Text="Tra Cứu Mã Hàng" NavigateUrl="TraCuuMaHang.aspx">
+                                                            <dx:RibbonDropDownButtonItem Name="tra-cuu-ma-hang" Text="Tra Cứu Mã Hàng" NavigateUrl="TraCuuMaHang.aspx" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
-                                                            <dx:RibbonDropDownButtonItem Name="danh-muc-combo" NavigateUrl="DanhMucCombo.aspx" Text="Danh Mục Combo">
+                                                            <dx:RibbonDropDownButtonItem Name="danh-muc-combo" NavigateUrl="DanhMucCombo.aspx" Text="Danh Mục Combo" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
-                                                            <dx:RibbonDropDownButtonItem Name="hang-hoa-theo-vung" NavigateUrl="DanhSachGiaTheoVung.aspx" Text="Giá Theo Vùng">
+                                                            <dx:RibbonDropDownButtonItem Name="hang-hoa-theo-vung" NavigateUrl="DanhSachGiaTheoVung.aspx" Text="Giá Theo Vùng" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
                                                         </Items>
                                                         <LargeImage Url="~/image/danhsach.png">
@@ -104,57 +104,57 @@
                                                 <Image IconID="businessobjects_boreport_32x32"></Image>
                                                 <Items>
                                                     <dx:RibbonDropDownButtonItem Name="nhap-xuat-ton" Size="Large" 
-                                                        Text="Nhập xuất tồn">
+                                                        Text="Nhập Xuất Tồn" Visible="False">
                                                         <Items>
-                                                            <dx:RibbonDropDownButtonItem Name="ton-kho" Text="Tồn Kho" NavigateUrl="TonKhoBanDau.aspx">
+                                                            <dx:RibbonDropDownButtonItem Name="ton-kho" Text="Tồn Kho" NavigateUrl="TonKhoBanDau.aspx" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
-                                                            <dx:RibbonDropDownButtonItem Name="phieu-nhap-hang" Text="Phiếu Nhập Hàng" NavigateUrl="DanhSachPhieuDatHang.aspx">
+                                                            <dx:RibbonDropDownButtonItem Name="phieu-nhap-hang" Text="Phiếu Nhập Hàng" NavigateUrl="DanhSachPhieuDatHang.aspx" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
-                                                            <dx:RibbonDropDownButtonItem Name="khach-hang-tra-hang" Text="Khách Hàng Trả Hàng" NavigateUrl="DanhSachKhachHangTraHang.aspx">
+                                                            <dx:RibbonDropDownButtonItem Name="khach-hang-tra-hang" Text="Khách Hàng Trả Hàng" NavigateUrl="DanhSachKhachHangTraHang.aspx" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
-                                                            <dx:RibbonDropDownButtonItem Name="danh-sach-don-hang-thu-mua" NavigateUrl="DanhSachDonHangThuMua.aspx" Text="Đơn Đặt Hàng Thu Mua">
+                                                            <dx:RibbonDropDownButtonItem Name="danh-sach-don-hang-thu-mua" NavigateUrl="DanhSachDonHangThuMua.aspx" Text="Đơn Đặt Hàng Thu Mua" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
-                                                            <dx:RibbonDropDownButtonItem Name="danh-sach-don-hang-chi-nhanh" NavigateUrl="DonDatHangChiNhanh.aspx" Text="Đơn Đặt Hàng Chi Nhánh">
+                                                            <dx:RibbonDropDownButtonItem Name="danh-sach-don-hang-chi-nhanh" NavigateUrl="DonDatHangChiNhanh.aspx" Text="Đơn Đặt Hàng Chi Nhánh" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
-                                                            <dx:RibbonDropDownButtonItem Name="don-dat-hang-chi-nhanh" Text="Chi Nhánh Đặt Hàng" NavigateUrl="ChiNhanhDatHang.aspx">
+                                                            <dx:RibbonDropDownButtonItem Name="don-dat-hang-chi-nhanh" Text="Chi Nhánh Đặt Hàng" NavigateUrl="ChiNhanhDatHang.aspx" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
-                                                            <dx:RibbonDropDownButtonItem Name="phieu-xuat-tra" Text="Phiếu Xuất Trả" NavigateUrl="DanhSachPhieuXuatTra.aspx">
+                                                            <dx:RibbonDropDownButtonItem Name="phieu-xuat-tra" Text="Phiếu Xuất Trả" NavigateUrl="DanhSachPhieuXuatTra.aspx" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
-                                                            <dx:RibbonDropDownButtonItem Name="phieu-xuat-khac" Text="Phiếu Xuất Khác" NavigateUrl="DanhSachPhieuXuatKhac.aspx">
+                                                            <dx:RibbonDropDownButtonItem Name="phieu-xuat-khac" Text="Phiếu Xuất Khác" NavigateUrl="DanhSachPhieuXuatKhac.aspx" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
-                                                            <dx:RibbonDropDownButtonItem Name="phieu-chuyen-kho" Text="Phiếu Chuyển Kho" NavigateUrl="DanhSachPhieuChuyenKho.aspx">
+                                                            <dx:RibbonDropDownButtonItem Name="phieu-chuyen-kho" Text="Phiếu Chuyển Kho" NavigateUrl="DanhSachPhieuChuyenKho.aspx" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
-                                                            <dx:RibbonDropDownButtonItem Name="danh-sach-kiem-kho" NavigateUrl="DanhSachKiemKho.aspx" Text="Kiểm Kho">
+                                                            <dx:RibbonDropDownButtonItem Name="danh-sach-kiem-kho" NavigateUrl="DanhSachKiemKho.aspx" Text="Kiểm Kho" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
-                                                            <dx:RibbonDropDownButtonItem Name="the-kho" NavigateUrl="TheKho.aspx" Text="Thẻ Kho">
+                                                            <dx:RibbonDropDownButtonItem Name="the-kho" NavigateUrl="TheKho.aspx" Text="Thẻ Kho" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
                                                         </Items>
                                                         <LargeImage Url="~/image/nhapxuat.png">
                                                         </LargeImage>
                                                     </dx:RibbonDropDownButtonItem>
-                                                    <dx:RibbonDropDownButtonItem Name="bang-ke" Size="Large" Text="Bảng kê">
+                                                    <dx:RibbonDropDownButtonItem Name="bang-ke" Size="Large" Text="Bảng Kê" Visible="False">
                                                         <Items>
-                                                            <dx:RibbonDropDownButtonItem Name="bang-ke-phieu-xuat-khac" Text="Phiếu xuất khác" NavigateUrl="BangKePhieuXuatKhac.aspx">
+                                                            <dx:RibbonDropDownButtonItem Name="bang-ke-phieu-xuat-khac" Text="Phiếu Xuất Khác" NavigateUrl="BangKePhieuXuatKhac.aspx" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
-                                                            <dx:RibbonDropDownButtonItem Name="bang-ke-khach-tra-hang" NavigateUrl="BangKeKhachHangTraHang.aspx" Text="Khách hàng trả hàng">
+                                                            <dx:RibbonDropDownButtonItem Name="bang-ke-khach-tra-hang" NavigateUrl="BangKeKhachHangTraHang.aspx" Text="Khách Hàng Trả Hàng" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
-                                                            <dx:RibbonDropDownButtonItem Name="bang-ke-ban-hang" NavigateUrl="BangKeBanHang.aspx" Text="Bảng kê bán hàng">
+                                                            <dx:RibbonDropDownButtonItem Name="bang-ke-ban-hang" NavigateUrl="BangKeBanHang.aspx" Text="Bảng Kê Bán Hàng" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
                                                         </Items>
                                                         <LargeImage Url="~/image/bao-cao-thong-ke.png">
                                                         </LargeImage>
                                                     </dx:RibbonDropDownButtonItem>
-                                                    <dx:RibbonDropDownButtonItem Name="bao-cao" Size="Large" Text="Báo cáo">
+                                                    <dx:RibbonDropDownButtonItem Name="bao-cao" Size="Large" Text="Báo Cáo" Visible="False">
                                                         <Items>
-                                                            <dx:RibbonDropDownButtonItem Name="bao-cao-ban-hang" NavigateUrl="BaoCaoBanHang.aspx" Text="Báo cáo bán hàng">
+                                                            <dx:RibbonDropDownButtonItem Name="bao-cao-ban-hang" NavigateUrl="BaoCaoBanHang.aspx" Text="Báo Cáo Bán Hàng" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
-                                                            <dx:RibbonDropDownButtonItem Name="bao-cao-chuyen-kho" Text="Báo cáo chuyển kho" NavigateUrl="BaoCaoChuyenKho.aspx">
+                                                            <dx:RibbonDropDownButtonItem Name="bao-cao-chuyen-kho" Text="Báo Cáo Chuyển Kho" NavigateUrl="BaoCaoChuyenKho.aspx" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
-                                                            <dx:RibbonDropDownButtonItem Name="bao-cao-nhap-hang" Text="Báo cáo nhập hàng" NavigateUrl="BaoCaoNhapHang.aspx">
+                                                            <dx:RibbonDropDownButtonItem Name="bao-cao-nhap-hang" Text="Báo Cáo Nhập Hàng" NavigateUrl="BaoCaoNhapHang.aspx" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
-                                                            <dx:RibbonDropDownButtonItem Name="bao-cao-ton-kho" Text="Báo cáo tồn kho" NavigateUrl="BaoCaoTonKho.aspx">
+                                                            <dx:RibbonDropDownButtonItem Name="bao-cao-ton-kho" Text="Báo Cáo Tồn Kho" NavigateUrl="BaoCaoTonKho.aspx" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
-                                                            <dx:RibbonDropDownButtonItem Name="bao-cao-khach-hang-tra-hang" NavigateUrl="BaoCaoKhachHangTraHang.aspx" Text="Khách hàng trả hàng">
+                                                            <dx:RibbonDropDownButtonItem Name="bao-cao-khach-hang-tra-hang" NavigateUrl="BaoCaoKhachHangTraHang.aspx" Text="Báo Cáo Khách Hàng Trả Hàng" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
                                                         </Items>
                                                         <LargeImage Url="~/image/baocao.png">
@@ -162,36 +162,36 @@
                                                     </dx:RibbonDropDownButtonItem>
                                                 </Items>
                                             </dx:RibbonGroup>
-                                            <dx:RibbonGroup Text="Hệ thống" Name="danh-muc-he-thong">
+                                            <dx:RibbonGroup Text="Hệ Thống" Name="danh-muc-he-thong">
                                             
                                                 <Items>
-                                                    <dx:RibbonDropDownButtonItem Name="he-thong" Size="Large" Text="Hệ thống">
+                                                    <dx:RibbonDropDownButtonItem Name="he-thong" Size="Large" Text="Hệ thống" Visible="False">
                                                         <Items>
-                                                            <dx:RibbonDropDownButtonItem Name="nhom-nguoi-dung" Text="Nhóm Người Dùng" NavigateUrl="NhomNguoiDung.aspx">
+                                                            <dx:RibbonDropDownButtonItem Name="nhom-nguoi-dung" Text="Nhóm Người Dùng" NavigateUrl="NhomNguoiDung.aspx" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
                                                             <dx:RibbonDropDownButtonItem Name="quan-tri-nguoi-dung" 
-                                                                Text="Quản Trị Người Dùng" NavigateUrl="QuanTriNguoiDung.aspx">
+                                                                Text="Quản Trị Người Dùng" NavigateUrl="QuanTriNguoiDung.aspx" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
-                                                            <dx:RibbonDropDownButtonItem Name="quan-ly-vung" NavigateUrl="Vung.aspx" Text="Quản Lý Vùng">
+                                                            <dx:RibbonDropDownButtonItem Name="quan-ly-vung" NavigateUrl="Vung.aspx" Text="Quản Lý Vùng" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
-                                                            <dx:RibbonDropDownButtonItem Name="quan-ly-kho" Text="Quản Lý Chi Nhánh" NavigateUrl="Kho.aspx">
+                                                            <dx:RibbonDropDownButtonItem Name="quan-ly-kho" Text="Quản Lý Chi Nhánh" NavigateUrl="Kho.aspx" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
-                                                            <dx:RibbonDropDownButtonItem Name="lich-su-truy-cap" Text="Lịch Sử Truy Cập" NavigateUrl="LichSuTruyCap.aspx">
+                                                            <dx:RibbonDropDownButtonItem Name="lich-su-truy-cap" Text="Lịch Sử Truy Cập" NavigateUrl="LichSuTruyCap.aspx" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
-                                                            <dx:RibbonDropDownButtonItem Name="lich-su-thay-doi-gia" Text="Lịch Sử Thay Đổi Giá" NavigateUrl="LichSuThayDoiGia.aspx">
+                                                            <dx:RibbonDropDownButtonItem Name="lich-su-thay-doi-gia" Text="Lịch Sử Thay Đổi Giá" NavigateUrl="LichSuThayDoiGia.aspx" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
-                                                            <dx:RibbonDropDownButtonItem Name="lich-su-kho" NavigateUrl="LichSuKho.aspx" Text="Lịch Sử Kho">
+                                                            <dx:RibbonDropDownButtonItem Name="lich-su-kho" NavigateUrl="LichSuKho.aspx" Text="Lịch Sử Kho" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
                                                         </Items>
                                                         <LargeImage Url="~/image/hethong.png">
                                                         </LargeImage>
                                                     </dx:RibbonDropDownButtonItem>
                                                    
-                                                    <dx:RibbonDropDownButtonItem Name="tai-khoan" Size="Large" Text="Tài Khoản">
+                                                    <dx:RibbonDropDownButtonItem Name="tai-khoan" Size="Large" Text="Tài Khoản" Visible="False">
                                                         <Items>
-                                                            <dx:RibbonDropDownButtonItem Name="thay-doi-mat-khau" Text="Thay Đổi Mật Khẩu" NavigateUrl="ThayDoiMatKhau.aspx">
+                                                            <dx:RibbonDropDownButtonItem Name="thay-doi-mat-khau" Text="Thay Đổi Mật Khẩu" NavigateUrl="ThayDoiMatKhau.aspx" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
-                                                            <dx:RibbonDropDownButtonItem Name="dang-xuat" Text="Đăng Xuất" NavigateUrl="DangXuat.aspx">
+                                                            <dx:RibbonDropDownButtonItem Name="dang-xuat" Text="Đăng Xuất" NavigateUrl="DangXuat.aspx" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
                                                         </Items>
                                                         <LargeImage Url="~/image/taikhoan.png">
@@ -200,7 +200,7 @@
                                                         </SmallImage>
                                                     </dx:RibbonDropDownButtonItem>
                                                    
-                                                    <dx:RibbonButtonItem Name="tro-giup" Text="Trợ Giúp" Size="Large" NavigateUrl="http://gpm.vn">
+                                                    <dx:RibbonButtonItem Name="tro-giup" Text="Trợ Giúp" Size="Large" NavigateUrl="http://gpm.vn" Visible="False">
                                                         <LargeImage Url="~/image/hotro.png">
                                                         </LargeImage>
                                                         <SmallImage IconID="support_knowledgebasearticle_16x16office2013">
