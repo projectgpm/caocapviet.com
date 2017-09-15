@@ -171,7 +171,7 @@
                                         <dx:ListBoxColumn Caption="Trạng thái" FieldName="TenTrangThai" Width="100%" />
                                     </Columns>
                                 </dx:ASPxComboBox>
-                                <asp:SqlDataSource ID="sqlTrangThaiHang" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" SelectCommand="SELECT * FROM [GPM_TrangThaiHang] WHERE ([ID] &lt;&gt; @ID)">
+                                <asp:SqlDataSource ID="sqlTrangThaiHang" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" SelectCommand="SELECT * FROM [GPM_TrangThaiHang] WHERE ([ID] &lt; @ID)">
                                     <SelectParameters>
                                         <asp:Parameter DefaultValue="5" Name="ID" Type="Int32" />
                                     </SelectParameters>

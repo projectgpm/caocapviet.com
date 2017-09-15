@@ -159,9 +159,12 @@ namespace BanHang
             }
             else
             {
-                dtDanhMucThue data = new dtDanhMucThue();
-                float TiLe = data.LayTiLeThue(cmbThue.Value + "") / (float)100;
-                txtGiaMuaTruocThue.Value = Int32.Parse(txtGiaMuaSauThue.Value + "") / (1 + TiLe);
+                if (txtGiaMuaSauThue.Value != null)
+                {
+                    dtDanhMucThue data = new dtDanhMucThue();
+                    float TiLe = data.LayTiLeThue(cmbThue.Value + "") / (float)100;
+                    txtGiaMuaTruocThue.Value = Int32.Parse(txtGiaMuaSauThue.Value + "") / (1 + TiLe);
+                }
             }
         }
 
@@ -174,9 +177,12 @@ namespace BanHang
             }
             else
             {
-                dtDanhMucThue data = new dtDanhMucThue();
-                float TiLe = data.LayTiLeThue(cmbThue.Value + "") / (float)100;
-                txtGiaBanSauThue.Value = Int32.Parse(txtGiaBanTruocThue.Value + "") + (Int32.Parse(txtGiaBanTruocThue.Value + "") * TiLe);
+                if (txtGiaBanTruocThue.Value != null)
+                {
+                    dtDanhMucThue data = new dtDanhMucThue();
+                    float TiLe = data.LayTiLeThue(cmbThue.Value + "") / (float)100;
+                    txtGiaBanSauThue.Value = Int32.Parse(txtGiaBanTruocThue.Value + "") + (Int32.Parse(txtGiaBanTruocThue.Value + "") * TiLe);
+                }
             }
         }
 
@@ -189,9 +195,12 @@ namespace BanHang
             }
             else
             {
-                dtDanhMucThue data = new dtDanhMucThue();
-                float TiLe = data.LayTiLeThue(cmbThue.Value + "") / (float)100;
-                txtGiaBanTruocThue.Value = Int32.Parse(txtGiaBanSauThue.Value + "") / (1 + TiLe);
+                if (txtGiaBanSauThue.Value != null)
+                {
+                    dtDanhMucThue data = new dtDanhMucThue();
+                    float TiLe = data.LayTiLeThue(cmbThue.Value + "") / (float)100;
+                    txtGiaBanTruocThue.Value = Int32.Parse(txtGiaBanSauThue.Value + "") / (1 + TiLe);
+                }
             }
         }
 
@@ -204,9 +213,12 @@ namespace BanHang
             }
             else
             {
-                dtDanhMucThue data = new dtDanhMucThue();
-                float TiLe = data.LayTiLeThue(cmbThue.Value + "") / (float)100;
-                txtGiaMuaSauThue.Value = Int32.Parse(txtGiaMuaTruocThue.Value + "") + (Int32.Parse(txtGiaMuaTruocThue.Value + "") * TiLe);
+                if (txtGiaMuaTruocThue.Value != null)
+                {
+                    dtDanhMucThue data = new dtDanhMucThue();
+                    float TiLe = data.LayTiLeThue(cmbThue.Value + "") / (float)100;
+                    txtGiaMuaSauThue.Value = Int32.Parse(txtGiaMuaTruocThue.Value + "") + (Int32.Parse(txtGiaMuaTruocThue.Value + "") * TiLe);
+                }
             }
         }
     }
