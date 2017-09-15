@@ -22,7 +22,7 @@ namespace BanHang
             else
             {
                 if (dtSetting.LayTrangThaiMenu_ChucNang(Session["IDNhom"].ToString(), 6) == 1)
-                    gridNhomHang.Columns["iconaction"].Visible = false;
+                    gridNhomHang.Columns["chucnang"].Visible = false;
                 if (dtSetting.LayTrangThaiMenu(Session["IDNhom"].ToString(), 6) == 1)
                 {
                     LoadGrid();
@@ -34,7 +34,7 @@ namespace BanHang
             }
 
             if (dtSetting.LayTrangThaiMenu_ChucNang(Session["IDNhom"].ToString(), 13) == 1)
-                gridNhomHang.Columns["iconaction"].Visible = false;
+                gridNhomHang.Columns["chucnang"].Visible = false;
         }
         public void LoadGrid()
         {

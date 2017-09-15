@@ -12,7 +12,8 @@ using System.Data;
 namespace BanHang {
     public partial class RootMaster : System.Web.UI.MasterPage {
         dtMasterPage data = new dtMasterPage();
-        protected void Page_Load(object sender, EventArgs e) {
+        protected void Page_Load(object sender, EventArgs e)
+        {
             if (Session["KTDangNhap"] != "GPM")
             {
                 Response.Redirect("DangNhap.aspx");
@@ -69,6 +70,9 @@ namespace BanHang {
                     }
                 }
             }
+<<<<<<< HEAD
+
+=======
             return null;
         }
         private RibbonItemBase getbyNameSubItem(string name, RibbonItemBase item)
@@ -85,6 +89,7 @@ namespace BanHang {
                         return subItemResult;
                 }
             return null;
+>>>>>>> 128132af86540ddda91427efbbae57f10089e629
         }
         public void XuLyDonHangChiNhanh()
         {

@@ -409,7 +409,7 @@
                             <Columns>
                                 <dx:GridViewDataTextColumn Caption="Mã Kho" FieldName="MaKho" ShowInCustomizationForm="True" VisibleIndex="0">
                                 </dx:GridViewDataTextColumn>
-                                <dx:GridViewCommandColumn  VisibleIndex="8" ButtonRenderMode="Image" ButtonType="Image">
+                                <dx:GridViewCommandColumn  VisibleIndex="8" ButtonRenderMode="Image" ButtonType="Image" Name="chucnang">
                                     <CustomButtons>
                                         <dx:GridViewCommandColumnCustomButton ID="gridKho_KhoiPhuc">
                                             <Image IconID="scheduling_recurrence_16x16" ToolTip="Khôi phục">

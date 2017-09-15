@@ -61,7 +61,7 @@
             <SettingsAdaptivity AdaptivityMode="SingleColumnWindowLimit" />
         </EditFormLayoutProperties>
         <Columns>
-            <dx:GridViewCommandColumn ShowClearFilterButton="True" ShowDeleteButton="True" ShowEditButton="True" ShowNewButtonInHeader="True" VisibleIndex="10" Name="iconaction">
+            <dx:GridViewCommandColumn ShowClearFilterButton="True" ShowDeleteButton="True" ShowEditButton="True" ShowNewButtonInHeader="True" VisibleIndex="10" Name="chucnang">
             </dx:GridViewCommandColumn>
             <dx:GridViewDataTextColumn Caption="Tên Kho" FieldName="TenCuaHang" VisibleIndex="1">
                 <PropertiesTextEdit>
@@ -93,7 +93,7 @@
                     </ValidationSettings>
                 </PropertiesDateEdit>
             </dx:GridViewDataDateColumn>
-            <dx:GridViewDataTextColumn Caption="Mã Kho" FieldName="MaKho" VisibleIndex="0">
+            <dx:GridViewDataTextColumn Caption="Mã Kho" FieldName="MaKho" VisibleIndex="0" Name="chucnang">
                 <PropertiesTextEdit>
                     <ValidationSettings SetFocusOnError="True">
                         <RequiredField IsRequired="True" />

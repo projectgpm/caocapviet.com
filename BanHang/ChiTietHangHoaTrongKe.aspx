@@ -49,7 +49,7 @@
 <SettingsText Title="THÔNG TIN CHI TIẾT" CommandDelete="Xóa" ConfirmDelete="Bạn chắc chắn muốn xóa?" CommandEdit="Sửa" EmptyDataRow="Danh sách hàng hóa trống"></SettingsText>
 <Columns>
     
-    <dx:GridViewCommandColumn ShowDeleteButton="True" VisibleIndex="6">
+    <dx:GridViewCommandColumn ShowDeleteButton="True" VisibleIndex="6" Name="chucnang">
     </dx:GridViewCommandColumn>
     <dx:GridViewDataTextColumn Caption="Mã Hàng" FieldName="MaHang" VisibleIndex="0">
     </dx:GridViewDataTextColumn>

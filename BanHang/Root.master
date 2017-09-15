@@ -48,6 +48,15 @@
                                         <Groups>
                                             <dx:RibbonGroup Text="Bàn hàng & Danh mục" Name="danh-muc-ban-hang">                                                                                        
                                                 <Items>
+<<<<<<< HEAD
+                                                    <dx:RibbonButtonItem Name="bang_hang_le" NavigateUrl="BanHangLe.aspx" 
+                                                        Size="Large" Text="Bán hàng lẻ">
+                                                        <LargeImage Url="~/image/banhang.png">
+                                                        </LargeImage>
+                                                    </dx:RibbonButtonItem>
+                                                    <dx:RibbonDropDownButtonItem Name="danh_muc" NavigateUrl="javascript:void(2)" 
+                                                        Size="Large" Text="Danh mục">
+=======
                                                     <dx:RibbonButtonItem Name="ban-hang-le" NavigateUrl="BanHangLe.aspx" 
                                                         Size="Large" Text="Bán Hàng Lẻ" Visible="False">
                                                         <LargeImage Url="~/image/banhang.png">
@@ -56,6 +65,7 @@
 
                                                     <dx:RibbonDropDownButtonItem Name="danh-muc" NavigateUrl="javascript:void(2)" 
                                                         Size="Large" Text="Danh Mục" Visible="False">
+>>>>>>> 128132af86540ddda91427efbbae57f10089e629
                                                         <Items>
                                                         <%--    em định duyệt menu rùi add vào đây..mà chưa có cách--%>
 

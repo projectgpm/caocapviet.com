@@ -25,7 +25,7 @@ namespace BanHang
             //{
             //    if (dtSetting.LayTrangThaiMenu_ChucNang(Session["IDNhom"].ToString(), 7) == 1)
             //    {
-            //        gridHangHoa.Columns["iconaction"].Visible = false;
+            //        gridHangHoa.Columns["chucnang"].Visible = false;
             //        btnNhapExel.Enabled = false;
             //    }
 

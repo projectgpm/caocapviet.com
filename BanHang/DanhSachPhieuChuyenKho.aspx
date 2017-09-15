@@ -154,7 +154,7 @@
                                             </dx:GridViewDataComboBoxColumn>
                                             <dx:GridViewDataTextColumn Caption="Ghi Chú" FieldName="GhiChu" VisibleIndex="18">
                                             </dx:GridViewDataTextColumn>
-                                            <dx:GridViewCommandColumn ShowDeleteButton="True" VisibleIndex="1">
+                                            <dx:GridViewCommandColumn ShowDeleteButton="True" VisibleIndex="1" Name="chucnang">
                                             </dx:GridViewCommandColumn>
                                             <dx:GridViewDataTextColumn Caption="Người giao" FieldName="NguoiGiao" ShowInCustomizationForm="True" VisibleIndex="17">
                                             </dx:GridViewDataTextColumn>
