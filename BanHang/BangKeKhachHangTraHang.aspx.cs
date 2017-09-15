@@ -13,34 +13,54 @@ namespace BanHang
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (Session["KTDangNhap"] != "GPM")
             {
-                string IDNhanVien = "1"; // Session["IDThuNgan"].ToString();
-                if (Session["IDThuNgan"] != null)
-                    IDNhanVien = Session["IDThuNgan"].ToString();
-                if (Session["IDNhanVien"] != null)
-                    IDNhanVien = Session["IDNhanVien"].ToString();
+                Response.Redirect("DangNhap.aspx");
+            }
+            else
+            {
+                //if (dtSetting.LayChucNang_ThemXoaSua(Session["IDNhom"].ToString()) == false)
+                //{
+                //    btnNhapExcel.Enabled = false;
+                //    gridKhachHang.Columns["chucnang"].Visible = false;
+                //}
+                if (dtSetting.LayChucNang_HienThi(Session["IDNhom"].ToString()) == true)
+                {
 
-                dtKho dt = new dtKho();
-                DataTable da = dt.LayDanhSachKho();
-                da.Rows.Add(-1, "", "Tất cả cửa hàng", null, null, null, null, null, null, null, null, null);
+                    if (!IsPostBack)
+                    {
+                        string IDNhanVien = "1"; // Session["IDThuNgan"].ToString();
+                        if (Session["IDThuNgan"] != null)
+                            IDNhanVien = Session["IDThuNgan"].ToString();
+                        if (Session["IDNhanVien"] != null)
+                            IDNhanVien = Session["IDNhanVien"].ToString();
 
-                cmbKho.DataSource = da;
-                cmbKho.TextField = "TenCuaHang";
-                cmbKho.ValueField = "ID";
-                cmbKho.DataBind();
-                cmbKho.SelectedIndex = da.Rows.Count;
+                        dtKho dt = new dtKho();
+                        DataTable da = dt.LayDanhSachKho();
+                        da.Rows.Add(-1, "", "Tất cả cửa hàng", null, null, null, null, null, null, null, null, null);
 
-                string IDKho = Session["IDKho"].ToString();
-                dtKhachHang dt1 = new dtKhachHang();
-                DataTable da1 = dt1.LayDanhSachKhachHang_BaoCao(IDKho);
-                da1.Rows.Add(-1, "Tất cả khách hàng");
+                        cmbKho.DataSource = da;
+                        cmbKho.TextField = "TenCuaHang";
+                        cmbKho.ValueField = "ID";
+                        cmbKho.DataBind();
+                        cmbKho.SelectedIndex = da.Rows.Count;
 
-                cmbKhachHang.DataSource = da1;
-                cmbKhachHang.TextField = "TenKhachHang";
-                cmbKhachHang.ValueField = "ID";
-                cmbKhachHang.DataBind();
-                cmbKhachHang.SelectedIndex = da1.Rows.Count;
+                        string IDKho = Session["IDKho"].ToString();
+                        dtKhachHang dt1 = new dtKhachHang();
+                        DataTable da1 = dt1.LayDanhSachKhachHang_BaoCao(IDKho);
+                        da1.Rows.Add(-1, "Tất cả khách hàng");
+
+                        cmbKhachHang.DataSource = da1;
+                        cmbKhachHang.TextField = "TenKhachHang";
+                        cmbKhachHang.ValueField = "ID";
+                        cmbKhachHang.DataBind();
+                        cmbKhachHang.SelectedIndex = da1.Rows.Count;
+                    }
+                }
+                else
+                {
+                    Response.Redirect("Default.aspx");
+                }
             }
         }
 
