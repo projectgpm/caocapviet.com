@@ -203,7 +203,7 @@
                                             </Image>
                                         </DeleteButton>
                                     </SettingsCommandButton>
-                                    <SettingsText CommandDelete="Xóa" ConfirmDelete="Bạn chắc chắn muốn xóa?" />
+                                    <SettingsText CommandDelete="Xóa" ConfirmDelete="Bạn chắc chắn muốn xóa?"  EmptyDataRow="Danh sách hàng hóa trống" />
                                     <Columns>
                                         <dx:GridViewDataTextColumn ShowInCustomizationForm="True" VisibleIndex="0" Caption="Mã Hàng" FieldName="MaHang">
                                         </dx:GridViewDataTextColumn>
