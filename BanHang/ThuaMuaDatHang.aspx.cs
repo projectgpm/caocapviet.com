@@ -33,9 +33,9 @@ namespace BanHang
                 {
                     // data = new dtThuMuaDatHang();
                     // object IDPhieuDatHang = data.ThemPhieuDatHang();
-                    Random ran = new Random();
-                    int Temp = ran.Next(100000, 999999);
-                    IDThuMuaDatHang_Temp.Value = Temp.ToString();
+                    //Random ran = new Random();
+                   // int Temp = ran.Next(100000, 999999);
+                    IDThuMuaDatHang_Temp.Value = Session["IDNhanVien"].ToString();//Temp.ToString();
                     cmbKhoLap.Value = Session["IDKho"].ToString();
                     txtNguoiLap.Text = Session["TenDangNhap"].ToString();
                     txtChietKhau.Text = "0";

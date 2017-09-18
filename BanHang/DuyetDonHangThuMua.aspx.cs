@@ -24,6 +24,8 @@ namespace BanHang
                     Response.Redirect("Default.aspx");
                 if (!IsPostBack)
                 {
+                    data = new dtDuyetDonHangThuMua();
+                    data.Xoa_Temp_ID(Session["IDNhanVien"].ToString());
                     txtNguoiDuyet.Text = Session["TenDangNhap"].ToString();
                     btnThem.Enabled = false;
                 }
@@ -68,9 +70,9 @@ namespace BanHang
                 btnThem.Enabled = true;
                 data = new dtDuyetDonHangThuMua();
                 data.Xoa_Temp_ID(IDDonHangDuyet_Temp.Value.ToString());
-                Random ran = new Random();
-                int Temp = ran.Next(100000, 999999);
-                IDDonHangDuyet_Temp.Value = Temp.ToString();
+               // Random ran = new Random();
+               // int Temp = ran.Next(100000, 999999);
+                IDDonHangDuyet_Temp.Value = Session["IDNhanVien"].ToString();
                 string ID = cmbSoDonHang.Value.ToString();
                 DataTable db = data.LayDanhSachDonHang_ID(ID);
                 if (db.Rows.Count > 0)

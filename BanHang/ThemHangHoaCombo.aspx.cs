@@ -25,8 +25,8 @@ namespace BanHang
                     Response.Redirect("Default.aspx");
                 if (!IsPostBack)
                 {
-                    Random ran = new Random();
-                    IDHangHoaComBo_Temp.Value = ran.Next(100000, 999999).ToString();
+                   // Random ran = new Random();
+                    IDHangHoaComBo_Temp.Value = Session["IDNhanVien"].ToString();//ran.Next(100000, 999999).ToString();
                     txtSoLuong.Text = "0";
                     txtMaHang.Text = dtHangCombo.Dem_Max().ToString();
                 }
