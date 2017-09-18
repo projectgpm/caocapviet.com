@@ -112,11 +112,11 @@
                                                 <PropertiesComboBox DataSourceID="sqlDNhanVien" TextField="TenNguoiDung" ValueField="ID">
                                                 </PropertiesComboBox>
                                             </dx:GridViewDataComboBoxColumn>
-                                            <dx:GridViewDataSpinEditColumn Caption="Số mặt hàng" FieldName="SoMatHang" VisibleIndex="15">
+                                            <dx:GridViewDataSpinEditColumn Caption="Số mặt hàng" FieldName="SoMatHang" VisibleIndex="14">
                                                 <PropertiesSpinEdit DisplayFormatString="g">
                                                 </PropertiesSpinEdit>
                                             </dx:GridViewDataSpinEditColumn>
-                                            <dx:GridViewDataSpinEditColumn Caption="Trọng lượng" FieldName="TrongLuong" VisibleIndex="16">
+                                            <dx:GridViewDataSpinEditColumn Caption="Trọng lượng" FieldName="TrongLuong" VisibleIndex="15">
                                                 <PropertiesSpinEdit DisplayFormatString="{0:n} KG" NumberFormat="Custom">
                                                 </PropertiesSpinEdit>
                                             </dx:GridViewDataSpinEditColumn>
@@ -158,7 +158,9 @@
                                             </dx:GridViewCommandColumn>
                                             <dx:GridViewDataTextColumn Caption="Người giao" FieldName="NguoiGiao" ShowInCustomizationForm="True" VisibleIndex="17">
                                             </dx:GridViewDataTextColumn>
-                                            <dx:GridViewDataHyperLinkColumn Caption="Chứng từ" FieldName="FileChungTu" ShowInCustomizationForm="True" VisibleIndex="14">
+                                            <dx:GridViewDataHyperLinkColumn Caption="Chứng từ" FieldName="FileChungTu" ShowInCustomizationForm="True" VisibleIndex="16">
+                                                <PropertiesHyperLinkEdit ImageHeight="30px" ImageUrl="~/image/iconchungtu.png" ImageWidth="30px">
+                                                </PropertiesHyperLinkEdit>
                                             </dx:GridViewDataHyperLinkColumn>
                                         </Columns>
                                         <Styles>

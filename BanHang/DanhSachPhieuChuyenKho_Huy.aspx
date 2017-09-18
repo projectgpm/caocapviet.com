@@ -152,10 +152,14 @@
                                             <PropertiesComboBox DataSourceID="sqlDNhanVien" TextField="TenNguoiDung" ValueField="ID">
                                             </PropertiesComboBox>
                                         </dx:GridViewDataComboBoxColumn>
-                                        <dx:GridViewDataTextColumn Caption="Ghi Chú" FieldName="GhiChu" VisibleIndex="16">
+                                        <dx:GridViewDataTextColumn Caption="Ghi Chú" FieldName="GhiChu" VisibleIndex="17">
                                         </dx:GridViewDataTextColumn>
-                                        <dx:GridViewDataTextColumn Caption="Người giao" FieldName="NguoiGiao" ShowInCustomizationForm="True" VisibleIndex="15">
+                                        <dx:GridViewDataTextColumn Caption="Người giao" FieldName="NguoiGiao" ShowInCustomizationForm="True" VisibleIndex="16">
                                         </dx:GridViewDataTextColumn>
+                                        <dx:GridViewDataHyperLinkColumn Caption="File chứng từ" FieldName="FileChungTu" ShowInCustomizationForm="True" VisibleIndex="15">
+                                            <PropertiesHyperLinkEdit ImageHeight="30px" ImageUrl="~/image/iconchungtu.png" ImageWidth="30px">
+                                            </PropertiesHyperLinkEdit>
+                                        </dx:GridViewDataHyperLinkColumn>
                                     </Columns>
                                     <Styles>
                                         <Header Font-Bold="True" HorizontalAlign="Center">
