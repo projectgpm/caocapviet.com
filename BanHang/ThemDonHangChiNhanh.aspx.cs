@@ -25,8 +25,8 @@ namespace BanHang
             {
                 if (!IsPostBack)
                 {
-                    Random ran = new Random();
-                    IDDonDatHang_Temp.Value = ran.Next(100000, 999999).ToString();
+                    //Random ran = new Random();
+                    IDDonDatHang_Temp.Value = Session["IDNhanVien"].ToString();//ran.Next(100000, 999999).ToString();
                     cmbKhoLap.Value = Session["IDKho"].ToString();
                     txtNguoiLap.Text = Session["TenDangNhap"].ToString();
                     txtTongTrongLuong.Text = "0";

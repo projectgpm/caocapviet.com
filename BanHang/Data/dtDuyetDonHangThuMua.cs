@@ -43,6 +43,25 @@ namespace BanHang.Data
                 }
             }
         }
+        public void Xoa_IDCu_NhanVien(string IDNhanVien)
+        {
+            using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
+            {
+                try
+                {
+                    myConnection.Open();
+                    string strSQL = "DELETE [GPM_DuyetHangThuMua_Temp] WHERE [IDNhanVien] = '" + IDNhanVien + "'";
+                    using (SqlCommand myCommand = new SqlCommand(strSQL, myConnection))
+                    {
+                        myCommand.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Lỗi: Quá trình cập nhật dữ liệu gặp lỗi, hãy tải lại trang");
+                }
+            }
+        }
         public DataTable DanhSachChiTiet_Duyet_ThuMua(string IDDonHangThuMua)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))

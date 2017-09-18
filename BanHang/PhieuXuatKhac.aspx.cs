@@ -32,8 +32,8 @@ namespace BanHang
                     string ngayBD = year + "-" + thang + "-01 00:00:00.000";
                     string ngayKT = year + "-" + thang + "-" + dtSetting.tinhSoNgay(thang, year) + " 00:00:00.000";
 
-                    Random ran = new Random();
-                    IDPhieuXuatKhac_Temp.Value = ran.Next(100000, 999999).ToString();
+                    //Random ran = new Random();
+                    IDPhieuXuatKhac_Temp.Value = Session["IDNhanVien"].ToString();// ran.Next(100000, 999999).ToString();
                     txtSoDonXuat.Text = (dtSetting.LayMaKho(Session["IDKho"].ToString()) + "-" + dtPhieuXuatKhac.TongSoXuatTrongThang(ngayBD, ngayKT, Session["IDKho"].ToString()) + "-" + (DateTime.Now.ToString("ddMMyyyy")));
                     cmbNguoiLapPhieu.Text = Session["IDNhanVien"].ToString();
                     cmbKho.Text = Session["IDKho"].ToString();

@@ -25,12 +25,13 @@ namespace BanHang
             {
                 if (dtSetting.LayChucNangCha(Session["IDNhom"].ToString(), 53) == false)
                     Response.Redirect("Default.aspx");
-                LoadGrid(IDTemp.Value.ToString());
                 if (!IsPostBack)
                 {
-                    Random ran = new Random();
-                    IDTemp.Value = ran.Next(100000, 999999).ToString();
+                    //Random ran = new Random();
+                    IDTemp.Value = Session["IDNhanVien"].ToString(); //ran.Next(100000, 999999).ToString();
                 }
+                LoadGrid(IDTemp.Value.ToString());
+                
             }
         }
         protected void cmbHangHoa_ItemRequestedByValue(object source, DevExpress.Web.ListEditItemRequestedByValueEventArgs e)
