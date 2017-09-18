@@ -31,14 +31,21 @@ namespace BanHang
         {
             if (Session["KTBanLe"] == "GPMBanLe")
             {
-                if (!IsPostBack)
+                if (dtSetting.LayChucNang_HienThi(Session["IDNhom"].ToString()) == true)
                 {
-                    DanhSachHoaDon = new List<HoaDon>();
-                    ThemHoaDonMoi();
-                    btnNhanVien.Text = Session["TenThuNgan"].ToString();
-                    txtBarcode.Focus();
+                    if (!IsPostBack)
+                    {
+                        DanhSachHoaDon = new List<HoaDon>();
+                        ThemHoaDonMoi();
+                        btnNhanVien.Text = Session["TenThuNgan"].ToString();
+                        txtBarcode.Focus();
+                    }
+                    DanhSachKhachHang();
                 }
-                DanhSachKhachHang();
+                else
+                {
+                    Response.Redirect("DangNhap.aspx");
+                }
             }
             else
             {

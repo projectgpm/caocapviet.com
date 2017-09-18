@@ -23,10 +23,8 @@ namespace BanHang
             }
             else
             {
-                //if (dtSetting.LayTrangThaiMenu_ChucNang(Session["IDNhom"].ToString(), 19) == 1)
-                //    Response.Redirect("Default.aspx");
-                //if (dtSetting.LayTrangThaiMenu(Session["IDNhom"].ToString(), 19) == 1)
-                //{
+                if (dtSetting.LayChucNang_HienThi(Session["IDNhom"].ToString()) == true)
+                {
                     if (!IsPostBack)
                     {
                         dtPhieuChuyenKho data = new dtPhieuChuyenKho();
@@ -40,23 +38,18 @@ namespace BanHang
                             object ID = data.ThemPhieuChuyenKho(Session["IDKho"].ToString());
                             IDPhieuChuyenKho.Value = ID.ToString();
                         }
-                        
+
                         cmbNguoiLapPhieu.Text = Session["IDNhanVien"].ToString();
                         cmbTrangThaiPhieu.SelectedIndex = 0;
                         cmbKhoXuat.Value = Session["IDKho"].ToString();
                     }
                     LoadGrid(IDPhieuChuyenKho.Value.ToString());
-                //}
-                //else
-                //{
-                //    Response.Redirect("Default.aspx");
-                //}
+                }
+                else
+                {
+                    Response.Redirect("Default.aspx");
+                }
             }
-
-            //if (Session["IDKho"].ToString().CompareTo("1") != 0)
-            //{
-            //    Response.Redirect("DanhSachPhieuChuyenKho.aspx");
-            //}
         }
 
         private void LoadGrid(string IDPhieuChuyenKho)
