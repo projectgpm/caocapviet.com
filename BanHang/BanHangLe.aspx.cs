@@ -56,6 +56,7 @@ namespace BanHang
         public void BindGridChiTietHoaDon()
         {
             int MaHoaDon = tabControlSoHoaDon.ActiveTabIndex;
+            UpdateSTT(MaHoaDon);
             gridChiTietHoaDon.DataSource = DanhSachHoaDon[MaHoaDon].ListChiTietHoaDon;
             gridChiTietHoaDon.DataBind();
             formLayoutThanhToan.DataSource = DanhSachHoaDon[MaHoaDon];
@@ -126,7 +127,7 @@ namespace BanHang
                 //        default: exitHang.DonGia = float.Parse(tbThongTin.Rows[0]["GiaBan"].ToString()); break;
                 //    }
                 //}
-                //exitHang.TonKho = dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa.ToString(),Session["IDKho"].ToString());
+                exitHang.TonKho = dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa.ToString(), Session["IDKho"].ToString());
                 exitHang.ThanhTien = SoLuong * exitHang.DonGia;
                 DanhSachHoaDon[MaHoaDon].TongTien += SoLuong * exitHang.DonGia - ThanhTienOld;
                 DanhSachHoaDon[MaHoaDon].KhachCanTra = DanhSachHoaDon[MaHoaDon].TongTien - DanhSachHoaDon[MaHoaDon].GiamGia;
@@ -134,7 +135,7 @@ namespace BanHang
             else
             {
                 ChiTietHoaDon cthd = new ChiTietHoaDon();
-                cthd.STT = DanhSachHoaDon[MaHoaDon].ListChiTietHoaDon.Count + 1;
+               // cthd.STT = DanhSachHoaDon[MaHoaDon].ListChiTietHoaDon.Count + 1;
                 cthd.IDHangHoa = IDHangHoa;
                 cthd.MaHang = MaHang;
                 cthd.TonKho = dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa.ToString(), Session["IDKho"].ToString());
@@ -366,7 +367,8 @@ namespace BanHang
             {
                 int MaHoaDon = tabControlSoHoaDon.ActiveTabIndex;
                 int STT = Convert.ToInt32(((ASPxButton)sender).CommandArgument);
-                var itemToRemove = DanhSachHoaDon[MaHoaDon].ListChiTietHoaDon.Single(r => r.STT == STT);
+               // int a = DanhSachHoaDon[MaHoaDon].ListChiTietHoaDon.Count();
+                var itemToRemove =  DanhSachHoaDon[MaHoaDon].ListChiTietHoaDon.Single(r => r.STT == STT);
                 DanhSachHoaDon[MaHoaDon].SoLuongHang--;
                 DanhSachHoaDon[MaHoaDon].TongTien = DanhSachHoaDon[MaHoaDon].TongTien - itemToRemove.ThanhTien;
                 DanhSachHoaDon[MaHoaDon].KhachCanTra = DanhSachHoaDon[MaHoaDon].TongTien - DanhSachHoaDon[MaHoaDon].GiamGia;
@@ -378,7 +380,14 @@ namespace BanHang
                 Response.Write(ex.ToString());
             }
         }
-
+        protected void UpdateSTT(int MaHoaDon)
+        {
+            //int MaHoaDon = tabControlSoHoaDon.ActiveTabIndex;
+            for (int i = 1; i <= DanhSachHoaDon[MaHoaDon].ListChiTietHoaDon.Count; i++)
+            {
+                DanhSachHoaDon[MaHoaDon].ListChiTietHoaDon[i - 1].STT = i;
+            }
+        }
         protected void btnHuyHoaDon_Click(object sender, EventArgs e)
         {
             HuyHoaDon();
