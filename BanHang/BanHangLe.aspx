@@ -68,7 +68,7 @@
                                     <dx:ASPxComboBox ID="txtBarcode" runat="server" ValueType="System.String" 
                                         DropDownWidth="600" DropDownStyle="DropDown" 
                                         ValueField="ID"
-                                        NullText="Nhập Barcode hoặc mã hàng ......." Width="100%" TextFormatString="{0} - {1}"
+                                        NullText="Nhập Barcode hoặc mã hàng ......." Width="100%" TextFormatString="{0}"
                                         EnableCallbackMode="true" CallbackPageSize="10" 
                                         OnItemsRequestedByFilterCondition="txtBarcode_ItemsRequestedByFilterCondition"
                                         OnItemRequestedByValue="txtBarcode_ItemRequestedByValue" 
@@ -246,7 +246,7 @@
                             <td width="85%">
                                 <dx:ASPxComboBox ID="ccbKhachHang" runat="server" ValueType="System.String" 
                                     NullText="Nhập sdt hoặc tên khách hàng trong danh sách." Width="100%" 
-                                    DropDownWidth="550px" OnItemRequestedByValue="ccbKhachHang_ItemRequestedByValue" OnItemsRequestedByFilterCondition="ccbKhachHang_ItemsRequestedByFilterCondition"  >
+                                    DropDownWidth="550px" TextFormatString="{0}" OnItemRequestedByValue="ccbKhachHang_ItemRequestedByValue" OnItemsRequestedByFilterCondition="ccbKhachHang_ItemsRequestedByFilterCondition"  >
                                      <Columns>
                                         <dx:ListBoxColumn FieldName="TenKhachHang" Width="100%"  Caption="Tên khách hàng"/>
                                          <dx:ListBoxColumn FieldName="DienThoai" Width="100px" Caption="Số điện thoại" />    
