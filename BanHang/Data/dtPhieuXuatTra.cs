@@ -194,7 +194,7 @@ namespace BanHang.Data
                 try
                 {
                     myConnection.Open();
-                    string cmdText = "UPDATE [GPM_ChiTietPhieuXuatTra_Temp] SET [SoLuong] = @SoLuong,[GhiChu] = @GhiChu WHERE [IDHangHoa] = @IDHangHoa AND [IDPhieuXuatTra] = @IDPhieuXuatTra,";
+                    string cmdText = "UPDATE [GPM_ChiTietPhieuXuatTra_Temp] SET [SoLuong] = @SoLuong,[GhiChu] = @GhiChu WHERE [IDHangHoa] = @IDHangHoa AND [IDPhieuXuatTra] = @IDPhieuXuatTra";
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
                         myCommand.Parameters.AddWithValue("@IDPhieuXuatTra", IDPhieuXuatTra);

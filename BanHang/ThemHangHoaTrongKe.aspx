@@ -31,6 +31,8 @@
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer runat="server">
                             <dx:ASPxUploadControl ID="UploadFileExcel" runat="server" AllowedFileExtensions=".xls" Width ="100%">
+                                <BrowseButton Text="Chọn file...">
+                                </BrowseButton>
                             </dx:ASPxUploadControl>
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
