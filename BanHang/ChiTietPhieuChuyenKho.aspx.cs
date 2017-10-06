@@ -219,11 +219,11 @@ namespace BanHang
                 {
                     if (IDNhom == 3)
                     {
-                        dt.DuyetChuyenKho_Xuat_CH1(IDPhieuChuyenKho, IDNhanVien + "");
+                        dt.DuyetChuyenKho_Nhap_CH1(IDPhieuChuyenKho, IDNhanVien + "");
                     }
                     else if (IDNhom == 4)
                     {
-                        dt.DuyetChuyenKho_Xuat_GS1(IDPhieuChuyenKho, IDNhanVien + "");
+                        dt.DuyetChuyenKho_Nhap_GS1(IDPhieuChuyenKho, IDNhanVien + "");
                     }
                 }
                 else if (IDTrangThai == 3)
