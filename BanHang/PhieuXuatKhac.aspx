@@ -56,6 +56,8 @@
                         <LayoutItemNestedControlCollection>
                             <dx:LayoutItemNestedControlContainer runat="server">
                                 <dx:ASPxUploadControl ID="uploadfile" runat="server" Width="100%">
+                                    <BrowseButton Text="Chọn file...">
+                                    </BrowseButton>
                                 </dx:ASPxUploadControl>
                             </dx:LayoutItemNestedControlContainer>
                         </LayoutItemNestedControlCollection>
@@ -78,7 +80,7 @@
                                 <dx:ASPxComboBox ID="cmbHangHoa" runat="server" ValueType="System.String" 
                         DropDownWidth="600" DropDownStyle="DropDownList"   AutoPostBack="True"
                         ValueField="ID"
-                        NullText="Nhập mã hàng.." Width="100%" TextFormatString="{0} - {1}"
+                        NullText="Nhập mã hàng.." Width="100%" TextFormatString="{0}"
                         EnableCallbackMode="true" CallbackPageSize="10"  OnSelectedIndexChanged="cmbHangHoa_SelectedIndexChanged" OnItemRequestedByValue="cmbHangHoa_ItemRequestedByValue" OnItemsRequestedByFilterCondition="cmbHangHoa_ItemsRequestedByFilterCondition"               
                         >                                    
                         <Columns>

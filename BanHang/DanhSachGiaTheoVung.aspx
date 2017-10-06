@@ -28,7 +28,7 @@
             <dx:LayoutItem Caption="Chi Nhánh">
                 <LayoutItemNestedControlCollection>
                     <dx:LayoutItemNestedControlContainer runat="server">
-                        <dx:ASPxComboBox ID="cmbChiNhanh" runat="server" AutoPostBack="True" DataSourceID="sqlKho" DropDownWidth="400px" OnSelectedIndexChanged="cmbChiNhanh_SelectedIndexChanged" TextField="TenCuaHang" ValueField="ID" Width="100%">
+                        <dx:ASPxComboBox ID="cmbChiNhanh" runat="server" AutoPostBack="True" DataSourceID="sqlKho" TextFormatString="{0}" DropDownWidth="400px" OnSelectedIndexChanged="cmbChiNhanh_SelectedIndexChanged" TextField="TenCuaHang" ValueField="ID" Width="100%">
                             <Columns>
                                 <dx:ListBoxColumn Caption="Mã Chi Nhánh" FieldName="MaKho" Width="100px" />
                                 <dx:ListBoxColumn Caption="Tên Chi Nhánh" FieldName="TenCuaHang" Width="200px" />

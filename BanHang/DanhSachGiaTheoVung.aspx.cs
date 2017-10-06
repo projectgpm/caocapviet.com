@@ -68,27 +68,27 @@ namespace BanHang
                 string IDNhanVien = Session["IDNhanVien"].ToString();
                 if (float.Parse(GiaBan0) != giacu0)
                 {
-                    dtThayDoiGia.ThemLichSu(MaHang, IDHangHoa, IDDonViTinh, giacu0.ToString(), GiaBan0, IDNhanVien, "Thay đổi giá theo vùng(GiaBan)");
+                    dtThayDoiGia.ThemLichSu(MaHang, IDHangHoa, IDDonViTinh, giacu0.ToString(), GiaBan0, IDNhanVien, "Thay đổi giá theo vùng(GiaBan).Chi Nhánh: "+ dtSetting.LayTenKho(IDKho));
                 }
                 if (float.Parse(GiaBan1) != giacu1)
                 {
-                    dtThayDoiGia.ThemLichSu(MaHang, IDHangHoa, IDDonViTinh, giacu1.ToString(), GiaBan1, IDNhanVien, "Thay đổi giá theo vùng(GiaBan1)");
+                    dtThayDoiGia.ThemLichSu(MaHang, IDHangHoa, IDDonViTinh, giacu1.ToString(), GiaBan1, IDNhanVien, "Thay đổi giá theo vùng(GiaBan1).Chi Nhánh: " + dtSetting.LayTenKho(IDKho));
                 }
                 if (float.Parse(GiaBan2) != giacu2)
                 {
-                    dtThayDoiGia.ThemLichSu(MaHang, IDHangHoa, IDDonViTinh, giacu2.ToString(), GiaBan2, IDNhanVien, "Thay đổi giá theo vùng(GiaBan2)");
+                    dtThayDoiGia.ThemLichSu(MaHang, IDHangHoa, IDDonViTinh, giacu2.ToString(), GiaBan2, IDNhanVien, "Thay đổi giá theo vùng(GiaBan2).Chi Nhánh: " + dtSetting.LayTenKho(IDKho));
                 }
                 if (float.Parse(GiaBan3) != giacu3)
                 {
-                    dtThayDoiGia.ThemLichSu(MaHang, IDHangHoa, IDDonViTinh, giacu3.ToString(), GiaBan3, IDNhanVien, "Thay đổi giá theo vùng(GiaBan3)");
+                    dtThayDoiGia.ThemLichSu(MaHang, IDHangHoa, IDDonViTinh, giacu3.ToString(), GiaBan3, IDNhanVien, "Thay đổi giá theo vùng(GiaBan3).Chi Nhánh: " + dtSetting.LayTenKho(IDKho));
                 }
                 if (float.Parse(GiaBan4) != giacu4)
                 {
-                    dtThayDoiGia.ThemLichSu(MaHang, IDHangHoa, IDDonViTinh, giacu4.ToString(), GiaBan4, IDNhanVien, "Thay đổi giá theo vùng(GiaBan4)");
+                    dtThayDoiGia.ThemLichSu(MaHang, IDHangHoa, IDDonViTinh, giacu4.ToString(), GiaBan4, IDNhanVien, "Thay đổi giá theo vùng(GiaBan4).Chi Nhánh: " + dtSetting.LayTenKho(IDKho));
                 }
                 if (float.Parse(GiaBan5) != giacu5)
                 {
-                    dtThayDoiGia.ThemLichSu(MaHang, IDHangHoa, IDDonViTinh, giacu5.ToString(), GiaBan5, IDNhanVien, "Thay đổi giá theo vùng(GiaBan5)");
+                    dtThayDoiGia.ThemLichSu(MaHang, IDHangHoa, IDDonViTinh, giacu5.ToString(), GiaBan5, IDNhanVien, "Thay đổi giá theo vùng(GiaBan5).Chi Nhánh: " + dtSetting.LayTenKho(IDKho));
                 }
                 dtGiaTheoVung.CapNhat_GiaTheoVung(ID, IDKho, GiaBan0, GiaBan1, GiaBan2, GiaBan3, GiaBan4, GiaBan5);
                 e.Cancel = true;

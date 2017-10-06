@@ -170,19 +170,19 @@ namespace BanHang.Data
                 }
             }
         }
-        public void UpdatePhieuXuatKhac_temp(string IDPhieuXuatKhac, string IDHangHoa, int SoLuong)
+        public void UpdatePhieuXuatKhac_temp(string IDPhieuXuatKhac, string IDHangHoa, int SoLuongXuat)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
                 try
                 {
                     myConnection.Open();
-                    string cmdText = "UPDATE [GPM_PhieuXuatKhac_ChiTiet_Temp] SET [IDPhieuXuatKhac] = @IDPhieuXuatKhac,[SoLuong] = @SoLuong WHERE [IDHangHoa] = @IDHangHoa";
+                    string cmdText = "UPDATE [GPM_PhieuXuatKhac_ChiTiet_Temp] SET [IDPhieuXuatKhac] = @IDPhieuXuatKhac,[SoLuongXuat] = @SoLuongXuat WHERE [IDHangHoa] = @IDHangHoa";
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
                         myCommand.Parameters.AddWithValue("@IDPhieuXuatKhac", IDPhieuXuatKhac);
                         myCommand.Parameters.AddWithValue("@IDHangHoa", IDHangHoa);
-                        myCommand.Parameters.AddWithValue("@SoLuong", SoLuong);
+                        myCommand.Parameters.AddWithValue("@SoLuongXuat", SoLuongXuat);
                         myCommand.ExecuteNonQuery();
                     }
                     myConnection.Close();
