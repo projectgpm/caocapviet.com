@@ -117,6 +117,8 @@
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer10" runat="server">
                             <dx:ASPxUploadControl ID="uploadfile" runat="server" Width="100%">
+                                <BrowseButton Text="Chọn file...">
+                                </BrowseButton>
                             </dx:ASPxUploadControl>
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
