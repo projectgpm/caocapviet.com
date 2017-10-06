@@ -81,26 +81,26 @@ namespace BanHang
                     hh.IDTrangThaiHang = cmbTrangThaiHang.Value + "";
                     hh.GhiChu = txtGhiChu.Value + "";
 
-                    hh.GiaMuaTruocThue = txtGiaMuaTruocThue.Value + "";
-                    hh.GiaBanTruocThue = txtGiaBanTruocThue.Value + "";
-                    hh.GiaMuaSauThue = txtGiaMuaSauThue.Value + "";
-                    hh.GiaBanSauThue = txtGiaBanSauThue.Value + "";
-                    hh.GiaBan1 = txtGiaBan1.Value + "";
-                    hh.GiaBan2 = txtGiaBan2.Value + "";
-                    hh.GiaBan3 = txtGiaBan3.Value + "";
-                    hh.GiaBan4 = txtGiaBan4.Value + "";
-                    hh.GiaBan5 = txtGiaBan5.Value + "";
+                    hh.GiaMuaTruocThue = "0" + txtGiaMuaTruocThue.Value;
+                    hh.GiaBanTruocThue = "0" + txtGiaBanTruocThue.Value;
+                    hh.GiaMuaSauThue = "0" + txtGiaMuaSauThue.Value;
+                    hh.GiaBanSauThue = "0" + txtGiaBanSauThue.Value;
+                    hh.GiaBan1 = "0" + txtGiaBan1.Value;
+                    hh.GiaBan2 = "0" + txtGiaBan2.Value;
+                    hh.GiaBan3 = "0" + txtGiaBan3.Value;
+                    hh.GiaBan4 = "0" + txtGiaBan4.Value;
+                    hh.GiaBan5 = "0" + txtGiaBan5.Value;
 
                     DataTable da = data.getDanhSachHangHoa_ID_2(IDHangHoa);
-                    string g1 = da.Rows[0]["GiaMuaTruocThue"].ToString();
-                    string g2 = da.Rows[0]["GiaBanTruocThue"].ToString();
-                    string g3 = da.Rows[0]["GiaMuaSauThue"].ToString();
-                    string g4 = da.Rows[0]["GiaBan"].ToString();
-                    string g5 = da.Rows[0]["GiaBan1"].ToString();
-                    string g6 = da.Rows[0]["GiaBan2"].ToString();
-                    string g7 = da.Rows[0]["GiaBan3"].ToString();
-                    string g8 = da.Rows[0]["GiaBan4"].ToString();
-                    string g9 = da.Rows[0]["GiaBan5"].ToString();
+                    string g1 = da.Rows[0]["GiaMuaTruocThue"] == null ? "0" : da.Rows[0]["GiaMuaTruocThue"].ToString();
+                    string g2 = da.Rows[0]["GiaBanTruocThue"] == null ? "0" : da.Rows[0]["GiaBanTruocThue"].ToString();
+                    string g3 = da.Rows[0]["GiaMuaSauThue"] == null ? "0" : da.Rows[0]["GiaMuaSauThue"].ToString(); 
+                    string g4 = da.Rows[0]["GiaBan"] == null ? "0" : da.Rows[0]["GiaBan"].ToString();
+                    string g5 = da.Rows[0]["GiaBan1"] == null ? "0" : da.Rows[0]["GiaBan1"].ToString();
+                    string g6 = da.Rows[0]["GiaBan2"] == null ? "0" : da.Rows[0]["GiaBan2"].ToString();
+                    string g7 = da.Rows[0]["GiaBan3"] == null ? "0" : da.Rows[0]["GiaBan3"].ToString();
+                    string g8 = da.Rows[0]["GiaBan4"] == null ? "0" : da.Rows[0]["GiaBan4"].ToString();
+                    string g9 = da.Rows[0]["GiaBan5"] == null ? "0" : da.Rows[0]["GiaBan5"].ToString();
 
                     string IDNV = Session["IDNhanVien"].ToString();
 

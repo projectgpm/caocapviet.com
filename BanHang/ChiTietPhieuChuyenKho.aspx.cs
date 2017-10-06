@@ -44,7 +44,7 @@ namespace BanHang
             int IDTrangThai = Int32.Parse(daPhieu.Rows[0]["IDTrangThai"].ToString());
             int DaXoa = Int32.Parse(daPhieu.Rows[0]["DaXoa"].ToString());
 
-            if (IDTrangThai == 4 || DaXoa == 1) btnXacNhanChuyenKho.Enabled = false;
+            if (IDTrangThai == 4 || DaXoa == 1) { btnXacNhanChuyenKho.Enabled = false; gridHangHoaChiTiet.Columns["chucnang"].Visible = false; }
             if (IDTrangThai > 1) gridHangHoaChiTiet.Columns["chucnang"].Visible = false;
             if (IDKho != IDKhoXuat) gridHangHoaChiTiet.Columns["chucnang"].Visible = false;
             
