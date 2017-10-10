@@ -157,7 +157,7 @@
                                         <dx:GridViewDataTextColumn Caption="Người giao" FieldName="NguoiGiao" ShowInCustomizationForm="True" VisibleIndex="16">
                                         </dx:GridViewDataTextColumn>
                                         <dx:GridViewDataHyperLinkColumn Caption="File chứng từ" FieldName="FileChungTu" ShowInCustomizationForm="True" VisibleIndex="15">
-                                            <PropertiesHyperLinkEdit ImageHeight="30px" ImageUrl="~/image/iconchungtu.png" ImageWidth="30px">
+                                            <PropertiesHyperLinkEdit ImageHeight="30px" ImageUrl="~/image/imgdownload.png" ImageWidth="30px">
                                             </PropertiesHyperLinkEdit>
                                         </dx:GridViewDataHyperLinkColumn>
                                     </Columns>

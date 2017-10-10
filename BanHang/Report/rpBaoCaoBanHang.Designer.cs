@@ -606,7 +606,7 @@
             // 
             this.xrLabel22.Dpi = 100F;
             this.xrLabel22.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold);
-            this.xrLabel22.LocationFloat = new DevExpress.Utils.PointFloat(391.7582F, 201.1114F);
+            this.xrLabel22.LocationFloat = new DevExpress.Utils.PointFloat(390.7582F, 201.1114F);
             this.xrLabel22.Name = "xrLabel22";
             this.xrLabel22.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel22.SizeF = new System.Drawing.SizeF(105.2083F, 23F);
@@ -646,7 +646,7 @@
             // 
             this.xrTable4.Dpi = 100F;
             this.xrTable4.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold);
-            this.xrTable4.LocationFloat = new DevExpress.Utils.PointFloat(47.991F, 298.3164F);
+            this.xrTable4.LocationFloat = new DevExpress.Utils.PointFloat(49.15744F, 298.3164F);
             this.xrTable4.Name = "xrTable4";
             this.xrTable4.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow4});
@@ -682,7 +682,7 @@
             this.xrTableCell27.Name = "xrTableCell27";
             this.xrTableCell27.StylePriority.UseBorders = false;
             this.xrTableCell27.Text = "STT";
-            this.xrTableCell27.Weight = 0.45815121949411008D;
+            this.xrTableCell27.Weight = 0.45815114328892059D;
             // 
             // xrTableCell28
             // 
@@ -693,7 +693,7 @@
             this.xrTableCell28.Name = "xrTableCell28";
             this.xrTableCell28.StylePriority.UseBorders = false;
             this.xrTableCell28.Text = "Mã hàng";
-            this.xrTableCell28.Weight = 0.74778742918353525D;
+            this.xrTableCell28.Weight = 0.74778720030175D;
             // 
             // xrTableCell29
             // 
@@ -704,7 +704,7 @@
             this.xrTableCell29.Name = "xrTableCell29";
             this.xrTableCell29.StylePriority.UseBorders = false;
             this.xrTableCell29.Text = "Tên hàng";
-            this.xrTableCell29.Weight = 1.6737130262406486D;
+            this.xrTableCell29.Weight = 1.6737129499467203D;
             // 
             // xrTableCell30
             // 
@@ -715,7 +715,7 @@
             this.xrTableCell30.Name = "xrTableCell30";
             this.xrTableCell30.StylePriority.UseBorders = false;
             this.xrTableCell30.Text = "ĐVT";
-            this.xrTableCell30.Weight = 0.65586840974979743D;
+            this.xrTableCell30.Weight = 0.65586902010122472D;
             // 
             // xrTableCell31
             // 
@@ -726,7 +726,7 @@
             this.xrTableCell31.Name = "xrTableCell31";
             this.xrTableCell31.StylePriority.UseBorders = false;
             this.xrTableCell31.Text = "Hệ số";
-            this.xrTableCell31.Weight = 0.65586840974979743D;
+            this.xrTableCell31.Weight = 0.65586718904694274D;
             // 
             // xrTableCell32
             // 
@@ -737,7 +737,7 @@
             this.xrTableCell32.Name = "xrTableCell32";
             this.xrTableCell32.StylePriority.UseBorders = false;
             this.xrTableCell32.Text = "Thuế";
-            this.xrTableCell32.Weight = 0.65586840974979743D;
+            this.xrTableCell32.Weight = 0.65586902010122483D;
             // 
             // xrTableCell34
             // 
@@ -748,7 +748,7 @@
             this.xrTableCell34.Name = "xrTableCell34";
             this.xrTableCell34.StylePriority.UseBorders = false;
             this.xrTableCell34.Text = "Đơn giá";
-            this.xrTableCell34.Weight = 0.88734969786906837D;
+            this.xrTableCell34.Weight = 0.88735023192656726D;
             // 
             // xrTableCell35
             // 
@@ -759,7 +759,7 @@
             this.xrTableCell35.Name = "xrTableCell35";
             this.xrTableCell35.StylePriority.UseBorders = false;
             this.xrTableCell35.Text = "Số lượng bán";
-            this.xrTableCell35.Weight = 0.91740401456086507D;
+            this.xrTableCell35.Weight = 0.91740393826693667D;
             // 
             // xrTableCell36
             // 
@@ -770,7 +770,7 @@
             this.xrTableCell36.Name = "xrTableCell36";
             this.xrTableCell36.StylePriority.UseBorders = false;
             this.xrTableCell36.Text = "Tổng tiền";
-            this.xrTableCell36.Weight = 1.4583334887377595D;
+            this.xrTableCell36.Weight = 1.4583340990891869D;
             // 
             // xrTableCell37
             // 
@@ -781,7 +781,7 @@
             this.xrTableCell37.Name = "xrTableCell37";
             this.xrTableCell37.StylePriority.UseBorders = false;
             this.xrTableCell37.Text = "Chiết khấu";
-            this.xrTableCell37.Weight = 0.9151676865806565D;
+            this.xrTableCell37.Weight = 0.91516638958387342D;
             // 
             // xrTableCell38
             // 
@@ -792,7 +792,7 @@
             this.xrTableCell38.Name = "xrTableCell38";
             this.xrTableCell38.StylePriority.UseBorders = false;
             this.xrTableCell38.Text = "Ghi chú";
-            this.xrTableCell38.Weight = 1.0146659619997289D;
+            this.xrTableCell38.Weight = 1.014667258996512D;
             // 
             // xrLabel25
             // 
@@ -812,7 +812,7 @@
             // 
             this.xrLabel26.Dpi = 100F;
             this.xrLabel26.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold);
-            this.xrLabel26.LocationFloat = new DevExpress.Utils.PointFloat(391.7581F, 152.278F);
+            this.xrLabel26.LocationFloat = new DevExpress.Utils.PointFloat(390.7581F, 152.278F);
             this.xrLabel26.Name = "xrLabel26";
             this.xrLabel26.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel26.SizeF = new System.Drawing.SizeF(105.2083F, 22.99998F);

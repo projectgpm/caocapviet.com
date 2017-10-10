@@ -157,7 +157,7 @@
                  <HeaderStyle Wrap="True" />
              </dx:GridViewDataComboBoxColumn>
              <dx:GridViewDataHyperLinkColumn Caption="Chứng Từ" FieldName="ChungTu" VisibleIndex="12" UnboundType="String" Name="ChungTu">
-                  <PropertiesHyperLinkEdit ImageUrl="image/download.png" ImageWidth="90" ImageHeight="60"></PropertiesHyperLinkEdit>       
+                  <PropertiesHyperLinkEdit ImageUrl="image/imgdownload.png" ImageWidth="30px" ImageHeight="30px"></PropertiesHyperLinkEdit>       
              </dx:GridViewDataHyperLinkColumn>
          </Columns>
         <Styles>

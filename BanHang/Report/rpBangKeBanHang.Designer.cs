@@ -634,11 +634,11 @@
             // 
             this.xrTable5.Dpi = 100F;
             this.xrTable5.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold);
-            this.xrTable5.LocationFloat = new DevExpress.Utils.PointFloat(100.5128F, 255.0653F);
+            this.xrTable5.LocationFloat = new DevExpress.Utils.PointFloat(102.0405F, 255.0653F);
             this.xrTable5.Name = "xrTable5";
             this.xrTable5.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow5});
-            this.xrTable5.SizeF = new System.Drawing.SizeF(898.9745F, 20.36582F);
+            this.xrTable5.SizeF = new System.Drawing.SizeF(898.9745F, 20.3658F);
             this.xrTable5.StylePriority.UseFont = false;
             this.xrTable5.StylePriority.UseTextAlignment = false;
             this.xrTable5.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
@@ -678,7 +678,7 @@
             this.xrTableCell30.Name = "xrTableCell30";
             this.xrTableCell30.StylePriority.UseBorders = false;
             this.xrTableCell30.Text = "Mã hàng";
-            this.xrTableCell30.Weight = 0.74778742918353525D;
+            this.xrTableCell30.Weight = 0.749840096187532D;
             // 
             // xrTableCell31
             // 
@@ -689,7 +689,7 @@
             this.xrTableCell31.Name = "xrTableCell31";
             this.xrTableCell31.StylePriority.UseBorders = false;
             this.xrTableCell31.Text = "Tên hàng";
-            this.xrTableCell31.Weight = 1.8330267997827825D;
+            this.xrTableCell31.Weight = 1.8361474130511171D;
             // 
             // xrTableCell32
             // 
@@ -700,7 +700,7 @@
             this.xrTableCell32.Name = "xrTableCell32";
             this.xrTableCell32.StylePriority.UseBorders = false;
             this.xrTableCell32.Text = "ĐVT";
-            this.xrTableCell32.Weight = 0.81518187811622433D;
+            this.xrTableCell32.Weight = 0.81657004012749046D;
             // 
             // xrTableCell33
             // 
@@ -711,7 +711,7 @@
             this.xrTableCell33.Name = "xrTableCell33";
             this.xrTableCell33.StylePriority.UseBorders = false;
             this.xrTableCell33.Text = "Đơn giá";
-            this.xrTableCell33.Weight = 1.1937222277897406D;
+            this.xrTableCell33.Weight = 1.195754413213743D;
             // 
             // xrTableCell34
             // 
@@ -722,7 +722,7 @@
             this.xrTableCell34.Name = "xrTableCell34";
             this.xrTableCell34.StylePriority.UseBorders = false;
             this.xrTableCell34.Text = "Số lượng";
-            this.xrTableCell34.Weight = 1.0889731867362285D;
+            this.xrTableCell34.Weight = 1.0908256997924435D;
             // 
             // xrTableCell35
             // 
@@ -733,7 +733,7 @@
             this.xrTableCell35.Name = "xrTableCell35";
             this.xrTableCell35.StylePriority.UseBorders = false;
             this.xrTableCell35.Text = "Chiết khấu";
-            this.xrTableCell35.Weight = 1.5196065909136411D;
+            this.xrTableCell35.Weight = 1.5221940717116722D;
             // 
             // xrTableCell36
             // 
@@ -744,7 +744,7 @@
             this.xrTableCell36.Name = "xrTableCell36";
             this.xrTableCell36.StylePriority.UseBorders = false;
             this.xrTableCell36.Text = "Tổng tiền";
-            this.xrTableCell36.Weight = 1.3332939668475576D;
+            this.xrTableCell36.Weight = 1.3355640595794807D;
             // 
             // xrLabel10
             // 
@@ -832,10 +832,10 @@
             // 
             this.xrLabel16.Dpi = 100F;
             this.xrLabel16.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold);
-            this.xrLabel16.LocationFloat = new DevExpress.Utils.PointFloat(380.0416F, 183.3022F);
+            this.xrLabel16.LocationFloat = new DevExpress.Utils.PointFloat(381.0415F, 183.3022F);
             this.xrLabel16.Name = "xrLabel16";
             this.xrLabel16.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel16.SizeF = new System.Drawing.SizeF(121.412F, 23F);
+            this.xrLabel16.SizeF = new System.Drawing.SizeF(106.4138F, 23.00002F);
             this.xrLabel16.StylePriority.UseFont = false;
             this.xrLabel16.StylePriority.UseTextAlignment = false;
             this.xrLabel16.Text = "Khách hàng:";

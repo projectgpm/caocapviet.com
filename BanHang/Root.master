@@ -217,11 +217,12 @@
                 </div>
             </ExpandBarTemplate>
         </dx:ASPxPanel>
-        <dx:ASPxLabel ID="lblChao" style="float:right; padding:5px;" runat="server"></dx:ASPxLabel> 
+        <dx:ASPxLabel ID="lblChao" style="float:left; padding:5px;" runat="server"></dx:ASPxLabel> 
         <dx:ASPxPanel ID="MainPane" runat="server" CssClass="mainContentPane">
             <PanelCollection>
                 <dx:PanelContent ID="PanelContent2" runat="server" SupportsDisabledAttribute="True">
-                    <asp:ContentPlaceHolder ID="Content" runat="server" />
+                    <asp:ContentPlaceHolder ID="Content" runat="server" >
+                    </asp:ContentPlaceHolder>
                 </dx:PanelContent>
             </PanelCollection>
         </dx:ASPxPanel>

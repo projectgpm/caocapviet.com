@@ -1194,7 +1194,7 @@
             this.xrTableCell73.Name = "xrTableCell73";
             this.xrTableCell73.StylePriority.UseBorders = false;
             this.xrTableCell73.Text = "STT";
-            this.xrTableCell73.Weight = 0.45815121949411008D;
+            this.xrTableCell73.Weight = 0.47066964405788941D;
             // 
             // xrTableCell74
             // 
@@ -1205,7 +1205,7 @@
             this.xrTableCell74.Name = "xrTableCell74";
             this.xrTableCell74.StylePriority.UseBorders = false;
             this.xrTableCell74.Text = "Số phiếu";
-            this.xrTableCell74.Weight = 1.2464169528045748D;
+            this.xrTableCell74.Weight = 1.2338985282407955D;
             // 
             // xrTableCell75
             // 
@@ -1304,7 +1304,7 @@
             this.xrTableCell83.Name = "xrTableCell83";
             this.xrTableCell83.StylePriority.UseBorders = false;
             this.xrTableCell83.Text = "Nhân viên";
-            this.xrTableCell83.Weight = 0.85836805479481215D;
+            this.xrTableCell83.Weight = 0.870889264087501D;
             // 
             // xrTableCell84
             // 
@@ -1315,7 +1315,7 @@
             this.xrTableCell84.Name = "xrTableCell84";
             this.xrTableCell84.StylePriority.UseBorders = false;
             this.xrTableCell84.Text = "Ghi chú";
-            this.xrTableCell84.Weight = 1.8421642282354296D;
+            this.xrTableCell84.Weight = 1.8296430189427406D;
             // 
             // xrLabel25
             // 
