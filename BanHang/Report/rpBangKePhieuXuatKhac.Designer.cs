@@ -381,7 +381,7 @@
             this.xrTableCell21.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell21.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "GPM_PhieuXuatKhac.GPM_PhieuXuatKhacGPM_PhieuXuatKhac_ChiTiet.TrongLuong")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "GPM_PhieuXuatKhac.GPM_PhieuXuatKhacGPM_PhieuXuatKhac_ChiTiet.TrongLuong", "{0:#,#}")});
             this.xrTableCell21.Dpi = 100F;
             this.xrTableCell21.Name = "xrTableCell21";
             this.xrTableCell21.StylePriority.UseBorders = false;
@@ -392,7 +392,7 @@
             this.xrTableCell22.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell22.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "GPM_PhieuXuatKhac.GPM_PhieuXuatKhacGPM_PhieuXuatKhac_ChiTiet.GiaBanTruocThue")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "GPM_PhieuXuatKhac.GPM_PhieuXuatKhacGPM_PhieuXuatKhac_ChiTiet.GiaBanTruocThue", "{0:#,#}")});
             this.xrTableCell22.Dpi = 100F;
             this.xrTableCell22.Name = "xrTableCell22";
             this.xrTableCell22.StylePriority.UseBorders = false;
@@ -403,7 +403,7 @@
             this.xrTableCell23.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell23.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "GPM_PhieuXuatKhac.GPM_PhieuXuatKhacGPM_PhieuXuatKhac_ChiTiet.TongTien")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "GPM_PhieuXuatKhac.GPM_PhieuXuatKhacGPM_PhieuXuatKhac_ChiTiet.TongTien", "{0:#,#}")});
             this.xrTableCell23.Dpi = 100F;
             this.xrTableCell23.Name = "xrTableCell23";
             this.xrTableCell23.StylePriority.UseBorders = false;
@@ -617,6 +617,7 @@
             this.xrTableCell30.Dpi = 100F;
             this.xrTableCell30.Name = "xrTableCell30";
             this.xrTableCell30.StylePriority.UseBorders = false;
+            xrSummary4.FormatString = "{0:#,# VND}";
             xrSummary4.Running = DevExpress.XtraReports.UI.SummaryRunning.Report;
             this.xrTableCell30.Summary = xrSummary4;
             this.xrTableCell30.Weight = 1.3712621596851764D;

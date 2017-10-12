@@ -185,7 +185,7 @@
             this.xrTableCell13.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell13.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "GPM_PhieuKhachHangTraHang.GiaBan")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "GPM_PhieuKhachHangTraHang.GiaBan", "{0:#,#}")});
             this.xrTableCell13.Dpi = 100F;
             this.xrTableCell13.Name = "xrTableCell13";
             this.xrTableCell13.StylePriority.UseBorders = false;
