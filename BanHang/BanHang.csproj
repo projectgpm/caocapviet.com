@@ -183,7 +183,6 @@
     <Content Include="HangHoa_Barcode.aspx" />
     <Content Include="HangHoa_ChiTiet.aspx" />
     <Content Include="HangHoa_GiaTheoSL.aspx" />
-    <Content Include="HangHoa_HangQuyDoi.aspx" />
     <Content Include="HangHoa_Page.aspx" />
     <Content Include="HangSanXuat.aspx" />
     <Content Include="HeThongQuyDoi.aspx" />
@@ -881,13 +880,6 @@
     </Compile>
     <Compile Include="HangHoa_GiaTheoSL.aspx.designer.cs">
       <DependentUpon>HangHoa_GiaTheoSL.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="HangHoa_HangQuyDoi.aspx.cs">
-      <DependentUpon>HangHoa_HangQuyDoi.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="HangHoa_HangQuyDoi.aspx.designer.cs">
-      <DependentUpon>HangHoa_HangQuyDoi.aspx</DependentUpon>
     </Compile>
     <Compile Include="HangHoa_Page.aspx.cs">
       <DependentUpon>HangHoa_Page.aspx</DependentUpon>

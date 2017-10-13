@@ -40,14 +40,20 @@ namespace BanHang
         {
             dataHangHoa data = new dataHangHoa();
 
+            DataTable da = data.getDanhSachHangHoa_Ten_ID();
+            da.Rows.Add(0, "000000", "Không quy đổi");
+            cmbHangQuyDoi.DataSource = da;
+            cmbHangQuyDoi.TextField = "TenHangHoa";
+            cmbHangQuyDoi.ValueField = "ID";
+            cmbHangQuyDoi.DataBind();
+            cmbHangQuyDoi.SelectedIndex = da.Rows.Count;
+
             gridHangHoaBarcode.DataSource = data.GetListBarCode(IDHangHoa.Value);
             gridHangHoaBarcode.DataBind();
             
             gridHangHoaGiaTheoSL.DataSource = data.GetListHangHoa_GiaTheoSL(IDHangHoa.Value);
             gridHangHoaGiaTheoSL.DataBind();
             
-            gridHangHoaQuyDoi.DataSource = data.GetListHangHoaQuyDoi(IDHangHoa.Value);
-            gridHangHoaQuyDoi.DataBind();
         }
 
         protected void cmbDonViTinh_SelectedIndexChanged(object sender, EventArgs e)
@@ -198,65 +204,6 @@ namespace BanHang
             Load();
         }
 
-        protected void gridHangHoaQuyDoi_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
-        {
-            string ID = e.Keys[0].ToString();
-            dataHangHoa data = new dataHangHoa();
-            data.deleteHangHoaQuyDoi(ID);
-            e.Cancel = true;
-            gridHangHoaQuyDoi.CancelEdit();
-            Load();
-        }
-
-        protected void gridHangHoaQuyDoi_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
-        {
-            if (e.NewValues["MaHang"] != null)
-            {
-                string MaHang = e.NewValues["MaHang"].ToString();
-                dataHangHoa data = new dataHangHoa();
-                DataTable daMaHang = data.getHangHoa_MaHang(MaHang);
-                if (daMaHang.Rows.Count != 0)
-                {
-                    if (!dtHangHoa.KiemTraMaHang_HangQuyDoi(IDHangHoa.Value + "", daMaHang.Rows[0]["ID"].ToString()))
-                    {
-                        data.insertHangHoa_QuyDoi(IDHangHoa.Value + "", daMaHang.Rows[0]["ID"].ToString());
-                        e.Cancel = true;
-                        gridHangHoaQuyDoi.CancelEdit();
-                    }
-                    else throw new Exception("Mã hàng đã có trong danh sách hoặc trạng thái hàng không được phép sử dụng.");
-                }
-                else throw new Exception("Mã hàng không tồn tại.");
-            }
-            else throw new Exception("Không được bỏ trống dữ liệu.");
-
-            Load();
-        }
-
-        protected void gridHangHoaQuyDoi_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
-        {
-            if (e.NewValues["MaHang"] != null)
-            {
-                string MaHang = e.NewValues["MaHang"].ToString();
-                string ID = e.Keys[0].ToString();
-                dataHangHoa data = new dataHangHoa();
-                DataTable daMaHang = data.getHangHoa_MaHang(MaHang);
-                if (daMaHang.Rows.Count != 0)
-                {
-                    if (!dtHangHoa.KiemTraMaHang_HangQuyDoi(IDHangHoa.Value + "", daMaHang.Rows[0]["ID"].ToString()))
-                    {
-                        data.updateHangHoa_QuyDoi(ID, daMaHang.Rows[0]["ID"].ToString());
-                        e.Cancel = true;
-                        gridHangHoaQuyDoi.CancelEdit();
-                    }
-                    else throw new Exception("Mã hàng đã có trong danh sách hoặc trạng thái hàng không được phép sử dụng.");
-                }
-                else throw new Exception("Mã hàng không tồn tại.");
-            }
-            else throw new Exception("Không được bỏ trống dữ liệu.");
-
-            Load();
-        }
-
         protected void gridHangHoaGiaTheoSL_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
         {
             if (e.NewValues["SoLuongBD"] != null && e.NewValues["SoLuongKT"] != null && e.NewValues["GiaBan"] != null)
@@ -336,6 +283,7 @@ namespace BanHang
                 hh.HanSuDung = txtHangSuDung.Value + "";
                 hh.IDTrangThaiHang = cmbTrangThaiHang.Value + "";
                 hh.GhiChu = txtGhiChu.Value + "";
+                hh.IDHangQuyDoi = cmbHangQuyDoi.Value + "";
 
                 hh.GiaMuaTruocThue = txtGiaMuaTruocThue.Value + "";
                 hh.GiaBanTruocThue = txtGiaBanTruocThue.Value + "";
@@ -357,58 +305,20 @@ namespace BanHang
             else Response.Write("<script language='JavaScript'> alert('Các trường (*) không được bỏ trống.'); </script>");
         }
 
+        protected void cmbNhomHang_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            dataHangHoa data = new dataHangHoa();
 
+            DataTable da = data.getDanhSachHangHoa_Ten_ID();
+            da.Rows.Add(0, "000000", "Không quy đổi");
+            cmbHangQuyDoi.DataSource = da;
+            cmbHangQuyDoi.TextField = "TenHangHoa";
+            cmbHangQuyDoi.ValueField = "ID";
+            cmbHangQuyDoi.DataBind();
+            cmbHangQuyDoi.SelectedIndex = da.Rows.Count;
+
+            dataNhomHang da1 = new dataNhomHang();
+            cmbNganhHang.Value = da1.LayIDNganhHang_ID(cmbNhomHang.Value + "");
+        }
     }
-
-    //[Serializable]
-    //public class HangHoaBarCode
-    //{
-    //    public int STT { get; set; }
-    //    public int IDTrangThaiBarcode { get; set; }
-    //    public string Barcode { get; set; }
-    //    public DateTime NgayCapNhat { get; set; }
-    //    public HangHoaBarCode(int stt, int IDTT, string bc)
-    //    {
-    //        STT = 1;
-    //        IDTrangThaiBarcode = 1;
-    //        Barcode = bc;
-    //        NgayCapNhat = DateTime.Now;
-    //    }
-    //}
-
-    //[Serializable]
-    //public class HangHoaQuyDoi
-    //{
-    //    public int STT { get; set; }
-    //    public int MaHang { get; set; }
-    //    public int IDHangHoa { get; set; }
-    //    public int IDDonViTinh { get; set; }
-    //    public int HeSo { get; set; }
-    //    public HangHoaQuyDoi()
-    //    {
-    //        STT = 1;
-    //        MaHang = 1;
-    //        IDHangHoa = 1;
-    //        IDDonViTinh = 1;
-    //        HeSo = 1;
-    //    }
-    //}
-
-    //[Serializable]
-    //public class GiaHangHoaTheoSoLuong
-    //{
-    //    public int STT { get; set; }
-    //    public int SL1 { get; set; }
-    //    public int SL2 { get; set; }
-    //    public float GiaBan { get; set; }
-    //    public DateTime NgayCapNhat { get; set; }
-    //    public GiaHangHoaTheoSoLuong()
-    //    {
-    //        STT = 1;
-    //        SL1 = 1;
-    //        SL2 = 1;
-    //        GiaBan = 1;
-    //        NgayCapNhat = DateTime.Now;
-    //    }
-    //}
 }

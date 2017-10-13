@@ -94,51 +94,6 @@ namespace BanHang {
         protected global::DevExpress.Web.ASPxGridView gridHangHoa;
         
         /// <summary>
-        /// sqlTrangThaiBarCode control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource sqlTrangThaiBarCode;
-        
-        /// <summary>
-        /// sqlTrangThaiHang control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource sqlTrangThaiHang;
-        
-        /// <summary>
-        /// sqlNhomDatHang control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource sqlNhomDatHang;
-        
-        /// <summary>
-        /// sqlThue control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource sqlThue;
-        
-        /// <summary>
-        /// sqlHangSX control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource sqlHangSX;
-        
-        /// <summary>
         /// sqlDonViTinh control.
         /// </summary>
         /// <remarks>
@@ -146,24 +101,6 @@ namespace BanHang {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource sqlDonViTinh;
-        
-        /// <summary>
-        /// sqlNhomHang control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource sqlNhomHang;
-        
-        /// <summary>
-        /// HangHoaExport1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxGridView HangHoaExport1;
         
         /// <summary>
         /// popup control.

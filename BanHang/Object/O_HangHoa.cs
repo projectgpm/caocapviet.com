@@ -22,6 +22,7 @@ namespace BanHang.Object
         public string HanSuDung;
         public string IDTrangThaiHang;
         public string GhiChu;
+        public string IDHangQuyDoi;
 
         public string GiaBanSauThue;
         public string GiaBan1;
