@@ -9,12 +9,28 @@ namespace BanHang.Data
 {
     public class dtTraCuuMaHang
     {
+
         public DataTable DanhSachBarcode(string IDHangHoa)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = " SELECT * FROM [GPM_HangHoa_Barcode] WHERE [IDHangHoa] = N'" + IDHangHoa + "'";
+                string cmdText = " SELECT * FROM [GPM_HangHoa_Barcode] WHERE [IDHangHoa] = N'" + IDHangHoa + "' AND DaXoa = 0";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    return tb;
+                }
+            }
+        }
+        public DataTable DanhSachGiaTheoSoLuong(string IDHangHoa)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = " SELECT * FROM [GPM_HangHoa_GiaTheoSL] WHERE [IDHangHoa] = N'" + IDHangHoa + "' AND DaXoa = 0";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {

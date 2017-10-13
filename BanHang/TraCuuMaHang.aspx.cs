@@ -30,6 +30,7 @@ namespace BanHang
                         {
                             LoadDanhSachBarcode(dtHangHoa.LayIDHangHoa_MaHang(MaHang));
                             LoadDanhSachHangQuiDoi(dtHangHoa.LayIDHangHoa_MaHang(MaHang));
+                            LoadDanhSachGiaBanTheoSoLuong(dtHangHoa.LayIDHangHoa_MaHang(MaHang));
                         }
                     }
                 }
@@ -48,6 +49,12 @@ namespace BanHang
             data = new dtTraCuuMaHang();
             gridHangQuiDoi.DataSource = data.DanhSachHangHoaQuiDoi(IDHangHoa);
             gridHangQuiDoi.DataBind();
+        }
+        public void LoadDanhSachGiaBanTheoSoLuong(string IDHangHoa)
+        {
+            data = new dtTraCuuMaHang();
+            gridSoLuong.DataSource = data.DanhSachGiaTheoSoLuong(IDHangHoa);
+            gridSoLuong.DataBind();
         }
         protected void btnTraCuu_Click(object sender, EventArgs e)
         {
@@ -74,6 +81,7 @@ namespace BanHang
                         txtGhiChu.Text = dr["GhiChu"].ToString();
                         LoadDanhSachBarcode(dtHangHoa.LayIDHangHoa_MaHang(MaHang));
                         LoadDanhSachHangQuiDoi(dtHangHoa.LayIDHangHoa_MaHang(MaHang));
+                        LoadDanhSachGiaBanTheoSoLuong(dtHangHoa.LayIDHangHoa_MaHang(MaHang));
                     }
                     else
                     {

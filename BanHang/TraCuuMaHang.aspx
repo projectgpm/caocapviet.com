@@ -26,6 +26,14 @@
         </dx:LayoutGroup>
         <dx:LayoutGroup Caption="Thông Tin" ColCount="3" ColSpan="3" RowSpan="3">
             <Items>
+                <dx:LayoutItem Caption="Ngành Hàng">
+                    <LayoutItemNestedControlCollection>
+                        <dx:LayoutItemNestedControlContainer runat="server">
+                            <dx:ASPxTextBox ID="ASPxFormLayout1_E2" runat="server">
+                            </dx:ASPxTextBox>
+                        </dx:LayoutItemNestedControlContainer>
+                    </LayoutItemNestedControlCollection>
+                </dx:LayoutItem>
                 <dx:LayoutItem Caption="Nhóm Hàng">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer11" runat="server">
@@ -127,6 +135,162 @@
                             <dx:ASPxTextBox ID="txtGhiChu" runat="server" Enabled="False"  Width="100%">
                             </dx:ASPxTextBox>
                         </dx:LayoutItemNestedControlContainer>
+                    </LayoutItemNestedControlCollection>
+                </dx:LayoutItem>
+                <dx:LayoutItem Caption="Tần Suất Bán Hàng">
+                    <LayoutItemNestedControlCollection>
+                        <dx:LayoutItemNestedControlContainer runat="server">
+                            <dx:ASPxSpinEdit ID="ASPxFormLayout1_E6" runat="server">
+                            </dx:ASPxSpinEdit>
+                        </dx:LayoutItemNestedControlContainer>
+                    </LayoutItemNestedControlCollection>
+                </dx:LayoutItem>
+                <dx:LayoutItem Caption="Tồn Kho">
+                    <LayoutItemNestedControlCollection>
+                        <dx:LayoutItemNestedControlContainer runat="server">
+                            <dx:ASPxSpinEdit ID="ASPxFormLayout1_E4" runat="server">
+                            </dx:ASPxSpinEdit>
+                        </dx:LayoutItemNestedControlContainer>
+                    </LayoutItemNestedControlCollection>
+                </dx:LayoutItem>
+            </Items>
+        </dx:LayoutGroup>
+        <dx:LayoutGroup Caption="Giá Bán Theo Số Lượng" ColSpan="3" Name="BanTheoSoLuong">
+            <Items>
+                <dx:LayoutItem Caption="">
+                    <LayoutItemNestedControlCollection>
+                        <dx:LayoutItemNestedControlContainer runat="server">
+                            <dx:ASPxGridView ID="gridSoLuong" runat="server" AutoGenerateColumns="False" KeyFieldName="ID" Width="100%">
+                                 <SettingsPager Mode="ShowAllRecords">
+                                 </SettingsPager>
+                                 <SettingsBehavior ConfirmDelete="True" />
+                                 <SettingsCommandButton>
+                                    <ShowAdaptiveDetailButton ButtonType="Image">
+                                    </ShowAdaptiveDetailButton>
+                                    <HideAdaptiveDetailButton ButtonType="Image">
+                                    </HideAdaptiveDetailButton>
+                                    <NewButton ButtonType="Image" RenderMode="Image">
+                                        <Image IconID="actions_add_16x16" ToolTip="Thêm mới">
+                                        </Image>
+                                    </NewButton>
+                                    <UpdateButton ButtonType="Image" RenderMode="Image">
+                                        <Image IconID="save_save_32x32office2013" ToolTip="Lưu">
+                                        </Image>
+                                    </UpdateButton>
+                                    <CancelButton ButtonType="Image" RenderMode="Image">
+                                        <Image IconID="actions_close_32x32" ToolTip="Hủy thao tác">
+                                        </Image>
+                                    </CancelButton>
+                                    <EditButton ButtonType="Image" RenderMode="Image">
+                                        <Image IconID="actions_edit_16x16devav" ToolTip="Sửa">
+                                        </Image>
+                                    </EditButton>
+                                    <DeleteButton ButtonType="Image" RenderMode="Image">
+                                        <Image IconID="actions_cancel_16x16" ToolTip="Xóa">
+                                        </Image>
+                                    </DeleteButton>
+                                </SettingsCommandButton>
+                                <SettingsText CommandBatchEditCancel="Hủy tất cả" CommandBatchEditUpdate="Lưu tất cả" Title="DANH SÁCH HÀNG HÓA GIÁ THEO CHI NHÁNH" ConfirmDelete="Bạn chắc chắn muốn xóa?" EmptyDataRow="Danh sách hàng hóa trống." />
+                                <Columns>                                    
+                                    <dx:GridViewDataSpinEditColumn Caption="Giá Bán" FieldName="GiaBan" ShowInCustomizationForm="True" VisibleIndex="2">
+                                        <PropertiesSpinEdit DisplayFormatString="{0:N0}đ" NumberFormat="Custom">
+                                        </PropertiesSpinEdit>
+                                    </dx:GridViewDataSpinEditColumn>
+                                    <dx:GridViewDataSpinEditColumn Caption="Số Lượng Kết Thúc" FieldName="SoLuongKT" ShowInCustomizationForm="True" VisibleIndex="1">
+                                        <PropertiesSpinEdit DisplayFormatString="N0" NumberFormat="Custom">
+                                        </PropertiesSpinEdit>
+                                    </dx:GridViewDataSpinEditColumn>
+                                    <dx:GridViewDataSpinEditColumn Caption="Số Lượng Bắt Đầu" FieldName="SoLuongBD" ShowInCustomizationForm="True" VisibleIndex="0">
+                                        <PropertiesSpinEdit DisplayFormatString="N0" NumberFormat="Custom">
+                                        </PropertiesSpinEdit>
+                                    </dx:GridViewDataSpinEditColumn>
+                                </Columns>
+                              
+                                 <Styles>
+                                    <Header Font-Bold="True" HorizontalAlign="Center">
+                                    </Header>
+                                    <AlternatingRow Enabled="True">
+                                    </AlternatingRow>
+                                    <TitlePanel Font-Bold="True" HorizontalAlign="Left">
+                                    </TitlePanel>
+                                </Styles>
+                            </dx:ASPxGridView>
+                        </dx:LayoutItemNestedControlContainer>
+
+                    </LayoutItemNestedControlCollection>
+                </dx:LayoutItem>
+            </Items>
+        </dx:LayoutGroup>
+        <dx:LayoutGroup Caption="Thông Tin Hàng Combo" ColSpan="3" Name="HangCombo">
+            <Items>
+                <dx:LayoutItem Caption="">
+                    <LayoutItemNestedControlCollection>
+                        <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer7" runat="server">
+                            <dx:ASPxGridView ID="gridCombo" runat="server" AutoGenerateColumns="False" KeyFieldName="ID" Width="100%">
+                                 <SettingsPager Mode="ShowAllRecords">
+                                 </SettingsPager>
+                                 <SettingsBehavior ConfirmDelete="True" />
+                                 <SettingsCommandButton>
+                                    <ShowAdaptiveDetailButton ButtonType="Image">
+                                    </ShowAdaptiveDetailButton>
+                                    <HideAdaptiveDetailButton ButtonType="Image">
+                                    </HideAdaptiveDetailButton>
+                                    <NewButton ButtonType="Image" RenderMode="Image">
+                                        <Image IconID="actions_add_16x16" ToolTip="Thêm mới">
+                                        </Image>
+                                    </NewButton>
+                                    <UpdateButton ButtonType="Image" RenderMode="Image">
+                                        <Image IconID="save_save_32x32office2013" ToolTip="Lưu">
+                                        </Image>
+                                    </UpdateButton>
+                                    <CancelButton ButtonType="Image" RenderMode="Image">
+                                        <Image IconID="actions_close_32x32" ToolTip="Hủy thao tác">
+                                        </Image>
+                                    </CancelButton>
+                                    <EditButton ButtonType="Image" RenderMode="Image">
+                                        <Image IconID="actions_edit_16x16devav" ToolTip="Sửa">
+                                        </Image>
+                                    </EditButton>
+                                    <DeleteButton ButtonType="Image" RenderMode="Image">
+                                        <Image IconID="actions_cancel_16x16" ToolTip="Xóa">
+                                        </Image>
+                                    </DeleteButton>
+                                </SettingsCommandButton>
+                                <SettingsText CommandBatchEditCancel="Hủy tất cả" CommandBatchEditUpdate="Lưu tất cả" Title="DANH SÁCH HÀNG HÓA GIÁ THEO CHI NHÁNH" ConfirmDelete="Bạn chắc chắn muốn xóa?" EmptyDataRow="Danh sách hàng hóa trống." />
+                                <Columns>                                    
+                                    <dx:GridViewDataTextColumn Caption="Mã Hàng" ShowInCustomizationForm="True" VisibleIndex="0" FieldName="MaHangHoa">
+                                    </dx:GridViewDataTextColumn>
+                                    <dx:GridViewDataComboBoxColumn Caption="Tên Hàng Hóa" ShowInCustomizationForm="True" VisibleIndex="1" FieldName="IDHangQuyDoi">
+                                        <PropertiesComboBox DataSourceID="SqlDanhSachHangHoa" TextField="TenHangHoa" ValueField="ID">
+                                        </PropertiesComboBox>
+                                    </dx:GridViewDataComboBoxColumn>
+                                    <dx:GridViewDataComboBoxColumn Caption="ĐVT" ShowInCustomizationForm="True" VisibleIndex="2" FieldName="IDDonViTinh">
+                                        <PropertiesComboBox DataSourceID="SqlDVT" TextField="TenDonViTinh" ValueField="ID">
+                                        </PropertiesComboBox>
+                                    </dx:GridViewDataComboBoxColumn>
+                                    <dx:GridViewDataTextColumn Caption="Ghi Chú" ShowInCustomizationForm="True" VisibleIndex="5">
+                                    </dx:GridViewDataTextColumn>
+                                    <dx:GridViewDataSpinEditColumn Caption="Số Lượng" ShowInCustomizationForm="True" VisibleIndex="3">
+                                        <PropertiesSpinEdit DisplayFormatString="N0" NumberFormat="Custom">
+                                        </PropertiesSpinEdit>
+                                    </dx:GridViewDataSpinEditColumn>
+                                    <dx:GridViewDataSpinEditColumn Caption="Trọng Lượng" ShowInCustomizationForm="True" VisibleIndex="4">
+                                        <PropertiesSpinEdit DisplayFormatString="N0" NumberFormat="Custom">
+                                        </PropertiesSpinEdit>
+                                    </dx:GridViewDataSpinEditColumn>
+                                </Columns>
+                              
+                                 <Styles>
+                                    <Header Font-Bold="True" HorizontalAlign="Center">
+                                    </Header>
+                                    <AlternatingRow Enabled="True">
+                                    </AlternatingRow>
+                                    <TitlePanel Font-Bold="True" HorizontalAlign="Left">
+                                    </TitlePanel>
+                                </Styles>
+                            </dx:ASPxGridView>
+                        </dx:LayoutItemNestedControlContainer>
+
                     </LayoutItemNestedControlCollection>
                 </dx:LayoutItem>
             </Items>
