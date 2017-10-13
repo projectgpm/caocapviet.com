@@ -19,15 +19,20 @@ namespace BanHang
             }
             else
             {
-                Loadgrid();
+                Loadgrid(cmbHienThi.Value.ToString());
             }
         }
 
-        private void Loadgrid()
+        private void Loadgrid(string HienThi)
         {
             data = new dtGiaTheoGio();
-            gridHangHoa.DataSource = data.DanhSachHoanTat();
+            gridHangHoa.DataSource = data.DanhSachHoanTat(HienThi);
             gridHangHoa.DataBind();
+        }
+
+        protected void cmbHienThi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Loadgrid(cmbHienThi.Value.ToString());
         }
     }
 }
