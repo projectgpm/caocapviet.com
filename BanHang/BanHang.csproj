@@ -183,7 +183,6 @@
     <Content Include="HangHoa_Barcode.aspx" />
     <Content Include="HangHoa_ChiTiet.aspx" />
     <Content Include="HangHoa_GiaTheoSL.aspx" />
-    <Content Include="HangHoa_HangQuyDoi.aspx" />
     <Content Include="HangHoa_Page.aspx" />
     <Content Include="HangSanXuat.aspx" />
     <Content Include="HeThongQuyDoi.aspx" />
@@ -237,6 +236,7 @@
     <Content Include="PhieuNhapHang.aspx" />
     <Content Include="PhieuXuatKhac.aspx" />
     <Content Include="PhieuXuatTra.aspx" />
+    <Content Include="QLKho.aspx" />
     <Content Include="QuanTriNguoiDung.aspx" />
     <Content Include="Root.master" />
   </ItemGroup>
@@ -718,6 +718,7 @@
     <Compile Include="Data\dtPhieuKhachHangTraHang.cs" />
     <Compile Include="Data\dtPhieuXuatKhac.cs" />
     <Compile Include="Data\dtPhieuXuatTra.cs" />
+    <Compile Include="Data\dtQLKho.cs" />
     <Compile Include="Data\dtQuanTriNguoiDung.cs" />
     <Compile Include="Data\dtSetting.cs" />
     <Compile Include="Data\dtThayDoiGia.cs" />
@@ -879,13 +880,6 @@
     </Compile>
     <Compile Include="HangHoa_GiaTheoSL.aspx.designer.cs">
       <DependentUpon>HangHoa_GiaTheoSL.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="HangHoa_HangQuyDoi.aspx.cs">
-      <DependentUpon>HangHoa_HangQuyDoi.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="HangHoa_HangQuyDoi.aspx.designer.cs">
-      <DependentUpon>HangHoa_HangQuyDoi.aspx</DependentUpon>
     </Compile>
     <Compile Include="HangHoa_Page.aspx.cs">
       <DependentUpon>HangHoa_Page.aspx</DependentUpon>
@@ -1088,6 +1082,13 @@
       <DependentUpon>PhieuXuatTra.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QLKho.aspx.cs">
+      <DependentUpon>QLKho.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="QLKho.aspx.designer.cs">
+      <DependentUpon>QLKho.aspx</DependentUpon>
+    </Compile>
     <Compile Include="QuanTriNguoiDung.aspx.cs">
       <DependentUpon>QuanTriNguoiDung.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
