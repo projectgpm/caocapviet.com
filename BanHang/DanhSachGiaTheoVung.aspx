@@ -5,7 +5,7 @@
             <dx:LayoutItem Caption="">
                 <LayoutItemNestedControlCollection>
                     <dx:LayoutItemNestedControlContainer runat="server">
-                        <dx:ASPxButton ID="btnGiaTheoKho" runat="server" Text="Thay đổi giá theo vùng" PostBackUrl="GiaTheoKho.aspx">
+                        <dx:ASPxButton ID="btnGiaTheoKho" runat="server" Text="Thay Đổi Giá Theo Vùng" PostBackUrl="GiaTheoKho.aspx">
                             <Image IconID="actions_sortbyinvoice_32x32devav">
                             </Image>
                             <Paddings Padding="4px" />
@@ -17,7 +17,7 @@
             <dx:LayoutItem Caption="">
                 <LayoutItemNestedControlCollection>
                     <dx:LayoutItemNestedControlContainer runat="server">
-                        <dx:ASPxButton ID="btnThayDoiGiaTheoGio" runat="server" PostBackUrl="GiaTheoGio.aspx" Text="Thay đổi giá theo giờ">
+                        <dx:ASPxButton ID="btnThayDoiGiaTheoGio" runat="server" PostBackUrl="GiaTheoGio.aspx" Text="Thay Đổi Giá Theo Giờ">
                             <Image IconID="scheduling_time_32x32">
                             </Image>
                         </dx:ASPxButton>

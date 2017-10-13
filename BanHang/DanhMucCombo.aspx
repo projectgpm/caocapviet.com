@@ -18,7 +18,7 @@
             <dx:LayoutItem Caption="">
                 <LayoutItemNestedControlCollection>
                     <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer1" runat="server">
-    <dx:ASPxButton ID="btnThemHangHoaComBo" runat="server" Text="Thêm hàng combo" HorizontalAlign="Right" VerticalAlign="Middle" PostBackUrl="ThemHangHoaCombo.aspx">
+    <dx:ASPxButton ID="btnThemHangHoaComBo" runat="server" Text="Thêm Hàng Combo" HorizontalAlign="Right" VerticalAlign="Middle" PostBackUrl="ThemHangHoaCombo.aspx">
         <Image IconID="actions_add_32x32">
                             </Image>
         <Paddings Padding="4px" />
