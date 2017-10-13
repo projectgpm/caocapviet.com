@@ -22,7 +22,7 @@ namespace BanHang
                 
                 if (dtSetting.LayChucNang_HienThi(Session["IDNhom"].ToString()) == true)
                 {
-                    LoadGrid();
+                    LoadGrid(cmbHienThi.Value.ToString());
                 }
                 else
                 {
@@ -30,11 +30,38 @@ namespace BanHang
                 }
             }
         }
-        private void LoadGrid()
+        private void LoadGrid(string HienThi)
         {
             data = new dtKhoHang();
-            gridTonKhoBanDau.DataSource = data.LayDanhSachHangTrongKho(Session["IDKho"].ToString());
+            gridTonKhoBanDau.DataSource = data.LayDanhSachHangTrongKho(Session["IDKho"].ToString(), HienThi);
             gridTonKhoBanDau.DataBind();
+        }
+
+        protected void cmbHienThi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadGrid(cmbHienThi.Value.ToString());
+        }
+
+        protected void gridTonKhoBanDau_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
+        {
+            //string ID = e.Keys[0].ToString();
+            string IDHangHoa = e.NewValues["IDHangHoa"].ToString();
+            string SoLuong  = e.NewValues["SoLuongCon"].ToString();
+            int SoLuongTon = dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, Session["IDKho"].ToString());
+            string TrangThai = "Không Thay Đổi";
+            if ((Int32.Parse(SoLuong) - SoLuongTon) > 0)
+                TrangThai = "Nhập";
+            else
+                TrangThai = "Xuất";
+            object TheKho = dtTheKho.ThemTheKho("", "Nhân Viên Điều Chỉnh Stock", "0", "0", SoLuong, Session["IDNhanVien"].ToString(), Session["IDKho"].ToString(), IDHangHoa, TrangThai, "0", "0", "0", SoLuong);
+            if (TheKho != null)
+            {
+                dtCapNhatTonKho.CapNhatKho(IDHangHoa, SoLuong, Session["IDKho"].ToString());
+            }
+           
+            e.Cancel = true;
+            gridTonKhoBanDau.CancelEdit();
+            LoadGrid(cmbHienThi.Value.ToString());
         }
     }
 }

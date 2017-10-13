@@ -78,7 +78,7 @@ namespace BanHang
                             int SoLuong = Int32.Parse(dr1["ThucTe"].ToString());
                             if (SoLuong > 0)
                             {
-                                object TheKho = dtTheKho.ThemTheKho(dtDuyetDonHangChiNhanh.LaySoDonHang(ID), "Xác nhận đơn hàng tự động ", SoLuong.ToString(), "0", (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, IDKho).ToString()) + SoLuong).ToString(), "1", IDKho, IDHangHoa, "Nhập", "0", "0", "0");
+                                object TheKho = dtTheKho.ThemTheKho(dtDuyetDonHangChiNhanh.LaySoDonHang(ID), "Xác nhận đơn hàng tự động ", SoLuong.ToString(), "0", (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, IDKho).ToString()) + SoLuong).ToString(), "1", IDKho, IDHangHoa, "Nhập", "0", "0", "0", "0");
                                 if (TheKho != null)
                                 {
                                     dtCapNhatTonKho.CongTonKho(IDHangHoa, SoLuong.ToString(), IDKho);
@@ -856,8 +856,8 @@ namespace BanHang
                     int HeSoB = dt.LayHeSoHangHoa(cmbHangHoaQuyDoi.Value.ToString());
                     int HeSoA = dt.LayHeSoHangHoa(cmbMaHang.Value.ToString());
                     int SLDaDoi = SoLuongQuiDoi * (HeSoB / HeSoA);
-                    object TheKho1 = dtTheKho.ThemTheKho("", "Qui đổi hàng hóa: " + dtTheKho.LayTenKho_ID(Session["IDKho"].ToString()), SLDaDoi.ToString(), "0", (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(cmbMaHang.Value.ToString(), Session["IDKho"].ToString()).ToString()) + SLDaDoi).ToString(), Session["IDNhanVien"].ToString(), Session["IDKho"].ToString(), cmbMaHang.Value.ToString(), "Nhập", "0", "0", "0");
-                    object TheKho2 = dtTheKho.ThemTheKho("", "Qui đổi hàng hóa : " + dtTheKho.LayTenKho_ID(Session["IDKho"].ToString()), "0", SoLuongQuiDoi.ToString(), (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(cmbHangHoaQuyDoi.Value.ToString(), Session["IDKho"].ToString()).ToString()) - SoLuongQuiDoi).ToString(), Session["IDNhanVien"].ToString(), Session["IDKho"].ToString(), cmbHangHoaQuyDoi.Value.ToString(), "Xuất", "0", "0", "0");
+                    object TheKho1 = dtTheKho.ThemTheKho("", "Qui đổi hàng hóa: " + dtTheKho.LayTenKho_ID(Session["IDKho"].ToString()), SLDaDoi.ToString(), "0", (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(cmbMaHang.Value.ToString(), Session["IDKho"].ToString()).ToString()) + SLDaDoi).ToString(), Session["IDNhanVien"].ToString(), Session["IDKho"].ToString(), cmbMaHang.Value.ToString(), "Nhập", "0", "0", "0", "0");
+                    object TheKho2 = dtTheKho.ThemTheKho("", "Qui đổi hàng hóa : " + dtTheKho.LayTenKho_ID(Session["IDKho"].ToString()), "0", SoLuongQuiDoi.ToString(), (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(cmbHangHoaQuyDoi.Value.ToString(), Session["IDKho"].ToString()).ToString()) - SoLuongQuiDoi).ToString(), Session["IDNhanVien"].ToString(), Session["IDKho"].ToString(), cmbHangHoaQuyDoi.Value.ToString(), "Xuất", "0", "0", "0", "0");
                     if (TheKho1 != null && TheKho2 != null)
                     {
                         dtCapNhatTonKho.TruTonKho(cmbHangHoaQuyDoi.Value.ToString(), SoLuongQuiDoi.ToString(), Session["IDKho"].ToString());

@@ -98,7 +98,7 @@ namespace BanHang
                         int ChenhLech = Int32.Parse(dr["ChenhLech"].ToString());
                         if (ChenhLech > 0)
                         {
-                            object TheKho1 = dtTheKho.ThemTheKho("", "Kiểm kho: " + dtTheKho.LayTenKho_ID(IDKho), "0", "0", (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, IDKho).ToString()) + ChenhLech).ToString(), Session["IDNhanVien"].ToString(), IDKho, IDHangHoa, "Nhập", "0", "0", ChenhLech.ToString());
+                            object TheKho1 = dtTheKho.ThemTheKho("", "Kiểm kho: " + dtTheKho.LayTenKho_ID(IDKho), "0", "0", (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, IDKho).ToString()) + ChenhLech).ToString(), Session["IDNhanVien"].ToString(), IDKho, IDHangHoa, "Nhập", "0", "0", ChenhLech.ToString(), "0");
                             if (TheKho1 != null)
                             {
                                 dtCapNhatTonKho.CapNhatKho(IDHangHoa, ThucTe, IDKho);
@@ -106,7 +106,7 @@ namespace BanHang
                         }
                         else if (ChenhLech < 0)
                         {
-                            object TheKho2 = dtTheKho.ThemTheKho("", "Kiểm kho: " + dtTheKho.LayTenKho_ID(IDKho), "0", "0", (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, IDKho).ToString()) + ChenhLech).ToString(), Session["IDNhanVien"].ToString(), IDKho, IDHangHoa, "Xuất", "0", "0", ChenhLech.ToString());
+                            object TheKho2 = dtTheKho.ThemTheKho("", "Kiểm kho: " + dtTheKho.LayTenKho_ID(IDKho), "0", "0", (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, IDKho).ToString()) + ChenhLech).ToString(), Session["IDNhanVien"].ToString(), IDKho, IDHangHoa, "Xuất", "0", "0", ChenhLech.ToString(), "0");
                             if (TheKho2 != null)
                             {
                                 dtCapNhatTonKho.CapNhatKho(IDHangHoa, ThucTe, IDKho);

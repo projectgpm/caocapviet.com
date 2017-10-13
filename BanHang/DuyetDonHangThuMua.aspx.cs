@@ -239,7 +239,7 @@ namespace BanHang
                                     data.ThemChiTietDonHang_Duyet(ID, MaHang, IDHangHoa, IDDonViTinh, TrongLuong, SoLuong, GhiChuHH, ChenhLech, ThucTe);
                                     if (Int32.Parse(ThucTe) > 0)
                                     {
-                                        object TheKho = dtTheKho.ThemTheKho(SoDonHang, "Phiếu nhập hàng", ThucTe, "0", (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, Session["IDKho"].ToString()).ToString()) + Int32.Parse(ThucTe)).ToString(), Session["IDNhanVien"].ToString(), Session["IDKho"].ToString(), IDHangHoa, "Nhập", "0", "0", "0");
+                                        object TheKho = dtTheKho.ThemTheKho(SoDonHang, "Phiếu nhập hàng", ThucTe, "0", (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, Session["IDKho"].ToString()).ToString()) + Int32.Parse(ThucTe)).ToString(), Session["IDNhanVien"].ToString(), Session["IDKho"].ToString(), IDHangHoa, "Nhập", "0", "0", "0", "0");
                                         if (TheKho != null)
                                         {
                                             dtCapNhatTonKho.CongTonKho(IDHangHoa, ThucTe, Session["IDKho"].ToString());
@@ -313,7 +313,7 @@ namespace BanHang
                                     data.ThemChiTietDonHang_Duyet(ID, MaHang, IDHangHoa, IDDonViTinh, TrongLuong, SoLuong, GhiChuHH, ChenhLech, ThucTe);
                                     if (Int32.Parse(ThucTe) > 0)
                                     {
-                                        object TheKho = dtTheKho.ThemTheKho(SoDonHang, "Phiếu nhập hàng", ThucTe, "0", (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, Session["IDKho"].ToString()).ToString()) + Int32.Parse(ThucTe)).ToString(), Session["IDNhanVien"].ToString(), Session["IDKho"].ToString(), IDHangHoa, "Nhập", "0", "0", "0");
+                                        object TheKho = dtTheKho.ThemTheKho(SoDonHang, "Phiếu nhập hàng", ThucTe, "0", (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, Session["IDKho"].ToString()).ToString()) + Int32.Parse(ThucTe)).ToString(), Session["IDNhanVien"].ToString(), Session["IDKho"].ToString(), IDHangHoa, "Nhập", "0", "0", "0", "0");
                                         if (TheKho != null)
                                         {
                                             dtCapNhatTonKho.CongTonKho(IDHangHoa, ThucTe, Session["IDKho"].ToString());

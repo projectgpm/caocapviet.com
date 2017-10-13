@@ -98,7 +98,7 @@ namespace BanHang
                             int SoLuong = Int32.Parse(dr1["ThucTe"].ToString());
                             if (SoLuong > 0)
                             {
-                                object TheKho = dtTheKho.ThemTheKho(dtDuyetDonHangChiNhanh.LaySoDonHang(ID), "Xác nhận đơn hàng tự động ", SoLuong.ToString(), "0", (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, IDKho).ToString()) + SoLuong).ToString(), "1", IDKho, IDHangHoa, "Nhập", "0", "0", "0");
+                                object TheKho = dtTheKho.ThemTheKho(dtDuyetDonHangChiNhanh.LaySoDonHang(ID), "Xác nhận đơn hàng tự động ", SoLuong.ToString(), "0", (Int32.Parse(dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, IDKho).ToString()) + SoLuong).ToString(), "1", IDKho, IDHangHoa, "Nhập", "0", "0", "0", "0");
                                 if (TheKho != null)
                                 {
                                     dtCapNhatTonKho.CongTonKho(IDHangHoa, SoLuong.ToString(), IDKho);
