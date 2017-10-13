@@ -42,7 +42,7 @@
             <dx:LayoutGroup Caption="Thông tin" ColCount="2" Width="100%">
                 
                 <Items>
-                    <dx:LayoutItem Caption="Chọn Chi Nhánh Mẫu Để Áp Dụng Giá" ColSpan="2">
+                    <dx:LayoutItem Caption="Chọn Chi Nhánh Mẫu Để Áp Dụng Giá">
                         <LayoutItemNestedControlCollection>
                             <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer1" runat="server">
                                 <dx:ASPxComboBox ID="cmbKho" runat="server" TextField="TenCuaHang" ValueField="ID" Width="80%" OnSelectedIndexChanged="cmbKho_SelectedIndexChanged" AutoPostBack="True" DataSourceID="sqlKho" DropDownWidth="400px">
@@ -55,6 +55,22 @@
                             </dx:LayoutItemNestedControlContainer>
                         </LayoutItemNestedControlCollection>
                     </dx:LayoutItem>
+                    <dx:LayoutItem Caption="Hiển Thị">
+                <LayoutItemNestedControlCollection>
+                    <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer7" runat="server">
+                        <dx:ASPxComboBox ID="cmbHienThi" runat="server" AutoPostBack="True" OnSelectedIndexChanged="cmbHienThi_SelectedIndexChanged" SelectedIndex="0">
+                            <Items>
+                                <dx:ListEditItem Selected="True" Text="50" Value="50" />
+                                <dx:ListEditItem Text="100" Value="100" />
+                                <dx:ListEditItem Text="200" Value="200" />
+                                <dx:ListEditItem Text="500" Value="500" />
+                                <dx:ListEditItem Text="1000" Value="1000" />
+                                <dx:ListEditItem Text="Tất Cả" Value="50000000000000" />
+                            </Items>
+                        </dx:ASPxComboBox>
+                    </dx:LayoutItemNestedControlContainer>
+                </LayoutItemNestedControlCollection>
+            </dx:LayoutItem>
                     <dx:LayoutGroup Caption="Danh sách hàng hóa" ColSpan="2">
                         <Items>
                             <dx:LayoutItem Caption="" Width="100%">
@@ -89,28 +105,28 @@
                                                     </PropertiesComboBox>
                                                 </dx:GridViewDataComboBoxColumn>
                                                 <dx:GridViewDataSpinEditColumn Caption="Giá Bán" FieldName="GiaBan" ShowInCustomizationForm="True" VisibleIndex="3">
-                                                    <PropertiesSpinEdit DisplayFormatString="{0:#,# đ}" NumberFormat="Custom">
+                                                    <PropertiesSpinEdit DisplayFormatString="{0:N0}đ" NumberFormat="Custom">
                                                     </PropertiesSpinEdit>
                                                 </dx:GridViewDataSpinEditColumn>
 <dx:GridViewDataSpinEditColumn FieldName="GiaBan1" ShowInCustomizationForm="True" Caption="Giá Bán 1" VisibleIndex="4">
-<PropertiesSpinEdit DisplayFormatString="{0:#,# đ}" NumberFormat="Custom"></PropertiesSpinEdit>
+<PropertiesSpinEdit DisplayFormatString="{0:N0}đ" NumberFormat="Custom"></PropertiesSpinEdit>
 </dx:GridViewDataSpinEditColumn>
                                                 <dx:GridViewDataTextColumn Caption="Mã Hàng" FieldName="MaHang" ShowInCustomizationForm="True" VisibleIndex="0" ReadOnly="True">
                                                 </dx:GridViewDataTextColumn>
                                                 <dx:GridViewDataSpinEditColumn Caption="Giá Bán 2" FieldName="GiaBan2" ShowInCustomizationForm="True" VisibleIndex="5">
-                                                    <PropertiesSpinEdit DisplayFormatString="{0:#,# đ}" NumberFormat="Custom">
+                                                    <PropertiesSpinEdit DisplayFormatString="{0:N0}đ" NumberFormat="Custom">
                                                     </PropertiesSpinEdit>
                                                 </dx:GridViewDataSpinEditColumn>
                                                 <dx:GridViewDataSpinEditColumn Caption="Giá Bán 3" FieldName="GiaBan3" ShowInCustomizationForm="True" VisibleIndex="6">
-                                                    <PropertiesSpinEdit DisplayFormatString="{0:#,# đ}" NumberFormat="Custom">
+                                                    <PropertiesSpinEdit DisplayFormatString="{0:N0}đ" NumberFormat="Custom">
                                                     </PropertiesSpinEdit>
                                                 </dx:GridViewDataSpinEditColumn>
                                                 <dx:GridViewDataSpinEditColumn Caption="Giá Bán 4" FieldName="GiaBan4" ShowInCustomizationForm="True" VisibleIndex="7">
-                                                    <PropertiesSpinEdit DisplayFormatString="{0:#,# đ}" NumberFormat="Custom">
+                                                    <PropertiesSpinEdit DisplayFormatString="{0:N0}đ" NumberFormat="Custom">
                                                     </PropertiesSpinEdit>
                                                 </dx:GridViewDataSpinEditColumn>
                                                 <dx:GridViewDataSpinEditColumn Caption="Giá Bán 5" FieldName="GiaBan5" ShowInCustomizationForm="True" VisibleIndex="8">
-                                                    <PropertiesSpinEdit DisplayFormatString="{0:#,# đ}" NumberFormat="Custom">
+                                                    <PropertiesSpinEdit DisplayFormatString="{0:N0}đ" NumberFormat="Custom">
                                                     </PropertiesSpinEdit>
                                                 </dx:GridViewDataSpinEditColumn>
                                                 <dx:GridViewDataTextColumn FieldName="IDHangHoa" ShowInCustomizationForm="True" Visible="False" VisibleIndex="9">

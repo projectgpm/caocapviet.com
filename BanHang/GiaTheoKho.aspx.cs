@@ -28,7 +28,7 @@ namespace BanHang
                 }
                 if (cmbKho.Text != "")
                 {
-                    LoadGrid(cmbKho.Value.ToString());
+                    LoadGrid(cmbKho.Value.ToString(),cmbHienThi.Value.ToString());
                 }
             }
         }
@@ -54,10 +54,10 @@ namespace BanHang
            
         }
 
-        private void LoadGrid(string IDKho)
+        private void LoadGrid(string IDKho, string HienThi)
         {
               data = new dtGiaTheoVung();
-              gridHangHoa.DataSource = data.DanhSachHangHoa_IDKho(IDKho);
+              gridHangHoa.DataSource = data.DanhSachHangHoa_IDKho(IDKho, HienThi);
               gridHangHoa.DataBind();
         }
         protected void cmbVung_SelectedIndexChanged(object sender, EventArgs e)
@@ -146,7 +146,7 @@ namespace BanHang
                     Session["updated"] = true;
                     e.Cancel = true;
                     gridHangHoa.CancelEdit();
-                    LoadGrid(cmbKho.Value.ToString());
+                    LoadGrid(cmbKho.Value.ToString(),cmbHienThi.Value.ToString());
                 }
                 else
                 {
@@ -176,7 +176,15 @@ namespace BanHang
             if (cmbKho.Text != "")
             {
                 string IDKho = cmbKho.Value.ToString();
-                LoadGrid(IDKho);
+                LoadGrid(IDKho,cmbHienThi.Value.ToString());
+            }
+        }
+
+        protected void cmbHienThi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbKho.Text != "")
+            {
+                LoadGrid(cmbKho.Value.ToString(), cmbHienThi.Value.ToString());
             }
         }
         

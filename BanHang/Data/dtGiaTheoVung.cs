@@ -97,12 +97,12 @@ namespace BanHang.Data
                 }
             }
         }
-        public DataTable DanhSachHangHoa_IDKho(string IDKho)
+        public DataTable DanhSachHangHoa_IDKho(string IDKho, string HienThi)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "SELECT [GPM_HangHoa].IDDonViTinh,[GPM_HangHoa].ID as IDHangHoa,[GPM_HangHoa].MaHang,[GPM_HangHoaTonKho].*,[GPM_HangHoa].TenHangHoa FROM [GPM_HangHoa],[GPM_HangHoaTonKho]  WHERE [GPM_HangHoa].ID = [GPM_HangHoaTonKho].IDHangHoa AND [GPM_HangHoa].DaXoa = 0 AND IDKho  = " + IDKho;
+                string cmdText = "SELECT TOP " + HienThi + " [GPM_HangHoa].IDDonViTinh,[GPM_HangHoa].ID as IDHangHoa,[GPM_HangHoa].MaHang,[GPM_HangHoaTonKho].*,[GPM_HangHoa].TenHangHoa FROM [GPM_HangHoa],[GPM_HangHoaTonKho]  WHERE [GPM_HangHoa].ID = [GPM_HangHoaTonKho].IDHangHoa AND [GPM_HangHoa].DaXoa = 0 AND IDKho  = " + IDKho;
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {

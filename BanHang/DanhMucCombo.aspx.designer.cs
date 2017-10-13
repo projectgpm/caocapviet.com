@@ -40,6 +40,24 @@ namespace BanHang {
         protected global::DevExpress.Web.ASPxButton btnThemHangHoaComBo;
         
         /// <summary>
+        /// LayoutItemNestedControlContainer7 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.LayoutItemNestedControlContainer LayoutItemNestedControlContainer7;
+        
+        /// <summary>
+        /// cmbHienThi control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxComboBox cmbHienThi;
+        
+        /// <summary>
         /// gridDanhMucCombo control.
         /// </summary>
         /// <remarks>

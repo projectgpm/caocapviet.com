@@ -29,17 +29,17 @@ namespace BanHang
                 }
                 if (dtSetting.LayChucNang_HienThi(Session["IDNhom"].ToString()) == true)
                 {
-                    LoadGrid();
+                    LoadGrid(cmbHienThi.Value.ToString());
                 }
                 else
                     Response.Redirect("Default.aspx");
             }
         }
 
-        private void LoadGrid()
+        private void LoadGrid(string HienThi)
         {
             data = new dtHangCombo();
-            gridDanhMucCombo.DataSource = data.DanhSachHangHoaCombo(Session["IDKho"].ToString());
+            gridDanhMucCombo.DataSource = data.DanhSachHangHoaCombo(Session["IDKho"].ToString(), HienThi);
             gridDanhMucCombo.DataBind();
         }
 
@@ -59,7 +59,7 @@ namespace BanHang
             }
             e.Cancel = true;
             gridDanhMucCombo.CancelEdit();
-            LoadGrid();
+            LoadGrid(cmbHienThi.Value.ToString());
         }
 
         protected void gridDanhMucCombo_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
@@ -110,14 +110,14 @@ namespace BanHang
             }
             e.Cancel = true;
             gridDanhMucCombo.CancelEdit();
-            LoadGrid();
+            LoadGrid(cmbHienThi.Value.ToString());
         }
 
 
         protected void BtnSuaSoLuong_Click(object sender, EventArgs e)
         {
             string ID = (((ASPxButton)sender).CommandArgument).ToString();
-            LoadGrid();
+            LoadGrid(cmbHienThi.Value.ToString());
             object MaHang = gridDanhMucCombo.GetRowValuesByKeyValue(ID, "MaHang");
             object TenHang = gridDanhMucCombo.GetRowValuesByKeyValue(ID, "TenHangHoa");
             object SoLuong = gridDanhMucCombo.GetRowValuesByKeyValue(ID, "SoLuongCon");
@@ -236,13 +236,18 @@ namespace BanHang
             {
                 Response.Write("<script language='JavaScript'> alert('Lỗi: Số lượng phải lớn hơn hoặc bằng 0.'); </script>");
             }
-            LoadGrid();
+            LoadGrid(cmbHienThi.Value.ToString());
             popupSuaSoLuong.ShowOnPageLoad = false;
         }
 
         protected void btnHuySuaSl_Click(object sender, EventArgs e)
         {
             popupSuaSoLuong.ShowOnPageLoad = false;
+        }
+
+        protected void cmbHienThi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadGrid(cmbHienThi.Value.ToString());
         }
     }
 }
