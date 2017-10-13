@@ -216,7 +216,7 @@ namespace BanHang.Data
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "SELECT * FROM [GPM_Ke] WHERE ('" + IDKho + "' = 1 OR [IDKho] = '" + IDKho + "')";
+                string cmdText = "SELECT * FROM [GPM_Ke] WHERE  IDKho = '" + IDKho + "'";//('" + IDKho + "' = 1 OR [IDKho] = '" + IDKho + "')";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {

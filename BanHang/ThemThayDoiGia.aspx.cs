@@ -72,88 +72,67 @@ namespace BanHang
                 DanhSachKho.SelectAll();
             }
         }
-      
-
-        protected void cmbMaHang_ItemsRequestedByFilterCondition(object source, DevExpress.Web.ListEditItemsRequestedByFilterConditionEventArgs e)
-        {
-            ASPxComboBox comboBox = (ASPxComboBox)source;
-            SqlMaHang.SelectCommand = @"SELECT [ID], [MaHang], [TenHangHoa], [TenDonViTinh]
-                                        FROM (
-	                                        select GPM_HangHoa.ID, GPM_HangHoa.MaHang, GPM_HangHoa.TenHangHoa, GPM_DonViTinh.TenDonViTinh, 
-	                                        row_number()over(order by GPM_HangHoa.MaHang) as [rn] 
-	                                        FROM GPM_DonViTinh INNER JOIN GPM_HangHoa ON GPM_DonViTinh.ID = GPM_HangHoa.IDDonViTinh 
-	                                                            INNER JOIN GPM_HangHoaTonKho ON GPM_HangHoaTonKho.IDHangHoa = GPM_HangHoa.ID
-                                            WHERE (GPM_HangHoa.MaHang LIKE @MaHang) AND (GPM_HangHoaTonKho.IDKho = @IDKho) AND (GPM_HangHoaTonKho.DaXoa = 0)	
-	                                        ) as st 
-                                        where st.[rn] between @startIndex and @endIndex";
-            SqlMaHang.SelectParameters.Clear();
-            SqlMaHang.SelectParameters.Add("MaHang", TypeCode.String, string.Format("%{0}%", e.Filter));
-            //SqlMaHang.SelectParameters.Add("TenHang", TypeCode.String, string.Format("%{0}%", e.Filter));
-            SqlMaHang.SelectParameters.Add("IDKho", TypeCode.Int32, Session["IDKho"].ToString());
-            SqlMaHang.SelectParameters.Add("startIndex", TypeCode.Int64, (e.BeginIndex + 1).ToString());
-            SqlMaHang.SelectParameters.Add("endIndex", TypeCode.Int64, (e.EndIndex + 1).ToString());
-            comboBox.DataSource = SqlMaHang;
-            comboBox.DataBind();
-        }
-
-        protected void cmbMaHang_ItemRequestedByValue(object source, DevExpress.Web.ListEditItemRequestedByValueEventArgs e)
-        {
-            long value = 0;
-            if (e.Value == null || !Int64.TryParse(e.Value.ToString(), out value))
-                return;
-            ASPxComboBox comboBox = (ASPxComboBox)source;
-            SqlMaHang.SelectCommand = @"SELECT GPM_HangHoa.ID, GPM_HangHoa.MaHang, GPM_HangHoa.TenHangHoa, GPM_DonViTinh.TenDonViTinh 
-                                        FROM GPM_DonViTinh INNER JOIN GPM_HangHoa ON GPM_DonViTinh.ID = GPM_HangHoa.IDDonViTinh 
-                                             INNER JOIN GPM_HangHoaTonKho ON GPM_HangHoaTonKho.IDHangHoa = GPM_HangHoa.ID 
-                                        WHERE (GPM_HangHoa.ID = @ID)";
-            SqlMaHang.SelectParameters.Clear();
-            SqlMaHang.SelectParameters.Add("ID", TypeCode.Int64, e.Value.ToString());
-            comboBox.DataSource = SqlMaHang;
-            comboBox.DataBind();
-        }
 
         protected void btnThem_Click(object sender, EventArgs e)
         {
-            if (cmbMaHang.Text != "" && txtGioThayDoi.Text != "")
+            if (txtMaHang.Text != "" && txtGioThayDoi.Text != "")
             {
-                if (DanhSachKho.SelectedItems.Count != 0)
+                string MaHang = txtMaHang.Text.ToString().Trim();
+                if (dtSetting.IsNumber(MaHang) == true)
                 {
-                    string IDHangHoa = cmbMaHang.Value.ToString();
-                    float GiaBan = dtHangHoa.GiaBan0(IDHangHoa, Session["IDKho"].ToString());
-                    float GiaBan1 = dtHangHoa.GiaBan1(IDHangHoa, Session["IDKho"].ToString());
-                    float GiaBan2 = dtHangHoa.GiaBan2(IDHangHoa, Session["IDKho"].ToString());
-                    float GiaBan3 = dtHangHoa.GiaBan3(IDHangHoa, Session["IDKho"].ToString());
-                    float GiaBan4 = dtHangHoa.GiaBan4(IDHangHoa, Session["IDKho"].ToString());
-                    float GiaBan5 = dtHangHoa.GiaBan5(IDHangHoa, Session["IDKho"].ToString());
-                    string IDTemp = ID_temp.Value.ToString();
-                    string IDDonViTinh = dtHangHoa.LayIDDonViTinh(IDHangHoa);
-                    string MaHang = dtHangHoa.LayMaHang(IDHangHoa);
-                    DateTime GioThayDoi = DateTime.Parse(txtGioThayDoi.Text.ToString());
-                    for (int i = DanhSachKho.Items.Count - 1; i >= 0; i--)
+                    if (dtSetting.TraCuuMaHang(MaHang) == true)
                     {
-                        if (DanhSachKho.Items[i].Selected == true)
+                        if (DanhSachKho.SelectedItems.Count != 0)
                         {
-                            string IDKhoApDung = DanhSachKho.Items[i].Value.ToString();
-                            // thêm temp
-                            dt = new dtGiaTheoGio();
-                            DataTable db = dt.KT_ThemChiTiet_Temp(IDHangHoa, IDTemp, IDKhoApDung, GioThayDoi);
-                            if (db.Rows.Count == 0)
+                            string IDHangHoa = dtHangHoa.LayIDHangHoa_MaHang(MaHang);
+                            string IDTemp = ID_temp.Value.ToString();
+                            string IDDonViTinh = dtHangHoa.LayIDDonViTinh(IDHangHoa);
+                            DateTime GioThayDoi = DateTime.Parse(txtGioThayDoi.Text.ToString());
+                            for (int i = DanhSachKho.Items.Count - 1; i >= 0; i--)
                             {
-                                dt.ThemChiTiet_Temp(IDTemp, MaHang, IDHangHoa, IDDonViTinh, GiaBan.ToString(), GiaBan1.ToString(), GiaBan2.ToString(), GiaBan3.ToString(), GiaBan4.ToString(), GiaBan5.ToString(), GioThayDoi, IDKhoApDung);
+                                if (DanhSachKho.Items[i].Selected == true)
+                                {
+                                    string IDKhoApDung = DanhSachKho.Items[i].Value.ToString();
+                                    float GiaBan = dtHangHoa.GiaBan0(IDHangHoa, IDKhoApDung);
+                                    float GiaBan1 = dtHangHoa.GiaBan1(IDHangHoa, IDKhoApDung);
+                                    float GiaBan2 = dtHangHoa.GiaBan2(IDHangHoa, IDKhoApDung);
+                                    float GiaBan3 = dtHangHoa.GiaBan3(IDHangHoa, IDKhoApDung);
+                                    float GiaBan4 = dtHangHoa.GiaBan4(IDHangHoa, IDKhoApDung);
+                                    float GiaBan5 = dtHangHoa.GiaBan5(IDHangHoa, IDKhoApDung);
+                                    // thêm temp
+                                    dt = new dtGiaTheoGio();
+                                    DataTable db = dt.KT_ThemChiTiet_Temp(IDHangHoa, IDTemp, IDKhoApDung, GioThayDoi);
+                                    if (db.Rows.Count == 0)
+                                    {
+                                        dt.ThemChiTiet_Temp(IDTemp, MaHang, IDHangHoa, IDDonViTinh, GiaBan.ToString(), GiaBan1.ToString(), GiaBan2.ToString(), GiaBan3.ToString(), GiaBan4.ToString(), GiaBan5.ToString(), GioThayDoi, IDKhoApDung);
+                                    }
+                                    else
+                                    {
+                                        Response.Write("<script language='JavaScript'> alert('Mã hàng đã tại trong kho này.'); </script>");
+                                    }
+                                }
                             }
-                            else
-                            {
-                                Response.Write("<script language='JavaScript'> alert('Mã hàng đã tại trong kho này.'); </script>");
-                            }
+                            LoadGrid(IDTemp);
                         }
+                        else
+                            Response.Write("<script language='JavaScript'> alert('Vui lòng chọn kho để áp dụng.'); </script>");
                     }
-                    LoadGrid(IDTemp);
+                    else
+                    {
+                        Response.Write("<script language='JavaScript'> alert('Không tìm thấy mã hàng " + MaHang + " .'); </script>");
+                        return;
+                    }
                 }
                 else
-                    Response.Write("<script language='JavaScript'> alert('Vui lòng chọn kho để áp dụng.'); </script>");
+                {
+                    Response.Write("<script language='JavaScript'> alert('Mã hàng phải là số.'); </script>");
+                    return;
+                }
             }
             else
+            {
                 Response.Write("<script language='JavaScript'> alert('Vui lòng nhập trường có dấu (*).'); </script>");
+            }
         }
 
         protected void gridHangHoa_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
@@ -231,7 +210,8 @@ namespace BanHang
             }
             else
             {
-                cmbMaHang.Focus();
+                txtMaHang.Text = "";
+                txtMaHang.Focus();
                 Response.Write("<script language='JavaScript'> alert('Danh sách thay đổi giá trống.'); </script>");
             }
         }

@@ -26,7 +26,7 @@ namespace BanHang
                         btnNhapExcel.Enabled = false;
                         gridKhachHang.Columns["chucnang"].Visible = false;
                     }
-                    LoadGrid();
+                    LoadGrid(cmbHienThi.Value.ToString());
                 }
                 else
                 {
@@ -34,10 +34,10 @@ namespace BanHang
                 }
             }
         }
-        public void LoadGrid()
+        public void LoadGrid(string HienThi)
         {
             data = new dtKhachHang();
-            gridKhachHang.DataSource = data.LayDanhSachKhachHang(Session["IDKho"].ToString());
+            gridKhachHang.DataSource = data.LayDanhSachKhachHang(Session["IDKho"].ToString(), HienThi);
             gridKhachHang.DataBind();
         }
 
@@ -69,7 +69,7 @@ namespace BanHang
             }
             e.Cancel = true;
             gridKhachHang.CancelEdit();
-            LoadGrid();
+            LoadGrid(cmbHienThi.Value.ToString());
             
         }
 
@@ -122,7 +122,7 @@ namespace BanHang
             }
             e.Cancel = true;
             gridKhachHang.CancelEdit();
-            LoadGrid();
+            LoadGrid(cmbHienThi.Value.ToString());
             
         }
 
@@ -133,7 +133,7 @@ namespace BanHang
             data.XoaKhachHang(Int32.Parse(ID));
             e.Cancel = true;
             gridKhachHang.CancelEdit();
-            LoadGrid();
+            LoadGrid(cmbHienThi.Value.ToString());
             dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Khách hàng:" + ID, Session["IDKho"].ToString(), "Danh Mục", "Xóa");  
         }
 
@@ -150,6 +150,11 @@ namespace BanHang
         protected void btnNhapExcel_Click(object sender, EventArgs e)
         {
             Response.Redirect("ImportExcel_KhachHang.aspx");
+        }
+
+        protected void cmbHienThi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadGrid(cmbHienThi.Value.ToString());
         }
     }
 }

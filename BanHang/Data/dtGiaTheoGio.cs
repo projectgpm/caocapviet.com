@@ -9,12 +9,12 @@ namespace BanHang.Data
 {
     public class dtGiaTheoGio
     {
-        public DataTable DanhSachHoanTat()
+        public DataTable DanhSachHoanTat(string HienThi)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "SELECT TOP 1000 * FROM GPM_GiaTheoGio WHERE TrangThai = 1 ORDER BY ID DESC";
+                string cmdText = "SELECT TOP " + HienThi + " * FROM GPM_GiaTheoGio WHERE TrangThai = 1 ORDER BY ID DESC";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {

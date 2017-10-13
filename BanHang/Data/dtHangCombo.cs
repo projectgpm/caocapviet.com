@@ -130,12 +130,12 @@ namespace BanHang.Data
                 }
             }
         }
-        public DataTable DanhSachHangHoaCombo(string IDKho)
+        public DataTable DanhSachHangHoaCombo(string IDKho, string HienThi)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "SELECT [GPM_HANGHOA].*,[GPM_NHOMHANG].TenNhomHang,[GPM_HangHoaTonKho].SoLuongCon,[GPM_HangHoaTonKho].GiaBan  FROM [GPM_HangHoaTonKho],[GPM_HANGHOA],[GPM_NHOMHANG] WHERE [GPM_HangHoaTonKho].IDKho = '" + IDKho + "'  AND  [GPM_HangHoaTonKho].IDHangHoa = [GPM_HANGHOA].ID   AND [GPM_NHOMHANG].ID = [GPM_HANGHOA].IDNhomHang  AND  GPM_HANGHOA.[DAXOA] = 0 AND IDTrangThaiHang > 4 AND TenHangHoa is not null";
+                string cmdText = "SELECT TOP " + HienThi + "  [GPM_HANGHOA].*,[GPM_NHOMHANG].TenNhomHang,[GPM_HangHoaTonKho].SoLuongCon,[GPM_HangHoaTonKho].GiaBan  FROM [GPM_HangHoaTonKho],[GPM_HANGHOA],[GPM_NHOMHANG] WHERE [GPM_HangHoaTonKho].IDKho = '" + IDKho + "'  AND  [GPM_HangHoaTonKho].IDHangHoa = [GPM_HANGHOA].ID   AND [GPM_NHOMHANG].ID = [GPM_HANGHOA].IDNhomHang  AND  GPM_HANGHOA.[DAXOA] = 0 AND IDTrangThaiHang > 4 AND TenHangHoa is not null";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {

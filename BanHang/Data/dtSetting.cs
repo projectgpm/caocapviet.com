@@ -13,6 +13,23 @@ namespace BanHang.Data
 {
     public class dtSetting
     {
+        public  static bool TraCuuMaHang(string MaHang)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = " SELECT * FROM [GPM_HangHoa] WHERE [MaHang] = N'" + MaHang + "'";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    if (tb.Rows.Count > 0)
+                        return true;
+                    return false;
+                }
+            }
+        }
         public static int tinhSoNgay(int thang, int nam)
         {
             if (thang == 1 || thang == 3 || thang == 5 || thang == 7 || thang == 8 || thang == 10 || thang == 12)

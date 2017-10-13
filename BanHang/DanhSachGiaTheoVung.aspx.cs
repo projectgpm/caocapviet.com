@@ -29,7 +29,7 @@ namespace BanHang
                     }
                     if (cmbChiNhanh.Text != "")
                     {
-                        LoadGrid(cmbChiNhanh.Value.ToString());
+                        LoadGrid(cmbChiNhanh.Value.ToString(),cmbHienThi.Value.ToString());
                     }
                 }
                 else
@@ -37,10 +37,10 @@ namespace BanHang
             }
         }
 
-        private void LoadGrid(string IDKho)
+        private void LoadGrid(string IDKho, string HienThi)
         {
             data = new dtGiaTheoVung();
-            gridHangHoa.DataSource = data.DanhSachHangHoa_IDKho(IDKho);
+            gridHangHoa.DataSource = data.DanhSachHangHoa_IDKho(IDKho, HienThi);
             gridHangHoa.DataBind();
         }
 
@@ -93,7 +93,7 @@ namespace BanHang
                 dtGiaTheoVung.CapNhat_GiaTheoVung(ID, IDKho, GiaBan0, GiaBan1, GiaBan2, GiaBan3, GiaBan4, GiaBan5);
                 e.Cancel = true;
                 gridHangHoa.CancelEdit();
-                LoadGrid(IDKho);
+                LoadGrid(cmbChiNhanh.Value.ToString(), cmbHienThi.Value.ToString());
                 dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Kho", Session["IDKho"].ToString(), "Danh Mục", "Cập nhật giá theo vùng");
             }
             else
@@ -107,7 +107,15 @@ namespace BanHang
             if (cmbChiNhanh.Text != "")
             {
                 string IDKho = cmbChiNhanh.Value.ToString();
-                LoadGrid(IDKho);
+                LoadGrid(cmbChiNhanh.Value.ToString(), cmbHienThi.Value.ToString());
+            }
+        }
+
+        protected void cmbHienThi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbChiNhanh.Text != "")
+            {
+                LoadGrid(cmbChiNhanh.Value.ToString(), cmbHienThi.Value.ToString());
             }
         }
     }

@@ -597,7 +597,7 @@ namespace BanHang
         public void DanhSachKhachHang()
         {
             dtKhachHang dtkh = new dtKhachHang();
-            ccbKhachHang.DataSource = dtkh.LayDanhSachKhachHang(Session["IDKho"].ToString());
+            ccbKhachHang.DataSource = dtkh.LayDanhSachKhachHang(Session["IDKho"].ToString(),"5000000000");
             ccbKhachHang.TextField = "TenKhachHang";
             ccbKhachHang.ValueField = "ID";
             ccbKhachHang.DataBind();

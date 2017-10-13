@@ -58,6 +58,15 @@ namespace BanHang {
         protected global::DevExpress.Web.ASPxButton btnTraCuu;
         
         /// <summary>
+        /// txtNganhHang control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxTextBox txtNganhHang;
+        
+        /// <summary>
         /// LayoutItemNestedControlContainer11 control.
         /// </summary>
         /// <remarks>
@@ -328,22 +337,157 @@ namespace BanHang {
         protected global::DevExpress.Web.ASPxTextBox txtGhiChu;
         
         /// <summary>
-        /// LayoutItemNestedControlContainer19 control.
+        /// txtTanSuatBanHang control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.LayoutItemNestedControlContainer LayoutItemNestedControlContainer19;
+        protected global::DevExpress.Web.ASPxSpinEdit txtTanSuatBanHang;
         
         /// <summary>
-        /// gridHangQuiDoi control.
+        /// txtTonKho control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxGridView gridHangQuiDoi;
+        protected global::DevExpress.Web.ASPxSpinEdit txtTonKho;
+        
+        /// <summary>
+        /// txtGiaBan0 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxSpinEdit txtGiaBan0;
+        
+        /// <summary>
+        /// txtGiaBan1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxSpinEdit txtGiaBan1;
+        
+        /// <summary>
+        /// txtGiaBan2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxSpinEdit txtGiaBan2;
+        
+        /// <summary>
+        /// txtGiaBan3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxSpinEdit txtGiaBan3;
+        
+        /// <summary>
+        /// txtGiaBan4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxSpinEdit txtGiaBan4;
+        
+        /// <summary>
+        /// txtGiaBan5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxSpinEdit txtGiaBan5;
+        
+        /// <summary>
+        /// txtMaHangQD control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxTextBox txtMaHangQD;
+        
+        /// <summary>
+        /// txtTenHangHoaQD control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxTextBox txtTenHangHoaQD;
+        
+        /// <summary>
+        /// cmbDVTQD control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxComboBox cmbDVTQD;
+        
+        /// <summary>
+        /// txtTrongLuongQD control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxSpinEdit txtTrongLuongQD;
+        
+        /// <summary>
+        /// txtTonKhoQD control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxSpinEdit txtTonKhoQD;
+        
+        /// <summary>
+        /// cmbTrangThaiHangQD control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxComboBox cmbTrangThaiHangQD;
+        
+        /// <summary>
+        /// gridSoLuong control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxGridView gridSoLuong;
+        
+        /// <summary>
+        /// LayoutItemNestedControlContainer7 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.LayoutItemNestedControlContainer LayoutItemNestedControlContainer7;
+        
+        /// <summary>
+        /// gridCombo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxGridView gridCombo;
         
         /// <summary>
         /// SqlDanhSachHangHoa control.
@@ -353,6 +497,15 @@ namespace BanHang {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDanhSachHangHoa;
+        
+        /// <summary>
+        /// LayoutItemNestedControlContainer19 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.LayoutItemNestedControlContainer LayoutItemNestedControlContainer19;
         
         /// <summary>
         /// gridBarcode control.
