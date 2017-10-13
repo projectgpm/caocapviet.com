@@ -31,13 +31,13 @@ namespace BanHang.Data
 
         public DataTable getDanhSachHangHoa()
         {
-            string cmd = "SELECT GPM_HangHoa.*, GPM_HangHoaTonKho.GiaBan, GPM_HangHoaTonKho.GiaBan1, GPM_HangHoaTonKho.GiaBan2, GPM_HangHoaTonKho.GiaBan3, GPM_HangHoaTonKho.GiaBan4, GPM_HangHoaTonKho.GiaBan5 FROM GPM_HangHoa, GPM_HangHoaTonKho WHERE GPM_HangHoa.DaXoa = 0 AND GPM_HangHoa.ID = GPM_HangHoaTonKho.IDHangHoa AND GPM_HangHoa.IDTrangThaiHang < 5 AND GPM_HangHoaTonKho.IDKho = 1";
+            string cmd = "SELECT GPM_HangHoa.ID,GPM_HangHoa.MaHang,GPM_HangHoa.TenHangHoa,GPM_HangHoa.IDDonViTinh, GPM_HangHoa.HeSo,GPM_HangHoa.GiaMuaTruocThue,GPM_HangHoa.GiaBanTruocThue,GPM_HangHoa.GiaMuaSauThue,GPM_HangHoa.TrongLuong,GPM_HangHoa.GhiChu, GPM_HangHoaTonKho.GiaBan FROM GPM_HangHoa, GPM_HangHoaTonKho WHERE GPM_HangHoa.DaXoa = 0 AND GPM_HangHoa.ID = GPM_HangHoaTonKho.IDHangHoa AND GPM_HangHoa.IDTrangThaiHang < 5 AND GPM_HangHoaTonKho.IDKho = 1";
             return getData(cmd);
         }
 
         public DataTable getDanhSachHangHoa_Ten_ID()
         {
-            string cmd = "SELECT ID,TenHangHoa FROM GPM_HangHoa WHERE DaXoa = 0";
+            string cmd = "SELECT ID,MaHang,TenHangHoa FROM GPM_HangHoa WHERE DaXoa = 0";
             return getData(cmd);
         }
 
@@ -54,7 +54,7 @@ namespace BanHang.Data
 
         public DataTable getDanhSachHangHoa_ID_2(string ID)
         {
-            string cmd = "SELECT GPM_HangHoa.*, GPM_HangHoaTonKho.GiaBan, GPM_HangHoaTonKho.GiaBan1, GPM_HangHoaTonKho.GiaBan2, GPM_HangHoaTonKho.GiaBan3, GPM_HangHoaTonKho.GiaBan4, GPM_HangHoaTonKho.GiaBan5 FROM GPM_HangHoa, GPM_HangHoaTonKho WHERE GPM_HangHoa.DaXoa = 0 AND GPM_HangHoa.ID = GPM_HangHoaTonKho.IDHangHoa AND GPM_HangHoa.IDTrangThaiHang < 5 AND GPM_HangHoaTonKho.IDKho = 1 AND GPM_HangHoa.ID = '" + ID + "'";
+            string cmd = "SELECT GPM_NhomHang.IDNganhHang ,GPM_HangHoa.IDNhomHang,GPM_HangHoa.MaHang,GPM_HangHoa.TenHangHoa,GPM_HangHoa.IDDonViTinh,GPM_HangHoa.HeSo,GPM_HangHoa.IDHangSanXuat,GPM_HangHoa.IDThue,GPM_HangHoa.IDNhomDatHang,GPM_HangHoa.GiaMuaTruocThue,GPM_HangHoa.GiaBanTruocThue,GPM_HangHoa.GiaMuaSauThue,GPM_HangHoa.TrongLuong,GPM_HangHoa.HanSuDung,GPM_HangHoa.IDTrangThaiHang,GPM_HangHoa.GhiChu,GPM_HangHoa.IDHangQuyDoi,GPM_HangHoaTonKho.GiaBan,GPM_HangHoaTonKho.GiaBan1,GPM_HangHoaTonKho.GiaBan2,GPM_HangHoaTonKho.GiaBan3,GPM_HangHoaTonKho.GiaBan4,GPM_HangHoaTonKho.GiaBan5 FROM GPM_HangHoa, GPM_NhomHang, GPM_HangHoaTonKho WHERE GPM_HangHoa.ID = GPM_HangHoaTonKho.IDHangHoa AND GPM_HangHoaTonKho.IDKho = 1 AND GPM_HangHoa.IDNhomHang = GPM_NhomHang.ID AND GPM_HangHoa.ID = '" + ID + "'";
             return getData(cmd);
         }
 
@@ -350,7 +350,7 @@ namespace BanHang.Data
                 try
                 {
                     myConnection.Open();
-                    string strSQL = "UPDATE GPM_HangHoa SET IDNhomHang = @IDNhomHang,MaHang = @MaHang, TenHangHoa = @TenHangHoa, IDDonViTinh = @IDDonViTinh, HeSo = @HeSo, IDHangSanXuat = @IDHangSanXuat, IDThue = @IDThue, IDNhomDatHang = @IDNhomDatHang, GiaMuaTruocThue = @GiaMuaTruocThue, GiaBanTruocThue = @GiaBanTruocThue, GiaMuaSauThue = @GiaMuaSauThue, TrongLuong = @TrongLuong, HanSuDung = @HanSuDung, IDTrangThaiHang = @IDTrangThaiHang, GhiChu = @GhiChu, NgayCapNhat = getDATE() WHERE [ID] = @ID ";
+                    string strSQL = "UPDATE GPM_HangHoa SET IDNhomHang = @IDNhomHang,MaHang = @MaHang, TenHangHoa = @TenHangHoa, IDDonViTinh = @IDDonViTinh, IDHangQuyDoi = @IDHangQuyDoi, HeSo = @HeSo, IDHangSanXuat = @IDHangSanXuat, IDThue = @IDThue, IDNhomDatHang = @IDNhomDatHang, GiaMuaTruocThue = @GiaMuaTruocThue, GiaBanTruocThue = @GiaBanTruocThue, GiaMuaSauThue = @GiaMuaSauThue, TrongLuong = @TrongLuong, HanSuDung = @HanSuDung, IDTrangThaiHang = @IDTrangThaiHang, GhiChu = @GhiChu, NgayCapNhat = getDATE() WHERE [ID] = @ID ";
                     using (SqlCommand myCommand = new SqlCommand(strSQL, myConnection))
                     {
                         myCommand.Parameters.AddWithValue("@ID", ID);
@@ -369,6 +369,7 @@ namespace BanHang.Data
                         myCommand.Parameters.AddWithValue("@HanSuDung", hh.HanSuDung);
                         myCommand.Parameters.AddWithValue("@IDTrangThaiHang", hh.IDTrangThaiHang);
                         myCommand.Parameters.AddWithValue("@GhiChu", hh.GhiChu);
+                        myCommand.Parameters.AddWithValue("@IDHangQuyDoi", hh.IDHangQuyDoi);
 
                         myCommand.Parameters.AddWithValue("@GiaBan", hh.GiaBanSauThue);
                         myCommand.Parameters.AddWithValue("@GiaBan1", hh.GiaBan1);
@@ -419,7 +420,7 @@ namespace BanHang.Data
                 try
                 {
                     myConnection.Open();
-                    string strSQL = "UPDATE GPM_HangHoa SET IDNhomHang = @IDNhomHang,MaHang = @MaHang, TenHangHoa = @TenHangHoa, IDDonViTinh = @IDDonViTinh, HeSo = @HeSo, IDHangSanXuat = @IDHangSanXuat, IDThue = @IDThue, IDNhomDatHang = @IDNhomDatHang, GiaMuaTruocThue = @GiaMuaTruocThue, GiaBanTruocThue = @GiaBanTruocThue, GiaMuaSauThue = @GiaMuaSauThue, TrongLuong = @TrongLuong, HanSuDung = @HanSuDung, IDTrangThaiHang = @IDTrangThaiHang, GhiChu = @GhiChu, NgayCapNhat = getDATE() WHERE [ID] = @ID ";
+                    string strSQL = "UPDATE GPM_HangHoa SET IDNhomHang = @IDNhomHang,MaHang = @MaHang, TenHangHoa = @TenHangHoa, IDDonViTinh = @IDDonViTinh, IDHangQuyDoi = @IDHangQuyDoi, HeSo = @HeSo, IDHangSanXuat = @IDHangSanXuat, IDThue = @IDThue, IDNhomDatHang = @IDNhomDatHang, GiaMuaTruocThue = @GiaMuaTruocThue, GiaBanTruocThue = @GiaBanTruocThue, GiaMuaSauThue = @GiaMuaSauThue, TrongLuong = @TrongLuong, HanSuDung = @HanSuDung, IDTrangThaiHang = @IDTrangThaiHang, GhiChu = @GhiChu, NgayCapNhat = getDATE() WHERE [ID] = @ID ";
                     using (SqlCommand myCommand = new SqlCommand(strSQL, myConnection))
                     {
                         myCommand.Parameters.AddWithValue("@ID", ID);
@@ -438,6 +439,7 @@ namespace BanHang.Data
                         myCommand.Parameters.AddWithValue("@HanSuDung", hh.HanSuDung);
                         myCommand.Parameters.AddWithValue("@IDTrangThaiHang", hh.IDTrangThaiHang);
                         myCommand.Parameters.AddWithValue("@GhiChu", hh.GhiChu);
+                        myCommand.Parameters.AddWithValue("@IDHangQuyDoi", hh.IDHangQuyDoi);
 
                         myCommand.Parameters.AddWithValue("@GiaBan", hh.GiaBanSauThue);
                         myCommand.Parameters.AddWithValue("@GiaBan1", hh.GiaBan1);

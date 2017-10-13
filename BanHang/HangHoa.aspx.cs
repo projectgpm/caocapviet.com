@@ -28,7 +28,6 @@ namespace BanHang
                     LoadGrid();
                     if (dtSetting.LayChucNang_ThemXoaSua(Session["IDNhom"].ToString()) == false)
                     {
-                        gridHangHoa.Columns["chucnang1"].Visible = false;
                         gridHangHoa.Columns["chucnang2"].Visible = false;
                         btnTheMoi.Enabled = false;
                         btnNhapExel.Enabled = false;
@@ -61,12 +60,12 @@ namespace BanHang
 
         protected void btnXuatExcel_Click(object sender, EventArgs e)
         {
-            dataHangHoa data = new dataHangHoa();
-            HangHoaExport1.DataSource = data.getDanhSachHangHoa_Full_Barcode();
-            HangHoaExport1.DataBind();
-            HangHoaExport.WriteXlsToResponse();
+            //dataHangHoa data = new dataHangHoa();
+            //HangHoaExport1.DataSource = data.getDanhSachHangHoa_Full_Barcode();
+            //HangHoaExport1.DataBind();
+            //HangHoaExport.WriteXlsToResponse();
 
-            dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Hàng hóa", Session["IDKho"].ToString(), "Danh mục", "Xuất excel");
+            //dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Hàng hóa", Session["IDKho"].ToString(), "Danh mục", "Xuất excel");
         }
 
         protected void btnNhapExcel_Click(object sender, EventArgs e)
@@ -76,12 +75,12 @@ namespace BanHang
 
         protected void XuatFilePDF_Click(object sender, EventArgs e)
         {
-            dataHangHoa data = new dataHangHoa();
-            HangHoaExport1.DataSource = data.getDanhSachHangHoa_Full_Barcode();
-            HangHoaExport1.DataBind();
-            HangHoaExport.WritePdfToResponse();
+            //dataHangHoa data = new dataHangHoa();
+            //HangHoaExport1.DataSource = data.getDanhSachHangHoa_Full_Barcode();
+            //HangHoaExport1.DataBind();
+            //HangHoaExport.WritePdfToResponse();
 
-            dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Hàng hóa", Session["IDKho"].ToString(), "Danh mục", "Xuất pdf");
+            //dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Hàng hóa", Session["IDKho"].ToString(), "Danh mục", "Xuất pdf");
         }
 
         protected void gridHangHoa_RowDeleting1(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
