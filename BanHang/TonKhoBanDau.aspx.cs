@@ -64,14 +64,33 @@ namespace BanHang
             LoadGrid(cmbHienThi.Value.ToString());
         }
 
-        protected void btnXuatExel_Click(object sender, EventArgs e)
+        //protected void btnXuatExel_Click(object sender, EventArgs e)
+        //{
+        //    dataHangHoa da = new dataHangHoa();
+        //    HangHoa.DataSource = da.getDanhSachHangHoa_Export();
+        //    HangHoa.DataBind();
+
+        //    gridHangHoa.WriteXlsToResponse();
+
+        //}
+
+        //protected void btnXuatPDF_Click(object sender, EventArgs e)
+        //{
+        //    dataHangHoa da = new dataHangHoa();
+        //    HangHoa.DataSource = da.getDanhSachHangHoa_Export();
+        //    HangHoa.DataBind();
+        //    gridHangHoa.WritePdfToResponse();
+
+        //}
+
+        protected void btnXuatExcel_Click(object sender, EventArgs e)
         {
-            dataHangHoa da = new dataHangHoa();
-            HangHoa.DataSource = da.getDanhSachHangHoa_Export();
-            HangHoa.DataBind();
+            XuatDuLieu.WriteXlsToResponse();
+        }
 
-            gridHangHoa.WriteXlsToResponse();
-
+        protected void btnXuatPDF_Click(object sender, EventArgs e)
+        {
+            XuatDuLieu.WritePdfToResponse();
         }
     }
 }

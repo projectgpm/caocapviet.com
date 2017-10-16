@@ -2,12 +2,21 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
       <dx:ASPxFormLayout ID="ASPxFormLayout1" runat="server" ColCount="8" Width="10%">
         <Items>
-            
-            <dx:LayoutItem Caption="">
+             <dx:LayoutItem Caption="" HorizontalAlign="Left">
                 <LayoutItemNestedControlCollection>
-                    <dx:LayoutItemNestedControlContainer runat="server">
-                        <dx:ASPxButton ID="btnXuatExel" runat="server" OnClick="btnXuatExel_Click" Text="Xuất Exel">
-                            <Image IconID="actions_converttorange_16x16">
+                    <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer1" runat="server">
+                        <dx:ASPxButton ID="btnXuatPDF" runat="server" OnClick="btnXuatPDF_Click" Text="Xuất PDF">
+                            <Image IconID="export_exporttopdf_16x16">
+                            </Image>
+                        </dx:ASPxButton>
+                    </dx:LayoutItemNestedControlContainer>
+                </LayoutItemNestedControlCollection>
+            </dx:LayoutItem>
+            <dx:LayoutItem Caption="" HorizontalAlign="Left">
+                <LayoutItemNestedControlCollection>
+                    <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer2" runat="server">
+                        <dx:ASPxButton ID="btnXuatExcel" runat="server" OnClick="btnXuatExcel_Click" Text="Xuất Excel">
+                            <Image IconID="export_exporttoxls_16x16">
                             </Image>
                         </dx:ASPxButton>
                     </dx:LayoutItemNestedControlContainer>
@@ -32,6 +41,8 @@
             </dx:LayoutItem>
         </Items>
     </dx:ASPxFormLayout>
+    <dx:ASPxGridViewExporter ID="XuatDuLieu" runat="server">
+    </dx:ASPxGridViewExporter>
     <dx:ASPxGridView ID="gridTonKhoBanDau" runat="server" AutoGenerateColumns="False" KeyFieldName="ID" Width="100%" OnRowUpdating="gridTonKhoBanDau_RowUpdating" >
         <SettingsEditing Mode="PopupEditForm">
         </SettingsEditing>
