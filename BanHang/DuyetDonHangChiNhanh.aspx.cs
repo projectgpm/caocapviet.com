@@ -181,6 +181,7 @@ namespace BanHang
                     if (TrangThaiDonHang != 4)
                     {
                         //đơn hàng chưa xử lý lần nào
+                        txtTrangThaiDonHang.Text = "Đơn hàng mới";
                         DataTable dt = data.DanhSachChiTiet(ID);
                         if (dt.Rows.Count > 0)
                         {
@@ -213,6 +214,7 @@ namespace BanHang
                     }
                     else
                     {
+                        txtTrangThaiDonHang.Text = "Đơn hàng đã xử lý 1 phần";
                         //đơn hàng đã xử lý 1 phần. lấy dữ liệu trong bảng log
                         data = new dtDuyetDonHangChiNhanh();
                         DataTable dt = data.DanhSachChiTiet_LOG(cmbSoDonHang.Text.ToString().Trim(), cmbSoDonHang.Value.ToString());

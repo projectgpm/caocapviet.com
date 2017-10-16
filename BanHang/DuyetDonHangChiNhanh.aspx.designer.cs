@@ -49,6 +49,15 @@ namespace BanHang {
         protected global::System.Web.UI.WebControls.SqlDataSource SqlSoDonHangThuMua;
         
         /// <summary>
+        /// txtTrangThaiDonHang control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxTextBox txtTrangThaiDonHang;
+        
+        /// <summary>
         /// LayoutItemNestedControlContainer2 control.
         /// </summary>
         /// <remarks>

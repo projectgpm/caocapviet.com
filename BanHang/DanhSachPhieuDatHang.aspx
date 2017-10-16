@@ -8,8 +8,19 @@
           }
 
     </script>
-    <dx:ASPxFormLayout ID="ASPxFormLayout1" runat="server" ColCount="4" Width="100%">
+    <dx:ASPxFormLayout ID="ASPxFormLayout1" runat="server" ColCount="5" Width="100%">
         <Items>
+            <dx:LayoutItem Caption="">
+                <LayoutItemNestedControlCollection>
+                    <dx:LayoutItemNestedControlContainer runat="server">
+                        <dx:ASPxButton ID="btnTraCuuDonHang" runat="server" PostBackUrl="TraCuuDonHang.aspx" Text="Tra Cứu Đơn Hàng">
+                            <Image IconID="find_find_32x32gray">
+                            </Image>
+                            <Paddings Padding="4px" />
+                        </dx:ASPxButton>
+                    </dx:LayoutItemNestedControlContainer>
+                </LayoutItemNestedControlCollection>
+            </dx:LayoutItem>
             <dx:LayoutItem Caption="">
                 <LayoutItemNestedControlCollection>
                     <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer1" runat="server">
@@ -55,7 +66,7 @@
                 </LayoutItemNestedControlCollection>
             </dx:LayoutItem>
            
-            <dx:LayoutGroup Caption="Lọc" ColCount="4" ColSpan="4">
+            <dx:LayoutGroup Caption="Lọc" ColCount="4" ColSpan="5">
                 <Items>
                     <dx:LayoutItem Caption="Từ Ngày">
                         <LayoutItemNestedControlCollection>
@@ -185,6 +196,14 @@
                 
                 <DataItemTemplate>
                     <a href="javascript:void(0);" onclick="OnMoreInfoClick(this, '<%# Container.KeyValue %>')">Xem </a>
+                </DataItemTemplate>
+                 <HeaderStyle Wrap="True" />
+            </dx:GridViewDataButtonEditColumn>
+             <dx:GridViewDataButtonEditColumn Caption="In Phiếu" VisibleIndex="14">
+                
+                <DataItemTemplate>
+                    <a href="javascript:void(0);" onclick="OnMoreInfoClick(this, '<%# Container.KeyValue %>')">In Phiếu </a>
+
                 </DataItemTemplate>
                  <HeaderStyle Wrap="True" />
             </dx:GridViewDataButtonEditColumn>
