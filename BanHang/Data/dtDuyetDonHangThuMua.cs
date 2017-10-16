@@ -77,12 +77,27 @@ namespace BanHang.Data
                 }
             }
         }
-        public DataTable DanhSachDuyet_ThuMua(string HienThi)
+        public DataTable DanhSachDuyet_ThuMua(string HienThi, string ngayBD, string ngayKT)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "SELECT TOP " + HienThi + " * FROM [GPM_ThuMua_DonHang] WHERE IDNguoiLap is not null AND NgayLap is not null AND TrangThaiDonHang = 0 AND IDTrangThaiDonHang = 3 AND TrangThai =0  ";
+                string cmdText = "SELECT TOP " + HienThi + " * FROM [GPM_ThuMua_DonHang] WHERE IDNguoiLap is not null AND NgayLap is not null AND TrangThaiDonHang = 0 AND IDTrangThaiDonHang = 3 AND TrangThai =0 AND NgayDat < '" + ngayKT + "' AND NgayDat > '" + ngayBD + "'";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    return tb;
+                }
+            }
+        }
+        public DataTable DanhSachDuyet_ThuMua2()
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT * FROM [GPM_ThuMua_DonHang] WHERE IDNguoiLap is not null AND NgayLap is not null AND TrangThaiDonHang = 0 AND IDTrangThaiDonHang = 3 AND TrangThai =0  ";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {

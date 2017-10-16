@@ -60,7 +60,10 @@
                     <dx:LayoutItem Caption="Từ Ngày">
                         <LayoutItemNestedControlCollection>
                             <dx:LayoutItemNestedControlContainer runat="server">
-                                <dx:ASPxDateEdit ID="dateTuNgay" runat="server" Width="100%">
+                                <dx:ASPxDateEdit ID="dateTuNgay" runat="server" Width="100%" DisplayFormatString="dd/MM/yyyy">
+                                    <ValidationSettings SetFocusOnError="True">
+                                        <RequiredField IsRequired="True" />
+                                    </ValidationSettings>
                                 </dx:ASPxDateEdit>
                             </dx:LayoutItemNestedControlContainer>
                         </LayoutItemNestedControlCollection>
@@ -68,7 +71,10 @@
                     <dx:LayoutItem Caption="Đến Ngày">
                         <LayoutItemNestedControlCollection>
                             <dx:LayoutItemNestedControlContainer runat="server">
-                                <dx:ASPxDateEdit ID="dateDenNgay" runat="server" Width="100%">
+                                <dx:ASPxDateEdit ID="dateDenNgay" runat="server" Width="100%" DisplayFormatString="dd/MM/yyyy" >
+                                    <ValidationSettings SetFocusOnError="True">
+                                        <RequiredField IsRequired="True" />
+                                    </ValidationSettings>
                                 </dx:ASPxDateEdit>
                             </dx:LayoutItemNestedControlContainer>
                         </LayoutItemNestedControlCollection>
@@ -76,7 +82,7 @@
                     <dx:LayoutItem Caption="">
                         <LayoutItemNestedControlCollection>
                             <dx:LayoutItemNestedControlContainer runat="server">
-                                <dx:ASPxButton ID="btnLoc" runat="server" Text="Lọc">
+                                <dx:ASPxButton ID="btnLoc" runat="server" Text="Lọc" OnClick="btnLoc_Click">
                                     <Image IconID="filter_multiplemasterfilter_32x32">
                                     </Image>
                                 </dx:ASPxButton>
