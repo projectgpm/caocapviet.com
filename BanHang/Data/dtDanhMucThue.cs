@@ -9,12 +9,12 @@ namespace BanHang.Data
 {
     public class dtDanhMucThue
     {
-        public DataTable LayDanhSachDanhMucThue()
+        public DataTable LayDanhSachDanhMucThue(string HienThi)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = " SELECT * from [GPM_Thue] where DaXoa = 0 ";
+                string cmdText = " SELECT TOP " + HienThi + " * from [GPM_Thue] where DaXoa = 0 ";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {

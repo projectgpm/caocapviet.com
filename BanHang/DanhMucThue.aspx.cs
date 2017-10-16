@@ -21,7 +21,7 @@ namespace BanHang
             {
                 if (dtSetting.LayChucNang_HienThi(Session["IDNhom"].ToString()) == true)
                 {
-                    LoadGrid();
+                    LoadGrid(cmbHienThi.Value.ToString());
                     if (dtSetting.LayChucNang_ThemXoaSua(Session["IDNhom"].ToString()) == false)
                         gridDanhMucThue.Columns["chucnang"].Visible = false;
                 }
@@ -29,10 +29,10 @@ namespace BanHang
                     Response.Redirect("Default.aspx");
             }
         }
-        public void LoadGrid()
+        public void LoadGrid(string HienThi)
         {
             data = new dtDanhMucThue();
-            gridDanhMucThue.DataSource = data.LayDanhSachDanhMucThue();
+            gridDanhMucThue.DataSource = data.LayDanhSachDanhMucThue(HienThi);
             gridDanhMucThue.DataBind();
         }
 
@@ -45,7 +45,7 @@ namespace BanHang
             data.SuaDanhMucThue(Int32.Parse(ID), TenThue, TiLe, GhiChu);
             e.Cancel = true;
             gridDanhMucThue.CancelEdit();
-            LoadGrid();
+            LoadGrid(cmbHienThi.Value.ToString());
             dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Danh Mục Thuế:" + TenThue,Session["IDkho"].ToString(), "Danh Mục", "Cập Nhật"); 
         }
 
@@ -59,7 +59,7 @@ namespace BanHang
             data.ThemDanhMucThue(TenThue, TiLe, GhiChu);
             e.Cancel = true;
             gridDanhMucThue.CancelEdit();
-            LoadGrid();
+            LoadGrid(cmbHienThi.Value.ToString());
             dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Danh Mục Thuế:" + TenThue, Session["IDkho"].ToString(), "Danh Mục", "Thêm"); 
         }
 
@@ -70,8 +70,23 @@ namespace BanHang
             data.XoaDanhMucThue(Int32.Parse(ID));
             e.Cancel = true;
             gridDanhMucThue.CancelEdit();
-            LoadGrid();
+            LoadGrid(cmbHienThi.Value.ToString());
             dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Danh Mục Thuế:" + ID, Session["IDkho"].ToString(), "Danh Mục", "Xóa"); 
+        }
+
+        protected void btnXuatPDF_Click(object sender, EventArgs e)
+        {
+            XuatDuLieu.WritePdfToResponse();
+        }
+
+        protected void btnXuatExcel_Click(object sender, EventArgs e)
+        {
+            XuatDuLieu.WriteXlsToResponse();
+        }
+
+        protected void cmbHienThi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadGrid(cmbHienThi.Value.ToString());
         }
     }
 }

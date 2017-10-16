@@ -1,5 +1,47 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Root.master" AutoEventWireup="true" CodeBehind="DanhMucThue.aspx.cs" Inherits="BanHang.DanhMucThue" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
+      <dx:ASPxFormLayout ID="ASPxFormLayout1" runat="server" ColCount="8" Width="10%">
+        <Items>
+            <dx:LayoutItem Caption="" HorizontalAlign="Left">
+                <LayoutItemNestedControlCollection>
+                    <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer1" runat="server">
+                        <dx:ASPxButton ID="btnXuatPDF" runat="server" OnClick="btnXuatPDF_Click" Text="Xuất PDF">
+                            <Image IconID="export_exporttopdf_16x16">
+                            </Image>
+                        </dx:ASPxButton>
+                    </dx:LayoutItemNestedControlContainer>
+                </LayoutItemNestedControlCollection>
+            </dx:LayoutItem>
+            <dx:LayoutItem Caption="" HorizontalAlign="Left">
+                <LayoutItemNestedControlCollection>
+                    <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer2" runat="server">
+                        <dx:ASPxButton ID="btnXuatExcel" runat="server" OnClick="btnXuatExcel_Click" Text="Xuất Excel">
+                            <Image IconID="export_exporttoxls_16x16">
+                            </Image>
+                        </dx:ASPxButton>
+                    </dx:LayoutItemNestedControlContainer>
+                </LayoutItemNestedControlCollection>
+            </dx:LayoutItem>
+            <dx:LayoutItem Caption="Hiển Thị" ColSpan="2">
+                <LayoutItemNestedControlCollection>
+                    <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer4" runat="server">
+                        <dx:ASPxComboBox ID="cmbHienThi" runat="server" AutoPostBack="True" OnSelectedIndexChanged="cmbHienThi_SelectedIndexChanged" SelectedIndex="0">
+                            <Items>
+                                <dx:ListEditItem Selected="True" Text="50" Value="50" />
+                                <dx:ListEditItem Text="100" Value="100" />
+                                <dx:ListEditItem Text="200" Value="200" />
+                                <dx:ListEditItem Text="500" Value="500" />
+                                <dx:ListEditItem Text="1000" Value="1000" />
+                                <dx:ListEditItem Text="Tất Cả" Value="50000000000000" />
+                            </Items>
+                        </dx:ASPxComboBox>
+                    </dx:LayoutItemNestedControlContainer>
+                </LayoutItemNestedControlCollection>
+            </dx:LayoutItem>
+        </Items>
+    </dx:ASPxFormLayout>
+    <dx:ASPxGridViewExporter ID="XuatDuLieu" runat="server">
+    </dx:ASPxGridViewExporter>
     <dx:ASPxGridView ID="gridDanhMucThue" runat="server" AutoGenerateColumns="False" KeyFieldName="ID" Width="100%" OnRowDeleting="gridDanhMucThue_RowDeleting" OnRowInserting="gridDanhMucThue_RowInserting" OnRowUpdating="gridDanhMucThue_RowUpdating">
         <SettingsEditing Mode="PopupEditForm">
         </SettingsEditing>
