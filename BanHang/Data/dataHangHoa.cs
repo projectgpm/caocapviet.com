@@ -35,9 +35,9 @@ namespace BanHang.Data
             return getData(cmd);
         }
 
-        public DataTable getDanhSachHangHoa_Export()
+        public DataTable getDanhSachHangHoa_Export(string IDKho)
         {
-            string cmd = "SELECT GPM_HangHoa.MaHang,GPM_HangHoa.TenHangHoa, GPM_DonViTinh.TenDonViTinh AS DonViTinh, 'SoLuong' = 0, GPM_HangHoa.GhiChu FROM GPM_HangHoa, GPM_DonViTinh WHERE GPM_HangHoa.IDDonViTinh = GPM_DonViTinh.ID";
+            string cmd = "SELECT GPM_HangHoa.MaHang,GPM_HangHoa.TenHangHoa, GPM_DonViTinh.TenDonViTinh AS DonViTinh, GPM_HangHoaTonKho.SoLuongCon as SoLuong, GPM_HangHoa.GhiChu FROM GPM_HangHoa, GPM_DonViTinh, GPM_HangHoaTonKho WHERE GPM_HangHoa.IDDonViTinh = GPM_DonViTinh.ID AND GPM_HangHoaTonKho.IDHangHoa = GPM_HangHoa.ID AND GPM_HangHoaTonKho.IDKho = '" + IDKho + "' AND GPM_HangHoa.DaXoa = 0";
             return getData(cmd);
         }
 
