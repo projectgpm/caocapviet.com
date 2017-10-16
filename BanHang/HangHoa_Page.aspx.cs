@@ -258,7 +258,6 @@ namespace BanHang
 
             dataHangHoa data = new dataHangHoa();
             data.XoaHangHoa_Delete(IDHangHoa.Value + "");
-            data.XoaHangHoaQuyDoi_Delete(IDHangHoa.Value + "");
             data.XoaHangHoaBarCode_Delete(IDHangHoa.Value + "");
             data.XoaHangHoaGiaTheoSL_Delete(IDHangHoa.Value + "");
 

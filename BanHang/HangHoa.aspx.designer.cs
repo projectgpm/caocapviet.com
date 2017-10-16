@@ -13,13 +13,13 @@ namespace BanHang {
     public partial class HangHoa {
         
         /// <summary>
-        /// ASPxPanel1 control.
+        /// ASPxFormLayout1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxPanel ASPxPanel1;
+        protected global::DevExpress.Web.ASPxFormLayout ASPxFormLayout1;
         
         /// <summary>
         /// XuatFilePDF control.
@@ -56,6 +56,24 @@ namespace BanHang {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxButton btnTheMoi;
+        
+        /// <summary>
+        /// cmbSoLuongXem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxComboBox cmbSoLuongXem;
+        
+        /// <summary>
+        /// ASPxPanel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxPanel ASPxPanel1;
         
         /// <summary>
         /// HangHoaExport control.
