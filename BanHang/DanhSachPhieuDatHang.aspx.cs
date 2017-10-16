@@ -26,7 +26,7 @@ namespace BanHang
                 //}
                 if (dtSetting.LayChucNang_HienThi(Session["IDNhom"].ToString()) == true)
                 {
-                    LoadGrid();
+                    LoadGrid(cmbHienThi.Value.ToString());
                     if (dtSetting.LayChucNang_ThemXoaSua(Session["IDNhom"].ToString()) == false)
                     {
                         btnCapNhatDonHang.Enabled = false;
@@ -38,11 +38,16 @@ namespace BanHang
             }
         }
 
-        private void LoadGrid()
+        private void LoadGrid(string HienThi)
         {
             data = new dtDuyetDonHangThuMua();
-            gridDonDatHang.DataSource = data.DanhSachDuyet_ThuMua();
+            gridDonDatHang.DataSource = data.DanhSachDuyet_ThuMua(HienThi);
             gridDonDatHang.DataBind();
+        }
+
+        protected void cmbHienThi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadGrid(cmbHienThi.Value.ToString());
         }
     }
 }

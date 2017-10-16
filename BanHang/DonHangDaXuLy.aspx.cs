@@ -28,7 +28,7 @@ namespace BanHang
         private void LoadGrid()
         {
             data = new dtDuyetDonHangThuMua();
-            gridDonDatHang.DataSource = data.DanhSachDuyet_ThuMua();
+            gridDonDatHang.DataSource = data.DanhSachDuyet_ThuMua("50000000");
             gridDonDatHang.DataBind();
         }
     }

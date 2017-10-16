@@ -77,12 +77,12 @@ namespace BanHang.Data
                 }
             }
         }
-        public DataTable DanhSachDuyet_ThuMua()
+        public DataTable DanhSachDuyet_ThuMua(string HienThi)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "SELECT * FROM [GPM_ThuMua_DonHang] WHERE IDNguoiLap is not null AND NgayLap is not null AND TrangThaiDonHang = 0 AND IDTrangThaiDonHang = 3 AND TrangThai =0  ";
+                string cmdText = "SELECT TOP " + HienThi + " * FROM [GPM_ThuMua_DonHang] WHERE IDNguoiLap is not null AND NgayLap is not null AND TrangThaiDonHang = 0 AND IDTrangThaiDonHang = 3 AND TrangThai =0  ";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
