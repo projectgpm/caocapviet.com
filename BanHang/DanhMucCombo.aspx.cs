@@ -249,5 +249,15 @@ namespace BanHang
         {
             LoadGrid(cmbHienThi.Value.ToString());
         }
+
+        protected void btnXuatPDF_Click(object sender, EventArgs e)
+        {
+            XuatDuLieu.WritePdfToResponse();
+        }
+
+        protected void btnXuatExcel_Click(object sender, EventArgs e)
+        {
+            XuatDuLieu.WriteXlsToResponse();
+        }
     }
 }

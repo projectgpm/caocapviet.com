@@ -13,7 +13,7 @@
              // alert(key);
          };
     </script>
-     <dx:ASPxFormLayout ID="ASPxFormLayout1" runat="server" ColCount="2">
+     <dx:ASPxFormLayout ID="ASPxFormLayout1" runat="server" ColCount="5">
         <Items>
             <dx:LayoutItem Caption="">
                 <LayoutItemNestedControlCollection>
@@ -44,8 +44,31 @@
                 </LayoutItemNestedControlCollection>
             </dx:LayoutItem>
            
+            <dx:LayoutItem Caption="" HorizontalAlign="Left">
+                <LayoutItemNestedControlCollection>
+                    <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer8" runat="server">
+                        <dx:ASPxButton ID="btnXuatPDF" runat="server" OnClick="btnXuatPDF_Click" Text="Xuất PDF">
+                            <Image IconID="export_exporttopdf_16x16">
+                            </Image>
+                        </dx:ASPxButton>
+                    </dx:LayoutItemNestedControlContainer>
+                </LayoutItemNestedControlCollection>
+            </dx:LayoutItem>
+            <dx:LayoutItem Caption="" HorizontalAlign="Left">
+                <LayoutItemNestedControlCollection>
+                    <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer9" runat="server">
+                        <dx:ASPxButton ID="btnXuatExcel" runat="server" OnClick="btnXuatExcel_Click" Text="Xuất Excel">
+                            <Image IconID="export_exporttoxls_16x16">
+                            </Image>
+                        </dx:ASPxButton>
+                    </dx:LayoutItemNestedControlContainer>
+                </LayoutItemNestedControlCollection>
+            </dx:LayoutItem>
+           
         </Items>
       </dx:ASPxFormLayout> 
+     <dx:ASPxGridViewExporter ID="XuatDuLieu" runat="server">
+    </dx:ASPxGridViewExporter>
     <dx:ASPxGridView ID="gridDanhMucCombo" runat="server" AutoGenerateColumns="False" Width="100%" OnRowDeleting="gridDanhMucCombo_RowDeleting" OnRowUpdating="gridDanhMucCombo_RowUpdating" KeyFieldName="ID">
           <Settings AutoFilterCondition="Contains" ShowFilterRow="True" ShowTitlePanel="True" />
         <SettingsEditing Mode="PopupEditForm">
