@@ -23,7 +23,7 @@ namespace BanHang
             {
                 if (dtSetting.LayChucNang_HienThi(Session["IDNhom"].ToString()) == true)
                 {
-                    LoadGrid();
+                    LoadGrid(cmbHienThi.Value.ToString());
                     if (dtSetting.LayChucNang_ThemXoaSua(Session["IDNhom"].ToString()) == false)
                     {
                         gridNhaCungCap.Columns["chucnang"].Visible = false;
@@ -36,10 +36,10 @@ namespace BanHang
                 }
             }
         }
-        public void LoadGrid()
+        public void LoadGrid(string HienThi)
         {
             data = new dtNhaCungCap();
-            gridNhaCungCap.DataSource = data.LayDanhSachNhaCungCap();
+            gridNhaCungCap.DataSource = data.LayDanhSachNhaCungCap(HienThi);
             gridNhaCungCap.DataBind();
         }
 
@@ -50,7 +50,7 @@ namespace BanHang
             data.XoaNhaCungCap(Int32.Parse(ID));
             e.Cancel = true;
             gridNhaCungCap.CancelEdit();
-            LoadGrid();
+            LoadGrid(cmbHienThi.Value.ToString());
             dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Nhà Cung Cấp:" + ID, Session["IDKho"].ToString(), "Danh Mục", "Xóa");
         }
 
@@ -77,7 +77,7 @@ namespace BanHang
                     data.ThemNhaCungCap(MaNCC, tenNhaCungCap, dienThoai, fax, email, diaChi, nguoiLienHe, maSoThue, linhVucKinhDoanh, NgayCapNhat, ghiChu);
                     e.Cancel = true;
                     gridNhaCungCap.CancelEdit();
-                    LoadGrid();
+                    LoadGrid(cmbHienThi.Value.ToString());
                     dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Nhà Cung Cấp:" + tenNhaCungCap, Session["IDKho"].ToString(), "Danh Mục", "Thêm");
                 }
                 else
@@ -113,7 +113,7 @@ namespace BanHang
                     data.SuaThongTinNhaCungCap(MaNCC, Int32.Parse(ID), tenNhaCungCap, dienThoai, fax, email, diaChi, nguoiLienHe, maSoThue, linhVucKinhDoanh, ghiChu);
                     e.Cancel = true;
                     gridNhaCungCap.CancelEdit();
-                    LoadGrid();
+                    LoadGrid(cmbHienThi.Value.ToString());
                     dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Nhà Cung Cấp: " + tenNhaCungCap, Session["IDKho"].ToString(), "Danh Mục", "Cập Nhật");
                 }
                 else
@@ -123,7 +123,7 @@ namespace BanHang
                         data.SuaThongTinNhaCungCap(MaNCC, Int32.Parse(ID), tenNhaCungCap, dienThoai, fax, email, diaChi, nguoiLienHe, maSoThue, linhVucKinhDoanh, ghiChu);
                         e.Cancel = true;
                         gridNhaCungCap.CancelEdit();
-                        LoadGrid();
+                        LoadGrid(cmbHienThi.Value.ToString());
                         dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Nhà Cung Cấp: " + tenNhaCungCap, Session["IDKho"].ToString(), "Danh Mục", "Cập Nhật");
                     }
                     else
@@ -156,6 +156,11 @@ namespace BanHang
         protected void gridNhaCungCap_InitNewRow(object sender, DevExpress.Web.Data.ASPxDataInitNewRowEventArgs e)
         {
             e.NewValues["MaNCC"] = dtNhaCungCap.Dem_Max();
+        }
+
+        protected void cmbHienThi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadGrid(cmbHienThi.Value.ToString());
         }
     }
 }

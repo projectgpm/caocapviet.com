@@ -45,7 +45,7 @@ namespace BanHang
                         cmbKhoNhap.SelectedIndex = da.Rows.Count;
 
                         dtNhaCungCap dt1 = new dtNhaCungCap();
-                        DataTable da1 = dt1.LayDanhSachNhaCungCap();
+                        DataTable da1 = dt1.LayDanhSachNhaCungCap("500000000");
                         da1.Rows.Add(-1, "Tất cả nhà cung cấp", null, null, null, null, null, null, null, null, null, null, null);
 
                         cmbNhaCungCap.DataSource = da1;

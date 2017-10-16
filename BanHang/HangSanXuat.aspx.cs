@@ -21,7 +21,7 @@ namespace BanHang
             {
                 if (dtSetting.LayChucNang_HienThi(Session["IDNhom"].ToString()) == true)
                 {
-                    LoadGrid();
+                    LoadGrid(cmbHienThi.Value.ToString());
                     if (dtSetting.LayChucNang_ThemXoaSua(Session["IDNhom"].ToString()) == false)
                         gridDanhSach.Columns["chucnang"].Visible = false;
                 }
@@ -32,10 +32,10 @@ namespace BanHang
             }
         }
 
-        private void LoadGrid()
+        private void LoadGrid(string HienThi)
         {
             dataHangSanXuat data = new dataHangSanXuat();
-            gridDanhSach.DataSource = data.getDanhSachHangSX();
+            gridDanhSach.DataSource = data.getDanhSachHangSX(HienThi);
             gridDanhSach.DataBind();
         }
 
@@ -62,7 +62,7 @@ namespace BanHang
                     data.ThemHangSX(MaNSX, TenNSX, dienThoai, fax, email, diaChi, nguoiLienHe, maSoThue, linhVucKinhDoanh, NgayCapNhat, ghiChu);
                     e.Cancel = true;
                     gridDanhSach.CancelEdit();
-                    LoadGrid();
+                    LoadGrid(cmbHienThi.Value.ToString());
                     dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Nhà SX", Session["IDKho"].ToString(), "Danh mục", "Thêm: " + TenNSX); 
                 }
                 else
@@ -83,7 +83,7 @@ namespace BanHang
             data.deleteHangSX(ID);
             e.Cancel = true;
             gridDanhSach.CancelEdit();
-            LoadGrid();
+            LoadGrid(cmbHienThi.Value.ToString());
             dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Hãng SX", Session["IDKho"].ToString(), "Danh mục", "Xóa: ID = " + ID); 
         }
 
@@ -110,7 +110,7 @@ namespace BanHang
                     data.SuaThongTin(MaNSX, Int32.Parse(ID), TenNSX, dienThoai, fax, email, diaChi, nguoiLienHe, maSoThue, linhVucKinhDoanh, ghiChu);
                     e.Cancel = true;
                     gridDanhSach.CancelEdit();
-                    LoadGrid();
+                    LoadGrid(cmbHienThi.Value.ToString());
                     dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Nhà Sản Xuất: " + TenNSX, Session["IDKho"].ToString(), "Danh Mục", "Cập Nhật");
                 }
                 else
@@ -120,7 +120,7 @@ namespace BanHang
                         data.SuaThongTin(MaNSX, Int32.Parse(ID), TenNSX, dienThoai, fax, email, diaChi, nguoiLienHe, maSoThue, linhVucKinhDoanh, ghiChu);
                         e.Cancel = true;
                         gridDanhSach.CancelEdit();
-                        LoadGrid();
+                        LoadGrid(cmbHienThi.Value.ToString());
                         dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Nhà Sản Xuất: " + TenNSX, Session["IDKho"].ToString(), "Danh Mục", "Cập Nhật");
                     }
                     else
@@ -140,6 +140,21 @@ namespace BanHang
         protected void gridDanhSach_InitNewRow(object sender, DevExpress.Web.Data.ASPxDataInitNewRowEventArgs e)
         {
             e.NewValues["MaNSX"] = dataHangSanXuat.Dem_Max();
+        }
+
+        protected void btnXuatPDF_Click(object sender, EventArgs e)
+        {
+            XuatDuLieu.WritePdfToResponse();
+        }
+
+        protected void btnXuatExcel_Click(object sender, EventArgs e)
+        {
+            XuatDuLieu.WriteXlsToResponse();
+        }
+
+        protected void cmbHienThi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

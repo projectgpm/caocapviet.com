@@ -28,9 +28,9 @@ namespace BanHang.Data
             }
         }
 
-        public DataTable getDanhSachHangSX()
+        public DataTable getDanhSachHangSX(string HienThi)
         {
-            string cmd = "SELECT * FROM [GPM_HangSanXuat] WHERE [DAXOA] = 0 AND ID != 1";
+            string cmd = "SELECT TOP " + HienThi + " * FROM [GPM_HangSanXuat] WHERE [DAXOA] = 0 AND ID != 1";
             return getData(cmd);
         }
         public static bool KiemTraMaNCC_ID(string MaNSX, string ID)
