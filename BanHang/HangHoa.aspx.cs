@@ -25,7 +25,9 @@ namespace BanHang
             {
                 if (dtSetting.LayChucNang_HienThi(Session["IDNhom"].ToString()) == true)
                 {
-                    LoadGrid();
+                    string s = "TOP " + cmbSoLuongXem.Value + " ";
+                    LoadGrid(s);
+
                     if (dtSetting.LayChucNang_ThemXoaSua(Session["IDNhom"].ToString()) == false)
                     {
                         gridHangHoa.Columns["chucnang2"].Visible = false;
@@ -37,10 +39,10 @@ namespace BanHang
                     Response.Redirect("Default.aspx");
             }
         }
-        public void LoadGrid()
+        public void LoadGrid(string s)
         {
             dataHangHoa data = new dataHangHoa();
-            gridHangHoa.DataSource = data.getDanhSachHangHoa();
+            gridHangHoa.DataSource = data.getDanhSachHangHoa(s);
             gridHangHoa.DataBind();
         }
 
@@ -48,15 +50,6 @@ namespace BanHang
         {
             
         }
-
-        //protected void gridBarCode_Init(object sender, EventArgs e)
-        //{
-        //    dataHangHoa data = new dataHangHoa();
-        //    ASPxGridView gridBarCode = sender as ASPxGridView;
-        //    object IDHangHoa = gridBarCode.GetMasterRowKeyValue();
-        //    gridBarCode.DataSource = data.GetListBarCode(IDHangHoa);
-        //    gridBarCode.DataBind();
-        //}
 
         protected void btnXuatExcel_Click(object sender, EventArgs e)
         {
@@ -89,7 +82,9 @@ namespace BanHang
             int ID = Int32.Parse(e.Keys["ID"].ToString());
             data.XoaHangHoa(ID);
             e.Cancel = true;
-            LoadGrid();
+
+            string s = "TOP " + cmbSoLuongXem.Value + " ";
+            LoadGrid(s);
 
             dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Hàng hóa", Session["IDKho"].ToString(), "Danh mục", "Xóa");
         }
@@ -98,6 +93,12 @@ namespace BanHang
         {
             dataHangHoa data = new dataHangHoa();
             Response.Redirect("HangHoa_Page.aspx");
+        }
+
+        protected void cmbSoLuongXem_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string s = "TOP " + cmbSoLuongXem.Value + " ";
+            LoadGrid(s);
         }
 
     }

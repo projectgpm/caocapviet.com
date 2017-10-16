@@ -29,9 +29,15 @@ namespace BanHang.Data
             }
         }
 
-        public DataTable getDanhSachHangHoa()
+        public DataTable getDanhSachHangHoa(string s)
         {
-            string cmd = "SELECT GPM_HangHoa.ID,GPM_HangHoa.MaHang,GPM_HangHoa.TenHangHoa,GPM_HangHoa.IDDonViTinh, GPM_HangHoa.HeSo,GPM_HangHoa.GiaMuaTruocThue,GPM_HangHoa.GiaBanTruocThue,GPM_HangHoa.GiaMuaSauThue,GPM_HangHoa.TrongLuong,GPM_HangHoa.GhiChu, GPM_HangHoaTonKho.GiaBan FROM GPM_HangHoa, GPM_HangHoaTonKho WHERE GPM_HangHoa.DaXoa = 0 AND GPM_HangHoa.ID = GPM_HangHoaTonKho.IDHangHoa AND GPM_HangHoa.IDTrangThaiHang < 5 AND GPM_HangHoaTonKho.IDKho = 1";
+            string cmd = "SELECT " + s + "GPM_HangHoa.ID,GPM_HangHoa.MaHang,GPM_HangHoa.TenHangHoa,GPM_HangHoa.IDDonViTinh, GPM_HangHoa.HeSo,GPM_HangHoa.GiaMuaTruocThue,GPM_HangHoa.GiaBanTruocThue,GPM_HangHoa.GiaMuaSauThue,GPM_HangHoa.TrongLuong,GPM_HangHoa.GhiChu, GPM_HangHoaTonKho.GiaBan FROM GPM_HangHoa, GPM_HangHoaTonKho WHERE GPM_HangHoa.DaXoa = 0 AND GPM_HangHoa.ID = GPM_HangHoaTonKho.IDHangHoa AND GPM_HangHoa.IDTrangThaiHang < 5 AND GPM_HangHoaTonKho.IDKho = 1";
+            return getData(cmd);
+        }
+
+        public DataTable getDanhSachHangHoa_Export()
+        {
+            string cmd = "SELECT GPM_HangHoa.MaHang,GPM_HangHoa.TenHangHoa, GPM_DonViTinh.TenDonViTinh AS DonViTinh, 'SoLuong' = 0, GPM_HangHoa.GhiChu FROM GPM_HangHoa, GPM_DonViTinh WHERE GPM_HangHoa.IDDonViTinh = GPM_DonViTinh.ID";
             return getData(cmd);
         }
 
@@ -243,8 +249,7 @@ namespace BanHang.Data
                     string strSQL = "UPDATE [GPM_HANGHOA] SET [DAXOA] = 1 WHERE [ID] = @ID " +
                         " UPDATE [GPM_HangHoaTonKho] SET [DAXOA] = 1 WHERE [IDHangHoa] = @ID " +
                         " UPDATE [GPM_HangHoa_Barcode] SET [DAXOA] = 1 WHERE [IDHangHoa] = @ID " +
-                        " UPDATE [GPM_HangHoa_GiaTheoSL] SET [DAXOA] = 1 WHERE [IDHangHoa] = @ID " +
-                        " UPDATE [GPM_HangHoa_QuyDoi] SET [DAXOA] = 1 WHERE [IDHangHoa] = @ID ";
+                        " UPDATE [GPM_HangHoa_GiaTheoSL] SET [DAXOA] = 1 WHERE [IDHangHoa] = @ID ";
                     using (SqlCommand myCommand = new SqlCommand(strSQL, myConnection))
                     {
                         myCommand.Parameters.AddWithValue("@ID", ID);
@@ -269,27 +274,6 @@ namespace BanHang.Data
                     using (SqlCommand myCommand = new SqlCommand(strSQL, myConnection))
                     {
                         myCommand.Parameters.AddWithValue("@ID", ID);
-                        myCommand.ExecuteNonQuery();
-                    }
-                }
-                catch (Exception e)
-                {
-                    throw new Exception("Lỗi: Quá trình cập nhật dữ liệu gặp lỗi, hãy tải lại trang");
-                }
-            }
-        }
-
-        public void XoaHangHoaQuyDoi_Delete(string IDHangHoa)
-        {
-            using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
-            {
-                try
-                {
-                    myConnection.Open();
-                    string strSQL = "Delete from [GPM_HangHoa_QuyDoi] WHERE [IDHangHoa] = @IDHangHoa";
-                    using (SqlCommand myCommand = new SqlCommand(strSQL, myConnection))
-                    {
-                        myCommand.Parameters.AddWithValue("@IDHangHoa", IDHangHoa);
                         myCommand.ExecuteNonQuery();
                     }
                 }

@@ -3,6 +3,17 @@
       <dx:ASPxFormLayout ID="ASPxFormLayout1" runat="server" ColCount="8" Width="10%">
         <Items>
             
+            <dx:LayoutItem Caption="">
+                <LayoutItemNestedControlCollection>
+                    <dx:LayoutItemNestedControlContainer runat="server">
+                        <dx:ASPxButton ID="btnXuatExel" runat="server" OnClick="btnXuatExel_Click" Text="Xuất Exel">
+                            <Image IconID="actions_converttorange_16x16">
+                            </Image>
+                        </dx:ASPxButton>
+                    </dx:LayoutItemNestedControlContainer>
+                </LayoutItemNestedControlCollection>
+            </dx:LayoutItem>
+            
             <dx:LayoutItem Caption="Hiển Thị" ColSpan="2">
                 <LayoutItemNestedControlCollection>
                     <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer4" runat="server">
@@ -111,4 +122,25 @@
             <asp:Parameter DefaultValue="0" Name="DaXoa" Type="Int32" />
         </SelectParameters>
     </asp:SqlDataSource>
+      <dx:ASPxGridViewExporter ID="gridHangHoa" runat="server" GridViewID="HangHoa">
+      </dx:ASPxGridViewExporter>
+      <dx:ASPxGridView ID="HangHoa" runat="server" AutoGenerateColumns="False" Visible="False">
+<SettingsCommandButton>
+<ShowAdaptiveDetailButton ButtonType="Image"></ShowAdaptiveDetailButton>
+
+<HideAdaptiveDetailButton ButtonType="Image"></HideAdaptiveDetailButton>
+</SettingsCommandButton>
+          <Columns>
+              <dx:GridViewDataTextColumn Caption="GhiChu" FieldName="GhiChu" VisibleIndex="4">
+              </dx:GridViewDataTextColumn>
+              <dx:GridViewDataTextColumn Caption="SoLuong" FieldName="SoLuong" VisibleIndex="3">
+              </dx:GridViewDataTextColumn>
+              <dx:GridViewDataTextColumn Caption="DonViTinh" FieldName="DonViTinh" VisibleIndex="2">
+              </dx:GridViewDataTextColumn>
+              <dx:GridViewDataTextColumn Caption="TenHangHoa" FieldName="TenHangHoa" VisibleIndex="1">
+              </dx:GridViewDataTextColumn>
+              <dx:GridViewDataTextColumn Caption="MaHang" FieldName="MaHang" VisibleIndex="0">
+              </dx:GridViewDataTextColumn>
+          </Columns>
+      </dx:ASPxGridView>
 </asp:Content>
