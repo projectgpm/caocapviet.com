@@ -154,7 +154,7 @@ namespace BanHang
 
         protected void cmbHienThi_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            LoadGrid(cmbHienThi.Value.ToString());
         }
     }
 }

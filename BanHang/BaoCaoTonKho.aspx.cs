@@ -45,7 +45,7 @@ namespace BanHang
                         cmbKho.SelectedIndex = da.Rows.Count;
 
                         dataNganhHang dtNH = new dataNganhHang();
-                        DataTable daNH = dtNH.getDanhSachNganhHang();
+                        DataTable daNH = dtNH.getDanhSachNganhHang("5000000");
                         daNH.Rows.Add(-1, null, "Tất cả ngành hàng", null, null, null);
                         cmbNganhHang.DataSource = daNH;
                         cmbNganhHang.TextField = "TenNganhHang";
@@ -54,7 +54,7 @@ namespace BanHang
                         cmbNganhHang.SelectedIndex = daNH.Rows.Count;
 
                         dataNhomHang dtNhomH = new dataNhomHang();
-                        DataTable daNhomH = dtNhomH.getDanhSachNhomHang();
+                        DataTable daNhomH = dtNhomH.getDanhSachNhomHang("5000000");
                         daNhomH.Rows.Add(-1, 1, null, "Tất cả nhóm hàng", null, null, null);
 
                         cmbNhomHang.DataSource = daNhomH;

@@ -109,9 +109,9 @@ namespace BanHang.Data
             }
         }
 
-        public DataTable getDanhSachNhomHang()
+        public DataTable getDanhSachNhomHang(string HienThi)
         {
-            string cmd = "SELECT * FROM [GPM_NHOMHANG] WHERE [DAXOA] = 0 AND ID != 1";
+            string cmd = "SELECT TOP " + HienThi + " * FROM [GPM_NHOMHANG] WHERE [DAXOA] = 0 AND ID != 1";
             return getData(cmd);
         }
 

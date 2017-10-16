@@ -9,12 +9,12 @@ namespace BanHang.Data
 {
     public class dtNhomKhachHang
     {
-        public DataTable LayDanhNhomKhachHang(string IDKho)
+        public DataTable LayDanhNhomKhachHang(string IDKho, string HienThi)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "SELECT * FROM [GPM_NhomKhachHang] WHERE [DaXoa] = 0  AND ('" + IDKho + "' = 1 OR IDKho = '" + IDKho + "')";
+                string cmdText = "SELECT TOP " + HienThi + " * FROM [GPM_NhomKhachHang] WHERE [DaXoa] = 0  AND ('" + IDKho + "' = 1 OR IDKho = '" + IDKho + "')";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
