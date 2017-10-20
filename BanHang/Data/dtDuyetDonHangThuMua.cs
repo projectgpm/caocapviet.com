@@ -79,6 +79,7 @@ namespace BanHang.Data
         }
         public DataTable DanhSachDuyet_ThuMua(string HienThi, string ngayBD, string ngayKT)
         {
+
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();

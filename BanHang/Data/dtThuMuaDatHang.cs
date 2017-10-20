@@ -26,12 +26,12 @@ namespace BanHang.Data
                 }
             }
         }
-        public DataTable LayDanhSachDonHangXuLy1Phan()
+        public DataTable LayDanhSachDonHangXuLy1Phan(string HienThi, string ngayBD, string ngayKT)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "SELECT * FROM [GPM_ThuMua_DonHang] WHERE [TrangThai] = 1 AND IDTrangThaiDonHang = 4  AND [IDNguoiLap] is not null ";
+                string cmdText = "SELECT TOP " + HienThi + " * FROM [GPM_ThuMua_DonHang] WHERE [TrangThai] = 1 AND IDTrangThaiDonHang = 4  AND [IDNguoiLap] is not null AND [NgayDat] <='" + ngayKT + "' AND  [NgayDat] >='" + ngayBD + "'";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
