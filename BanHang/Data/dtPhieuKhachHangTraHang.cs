@@ -9,12 +9,12 @@ namespace BanHang.Data
 {
     public class dtPhieuKhachHangTraHang
     {
-        public DataTable DanhSachPhieuKhachHangTraHang(string IDKho)
+        public DataTable DanhSachPhieuKhachHangTraHang(string IDKho, string HienThi, string NgayBD, string NgayKT)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "SELECT GPM_HoaDon.MaHoaDon, GPM_PhieuKhachHangTraHang.* FROM GPM_HoaDon,GPM_PhieuKhachHangTraHang WHERE GPM_HoaDon.ID = GPM_PhieuKhachHangTraHang.IDHoaDon AND GPM_PhieuKhachHangTraHang.IDHoaDon is not null AND (('" + IDKho + "' = -1) OR (GPM_PhieuKhachHangTraHang.IDKho = '" + IDKho + "')) ORDER BY GPM_PhieuKhachHangTraHang.ID DESC";
+                string cmdText = "SELECT TOP " + HienThi + " GPM_HoaDon.MaHoaDon, GPM_PhieuKhachHangTraHang.* FROM GPM_HoaDon,GPM_PhieuKhachHangTraHang WHERE GPM_HoaDon.ID = GPM_PhieuKhachHangTraHang.IDHoaDon AND GPM_PhieuKhachHangTraHang.IDHoaDon is not null AND (('" + IDKho + "' = -1) OR (GPM_PhieuKhachHangTraHang.IDKho = '" + IDKho + "'))  AND NgayDoi < '" + NgayKT + "' AND NgayDoi >= '" + NgayBD + "' ORDER BY GPM_PhieuKhachHangTraHang.ID DESC";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {

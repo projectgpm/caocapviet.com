@@ -10,11 +10,73 @@
 
     </script>
     <br />
-    <dx:ASPxButton ID="btnThemPhieuTraHang" runat="server" Text="Thêm phiếu trả hàng" HorizontalAlign="Right" VerticalAlign="Middle" PostBackUrl="PhieuKhachHangTraHang.aspx">
-        <Image IconID="actions_add_32x32">
-        </Image>
-        <Paddings Padding="4px" />
-    </dx:ASPxButton>
+    <dx:ASPxFormLayout ID="ASPxFormLayout1" runat="server" ColCount="5">
+        <Items>
+            <dx:LayoutItem Caption="">
+                <LayoutItemNestedControlCollection>
+                    <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer1" runat="server">
+                        <dx:ASPxButton ID="btnThemPhieuTraHang" runat="server" Text="Thêm phiếu trả hàng" HorizontalAlign="Right" VerticalAlign="Middle" PostBackUrl="PhieuKhachHangTraHang.aspx">
+                            <Image IconID="actions_add_32x32">
+                            </Image>
+                            <Paddings Padding="4px" />
+                        </dx:ASPxButton>
+                    </dx:LayoutItemNestedControlContainer>
+                </LayoutItemNestedControlCollection>
+            </dx:LayoutItem>
+             <dx:LayoutGroup Caption="Lọc" ColCount="5" ColSpan="5">
+                 <Items>
+                     <dx:LayoutItem Caption="Từ Ngày">
+                         <LayoutItemNestedControlCollection>
+                             <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer2" runat="server">
+                                 <dx:ASPxDateEdit ID="dateTuNgay" runat="server" DisplayFormatString="dd/MM/yyyy" Width="100%">
+                                     <ValidationSettings SetFocusOnError="True">
+                                         <RequiredField IsRequired="True" />
+                                     </ValidationSettings>
+                                 </dx:ASPxDateEdit>
+                             </dx:LayoutItemNestedControlContainer>
+                         </LayoutItemNestedControlCollection>
+                     </dx:LayoutItem>
+                     <dx:LayoutItem Caption="Đến Ngày">
+                         <LayoutItemNestedControlCollection>
+                             <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer3" runat="server">
+                                 <dx:ASPxDateEdit ID="dateDenNgay" runat="server" DisplayFormatString="dd/MM/yyyy" Width="100%">
+                                     <ValidationSettings SetFocusOnError="True">
+                                         <RequiredField IsRequired="True" />
+                                     </ValidationSettings>
+                                 </dx:ASPxDateEdit>
+                             </dx:LayoutItemNestedControlContainer>
+                         </LayoutItemNestedControlCollection>
+                     </dx:LayoutItem>
+                     <dx:LayoutItem Caption="">
+                         <LayoutItemNestedControlCollection>
+                             <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer4" runat="server">
+                                 <dx:ASPxButton ID="btnLoc" runat="server" OnClick="btnLoc_Click" Text="Lọc">
+                                     <Image IconID="filter_multiplemasterfilter_32x32">
+                                     </Image>
+                                 </dx:ASPxButton>
+                             </dx:LayoutItemNestedControlContainer>
+                         </LayoutItemNestedControlCollection>
+                     </dx:LayoutItem>
+                     <dx:LayoutItem Caption="Hiển Thị">
+                         <LayoutItemNestedControlCollection>
+                             <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer5" runat="server">
+                                 <dx:ASPxComboBox ID="cmbHienThi" runat="server" AutoPostBack="True" OnSelectedIndexChanged="cmbHienThi_SelectedIndexChanged" SelectedIndex="0">
+                                     <Items>
+                                         <dx:ListEditItem Selected="True" Text="50" Value="50" />
+                                         <dx:ListEditItem Text="100" Value="100" />
+                                         <dx:ListEditItem Text="200" Value="200" />
+                                         <dx:ListEditItem Text="500" Value="500" />
+                                         <dx:ListEditItem Text="1000" Value="1000" />
+                                         <dx:ListEditItem Text="Tất Cả" Value="50000000000000" />
+                                     </Items>
+                                 </dx:ASPxComboBox>
+                             </dx:LayoutItemNestedControlContainer>
+                         </LayoutItemNestedControlCollection>
+                     </dx:LayoutItem>
+                 </Items>
+            </dx:LayoutGroup>
+        </Items>
+      </dx:ASPxFormLayout> 
     <dx:ASPxGridView ID="gridPhieuKhachHangTraHang" runat="server" AutoGenerateColumns="False" Width="100%" KeyFieldName="ID">
         <SettingsPager Mode="ShowAllRecords">
         </SettingsPager>

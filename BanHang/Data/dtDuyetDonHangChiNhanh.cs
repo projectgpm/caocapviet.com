@@ -246,12 +246,12 @@ namespace BanHang.Data
                 }
             }
         }
-        public DataTable LayDanhSachDonHangDuyet(string IDKho)
+        public DataTable LayDanhSachDonHangDuyet(string IDKho,string HienThi, string NgayBd, string NgayKt)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "SELECT * FROM [GPM_DuyetHangChiNhanh] WHERE ( '" + IDKho + "' = 1 OR [IDKhoLap] = '" + IDKho + "') AND [GPM_DuyetHangChiNhanh].IDTrangThaiXuLy != 2 AND [GPM_DuyetHangChiNhanh].TrangThaiDuyet = 0  ORDER BY [ID] DESC";
+                string cmdText = "SELECT TOP " + HienThi + " * FROM [GPM_DuyetHangChiNhanh] WHERE NgayDat < '" + NgayKt + "' AND NgayDat >= '" + NgayBd + "' AND ( '" + IDKho + "' = 1 OR [IDKhoLap] = '" + IDKho + "') AND [GPM_DuyetHangChiNhanh].IDTrangThaiXuLy != 2 AND [GPM_DuyetHangChiNhanh].TrangThaiDuyet = 0  ORDER BY [ID] DESC";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {

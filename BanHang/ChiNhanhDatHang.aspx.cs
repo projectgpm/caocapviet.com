@@ -21,14 +21,27 @@ namespace BanHang
 
             else
             {
-                LoadGrid(Session["IDKho"].ToString());
+                if (!IsPostBack)
+                {
+                    dateTuNgay.Date = DateTime.Today.AddDays(-30);
+                    dateDenNgay.Date = DateTime.Today;
+                }
+                if (dateTuNgay.Text != "" || dateDenNgay.Text != "")
+                {
+                    LoadGrid(Session["IDKho"].ToString(),cmbHienThi.Value.ToString());
+                }
+             
             }
         }
 
-        private void LoadGrid(string IDKho)
+        private void LoadGrid(string IDKho,string HienThi)
         {
             data = new dtDonHangChiNhanh();
-            gridDonDatHang.DataSource = data.LayDanhSachDonHang(IDKho);
+            string ngayBD = dateTuNgay.Date.ToString("yyyy-MM-dd");
+            string ngayKT = dateDenNgay.Date.ToString("yyyy-MM-dd");
+            ngayBD = ngayBD + " 00:00:0.000";
+            ngayKT = ngayKT + " 23:59:59.999";
+            gridDonDatHang.DataSource = data.LayDanhSachDonHang(IDKho,HienThi,ngayBD,ngayKT);
             gridDonDatHang.DataBind();
         }
 
@@ -39,6 +52,16 @@ namespace BanHang
             int TrangThai = Convert.ToInt32(e.GetValue("TrangThai"));
             if (MucDoUuTien == 1 && TrangThai ==0)
                 e.Row.BackColor = color;
+        }
+
+        protected void btnLoc_Click(object sender, EventArgs e)
+        {
+            LoadGrid(Session["IDKho"].ToString(), cmbHienThi.Value.ToString());
+        }
+
+        protected void cmbHienThi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadGrid(Session["IDKho"].ToString(), cmbHienThi.Value.ToString());
         }
     }
 }
