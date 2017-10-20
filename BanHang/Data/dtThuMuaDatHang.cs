@@ -31,7 +31,7 @@ namespace BanHang.Data
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "SELECT TOP " + HienThi + " * FROM [GPM_ThuMua_DonHang] WHERE [TrangThai] = 1 AND IDTrangThaiDonHang = 4  AND [IDNguoiLap] is not null AND [NgayDat] <='" + ngayKT + "' AND  [NgayDat] >='" + ngayBD + "'";
+                string cmdText = "SELECT TOP " + HienThi + " * FROM [GPM_ThuMua_DonHang] WHERE [TrangThai] = 1 AND IDTrangThaiDonHang = 4  AND [IDNguoiLap] is not null AND [NgayDat] <'" + ngayKT + "' AND  [NgayDat] >='" + ngayBD + "'";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
@@ -185,12 +185,12 @@ namespace BanHang.Data
                 }
             }
         }
-        public DataTable LayDanhSachDonHang(string IDKho)
+        public DataTable LayDanhSachDonHang(string IDKho, string HienThi, string NgayBD, string NgayKT)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "SELECT * FROM [GPM_ThuMua_DonHang] WHERE TrangThai = 0 AND TrangThaiDonHang = 0  AND [SoDonHang] is not null AND [IDKhoLap] = '" + IDKho + "'";
+                string cmdText = "SELECT TOP " + HienThi + " * FROM [GPM_ThuMua_DonHang] WHERE TrangThai = 0 AND TrangThaiDonHang = 0  AND [SoDonHang] is not null AND [NgayDat] < '" + NgayKT + "' AND  [NgayDat] >='" + NgayBD + "'  AND [IDKhoLap] = '" + IDKho + "'";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
@@ -200,12 +200,12 @@ namespace BanHang.Data
                 }
             }
         }
-        public DataTable LayDanhSachDonHangDaHuy(string IDKho)
+        public DataTable LayDanhSachDonHangDaHuy(string IDKho, string HienThi, string NgayBD, string NgayKT)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "SELECT TOP 1000 * FROM [GPM_ThuMua_DonHang] WHERE TrangThaiDonHang = 1  AND [SoDonHang] is not null AND [IDKhoLap] = '" + IDKho + "' ORDER BY [ID] DESC ";
+                string cmdText = "SELECT TOP " + HienThi + " * FROM [GPM_ThuMua_DonHang] WHERE [NgayDat] < '" + NgayKT + "' AND [NgayDat] >= '" + NgayBD + "' AND TrangThaiDonHang = 1  AND [SoDonHang] is not null AND [IDKhoLap] = '" + IDKho + "' ORDER BY [ID] DESC ";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {

@@ -56,7 +56,58 @@
                     </dx:LayoutItemNestedControlContainer>
                 </LayoutItemNestedControlCollection>
             </dx:LayoutItem>
-           
+               <dx:LayoutGroup Caption="Lọc" ColCount="4" ColSpan="5">
+                <Items>
+                    <dx:LayoutItem Caption="Từ Ngày">
+                        <LayoutItemNestedControlCollection>
+                            <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer5" runat="server">
+                                <dx:ASPxDateEdit ID="dateTuNgay" runat="server" Width="100%" DisplayFormatString="dd/MM/yyyy">
+                                    <ValidationSettings SetFocusOnError="True">
+                                        <RequiredField IsRequired="True" />
+                                    </ValidationSettings>
+                                </dx:ASPxDateEdit>
+                            </dx:LayoutItemNestedControlContainer>
+                        </LayoutItemNestedControlCollection>
+                    </dx:LayoutItem>
+                    <dx:LayoutItem Caption="Đến Ngày">
+                        <LayoutItemNestedControlCollection>
+                            <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer6" runat="server">
+                                <dx:ASPxDateEdit ID="dateDenNgay" runat="server" Width="100%" DisplayFormatString="dd/MM/yyyy" >
+                                    <ValidationSettings SetFocusOnError="True">
+                                        <RequiredField IsRequired="True" />
+                                    </ValidationSettings>
+                                </dx:ASPxDateEdit>
+                            </dx:LayoutItemNestedControlContainer>
+                        </LayoutItemNestedControlCollection>
+                    </dx:LayoutItem>
+                    <dx:LayoutItem Caption="">
+                        <LayoutItemNestedControlCollection>
+                            <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer7" runat="server">
+                                <dx:ASPxButton ID="btnLoc" runat="server" Text="Lọc" OnClick="btnLoc_Click">
+                                    <Image IconID="filter_multiplemasterfilter_32x32">
+                                    </Image>
+                                </dx:ASPxButton>
+                            </dx:LayoutItemNestedControlContainer>
+                        </LayoutItemNestedControlCollection>
+                    </dx:LayoutItem>
+                    <dx:LayoutItem Caption="Hiển Thị">
+                        <LayoutItemNestedControlCollection>
+                            <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer8" runat="server">
+                                <dx:ASPxComboBox ID="cmbHienThi" runat="server" AutoPostBack="True" OnSelectedIndexChanged="cmbHienThi_SelectedIndexChanged" SelectedIndex="0">
+                            <Items>
+                                <dx:ListEditItem Selected="True" Text="50" Value="50" />
+                                <dx:ListEditItem Text="100" Value="100" />
+                                <dx:ListEditItem Text="200" Value="200" />
+                                <dx:ListEditItem Text="500" Value="500" />
+                                <dx:ListEditItem Text="1000" Value="1000" />
+                                <dx:ListEditItem Text="Tất Cả" Value="50000000000000" />
+                            </Items>
+                        </dx:ASPxComboBox>
+                            </dx:LayoutItemNestedControlContainer>
+                        </LayoutItemNestedControlCollection>
+                    </dx:LayoutItem>
+                </Items>
+            </dx:LayoutGroup>
         </Items>
       </dx:ASPxFormLayout> 
     <dx:ASPxGridView ID="gridDonDatHang" runat="server" AutoGenerateColumns="False" KeyFieldName="ID" Width="100%">

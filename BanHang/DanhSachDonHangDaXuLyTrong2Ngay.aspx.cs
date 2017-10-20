@@ -21,15 +21,20 @@ namespace BanHang
             {
                 if (dtSetting.LayChucNangCha(Session["IDNhom"].ToString(), 64) == false)
                     Response.Redirect("Default.aspx");
-                LoadGrid();
+                LoadGrid(cmbHienThi.Value.ToString());
             }
 
         }
-        private void LoadGrid()
+        private void LoadGrid(string HienThi)
         {
             data = new dtCapNhatPhieuNhapHang();
-            gridDonDatHang.DataSource = data.LayDanhSachDonHangDuyetTrong2Ngay(DateTime.Now,dtSetting.LaySoNgayDuocSuaDonHangDaXuLy());
+            gridDonDatHang.DataSource = data.LayDanhSachDonHangDuyetTrong2Ngay(DateTime.Now, dtSetting.LaySoNgayDuocSuaDonHangDaXuLy(), HienThi);
             gridDonDatHang.DataBind();
+        }
+
+        protected void cmbHienThi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadGrid(cmbHienThi.Value.ToString());
         }
     }
 }

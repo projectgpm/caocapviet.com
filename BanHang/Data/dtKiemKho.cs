@@ -90,12 +90,12 @@ namespace BanHang.Data
                 }
             }
         }
-        public DataTable DanhSachKiemKho(string IDKho)
+        public DataTable DanhSachKiemKho(string IDKho, string HienThi, string NgayBD, string NgayKT)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "SELECT TOP 1000 * FROM [GPM_KiemKho] WHERE IDKho is not null AND ('" + IDKho + "' = 1 OR [IDKho] = '" + IDKho + "') ORDER BY [ID] DESC ";
+                string cmdText = "SELECT TOP " + HienThi + " * FROM [GPM_KiemKho] WHERE [NgayKiemKho] < '" + NgayKT + "' AND [NgayKiemKho] >= '" + NgayBD + "' AND IDKho is not null AND ('" + IDKho + "' = 1 OR [IDKho] = '" + IDKho + "') ORDER BY [ID] DESC ";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {

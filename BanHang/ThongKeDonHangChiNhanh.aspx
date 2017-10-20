@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Root.master" AutoEventWireup="true" CodeBehind="ThongKeDonHangChiNhanh.aspx.cs" Inherits="BanHang.ThongKeDonHangChiNhanh" %>
+﻿ <%@ Page Title="" Language="C#" MasterPageFile="~/Root.master" AutoEventWireup="true" CodeBehind="ThongKeDonHangChiNhanh.aspx.cs" Inherits="BanHang.ThongKeDonHangChiNhanh" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
        <dx:ASPxFormLayout ID="ASPxFormLayout1" runat="server" ColCount="8" Width="10%">
         <Items>
@@ -22,6 +22,22 @@
                     </dx:LayoutItemNestedControlContainer>
                 </LayoutItemNestedControlCollection>
             </dx:LayoutItem>
+            <dx:LayoutItem Caption="Hiển Thị">
+                        <LayoutItemNestedControlCollection>
+                            <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer6" runat="server">
+                                <dx:ASPxComboBox ID="cmbHienThi" runat="server" AutoPostBack="True" OnSelectedIndexChanged="cmbHienThi_SelectedIndexChanged" SelectedIndex="0">
+                            <Items>
+                                <dx:ListEditItem Selected="True" Text="50" Value="50" />
+                                <dx:ListEditItem Text="100" Value="100" />
+                                <dx:ListEditItem Text="200" Value="200" />
+                                <dx:ListEditItem Text="500" Value="500" />
+                                <dx:ListEditItem Text="1000" Value="1000" />
+                                <dx:ListEditItem Text="Tất Cả" Value="50000000000000" />
+                            </Items>
+                        </dx:ASPxComboBox>
+                            </dx:LayoutItemNestedControlContainer>
+                        </LayoutItemNestedControlCollection>
+                    </dx:LayoutItem>
         </Items>
     </dx:ASPxFormLayout>
     <dx:ASPxGridViewExporter ID="XuatDuLieu" runat="server">

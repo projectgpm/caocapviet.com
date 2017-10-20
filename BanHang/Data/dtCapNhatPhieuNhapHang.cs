@@ -64,12 +64,12 @@ namespace BanHang.Data
                 }
             }
         }
-        public DataTable LayDanhSachDonHangDuyetTrong2Ngay(DateTime NgayHomNay, int SoNgay)
+        public DataTable LayDanhSachDonHangDuyetTrong2Ngay(DateTime NgayHomNay, int SoNgay, string HienThi)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "SELECT * FROM [GPM_DuyetHangThuMua] WHERE [IDDonHang] is not null AND [NgayDuyet] >= '" + NgayHomNay.AddDays(-SoNgay).ToString("yyyy-MM-dd hh:mm:ss tt") + "' AND [NgayDuyet] <= '" + NgayHomNay.ToString("yyyy-MM-dd hh:mm:ss tt") + "'";
+                string cmdText = "SELECT TOP " + HienThi + " * FROM [GPM_DuyetHangThuMua] WHERE [IDDonHang] is not null AND [NgayDuyet] >= '" + NgayHomNay.AddDays(-SoNgay).ToString("yyyy-MM-dd hh:mm:ss tt") + "' AND [NgayDuyet] <= '" + NgayHomNay.ToString("yyyy-MM-dd hh:mm:ss tt") + "'";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {

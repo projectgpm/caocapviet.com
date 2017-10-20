@@ -58,6 +58,24 @@ namespace BanHang {
         protected global::DevExpress.Web.ASPxButton btnXuatExcel;
         
         /// <summary>
+        /// LayoutItemNestedControlContainer6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.LayoutItemNestedControlContainer LayoutItemNestedControlContainer6;
+        
+        /// <summary>
+        /// cmbHienThi control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxComboBox cmbHienThi;
+        
+        /// <summary>
         /// XuatDuLieu control.
         /// </summary>
         /// <remarks>

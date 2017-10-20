@@ -20,14 +20,14 @@ namespace BanHang
             }
             else
             {
-                LoadGrid();
+                LoadGrid(cmbHienThi.Value.ToString());
             }
         }
 
-        private void LoadGrid()
+        private void LoadGrid(string HienThi)
         {
             data = new dtThongKeDonHangChiNhanh();
-            gridDanhSach.DataSource = data.DanhSachThongKe(Session["IDKho"].ToString());
+            gridDanhSach.DataSource = data.DanhSachThongKe(Session["IDKho"].ToString(), HienThi);
             gridDanhSach.DataBind();
         }
 
@@ -48,6 +48,11 @@ namespace BanHang
             int SoLuongDat = Convert.ToInt32(e.GetValue("SoLuongDat"));
             if (TonKhoTong < SoLuongDat)
                 e.Row.BackColor = color;
+        }
+
+        protected void cmbHienThi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadGrid(cmbHienThi.Value.ToString());
         }
 
       

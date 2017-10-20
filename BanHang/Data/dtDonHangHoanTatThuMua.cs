@@ -24,12 +24,13 @@ namespace BanHang.Data
                 }
             }
         }
-        public DataTable LayDanhSachDonHangDuyet()
+        
+        public DataTable LayDanhSachDonHangDuyet(string HienThi, string NgayBD, string NgayKT)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "SELECT TOP 1000 * FROM [GPM_DuyetHangThuMua] WHERE [IDDonHang] is not null  ORDER BY [ID] DESC";
+                string cmdText = "SELECT TOP " + HienThi + " * FROM [GPM_DuyetHangThuMua] WHERE [IDDonHang] is not null AND [NgayDat] < '" + NgayKT + "'AND  [NgayDat] >= '" + NgayBD + "'  ORDER BY [ID] DESC";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {

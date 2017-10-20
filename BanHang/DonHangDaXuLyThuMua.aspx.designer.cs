@@ -94,6 +94,78 @@ namespace BanHang {
         protected global::DevExpress.Web.ASPxButton ASPxFormLayout1_E2;
         
         /// <summary>
+        /// LayoutItemNestedControlContainer5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.LayoutItemNestedControlContainer LayoutItemNestedControlContainer5;
+        
+        /// <summary>
+        /// dateTuNgay control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxDateEdit dateTuNgay;
+        
+        /// <summary>
+        /// LayoutItemNestedControlContainer6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.LayoutItemNestedControlContainer LayoutItemNestedControlContainer6;
+        
+        /// <summary>
+        /// dateDenNgay control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxDateEdit dateDenNgay;
+        
+        /// <summary>
+        /// LayoutItemNestedControlContainer7 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.LayoutItemNestedControlContainer LayoutItemNestedControlContainer7;
+        
+        /// <summary>
+        /// btnLoc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxButton btnLoc;
+        
+        /// <summary>
+        /// LayoutItemNestedControlContainer8 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.LayoutItemNestedControlContainer LayoutItemNestedControlContainer8;
+        
+        /// <summary>
+        /// cmbHienThi control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxComboBox cmbHienThi;
+        
+        /// <summary>
         /// gridDonDatHang control.
         /// </summary>
         /// <remarks>
