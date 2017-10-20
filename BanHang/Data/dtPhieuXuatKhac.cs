@@ -275,12 +275,12 @@ namespace BanHang.Data
                 }
             }
         }
-        public DataTable DanhSachPhieuXuatKhac()
+        public DataTable DanhSachPhieuXuatKhac(string HienThi, string NgayBd, string NgayKt)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = " SELECT * FROM [GPM_PhieuXuatKhac] WHERE [IDKho] is not null ORDER BY [ID] DESC";
+                string cmdText = " SELECT TOP " + HienThi + " * FROM [GPM_PhieuXuatKhac] WHERE [NgayLapPhieu] < '" + NgayKt + "' AND [NgayLapPhieu] >='" + NgayBd + "' AND [IDKho] is not null ORDER BY [ID] DESC";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {

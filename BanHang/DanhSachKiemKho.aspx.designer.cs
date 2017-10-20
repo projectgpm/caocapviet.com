@@ -40,15 +40,6 @@ namespace BanHang {
         protected global::DevExpress.Web.ASPxButton btnKiemKho;
         
         /// <summary>
-        /// LayoutItemNestedControlContainer3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.LayoutItemNestedControlContainer LayoutItemNestedControlContainer3;
-        
-        /// <summary>
         /// dateTuNgay control.
         /// </summary>
         /// <remarks>
@@ -56,15 +47,6 @@ namespace BanHang {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxDateEdit dateTuNgay;
-        
-        /// <summary>
-        /// LayoutItemNestedControlContainer4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.LayoutItemNestedControlContainer LayoutItemNestedControlContainer4;
         
         /// <summary>
         /// dateDenNgay control.
@@ -76,15 +58,6 @@ namespace BanHang {
         protected global::DevExpress.Web.ASPxDateEdit dateDenNgay;
         
         /// <summary>
-        /// LayoutItemNestedControlContainer5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.LayoutItemNestedControlContainer LayoutItemNestedControlContainer5;
-        
-        /// <summary>
         /// btnLoc control.
         /// </summary>
         /// <remarks>
@@ -92,15 +65,6 @@ namespace BanHang {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxButton btnLoc;
-        
-        /// <summary>
-        /// LayoutItemNestedControlContainer6 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.LayoutItemNestedControlContainer LayoutItemNestedControlContainer6;
         
         /// <summary>
         /// cmbHienThi control.

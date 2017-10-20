@@ -40,6 +40,42 @@ namespace BanHang {
         protected global::DevExpress.Web.ASPxButton btnThemPhieuXuatKhac;
         
         /// <summary>
+        /// dateTuNgay control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxDateEdit dateTuNgay;
+        
+        /// <summary>
+        /// dateDenNgay control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxDateEdit dateDenNgay;
+        
+        /// <summary>
+        /// btnLoc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxButton btnLoc;
+        
+        /// <summary>
+        /// cmbHienThi control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxComboBox cmbHienThi;
+        
+        /// <summary>
         /// gridPhieuXuatKhac control.
         /// </summary>
         /// <remarks>
