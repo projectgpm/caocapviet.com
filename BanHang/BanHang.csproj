@@ -254,6 +254,7 @@
     <Content Include="ThuaMuaDatHang.aspx" />
     <Content Include="TonKhoBanDau.aspx" />
     <Content Include="TraCuuDonHang.aspx" />
+    <Content Include="TraCuuDonHangChiNhanh.aspx" />
     <Content Include="TraCuuMaHang.aspx" />
     <Content Include="Vung.aspx" />
     <Content Include="Web.config">
@@ -1255,6 +1256,13 @@
     </Compile>
     <Compile Include="TraCuuDonHang.aspx.designer.cs">
       <DependentUpon>TraCuuDonHang.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TraCuuDonHangChiNhanh.aspx.cs">
+      <DependentUpon>TraCuuDonHangChiNhanh.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TraCuuDonHangChiNhanh.aspx.designer.cs">
+      <DependentUpon>TraCuuDonHangChiNhanh.aspx</DependentUpon>
     </Compile>
     <Compile Include="TraCuuMaHang.aspx.cs">
       <DependentUpon>TraCuuMaHang.aspx</DependentUpon>
