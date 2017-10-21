@@ -729,6 +729,7 @@
     <Compile Include="Data\dtThongKeDonHangChiNhanh.cs" />
     <Compile Include="Data\dtThuMuaDatHang.cs" />
     <Compile Include="Data\dtTraCuuDonHang.cs" />
+    <Compile Include="Data\dtTraCuuDonHangChiNhanh.cs" />
     <Compile Include="Data\dtTraCuuMaHang.cs" />
     <Compile Include="Data\dtVung.cs" />
     <Compile Include="Data\Import_KhachHang.cs" />
