@@ -38,14 +38,36 @@ namespace BanHang
                     btnTaoDonHang.Visible = false;
                     btnDonhangXuLy1Phan.Visible = true;
                 }
-                LoadGrid(IDKho.ToString());
+                if (!IsPostBack)
+                {
+                    dateTuNgay.Date = DateTime.Today.AddDays(-30);
+                    dateDenNgay.Date = DateTime.Today;
+                }
+                if (dateTuNgay.Text != "" || dateDenNgay.Text != "")
+                {
+                    LoadGrid(Session["IDKho"].ToString(), cmbHienThi.Value.ToString());
+                }
             }
         }
-        private void LoadGrid(string p)
+        private void LoadGrid(string p, string HienThi)
         {
             data = new dtDonHangHoanTat();
-            gridDonDatHang.DataSource = data.LayDanhSachDonHangDuyet(p);
+            string ngayBD = dateTuNgay.Date.ToString("yyyy-MM-dd");
+            string ngayKT = dateDenNgay.Date.ToString("yyyy-MM-dd");
+            ngayBD = ngayBD + " 00:00:0.000";
+            ngayKT = ngayKT + " 23:59:59.999";
+            gridDonDatHang.DataSource = data.LayDanhSachDonHangDuyet(p, HienThi , ngayBD,ngayKT);
             gridDonDatHang.DataBind();
+        }
+
+        protected void btnLoc_Click(object sender, EventArgs e)
+        {
+            LoadGrid(Session["IDKho"].ToString(), cmbHienThi.Value.ToString());
+        }
+
+        protected void cmbHienThi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadGrid(Session["IDKho"].ToString(), cmbHienThi.Value.ToString());
         }
     }
 }

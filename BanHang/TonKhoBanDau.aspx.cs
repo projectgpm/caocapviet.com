@@ -19,9 +19,10 @@ namespace BanHang
             }
             else
             {
-                
                 if (dtSetting.LayChucNang_HienThi(Session["IDNhom"].ToString()) == true)
                 {
+                    if (Session["IDNhom"].ToString() != "1")
+                        gridTonKhoBanDau.Columns["chucnang"].Visible = false;
                     LoadGrid(cmbHienThi.Value.ToString());
                 }
                 else

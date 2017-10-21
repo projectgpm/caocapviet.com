@@ -93,21 +93,21 @@ namespace BanHang.Data
                 }
             }
         }
-        public DataTable DanhSachDuyet_ThuMua2()
-        {
-            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
-            {
-                con.Open();
-                string cmdText = "SELECT * FROM [GPM_ThuMua_DonHang] WHERE IDNguoiLap is not null AND NgayLap is not null AND TrangThaiDonHang = 0 AND IDTrangThaiDonHang = 3 AND TrangThai =0  ";
-                using (SqlCommand command = new SqlCommand(cmdText, con))
-                using (SqlDataReader reader = command.ExecuteReader())
-                {
-                    DataTable tb = new DataTable();
-                    tb.Load(reader);
-                    return tb;
-                }
-            }
-        }
+        //public DataTable DanhSachDuyet_ThuMua2()
+        //{
+        //    using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+        //    {
+        //        con.Open();
+        //        string cmdText = "SELECT * FROM [GPM_ThuMua_DonHang] WHERE IDNguoiLap is not null AND NgayLap is not null AND TrangThaiDonHang = 0 AND IDTrangThaiDonHang = 3 AND TrangThai =0  ";
+        //        using (SqlCommand command = new SqlCommand(cmdText, con))
+        //        using (SqlDataReader reader = command.ExecuteReader())
+        //        {
+        //            DataTable tb = new DataTable();
+        //            tb.Load(reader);
+        //            return tb;
+        //        }
+        //    }
+        //}
         public void CapNhatChenhLech(object ID)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))

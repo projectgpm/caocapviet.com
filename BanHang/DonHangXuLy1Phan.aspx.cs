@@ -24,13 +24,25 @@ namespace BanHang
                 {
                     btnDuyetDonHang.Enabled = false;
                 }
-                LoadGrid();
+                if (!IsPostBack)
+                {
+                    dateTuNgay.Date = DateTime.Today.AddDays(-30);
+                    dateDenNgay.Date = DateTime.Today;
+                }
+                if (dateTuNgay.Text != "" || dateDenNgay.Text != "")
+                {
+                    LoadGrid(cmbHienThi.Value.ToString());
+                }
             }
         }
-        private void LoadGrid()
+        private void LoadGrid(string HienThi)
         {
             data = new dtDuyetDonHangChiNhanh();
-            gridDonDatHang.DataSource = data.LayDanhSachDonHangXuLy1Phan();
+            string ngayBD = dateTuNgay.Date.ToString("yyyy-MM-dd");
+            string ngayKT = dateDenNgay.Date.ToString("yyyy-MM-dd");
+            ngayBD = ngayBD + " 00:00:0.000";
+            ngayKT = ngayKT + " 23:59:59.999";
+            gridDonDatHang.DataSource = data.LayDanhSachDonHangXuLy1Phan(HienThi,ngayBD,ngayKT);
             gridDonDatHang.DataBind();
         }
         protected void gridDonDatHang_HtmlRowPrepared(object sender, DevExpress.Web.ASPxGridViewTableRowEventArgs e)
@@ -39,6 +51,16 @@ namespace BanHang
             int MucDoUuTien = Convert.ToInt32(e.GetValue("MucDoUuTien"));// lấy giá trị
             if (MucDoUuTien == 1)
                 e.Row.BackColor = color;
+        }
+
+        protected void btnLoc_Click(object sender, EventArgs e)
+        {
+            LoadGrid(cmbHienThi.Value.ToString());
+        }
+
+        protected void cmbHienThi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadGrid(cmbHienThi.Value.ToString());
         }
     }
 }
