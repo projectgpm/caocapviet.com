@@ -188,7 +188,7 @@
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer runat="server">
                             <dx:ASPxButton ID="btnHuy" runat="server" OnClick="btnHuy_Click" Text="Trở Về">
-                                <Image IconID="actions_close_32x32">
+                                <Image IconID="actions_reset_32x32office2013">
                                 </Image>
                             </dx:ASPxButton>
                         </dx:LayoutItemNestedControlContainer>

@@ -13,5 +13,15 @@ namespace BanHang
         {
 
         }
+
+        protected void btnTraCuu_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnHuy_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
