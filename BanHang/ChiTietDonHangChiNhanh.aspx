@@ -9,32 +9,10 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        <dx:ASPxFormLayout ID="ASPxFormLayout1" runat="server" ColCount="2">
-            <Items>
-                <dx:LayoutItem Caption="">
-                    <LayoutItemNestedControlCollection>
-                        <dx:LayoutItemNestedControlContainer runat="server">
-                            <dx:ASPxButton ID="btnCuaHangTruong" runat="server" OnClick="btnCuaHangTruong_Click" Text="Cửa Hàng Trưởng Duyệt">
-                                <Image IconID="actions_apply_32x32">
-                                </Image>
-                            </dx:ASPxButton>
-                        </dx:LayoutItemNestedControlContainer>
-                    </LayoutItemNestedControlCollection>
-                </dx:LayoutItem>
-                <dx:LayoutItem Caption="">
-                    <LayoutItemNestedControlCollection>
-                        <dx:LayoutItemNestedControlContainer runat="server">
-                            <dx:ASPxButton ID="btnGiamSat" runat="server" OnClick="btnGiamSat_Click" Text="Giám Sát Duyệt">
-                                <Image IconID="actions_apply_32x32office2013">
-                                </Image>
-                            </dx:ASPxButton>
-                        </dx:LayoutItemNestedControlContainer>
-                    </LayoutItemNestedControlCollection>
-                </dx:LayoutItem>
-            </Items>
-        </dx:ASPxFormLayout>
 
     <dx:ASPxGridView runat="server" AutoGenerateColumns="False" Width="100%" ID="gridChiTiet" KeyFieldName="ID" OnRowUpdating="gridChiTiet_RowUpdating">
+        <SettingsPager Mode="ShowAllRecords">
+        </SettingsPager>
         <SettingsEditing Mode="PopupEditForm">
         </SettingsEditing>
 <Settings ShowTitlePanel="True" ShowFooter="True" ShowFilterRow="True"></Settings>
@@ -57,7 +35,7 @@
                 <Image IconID="actions_close_32x32" ToolTip="Hủy thao tác">
                 </Image>
             </CancelButton>
-            <EditButton ButtonType="Image" RenderMode="Image">
+            <EditButton>
                 <Image IconID="actions_edit_16x16devav" ToolTip="Sửa">
                 </Image>
             </EditButton>

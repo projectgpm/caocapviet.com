@@ -154,7 +154,7 @@ namespace BanHang.Data
                 try
                 {
                     myConnection.Open();
-                    string cmdText = "UPDATE [GPM_ThuMua_DonHang] SET [TrangThaiDonHang] = 1, [NgayCapNhat] = getdate() WHERE [ID] = '" + ID + "'";
+                    string cmdText = "UPDATE [GPM_ThuMua_DonHang] SET [IDTrangThaiDonHang] = 2 ,[TrangThaiDonHang] = 1, [NgayCapNhat] = getdate() WHERE [ID] = '" + ID + "'";
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
                         myCommand.ExecuteNonQuery();
