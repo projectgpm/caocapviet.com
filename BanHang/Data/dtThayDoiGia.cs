@@ -38,12 +38,12 @@ namespace BanHang.Data
                 }
             }
         }
-        public DataTable LayDanhSach()
+        public DataTable LayDanhSach(string HienThi,string NgayBD, string NgayKT)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = " SELECT TOP 1000 * FROM [GPM_LichSuThayDoiGia] ORDER BY [ID] DESC";
+                string cmdText = " SELECT TOP " + HienThi + " * FROM [GPM_LichSuThayDoiGia] WHERE NgayThayDoi <'" + NgayKT + "' AND NgayThayDoi >'" + NgayBD + "' ORDER BY [ID] DESC";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {

@@ -26,7 +26,7 @@ namespace BanHang
                     {
                         gridQuanTriNguoiDung.Columns["chucnang"].Visible = false;
                     }
-                    LoadGrid();
+                    LoadGrid(cmbHienThi.Value.ToString());
                 }
                 else
                 {
@@ -34,10 +34,10 @@ namespace BanHang
                 }
             }
         }
-        public void LoadGrid()
+        public void LoadGrid(string HienThi)
         {
             data = new dtQuanTriNguoiDung();
-            gridQuanTriNguoiDung.DataSource = data.LayDanhSachNguoiDung();
+            gridQuanTriNguoiDung.DataSource = data.LayDanhSachNguoiDung(HienThi);
             gridQuanTriNguoiDung.DataBind();
         }
         protected void gridQuanTriNguoiDung_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
@@ -47,7 +47,7 @@ namespace BanHang
             data.XoaNguoiDung(Int32.Parse(ID));
             e.Cancel = true;
             gridQuanTriNguoiDung.CancelEdit();
-            LoadGrid();
+            LoadGrid(cmbHienThi.Value.ToString());
             dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Quản Trị người dùng", Session["IDKho"].ToString(), "Hệ Thống", "Xóa");
          
         }
@@ -75,7 +75,7 @@ namespace BanHang
             }
             e.Cancel = true;
             gridQuanTriNguoiDung.CancelEdit();
-            LoadGrid();   
+            LoadGrid(cmbHienThi.Value.ToString());
         }
 
         protected void gridQuanTriNguoiDung_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
@@ -107,7 +107,7 @@ namespace BanHang
             }
             e.Cancel = true;
             gridQuanTriNguoiDung.CancelEdit();
-            LoadGrid();
+            LoadGrid(cmbHienThi.Value.ToString());
         }
 
         protected void gridQuanTriNguoiDung_InitNewRow(object sender, DevExpress.Web.Data.ASPxDataInitNewRowEventArgs e)
@@ -115,6 +115,11 @@ namespace BanHang
             e.NewValues["IDKho"] = 1;
             e.NewValues["IDNhomNguoiDung"] = 1;
              
+        }
+
+        protected void cmbHienThi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadGrid(cmbHienThi.Value.ToString());
         }
     }
 }

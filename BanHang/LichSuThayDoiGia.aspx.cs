@@ -21,7 +21,22 @@ namespace BanHang
             {
                 if (dtSetting.LayChucNang_HienThi(Session["IDNhom"].ToString()) == true)
                 {
-                    LoadGrid();
+                    if (dtSetting.LayChucNang_HienThi(Session["IDNhom"].ToString()) == true)
+                    {
+                        if (!IsPostBack)
+                        {
+                            dateTuNgay.Date = DateTime.Today.AddDays(-30);
+                            dateDenNgay.Date = DateTime.Today;
+                        }
+                        if (dateTuNgay.Text != "" || dateDenNgay.Text != "")
+                        {
+                            LoadGrid( cmbHienThi.Value.ToString());
+                        }
+                    }
+                    else
+                    {
+                        Response.Redirect("Default.aspx");
+                    }
                 }
                 else
                 {
@@ -29,11 +44,25 @@ namespace BanHang
                 }
             }
         }
-        private void LoadGrid()
+        private void LoadGrid(string HienThi)
         {
             data = new dtThayDoiGia();
-            gridLichSuThayDoiGia.DataSource = data.LayDanhSach();
+            string ngayBD = dateTuNgay.Date.ToString("yyyy-MM-dd");
+            string ngayKT = dateDenNgay.Date.ToString("yyyy-MM-dd");
+            ngayBD = ngayBD + " 00:00:0.000";
+            ngayKT = ngayKT + " 23:59:59.999";
+            gridLichSuThayDoiGia.DataSource = data.LayDanhSach(HienThi,ngayBD,ngayKT);
             gridLichSuThayDoiGia.DataBind();
+        }
+
+        protected void btnLoc_Click(object sender, EventArgs e)
+        {
+            LoadGrid(cmbHienThi.Value.ToString());
+        }
+
+        protected void cmbHienThi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadGrid(cmbHienThi.Value.ToString());
         }
     }
 }

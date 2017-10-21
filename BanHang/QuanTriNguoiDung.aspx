@@ -1,5 +1,30 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Root.master" AutoEventWireup="true" CodeBehind="QuanTriNguoiDung.aspx.cs" Inherits="BanHang.QuanTriNguoiDung" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
+    <dx:ASPxFormLayout ID="ASPxFormLayout1" runat="server" ColCount="6" Width="100%">
+        <Items>
+            <dx:LayoutGroup Caption="Lọc" ColCount="5" ColSpan="6">
+                <Items>
+                    
+                    <dx:LayoutItem Caption="Hiển Thị">
+                        <LayoutItemNestedControlCollection>
+                            <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer10" runat="server">
+                                <dx:ASPxComboBox ID="cmbHienThi" runat="server" AutoPostBack="True" OnSelectedIndexChanged="cmbHienThi_SelectedIndexChanged" SelectedIndex="0">
+                                    <Items>
+                                        <dx:ListEditItem Selected="True" Text="50" Value="50" />
+                                        <dx:ListEditItem Text="100" Value="100" />
+                                        <dx:ListEditItem Text="200" Value="200" />
+                                        <dx:ListEditItem Text="500" Value="500" />
+                                        <dx:ListEditItem Text="1000" Value="1000" />
+                                        <dx:ListEditItem Text="Tất Cả" Value="50000000000000" />
+                                    </Items>
+                                </dx:ASPxComboBox>
+                            </dx:LayoutItemNestedControlContainer>
+                        </LayoutItemNestedControlCollection>
+                    </dx:LayoutItem>
+                </Items>
+            </dx:LayoutGroup>
+        </Items>
+      </dx:ASPxFormLayout> 
     <dx:ASPxGridView ID="gridQuanTriNguoiDung" runat="server" AutoGenerateColumns="False" Width="100%"  KeyFieldName="ID" OnRowDeleting="gridQuanTriNguoiDung_RowDeleting" OnRowInserting="gridQuanTriNguoiDung_RowInserting" OnRowUpdating="gridQuanTriNguoiDung_RowUpdating" OnInitNewRow="gridQuanTriNguoiDung_InitNewRow">
         <Settings ShowFilterRow="True" />
         <SettingsEditing Mode="PopupEditForm">

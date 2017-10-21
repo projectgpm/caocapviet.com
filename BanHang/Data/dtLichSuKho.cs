@@ -9,12 +9,12 @@ namespace BanHang.Data
 {
     public class dtLichSuKho
     {
-        public DataTable LayDanhSach()
+        public DataTable LayDanhSach(string IDKho,string HienThi,string NgayBD,string NgayKT)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "  SELECT [GPM_LichSuKho].*,[GPM_HangHoa].MaHang FROM [GPM_LichSuKho],[GPM_HangHoa] WHERE [GPM_HangHoa].ID = [GPM_LichSuKho].IDHangHoa ORDER BY [ID] DESC ";
+                string cmdText = "  SELECT TOP " + HienThi + " [GPM_LichSuKho].*,[GPM_HangHoa].MaHang FROM [GPM_LichSuKho],[GPM_HangHoa] WHERE GPM_LichSuKho.NgayCapNhat < '" + NgayKT + "' AND GPM_LichSuKho.NgayCapNhat>'" + NgayBD + "' AND ('" + IDKho + "' = 1 OR IDKho = '" + IDKho + "') AND [GPM_HangHoa].ID = [GPM_LichSuKho].IDHangHoa ORDER BY [ID] DESC ";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
