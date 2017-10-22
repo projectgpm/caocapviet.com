@@ -156,7 +156,7 @@
                 <dx:LayoutItem Caption="Giá Bán">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer runat="server">
-                            <dx:ASPxSpinEdit ID="txtGiaBan0" runat="server" DisplayFormatString="{0:N0}đ" Enabled="False" Width="100%">
+                            <dx:ASPxSpinEdit ID="txtGiaBan0" runat="server" DisplayFormatString="{0:N0} VNĐ" Enabled="False" Width="100%">
                             </dx:ASPxSpinEdit>
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
@@ -164,7 +164,7 @@
                 <dx:LayoutItem Caption="Giá Bán 1">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer runat="server">
-                            <dx:ASPxSpinEdit ID="txtGiaBan1" runat="server" DisplayFormatString="{0:N0}đ" Enabled="False" Width="100%">
+                            <dx:ASPxSpinEdit ID="txtGiaBan1" runat="server" DisplayFormatString="{0:N0} VNĐ" Enabled="False" Width="100%">
                             </dx:ASPxSpinEdit>
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
@@ -172,7 +172,7 @@
                 <dx:LayoutItem Caption="Giá Bán 2">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer runat="server">
-                            <dx:ASPxSpinEdit ID="txtGiaBan2" runat="server" DisplayFormatString="{0:N0}đ" Enabled="False" Width="100%">
+                            <dx:ASPxSpinEdit ID="txtGiaBan2" runat="server" DisplayFormatString="{0:N0} VNĐ" Enabled="False" Width="100%">
                             </dx:ASPxSpinEdit>
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
@@ -180,7 +180,7 @@
                 <dx:LayoutItem Caption="Giá Bán 3">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer runat="server">
-                            <dx:ASPxSpinEdit ID="txtGiaBan3" runat="server" DisplayFormatString="{0:N0}đ" Enabled="False" Width="100%">
+                            <dx:ASPxSpinEdit ID="txtGiaBan3" runat="server" DisplayFormatString="{0:N0} VNĐ" Enabled="False" Width="100%">
                             </dx:ASPxSpinEdit>
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
@@ -188,7 +188,7 @@
                 <dx:LayoutItem Caption="Giá Bán 4">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer runat="server">
-                            <dx:ASPxSpinEdit ID="txtGiaBan4" runat="server" DisplayFormatString="{0:N0}đ" Enabled="False" Width="100%">
+                            <dx:ASPxSpinEdit ID="txtGiaBan4" runat="server" DisplayFormatString="{0:N0} VNĐ" Enabled="False" Width="100%">
                             </dx:ASPxSpinEdit>
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
@@ -196,7 +196,7 @@
                 <dx:LayoutItem Caption="Giá Bán 5">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer runat="server">
-                            <dx:ASPxSpinEdit ID="txtGiaBan5" runat="server" DisplayFormatString="{0:N0}đ" Enabled="False" Width="100%">
+                            <dx:ASPxSpinEdit ID="txtGiaBan5" runat="server" DisplayFormatString="{0:N0} VNĐ" Enabled="False" Width="100%">
                             </dx:ASPxSpinEdit>
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
@@ -293,7 +293,7 @@
                                 <SettingsText CommandBatchEditCancel="Hủy tất cả" CommandBatchEditUpdate="Lưu tất cả" Title="DANH SÁCH HÀNG HÓA GIÁ THEO CHI NHÁNH" ConfirmDelete="Bạn chắc chắn muốn xóa?" EmptyDataRow="Danh sách hàng hóa trống." />
                                 <Columns>                                    
                                     <dx:GridViewDataSpinEditColumn Caption="Giá Bán" FieldName="GiaBan" ShowInCustomizationForm="True" VisibleIndex="2">
-                                        <PropertiesSpinEdit DisplayFormatString="{0:N0}đ" NumberFormat="Custom">
+                                        <PropertiesSpinEdit DisplayFormatString="{0:N0} VNĐ" NumberFormat="Custom">
                                         </PropertiesSpinEdit>
                                     </dx:GridViewDataSpinEditColumn>
                                     <dx:GridViewDataSpinEditColumn Caption="Số Lượng Kết Thúc" FieldName="SoLuongKT" ShowInCustomizationForm="True" VisibleIndex="1">
@@ -436,7 +436,7 @@
                                         </Image>
                                     </DeleteButton>
                                 </SettingsCommandButton>
-                                <SettingsText CommandBatchEditCancel="Hủy tất cả" CommandBatchEditUpdate="Lưu tất cả" Title="DANH SÁCH HÀNG HÓA GIÁ THEO CHI NHÁNH" ConfirmDelete="Bạn chắc chắn muốn xóa?" EmptyDataRow="Danh sách hàng hóa trống." />
+                                <SettingsText CommandBatchEditCancel="Hủy tất cả" CommandBatchEditUpdate="Lưu tất cả" Title="DANH SÁCH HÀNG HÓA GIÁ THEO CHI NHÁNH" ConfirmDelete="Bạn chắc chắn muốn xóa?" EmptyDataRow="Danh sách barcode hàng hóa trống." />
                                 <Columns>                                    
                                     <dx:GridViewDataTextColumn Caption="Barcode" ShowInCustomizationForm="True" VisibleIndex="0" FieldName="Barcode">
                                     </dx:GridViewDataTextColumn>

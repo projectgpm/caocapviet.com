@@ -150,7 +150,7 @@
                 </PropertiesComboBox>
             </dx:GridViewDataComboBoxColumn>
             <dx:GridViewDataSpinEditColumn Caption="Đơn Giá Tổng" VisibleIndex="13" FieldName="GiaBan" Width="150px">
-                <PropertiesSpinEdit DisplayFormatString="{0:N0}đ" NumberFormat="Custom" DisplayFormatInEditMode="True">
+                <PropertiesSpinEdit DisplayFormatString="{0:N0}VNĐ" NumberFormat="Custom" DisplayFormatInEditMode="True">
                     <ValidationSettings SetFocusOnError="True">
                         <RequiredField IsRequired="True" />
                     </ValidationSettings>
@@ -172,7 +172,7 @@
                 </PropertiesTextEdit>
             </dx:GridViewDataTextColumn>
             <dx:GridViewDataSpinEditColumn Caption="Tổng Trọng Lượng" FieldName="TrongLuong" VisibleIndex="14" Width="150px">
-                <PropertiesSpinEdit DisplayFormatString="{0:N0} KG" DisplayFormatInEditMode="True" NumberFormat="Custom">
+                <PropertiesSpinEdit DisplayFormatString="{0:N0}KG" DisplayFormatInEditMode="True" NumberFormat="Custom">
                     <ValidationSettings SetFocusOnError="True">
                         <RequiredField IsRequired="True" />
                     </ValidationSettings>
@@ -195,7 +195,7 @@
                 <HeaderStyle Wrap="True" />
             </dx:GridViewDataSpinEditColumn>
             <dx:GridViewDataSpinEditColumn Caption="Giá Bán Sau Thuế" FieldName="TongCombo" VisibleIndex="12" Width="150px">
-                <PropertiesSpinEdit DisplayFormatString="{0:N0}đ" NumberFormat="Custom" DisplayFormatInEditMode="True">
+                <PropertiesSpinEdit DisplayFormatString="{0:N0}VNĐ" NumberFormat="Custom" DisplayFormatInEditMode="True">
                     <ValidationSettings SetFocusOnError="True">
                         <RequiredField IsRequired="True" />
                     </ValidationSettings>
@@ -203,7 +203,7 @@
                 <HeaderStyle Wrap="True" />
             </dx:GridViewDataSpinEditColumn>
             <dx:GridViewDataSpinEditColumn Caption="Giá Mua Trước Thuế" FieldName="GiaMuaTruocThue" VisibleIndex="9" Width="150px">
-                <PropertiesSpinEdit DisplayFormatString="{0:N0}đ" NumberFormat="Custom" DisplayFormatInEditMode="True">
+                <PropertiesSpinEdit DisplayFormatString="{0:N0}VNĐ" NumberFormat="Custom" DisplayFormatInEditMode="True">
                     <ValidationSettings SetFocusOnError="True">
                         <RequiredField IsRequired="True" />
                     </ValidationSettings>
@@ -211,7 +211,7 @@
                 <HeaderStyle Wrap="True" />
             </dx:GridViewDataSpinEditColumn>
             <dx:GridViewDataSpinEditColumn Caption="Giá Mua Sau Thuế" FieldName="GiaMuaSauThue" VisibleIndex="10" Width="150px">
-                <PropertiesSpinEdit DisplayFormatString="{0:N0}đ" NumberFormat="Custom" DisplayFormatInEditMode="True">
+                <PropertiesSpinEdit DisplayFormatString="{0:N0}VNĐ" NumberFormat="Custom" DisplayFormatInEditMode="True">
                     <ValidationSettings SetFocusOnError="True">
                         <RequiredField IsRequired="True" />
                     </ValidationSettings>
@@ -249,7 +249,7 @@
                             <HeaderStyle Wrap="True" />
                         </dx:GridViewDataButtonEditColumn>
             <dx:GridViewDataSpinEditColumn Caption="Giá Bán Trước Thuế" FieldName="GiaBanTruocThue" VisibleIndex="11" Width="150px">
-                <PropertiesSpinEdit DisplayFormatString="{0:N0}đ" NumberFormat="Custom" DisplayFormatInEditMode="True">
+                <PropertiesSpinEdit DisplayFormatString="{0:N0}VNĐ" NumberFormat="Custom" DisplayFormatInEditMode="True">
                     <ValidationSettings SetFocusOnError="True">
                         <RequiredField IsRequired="True" />
                     </ValidationSettings>

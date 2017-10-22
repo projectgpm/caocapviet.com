@@ -10,6 +10,8 @@
     <form id="form1" runat="server">
     <div>
         <dx:ASPxGridView runat="server" AutoGenerateColumns="False" Width="100%" ID="gridHangHoaGiaTheoSL" KeyFieldName="ID" OnRowDeleting="gridHangHoaGiaTheoSL_RowDeleting" OnRowInserting="gridHangHoaGiaTheoSL_RowInserting" OnRowUpdating="gridHangHoaGiaTheoSL_RowUpdating">
+            <SettingsPager Mode="ShowAllRecords">
+            </SettingsPager>
             <SettingsEditing Mode="PopupEditForm">
             </SettingsEditing>
             <Settings ShowTitlePanel="True"></Settings>
@@ -46,14 +48,14 @@
                 <EditForm HorizontalAlign="WindowCenter" Modal="True" VerticalAlign="WindowCenter" />
             </SettingsPopup>
 
-            <SettingsText CommandDelete="Xóa" ConfirmDelete="Bạn chắc chắn muốn xóa?" CommandEdit="Sửa" CommandNew="Thêm" EmptyDataRow="Danh sách hàng hóa trống" PopupEditFormCaption="Thông tin"></SettingsText>
+            <SettingsText CommandDelete="Xóa" ConfirmDelete="Bạn chắc chắn muốn xóa?" CommandEdit="Sửa" CommandNew="Thêm" EmptyDataRow="Danh sách hàng hóa trống" PopupEditFormCaption="Thông tin" SearchPanelEditorNullText="Nhập thông tin cần tìm..." Title="DANH SÁCH BÁN THEO SỐ LƯỢNG"></SettingsText>
             <EditFormLayoutProperties>
                 <Items>
-                    <dx:GridViewColumnLayoutItem ColumnName="SL 1" Name="SL1">
+                    <dx:GridViewColumnLayoutItem ColumnName="Số Lượng Bắt Đầu" Name="SL1">
                     </dx:GridViewColumnLayoutItem>
-                    <dx:GridViewColumnLayoutItem ColumnName="SL 2" Name="SL2">
+                    <dx:GridViewColumnLayoutItem ColumnName="Số Lượng Kết Thúc" Name="SL2">
                     </dx:GridViewColumnLayoutItem>
-                    <dx:GridViewColumnLayoutItem ColumnName="Giá bán" Name="GiaBan">
+                    <dx:GridViewColumnLayoutItem ColumnName="Giá Bán" Name="GiaBan">
                     </dx:GridViewColumnLayoutItem>
                     <dx:EditModeCommandLayoutItem HorizontalAlign="Right">
                     </dx:EditModeCommandLayoutItem>
@@ -64,19 +66,19 @@
                 <dx:GridViewCommandColumn Name="chucnang" ShowEditButton="True" VisibleIndex="7" ShowDeleteButton="True" ShowNewButtonInHeader="True">
                 </dx:GridViewCommandColumn>
 
-                <dx:GridViewDataSpinEditColumn Caption="SL 1" FieldName="SoLuongBD" VisibleIndex="0">
+                <dx:GridViewDataSpinEditColumn Caption="Số Lượng Bắt Đầu" FieldName="SoLuongBD" VisibleIndex="0">
                     <PropertiesSpinEdit DisplayFormatString="g">
                     </PropertiesSpinEdit>
                 </dx:GridViewDataSpinEditColumn>
-                <dx:GridViewDataSpinEditColumn Caption="SL 2" FieldName="SoLuongKT" ShowInCustomizationForm="True" VisibleIndex="1">
+                <dx:GridViewDataSpinEditColumn Caption="Số Lượng Kết Thúc" FieldName="SoLuongKT" ShowInCustomizationForm="True" VisibleIndex="1">
                     <PropertiesSpinEdit DisplayFormatString="g">
                     </PropertiesSpinEdit>
                 </dx:GridViewDataSpinEditColumn>
-                <dx:GridViewDataSpinEditColumn Caption="Giá bán" FieldName="GiaBan" ShowInCustomizationForm="True" VisibleIndex="3">
-                    <PropertiesSpinEdit DisplayFormatString="{0:#,#} đ" NumberFormat="Custom" DisplayFormatInEditMode="True">
+                <dx:GridViewDataSpinEditColumn Caption="Giá Bán" FieldName="GiaBan" ShowInCustomizationForm="True" VisibleIndex="3">
+                    <PropertiesSpinEdit DisplayFormatString="{0:N0}VNĐ" NumberFormat="Custom" DisplayFormatInEditMode="True">
                     </PropertiesSpinEdit>
                 </dx:GridViewDataSpinEditColumn>
-                <dx:GridViewDataDateColumn Caption="Ngày cập nhật" FieldName="NgayCapNhat" ShowInCustomizationForm="True" VisibleIndex="6">
+                <dx:GridViewDataDateColumn Caption="Ngày Cập Nhật" FieldName="NgayCapNhat" ShowInCustomizationForm="True" VisibleIndex="6">
                     <PropertiesDateEdit DisplayFormatInEditMode="True" DisplayFormatString="dd/MM/yyyy" EditFormat="Custom" EditFormatString="dd/MM/yyyy">
                     </PropertiesDateEdit>
                 </dx:GridViewDataDateColumn>
