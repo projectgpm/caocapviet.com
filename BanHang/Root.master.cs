@@ -153,37 +153,37 @@ namespace BanHang
                     {
                         if (Gia0 != -1)
                         {
-                            dtThayDoiGia.ThemLichSu(MaHang, IDHangHoa, IDDonViTinh, dtHangHoa.GiaBan0(IDHangHoa, IDKho).ToString(), Gia0.ToString(), "1", "Hệ Thống Cập Nhật Giá Theo Giờ(GiaBan): Chi Nhánh " + dtSetting.LayTenKho(IDKho));
+                            dtThayDoiGia.ThemLichSu(MaHang, IDHangHoa, IDDonViTinh, dtCapNhatTonKho.GiaBan_KhoChiNhanh(IDHangHoa, IDKho).ToString(), Gia0.ToString(), "1", "Hệ Thống Cập Nhật Giá Theo Giờ(GiaBan): Chi Nhánh " + dtSetting.LayTenKho(IDKho));
                             data = new dtMasterPage();
                             data.CapNhat_GiaTheoGio(IDHangHoa, IDKho, Gia0.ToString(), "GiaBan");
                         }
                         if (Gia1 != -1)
                         {
-                            dtThayDoiGia.ThemLichSu(MaHang, IDHangHoa, IDDonViTinh, dtHangHoa.GiaBan1(IDHangHoa, IDKho).ToString(), Gia1.ToString(), "1", "Hệ Thống Cập Nhật Giá Theo Giờ(GiaBan1): Chi Nhánh " + dtSetting.LayTenKho(IDKho));
+                            dtThayDoiGia.ThemLichSu(MaHang, IDHangHoa, IDDonViTinh, dtCapNhatTonKho.GiaBan1_KhoChiNhanh(IDHangHoa, IDKho).ToString(), Gia1.ToString(), "1", "Hệ Thống Cập Nhật Giá Theo Giờ(GiaBan1): Chi Nhánh " + dtSetting.LayTenKho(IDKho));
                             data = new dtMasterPage();
                             data.CapNhat_GiaTheoGio(IDHangHoa, IDKho, Gia1.ToString(), "GiaBan1");
                         }
                         if (Gia2 != -1)
                         {
-                            dtThayDoiGia.ThemLichSu(MaHang, IDHangHoa, IDDonViTinh, dtHangHoa.GiaBan2(IDHangHoa, IDKho).ToString(), Gia2.ToString(), "1", "Hệ Thống Cập Nhật Giá Theo Giờ(GiaBan2): Chi Nhánh " + dtSetting.LayTenKho(IDKho));
+                            dtThayDoiGia.ThemLichSu(MaHang, IDHangHoa, IDDonViTinh, dtCapNhatTonKho.GiaBan2_KhoChiNhanh(IDHangHoa, IDKho).ToString(), Gia2.ToString(), "1", "Hệ Thống Cập Nhật Giá Theo Giờ(GiaBan2): Chi Nhánh " + dtSetting.LayTenKho(IDKho));
                             data = new dtMasterPage();
                             data.CapNhat_GiaTheoGio(IDHangHoa, IDKho, Gia2.ToString(), "GiaBan2");
                         }
                         if (Gia3 != -1)
                         {
-                            dtThayDoiGia.ThemLichSu(MaHang, IDHangHoa, IDDonViTinh, dtHangHoa.GiaBan3(IDHangHoa, IDKho).ToString(), Gia3.ToString(), "1", "Hệ Thống Cập Nhật Giá Theo Giờ(GiaBan3): Chi Nhánh " + dtSetting.LayTenKho(IDKho));
+                            dtThayDoiGia.ThemLichSu(MaHang, IDHangHoa, IDDonViTinh, dtCapNhatTonKho.GiaBan3_KhoChiNhanh(IDHangHoa, IDKho).ToString(), Gia3.ToString(), "1", "Hệ Thống Cập Nhật Giá Theo Giờ(GiaBan3): Chi Nhánh " + dtSetting.LayTenKho(IDKho));
                             data = new dtMasterPage();
                             data.CapNhat_GiaTheoGio(IDHangHoa, IDKho, Gia3.ToString(), "GiaBan3");
                         }
                         if (Gia4 != -1)
                         {
-                            dtThayDoiGia.ThemLichSu(MaHang, IDHangHoa, IDDonViTinh, dtHangHoa.GiaBan4(IDHangHoa, IDKho).ToString(), Gia4.ToString(), "1", "Hệ Thống Cập Nhật Giá Theo Giờ(GiaBan4): Chi Nhánh " + dtSetting.LayTenKho(IDKho));
+                            dtThayDoiGia.ThemLichSu(MaHang, IDHangHoa, IDDonViTinh, dtCapNhatTonKho.GiaBan4_KhoChiNhanh(IDHangHoa, IDKho).ToString(), Gia4.ToString(), "1", "Hệ Thống Cập Nhật Giá Theo Giờ(GiaBan4): Chi Nhánh " + dtSetting.LayTenKho(IDKho));
                             data = new dtMasterPage();
                             data.CapNhat_GiaTheoGio(IDHangHoa, IDKho, Gia4.ToString(), "GiaBan4");
                         }
                         if (Gia5 != -1)
                         {
-                            dtThayDoiGia.ThemLichSu(MaHang, IDHangHoa, IDDonViTinh, dtHangHoa.GiaBan5(IDHangHoa, IDKho).ToString(), Gia5.ToString(), "1", "Hệ Thống Cập Nhật Giá Theo Giờ(GiaBan5): Chi Nhánh " + dtSetting.LayTenKho(IDKho));
+                            dtThayDoiGia.ThemLichSu(MaHang, IDHangHoa, IDDonViTinh, dtCapNhatTonKho.GiaBan5_KhoChiNhanh(IDHangHoa, IDKho).ToString(), Gia5.ToString(), "1", "Hệ Thống Cập Nhật Giá Theo Giờ(GiaBan5): Chi Nhánh " + dtSetting.LayTenKho(IDKho));
                             data = new dtMasterPage();
                             data.CapNhat_GiaTheoGio(IDHangHoa, IDKho, Gia5.ToString(), "GiaBan5");
                         }

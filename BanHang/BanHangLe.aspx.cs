@@ -134,37 +134,37 @@ namespace BanHang
                     {
                         if (Gia0 != -1)
                         {
-                            dtThayDoiGia.ThemLichSu(MaHang, IDHangHoa, IDDonViTinh, dtHangHoa.GiaBan0(IDHangHoa, IDKho).ToString(), Gia0.ToString(), "1", "Hệ Thống Cập Nhật Giá Theo Giờ(GiaBan): Chi Nhánh " + dtSetting.LayTenKho(IDKho));
+                            dtThayDoiGia.ThemLichSu(MaHang, IDHangHoa, IDDonViTinh, dtCapNhatTonKho.GiaBan_KhoChiNhanh(IDHangHoa, IDKho).ToString(), Gia0.ToString(), "1", "Hệ Thống Cập Nhật Giá Theo Giờ(GiaBan): Chi Nhánh " + dtSetting.LayTenKho(IDKho));
                             dataMT = new dtMasterPage();
                             dataMT.CapNhat_GiaTheoGio(IDHangHoa, IDKho, Gia0.ToString(), "GiaBan");
                         }
                         if (Gia1 != -1)
                         {
-                            dtThayDoiGia.ThemLichSu(MaHang, IDHangHoa, IDDonViTinh, dtHangHoa.GiaBan1(IDHangHoa, IDKho).ToString(), Gia1.ToString(), "1", "Hệ Thống Cập Nhật Giá Theo Giờ(GiaBan1): Chi Nhánh " + dtSetting.LayTenKho(IDKho));
+                            dtThayDoiGia.ThemLichSu(MaHang, IDHangHoa, IDDonViTinh, dtCapNhatTonKho.GiaBan1_KhoChiNhanh(IDHangHoa, IDKho).ToString(), Gia1.ToString(), "1", "Hệ Thống Cập Nhật Giá Theo Giờ(GiaBan1): Chi Nhánh " + dtSetting.LayTenKho(IDKho));
                             dataMT = new dtMasterPage();
                             dataMT.CapNhat_GiaTheoGio(IDHangHoa, IDKho, Gia1.ToString(), "GiaBan1");
                         }
                         if (Gia2 != -1)
                         {
-                            dtThayDoiGia.ThemLichSu(MaHang, IDHangHoa, IDDonViTinh, dtHangHoa.GiaBan2(IDHangHoa, IDKho).ToString(), Gia2.ToString(), "1", "Hệ Thống Cập Nhật Giá Theo Giờ(GiaBan2): Chi Nhánh " + dtSetting.LayTenKho(IDKho));
+                            dtThayDoiGia.ThemLichSu(MaHang, IDHangHoa, IDDonViTinh, dtCapNhatTonKho.GiaBan2_KhoChiNhanh(IDHangHoa, IDKho).ToString(), Gia2.ToString(), "1", "Hệ Thống Cập Nhật Giá Theo Giờ(GiaBan2): Chi Nhánh " + dtSetting.LayTenKho(IDKho));
                             dataMT = new dtMasterPage();
                             dataMT.CapNhat_GiaTheoGio(IDHangHoa, IDKho, Gia2.ToString(), "GiaBan2");
                         }
                         if (Gia3 != -1)
                         {
-                            dtThayDoiGia.ThemLichSu(MaHang, IDHangHoa, IDDonViTinh, dtHangHoa.GiaBan3(IDHangHoa, IDKho).ToString(), Gia3.ToString(), "1", "Hệ Thống Cập Nhật Giá Theo Giờ(GiaBan3): Chi Nhánh " + dtSetting.LayTenKho(IDKho));
+                            dtThayDoiGia.ThemLichSu(MaHang, IDHangHoa, IDDonViTinh, dtCapNhatTonKho.GiaBan3_KhoChiNhanh(IDHangHoa, IDKho).ToString(), Gia3.ToString(), "1", "Hệ Thống Cập Nhật Giá Theo Giờ(GiaBan3): Chi Nhánh " + dtSetting.LayTenKho(IDKho));
                             dataMT = new dtMasterPage();
                             dataMT.CapNhat_GiaTheoGio(IDHangHoa, IDKho, Gia3.ToString(), "GiaBan3");
                         }
                         if (Gia4 != -1)
                         {
-                            dtThayDoiGia.ThemLichSu(MaHang, IDHangHoa, IDDonViTinh, dtHangHoa.GiaBan4(IDHangHoa, IDKho).ToString(), Gia4.ToString(), "1", "Hệ Thống Cập Nhật Giá Theo Giờ(GiaBan4): Chi Nhánh " + dtSetting.LayTenKho(IDKho));
+                            dtThayDoiGia.ThemLichSu(MaHang, IDHangHoa, IDDonViTinh, dtCapNhatTonKho.GiaBan4_KhoChiNhanh(IDHangHoa, IDKho).ToString(), Gia4.ToString(), "1", "Hệ Thống Cập Nhật Giá Theo Giờ(GiaBan4): Chi Nhánh " + dtSetting.LayTenKho(IDKho));
                             dataMT = new dtMasterPage();
                             dataMT.CapNhat_GiaTheoGio(IDHangHoa, IDKho, Gia4.ToString(), "GiaBan4");
                         }
                         if (Gia5 != -1)
                         {
-                            dtThayDoiGia.ThemLichSu(MaHang, IDHangHoa, IDDonViTinh, dtHangHoa.GiaBan5(IDHangHoa, IDKho).ToString(), Gia5.ToString(), "1", "Hệ Thống Cập Nhật Giá Theo Giờ(GiaBan5): Chi Nhánh " + dtSetting.LayTenKho(IDKho));
+                            dtThayDoiGia.ThemLichSu(MaHang, IDHangHoa, IDDonViTinh, dtCapNhatTonKho.GiaBan5_KhoChiNhanh(IDHangHoa, IDKho).ToString(), Gia5.ToString(), "1", "Hệ Thống Cập Nhật Giá Theo Giờ(GiaBan5): Chi Nhánh " + dtSetting.LayTenKho(IDKho));
                             dataMT = new dtMasterPage();
                             dataMT.CapNhat_GiaTheoGio(IDHangHoa, IDKho, Gia5.ToString(), "GiaBan5");
                         }
@@ -409,12 +409,12 @@ namespace BanHang
                             
                             switch (KT_GiaApDung)
                             {
-                                case 1: exitHang.DonGia = dtHangHoa.GiaBan1((exitHang.IDHangHoa).ToString(), IDKho); break;
-                                case 2: exitHang.DonGia = dtHangHoa.GiaBan2((exitHang.IDHangHoa).ToString(), IDKho); break;
-                                case 3: exitHang.DonGia = dtHangHoa.GiaBan3((exitHang.IDHangHoa).ToString(), IDKho); break;
-                                case 4: exitHang.DonGia = dtHangHoa.GiaBan4((exitHang.IDHangHoa).ToString(), IDKho); break;
-                                case 5: exitHang.DonGia = dtHangHoa.GiaBan5((exitHang.IDHangHoa).ToString(), IDKho); break;
-                                default: exitHang.DonGia = dtHangHoa.GiaBan0((exitHang.IDHangHoa).ToString(), IDKho); break;
+                                case 1: exitHang.DonGia = dtCapNhatTonKho.GiaBan1_KhoChiNhanh((exitHang.IDHangHoa).ToString(), IDKho); break;
+                                case 2: exitHang.DonGia = dtCapNhatTonKho.GiaBan2_KhoChiNhanh((exitHang.IDHangHoa).ToString(), IDKho); break;
+                                case 3: exitHang.DonGia = dtCapNhatTonKho.GiaBan3_KhoChiNhanh((exitHang.IDHangHoa).ToString(), IDKho); break;
+                                case 4: exitHang.DonGia = dtCapNhatTonKho.GiaBan4_KhoChiNhanh((exitHang.IDHangHoa).ToString(), IDKho); break;
+                                case 5: exitHang.DonGia = dtCapNhatTonKho.GiaBan5_KhoChiNhanh((exitHang.IDHangHoa).ToString(), IDKho); break;
+                                default: exitHang.DonGia = dtCapNhatTonKho.GiaBan_KhoChiNhanh((exitHang.IDHangHoa).ToString(), IDKho); break;
                             }
                         }
                         //exitHang.TonKho = dtCapNhatTonKho.SoLuong_TonKho(exitHang.IDHangHoa.ToString(), Session["IDKho"].ToString());
@@ -446,12 +446,12 @@ namespace BanHang
                                 int KT_GiaApDung = dtBanHangLe.KT_GiaApDung(Session["IDKho"].ToString());
                                 switch (KT_GiaApDung)
                                 {
-                                    case 1: exitHang.DonGia = dtHangHoa.GiaBan1((exitHang.IDHangHoa).ToString(), IDKho); break;
-                                    case 2: exitHang.DonGia = dtHangHoa.GiaBan2((exitHang.IDHangHoa).ToString(), IDKho); break;
-                                    case 3: exitHang.DonGia = dtHangHoa.GiaBan3((exitHang.IDHangHoa).ToString(), IDKho); break;
-                                    case 4: exitHang.DonGia = dtHangHoa.GiaBan4((exitHang.IDHangHoa).ToString(), IDKho); break;
-                                    case 5: exitHang.DonGia = dtHangHoa.GiaBan5((exitHang.IDHangHoa).ToString(), IDKho); break;
-                                    default: exitHang.DonGia = dtHangHoa.GiaBan0((exitHang.IDHangHoa).ToString(), IDKho); break;
+                                    case 1: exitHang.DonGia = dtCapNhatTonKho.GiaBan1_KhoChiNhanh((exitHang.IDHangHoa).ToString(), IDKho); break;
+                                    case 2: exitHang.DonGia = dtCapNhatTonKho.GiaBan2_KhoChiNhanh((exitHang.IDHangHoa).ToString(), IDKho); break;
+                                    case 3: exitHang.DonGia = dtCapNhatTonKho.GiaBan3_KhoChiNhanh((exitHang.IDHangHoa).ToString(), IDKho); break;
+                                    case 4: exitHang.DonGia = dtCapNhatTonKho.GiaBan4_KhoChiNhanh((exitHang.IDHangHoa).ToString(), IDKho); break;
+                                    case 5: exitHang.DonGia = dtCapNhatTonKho.GiaBan5_KhoChiNhanh((exitHang.IDHangHoa).ToString(), IDKho); break;
+                                    default: exitHang.DonGia = dtCapNhatTonKho.GiaBan_KhoChiNhanh((exitHang.IDHangHoa).ToString(), IDKho); break;
                                 }
                             }
                             exitHang.ThanhTien = Convert.ToInt32(SoLuongMoi) * exitHang.DonGia;

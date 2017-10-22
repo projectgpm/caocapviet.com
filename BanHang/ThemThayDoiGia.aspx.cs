@@ -93,12 +93,12 @@ namespace BanHang
                                 if (DanhSachKho.Items[i].Selected == true)
                                 {
                                     string IDKhoApDung = DanhSachKho.Items[i].Value.ToString();
-                                    float GiaBan = dtHangHoa.GiaBan0(IDHangHoa, IDKhoApDung);
-                                    float GiaBan1 = dtHangHoa.GiaBan1(IDHangHoa, IDKhoApDung);
-                                    float GiaBan2 = dtHangHoa.GiaBan2(IDHangHoa, IDKhoApDung);
-                                    float GiaBan3 = dtHangHoa.GiaBan3(IDHangHoa, IDKhoApDung);
-                                    float GiaBan4 = dtHangHoa.GiaBan4(IDHangHoa, IDKhoApDung);
-                                    float GiaBan5 = dtHangHoa.GiaBan5(IDHangHoa, IDKhoApDung);
+                                    float GiaBan = dtCapNhatTonKho.GiaBan_KhoChiNhanh(IDHangHoa, IDKhoApDung);
+                                    float GiaBan1 = dtCapNhatTonKho.GiaBan1_KhoChiNhanh(IDHangHoa, IDKhoApDung);
+                                    float GiaBan2 = dtCapNhatTonKho.GiaBan2_KhoChiNhanh(IDHangHoa, IDKhoApDung);
+                                    float GiaBan3 = dtCapNhatTonKho.GiaBan3_KhoChiNhanh(IDHangHoa, IDKhoApDung);
+                                    float GiaBan4 = dtCapNhatTonKho.GiaBan4_KhoChiNhanh(IDHangHoa, IDKhoApDung);
+                                    float GiaBan5 = dtCapNhatTonKho.GiaBan5_KhoChiNhanh(IDHangHoa, IDKhoApDung);
                                     // thêm temp
                                     dt = new dtGiaTheoGio();
                                     DataTable db = dt.KT_ThemChiTiet_Temp(IDHangHoa, IDTemp, IDKhoApDung, GioThayDoi);

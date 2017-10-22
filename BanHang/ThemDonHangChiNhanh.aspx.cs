@@ -133,18 +133,19 @@ namespace BanHang
                     string TonKho = txtTonKho.Text.ToString();
                     string GhiChu = txtGhiChuHangHoa.Text == null ? "":txtGhiChuHangHoa.Text.ToString();
                     string IDDonHangChiNhanh = IDDonDatHang_Temp.Value.ToString();
+                    float DonGia = dtCapNhatTonKho.GiaBan_KhoChiNhanh(IDHangHoa,Session["IDKho"].ToString());
                     DataTable db = dtDonHangChiNhanh.KTChiTietDonHang_Temp(IDHangHoa, IDDonHangChiNhanh);// kiểm tra hàng hóa
                     if (db.Rows.Count == 0)
                     {
                         data = new dtDonHangChiNhanh();
-                        data.ThemChiTietDonHang_Temp(IDDonHangChiNhanh, MaHang, IDHangHoa, IDDonViTinh, (SoLuong * TrongLuong).ToString(), SoLuong, TonKho, GhiChu);
+                        data.ThemChiTietDonHang_Temp(IDDonHangChiNhanh, MaHang, IDHangHoa, IDDonViTinh, (SoLuong * TrongLuong).ToString(), SoLuong, TonKho, GhiChu, DonGia);
                         CLear();
                         TinhTrongLuong();
                     }
                     else
                     {
                         data = new dtDonHangChiNhanh();
-                        data.CapNhatChiTietDonHang_temp(IDDonHangChiNhanh, IDHangHoa, SoLuong,(SoLuong * TrongLuong).ToString(), TonKho, GhiChu);
+                        data.CapNhatChiTietDonHang_temp(IDDonHangChiNhanh, IDHangHoa, SoLuong, (SoLuong * TrongLuong).ToString(), TonKho, GhiChu, DonGia);
                         CLear();
                         TinhTrongLuong();
                     }
@@ -182,11 +183,17 @@ namespace BanHang
                     string IDKho = Session["IDKho"].ToString();
                     string GhiChu = txtGhiChu.Text == null ? "" : txtGhiChu.Text.ToString();
                     string MucDoUuTien = cmbMucDoUuTien.Value.ToString();
+                    float TongTien = 0;
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        float ThanhTien = float.Parse(dr["ThanhTien"].ToString());
+                        TongTien = TongTien + ThanhTien;
+                    }
                     data = new dtDonHangChiNhanh();
                     object ID = data.ThemPhieuDatHangClient();
                     if (ID != null)
                     {
-                        data.CapNhatDonDatHangClient(ID, SoDonHang, IDNguoiLap, NgayLap, TongTrongLuong, IDKho, GhiChu, NgayDat, NgayGiaoDuKien, MucDoUuTien);
+                        data.CapNhatDonDatHangClient(ID, SoDonHang, IDNguoiLap, NgayLap, TongTrongLuong, IDKho, GhiChu, NgayDat, NgayGiaoDuKien, MucDoUuTien, TongTien);
                         foreach (DataRow dr in dt.Rows)
                         {
                             string IDHangHoa = dr["IDHangHoa"].ToString();
@@ -197,8 +204,10 @@ namespace BanHang
                             string TonKho = dr["TonKho"].ToString();
                             string GhiChuHangHoa = dr["GhiChu"].ToString();
                             string TrangThai = dr["TrangThai"].ToString();
+                            string DonGia = dr["DonGia"].ToString();
+                            string ThanhTien = dr["ThanhTien"].ToString();
                             data = new dtDonHangChiNhanh();
-                            data.ThemChiTietDonHangClient(ID, MaHang, IDHangHoa, IDDonViTinh, TrongLuong, SoLuong, TonKho, GhiChuHangHoa, TrangThai, IDKho);
+                            data.ThemChiTietDonHangClient(ID, MaHang, IDHangHoa, IDDonViTinh, TrongLuong, SoLuong, TonKho, GhiChuHangHoa, TrangThai, IDKho, DonGia , ThanhTien);
                         }
                         data = new dtDonHangChiNhanh();
                         data.XoaChiTietDonHang_Nhap(IDDonHangChiNhanh);
@@ -341,13 +350,14 @@ namespace BanHang
                             int TonKho = dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, Session["IDKho"].ToString());
                             string GhiChu = dr["GhiChu"].ToString();
                             //1: Hàng Hóa Thường, 3: Hàng Ngừng Nhập, 6: Đang Kinh Doanh , 2:Hàng Đang Chờ Xử Lý
+                            float DonGia = dtCapNhatTonKho.GiaBan_KhoChiNhanh(IDHangHoa, Session["IDKho"].ToString());
                             DataTable db = dtDonHangChiNhanh.KTChiTietDonHang_Temp(IDHangHoa, IDDonHangChiNhanh);// kiểm tra hàng hóa
                             if (db.Rows.Count == 0)
                             {
                                 data = new dtDonHangChiNhanh();
                                 if ((dtHangHoa.TrangThaiHang(IDHangHoa) == 1 || dtHangHoa.TrangThaiHang(IDHangHoa) == 3 || dtHangHoa.TrangThaiHang(IDHangHoa) == 6) && dtHangHoa.TrangThaiNhomDatHang(IDHangHoa) != 2)
                                 {
-                                    data.ThemChiTietDonHang_Temp(IDDonHangChiNhanh, MaHang, IDHangHoa, DonViTinh, (SoLuong * float.Parse(TrongLuong)).ToString(), SoLuong, TonKho.ToString(), GhiChu);
+                                    data.ThemChiTietDonHang_Temp(IDDonHangChiNhanh, MaHang, IDHangHoa, DonViTinh, (SoLuong * float.Parse(TrongLuong)).ToString(), SoLuong, TonKho.ToString(), GhiChu, DonGia);
                                     CLear();
                                     TinhTrongLuong();
                                 }
@@ -355,7 +365,7 @@ namespace BanHang
                             else
                             {
                                 data = new dtDonHangChiNhanh();
-                                data.CapNhatChiTietDonHang_temp(IDDonHangChiNhanh, IDHangHoa, SoLuong, (SoLuong * float.Parse(TrongLuong)).ToString(), TonKho.ToString(), GhiChu);
+                                data.CapNhatChiTietDonHang_temp(IDDonHangChiNhanh, IDHangHoa, SoLuong, (SoLuong * float.Parse(TrongLuong)).ToString(), TonKho.ToString(), GhiChu, DonGia);
                                 CLear();
                                 TinhTrongLuong();
                             }

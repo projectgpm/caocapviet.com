@@ -95,7 +95,7 @@ namespace BanHang.Data
                         DataRow dr = tb.Rows[0];
                         return Int32.Parse(dr["SoLuongCon"].ToString());
                     }
-                    else return -1;
+                    else return 0;
                 }
             }
         }
@@ -116,7 +116,7 @@ namespace BanHang.Data
                         DataRow dr = tb.Rows[0];
                         return Int32.Parse(dr["IDHangHoa"].ToString());
                     }
-                    else return -1;
+                    else return 0;
                 }
             }
         }
@@ -136,7 +136,7 @@ namespace BanHang.Data
                         DataRow dr = tb.Rows[0];
                         return float.Parse(dr["GiaBanSauThue"].ToString());
                     }
-                    else return -1;
+                    else return 0;
                 }
             }
         }
@@ -156,7 +156,7 @@ namespace BanHang.Data
                         DataRow dr = tb.Rows[0];
                         return float.Parse(dr["GiaBan"].ToString());
                     }
-                    else return -1;
+                    else return 0;
                 }
             }
         }
@@ -176,7 +176,7 @@ namespace BanHang.Data
                         DataRow dr = tb.Rows[0];
                         return float.Parse(dr["GiaBan1"].ToString());
                     }
-                    else return -1;
+                    else return 0;
                 }
             }
         }
@@ -196,7 +196,7 @@ namespace BanHang.Data
                         DataRow dr = tb.Rows[0];
                         return float.Parse(dr["GiaBan2"].ToString());
                     }
-                    else return -1;
+                    else return 0;
                 }
             }
         }
@@ -216,7 +216,7 @@ namespace BanHang.Data
                         DataRow dr = tb.Rows[0];
                         return float.Parse(dr["GiaBan3"].ToString());
                     }
-                    else return -1;
+                    else return 0;
                 }
             }
         }
@@ -236,7 +236,7 @@ namespace BanHang.Data
                         DataRow dr = tb.Rows[0];
                         return float.Parse(dr["GiaBan4"].ToString());
                     }
-                    else return -1;
+                    else return 0;
                 }
             }
         }
@@ -256,7 +256,7 @@ namespace BanHang.Data
                         DataRow dr = tb.Rows[0];
                         return float.Parse(dr["GiaBan5"].ToString());
                     }
-                    else return -1;
+                    else return 0;
                 }
             }
         }
@@ -276,7 +276,7 @@ namespace BanHang.Data
                         DataRow dr = tb.Rows[0];
                         return float.Parse(dr["GiaMuaSauThue"].ToString());
                     }
-                    else return -1;
+                    else return 0;
                 }
             }
         }

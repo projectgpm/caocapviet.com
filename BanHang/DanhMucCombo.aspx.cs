@@ -78,7 +78,7 @@ namespace BanHang
                 TenHangHoa = dtSetting.convertDauSangKhongDau(TenHangHoa).ToUpper();
             if (dtSetting.IsNumber(MaHang) == true)
             {
-                float GiaBanCu = dtHangHoa.GiaBan0(ID.ToString(), Session["IDKho"].ToString());
+                float GiaBanCu = dtCapNhatTonKho.GiaBan_KhoChiNhanh(ID.ToString(), Session["IDKho"].ToString());
                 if (GiaBanCu != float.Parse(GiaBanSauThue))
                 {
                     //ghi lịch sử thay đổi giá

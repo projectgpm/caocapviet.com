@@ -243,7 +243,7 @@
                                         </PropertiesSpinEdit>
                                     </dx:GridViewDataSpinEditColumn>
                                     <dx:GridViewDataButtonEditColumn Caption="Xóa" ShowInCustomizationForm="True" Width="50px" 
-                                        VisibleIndex="8">
+                                        VisibleIndex="9">
                                         <DataItemTemplate>
                                             <dx:ASPxButton ID="BtnXoaHang" runat="server" CommandName="XoaHang"
                                                 CommandArgument='<%# Eval("ID") %>' 
@@ -259,12 +259,22 @@
                                         <PropertiesSpinEdit DisplayFormatString="N0" NumberFormat="Custom">
                                         </PropertiesSpinEdit>
                                     </dx:GridViewDataSpinEditColumn>
-                                    <dx:GridViewDataTextColumn Caption="Ghi Chú" FieldName="GhiChu" ShowInCustomizationForm="True" VisibleIndex="6">
+                                    <dx:GridViewDataTextColumn Caption="Ghi Chú" FieldName="GhiChu" ShowInCustomizationForm="True" VisibleIndex="8">
                                     </dx:GridViewDataTextColumn>
+                                    <dx:GridViewDataSpinEditColumn Caption="Giá Bán" FieldName="DonGia" ShowInCustomizationForm="True" VisibleIndex="6">
+                                        <PropertiesSpinEdit DisplayFormatString="N0" NumberFormat="Custom">
+                                        </PropertiesSpinEdit>
+                                    </dx:GridViewDataSpinEditColumn>
+                                    <dx:GridViewDataSpinEditColumn Caption="Thành Tiền" FieldName="ThanhTien" ShowInCustomizationForm="True" VisibleIndex="7">
+                                        <PropertiesSpinEdit DisplayFormatString="N0" NumberFormat="Custom">
+                                        </PropertiesSpinEdit>
+                                    </dx:GridViewDataSpinEditColumn>
                                 </Columns>
                                  <TotalSummary>
-                                     <dx:ASPxSummaryItem  DisplayFormat="Tổng = {0}" FieldName="TrongLuong" ShowInColumn="Trọng Lượng" SummaryType="Sum" />
-                                     <dx:ASPxSummaryItem DisplayFormat="Tổng = {0:N0}" FieldName="SoLuong" ShowInColumn="Số Lượng Đặt" SummaryType="Sum" />
+                                     <dx:ASPxSummaryItem DisplayFormat="Tổng mặt hàng : {0:N0}" FieldName="MaHang" ShowInColumn="Tên Hàng Hóa" SummaryType="Count" />
+                                     <dx:ASPxSummaryItem  DisplayFormat="Tổng : {0:N0}" FieldName="TrongLuong" ShowInColumn="Trọng Lượng" SummaryType="Sum" />
+                                     <dx:ASPxSummaryItem DisplayFormat="Tổng : {0:N0}" FieldName="SoLuong" ShowInColumn="Số Lượng Đặt" SummaryType="Sum" />
+                                     <dx:ASPxSummaryItem DisplayFormat="Tổng : {0:N0} " FieldName="ThanhTien" ShowInColumn="Thành Tiền" SummaryType="Sum" />
                                  </TotalSummary>
                                  <Styles>
                                     <Header Font-Bold="True" HorizontalAlign="Center">
