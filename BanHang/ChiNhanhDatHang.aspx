@@ -160,11 +160,11 @@
                  </PropertiesDateEdit>
              </dx:GridViewDataDateColumn>
              <dx:GridViewDataSpinEditColumn Caption="Tổng Trọng Lượng" FieldName="TongTrongLuong" VisibleIndex="5">
-                 <PropertiesSpinEdit DisplayFormatString="{0:n} KG" NumberFormat="Custom">
+                 <PropertiesSpinEdit DisplayFormatString="{):N0} KG" NumberFormat="Custom">
                  </PropertiesSpinEdit>
                  <HeaderStyle Wrap="True" />
              </dx:GridViewDataSpinEditColumn>
-             <dx:GridViewDataComboBoxColumn Caption="Trạng Thái" FieldName="TrangThai" VisibleIndex="10">
+             <dx:GridViewDataComboBoxColumn Caption="Trạng Thái" FieldName="TrangThai" VisibleIndex="11">
                  <PropertiesComboBox>
                      <Items>
                          <dx:ListEditItem Text="Chưa xử lý" Value="0" />
@@ -173,7 +173,7 @@
                  </PropertiesComboBox>
                  <HeaderStyle Wrap="True" />
              </dx:GridViewDataComboBoxColumn>
-             <dx:GridViewDataButtonEditColumn Caption="Xem Chi Tiết" VisibleIndex="11">
+             <dx:GridViewDataButtonEditColumn Caption="Xem Chi Tiết" VisibleIndex="12">
                 
                 <DataItemTemplate>
                     <a href="javascript:void(0);" onclick="OnMoreInfoClick(this, '<%# Container.KeyValue %>')">Xem </a>
@@ -198,7 +198,7 @@
                  </PropertiesComboBox>
                  <HeaderStyle Wrap="True" />
              </dx:GridViewDataComboBoxColumn>
-             <dx:GridViewDataComboBoxColumn Caption="Cửa Hàng" FieldName="CuaHangTruongDuyet" VisibleIndex="9">
+             <dx:GridViewDataComboBoxColumn Caption="Cửa Hàng" FieldName="CuaHangTruongDuyet" VisibleIndex="10">
                  <PropertiesComboBox>
                      <Items>
                          <dx:ListEditItem Text="Đã Duyệt" Value="1" />
@@ -207,7 +207,7 @@
                  </PropertiesComboBox>
                  <HeaderStyle Wrap="True" />
              </dx:GridViewDataComboBoxColumn>
-             <dx:GridViewDataComboBoxColumn Caption="Giám Sát" FieldName="GiamSatDuyet" VisibleIndex="8">
+             <dx:GridViewDataComboBoxColumn Caption="Giám Sát" FieldName="GiamSatDuyet" VisibleIndex="9">
                  <PropertiesComboBox>
                      <Items>
                          <dx:ListEditItem Text="Chưa Duyệt" Value="0" />
@@ -216,6 +216,10 @@
                  </PropertiesComboBox>
                  <HeaderStyle Wrap="True" />
              </dx:GridViewDataComboBoxColumn>
+             <dx:GridViewDataSpinEditColumn Caption="Tổng Tiền" FieldName="TongTien" VisibleIndex="8">
+                 <PropertiesSpinEdit DisplayFormatString="{):N0} VNĐ" NumberFormat="Custom">
+                 </PropertiesSpinEdit>
+             </dx:GridViewDataSpinEditColumn>
          </Columns>
         <Styles>
             <Header Font-Bold="True" HorizontalAlign="Center">
