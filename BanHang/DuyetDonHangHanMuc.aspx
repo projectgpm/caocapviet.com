@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
      <script type="text/javascript">
          function OnMoreInfoClick(element, key) {
-             popup.SetContentUrl("ChiTietDonHangChiNhanh.aspx?IDDonHangChiNhanh=" + key);
+             popup.SetContentUrl("ChiTietDonHangHanMuc.aspx?IDDonHangChiNhanh=" + key);
              popup.ShowAtElement();
              // alert(key);
          }
