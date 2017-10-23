@@ -38,8 +38,8 @@ namespace BanHang
         {
             dtPhieuChuyenKho data = new dtPhieuChuyenKho();
             if (Session["IDKho"].ToString().CompareTo("1") == 0)
-                gridPhieuChuyenKho.DataSource = data.DanhSachPhieuChuyenKho_Tong();
-            else gridPhieuChuyenKho.DataSource = data.DanhSachPhieuChuyenKho_Client(Session["IDKho"].ToString());
+                gridPhieuChuyenKho.DataSource = data.DanhSachPhieuChuyenKho_Tong("TOP " + cmbSoLuongXem.Value + " ");
+            else gridPhieuChuyenKho.DataSource = data.DanhSachPhieuChuyenKho_Client(Session["IDKho"].ToString(), "TOP " + cmbSoLuongXem.Value + " ");
             gridPhieuChuyenKho.DataBind();
         }
 
@@ -54,6 +54,15 @@ namespace BanHang
             e.Cancel = true;
             gridPhieuChuyenKho.CancelEdit();
             LoadGrid();
+        }
+
+        protected void cmbSoLuongXem_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            dtPhieuChuyenKho data = new dtPhieuChuyenKho();
+            if (Session["IDKho"].ToString().CompareTo("1") == 0)
+                gridPhieuChuyenKho.DataSource = data.DanhSachPhieuChuyenKho_Tong("TOP " + cmbSoLuongXem.Value + " ");
+            else gridPhieuChuyenKho.DataSource = data.DanhSachPhieuChuyenKho_Client(Session["IDKho"].ToString(), "TOP " + cmbSoLuongXem.Value + " ");
+            gridPhieuChuyenKho.DataBind();
         }
     }
 }

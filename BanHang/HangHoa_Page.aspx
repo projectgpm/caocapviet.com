@@ -197,9 +197,11 @@
                                             <dx:ListBoxColumn Caption="Trạng thái" FieldName="TenTrangThai" Width="100%" />
                                         </Columns>
                                     </dx:ASPxComboBox>
-                                    <asp:SqlDataSource ID="sqlTrangThaiHang" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" SelectCommand="SELECT * FROM [GPM_TrangThaiHang] WHERE ([ID] &lt; @ID)">
+                                    <asp:SqlDataSource ID="sqlTrangThaiHang" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" SelectCommand="SELECT * FROM [GPM_TrangThaiHang] WHERE (([ID] &lt;&gt; @ID) AND ([ID] &lt;&gt; @ID2) AND ([ID] &lt;&gt; @ID3))">
                                         <SelectParameters>
                                             <asp:Parameter DefaultValue="5" Name="ID" Type="Int32" />
+                                            <asp:Parameter DefaultValue="6" Name="ID2" />
+                                            <asp:Parameter DefaultValue="7" Name="ID3" />
                                         </SelectParameters>
                                     </asp:SqlDataSource>
                                 </dx:LayoutItemNestedControlContainer>

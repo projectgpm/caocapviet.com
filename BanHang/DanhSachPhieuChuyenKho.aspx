@@ -9,9 +9,17 @@
          };
          
     </script>
+    <script type="text/javascript">
+        function OnMoreInfoClick2(element, key) {
+            popup.SetContentUrl("InPhieuChuyenKho.aspx?ID=" + key);
+            popup.ShowAtElement();
+            // alert(key);
+        }
+
+    </script>
        <dx:ASPxFormLayout ID="form1" runat="server">
            <Items>
-               <dx:LayoutGroup Caption="Chức năng" ColCount="4" Width="40%">
+               <dx:LayoutGroup Caption="Chức năng" ColCount="5" Width="40%">
                    <Items>
                        <dx:LayoutItem Caption="">
                            <LayoutItemNestedControlCollection>
@@ -53,6 +61,22 @@
                                </dx:LayoutItemNestedControlContainer>
                            </LayoutItemNestedControlCollection>
                        </dx:LayoutItem>
+                       <dx:LayoutItem Caption="Hiển thị:">
+                           <LayoutItemNestedControlCollection>
+                               <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer5" runat="server">
+                                   <dx:ASPxComboBox ID="cmbSoLuongXem" runat="server" AutoPostBack="True" SelectedIndex="0" OnSelectedIndexChanged="cmbSoLuongXem_SelectedIndexChanged">
+                                        <Items>
+                                            <dx:ListEditItem Selected="True" Text="50" Value="50" />
+                                            <dx:ListEditItem Text="100" Value="100" />
+                                            <dx:ListEditItem Text="200" Value="200" />
+                                            <dx:ListEditItem Text="500" Value="500" />
+                                            <dx:ListEditItem Text="1000" Value="1000" />
+                                            <dx:ListEditItem Text="Tất Cả" Value="50000000000000" />
+                                        </Items>
+                                   </dx:ASPxComboBox>
+                               </dx:LayoutItemNestedControlContainer>
+                           </LayoutItemNestedControlCollection>
+                       </dx:LayoutItem>
                    </Items>
                </dx:LayoutGroup>
            </Items>
@@ -84,7 +108,7 @@
                                             </DeleteButton>
                                         </SettingsCommandButton>
                                         <SettingsSearchPanel Visible="True" />
-                                        <SettingsText CommandDelete="Xóa" CommandEdit="Sửa" CommandNew="Thêm" Title="DANH SÁCH PHIẾU CHUYỂN KHO" ConfirmDelete="Bạn chắc chắn muốn xóa?"/>
+                                        <SettingsText CommandDelete="Xóa" CommandEdit="Sửa" CommandNew="Thêm" Title="DANH SÁCH PHIẾU CHUYỂN KHO" EmptyDataRow="Danh sách trống" ConfirmDelete="Bạn chắc chắn muốn xóa?"/>
                                         <Columns>
                                             <dx:GridViewDataComboBoxColumn Caption="Kho nhập" VisibleIndex="4" FieldName="IDKhoNhap">
                                                 <PropertiesComboBox DataSourceID="sqlKho" TextField="TenCuaHang" ValueField="ID">
@@ -104,7 +128,15 @@
                                                 </DataItemTemplate>
                                                 <HeaderStyle Wrap="True" />
                                             </dx:GridViewDataButtonEditColumn>
-                                            <dx:GridViewDataComboBoxColumn Caption="Kho xuất" FieldName="IDKhoXuat" VisibleIndex="3">
+                                            <dx:GridViewDataButtonEditColumn Caption="Xuất phiếu" VisibleIndex="0">
+                                                <EditCellStyle HorizontalAlign="Center">
+                                                </EditCellStyle>
+                                                <DataItemTemplate>
+                                                    <a href="javascript:void(0);" onclick="OnMoreInfoClick2(this, '<%# Container.KeyValue %>')">In phiếu </a>
+                                                </DataItemTemplate>
+                                                <HeaderStyle Wrap="True" />
+                                            </dx:GridViewDataButtonEditColumn>
+                                            <dx:GridViewDataComboBoxColumn Caption="Kho xuất" FieldName="IDKhoXuat" VisibleIndex="2">
                                                 <PropertiesComboBox DataSourceID="sqlKho" TextField="TenCuaHang" ValueField="ID">
                                                 </PropertiesComboBox>
                                             </dx:GridViewDataComboBoxColumn>
@@ -120,7 +152,7 @@
                                                 <PropertiesSpinEdit DisplayFormatString="{0:n} KG" NumberFormat="Custom">
                                                 </PropertiesSpinEdit>
                                             </dx:GridViewDataSpinEditColumn>
-                                            <dx:GridViewDataComboBoxColumn Caption="Trạng thái chuyển hàng" FieldName="IDTrangThai" VisibleIndex="2">
+                                            <dx:GridViewDataComboBoxColumn Caption="Trạng thái chuyển hàng" FieldName="IDTrangThai" VisibleIndex="3">
                                                 <PropertiesComboBox DataSourceID="sqlTrangThaiChuyenHang" TextField="TenTrangThai" ValueField="ID">
                                                 </PropertiesComboBox>
                                             </dx:GridViewDataComboBoxColumn>
@@ -194,8 +226,8 @@
 
     <%--popup chi tiet don hang--%>
      <dx:ASPxPopupControl ID="popup" runat="server" AllowDragging="True" AllowResize="True" 
-         PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter"  Width="1100px"
-         Height="600px" FooterText="Thông tin chi tiết"
+         PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter"  Width="1250px"
+         Height="700px" FooterText="Thông tin chi tiết"
         HeaderText="Thông tin chi tiết phiếu chuyển kho" ClientInstanceName="popup" EnableHierarchyRecreation="True" CloseAction="CloseButton">
     </dx:ASPxPopupControl>
 </asp:Content>
