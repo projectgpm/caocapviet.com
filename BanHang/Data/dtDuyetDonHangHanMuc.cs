@@ -15,7 +15,7 @@ namespace BanHang.Data
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "SELECT TOP " + HienThi + " * FROM [GPM_DonHangChiNhanh] WHERE [NgayDat] < '" + NgayKT + "' AND NgayDat >= '" + NgayBD + "' AND [TrangThai] = 0 AND [TongTien] <= '" + dtCauHinhHanMuc.DonGiaTheoIDNhom(IDNhom) + "'";
+                string cmdText = "SELECT TOP " + HienThi + " * FROM [GPM_DonHangChiNhanh] WHERE [NgayDat] < '" + NgayKT + "' AND NgayDat >= '" + NgayBD + "' AND [TrangThai] = 0 AND [TongTien] <= '" + dtCauHinhHanMuc.DonGiaTheoIDNhom(IDNhom) + "' AND GiamSatDuyet is null AND KhoDuyet is null AND GiamDocDuyet is null";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
