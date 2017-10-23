@@ -22,24 +22,14 @@ namespace BanHang
                     if (dtChiTietDonHangChiNhanh.LayTrangThaiDonHang(IDDonHangChiNhanh, Session["IDKho"].ToString()) == 1)
                     {
                         gridChiTiet.Columns["chucnang"].Visible = false;
-                        //btnGiamSat.Enabled = false;
-                        //btnCuaHangTruong.Enabled = false;
                     }
                     if (dtChiTietDonHangChiNhanh.LayIDKho(IDDonHangChiNhanh) != Int32.Parse(Session["IDKho"].ToString()))
                     {
                         gridChiTiet.Columns["chucnang"].Visible = false;
-                        //btnGiamSat.Visible = false;
-                        //btnCuaHangTruong.Visible = false;
                     }
-                    if (dtChiTietDonHangChiNhanh.TrangThaiCuaHangTruong(IDDonHangChiNhanh) == 1)
+                    if (dtChiTietDonHangChiNhanh.TrangThai(IDDonHangChiNhanh) == 1)
                     {
                         gridChiTiet.Columns["chucnang"].Visible = false;
-                        //btnCuaHangTruong.Enabled = false;
-                    }
-                    if (dtChiTietDonHangChiNhanh.TrangThaiGiamSat(IDDonHangChiNhanh) == 1)
-                    {
-                        gridChiTiet.Columns["chucnang"].Visible = false;
-                        //btnGiamSat.Enabled = false;
                     }
                     LoadGrid(IDDonHangChiNhanh.ToString());
                 }
@@ -70,11 +60,10 @@ namespace BanHang
               
                 data = new dtChiTietDonHangChiNhanh();
                 data.CapNhatChiTietDonHang(IDDonHangChiNhanh, IDHangHoa, SoLuong, GhiChu);
-                data.CapNhat_TongTrongLuong(IDDonHangChiNhanh, TinhTrongLuong().ToString());
+                data.CapNhat_TongTrongLuong(IDDonHangChiNhanh, TinhTrongLuong().ToString(),TinhTongTien().ToString());
                 e.Cancel = true;
                 gridChiTiet.CancelEdit();
                 LoadGrid(IDDonHangChiNhanh);
-
                 dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Chi tiết đơn hàng chi nhánh", Session["IDKho"].ToString(), "Nhập xuất tồn", "Cập nhật");
             }
             else
@@ -102,7 +91,24 @@ namespace BanHang
             else
                 return 0;
         }
-
+        public double TinhTongTien()
+        {
+            string IDDonHangChiNhanh = Request.QueryString["IDDonHangChiNhanh"];
+            data = new dtChiTietDonHangChiNhanh();
+            DataTable db = data.DanhSachChiTiet(IDDonHangChiNhanh);
+            if (db.Rows.Count != 0)
+            {
+                double TongTien = 0;
+                foreach (DataRow dr in db.Rows)
+                {
+                    double ThanhTien = double.Parse(dr["ThanhTien"].ToString());
+                    TongTien = TongTien + ThanhTien;
+                }
+                return TongTien;
+            }
+            else
+                return 0;
+        }
         //protected void btnGiamSat_Click(object sender, EventArgs e)
         //{
         //    string IDDonHangChiNhanh = Request.QueryString["IDDonHangChiNhanh"];

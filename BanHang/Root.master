@@ -121,6 +121,8 @@
                                                             </dx:RibbonDropDownButtonItem>
                                                             <dx:RibbonDropDownButtonItem Name="the-kho" NavigateUrl="TheKho.aspx" Text="Thẻ Kho" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
+                                                            <dx:RibbonDropDownButtonItem Name="duyet-don-hang-chi-nhanh" NavigateUrl="DuyetDonHangHanMuc.aspx" Text="Duyệt Đơn Hàng Chi Nhánh">
+                                                            </dx:RibbonDropDownButtonItem>
                                                         </Items>
                                                         <LargeImage Url="~/image/nhapxuat.png">
                                                         </LargeImage>
@@ -174,6 +176,8 @@
                                                             <dx:RibbonDropDownButtonItem Name="lich-su-thay-doi-gia" Text="Lịch Sử Thay Đổi Giá" NavigateUrl="LichSuThayDoiGia.aspx" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
                                                             <dx:RibbonDropDownButtonItem Name="lich-su-kho" NavigateUrl="LichSuKho.aspx" Text="Lịch Sử Kho" Visible="False">
+                                                            </dx:RibbonDropDownButtonItem>
+                                                            <dx:RibbonDropDownButtonItem Name="cau-hinh-han-muc" NavigateUrl="CauHinhHanMuc.aspx" Text="Cấu Hình Hạn Mức">
                                                             </dx:RibbonDropDownButtonItem>
                                                         </Items>
                                                         <LargeImage Url="~/image/hethong.png">

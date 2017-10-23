@@ -112,6 +112,7 @@
     <Content Include="BaoCaoTonKho_In.aspx" />
     <Content Include="bin\BanHang.dll" />
     <Content Include="bin\BanHang.pdb" />
+    <Content Include="CauHinhHanMuc.aspx" />
     <Content Include="ChiNhanhDatHang.aspx" />
     <Content Include="ChiTietDonHangChiNhanh.aspx" />
     <Content Include="ChiTietDonHangChiNhanhXuLy1Phan.aspx" />
@@ -170,6 +171,7 @@
     <Content Include="DonViTinh.aspx" />
     <Content Include="DuLieu.aspx" />
     <Content Include="DuyetDonHangChiNhanh.aspx" />
+    <Content Include="DuyetDonHangHanMuc.aspx" />
     <Content Include="DuyetDonHangThuMua.aspx" />
     <Content Include="GiaTheoGio.aspx" />
     <Content Include="GiaTheoKho.aspx" />
@@ -425,6 +427,13 @@
     </Compile>
     <Compile Include="BaoCaoTonKho_In.aspx.designer.cs">
       <DependentUpon>BaoCaoTonKho_In.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CauHinhHanMuc.aspx.cs">
+      <DependentUpon>CauHinhHanMuc.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CauHinhHanMuc.aspx.designer.cs">
+      <DependentUpon>CauHinhHanMuc.aspx</DependentUpon>
     </Compile>
     <Compile Include="ChiNhanhDatHang.aspx.cs">
       <DependentUpon>ChiNhanhDatHang.aspx</DependentUpon>
@@ -685,6 +694,7 @@
     <Compile Include="Data\dtBanHangLe.cs" />
     <Compile Include="Data\dtCapNhatPhieuNhapHang.cs" />
     <Compile Include="Data\dtCapNhatTonKho.cs" />
+    <Compile Include="Data\dtCauHinhHanMuc.cs" />
     <Compile Include="Data\dtCheckDangNhap.cs" />
     <Compile Include="Data\dtChiTietDonHangChiNhanh.cs" />
     <Compile Include="Data\dtDanhMucThue.cs" />
@@ -695,6 +705,7 @@
     <Compile Include="Data\dtDonViTinh.cs" />
     <Compile Include="Data\dtDuLieu.cs" />
     <Compile Include="Data\dtDuyetDonHangChiNhanh.cs" />
+    <Compile Include="Data\dtDuyetDonHangHanMuc.cs" />
     <Compile Include="Data\dtDuyetDonHangThuMua.cs" />
     <Compile Include="Data\dtGiaTheoGio.cs" />
     <Compile Include="Data\dtGiaTheoVung.cs" />
@@ -832,6 +843,13 @@
     </Compile>
     <Compile Include="DuyetDonHangChiNhanh.aspx.designer.cs">
       <DependentUpon>DuyetDonHangChiNhanh.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DuyetDonHangHanMuc.aspx.cs">
+      <DependentUpon>DuyetDonHangHanMuc.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DuyetDonHangHanMuc.aspx.designer.cs">
+      <DependentUpon>DuyetDonHangHanMuc.aspx</DependentUpon>
     </Compile>
     <Compile Include="DuyetDonHangThuMua.aspx.cs">
       <DependentUpon>DuyetDonHangThuMua.aspx</DependentUpon>

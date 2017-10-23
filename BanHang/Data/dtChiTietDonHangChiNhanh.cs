@@ -9,12 +9,32 @@ namespace BanHang.Data
 {
     public class dtChiTietDonHangChiNhanh
     {
-        public static int TrangThaiCuaHangTruong(string ID)
+        //public static int TrangThaiCuaHangTruong(string ID)
+        //{
+        //    using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+        //    {
+        //        con.Open();
+        //        string cmdText = "SELECT CuaHangTruongDuyet FROM [GPM_DonHangChiNhanh] WHERE [ID] = " + ID;
+        //        using (SqlCommand command = new SqlCommand(cmdText, con))
+        //        using (SqlDataReader reader = command.ExecuteReader())
+        //        {
+        //            DataTable tb = new DataTable();
+        //            tb.Load(reader);
+        //            if (tb.Rows.Count != 0)
+        //            {
+        //                DataRow dr = tb.Rows[0];
+        //                return Int32.Parse(dr["CuaHangTruongDuyet"].ToString().Trim());
+        //            }
+        //            return -1;
+        //        }
+        //    }
+        //}
+        public static int TrangThai(string ID)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "SELECT CuaHangTruongDuyet FROM [GPM_DonHangChiNhanh] WHERE [ID] = " + ID;
+                string cmdText = "SELECT * FROM [GPM_DonHangChiNhanh] WHERE (GiamSatDuyet =1 OR GiamDocDuyet =1 OR KhoDuyet = 1) AND [ID] = " + ID;
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
@@ -23,27 +43,7 @@ namespace BanHang.Data
                     if (tb.Rows.Count != 0)
                     {
                         DataRow dr = tb.Rows[0];
-                        return Int32.Parse(dr["CuaHangTruongDuyet"].ToString().Trim());
-                    }
-                    return -1;
-                }
-            }
-        }
-        public static int TrangThaiGiamSat(string ID)
-        {
-            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
-            {
-                con.Open();
-                string cmdText = "SELECT GiamSatDuyet FROM [GPM_DonHangChiNhanh] WHERE [ID] = " + ID;
-                using (SqlCommand command = new SqlCommand(cmdText, con))
-                using (SqlDataReader reader = command.ExecuteReader())
-                {
-                    DataTable tb = new DataTable();
-                    tb.Load(reader);
-                    if (tb.Rows.Count != 0)
-                    {
-                        DataRow dr = tb.Rows[0];
-                        return Int32.Parse(dr["GiamSatDuyet"].ToString().Trim());
+                        return 1;
                     }
                     return -1;
                 }
@@ -56,11 +56,12 @@ namespace BanHang.Data
                 try
                 {
                     myConnection.Open();
-                    string cmdText = "UPDATE [GPM_DonHangChiNhanh_ChiTiet] SET [GhiChu] = @GhiChu,[SoLuong] = @SoLuong WHERE [IDHangHoa] = @IDHangHoa AND [IDDonHangChiNhanh] = @IDDonHangChiNhanh";
+                    string cmdText = "UPDATE [GPM_DonHangChiNhanh_ChiTiet] SET [ThanhTien] = [DonGia]*@ThanhTien,[GhiChu] = @GhiChu,[SoLuong] = @SoLuong WHERE [IDHangHoa] = @IDHangHoa AND [IDDonHangChiNhanh] = @IDDonHangChiNhanh";
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
                         myCommand.Parameters.AddWithValue("@GhiChu", GhiChu);
                         myCommand.Parameters.AddWithValue("@IDHangHoa", IDHangHoa);
+                        myCommand.Parameters.AddWithValue("@ThanhTien", SoLuong);
                         myCommand.Parameters.AddWithValue("@IDDonHangChiNhanh", IDDonHangChiNhanh);
                         myCommand.Parameters.AddWithValue("@SoLuong", SoLuong);
                         myCommand.ExecuteNonQuery();
@@ -73,18 +74,19 @@ namespace BanHang.Data
                 }
             }
         }
-        public void CapNhat_TongTrongLuong(string IDDonHangChiNhanh, string TongTrongLuong)
+        public void CapNhat_TongTrongLuong(string IDDonHangChiNhanh, string TongTrongLuong,string TongTien)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
                 try
                 {
                     myConnection.Open();
-                    string cmdText = "UPDATE [GPM_DonHangChiNhanh] SET [TongTrongLuong] = @TongTrongLuong WHERE [ID] = @IDDonHangChiNhanh";
+                    string cmdText = "UPDATE [GPM_DonHangChiNhanh] SET [TongTien] = @TongTien,[TongTrongLuong] = @TongTrongLuong WHERE [ID] = @IDDonHangChiNhanh";
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
                         myCommand.Parameters.AddWithValue("@IDDonHangChiNhanh", IDDonHangChiNhanh);
                         myCommand.Parameters.AddWithValue("@TongTrongLuong", TongTrongLuong);
+                        myCommand.Parameters.AddWithValue("@TongTien", TongTien);
                         myCommand.ExecuteNonQuery();
                     }
                     myConnection.Close();
