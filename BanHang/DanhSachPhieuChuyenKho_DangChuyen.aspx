@@ -9,6 +9,14 @@
          }
 
     </script>
+    <script type="text/javascript">
+        function OnMoreInfoClick2(element, key) {
+            popup.SetContentUrl("InPhieuChuyenKho.aspx?ID=" + key);
+            popup.ShowAtElement();
+            // alert(key);
+        }
+
+    </script>
     <dx:ASPxFormLayout ID="form1" runat="server">
            <Items>
                <dx:LayoutGroup Caption="Chức năng" ColCount="4" Width="40%">
@@ -104,6 +112,14 @@
                                                 </DataItemTemplate>
                                                 <HeaderStyle Wrap="True" />
                                             </dx:GridViewDataButtonEditColumn>
+                                            <dx:GridViewDataButtonEditColumn Caption="Xuất phiếu" VisibleIndex="0">
+                                                <EditCellStyle HorizontalAlign="Center">
+                                                </EditCellStyle>
+                                                <DataItemTemplate>
+                                                    <a href="javascript:void(0);" onclick="OnMoreInfoClick2(this, '<%# Container.KeyValue %>')">In phiếu </a>
+                                                </DataItemTemplate>
+                                                <HeaderStyle Wrap="True" />
+                                            </dx:GridViewDataButtonEditColumn>
                                             <dx:GridViewDataComboBoxColumn Caption="Kho xuất" FieldName="IDKhoXuat" VisibleIndex="1">
                                                 <PropertiesComboBox DataSourceID="sqlKho" TextField="TenCuaHang" ValueField="ID">
                                                 </PropertiesComboBox>
@@ -191,8 +207,8 @@
 
     <%--popup chi tiet don hang--%>
      <dx:ASPxPopupControl ID="popup" runat="server" AllowDragging="True" AllowResize="True" 
-         PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter"  Width="1100px"
-         Height="600px" FooterText="Thông tin chi tiết"
+         PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter"  Width="1250px"
+         Height="700px" FooterText="Thông tin chi tiết"
         HeaderText="Thông tin chi tiết phiếu chuyển kho" ClientInstanceName="popup" EnableHierarchyRecreation="True" CloseAction="CloseButton">
     </dx:ASPxPopupControl>
 </asp:Content>
