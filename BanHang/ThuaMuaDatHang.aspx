@@ -99,18 +99,26 @@
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
                 </dx:LayoutItem>
-                <dx:LayoutItem Caption="Tổng Tiền">
+                <dx:LayoutItem Caption="Tổng Tiền(*)">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer2" runat="server">
-                            <dx:ASPxSpinEdit ID="txtTongTien" runat="server" AutoPostBack="True" Width="100%" DisplayFormatString="{0:#,#} đ" Enabled="False">
+                            <dx:ASPxSpinEdit ID="txtTongTien" runat="server" AutoPostBack="True" Width="100%" DisplayFormatString="{0:N0}" Number="0">
                             </dx:ASPxSpinEdit>
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
                 </dx:LayoutItem>
-                <dx:LayoutItem Caption="Tổng Tiền Sau CK">
+                <dx:LayoutItem Caption="Tổng Tiền Sau CK(*)">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer runat="server">
-                            <dx:ASPxSpinEdit ID="txtTongTienSauCk" runat="server" Enabled="False" Width ="100%" DisplayFormatString="{0:#,#} đ">
+                            <dx:ASPxSpinEdit ID="txtTongTienSauCk" runat="server" Width ="100%" DisplayFormatString="{0:N0}" Number="0">
+                            </dx:ASPxSpinEdit>
+                        </dx:LayoutItemNestedControlContainer>
+                    </LayoutItemNestedControlCollection>
+                </dx:LayoutItem>
+                <dx:LayoutItem Caption="Tiền Chiết Khấu(*)">
+                    <LayoutItemNestedControlCollection>
+                        <dx:LayoutItemNestedControlContainer runat="server">
+                            <dx:ASPxSpinEdit ID="txtTienChietKhau" runat="server" DisplayFormatString="N0" Number="0" Width="100%">
                             </dx:ASPxSpinEdit>
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
@@ -124,7 +132,7 @@
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
                 </dx:LayoutItem>
-                <dx:LayoutItem Caption="Ghi Chú" ColSpan="3" RowSpan="3">
+                <dx:LayoutItem Caption="Ghi Chú" ColSpan="2">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer10" runat="server">
                             <dx:ASPxTextBox ID="txtGhiChu" runat="server" Width="100%">

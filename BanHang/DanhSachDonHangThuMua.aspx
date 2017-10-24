@@ -160,11 +160,11 @@
                  </PropertiesDateEdit>
              </dx:GridViewDataDateColumn>
              <dx:GridViewDataSpinEditColumn Caption="Tổng Tiền" FieldName="TongTien" VisibleIndex="7">
-                 <PropertiesSpinEdit DisplayFormatString="{0:#,# đ}" NumberFormat="Custom">
+                 <PropertiesSpinEdit DisplayFormatString="{0:N0}VNĐ" NumberFormat="Custom">
                  </PropertiesSpinEdit>
              </dx:GridViewDataSpinEditColumn>
              <dx:GridViewDataSpinEditColumn Caption="Tổng Trọng Lượng" FieldName="TongTrongLuong" VisibleIndex="9">
-                 <PropertiesSpinEdit DisplayFormatString="{0:n} KG" NumberFormat="Custom">
+                 <PropertiesSpinEdit DisplayFormatString="{0:N0}KG" NumberFormat="Custom">
                  </PropertiesSpinEdit>
                  <HeaderStyle Wrap="True" />
              </dx:GridViewDataSpinEditColumn>
@@ -185,7 +185,7 @@
                  <HeaderStyle Wrap="True" />
             </dx:GridViewDataButtonEditColumn>
              <dx:GridViewDataSpinEditColumn Caption="Tổng Tiền Sau Chiết Khấu" FieldName="TongTienSauChietKhau" VisibleIndex="8">
-                 <PropertiesSpinEdit DisplayFormatString="{0:#,# đ}" NumberFormat="Custom">
+                 <PropertiesSpinEdit DisplayFormatString="{0:N0}VNĐ" NumberFormat="Custom">
                  </PropertiesSpinEdit>
                  <HeaderStyle Wrap="True" />
              </dx:GridViewDataSpinEditColumn>
