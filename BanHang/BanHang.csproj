@@ -211,6 +211,7 @@
     <Content Include="ImportExcel_KhachHang.aspx" />
     <Content Include="ImportExcel_NhaCungCap.aspx" />
     <Content Include="InHoaDonBanLe.aspx" />
+    <Content Include="InPhieuChuyenKho.aspx" />
     <Content Include="keyCode.aspx" />
     <Content Include="KhachHang.aspx" />
     <Content Include="Kho.aspx" />
@@ -967,6 +968,13 @@
     <Compile Include="InHoaDonBanLe.aspx.designer.cs">
       <DependentUpon>InHoaDonBanLe.aspx</DependentUpon>
     </Compile>
+    <Compile Include="InPhieuChuyenKho.aspx.cs">
+      <DependentUpon>InPhieuChuyenKho.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InPhieuChuyenKho.aspx.designer.cs">
+      <DependentUpon>InPhieuChuyenKho.aspx</DependentUpon>
+    </Compile>
     <Compile Include="KeepAlive.ashx.cs">
       <DependentUpon>KeepAlive.ashx</DependentUpon>
     </Compile>
@@ -1186,6 +1194,12 @@
     <Compile Include="Report\rpTheKho.Designer.cs">
       <DependentUpon>rpTheKho.cs</DependentUpon>
     </Compile>
+    <Compile Include="Report\rpXuatPhieuChuyenKho.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rpXuatPhieuChuyenKho.Designer.cs">
+      <DependentUpon>rpXuatPhieuChuyenKho.cs</DependentUpon>
+    </Compile>
     <Compile Include="Root.master.cs">
       <DependentUpon>Root.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1337,6 +1351,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Report\rpTheKho.resx">
       <DependentUpon>rpTheKho.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rpXuatPhieuChuyenKho.resx">
+      <DependentUpon>rpXuatPhieuChuyenKho.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
