@@ -110,7 +110,7 @@ namespace BanHang
                 return 0;
         }
 
-        protected void btnHuyDonHang_Click(object sender, EventArgs e)
+        protected void btnHuyDonHang_Click1(object sender, EventArgs e)
         {
             string IDDonHangThuMua = Request.QueryString["IDDonHangThuMua"];
             if (IDDonHangThuMua != null)
@@ -121,6 +121,14 @@ namespace BanHang
                 gridChiTiet.Columns["chucnang"].Visible = false;
                 LoadGrid(IDDonHangThuMua.ToString());
             }
+        }
+
+        protected void ASPxFormLayout1_E1_Click(object sender, EventArgs e)
+        {
+            //popup.ContentUrl = "~/InDonDatHang.aspx?ID=" + Request.QueryString["IDDonHangThuMua"];
+            //popup.ShowOnPageLoad = true;
+            string jsInHoaDon = "window.open(\"InDonDatHang.aspx?ID=" + Request.QueryString["IDDonHangThuMua"] + "\", \"PrintingFrame\");";
+            ClientScript.RegisterStartupScript(this.GetType(), "Print", jsInHoaDon, true);
         }
     }
 }
