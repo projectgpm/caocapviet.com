@@ -89,6 +89,8 @@
         <PanelCollection>
         <dx:PanelContent ID="PanelContent1" runat="server">
             <dx:ASPxGridView ID="gridHangHoa" runat="server" AutoGenerateColumns="False" Width="100%" KeyFieldName="ID" OnRowDeleting="gridHangHoa_RowDeleting1">
+                    <SettingsPager PageSize="100">
+                    </SettingsPager>
                     <SettingsEditing Mode="PopupEditForm">
                     </SettingsEditing>
                     <Settings ShowFilterRow="True" ShowTitlePanel="True" />
@@ -161,19 +163,19 @@
                             <HeaderStyle Wrap="True" />
                         </dx:GridViewDataSpinEditColumn>
                         <dx:GridViewDataSpinEditColumn Caption="Giá Mua Trước Thuế" FieldName="GiaMuaTruocThue" ShowInCustomizationForm="True" VisibleIndex="14">
-                            <PropertiesSpinEdit DisplayFormatString="{0:#,#} đ" DisplayFormatInEditMode="True" NumberFormat="Custom">
+                            <PropertiesSpinEdit DisplayFormatString="{0:#,#} VNĐ" DisplayFormatInEditMode="True" NumberFormat="Custom">
                             </PropertiesSpinEdit>
                         </dx:GridViewDataSpinEditColumn>
                         <dx:GridViewDataSpinEditColumn Caption="Giá Bán Trước Thuế" FieldName="GiaBanTruocThue" ShowInCustomizationForm="True" VisibleIndex="15">
-                            <PropertiesSpinEdit DisplayFormatString="{0:#,#} đ" DisplayFormatInEditMode="True" NumberFormat="Custom">
+                            <PropertiesSpinEdit DisplayFormatString="{0:#,#} VNĐ" DisplayFormatInEditMode="True" NumberFormat="Custom">
                             </PropertiesSpinEdit>
                         </dx:GridViewDataSpinEditColumn>
                         <dx:GridViewDataSpinEditColumn Caption="Giá Mua Sau Thuế" FieldName="GiaMuaSauThue" ShowInCustomizationForm="True" VisibleIndex="16">
-                            <PropertiesSpinEdit DisplayFormatString="{0:#,#} đ" DisplayFormatInEditMode="True" NumberFormat="Custom">
+                            <PropertiesSpinEdit DisplayFormatString="{0:#,#} VNĐ" DisplayFormatInEditMode="True" NumberFormat="Custom">
                             </PropertiesSpinEdit>
                         </dx:GridViewDataSpinEditColumn>
                         <dx:GridViewDataSpinEditColumn Caption="Giá Bán Sau Thuế" FieldName="GiaBan" ShowInCustomizationForm="True" VisibleIndex="17">
-                            <PropertiesSpinEdit DisplayFormatString="{0:#,#} đ" DisplayFormatInEditMode="True" NumberFormat="Custom">
+                            <PropertiesSpinEdit DisplayFormatString="{0:#,#} VNĐ" DisplayFormatInEditMode="True" NumberFormat="Custom">
                             </PropertiesSpinEdit>
                         </dx:GridViewDataSpinEditColumn>
                         <dx:GridViewDataTextColumn FieldName="GhiChu" ShowInCustomizationForm="True" VisibleIndex="26" Caption="Ghi Chú">
