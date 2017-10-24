@@ -30,7 +30,7 @@
             </dx:LayoutItem>
         </Items>
     </dx:ASPxFormLayout>
-    <dx:ASPxGridView ID="gridHangHoa" runat="server" AutoGenerateColumns="False" KeyFieldName="ID" Width="100%">
+    <dx:ASPxGridView ID="gridHangHoa" runat="server" AutoGenerateColumns="False" KeyFieldName="ID" Width="100%" OnHtmlRowPrepared="gridHangHoa_HtmlRowPrepared">
         <SettingsEditing Mode="EditForm">
         </SettingsEditing>
         <Settings ShowFilterRow="True" ShowTitlePanel="True" />

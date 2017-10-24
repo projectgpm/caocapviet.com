@@ -1,6 +1,7 @@
 ﻿using BanHang.Data;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -33,6 +34,20 @@ namespace BanHang
         protected void cmbHienThi_SelectedIndexChanged(object sender, EventArgs e)
         {
             Loadgrid(cmbHienThi.Value.ToString());
+        }
+
+        protected void gridHangHoa_HtmlRowPrepared(object sender, DevExpress.Web.ASPxGridViewTableRowEventArgs e)
+        {
+            Color color = (Color)ColorTranslator.FromHtml("#FF9797");
+            double GiaMuaSauThue = Convert.ToDouble(e.GetValue("GiaMuaSauThue"));
+            double GiaBan = Convert.ToDouble(e.GetValue("GiaBan"));
+            double GiaBan1 = Convert.ToDouble(e.GetValue("GiaBan1"));
+            double GiaBan2 = Convert.ToDouble(e.GetValue("GiaBan2"));
+            double GiaBan3 = Convert.ToDouble(e.GetValue("GiaBan3"));
+            double GiaBan4 = Convert.ToDouble(e.GetValue("GiaBan4"));
+            double GiaBan5 = Convert.ToDouble(e.GetValue("GiaBan5"));
+            if (GiaMuaSauThue > GiaBan || GiaMuaSauThue > GiaBan1 || GiaMuaSauThue > GiaBan2 || GiaMuaSauThue > GiaBan3 || GiaMuaSauThue > GiaBan4 || GiaMuaSauThue > GiaBan5)
+                e.Row.BackColor = color;
         }
     }
 }
