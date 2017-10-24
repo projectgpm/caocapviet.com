@@ -209,7 +209,9 @@
     <Content Include="ImportExcel_HangHoa.aspx" />
     <Content Include="ImportExcel_KhachHang.aspx" />
     <Content Include="ImportExcel_NhaCungCap.aspx" />
+    <Content Include="InDonDatHang.aspx" />
     <Content Include="InHoaDonBanLe.aspx" />
+    <Content Include="InPhieuChuyenKho.aspx" />
     <Content Include="keyCode.aspx" />
     <Content Include="KhachHang.aspx" />
     <Content Include="Kho.aspx" />
@@ -952,12 +954,26 @@
     <Compile Include="ImportExcel_NhaCungCap.aspx.designer.cs">
       <DependentUpon>ImportExcel_NhaCungCap.aspx</DependentUpon>
     </Compile>
+    <Compile Include="InDonDatHang.aspx.cs">
+      <DependentUpon>InDonDatHang.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InDonDatHang.aspx.designer.cs">
+      <DependentUpon>InDonDatHang.aspx</DependentUpon>
+    </Compile>
     <Compile Include="InHoaDonBanLe.aspx.cs">
       <DependentUpon>InHoaDonBanLe.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="InHoaDonBanLe.aspx.designer.cs">
       <DependentUpon>InHoaDonBanLe.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InPhieuChuyenKho.aspx.cs">
+      <DependentUpon>InPhieuChuyenKho.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InPhieuChuyenKho.aspx.designer.cs">
+      <DependentUpon>InPhieuChuyenKho.aspx</DependentUpon>
     </Compile>
     <Compile Include="KeepAlive.ashx.cs">
       <DependentUpon>KeepAlive.ashx</DependentUpon>
@@ -1166,6 +1182,12 @@
     <Compile Include="Report\rpBaoCaoTonKho.Designer.cs">
       <DependentUpon>rpBaoCaoTonKho.cs</DependentUpon>
     </Compile>
+    <Compile Include="Report\rpDonDatHang.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rpDonDatHang.Designer.cs">
+      <DependentUpon>rpDonDatHang.cs</DependentUpon>
+    </Compile>
     <Compile Include="Report\rpHoaDonBanHangLe.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -1177,6 +1199,12 @@
     </Compile>
     <Compile Include="Report\rpTheKho.Designer.cs">
       <DependentUpon>rpTheKho.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\rpXuatPhieuChuyenKho.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rpXuatPhieuChuyenKho.Designer.cs">
+      <DependentUpon>rpXuatPhieuChuyenKho.cs</DependentUpon>
     </Compile>
     <Compile Include="Root.master.cs">
       <DependentUpon>Root.master</DependentUpon>
@@ -1324,11 +1352,17 @@
     <EmbeddedResource Include="Report\rpBaoCaoTonKho.resx">
       <DependentUpon>rpBaoCaoTonKho.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report\rpDonDatHang.resx">
+      <DependentUpon>rpDonDatHang.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report\rpHoaDonBanHangLe.resx">
       <DependentUpon>rpHoaDonBanHangLe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\rpTheKho.resx">
       <DependentUpon>rpTheKho.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rpXuatPhieuChuyenKho.resx">
+      <DependentUpon>rpXuatPhieuChuyenKho.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
