@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -108,6 +109,14 @@ namespace BanHang
             }
             else
                 return 0;
+        }
+
+        protected void gridChiTiet_HtmlRowPrepared(object sender, DevExpress.Web.ASPxGridViewTableRowEventArgs e)
+        {
+            Color color = (Color)ColorTranslator.FromHtml("#FF9797");
+            int SoLuongDeNghi = Convert.ToInt32(e.GetValue("SoLuongDeNghi"));// lấy giá trị
+            if (SoLuongDeNghi < 0)
+                e.Row.BackColor = color;
         }
         //protected void btnGiamSat_Click(object sender, EventArgs e)
         //{

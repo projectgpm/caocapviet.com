@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -97,6 +98,8 @@ namespace BanHang
                 int SoNgayBan = dtSetting.LaySoNgayBanHang();
                 int SoLuongBan = dtDonHangChiNhanh.TuanSuatBanHang(DateTime.Now, cmbHangHoa.Value.ToString(), -SoNgayBan, Session["IDKho"].ToString());
                 txtSoLuongGoiY.Text = (SoLuongBan - TonKho).ToString();
+                txtSoLuongDaDat.Text = dtDonHangChiNhanh.SoLuongDatHang(cmbHangHoa.Value.ToString(), Session["IDKho"].ToString());
+                txtTanSuatBanhang.Text = SoLuongBan.ToString();
             }
         }
         public void CLear()
@@ -134,11 +137,15 @@ namespace BanHang
                     string GhiChu = txtGhiChuHangHoa.Text == null ? "":txtGhiChuHangHoa.Text.ToString();
                     string IDDonHangChiNhanh = IDDonDatHang_Temp.Value.ToString();
                     float DonGia = dtCapNhatTonKho.GiaBan_KhoChiNhanh(IDHangHoa,Session["IDKho"].ToString());
+
+                    string TanSuatBanHang = txtTanSuatBanhang.Text.ToString();
+                    string SoLuongDeNghi = txtSoLuongGoiY.Text.ToString();
+                    string SoLuongDatTruoc = txtSoLuongDaDat.Text.ToString();
                     DataTable db = dtDonHangChiNhanh.KTChiTietDonHang_Temp(IDHangHoa, IDDonHangChiNhanh);// kiểm tra hàng hóa
                     if (db.Rows.Count == 0)
                     {
                         data = new dtDonHangChiNhanh();
-                        data.ThemChiTietDonHang_Temp(IDDonHangChiNhanh, MaHang, IDHangHoa, IDDonViTinh, (SoLuong * TrongLuong).ToString(), SoLuong, TonKho, GhiChu, DonGia);
+                        data.ThemChiTietDonHang_Temp(IDDonHangChiNhanh, MaHang, IDHangHoa, IDDonViTinh, (SoLuong * TrongLuong).ToString(), SoLuong, TonKho, GhiChu, DonGia, SoLuongDeNghi, TanSuatBanHang, SoLuongDatTruoc);
                         CLear();
                         TinhTrongLuong();
                     }
@@ -206,12 +213,14 @@ namespace BanHang
                             string TrangThai = dr["TrangThai"].ToString();
                             string DonGia = dr["DonGia"].ToString();
                             string ThanhTien = dr["ThanhTien"].ToString();
+                            string SoLuongDeNghi = dr["SoLuongDeNghi"].ToString();
+                            string TanSuatBanHang = dr["TanSuatBanHang"].ToString();
+                            string SoLuongDatTruoc = dr["SoLuongDatTruoc"].ToString();
                             data = new dtDonHangChiNhanh();
-                            data.ThemChiTietDonHangClient(ID, MaHang, IDHangHoa, IDDonViTinh, TrongLuong, SoLuong, TonKho, GhiChuHangHoa, TrangThai, IDKho, DonGia , ThanhTien);
+                            data.ThemChiTietDonHangClient(ID, MaHang, IDHangHoa, IDDonViTinh, TrongLuong, SoLuong, TonKho, GhiChuHangHoa, TrangThai, IDKho, DonGia, ThanhTien, SoLuongDatTruoc, TanSuatBanHang, SoLuongDeNghi);
                         }
                         data = new dtDonHangChiNhanh();
                         data.XoaChiTietDonHang_Nhap(IDDonHangChiNhanh);
-
                         dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Chi Nhánh Thêm Đặt Hàng", IDKho, "Nhập xuất tồn", "Thêm");
                         Response.Redirect("ChiNhanhDatHang.aspx");
                     }
@@ -349,6 +358,10 @@ namespace BanHang
                             string TrongLuong = dtHangHoa.LayTrongLuong(IDHangHoa)+"";
                             int TonKho = dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, Session["IDKho"].ToString());
                             string GhiChu = dr["GhiChu"].ToString();
+                            int SoNgayBan = dtSetting.LaySoNgayBanHang();
+                            int SoLuongBan = dtDonHangChiNhanh.TuanSuatBanHang(DateTime.Now, cmbHangHoa.Value.ToString(), -SoNgayBan, dtDonHangChiNhanh.LayIDKhoTheoDonHang(IDDonHangChiNhanh));
+                            string SoLuongGoiY = (SoLuongBan - TonKho).ToString();
+                            string SoLuongDaDat = dtDonHangChiNhanh.SoLuongDatHang(cmbHangHoa.Value.ToString(), dtDonHangChiNhanh.LayIDKhoTheoDonHang(IDDonHangChiNhanh));
                             //1: Hàng Hóa Thường, 3: Hàng Ngừng Nhập, 6: Đang Kinh Doanh , 2:Hàng Đang Chờ Xử Lý
                             float DonGia = dtCapNhatTonKho.GiaBan_KhoChiNhanh(IDHangHoa, Session["IDKho"].ToString());
                             DataTable db = dtDonHangChiNhanh.KTChiTietDonHang_Temp(IDHangHoa, IDDonHangChiNhanh);// kiểm tra hàng hóa
@@ -357,7 +370,7 @@ namespace BanHang
                                 data = new dtDonHangChiNhanh();
                                 if ((dtHangHoa.TrangThaiHang(IDHangHoa) == 1 || dtHangHoa.TrangThaiHang(IDHangHoa) == 3 || dtHangHoa.TrangThaiHang(IDHangHoa) == 6) && dtHangHoa.TrangThaiNhomDatHang(IDHangHoa) != 2)
                                 {
-                                    data.ThemChiTietDonHang_Temp(IDDonHangChiNhanh, MaHang, IDHangHoa, DonViTinh, (SoLuong * float.Parse(TrongLuong)).ToString(), SoLuong, TonKho.ToString(), GhiChu, DonGia);
+                                    data.ThemChiTietDonHang_Temp(IDDonHangChiNhanh, MaHang, IDHangHoa, DonViTinh, (SoLuong * float.Parse(TrongLuong)).ToString(), SoLuong, TonKho.ToString(), GhiChu, DonGia, SoLuongGoiY, SoLuongBan.ToString(), SoLuongDaDat);
                                     CLear();
                                     TinhTrongLuong();
                                 }
@@ -393,6 +406,14 @@ namespace BanHang
         protected void txtNgayDat_Init(object sender, EventArgs e)
         {
             txtNgayDat.Date = DateTime.Now;
+        }
+
+        protected void gridDanhSachHangHoa_HtmlRowPrepared(object sender, ASPxGridViewTableRowEventArgs e)
+        {
+            Color color = (Color)ColorTranslator.FromHtml("#FF9797");
+            int SoLuongDeNghi = Convert.ToInt32(e.GetValue("SoLuongDeNghi"));// lấy giá trị
+            if (SoLuongDeNghi < 0)
+                e.Row.BackColor = color;
         }
     }
 }
