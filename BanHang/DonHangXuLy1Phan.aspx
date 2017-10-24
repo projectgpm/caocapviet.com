@@ -185,15 +185,7 @@
                  </PropertiesDateEdit>
                  <HeaderStyle Wrap="True" />
              </dx:GridViewDataDateColumn>
-             <dx:GridViewDataComboBoxColumn Caption="Trạng Thái" FieldName="TrangThai" VisibleIndex="9">
-                 <PropertiesComboBox>
-                     <Items>
-                         <dx:ListEditItem Text="Chưa xử lý" Value="0" />
-                     </Items>
-                 </PropertiesComboBox>
-                 <HeaderStyle Wrap="True" />
-             </dx:GridViewDataComboBoxColumn>
-             <dx:GridViewDataButtonEditColumn Caption="Xem Chi Tiết" VisibleIndex="10">
+             <dx:GridViewDataButtonEditColumn Caption="Xem Chi Tiết" VisibleIndex="12">
                 
                 <DataItemTemplate>
                     <a href="javascript:void(0);" onclick="OnMoreInfoClick(this, '<%# Container.KeyValue %>')">Xem </a>
@@ -224,6 +216,18 @@
                  </PropertiesSpinEdit>
                  <HeaderStyle Wrap="True" />
              </dx:GridViewDataSpinEditColumn>
+             <dx:GridViewDataComboBoxColumn Caption="Giám Sát" FieldName="GiamSatDuyet" VisibleIndex="11">
+                 <PropertiesComboBox DataSourceID="SqlNguoiDung" TextField="TenNguoiDung" ValueField="ID">
+                 </PropertiesComboBox>
+             </dx:GridViewDataComboBoxColumn>
+             <dx:GridViewDataComboBoxColumn Caption="Quản Lý" FieldName="KhoDuyet" VisibleIndex="10">
+                 <PropertiesComboBox DataSourceID="SqlNguoiDung" TextField="TenNguoiDung" ValueField="ID">
+                 </PropertiesComboBox>
+             </dx:GridViewDataComboBoxColumn>
+             <dx:GridViewDataComboBoxColumn Caption="Giám Đốc" FieldName="GiamDocDuyet" VisibleIndex="9">
+                 <PropertiesComboBox DataSourceID="SqlNguoiDung" TextField="TenNguoiDung" ValueField="ID">
+                 </PropertiesComboBox>
+             </dx:GridViewDataComboBoxColumn>
          </Columns>
         <Styles>
             <Header Font-Bold="True" HorizontalAlign="Center">

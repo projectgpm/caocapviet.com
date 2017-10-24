@@ -618,7 +618,7 @@ namespace BanHang.Data
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "SELECT  TOP " + HienThi + " * FROM [GPM_DonHangChiNhanh] WHERE NgayDat < '" + NgayKT + "' AND NgayDat>='" + NgayBD + "' AND [TrangThai] = 0 AND [GiamSatDuyet] = 1  AND [IDNguoiLap] is not null ";
+                string cmdText = "SELECT  TOP " + HienThi + " * FROM [GPM_DonHangChiNhanh] WHERE NgayDat < '" + NgayKT + "' AND NgayDat>='" + NgayBD + "' AND [TrangThai] = 0 AND (GiamSatDuyet is not null OR KhoDuyet is not null OR GiamDocDuyet is not null )  AND [IDNguoiLap] is not null ";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
@@ -633,7 +633,7 @@ namespace BanHang.Data
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "SELECT TOP " + HienThi + " * FROM [GPM_DonHangChiNhanh] WHERE NgayDat < '" + NgayKT + "' AND NgayDat >='" + NgayBD + "' AND [TrangThai] = 1 AND IDTrangThaiDonHang = 4 AND [GiamSatDuyet] = 1  AND [IDNguoiLap] is not null ";
+                string cmdText = "SELECT TOP " + HienThi + " * FROM [GPM_DonHangChiNhanh] WHERE NgayDat < '" + NgayKT + "' AND NgayDat >='" + NgayBD + "' AND [TrangThai] = 1 AND IDTrangThaiDonHang = 4 AND (GiamSatDuyet is not null OR KhoDuyet is not null OR GiamDocDuyet is not null) AND [IDNguoiLap] is not null ";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
