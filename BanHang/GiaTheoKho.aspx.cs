@@ -229,12 +229,18 @@ namespace BanHang
                 }
                 else
                 {
+                    txtMaHang.Text = "";
+                    txtMaHang.Value = "";
+                    txtMaHang.Focus();
                     Response.Write("<script language='JavaScript'> alert('Mã hàng phải là số.'); </script>");
                     return;
                 }
             }
             else
             {
+                txtMaHang.Text = "";
+                txtMaHang.Value = "";
+                txtMaHang.Focus();
                 Response.Write("<script language='JavaScript'> alert('Vui lòng nhập trường có dấu (*).'); </script>");
             }
         }
@@ -243,7 +249,7 @@ namespace BanHang
         {
             data = new dtGiaTheoVung();
             data.XoaAll_temp(ID_temp.Value.ToString());
-            Response.Redirect("GiaTheoGio.aspx");
+            Response.Redirect("DanhSachThayDoiGiaTheoVung.aspx");
         }
 
         protected void btnLuu_Click(object sender, EventArgs e)
@@ -276,7 +282,7 @@ namespace BanHang
                     data.ThemChiTietGiaTheoVung(MaHang, IDHangHoa, IDDonViTinh, GiaBan, GiaBan1, GiaBan2, GiaBan3, GiaBan4, GiaBan5, IDKho, IDNhanVien, GiaMuaSauThue);
                 }
                 data.XoaAll_temp(ID_temp.Value.ToString());
-                Response.Redirect("GiaTheoGio.aspx");
+                Response.Redirect("DanhSachThayDoiGiaTheoVung.aspx");
             }
             else
             {
