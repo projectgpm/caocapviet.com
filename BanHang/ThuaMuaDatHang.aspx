@@ -102,7 +102,7 @@
                 <dx:LayoutItem Caption="Tổng Tiền(*)">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer2" runat="server">
-                            <dx:ASPxSpinEdit ID="txtTongTien" runat="server" AutoPostBack="True" Width="100%" DisplayFormatString="{0:N0}" Number="0">
+                            <dx:ASPxSpinEdit ID="txtTongTien" runat="server" Width="100%" DisplayFormatString="{0:N0}" Number="0">
                             </dx:ASPxSpinEdit>
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
