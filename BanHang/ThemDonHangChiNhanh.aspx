@@ -130,10 +130,26 @@
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
                 </dx:LayoutItem>
-                <dx:LayoutItem Caption="Số Lượng Gợi Ý">
+                <dx:LayoutItem Caption="Số Lượng Đề Nghị">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer12" runat="server">
                             <dx:ASPxSpinEdit ID="txtSoLuongGoiY" runat="server" Width="100%" Enabled="False">
+                            </dx:ASPxSpinEdit>
+                        </dx:LayoutItemNestedControlContainer>
+                    </LayoutItemNestedControlCollection>
+                </dx:LayoutItem>
+                <dx:LayoutItem Caption="Tuần Suất Bán Hàng">
+                    <LayoutItemNestedControlCollection>
+                        <dx:LayoutItemNestedControlContainer runat="server">
+                            <dx:ASPxSpinEdit ID="txtTanSuatBanhang" runat="server" Enabled="False" Width="100%">
+                            </dx:ASPxSpinEdit>
+                        </dx:LayoutItemNestedControlContainer>
+                    </LayoutItemNestedControlCollection>
+                </dx:LayoutItem>
+                <dx:LayoutItem Caption="Số Lượng Đã Đặt">
+                    <LayoutItemNestedControlCollection>
+                        <dx:LayoutItemNestedControlContainer runat="server">
+                            <dx:ASPxSpinEdit ID="txtSoLuongDaDat" runat="server" Enabled="False" Width="100%">
                             </dx:ASPxSpinEdit>
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
@@ -174,7 +190,7 @@
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
                 </dx:LayoutItem>
-                <dx:LayoutItem Caption="" HorizontalAlign="Left">
+                <dx:LayoutItem Caption="" HorizontalAlign="Right" ColSpan="2">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer14" runat="server">
                             <dx:ASPxButton ID="btnThem_Temp" runat="server" Text="Thêm" OnClick="btnThem_Temp_Click">

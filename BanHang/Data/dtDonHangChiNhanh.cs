@@ -46,6 +46,26 @@ namespace BanHang.Data
                 }
             }
         }
+        public static string SoLuongDatHang(string IDHangHoa, string IDKho)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT [GPM_DonHangChiNhanh_ChiTiet].IDHangHoa, SUM([GPM_DonHangChiNhanh_ChiTiet].SoLuong)  AS SoLuongDat FROM GPM_DonHangChiNhanh,[GPM_DonHangChiNhanh_ChiTiet] WHERE GPM_DonHangChiNhanh.idkho = '" + IDKho + "' AND GPM_DonHangChiNhanh.trangthai = 0 AND [GPM_DonHangChiNhanh_ChiTiet].IDDonHangChiNhanh = GPM_DonHangChiNhanh.ID AND  [GPM_DonHangChiNhanh_ChiTiet].IDHangHoa =  '" + IDHangHoa + "' GROUP BY IDHangHoa";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    if (tb.Rows.Count != 0)
+                    {
+                        DataRow dr = tb.Rows[0];
+                        return dr["SoLuongDat"].ToString();
+                    }
+                    else return "0";
+                }
+            }
+        }
         public static int TuanSuatBanHang(DateTime NgayHomNay, string IDHangHoa, int SoNgay, string IDKho)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
@@ -85,16 +105,19 @@ namespace BanHang.Data
                 }
             }
         }
-        public void ThemChiTietDonHangClient(object IDDonHangChiNhanh, string MaHang, string IDHangHoa, string IDDonViTinh, string TrongLuong, string SoLuong, string TonKho, string GhiChu, string TrangThai, string IDKho, string DonGia, string ThanhTien)
+        public void ThemChiTietDonHangClient(object IDDonHangChiNhanh, string MaHang, string IDHangHoa, string IDDonViTinh, string TrongLuong, string SoLuong, string TonKho, string GhiChu, string TrangThai, string IDKho, string DonGia, string ThanhTien, string SoLuongDatTruoc, string TanSuatBanHang, string SoLuongDeNghi)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
                 try
                 {
                     myConnection.Open();
-                    string cmdText = "INSERT INTO [GPM_DonHangChiNhanh_ChiTiet] ([IDDonHangChiNhanh],[MaHang],[IDHangHoa],[IDDonViTinh],[TrongLuong],[SoLuong],[TonKho],[GhiChu],[IDKho],[TrangThai],[DonGia],[ThanhTien]) VALUES (@IDDonHangChiNhanh,@MaHang,@IDHangHoa,@IDDonViTinh,@TrongLuong,@SoLuong,@TonKho,@GhiChu,@IDKho,@TrangThai,@DonGia,@ThanhTien)";
+                    string cmdText = "INSERT INTO [GPM_DonHangChiNhanh_ChiTiet] ([IDDonHangChiNhanh],[MaHang],[IDHangHoa],[IDDonViTinh],[TrongLuong],[SoLuong],[TonKho],[GhiChu],[IDKho],[TrangThai],[DonGia],[ThanhTien],[SoLuongDatTruoc],[TanSuatBanHang],[SoLuongDeNghi]) VALUES (@IDDonHangChiNhanh,@MaHang,@IDHangHoa,@IDDonViTinh,@TrongLuong,@SoLuong,@TonKho,@GhiChu,@IDKho,@TrangThai,@DonGia,@ThanhTien,@SoLuongDatTruoc,@TanSuatBanHang,@SoLuongDeNghi)";
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
+                        myCommand.Parameters.AddWithValue("@SoLuongDeNghi", SoLuongDeNghi);
+                        myCommand.Parameters.AddWithValue("@TanSuatBanHang", TanSuatBanHang);
+                        myCommand.Parameters.AddWithValue("@SoLuongDatTruoc", SoLuongDatTruoc);
                         myCommand.Parameters.AddWithValue("@IDDonHangChiNhanh", IDDonHangChiNhanh);
                         myCommand.Parameters.AddWithValue("@IDKho", IDKho);
                         myCommand.Parameters.AddWithValue("@DonGia", DonGia);
@@ -210,16 +233,19 @@ namespace BanHang.Data
                 }
             }
         }
-        public void ThemChiTietDonHang_Temp(string IDDonHangChiNhanh, string MaHang, string IDHangHoa, string IDDonViTinh, string TrongLuong, int SoLuong, string TonKho, string GhiChu, float DonGia)
+        public void ThemChiTietDonHang_Temp(string IDDonHangChiNhanh, string MaHang, string IDHangHoa, string IDDonViTinh, string TrongLuong, int SoLuong, string TonKho, string GhiChu, float DonGia, string SoLuongDeNghi, string TanSuatBanHang, string SoLuongDatTruoc)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
                 try
                 {
                     myConnection.Open();
-                    string cmdText = "INSERT INTO [GPM_DonHangChiNhanh_ChiTiet_Temp] ([IDDonHangChiNhanh],[MaHang],[IDHangHoa],[IDDonViTinh],[TrongLuong],[SoLuong],[TonKho],[GhiChu],[DonGia],[ThanhTien]) VALUES (@IDDonHangChiNhanh,@MaHang,@IDHangHoa,@IDDonViTinh,@TrongLuong,@SoLuong,@TonKho,@GhiChu,@DonGia,@ThanhTien)";
+                    string cmdText = "INSERT INTO [GPM_DonHangChiNhanh_ChiTiet_Temp] ([IDDonHangChiNhanh],[MaHang],[IDHangHoa],[IDDonViTinh],[TrongLuong],[SoLuong],[TonKho],[GhiChu],[DonGia],[ThanhTien],[SoLuongDeNghi],[TanSuatBanHang],[SoLuongDatTruoc]) VALUES (@IDDonHangChiNhanh,@MaHang,@IDHangHoa,@IDDonViTinh,@TrongLuong,@SoLuong,@TonKho,@GhiChu,@DonGia,@ThanhTien,@SoLuongDeNghi,@TanSuatBanHang,@SoLuongDatTruoc)";
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
+                        myCommand.Parameters.AddWithValue("@SoLuongDeNghi", SoLuongDeNghi);
+                        myCommand.Parameters.AddWithValue("@TanSuatBanHang", TanSuatBanHang);
+                        myCommand.Parameters.AddWithValue("@SoLuongDatTruoc", SoLuongDatTruoc);
                         myCommand.Parameters.AddWithValue("@DonGia", DonGia);
                         myCommand.Parameters.AddWithValue("@ThanhTien", DonGia * SoLuong);
                         myCommand.Parameters.AddWithValue("@IDDonHangChiNhanh", IDDonHangChiNhanh);
