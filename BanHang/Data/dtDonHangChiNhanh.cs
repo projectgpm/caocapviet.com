@@ -140,17 +140,20 @@ namespace BanHang.Data
                 }
             }
         }
-        public void ThemChiTietDonHangClientGiamSat(object IDDonHangChiNhanh, string MaHang, string IDHangHoa, string IDDonViTinh, string TrongLuong, string SoLuong, string TonKho, string GhiChu, string TrangThai, string IDKho, string DonGia, string ThanhTien)
+        public void ThemChiTietDonHangClientGiamSat(object IDDonHangChiNhanh, string MaHang, string IDHangHoa, string IDDonViTinh, string TrongLuong, string SoLuong, string TonKho, string GhiChu, string TrangThai, string IDKho, string DonGia, string ThanhTien, string SoLuongDeNghi, string TanSuatBanHang, string SoLuongDatTruoc)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
                 try
                 {
                     myConnection.Open();
-                    string cmdText = "INSERT INTO [GPM_DonHangChiNhanh_ChiTiet] ([IDDonHangChiNhanh],[MaHang],[IDHangHoa],[IDDonViTinh],[TrongLuong],[SoLuong],[TonKho],[GhiChu],[IDKho],[TrangThai],[DonGia],[ThanhTien],[TrangThaiThem]) VALUES (@IDDonHangChiNhanh,@MaHang,@IDHangHoa,@IDDonViTinh,@TrongLuong,@SoLuong,@TonKho,@GhiChu,@IDKho,@TrangThai,@DonGia,@ThanhTien,@TrangThaiThem)";
+                    string cmdText = "INSERT INTO [GPM_DonHangChiNhanh_ChiTiet] ([IDDonHangChiNhanh],[MaHang],[IDHangHoa],[IDDonViTinh],[TrongLuong],[SoLuong],[TonKho],[GhiChu],[IDKho],[TrangThai],[DonGia],[ThanhTien],[TrangThaiThem],[SoLuongDeNghi],[TanSuatBanHang],[SoLuongDatTruoc]) VALUES (@IDDonHangChiNhanh,@MaHang,@IDHangHoa,@IDDonViTinh,@TrongLuong,@SoLuong,@TonKho,@GhiChu,@IDKho,@TrangThai,@DonGia,@ThanhTien,@TrangThaiThem,@SoLuongDeNghi,@TanSuatBanHang,@SoLuongDatTruoc)";
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
                         myCommand.Parameters.AddWithValue("@IDDonHangChiNhanh", IDDonHangChiNhanh);
+                        myCommand.Parameters.AddWithValue("@SoLuongDeNghi", SoLuongDeNghi);
+                        myCommand.Parameters.AddWithValue("@TanSuatBanHang", TanSuatBanHang);
+                        myCommand.Parameters.AddWithValue("@SoLuongDatTruoc", SoLuongDatTruoc);
                         myCommand.Parameters.AddWithValue("@TrangThaiThem", 1);
                         myCommand.Parameters.AddWithValue("@IDKho", IDKho);
                         myCommand.Parameters.AddWithValue("@DonGia", DonGia);

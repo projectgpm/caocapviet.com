@@ -309,8 +309,11 @@ namespace BanHang
                     string TrangThai = dr["TrangThai"].ToString();
                     string DonGia = dr["DonGia"].ToString();
                     string ThanhTien = dr["ThanhTien"].ToString();
+                    string SoLuongDeNghi = dr["SoLuongDeNghi"].ToString();
+                    string TanSuatBanHang = dr["TanSuatBanHang"].ToString();
+                    string SoLuongDatTruoc = dr["SoLuongDatTruoc"].ToString();
                     data1 = new dtDonHangChiNhanh();
-                    data1.ThemChiTietDonHangClientGiamSat(IDDonHangChiNhanh, MaHang, IDHangHoa, IDDonViTinh, TrongLuong, SoLuong, TonKho, GhiChuHangHoa, TrangThai, dtDonHangChiNhanh.LayIDKhoTheoDonHang(IDDonHangChiNhanh), DonGia, ThanhTien);
+                    data1.ThemChiTietDonHangClientGiamSat(IDDonHangChiNhanh, MaHang, IDHangHoa, IDDonViTinh, TrongLuong, SoLuong, TonKho, GhiChuHangHoa, TrangThai, dtDonHangChiNhanh.LayIDKhoTheoDonHang(IDDonHangChiNhanh), DonGia, ThanhTien, SoLuongDeNghi, TanSuatBanHang, SoLuongDatTruoc);
                 }
                 data = new dtChiTietDonHangChiNhanh();
                 data.CapNhat_TongTrongLuong(IDDonHangChiNhanh, TinhTrongLuong().ToString(), TinhTongTien().ToString());
