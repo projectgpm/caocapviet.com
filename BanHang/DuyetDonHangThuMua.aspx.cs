@@ -28,6 +28,7 @@ namespace BanHang
                     data.Xoa_Temp_ID(Session["IDNhanVien"].ToString());
                     txtNguoiDuyet.Text = Session["TenDangNhap"].ToString();
                     btnThem.Enabled = false;
+                    txtSoPhieuNhapHeThong.Text = "123";
                 }
                 if (cmbSoDonHang.Text != "")
                 {
@@ -193,7 +194,7 @@ namespace BanHang
         {
             if (cmbSoDonHang.Text != "")
             {
-                if (cmbTrangThaiDonHang.Text != "" && txtNgayGiao.Text != "")
+                if (cmbTrangThaiDonHang.Text != "" && txtNgayGiao.Text != "" && txtSoHoaDon.Text != "")
                 {
                     string IDDonHang = cmbSoDonHang.Value.ToString();
                     string SoDonHang = cmbSoDonHang.Text.Trim();
@@ -207,6 +208,8 @@ namespace BanHang
                     string IDNhaCungCap = cmbNhaCungCap.Value.ToString();
                     string GhiChu = txtGhiChu.Text == null ? "" : txtGhiChu.Text.ToString();
                     string TongTrongLuong = TinhTrongLuong().ToString();
+                    string SoHoaDon = txtSoHoaDon.Text.ToString();
+                    string SoHeThong = txtSoPhieuNhapHeThong.Text.ToString();
                     string ChungTu = "";
                     if (Page.IsValid && uploadfile.HasFile)
                     {
@@ -219,7 +222,7 @@ namespace BanHang
                     {
                         // đơn hàng k treo. xử lý hết 1 lượt
                         data = new dtDuyetDonHangThuMua();
-                        object ID = data.ThemDuyetDonHang(IDDonHang, SoDonHang, IDNguoiLap, TongTrongLuong, IDNguoiDuyet, GhiChu, NgayDat, NgayDuyet, NgayGiao, IDNhaCungCap, TrangThaiXuLu, ChungTu);
+                        object ID = data.ThemDuyetDonHang(IDDonHang, SoDonHang, IDNguoiLap, TongTrongLuong, IDNguoiDuyet, GhiChu, NgayDat, NgayDuyet, NgayGiao, IDNhaCungCap, TrangThaiXuLu, ChungTu, SoHoaDon, SoHeThong);
                         if (ID != null)
                         {
                             DataTable db = data.DanhSachChiTiet_Temp(cmbSoDonHang.Value.ToString(), IDTemp);
@@ -284,7 +287,7 @@ namespace BanHang
                     {
                         // đơn hàng treo, xử lý 1 phần, lưu vào bàng GPM_Log_DuyetHangChiNhanh
                         data = new dtDuyetDonHangThuMua();
-                        object ID = data.ThemDuyetDonHang(IDDonHang, SoDonHang, IDNguoiLap, TongTrongLuong, IDNguoiDuyet, GhiChu, NgayDat, NgayDuyet, NgayGiao, IDNhaCungCap, TrangThaiXuLu, ChungTu);
+                        object ID = data.ThemDuyetDonHang(IDDonHang, SoDonHang, IDNguoiLap, TongTrongLuong, IDNguoiDuyet, GhiChu, NgayDat, NgayDuyet, NgayGiao, IDNhaCungCap, TrangThaiXuLu, ChungTu, SoHoaDon, SoHeThong);
                         if (ID != null)
                         {
                             DataTable db = data.DanhSachChiTiet_Temp(cmbSoDonHang.Value.ToString(), IDTemp);

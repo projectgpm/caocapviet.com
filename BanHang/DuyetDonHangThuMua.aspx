@@ -108,16 +108,11 @@
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
                 </dx:LayoutItem>
-                <dx:LayoutItem Caption="Chi Nhánh Lập">
+                <dx:LayoutItem Caption="Số Hóa Đơn(*)">
                     <LayoutItemNestedControlCollection>
-                        <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer5" runat="server">
-                            <dx:ASPxComboBox ID="cmbChiNhanhLap" runat="server" Width="100%" DataSourceID="SqlChiNhanh" Enabled="False" TextField="TenCuaHang" ValueField="ID">
-                            </dx:ASPxComboBox>
-                            <asp:SqlDataSource ID="SqlChiNhanh" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" SelectCommand="SELECT [ID], [TenCuaHang] FROM [GPM_Kho] WHERE ([DaXoa] = @DaXoa)">
-                                <SelectParameters>
-                                    <asp:Parameter DefaultValue="0" Name="DaXoa" Type="Int32" />
-                                </SelectParameters>
-                            </asp:SqlDataSource>
+                        <dx:LayoutItemNestedControlContainer runat="server">
+                            <dx:ASPxTextBox ID="txtSoHoaDon" runat="server" Width="100%">
+                            </dx:ASPxTextBox>
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
                 </dx:LayoutItem>
@@ -131,7 +126,28 @@
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
                 </dx:LayoutItem>
-                <dx:LayoutItem Caption="Ghi Chú" ColSpan="3">
+                <dx:LayoutItem Caption="Số Phiếu Nhập">
+                    <LayoutItemNestedControlCollection>
+                        <dx:LayoutItemNestedControlContainer runat="server">
+                            <dx:ASPxTextBox ID="txtSoPhieuNhapHeThong" runat="server" Enabled="False" Width="100%">
+                            </dx:ASPxTextBox>
+                        </dx:LayoutItemNestedControlContainer>
+                    </LayoutItemNestedControlCollection>
+                </dx:LayoutItem>
+                <dx:LayoutItem Caption="Chi Nhánh Lập">
+                    <LayoutItemNestedControlCollection>
+                        <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer5" runat="server">
+                            <dx:ASPxComboBox ID="cmbChiNhanhLap" runat="server" Width="100%" DataSourceID="SqlChiNhanh" Enabled="False" TextField="TenCuaHang" ValueField="ID">
+                            </dx:ASPxComboBox>
+                            <asp:SqlDataSource ID="SqlChiNhanh" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" SelectCommand="SELECT [ID], [TenCuaHang] FROM [GPM_Kho] WHERE ([DaXoa] = @DaXoa)">
+                                <SelectParameters>
+                                    <asp:Parameter DefaultValue="0" Name="DaXoa" Type="Int32" />
+                                </SelectParameters>
+                            </asp:SqlDataSource>
+                        </dx:LayoutItemNestedControlContainer>
+                    </LayoutItemNestedControlCollection>
+                </dx:LayoutItem>
+                <dx:LayoutItem Caption="Ghi Chú">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer11" runat="server">
                             <dx:ASPxTextBox ID="txtGhiChu" runat="server" Width="100%">
