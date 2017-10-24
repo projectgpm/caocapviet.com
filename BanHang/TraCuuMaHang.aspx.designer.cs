@@ -409,6 +409,15 @@ namespace BanHang {
         protected global::DevExpress.Web.ASPxSpinEdit txtGiaBan5;
         
         /// <summary>
+        /// txtSoLuongDangDat control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxSpinEdit txtSoLuongDangDat;
+        
+        /// <summary>
         /// txtMaHangQD control.
         /// </summary>
         /// <remarks>

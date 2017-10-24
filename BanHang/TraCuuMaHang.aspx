@@ -201,6 +201,14 @@
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
                 </dx:LayoutItem>
+                <dx:LayoutItem Caption="Số Lượng Đang Đặt" ColSpan="2">
+                    <LayoutItemNestedControlCollection>
+                        <dx:LayoutItemNestedControlContainer runat="server">
+                            <dx:ASPxSpinEdit ID="txtSoLuongDangDat" runat="server" Enabled="False" Width="100%">
+                            </dx:ASPxSpinEdit>
+                        </dx:LayoutItemNestedControlContainer>
+                    </LayoutItemNestedControlCollection>
+                </dx:LayoutItem>
             </Items>
         </dx:LayoutGroup>
         <dx:LayoutGroup Caption="Hàng Hóa Quy Đổi" ColCount="3" ColSpan="3">

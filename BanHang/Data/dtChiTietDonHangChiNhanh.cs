@@ -34,7 +34,7 @@ namespace BanHang.Data
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "SELECT * FROM [GPM_DonHangChiNhanh] WHERE (GiamSatDuyet =1 OR GiamDocDuyet =1 OR KhoDuyet = 1) AND [ID] = " + ID;
+                string cmdText = "SELECT * FROM [GPM_DonHangChiNhanh] WHERE (GiamSatDuyet is not null OR GiamDocDuyet is not null OR KhoDuyet is not null) AND [ID] = " + ID;
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
@@ -61,6 +61,31 @@ namespace BanHang.Data
                     {
                         myCommand.Parameters.AddWithValue("@GhiChu", GhiChu);
                         myCommand.Parameters.AddWithValue("@IDHangHoa", IDHangHoa);
+                        myCommand.Parameters.AddWithValue("@ThanhTien", SoLuong);
+                        myCommand.Parameters.AddWithValue("@IDDonHangChiNhanh", IDDonHangChiNhanh);
+                        myCommand.Parameters.AddWithValue("@SoLuong", SoLuong);
+                        myCommand.ExecuteNonQuery();
+                    }
+                    myConnection.Close();
+                }
+                catch
+                {
+                    throw new Exception("Lỗi: Quá trình cập nhật dữ liệu gặp lỗi");
+                }
+            }
+        }
+        public void CapNhatChiTietDonHangGiamSat(string IDDonHangChiNhanh, string IDHangHoa, int SoLuong, string TenNguoiDung)
+        {
+            using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
+            {
+                try
+                {
+                    myConnection.Open();
+                    string cmdText = "UPDATE [GPM_DonHangChiNhanh_ChiTiet] SET  [GhiChu] = [GhiChu] + @TenNguoiDung,[TrangThaiThem] = 1,[ThanhTien] = [DonGia]*@ThanhTien,[SoLuong] = @SoLuong WHERE [IDHangHoa] = @IDHangHoa AND [IDDonHangChiNhanh] = @IDDonHangChiNhanh";
+                    using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
+                    {
+                        myCommand.Parameters.AddWithValue("@IDHangHoa", IDHangHoa);
+                        myCommand.Parameters.AddWithValue("@TenNguoiDung", TenNguoiDung);
                         myCommand.Parameters.AddWithValue("@ThanhTien", SoLuong);
                         myCommand.Parameters.AddWithValue("@IDDonHangChiNhanh", IDDonHangChiNhanh);
                         myCommand.Parameters.AddWithValue("@SoLuong", SoLuong);
@@ -118,17 +143,62 @@ namespace BanHang.Data
                 }
             }
         }
-        public void GiamSatDuyet(string IDDonHangChiNhanh)
+        public void GiamSatDuyet(string IDDonHangChiNhanh, string IDNhanVien)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
                 try
                 {
                     myConnection.Open();
-                    string cmdText = "UPDATE [GPM_DonHangChiNhanh] SET [GiamSatDuyet] = 1 WHERE [ID] = @IDDonHangChiNhanh";
+                    string cmdText = "UPDATE [GPM_DonHangChiNhanh] SET [GiamSatDuyet] = @GiamSatDuyet WHERE [ID] = @IDDonHangChiNhanh";
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
                         myCommand.Parameters.AddWithValue("@IDDonHangChiNhanh", IDDonHangChiNhanh);
+                        myCommand.Parameters.AddWithValue("@GiamSatDuyet", IDNhanVien);
+                        myCommand.ExecuteNonQuery();
+                    }
+                    myConnection.Close();
+                }
+                catch
+                {
+                    throw new Exception("Lỗi: Quá trình cập nhật dữ liệu gặp lỗi");
+                }
+            }
+        }
+        public void GiamDocDuyet(string IDDonHangChiNhanh, string IDNhanVien)
+        {
+            using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
+            {
+                try
+                {
+                    myConnection.Open();
+                    string cmdText = "UPDATE [GPM_DonHangChiNhanh] SET [GiamDocDuyet] = @GiamDocDuyet WHERE [ID] = @IDDonHangChiNhanh";
+                    using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
+                    {
+                        myCommand.Parameters.AddWithValue("@IDDonHangChiNhanh", IDDonHangChiNhanh);
+                        myCommand.Parameters.AddWithValue("@GiamDocDuyet", IDNhanVien);
+                        myCommand.ExecuteNonQuery();
+                    }
+                    myConnection.Close();
+                }
+                catch
+                {
+                    throw new Exception("Lỗi: Quá trình cập nhật dữ liệu gặp lỗi");
+                }
+            }
+        }
+        public void QuanLyDuyet(string IDDonHangChiNhanh, string IDNhanVien)
+        {
+            using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
+            {
+                try
+                {
+                    myConnection.Open();
+                    string cmdText = "UPDATE [GPM_DonHangChiNhanh] SET [KhoDuyet] = @KhoDuyet WHERE [ID] = @IDDonHangChiNhanh";
+                    using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
+                    {
+                        myCommand.Parameters.AddWithValue("@IDDonHangChiNhanh", IDDonHangChiNhanh);
+                        myCommand.Parameters.AddWithValue("@KhoDuyet", IDNhanVien);
                         myCommand.ExecuteNonQuery();
                     }
                     myConnection.Close();

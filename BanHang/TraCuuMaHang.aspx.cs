@@ -74,6 +74,7 @@ namespace BanHang
                     DataTable db = data.TraCuuMaHang(MaHang);
                     if (db.Rows.Count > 0)
                     {
+                        txtSoLuongDangDat.Text = dtTraCuuMaHang.SoLuongDatHang(MaHang, Session["IDKho"].ToString());
                         DataRow dr = db.Rows[0];
                         cmbNhomHang.Value =  dr["IDNhomHang"].ToString();
                         txtMaHang.Text = dr["MaHang"].ToString();

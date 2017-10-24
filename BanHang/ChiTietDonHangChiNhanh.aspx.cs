@@ -19,18 +19,18 @@ namespace BanHang
                 string IDDonHangChiNhanh = Request.QueryString["IDDonHangChiNhanh"];
                 if (IDDonHangChiNhanh != null)
                 {
-                    if (dtChiTietDonHangChiNhanh.LayTrangThaiDonHang(IDDonHangChiNhanh, Session["IDKho"].ToString()) == 1)
-                    {
-                        gridChiTiet.Columns["chucnang"].Visible = false;
-                    }
-                    if (dtChiTietDonHangChiNhanh.LayIDKho(IDDonHangChiNhanh) != Int32.Parse(Session["IDKho"].ToString()))
-                    {
-                        gridChiTiet.Columns["chucnang"].Visible = false;
-                    }
-                    if (dtChiTietDonHangChiNhanh.TrangThai(IDDonHangChiNhanh) == 1)
-                    {
-                        gridChiTiet.Columns["chucnang"].Visible = false;
-                    }
+                    //if (dtChiTietDonHangChiNhanh.LayTrangThaiDonHang(IDDonHangChiNhanh, Session["IDKho"].ToString()) == 1)
+                    //{
+                    //    gridChiTiet.Columns["chucnang"].Visible = false;
+                    //}
+                    //if (dtChiTietDonHangChiNhanh.LayIDKho(IDDonHangChiNhanh) != Int32.Parse(Session["IDKho"].ToString()))
+                    //{
+                    //    gridChiTiet.Columns["chucnang"].Visible = false;
+                    //}
+                    //if (dtChiTietDonHangChiNhanh.TrangThai(IDDonHangChiNhanh) == 1)
+                    //{
+                    //    gridChiTiet.Columns["chucnang"].Visible = false;
+                    //}
                     LoadGrid(IDDonHangChiNhanh.ToString());
                 }
             }

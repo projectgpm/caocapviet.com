@@ -68,9 +68,6 @@
         </EditFormLayoutProperties>
 <Columns>
     
-    <dx:GridViewCommandColumn Name="chucnang" ShowEditButton="True" VisibleIndex="9" ShowClearFilterButton="True">
-    </dx:GridViewCommandColumn>
-    
     <dx:GridViewDataSpinEditColumn Caption="Số Lượng Đặt" FieldName="SoLuong" VisibleIndex="5">
         <propertiesspinedit DisplayFormatString="N0"></propertiesspinedit>
     </dx:GridViewDataSpinEditColumn>

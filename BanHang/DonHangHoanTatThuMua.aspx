@@ -165,26 +165,25 @@
                  <HeaderStyle Wrap="True" />
             </dx:GridViewDataButtonEditColumn>
              <dx:GridViewDataTextColumn Caption="Số Đơn Hàng" FieldName="SoDonHang" VisibleIndex="0">
-                 <HeaderStyle Wrap="True" />
              </dx:GridViewDataTextColumn>
              <dx:GridViewDataTextColumn Caption="Ghi Chú" FieldName="GhiChu" VisibleIndex="9">
              </dx:GridViewDataTextColumn>
-             <dx:GridViewDataComboBoxColumn Caption="Người Lập Phiếu" FieldName="IDNguoiLap" VisibleIndex="1">
+             <dx:GridViewDataComboBoxColumn Caption="Người Lập Phiếu" FieldName="IDNguoiLap" VisibleIndex="3">
                  <PropertiesComboBox DataSourceID="SqlNguoiDung" TextField="TenNguoiDung" ValueField="ID">
                  </PropertiesComboBox>
                  <HeaderStyle Wrap="True" />
              </dx:GridViewDataComboBoxColumn>
-             <dx:GridViewDataDateColumn Caption="Ngày Đặt Hàng" FieldName="NgayDat" VisibleIndex="2">
+             <dx:GridViewDataDateColumn Caption="Ngày Đặt Hàng" FieldName="NgayDat" VisibleIndex="4">
                  <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy">
                  </PropertiesDateEdit>
                  <HeaderStyle Wrap="True" />
              </dx:GridViewDataDateColumn>
-             <dx:GridViewDataDateColumn Caption="Ngày Xử Lý" FieldName="NgayDuyet" VisibleIndex="4">
+             <dx:GridViewDataDateColumn Caption="Ngày Xử Lý" FieldName="NgayDuyet" VisibleIndex="6">
                  <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy">
                  </PropertiesDateEdit>
                  <HeaderStyle Wrap="True" />
              </dx:GridViewDataDateColumn>
-             <dx:GridViewDataDateColumn Caption="Ngày Giao Hàng" FieldName="NgayGiao" VisibleIndex="5">
+             <dx:GridViewDataDateColumn Caption="Ngày Giao Hàng" FieldName="NgayGiao" VisibleIndex="7">
                  <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy">
                  </PropertiesDateEdit>
                  <HeaderStyle Wrap="True" />
@@ -194,7 +193,7 @@
                  </PropertiesComboBox>
                  <HeaderStyle Wrap="True" />
              </dx:GridViewDataComboBoxColumn>
-             <dx:GridViewDataSpinEditColumn Caption="Tổng Trọng Lượng" FieldName="TongTrongLuong" VisibleIndex="6" Visible="False">
+             <dx:GridViewDataSpinEditColumn Caption="Tổng Trọng Lượng" FieldName="TongTrongLuong" VisibleIndex="8" Visible="False">
                  <PropertiesSpinEdit DisplayFormatString="g">
                  </PropertiesSpinEdit>
                  <HeaderStyle Wrap="True" />
@@ -213,7 +212,7 @@
                  </PropertiesDateEdit>
                  <HeaderStyle Wrap="True" />
              </dx:GridViewDataDateColumn>
-             <dx:GridViewDataComboBoxColumn Caption="Người Xác Nhận" FieldName="IDNguoiDuyet" VisibleIndex="3">
+             <dx:GridViewDataComboBoxColumn Caption="Người Xác Nhận" FieldName="IDNguoiDuyet" VisibleIndex="5">
                  <PropertiesComboBox DataSourceID="SqlNguoiDung" TextField="TenNguoiDung" ValueField="ID">
                  </PropertiesComboBox>
                  <HeaderStyle Wrap="True" />
@@ -221,6 +220,10 @@
              <dx:GridViewDataHyperLinkColumn Caption="Chứng Từ" FieldName="ChungTu" VisibleIndex="12" UnboundType="String" Name="ChungTu">
                   <PropertiesHyperLinkEdit ImageUrl="image/imgdownload.png" ImageWidth="30px" ImageHeight="30px"></PropertiesHyperLinkEdit>       
              </dx:GridViewDataHyperLinkColumn>
+             <dx:GridViewDataTextColumn Caption="Số Hóa Đơn" FieldName="SoHoaDon" VisibleIndex="1">
+             </dx:GridViewDataTextColumn>
+             <dx:GridViewDataTextColumn Caption="Số Phiếu Nhập" FieldName="SoPhieuNhapHT" VisibleIndex="2">
+             </dx:GridViewDataTextColumn>
          </Columns>
         <Styles>
             <Header Font-Bold="True" HorizontalAlign="Center">

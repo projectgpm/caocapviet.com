@@ -9,6 +9,26 @@ namespace BanHang.Data
 {
     public class dtTraCuuMaHang
     {
+        public static string SoLuongDatHang(string MaHang, string IDKho)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT [GPM_DonHangChiNhanh_ChiTiet].MaHang, SUM([GPM_DonHangChiNhanh_ChiTiet].SoLuong)  AS SoLuongDat FROM GPM_DonHangChiNhanh,[GPM_DonHangChiNhanh_ChiTiet] WHERE GPM_DonHangChiNhanh.idkho = '" + IDKho + "' AND GPM_DonHangChiNhanh.trangthai = 0 AND [GPM_DonHangChiNhanh_ChiTiet].IDDonHangChiNhanh = GPM_DonHangChiNhanh.ID AND  [GPM_DonHangChiNhanh_ChiTiet].MaHang =  '" + MaHang + "' GROUP BY MaHang";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    if (tb.Rows.Count != 0)
+                    {
+                        DataRow dr = tb.Rows[0];
+                        return dr["SoLuongDat"].ToString();
+                    }
+                    else return "0";
+                }
+            }
+        }
         public static string TenNganhHang(string IDNhomHang)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
@@ -49,6 +69,7 @@ namespace BanHang.Data
                 }
             }
         }
+        
         public DataTable DanhSachHangComBo(string IDHangHoa)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
