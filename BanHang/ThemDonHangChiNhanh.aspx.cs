@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -405,6 +406,14 @@ namespace BanHang
         protected void txtNgayDat_Init(object sender, EventArgs e)
         {
             txtNgayDat.Date = DateTime.Now;
+        }
+
+        protected void gridDanhSachHangHoa_HtmlRowPrepared(object sender, ASPxGridViewTableRowEventArgs e)
+        {
+            Color color = (Color)ColorTranslator.FromHtml("#FF9797");
+            int SoLuongDeNghi = Convert.ToInt32(e.GetValue("SoLuongDeNghi"));// lấy giá trị
+            if (SoLuongDeNghi < 0)
+                e.Row.BackColor = color;
         }
     }
 }

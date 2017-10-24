@@ -150,7 +150,8 @@ namespace BanHang
         {
             Color color = (Color)ColorTranslator.FromHtml("#FF9797");
             int TrangThaiThem = Convert.ToInt32(e.GetValue("TrangThaiThem"));// lấy giá trị
-            if (TrangThaiThem == 1)
+            int SoLuongDeNghi = Convert.ToInt32(e.GetValue("SoLuongDeNghi"));// lấy giá trị
+            if (TrangThaiThem == 1 || SoLuongDeNghi < 0)
                 e.Row.BackColor = color;
         }
         protected void btnThemMoi_Click(object sender, EventArgs e)
@@ -365,6 +366,14 @@ namespace BanHang
                 btnDuyetDonHang.Enabled = false;
                 LoadGrid(IDDonHangChiNhanh);
             }
+        }
+
+        protected void gridDanhSachHangHoa_HtmlRowPrepared(object sender, ASPxGridViewTableRowEventArgs e)
+        {
+            Color color = (Color)ColorTranslator.FromHtml("#FF9797");
+            int SoLuongDeNghi = Convert.ToInt32(e.GetValue("SoLuongDeNghi"));// lấy giá trị
+            if (SoLuongDeNghi < 0)
+                e.Row.BackColor = color;
         }
     }
 }

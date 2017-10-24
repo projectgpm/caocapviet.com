@@ -25,8 +25,8 @@ namespace BanHang
                     Response.Redirect("Default.aspx");
                 if (!IsPostBack)
                 {
-                    Random ran = new Random();
-                    ID_temp.Value = ran.Next(100000, 999999).ToString();
+                    //Random ran = new Random();
+                    ID_temp.Value = Session["IDNhanVien"].ToString();
                     DanhSachVung();
                 }
                 LoadGrid(ID_temp.Value.ToString());
@@ -119,6 +119,9 @@ namespace BanHang
                     }
                     else
                     {
+                        txtMaHang.Text = "";
+                        txtMaHang.Value = "";
+                        txtMaHang.Focus();
                         Response.Write("<script language='JavaScript'> alert('Không tìm thấy mã hàng " + MaHang + " .'); </script>");
                         return;
                     }

@@ -83,7 +83,9 @@
                                                             </dx:RibbonDropDownButtonItem>
                                                             <dx:RibbonDropDownButtonItem Name="danh-muc-combo" NavigateUrl="DanhMucCombo.aspx" Text="Danh Mục Combo" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
-                                                            <dx:RibbonDropDownButtonItem Name="hang-hoa-theo-vung" NavigateUrl="DanhSachGiaTheoVung.aspx" Text="Giá Theo Vùng" Visible="False">
+                                                            <dx:RibbonDropDownButtonItem Name="hang-hoa-theo-vung" NavigateUrl="DanhSachThayDoiGiaTheoVung.aspx" Text="Giá Theo Vùng" Visible="False">
+                                                            </dx:RibbonDropDownButtonItem>
+                                                            <dx:RibbonDropDownButtonItem Name="Giá Theo Giờ" NavigateUrl="GiaTheoGio.aspx" Text="Giá Theo Giờ">
                                                             </dx:RibbonDropDownButtonItem>
                                                         </Items>
                                                         <LargeImage Url="~/image/danhsach.png">
