@@ -14,8 +14,18 @@
                 <dx:LayoutItem Caption="">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer runat="server">
-                            <dx:ASPxButton ID="btnHuyDonHang" runat="server" OnClick="btnHuyDonHang_Click" Text="Hủy Đơn Hàng">
-                                <Image IconID="edit_delete_32x32">
+                            <dx:ASPxButton ID="btnHuyDonHang" runat="server" OnClick="btnHuyDonHang_Click1" Text="Hủy đơn hàng">
+                                <Image IconID="edit_delete_16x16">
+                                </Image>
+                            </dx:ASPxButton>
+                        </dx:LayoutItemNestedControlContainer>
+                    </LayoutItemNestedControlCollection>
+                </dx:LayoutItem>
+                <dx:LayoutItem Caption="">
+                    <LayoutItemNestedControlCollection>
+                        <dx:LayoutItemNestedControlContainer runat="server">
+                            <dx:ASPxButton ID="ASPxFormLayout1_E1" runat="server" OnClick="ASPxFormLayout1_E1_Click" Text="In">
+                                <Image IconID="print_defaultprinternetwork_16x16">
                                 </Image>
                             </dx:ASPxButton>
                         </dx:LayoutItemNestedControlContainer>
@@ -133,6 +143,12 @@
                 </SelectParameters>
             </asp:SqlDataSource>
     </div>
+         <dx:ASPxPopupControl ID="popup" runat="server" AllowDragging="True" AllowResize="True" 
+         PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter"  Width="1100px"
+         Height="600px" FooterText="Thông tin chi tiết hàng hóa combo"
+        HeaderText="Thông tin chi tiết đơn hàng" ClientInstanceName="popup" EnableHierarchyRecreation="True" CloseAction="CloseButton">
+    </dx:ASPxPopupControl>
+        <iframe name="PrintingFrame" style="display: block; width:0px; height:0px;"></iframe>
     </form>
 </body>
 </html>

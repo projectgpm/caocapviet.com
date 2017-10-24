@@ -40,6 +40,15 @@ namespace BanHang {
         protected global::DevExpress.Web.ASPxButton btnHuyDonHang;
         
         /// <summary>
+        /// ASPxFormLayout1_E1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxButton ASPxFormLayout1_E1;
+        
+        /// <summary>
         /// gridChiTiet control.
         /// </summary>
         /// <remarks>
@@ -65,5 +74,14 @@ namespace BanHang {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlHangHoa;
+        
+        /// <summary>
+        /// popup control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxPopupControl popup;
     }
 }
