@@ -1,5 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Root.master" AutoEventWireup="true" CodeBehind="QuanTriNguoiDung.aspx.cs" Inherits="BanHang.QuanTriNguoiDung" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
+    <script type="text/javascript">
+        function OnMoreInfoClick(element, key) {
+            popup.SetContentUrl("PhanQuyenVaoChiNhanh.aspx?IDNguoiDung=" + key);
+            popup.ShowAtElement();
+            // alert(key);
+        }
+
+    </script>
     <dx:ASPxFormLayout ID="ASPxFormLayout1" runat="server" ColCount="6" Width="100%">
         <Items>
             <dx:LayoutGroup Caption="Lọc" ColCount="5" ColSpan="6">
@@ -131,6 +139,12 @@
                     </ValidationSettings>
                 </PropertiesComboBox>
             </dx:GridViewDataComboBoxColumn>
+             <dx:GridViewDataButtonEditColumn Caption="Phân quyền" VisibleIndex="4" Name="phanquyen">
+                
+                <DataItemTemplate>
+                    <a href="javascript:void(0);" onclick="OnMoreInfoClick(this, '<%# Container.KeyValue %>')">Xem </a>
+                </DataItemTemplate>
+            </dx:GridViewDataButtonEditColumn>
         </Columns>
         <Styles>
             <Header Font-Bold="True" HorizontalAlign="Center">
@@ -151,4 +165,9 @@
             <asp:Parameter DefaultValue="0" Name="DaXoa" Type="Int32" />
         </SelectParameters>
     </asp:SqlDataSource>
+     <dx:ASPxPopupControl ID="popup" runat="server" AllowDragging="True" AllowResize="True" 
+         PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter"  Width="1100px"
+         Height="600px" FooterText="Thông tin chi tiết đơn đặt hàng"
+        HeaderText="Phân quyền vào chi nhánh" ClientInstanceName="popup" EnableHierarchyRecreation="True" CloseAction="CloseButton">
+    </dx:ASPxPopupControl>
 </asp:Content>
