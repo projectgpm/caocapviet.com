@@ -18,7 +18,6 @@ namespace BanHang
             {
                 Response.Redirect("DangNhap.aspx");
             }
-
             else
             {
                 if (!IsPostBack)
@@ -30,7 +29,6 @@ namespace BanHang
                 {
                     LoadGrid(cmbHienThi.Value.ToString());
                 }
-
             }
         }
 
@@ -41,7 +39,9 @@ namespace BanHang
             string ngayKT = dateDenNgay.Date.ToString("yyyy-MM-dd");
             ngayBD = ngayBD + " 00:00:0.000";
             ngayKT = ngayKT + " 23:59:59.999";
-            gridDonDatHang.DataSource = data.LayDanhSachDonHang(Session["IDNhom"].ToString(), HienThi, ngayBD, ngayKT);
+            // lấy idnhom để biết gia tiền để hiển thị duyệt đơn hàng
+
+            gridDonDatHang.DataSource = data.LayDanhSachDonHang(Session["IDNhom"].ToString(), HienThi, ngayBD, ngayKT, Session["IDNhanVien"].ToString());
             gridDonDatHang.DataBind();
         }
         protected void gridDonDatHang_HtmlRowPrepared(object sender, DevExpress.Web.ASPxGridViewTableRowEventArgs e)

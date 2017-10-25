@@ -22,6 +22,7 @@ namespace BanHang
             }
             else
             {
+              
                 XuLyThayDoiGiaTheoGio();
                 XuLyDonHangChiNhanh();
                 HuyDonHangThuMua();

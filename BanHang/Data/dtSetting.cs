@@ -123,6 +123,33 @@ namespace BanHang.Data
                 }
             }
         }
+        public static string LayQuyenTruyCapKho(string IDNhanVien)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT IDKho FROM [GPM_IDND_IDKHO] WHERE IDNhanVien = '" + IDNhanVien + "' AND DaXoa = 0";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                   
+                    if (tb.Rows.Count != 0)
+                    {
+                        DataRow dr = tb.Rows[0];
+                         string IDKho = "IDKho = " + dr["IDKho"].ToString();
+                         for (int i = 1; i < tb.Rows.Count; i++)
+                         {
+                             dr = tb.Rows[i];
+                             IDKho = IDKho + " OR IDKho = " + dr["IDKho"].ToString();
+                         }
+                        return IDKho;
+                    }
+                    else return "";
+                }
+            }
+        }
         public static string LayTenKho(string IDKho)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
