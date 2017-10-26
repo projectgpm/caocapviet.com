@@ -477,7 +477,7 @@ namespace BanHang.Data
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "SELECT HeSo FROM [GPM_HangHoa] WHERE [ID] = " + IDHangHoa;
+                string cmdText = "SELECT HeSo FROM [GPM_HangHoa] WHERE [ID] = '" + IDHangHoa + "'";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
