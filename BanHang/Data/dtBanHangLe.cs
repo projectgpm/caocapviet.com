@@ -332,6 +332,128 @@ namespace BanHang.Data
                                     cmd.Parameters.AddWithValue("@IDKho", IDKho);
                                     cmd.ExecuteNonQuery();
                                 }
+                                if (TonKhoHangHoa < 0)
+                                {
+                                    string IDHangHoa = cthd.IDHangHoa.ToString();
+                                    int IDHangHoaQuiDoi = 0;
+                                    string IDHangHoaQD = "SELECT IDHangQuyDoi FROM GPM_HangHoa WHERE ID = '" + IDHangHoa + "'";
+                                    using (SqlCommand cmd1 = new SqlCommand(IDHangHoaQD, con, trans))
+                                    using (SqlDataReader reade1r = cmd1.ExecuteReader())
+                                    {
+                                        DataTable tb1 = new DataTable();
+                                        tb1.Load(reade1r);
+                                        if (tb1.Rows.Count != 0)
+                                        {
+                                            DataRow dr1 = tb1.Rows[0];
+                                            IDHangHoaQuiDoi = Int32.Parse(dr1["IDHangQuyDoi"].ToString());
+                                        }
+                                        else IDHangHoaQuiDoi = 0;
+                                    }
+                                    if (IDHangHoaQuiDoi != 0)
+                                    {
+                                        int TonKhoQuiDoi = 0;
+                                        string TonKhoQD = " SELECT SoLuongCon FROM [GPM_HangHoaTonKho] WHERE [IDHangHoa] = '" + IDHangHoaQuiDoi + "' AND IDKho =" + IDKho;
+                                        using (SqlCommand cmd1 = new SqlCommand(TonKhoQD, con, trans))
+                                        using (SqlDataReader reade1r = cmd1.ExecuteReader())
+                                        {
+                                            DataTable tb1 = new DataTable();
+                                            tb1.Load(reade1r);
+                                            if (tb1.Rows.Count != 0)
+                                            {
+                                                DataRow dr1 = tb1.Rows[0];
+                                                TonKhoQuiDoi = Int32.Parse(dr1["SoLuongCon"].ToString());
+                                            }
+                                            else TonKhoQuiDoi = 0;
+                                        }
+                                        if (TonKhoQuiDoi > 0)
+                                        {
+                                            // qui đối
+                                            int HeSoB = 0, HeSoA = 0;
+                                            // hệ số b
+                                            string HeSoHangB = "SELECT HeSo FROM GPM_HangHoa WHERE ID = '" + IDHangHoaQuiDoi + "'";
+                                            using (SqlCommand cmd1 = new SqlCommand(HeSoHangB, con, trans))
+                                            using (SqlDataReader reade1r = cmd1.ExecuteReader())
+                                            {
+                                                DataTable tb1 = new DataTable();
+                                                tb1.Load(reade1r);
+                                                if (tb1.Rows.Count != 0)
+                                                {
+                                                    DataRow dr1 = tb1.Rows[0];
+                                                    HeSoB = Int32.Parse(dr1["HeSo"].ToString());
+                                                }
+                                                else HeSoB = 0;
+                                            }
+                                            // hệ số a
+                                            string HeSoHangA = "SELECT HeSo FROM GPM_HangHoa WHERE ID = '" + IDHangHoa + "'";
+                                            using (SqlCommand cmd1 = new SqlCommand(HeSoHangA, con, trans))
+                                            using (SqlDataReader reade1r = cmd1.ExecuteReader())
+                                            {
+                                                DataTable tb1 = new DataTable();
+                                                tb1.Load(reade1r);
+                                                if (tb1.Rows.Count != 0)
+                                                {
+                                                    DataRow dr1 = tb1.Rows[0];
+                                                    HeSoA = Int32.Parse(dr1["HeSo"].ToString());
+                                                }
+                                                else HeSoA = 0;
+                                            }
+                                            int SoLanDoi = 1;
+                                            if (TonKhoQuiDoi > (HeSoA * SoLanDoi))
+                                            {
+                                                string cmdTextThemTheKho = "INSERT INTO [GPM_TheKho] ([MaDonHang], [NgayLap], [DienGiai], [NhapTrongKy],[XuatTrongKy],[TonCuoiKy], [IDNhanVien],[IDKho],[IDHangHoa],[LoaiPhieu],[XuatKhac],[XuatTra],[KiemKho]) OUTPUT INSERTED.ID  VALUES (@MaDonHang,getdate(),@DienGiai, @NhapTrongKy,@XuatTrongKy,@TonCuoiKy,@IDNhanVien,@IDKho,@IDHangHoa,@LoaiPhieu,@XuatKhac,@XuatTra,@KiemKho)";
+                                                using (SqlCommand cmd = new SqlCommand(cmdTextThemTheKho, con, trans))
+                                                {
+                                                    cmd.Parameters.AddWithValue("@XuatKhac", 0);
+                                                    cmd.Parameters.AddWithValue("@XuatTra", 0);
+                                                    cmd.Parameters.AddWithValue("@KiemKho", 0);
+                                                    cmd.Parameters.AddWithValue("@LoaiPhieu", "Xuất");
+                                                    cmd.Parameters.AddWithValue("@IDHangHoa", IDHangHoaQuiDoi);
+                                                    cmd.Parameters.AddWithValue("@MaDonHang", MaHoaDon);
+                                                    cmd.Parameters.AddWithValue("@DienGiai", "Qui Đổi Bán Hàng Lẻ");
+                                                    cmd.Parameters.AddWithValue("@NhapTrongKy", 0);
+                                                    cmd.Parameters.AddWithValue("@XuatTrongKy", HeSoA * SoLanDoi);//số lượng xuất
+                                                    cmd.Parameters.AddWithValue("@TonCuoiKy", TonKhoQuiDoi - (HeSoA * SoLanDoi));// tồn kho còn lại
+                                                    cmd.Parameters.AddWithValue("@IDNhanVien", IDNhanVien);
+                                                    cmd.Parameters.AddWithValue("@IDKho", IDKho);
+                                                    cmd.ExecuteNonQuery();
+                                                }
+                                                string cmbXuLyKho = "UPDATE [GPM_HangHoaTonKho] SET [SoLuongCon] = [SoLuongCon] - @SoLuongCon, [NgayCapNhat] = getdate() WHERE [IDHangHoa] = @IDHangHoa AND [IDKho] = @IDKho";
+                                                using (SqlCommand cmd = new SqlCommand(cmbXuLyKho, con, trans))
+                                                {
+                                                    cmd.Parameters.AddWithValue("@IDHangHoa", IDHangHoaQuiDoi);
+                                                    cmd.Parameters.AddWithValue("@SoLuongCon", HeSoA * SoLanDoi);
+                                                    cmd.Parameters.AddWithValue("@IDKho", IDKho);
+                                                    cmd.ExecuteNonQuery();
+                                                }
+                                                cmdTextThemTheKho = "INSERT INTO [GPM_TheKho] ([MaDonHang], [NgayLap], [DienGiai], [NhapTrongKy],[XuatTrongKy],[TonCuoiKy], [IDNhanVien],[IDKho],[IDHangHoa],[LoaiPhieu],[XuatKhac],[XuatTra],[KiemKho]) OUTPUT INSERTED.ID  VALUES (@MaDonHang,getdate(),@DienGiai, @NhapTrongKy,@XuatTrongKy,@TonCuoiKy,@IDNhanVien,@IDKho,@IDHangHoa,@LoaiPhieu,@XuatKhac,@XuatTra,@KiemKho)";
+                                                using (SqlCommand cmd = new SqlCommand(cmdTextThemTheKho, con, trans))
+                                                {
+                                                    cmd.Parameters.AddWithValue("@XuatKhac", 0);
+                                                    cmd.Parameters.AddWithValue("@XuatTra", 0);
+                                                    cmd.Parameters.AddWithValue("@KiemKho", 0);
+                                                    cmd.Parameters.AddWithValue("@LoaiPhieu", "Nhập");
+                                                    cmd.Parameters.AddWithValue("@IDHangHoa", IDHangHoa);
+                                                    cmd.Parameters.AddWithValue("@MaDonHang", MaHoaDon);
+                                                    cmd.Parameters.AddWithValue("@DienGiai", "Qui Đổi Bán Hàng Lẻ");
+                                                    cmd.Parameters.AddWithValue("@NhapTrongKy", HeSoB * SoLanDoi);
+                                                    cmd.Parameters.AddWithValue("@XuatTrongKy", 0);//
+                                                    cmd.Parameters.AddWithValue("@TonCuoiKy", TonKhoHangHoa + ( HeSoB * SoLanDoi));//
+                                                    cmd.Parameters.AddWithValue("@IDNhanVien", IDNhanVien);
+                                                    cmd.Parameters.AddWithValue("@IDKho", IDKho);
+                                                    cmd.ExecuteNonQuery();
+                                                }
+                                                cmbXuLyKho = "UPDATE [GPM_HangHoaTonKho] SET [SoLuongCon] = [SoLuongCon] + @SoLuongCon, [NgayCapNhat] = getdate() WHERE [IDHangHoa] = @IDHangHoa AND [IDKho] = @IDKho";
+                                                using (SqlCommand cmd = new SqlCommand(cmbXuLyKho, con, trans))
+                                                {
+                                                    cmd.Parameters.AddWithValue("@IDHangHoa", IDHangHoa);
+                                                    cmd.Parameters.AddWithValue("@SoLuongCon", HeSoB * SoLanDoi);
+                                                    cmd.Parameters.AddWithValue("@IDKho", IDKho);
+                                                    cmd.ExecuteNonQuery();
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
