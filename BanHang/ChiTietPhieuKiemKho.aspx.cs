@@ -18,24 +18,27 @@ namespace BanHang
             {
                 if (dtSetting.LayChucNangCha(Session["IDNhom"].ToString(), 72) == false)
                     btnDuyet.Enabled = false;
-                if (Int32.Parse(Session["IDNhom"].ToString()) != 3 && Int32.Parse(Session["IDNhom"].ToString()) != 4)
+                //if (Int32.Parse(Session["IDNhom"].ToString()) != 3 && Int32.Parse(Session["IDNhom"].ToString()) != 4)
+                //{
+                //    btnDuyet.Enabled = false;
+                //}
+                if (Session["IDNhom"].ToString() != "4")
                 {
                     btnDuyet.Enabled = false;
                 }
-                
                 string IDPhieuKiemKho = Request.QueryString["IDPhieuKiemKho"];
                 if (IDPhieuKiemKho != null)
                 {
-                    if (dtKiemKho.LayTrangThaiKiemKho(IDPhieuKiemKho,Session["IDKho"].ToString()) == 1)
+                    if (dtKiemKho.LayTrangThaiKiemKho(IDPhieuKiemKho) == 1)
                     {
                         gridChiTietPhieuKiemKho.Columns["chucnang"].Visible = false;
                         btnDuyet.Enabled = false;
                     }
-                    if (dtKiemKho.LayIDKhoKiemKho(IDPhieuKiemKho) != Int32.Parse(Session["IDKho"].ToString()))
-                    {
-                        gridChiTietPhieuKiemKho.Columns["chucnang"].Visible = false;
-                        btnDuyet.Enabled = false;
-                    }
+                    //if (dtKiemKho.LayIDKhoKiemKho(IDPhieuKiemKho) != Int32.Parse(Session["IDKho"].ToString()))
+                    //{
+                    //    gridChiTietPhieuKiemKho.Columns["chucnang"].Visible = false;
+                    //    btnDuyet.Enabled = false;
+                    //}
 
                     LoadGrid(Int32.Parse(IDPhieuKiemKho.ToString()));
                 }
@@ -114,11 +117,10 @@ namespace BanHang
                         }
                     }
                     data = new dtKiemKho();
-                    data.CapNhatTrangThai(IDPhieuKiemKho);
+                    data.CapNhatTrangThai(IDPhieuKiemKho,Session["IDNhanVien"].ToString());
                     btnDuyet.Enabled = false;
                     gridChiTietPhieuKiemKho.Columns["chucnang"].Visible = false;
-
-                  //  dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Chi tiết phiếu kiểm kho", Session["IDKho"].ToString(), "Nhập xuất tồn", "Duyệt");
+                    dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Chi tiết phiếu kiểm kho", Session["IDKho"].ToString(), "Nhập xuất tồn", "Duyệt phiếu kiểm kho: " + dtTheKho.LayTenKho_ID(IDKho));
                 }
             }
             else

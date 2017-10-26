@@ -45,7 +45,7 @@ namespace BanHang
             string ngayKT = dateDenNgay.Date.ToString("yyyy-MM-dd");
             ngayBD = ngayBD + " 00:00:0.000";
             ngayKT = ngayKT + " 23:59:59.999";
-            gridDanhSachKiemKho.DataSource = data.DanhSachKiemKho(Session["IDKho"].ToString(),HienThi,ngayBD,ngayKT);
+            gridDanhSachKiemKho.DataSource = data.DanhSachKiemKho(Session["IDKho"].ToString(),HienThi,ngayBD,ngayKT, Session["IDNhanVien"].ToString());
             gridDanhSachKiemKho.DataBind();
         }
 

@@ -41,7 +41,7 @@ namespace BanHang
             ngayKT = ngayKT + " 23:59:59.999";
             // lấy idnhom để biết gia tiền để hiển thị duyệt đơn hàng
 
-            gridDonDatHang.DataSource = data.LayDanhSachDonHang(Session["IDNhom"].ToString(), HienThi, ngayBD, ngayKT, Session["IDNhanVien"].ToString());
+            gridDonDatHang.DataSource = data.LayDanhSachDonHang(Session["IDNhom"].ToString(), HienThi, ngayBD, ngayKT, Session["IDNhanVien"].ToString(), Session["IDKho"].ToString());
             gridDonDatHang.DataBind();
         }
         protected void gridDonDatHang_HtmlRowPrepared(object sender, DevExpress.Web.ASPxGridViewTableRowEventArgs e)

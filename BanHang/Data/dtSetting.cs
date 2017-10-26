@@ -144,7 +144,7 @@ namespace BanHang.Data
                              dr = tb.Rows[i];
                              IDKho = IDKho + " OR IDKho = " + dr["IDKho"].ToString();
                          }
-                        return IDKho;
+                        return IDKho + " OR ";
                     }
                     else return "";
                 }
