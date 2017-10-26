@@ -547,6 +547,27 @@ namespace BanHang
                 string IDKhachHang = "1";
                 if (ccbKhachHang.Value != null)
                     IDKhachHang = ccbKhachHang.Value.ToString();
+                //foreach (ChiTietHoaDon cthd in DanhSachHoaDon[MaHoaDon].ListChiTietHoaDon)
+                //{
+                //    string IDHangHoa = cthd.IDHangHoa.ToString();
+                //    string IDHangHoaQuiDoi = dtHangHoa.HangHoaQuiDoi(IDHangHoa) + "";
+                //    if (IDHangHoaQuiDoi != "0")
+                //    {
+                //        int SLTonHangBan = dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa, IDKho);
+                //        int SLTonHangQuiDoi = dtCapNhatTonKho.SoLuong_TonKho(IDHangHoaQuiDoi, IDKho);
+                //        int SLHangMua = cthd.SoLuong;
+                //        int HeSoB = dtHangHoa.HeSoQuyDoi(IDHangHoaQuiDoi);
+                //        int HeSoA = dtHangHoa.HeSoQuyDoi(IDHangHoa);
+                //        //int SoLanDoi = dtHangHoa.KTSoNguyen(SLHangMua - SLTonHangBan, HeSoB);
+                //        if (SLHangMua > SLTonHangBan && SLTonHangQuiDoi > 0)
+                //        {
+                //            // thực hiện qui đổi
+
+                //                dtCapNhatTonKho.TruTonKho(IDHangHoaQuiDoi, HeSoA * 1 + "", IDKho);
+                //                dtCapNhatTonKho.CongTonKho(IDHangHoa, HeSoB * 1 + "", IDKho);
+                //        }
+                //    }
+                //}
                 object IDHoaDon = dt.InsertHoaDon(IDKho, IDNhanVien, IDKhachHang, DanhSachHoaDon[MaHoaDon]);
                 HuyHoaDon();
                 ccbKhachHang.Text = "";

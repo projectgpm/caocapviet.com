@@ -325,7 +325,7 @@
                                                     <CaptionStyle Font-Bold="True">
                                                     </CaptionStyle>
                                                 </dx:LayoutItem>
-                                                <dx:LayoutItem Caption="KHÁCH THANH TOÁN" VerticalAlign="Middle">
+                                                <dx:LayoutItem Caption="KHÁCH THANH TOÁN" VerticalAlign="Middle" FieldName="KhachThanhToan">
                                                     <LayoutItemNestedControlCollection>
                                                         <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer5" runat="server">
                                                             <dx:ASPxTextBox ID="txtKhachThanhToan" runat="server" NullText="0"
