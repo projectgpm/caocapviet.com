@@ -398,7 +398,7 @@ namespace BanHang.Data
                                                 else HeSoA = 0;
                                             }
                                             int SoLanDoi = 1;
-                                            if (TonKhoQuiDoi > (HeSoA * SoLanDoi))
+                                            if ((TonKhoQuiDoi * HeSoB) > TonKhoHangHoa)
                                             {
                                                 string cmdTextThemTheKho = "INSERT INTO [GPM_TheKho] ([MaDonHang], [NgayLap], [DienGiai], [NhapTrongKy],[XuatTrongKy],[TonCuoiKy], [IDNhanVien],[IDKho],[IDHangHoa],[LoaiPhieu],[XuatKhac],[XuatTra],[KiemKho]) OUTPUT INSERTED.ID  VALUES (@MaDonHang,getdate(),@DienGiai, @NhapTrongKy,@XuatTrongKy,@TonCuoiKy,@IDNhanVien,@IDKho,@IDHangHoa,@LoaiPhieu,@XuatKhac,@XuatTra,@KiemKho)";
                                                 using (SqlCommand cmd = new SqlCommand(cmdTextThemTheKho, con, trans))
@@ -436,7 +436,7 @@ namespace BanHang.Data
                                                     cmd.Parameters.AddWithValue("@MaDonHang", MaHoaDon);
                                                     cmd.Parameters.AddWithValue("@DienGiai", "Qui Đổi Bán Hàng Lẻ");
                                                     cmd.Parameters.AddWithValue("@NhapTrongKy", HeSoB * SoLanDoi);
-                                                    cmd.Parameters.AddWithValue("@XuatTrongKy", 0);//
+                                                    cmd.Parameters.AddWithValue("@XuatTrongKy", (-1) * TonKhoHangHoa);//
                                                     cmd.Parameters.AddWithValue("@TonCuoiKy", TonKhoHangHoa + ( HeSoB * SoLanDoi));//
                                                     cmd.Parameters.AddWithValue("@IDNhanVien", IDNhanVien);
                                                     cmd.Parameters.AddWithValue("@IDKho", IDKho);
