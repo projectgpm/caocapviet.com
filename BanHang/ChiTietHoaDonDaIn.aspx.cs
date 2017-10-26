@@ -14,7 +14,7 @@ namespace BanHang
         protected void Page_Load(object sender, EventArgs e)
         {
             string IDHoaDon = Request.QueryString["IDHoaDon"];
-            dtBanHangLe dt = new dtBanHangLe();
+            dtBanHangLe2 dt = new dtBanHangLe2();
             grdChiTietHoaDon.DataSource = dt.LayThongChiTietHoaDon_ID(IDHoaDon);
             grdChiTietHoaDon.DataBind();
         }

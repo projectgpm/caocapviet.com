@@ -270,7 +270,7 @@ namespace BanHang
                 }
                 else
                 {
-                    int KT_GiaApDung = dtBanHangLe.KT_GiaApDung(Session["IDKho"].ToString());
+                    int KT_GiaApDung = dtBanHangLe2.KT_GiaApDung(Session["IDKho"].ToString());
                     switch (KT_GiaApDung)
                     {
                         case 1: cthd.DonGia = float.Parse(tbThongTin.Rows[0]["GiaBan1"].ToString()); break;
@@ -292,7 +292,7 @@ namespace BanHang
         }
         public float BanTheoSoLuong(int IDHangHoa, int SoLuongMua)
         {
-            dtBanHangLe dt = new dtBanHangLe();
+            dtBanHangLe2 dt = new dtBanHangLe2();
             float DonGia = -1;
             DataTable db = dt.DanhSachGiaTheoSoLuong(IDHangHoa);
             if (db.Rows.Count > 0)
@@ -305,7 +305,7 @@ namespace BanHang
         {
             try
             {
-                dtBanHangLe dt = new dtBanHangLe();
+                dtBanHangLe2 dt = new dtBanHangLe2();
                 if (txtBarcode.Text.Trim() != "")
                 {
                     DataTable tbThongTin;
@@ -404,7 +404,7 @@ namespace BanHang
                         }
                         else
                         {
-                            int KT_GiaApDung = dtBanHangLe.KT_GiaApDung(Session["IDKho"].ToString());
+                            int KT_GiaApDung = dtBanHangLe2.KT_GiaApDung(Session["IDKho"].ToString());
                             
                             switch (KT_GiaApDung)
                             {
@@ -443,7 +443,7 @@ namespace BanHang
                             }
                             else
                             {
-                                int KT_GiaApDung = dtBanHangLe.KT_GiaApDung(Session["IDKho"].ToString());
+                                int KT_GiaApDung = dtBanHangLe2.KT_GiaApDung(Session["IDKho"].ToString());
                                 switch (KT_GiaApDung)
                                 {
                                     case 1: exitHang.DonGia = dtCapNhatTonKho.GiaBan1_KhoChiNhanh((exitHang.IDHangHoa).ToString(), IDKho); break;
@@ -541,7 +541,7 @@ namespace BanHang
                     HienThiThongBao("Thanh toán chưa đủ số tiền !!"); return;
                 }
                 DanhSachHoaDon[MaHoaDon].KhachThanhToan = TienKhachThanhToan;
-                dtBanHangLe dt = new dtBanHangLe();
+                dtBanHangLe2 dt = new dtBanHangLe2();
                 string IDKho = Session["IDKho"].ToString();
                 string IDNhanVien = Session["IDThuNgan"].ToString();
                 string IDKhachHang = "1";
@@ -694,7 +694,7 @@ namespace BanHang
             if (txtTimKiem.Text != "")
             {
                 string TuKhoa = txtTimKiem.Text.ToString();
-                dtBanHangLe dt = new dtBanHangLe();
+                dtBanHangLe2 dt = new dtBanHangLe2();
                 DataTable db = dt.LayThongHoaDon(TuKhoa);
                 if (db.Rows.Count > 0)
                 {
@@ -780,7 +780,7 @@ namespace BanHang
         {
             try
             {
-                dtBanHangLe dt = new dtBanHangLe();
+                dtBanHangLe2 dt = new dtBanHangLe2();
                 if (cmbMaHang.Text.Trim() != "")
                 {
                     txtTonKhoB.Text = "";

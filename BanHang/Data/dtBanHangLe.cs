@@ -381,7 +381,6 @@ namespace BanHang.Data
                                         }
                                         if (TonKhoHangMuonQuiDoi > 0)
                                         {
-                                           
                                             int HeSoHangDangQuiDoi = 0, HeSoHangMuonQuiDoi = 0;
                                             string HeSoHangDangQD = "SELECT HeSo FROM GPM_HangHoa WHERE ID = '" + cthd.IDHangHoa + "'";
                                             using (SqlCommand cmd1 = new SqlCommand(HeSoHangDangQD, con, trans))
@@ -396,7 +395,7 @@ namespace BanHang.Data
                                                 }
                                                 else HeSoHangDangQuiDoi = 0;
                                             }
-                                            string HeSoHangMuonQD = "SELECT HeSo FROM GPM_HangHoa WHERE ID = '" + IDHangHoaMuonQuiDoi + "'";
+                                            string HeSoHangMuonQD = "SELECT HeSo FROM GPM_HangHoa WHERE ID = '" + cthd.IDHangHoa + "'";
                                             using (SqlCommand cmd1 = new SqlCommand(HeSoHangMuonQD, con, trans))
                                             using (SqlDataReader reade1r = cmd1.ExecuteReader())
                                             {
@@ -414,7 +413,6 @@ namespace BanHang.Data
                                             // Hệ số hàng đang qui đổi: HeSoHangDangQuiDoi
                                             // Hệ số hàng muốn qui đổi: HeSoHangMuonQuiDoi
                                             // Số lượng cần đổ: TonKhoHangHoa
-                                            int SoLanDoi = dtHangHoa.KTSoNguyen(TonKhoHangHoa, HeSoHangMuonQuiDoi);
                                             cmdTextThemTheKho = "INSERT INTO [GPM_TheKho] ([MaDonHang], [NgayLap], [DienGiai], [NhapTrongKy],[XuatTrongKy],[TonCuoiKy], [IDNhanVien],[IDKho],[IDHangHoa],[LoaiPhieu],[XuatKhac],[XuatTra],[KiemKho]) OUTPUT INSERTED.ID  VALUES (@MaDonHang,getdate(),@DienGiai, @NhapTrongKy,@XuatTrongKy,@TonCuoiKy,@IDNhanVien,@IDKho,@IDHangHoa,@LoaiPhieu,@XuatKhac,@XuatTra,@KiemKho)";
                                             using (SqlCommand cmd = new SqlCommand(cmdTextThemTheKho, con, trans))
                                             {
@@ -426,8 +424,8 @@ namespace BanHang.Data
                                                 cmd.Parameters.AddWithValue("@MaDonHang", MaHoaDon);
                                                 cmd.Parameters.AddWithValue("@DienGiai", "Qui Đổi Bán Hàng Lẻ");
                                                 cmd.Parameters.AddWithValue("@NhapTrongKy", 0);
-                                                cmd.Parameters.AddWithValue("@XuatTrongKy", SoLanDoi * HeSoHangDangQuiDoi);//số lượng xuất
-                                                cmd.Parameters.AddWithValue("@TonCuoiKy", TonKhoHangMuonQuiDoi - SoLanDoi);// tồn kho còn lại
+                                                cmd.Parameters.AddWithValue("@XuatTrongKy", (-1) * TonKhoHangHoa * HeSoHangMuonQuiDoi);//số lượng xuất
+                                                cmd.Parameters.AddWithValue("@TonCuoiKy", TonKhoHangMuonQuiDoi - ((-1) * TonKhoHangHoa * HeSoHangMuonQuiDoi));// tồn kho còn lại
                                                 cmd.Parameters.AddWithValue("@IDNhanVien", IDNhanVien);
                                                 cmd.Parameters.AddWithValue("@IDKho", IDKho);
                                                 cmd.ExecuteNonQuery();
@@ -436,7 +434,7 @@ namespace BanHang.Data
                                             using (SqlCommand cmd = new SqlCommand(cmbXuLyKho, con, trans))
                                             {
                                                 cmd.Parameters.AddWithValue("@IDHangHoa", IDHangHoaMuonQuiDoi);
-                                                cmd.Parameters.AddWithValue("@SoLuongCon", SoLanDoi);
+                                                cmd.Parameters.AddWithValue("@SoLuongCon", ((-1) * TonKhoHangHoa * HeSoHangMuonQuiDoi));
                                                 cmd.Parameters.AddWithValue("@IDKho", IDKho);
                                                 cmd.ExecuteNonQuery();
                                             }
@@ -450,9 +448,9 @@ namespace BanHang.Data
                                                 cmd.Parameters.AddWithValue("@IDHangHoa", cthd.IDHangHoa);
                                                 cmd.Parameters.AddWithValue("@MaDonHang", MaHoaDon);
                                                 cmd.Parameters.AddWithValue("@DienGiai", "Qui Đổi Bán Hàng Lẻ");
-                                                cmd.Parameters.AddWithValue("@NhapTrongKy", SoLanDoi * HeSoHangMuonQuiDoi);
+                                                cmd.Parameters.AddWithValue("@NhapTrongKy", (-1) * TonKhoHangHoa * HeSoHangDangQuiDoi);
                                                 cmd.Parameters.AddWithValue("@XuatTrongKy", 0);//
-                                                cmd.Parameters.AddWithValue("@TonCuoiKy", TonKhoHangHoa + (SoLanDoi * HeSoHangMuonQuiDoi));//
+                                                cmd.Parameters.AddWithValue("@TonCuoiKy", TonKhoHangHoa + ((-1) * TonKhoHangHoa * HeSoHangDangQuiDoi));//
                                                 cmd.Parameters.AddWithValue("@IDNhanVien", IDNhanVien);
                                                 cmd.Parameters.AddWithValue("@IDKho", IDKho);
                                                 cmd.ExecuteNonQuery();
@@ -461,7 +459,7 @@ namespace BanHang.Data
                                             using (SqlCommand cmd = new SqlCommand(cmbXuLyKho, con, trans))
                                             {
                                                 cmd.Parameters.AddWithValue("@IDHangHoa", cthd.IDHangHoa);
-                                                cmd.Parameters.AddWithValue("@SoLuongCon", TonKhoHangHoa + (SoLanDoi * HeSoHangMuonQuiDoi));
+                                                cmd.Parameters.AddWithValue("@SoLuongCon", ((-1) * TonKhoHangHoa * HeSoHangDangQuiDoi));
                                                 cmd.Parameters.AddWithValue("@IDKho", IDKho);
                                                 cmd.ExecuteNonQuery();
                                             }
@@ -482,20 +480,6 @@ namespace BanHang.Data
             }
             return IDHoaDon;
         }
-        public static int KTSoNguyen(int number1, int number2)
-        {
-            if (number1 % number2 == 0)
-            {
-                return number1 / number2;
-            }
-            else
-            {
-                float x = number1 / (float)number2;
-                int a = (int)(number1 / (float)number2);
-                if (a < x)
-                    return (a + 1);
-                else return a;
-            }
-        }
+        
     }
 }
