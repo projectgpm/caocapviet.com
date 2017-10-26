@@ -112,13 +112,33 @@
                         </dx:LayoutItem>
                     </Items>
                 </dx:LayoutGroup>
-                <dx:LayoutGroup Caption="Duyệt phiếu chuyển kho">
+                <dx:LayoutGroup Caption="Duyệt phiếu chuyển kho" ColCount="3">
                     <Items>
                         <dx:LayoutItem Caption="">
                             <LayoutItemNestedControlCollection>
                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                    <dx:ASPxButton ID="btnXacNhanChuyenKho" runat="server" HorizontalAlign="Center" OnClick="btnXacNhanChuyenKho_Click" Text="Xác nhận" Width="100%">
+                                    <dx:ASPxButton ID="btnXacNhanKhoXuat" runat="server" HorizontalAlign="Center" OnClick="btnXacNhanKhoXuat_Click" Text="Xác nhận kho xuất" Width="100%">
                                         <Image IconID="data_createmodeldifferences_16x16">
+                                        </Image>
+                                    </dx:ASPxButton>
+                                </dx:LayoutItemNestedControlContainer>
+                            </LayoutItemNestedControlCollection>
+                        </dx:LayoutItem>
+                        <dx:LayoutItem Caption="">
+                            <LayoutItemNestedControlCollection>
+                                <dx:LayoutItemNestedControlContainer runat="server">
+                                    <dx:ASPxButton ID="btnXacNhanKhoNhan" runat="server" OnClick="btnXacNhanKhoNhan_Click" Text="Xác nhận kho nhận" Width="100%">
+                                        <Image IconID="data_createmodeldifferences_16x16">
+                                        </Image>
+                                    </dx:ASPxButton>
+                                </dx:LayoutItemNestedControlContainer>
+                            </LayoutItemNestedControlCollection>
+                        </dx:LayoutItem>
+                        <dx:LayoutItem Caption="">
+                            <LayoutItemNestedControlCollection>
+                                <dx:LayoutItemNestedControlContainer runat="server">
+                                    <dx:ASPxButton ID="btnXacNhanKhoTong" runat="server" OnClick="btnXacNhanKhoTong_Click" Text="Xác nhận kho tổng" Width="100%">
+                                        <Image IconID="data_copymodeldifferences_16x16">
                                         </Image>
                                     </dx:ASPxButton>
                                 </dx:LayoutItemNestedControlContainer>
