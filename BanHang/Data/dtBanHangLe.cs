@@ -398,59 +398,59 @@ namespace BanHang.Data
                                                 else HeSoA = 0;
                                             }
                                             int SoLanDoi = 1;
-                                            if ((TonKhoQuiDoi * HeSoB) > TonKhoHangHoa)
-                                            {
-                                                string cmdTextThemTheKho = "INSERT INTO [GPM_TheKho] ([MaDonHang], [NgayLap], [DienGiai], [NhapTrongKy],[XuatTrongKy],[TonCuoiKy], [IDNhanVien],[IDKho],[IDHangHoa],[LoaiPhieu],[XuatKhac],[XuatTra],[KiemKho]) OUTPUT INSERTED.ID  VALUES (@MaDonHang,getdate(),@DienGiai, @NhapTrongKy,@XuatTrongKy,@TonCuoiKy,@IDNhanVien,@IDKho,@IDHangHoa,@LoaiPhieu,@XuatKhac,@XuatTra,@KiemKho)";
-                                                using (SqlCommand cmd = new SqlCommand(cmdTextThemTheKho, con, trans))
-                                                {
-                                                    cmd.Parameters.AddWithValue("@XuatKhac", 0);
-                                                    cmd.Parameters.AddWithValue("@XuatTra", 0);
-                                                    cmd.Parameters.AddWithValue("@KiemKho", 0);
-                                                    cmd.Parameters.AddWithValue("@LoaiPhieu", "Xuất");
-                                                    cmd.Parameters.AddWithValue("@IDHangHoa", IDHangHoaQuiDoi);
-                                                    cmd.Parameters.AddWithValue("@MaDonHang", MaHoaDon);
-                                                    cmd.Parameters.AddWithValue("@DienGiai", "Qui Đổi Bán Hàng Lẻ");
-                                                    cmd.Parameters.AddWithValue("@NhapTrongKy", 0);
-                                                    cmd.Parameters.AddWithValue("@XuatTrongKy", HeSoA * SoLanDoi);//số lượng xuất
-                                                    cmd.Parameters.AddWithValue("@TonCuoiKy", TonKhoQuiDoi - (HeSoA * SoLanDoi));// tồn kho còn lại
-                                                    cmd.Parameters.AddWithValue("@IDNhanVien", IDNhanVien);
-                                                    cmd.Parameters.AddWithValue("@IDKho", IDKho);
-                                                    cmd.ExecuteNonQuery();
-                                                }
-                                                string cmbXuLyKho = "UPDATE [GPM_HangHoaTonKho] SET [SoLuongCon] = [SoLuongCon] - @SoLuongCon, [NgayCapNhat] = getdate() WHERE [IDHangHoa] = @IDHangHoa AND [IDKho] = @IDKho";
-                                                using (SqlCommand cmd = new SqlCommand(cmbXuLyKho, con, trans))
-                                                {
-                                                    cmd.Parameters.AddWithValue("@IDHangHoa", IDHangHoaQuiDoi);
-                                                    cmd.Parameters.AddWithValue("@SoLuongCon", HeSoA * SoLanDoi);
-                                                    cmd.Parameters.AddWithValue("@IDKho", IDKho);
-                                                    cmd.ExecuteNonQuery();
-                                                }
-                                                cmdTextThemTheKho = "INSERT INTO [GPM_TheKho] ([MaDonHang], [NgayLap], [DienGiai], [NhapTrongKy],[XuatTrongKy],[TonCuoiKy], [IDNhanVien],[IDKho],[IDHangHoa],[LoaiPhieu],[XuatKhac],[XuatTra],[KiemKho]) OUTPUT INSERTED.ID  VALUES (@MaDonHang,getdate(),@DienGiai, @NhapTrongKy,@XuatTrongKy,@TonCuoiKy,@IDNhanVien,@IDKho,@IDHangHoa,@LoaiPhieu,@XuatKhac,@XuatTra,@KiemKho)";
-                                                using (SqlCommand cmd = new SqlCommand(cmdTextThemTheKho, con, trans))
-                                                {
-                                                    cmd.Parameters.AddWithValue("@XuatKhac", 0);
-                                                    cmd.Parameters.AddWithValue("@XuatTra", 0);
-                                                    cmd.Parameters.AddWithValue("@KiemKho", 0);
-                                                    cmd.Parameters.AddWithValue("@LoaiPhieu", "Nhập");
-                                                    cmd.Parameters.AddWithValue("@IDHangHoa", IDHangHoa);
-                                                    cmd.Parameters.AddWithValue("@MaDonHang", MaHoaDon);
-                                                    cmd.Parameters.AddWithValue("@DienGiai", "Qui Đổi Bán Hàng Lẻ");
-                                                    cmd.Parameters.AddWithValue("@NhapTrongKy", HeSoB * SoLanDoi);
-                                                    cmd.Parameters.AddWithValue("@XuatTrongKy", (-1) * TonKhoHangHoa);//
-                                                    cmd.Parameters.AddWithValue("@TonCuoiKy", TonKhoHangHoa + ( HeSoB * SoLanDoi));//
-                                                    cmd.Parameters.AddWithValue("@IDNhanVien", IDNhanVien);
-                                                    cmd.Parameters.AddWithValue("@IDKho", IDKho);
-                                                    cmd.ExecuteNonQuery();
-                                                }
-                                                cmbXuLyKho = "UPDATE [GPM_HangHoaTonKho] SET [SoLuongCon] = [SoLuongCon] + @SoLuongCon, [NgayCapNhat] = getdate() WHERE [IDHangHoa] = @IDHangHoa AND [IDKho] = @IDKho";
-                                                using (SqlCommand cmd = new SqlCommand(cmbXuLyKho, con, trans))
-                                                {
-                                                    cmd.Parameters.AddWithValue("@IDHangHoa", IDHangHoa);
-                                                    cmd.Parameters.AddWithValue("@SoLuongCon", HeSoB * SoLanDoi);
-                                                    cmd.Parameters.AddWithValue("@IDKho", IDKho);
-                                                    cmd.ExecuteNonQuery();
-                                                }
-                                            }
+                                            //if ((TonKhoQuiDoi * HeSoB) > TonKhoHangHoa)
+                                            //{
+                                            //    string cmdTextThemTheKho = "INSERT INTO [GPM_TheKho] ([MaDonHang], [NgayLap], [DienGiai], [NhapTrongKy],[XuatTrongKy],[TonCuoiKy], [IDNhanVien],[IDKho],[IDHangHoa],[LoaiPhieu],[XuatKhac],[XuatTra],[KiemKho]) OUTPUT INSERTED.ID  VALUES (@MaDonHang,getdate(),@DienGiai, @NhapTrongKy,@XuatTrongKy,@TonCuoiKy,@IDNhanVien,@IDKho,@IDHangHoa,@LoaiPhieu,@XuatKhac,@XuatTra,@KiemKho)";
+                                            //    using (SqlCommand cmd = new SqlCommand(cmdTextThemTheKho, con, trans))
+                                            //    {
+                                            //        cmd.Parameters.AddWithValue("@XuatKhac", 0);
+                                            //        cmd.Parameters.AddWithValue("@XuatTra", 0);
+                                            //        cmd.Parameters.AddWithValue("@KiemKho", 0);
+                                            //        cmd.Parameters.AddWithValue("@LoaiPhieu", "Xuất");
+                                            //        cmd.Parameters.AddWithValue("@IDHangHoa", IDHangHoaQuiDoi);
+                                            //        cmd.Parameters.AddWithValue("@MaDonHang", MaHoaDon);
+                                            //        cmd.Parameters.AddWithValue("@DienGiai", "Qui Đổi Bán Hàng Lẻ");
+                                            //        cmd.Parameters.AddWithValue("@NhapTrongKy", 0);
+                                            //        cmd.Parameters.AddWithValue("@XuatTrongKy", HeSoA * SoLanDoi);//số lượng xuất
+                                            //        cmd.Parameters.AddWithValue("@TonCuoiKy", TonKhoQuiDoi - (HeSoA * SoLanDoi));// tồn kho còn lại
+                                            //        cmd.Parameters.AddWithValue("@IDNhanVien", IDNhanVien);
+                                            //        cmd.Parameters.AddWithValue("@IDKho", IDKho);
+                                            //        cmd.ExecuteNonQuery();
+                                            //    }
+                                            //    string cmbXuLyKho = "UPDATE [GPM_HangHoaTonKho] SET [SoLuongCon] = [SoLuongCon] - @SoLuongCon, [NgayCapNhat] = getdate() WHERE [IDHangHoa] = @IDHangHoa AND [IDKho] = @IDKho";
+                                            //    using (SqlCommand cmd = new SqlCommand(cmbXuLyKho, con, trans))
+                                            //    {
+                                            //        cmd.Parameters.AddWithValue("@IDHangHoa", IDHangHoaQuiDoi);
+                                            //        cmd.Parameters.AddWithValue("@SoLuongCon", HeSoA * SoLanDoi);
+                                            //        cmd.Parameters.AddWithValue("@IDKho", IDKho);
+                                            //        cmd.ExecuteNonQuery();
+                                            //    }
+                                            //    cmdTextThemTheKho = "INSERT INTO [GPM_TheKho] ([MaDonHang], [NgayLap], [DienGiai], [NhapTrongKy],[XuatTrongKy],[TonCuoiKy], [IDNhanVien],[IDKho],[IDHangHoa],[LoaiPhieu],[XuatKhac],[XuatTra],[KiemKho]) OUTPUT INSERTED.ID  VALUES (@MaDonHang,getdate(),@DienGiai, @NhapTrongKy,@XuatTrongKy,@TonCuoiKy,@IDNhanVien,@IDKho,@IDHangHoa,@LoaiPhieu,@XuatKhac,@XuatTra,@KiemKho)";
+                                            //    using (SqlCommand cmd = new SqlCommand(cmdTextThemTheKho, con, trans))
+                                            //    {
+                                            //        cmd.Parameters.AddWithValue("@XuatKhac", 0);
+                                            //        cmd.Parameters.AddWithValue("@XuatTra", 0);
+                                            //        cmd.Parameters.AddWithValue("@KiemKho", 0);
+                                            //        cmd.Parameters.AddWithValue("@LoaiPhieu", "Nhập");
+                                            //        cmd.Parameters.AddWithValue("@IDHangHoa", IDHangHoa);
+                                            //        cmd.Parameters.AddWithValue("@MaDonHang", MaHoaDon);
+                                            //        cmd.Parameters.AddWithValue("@DienGiai", "Qui Đổi Bán Hàng Lẻ");
+                                            //        cmd.Parameters.AddWithValue("@NhapTrongKy", HeSoB * SoLanDoi);
+                                            //        cmd.Parameters.AddWithValue("@XuatTrongKy", (-1) * TonKhoHangHoa);//
+                                            //        cmd.Parameters.AddWithValue("@TonCuoiKy", TonKhoHangHoa + ( HeSoB * SoLanDoi));//
+                                            //        cmd.Parameters.AddWithValue("@IDNhanVien", IDNhanVien);
+                                            //        cmd.Parameters.AddWithValue("@IDKho", IDKho);
+                                            //        cmd.ExecuteNonQuery();
+                                            //    }
+                                            //    cmbXuLyKho = "UPDATE [GPM_HangHoaTonKho] SET [SoLuongCon] = [SoLuongCon] + @SoLuongCon, [NgayCapNhat] = getdate() WHERE [IDHangHoa] = @IDHangHoa AND [IDKho] = @IDKho";
+                                            //    using (SqlCommand cmd = new SqlCommand(cmbXuLyKho, con, trans))
+                                            //    {
+                                            //        cmd.Parameters.AddWithValue("@IDHangHoa", IDHangHoa);
+                                            //        cmd.Parameters.AddWithValue("@SoLuongCon", HeSoB * SoLanDoi);
+                                            //        cmd.Parameters.AddWithValue("@IDKho", IDKho);
+                                            //        cmd.ExecuteNonQuery();
+                                            //    }
+                                            //}
                                         }
                                     }
                                 }
