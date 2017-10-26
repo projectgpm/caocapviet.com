@@ -186,8 +186,8 @@
                                 <PropertiesSpinEdit DisplayFormatString="N0" NumberFormat="Custom">
                                 </PropertiesSpinEdit>
                             </dx:GridViewDataSpinEditColumn>
-                            <dx:GridViewDataSpinEditColumn Caption="Tồn Kho" FieldName="TonKho" ShowInCustomizationForm="True" VisibleIndex="4">
-                                <PropertiesSpinEdit DisplayFormatString="N0" NumberFormat="Custom" Width="100px">
+                            <dx:GridViewDataSpinEditColumn Caption="Tồn Kho" FieldName="TonKho" ShowInCustomizationForm="True" VisibleIndex="4" Width="70px">
+                                <PropertiesSpinEdit DisplayFormatString="N0" NumberFormat="Custom">
                                 </PropertiesSpinEdit>
                             </dx:GridViewDataSpinEditColumn>
                         </columns>                                                  
@@ -227,7 +227,7 @@
                             </td>
                             <td align="right" width="50%">
                                  <dx:ASPxButton ID="btnQuyDoiHangHoa" runat="server"
-                                    RenderMode="Link" Text="Quy Đổi Mã Hàng" OnClick="btnQuyDoiHangHoa_Click">
+                                    RenderMode="Link" Text="Quy Đổi Mã Hàng" OnClick="btnQuyDoiHangHoa_Click" Visible="False">
                                     <Image IconID="businessobjects_boorderitem_32x32">
                                     </Image>
                                 </dx:ASPxButton> 

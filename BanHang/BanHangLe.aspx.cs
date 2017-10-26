@@ -196,8 +196,6 @@ namespace BanHang
             tabHoaDonNew.Index = SoHoaDon - 1;
             tabControlSoHoaDon.Tabs.Add(tabHoaDonNew);
             tabControlSoHoaDon.ActiveTabIndex = SoHoaDon - 1;
-            // txtTienThua.Text = "";
-            //  txtKhachThanhToan.Text = "";
             BindGridChiTietHoaDon();
         }
         public void HuyHoaDon()
@@ -253,11 +251,11 @@ namespace BanHang
                 exitHang.ThanhTien = SoLuong * exitHang.DonGia;
                 DanhSachHoaDon[MaHoaDon].TongTien += SoLuong * exitHang.DonGia - ThanhTienOld;
                 DanhSachHoaDon[MaHoaDon].KhachCanTra = DanhSachHoaDon[MaHoaDon].TongTien - DanhSachHoaDon[MaHoaDon].GiamGia;
+                DanhSachHoaDon[MaHoaDon].KhachThanhToan = DanhSachHoaDon[MaHoaDon].TongTien - DanhSachHoaDon[MaHoaDon].GiamGia;
             }
             else
             {
                 ChiTietHoaDon cthd = new ChiTietHoaDon();
-               // cthd.STT = DanhSachHoaDon[MaHoaDon].ListChiTietHoaDon.Count + 1;
                 cthd.IDHangHoa = IDHangHoa;
                 cthd.MaHang = MaHang;
                 cthd.TonKho = dtCapNhatTonKho.SoLuong_TonKho(IDHangHoa.ToString(), Session["IDKho"].ToString());
@@ -289,6 +287,7 @@ namespace BanHang
                 DanhSachHoaDon[MaHoaDon].SoLuongHang++;
                 DanhSachHoaDon[MaHoaDon].TongTien += cthd.ThanhTien;
                 DanhSachHoaDon[MaHoaDon].KhachCanTra = DanhSachHoaDon[MaHoaDon].TongTien - DanhSachHoaDon[MaHoaDon].GiamGia;
+                DanhSachHoaDon[MaHoaDon].KhachThanhToan = DanhSachHoaDon[MaHoaDon].TongTien - DanhSachHoaDon[MaHoaDon].GiamGia;
             }
         }
         public float BanTheoSoLuong(int IDHangHoa, int SoLuongMua)
@@ -421,6 +420,7 @@ namespace BanHang
                         exitHang.ThanhTien = Convert.ToInt32(SoLuongMoi) * exitHang.DonGia;
                         DanhSachHoaDon[MaHoaDon].TongTien += exitHang.ThanhTien - ThanhTienOld;
                         DanhSachHoaDon[MaHoaDon].KhachCanTra = DanhSachHoaDon[MaHoaDon].TongTien - DanhSachHoaDon[MaHoaDon].GiamGia;
+                        DanhSachHoaDon[MaHoaDon].KhachThanhToan = DanhSachHoaDon[MaHoaDon].TongTien - DanhSachHoaDon[MaHoaDon].GiamGia;
                     }
                     else
                     {
@@ -457,6 +457,7 @@ namespace BanHang
                             exitHang.ThanhTien = Convert.ToInt32(SoLuongMoi) * exitHang.DonGia;
                             DanhSachHoaDon[MaHoaDon].TongTien += exitHang.ThanhTien - ThanhTienOld;
                             DanhSachHoaDon[MaHoaDon].KhachCanTra = DanhSachHoaDon[MaHoaDon].TongTien - DanhSachHoaDon[MaHoaDon].GiamGia;
+                            DanhSachHoaDon[MaHoaDon].KhachThanhToan = DanhSachHoaDon[MaHoaDon].TongTien - DanhSachHoaDon[MaHoaDon].GiamGia;
                         }
                         else
                         {
@@ -489,11 +490,11 @@ namespace BanHang
             {
                 int MaHoaDon = tabControlSoHoaDon.ActiveTabIndex;
                 int STT = Convert.ToInt32(((ASPxButton)sender).CommandArgument);
-               // int a = DanhSachHoaDon[MaHoaDon].ListChiTietHoaDon.Count();
                 var itemToRemove =  DanhSachHoaDon[MaHoaDon].ListChiTietHoaDon.Single(r => r.STT == STT);
                 DanhSachHoaDon[MaHoaDon].SoLuongHang--;
                 DanhSachHoaDon[MaHoaDon].TongTien = DanhSachHoaDon[MaHoaDon].TongTien - itemToRemove.ThanhTien;
                 DanhSachHoaDon[MaHoaDon].KhachCanTra = DanhSachHoaDon[MaHoaDon].TongTien - DanhSachHoaDon[MaHoaDon].GiamGia;
+                DanhSachHoaDon[MaHoaDon].KhachThanhToan = DanhSachHoaDon[MaHoaDon].TongTien - DanhSachHoaDon[MaHoaDon].GiamGia;
                 DanhSachHoaDon[MaHoaDon].ListChiTietHoaDon.Remove(itemToRemove);
                 BindGridChiTietHoaDon();
             }
@@ -504,7 +505,6 @@ namespace BanHang
         }
         protected void UpdateSTT(int MaHoaDon)
         {
-            //int MaHoaDon = tabControlSoHoaDon.ActiveTabIndex;
             for (int i = 1; i <= DanhSachHoaDon[MaHoaDon].ListChiTietHoaDon.Count; i++)
             {
                 DanhSachHoaDon[MaHoaDon].ListChiTietHoaDon[i - 1].STT = i;
@@ -528,29 +528,37 @@ namespace BanHang
         protected void btnThanhToan_Click(object sender, EventArgs e)
         {
             int MaHoaDon = tabControlSoHoaDon.ActiveTabIndex;
-            float TienKhachThanhToan;
-            bool isNumeric = float.TryParse(txtKhachThanhToan.Text, out TienKhachThanhToan);
-            if (!isNumeric)
+            if (DanhSachHoaDon[MaHoaDon].ListChiTietHoaDon.Count > 0)
             {
-                HienThiThongBao("Nhập không đúng số tiền !!"); return;
+                float TienKhachThanhToan;
+                bool isNumeric = float.TryParse(txtKhachThanhToan.Text, out TienKhachThanhToan);
+                if (!isNumeric)
+                {
+                    HienThiThongBao("Nhập không đúng số tiền !!"); return;
+                }
+                if (TienKhachThanhToan < DanhSachHoaDon[MaHoaDon].KhachCanTra)
+                {
+                    HienThiThongBao("Thanh toán chưa đủ số tiền !!"); return;
+                }
+                DanhSachHoaDon[MaHoaDon].KhachThanhToan = TienKhachThanhToan;
+                dtBanHangLe dt = new dtBanHangLe();
+                string IDKho = Session["IDKho"].ToString();
+                string IDNhanVien = Session["IDThuNgan"].ToString();
+                string IDKhachHang = "1";
+                if (ccbKhachHang.Value != null)
+                    IDKhachHang = ccbKhachHang.Value.ToString();
+                object IDHoaDon = dt.InsertHoaDon(IDKho, IDNhanVien, IDKhachHang, DanhSachHoaDon[MaHoaDon]);
+                HuyHoaDon();
+                ccbKhachHang.Text = "";
+                string jsInHoaDon = "window.open(\"InHoaDonBanLe.aspx?IDHoaDon=" + IDHoaDon + "\", \"PrintingFrame\");";
+                ClientScript.RegisterStartupScript(this.GetType(), "Print", jsInHoaDon, true);
+                txtBarcode.Focus();
             }
-            if (TienKhachThanhToan < DanhSachHoaDon[MaHoaDon].KhachCanTra)
+            else
             {
-                HienThiThongBao("Thanh toán chưa đủ số tiền !!"); return;
+                HienThiThongBao("Danh sách hàng hóa trống !!!");
+                txtBarcode.Focus();
             }
-            DanhSachHoaDon[MaHoaDon].KhachThanhToan = TienKhachThanhToan;
-            dtBanHangLe dt = new dtBanHangLe();
-            string IDKho = Session["IDKho"].ToString();
-            string IDNhanVien = Session["IDThuNgan"].ToString();
-            string IDKhachHang = "1";
-            if (ccbKhachHang.Value != null)
-                IDKhachHang = ccbKhachHang.Value.ToString();
-            object IDHoaDon = dt.InsertHoaDon(IDKho, IDNhanVien, IDKhachHang, DanhSachHoaDon[MaHoaDon]);
-            HuyHoaDon();
-            ccbKhachHang.Text = "";
-            string jsInHoaDon = "window.open(\"InHoaDonBanLe.aspx?IDHoaDon=" + IDHoaDon + "\", \"PrintingFrame\");";
-            ClientScript.RegisterStartupScript(this.GetType(), "Print", jsInHoaDon, true);
-            txtBarcode.Focus();
         }
 
         protected void btnHuyKhachHang_Click(object sender, EventArgs e)
