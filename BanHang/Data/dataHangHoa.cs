@@ -43,7 +43,13 @@ namespace BanHang.Data
 
         public DataTable getDanhSachHangHoa_Ten_ID()
         {
-            string cmd = "SELECT ID,MaHang,TenHangHoa FROM GPM_HangHoa WHERE DaXoa = 0";
+            string cmd = "SELECT ID,MaHang,TenHangHoa FROM GPM_HangHoa WHERE DaXoa = 0 AND IDHangQuyDoi = 0";
+            return getData(cmd);
+        }
+
+        public DataTable getDanhSachHangHoa_Ten_ID2(string ID)
+        {
+            string cmd = "SELECT ID,MaHang,TenHangHoa FROM GPM_HangHoa WHERE DaXoa = 0 AND (IDHangQuyDoi = 0 OR IDHangQuyDoi = '" + ID + "')";
             return getData(cmd);
         }
 
@@ -335,6 +341,21 @@ namespace BanHang.Data
                 {
                     myConnection.Open();
                     string strSQL = "UPDATE GPM_HangHoa SET IDNhomHang = @IDNhomHang,MaHang = @MaHang, TenHangHoa = @TenHangHoa, IDDonViTinh = @IDDonViTinh, IDHangQuyDoi = @IDHangQuyDoi, HeSo = @HeSo, IDHangSanXuat = @IDHangSanXuat, IDThue = @IDThue, IDNhomDatHang = @IDNhomDatHang, GiaMuaTruocThue = @GiaMuaTruocThue, GiaBanTruocThue = @GiaBanTruocThue, GiaMuaSauThue = @GiaMuaSauThue, TrongLuong = @TrongLuong, HanSuDung = @HanSuDung, IDTrangThaiHang = @IDTrangThaiHang, GhiChu = @GhiChu, NgayCapNhat = getDATE() WHERE [ID] = @ID ";
+                    if (Int32.Parse(hh.IDHangQuyDoi) != 0)
+                        strSQL = strSQL + " UPDATE GPM_HangHoa SET IDHangQuyDoi = @ID WHERE ID = @IDHangQuyDoi";
+                    else
+                    {
+                        string cmdText = "SELECT IDHangQuyDoi FROM GPM_HangHoa WHERE ID = '" + ID + "'";
+                        using (SqlCommand command = new SqlCommand(cmdText, myConnection))
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            DataTable tb = new DataTable();
+                            tb.Load(reader);
+                            if (tb.Rows.Count != 0)
+                                strSQL = strSQL + " UPDATE GPM_HangHoa SET IDHangQuyDoi = 0 WHERE ID = '" + tb.Rows[0]["IDHangQuyDoi"].ToString() + "'";
+                        }
+                    }
+
                     using (SqlCommand myCommand = new SqlCommand(strSQL, myConnection))
                     {
                         myCommand.Parameters.AddWithValue("@ID", ID);
@@ -405,6 +426,33 @@ namespace BanHang.Data
                 {
                     myConnection.Open();
                     string strSQL = "UPDATE GPM_HangHoa SET IDNhomHang = @IDNhomHang,MaHang = @MaHang, TenHangHoa = @TenHangHoa, IDDonViTinh = @IDDonViTinh, IDHangQuyDoi = @IDHangQuyDoi, HeSo = @HeSo, IDHangSanXuat = @IDHangSanXuat, IDThue = @IDThue, IDNhomDatHang = @IDNhomDatHang, GiaMuaTruocThue = @GiaMuaTruocThue, GiaBanTruocThue = @GiaBanTruocThue, GiaMuaSauThue = @GiaMuaSauThue, TrongLuong = @TrongLuong, HanSuDung = @HanSuDung, IDTrangThaiHang = @IDTrangThaiHang, GhiChu = @GhiChu, NgayCapNhat = getDATE() WHERE [ID] = @ID ";
+                    if (Int32.Parse(hh.IDHangQuyDoi) != 0)
+                    {
+                        string cmdText = "SELECT IDHangQuyDoi FROM GPM_HangHoa WHERE ID = '" + ID + "'";
+                        using (SqlCommand command = new SqlCommand(cmdText, myConnection))
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            DataTable tb = new DataTable();
+                            tb.Load(reader);
+                            if (tb.Rows.Count != 0)
+                                strSQL = strSQL + " UPDATE GPM_HangHoa SET IDHangQuyDoi = 0 WHERE ID = '" + tb.Rows[0]["IDHangQuyDoi"].ToString() + "'";
+                        }
+
+                        strSQL = strSQL + " UPDATE GPM_HangHoa SET IDHangQuyDoi = @ID WHERE ID = @IDHangQuyDoi";
+                    }
+                    else
+                    {
+                        string cmdText = "SELECT IDHangQuyDoi FROM GPM_HangHoa WHERE ID = '" + ID + "'";
+                        using (SqlCommand command = new SqlCommand(cmdText, myConnection))
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            DataTable tb = new DataTable();
+                            tb.Load(reader);
+                            if (tb.Rows.Count != 0)
+                                strSQL = strSQL + " UPDATE GPM_HangHoa SET IDHangQuyDoi = 0 WHERE ID = '" + tb.Rows[0]["IDHangQuyDoi"].ToString() + "'";
+                        }
+                    } 
+
                     using (SqlCommand myCommand = new SqlCommand(strSQL, myConnection))
                     {
                         myCommand.Parameters.AddWithValue("@ID", ID);

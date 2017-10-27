@@ -23,14 +23,13 @@ namespace BanHang
                 if (!IsPostBack)
                 {
                     dataHangHoa dt = new dataHangHoa();
-                    DataTable da = dt.getDanhSachHangHoa_Ten_ID();
+                    DataTable da = dt.getDanhSachHangHoa_Ten_ID2(Request.QueryString["IDHangHoa"]);
                     da.Rows.Add(0, "000000", "Không quy đổi");
                     cmbHangQuyDoi.DataSource = da;
                     cmbHangQuyDoi.TextField = "TenHangHoa";
                     cmbHangQuyDoi.ValueField = "ID";
                     cmbHangQuyDoi.DataBind();
                     cmbHangQuyDoi.SelectedIndex = da.Rows.Count;
-
                     Load();
                 }
             }

@@ -49,12 +49,30 @@ namespace BanHang {
         protected global::System.Web.UI.WebControls.SqlDataSource sqlDonViTinh;
         
         /// <summary>
-        /// btnXacNhanChuyenKho control.
+        /// btnXacNhanKhoXuat control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxButton btnXacNhanChuyenKho;
+        protected global::DevExpress.Web.ASPxButton btnXacNhanKhoXuat;
+        
+        /// <summary>
+        /// btnXacNhanKhoNhan control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxButton btnXacNhanKhoNhan;
+        
+        /// <summary>
+        /// btnXacNhanKhoTong control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxButton btnXacNhanKhoTong;
     }
 }
