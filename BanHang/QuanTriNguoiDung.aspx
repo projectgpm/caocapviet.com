@@ -125,7 +125,7 @@
                 <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy">
                 </PropertiesDateEdit>
             </dx:GridViewDataDateColumn>
-            <dx:GridViewDataTextColumn Caption="Tên Đăng Nhập" FieldName="TenDangNhap" VisibleIndex="5">
+            <dx:GridViewDataTextColumn Caption="Tên Đăng Nhập" FieldName="TenDangNhap" VisibleIndex="6">
                 <PropertiesTextEdit>
                     <ValidationSettings SetFocusOnError="True">
                         <RequiredField IsRequired="True" />
@@ -139,7 +139,7 @@
                     </ValidationSettings>
                 </PropertiesComboBox>
             </dx:GridViewDataComboBoxColumn>
-             <dx:GridViewDataButtonEditColumn Caption="Phân quyền" VisibleIndex="4" Name="phanquyen">
+             <dx:GridViewDataButtonEditColumn Caption="Phân quyền" VisibleIndex="5" Name="phanquyen">
                 
                 <DataItemTemplate>
                     <a href="javascript:void(0);" onclick="OnMoreInfoClick(this, '<%# Container.KeyValue %>')">Xem </a>

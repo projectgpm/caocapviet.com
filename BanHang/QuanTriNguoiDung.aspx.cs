@@ -25,6 +25,7 @@ namespace BanHang
                     if (dtSetting.LayChucNang_ThemXoaSua(Session["IDNhom"].ToString()) == false)
                     {
                         gridQuanTriNguoiDung.Columns["chucnang"].Visible = false;
+                        gridQuanTriNguoiDung.Columns["phanquyen"].Visible = false;
                     }
                     LoadGrid(cmbHienThi.Value.ToString());
                 }

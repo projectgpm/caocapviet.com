@@ -238,7 +238,26 @@ namespace BanHang.Data
             }
         }
 
-
+        public static string LayTenThuMuc()
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT ThuMuc FROM [Setting]";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    if (tb.Rows.Count != 0)
+                    {
+                        DataRow dr = tb.Rows[0];
+                        return dr["ThuMuc"].ToString();
+                    }
+                    else return "";
+                }
+            }
+        }
         public static int LaySoNgayTraHang()
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
@@ -313,7 +332,8 @@ namespace BanHang.Data
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string Link = (HttpContext.Current.Request.Url.AbsolutePath).Replace("/","");
+                string TenThuMuc = LayTenThuMuc();
+                string Link = TenThuMuc + (HttpContext.Current.Request.Url.AbsolutePath).Replace("/", "");
                 string cmdText = "SELECT [GPM_PhanQuyen].TrangThai,[GPM_Menu].Link FROM [GPM_PhanQuyen],[GPM_Menu] WHERE [GPM_PhanQuyen].[IDNhomNguoiDung] = '" + IDNhomNguoiDung + "' AND [GPM_PhanQuyen].IDMenu = [GPM_Menu].ID AND  [GPM_Menu].Link = '" + Link + "'";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
