@@ -6,7 +6,11 @@
               popup.ShowAtElement();
               // alert(key);
           }
-
+          function OnMoreInfoClick2(element, key) {
+              popup.SetContentUrl("InDonDatHang.aspx?ID=" + key);
+              popup.ShowAtElement();
+              // alert(key);
+          }
     </script>
     <dx:ASPxFormLayout ID="ASPxFormLayout1" runat="server" ColCount="5" Width="100%">
         <Items>
@@ -202,7 +206,7 @@
              <dx:GridViewDataButtonEditColumn Caption="In Phiếu" VisibleIndex="14">
                 
                 <DataItemTemplate>
-                    <a href="javascript:void(0);" onclick="OnMoreInfoClick(this, '<%# Container.KeyValue %>')">In Phiếu </a>
+                    <a href="javascript:void(0);" onclick="OnMoreInfoClick2(this, '<%# Container.KeyValue %>')">In Phiếu </a>
 
                 </DataItemTemplate>
                  <HeaderStyle Wrap="True" />
@@ -263,13 +267,13 @@
          </SelectParameters>
      </asp:SqlDataSource>
     <dx:ASPxPopupControl ID="ASPxPopupControl1" runat="server" AllowDragging="True" AllowResize="True" 
-         PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter"  Width="1100px"
-         Height="600px" FooterText="Thông tin chi tiết hàng hóa combo"
+         PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter"  Width="1250px"
+         Height="720px" FooterText="Thông tin chi tiết hàng hóa combo"
         HeaderText="Thông tin chi tiết đơn hàng" ClientInstanceName="popup" EnableHierarchyRecreation="True" CloseAction="CloseButton">
     </dx:ASPxPopupControl>
     <dx:ASPxPopupControl ID="popup" runat="server" AllowDragging="True" AllowResize="True" 
-         PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter"  Width="1100px"
-         Height="600px" FooterText="Thông tin chi tiết hàng hóa combo"
+         PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter"  Width="1250px"
+         Height="720px" FooterText="Thông tin chi tiết hàng hóa combo"
         HeaderText="Thông tin chi tiết đơn hàng" ClientInstanceName="popup" EnableHierarchyRecreation="True" CloseAction="CloseButton">
     </dx:ASPxPopupControl>
 </asp:Content>
