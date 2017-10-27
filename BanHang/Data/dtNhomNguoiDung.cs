@@ -14,7 +14,7 @@ namespace BanHang.Data
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = " SELECT * FROM [GPM_NHOMNGUOIDUNG]";
+                string cmdText = " SELECT * FROM [GPM_NHOMNGUOIDUNG] WHERE DaXoa = 0";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
@@ -113,7 +113,7 @@ namespace BanHang.Data
                 {
                     dtHangHoa dt = new dtHangHoa();
                     myConnection.Open();
-                    string strSQL = "DELETE [GPM_NHOMNGUOIDUNG] WHERE [ID] = @ID";
+                    string strSQL = "UPDATE [GPM_NHOMNGUOIDUNG] SET DaXoa = 1 WHERE [ID] = @ID";
                     using (SqlCommand myCommand = new SqlCommand(strSQL, myConnection))
                     {
                         myCommand.Parameters.AddWithValue("@ID", ID);

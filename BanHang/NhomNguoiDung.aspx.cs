@@ -60,21 +60,19 @@ namespace BanHang
             data = new dtNhomNguoiDung();
             string TenNhom = e.NewValues["TenNhom"].ToString();
             object IDNhomNguoiDung = data.ThemNhomNguoiDung(TenNhom);
-            if (IDNhomNguoiDung != null)
-            {
-                DataTable db = data.DanhSachMenu();
-                foreach (DataRow dr in db.Rows)
-                {
-                    int IDMenu = Int32.Parse(dr["ID"].ToString());
-                    data = new dtNhomNguoiDung();
-                    data.ThemMenu_IDNhomNguoiDung(IDNhomNguoiDung, IDMenu);
-                }
-            }
+            //if (IDNhomNguoiDung != null)
+            //{
+            //    DataTable db = data.DanhSachMenu();
+            //    foreach (DataRow dr in db.Rows)
+            //    {
+            //        int IDMenu = Int32.Parse(dr["ID"].ToString());
+            //        data = new dtNhomNguoiDung();
+            //        data.ThemMenu_IDNhomNguoiDung(IDNhomNguoiDung, IDMenu);
+            //    }
+            //}
             e.Cancel = true;
             gridNhomNguoiDung.CancelEdit();
             LoadGrid();
-
-
             dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Quản trị nhóm người dùng:" + TenNhom, Session["IDKho"].ToString(), "Hệ Thống", "Thêm"); 
         }
 

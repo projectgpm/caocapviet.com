@@ -26,7 +26,7 @@ namespace BanHang
                     string IDNhomNguoiDung = Request.QueryString["IDNhomNguoiDung"];
                     if (IDNhomNguoiDung != null)
                     {
-                        LoadGrid(Int32.Parse(IDNhomNguoiDung.ToString()));
+                        LoadGrid(IDNhomNguoiDung.ToString());
                     }
                 //}
                 //else
@@ -36,7 +36,7 @@ namespace BanHang
             }
         }
 
-        private void LoadGrid(int IDNhomNguoiDung)
+        private void LoadGrid(string IDNhomNguoiDung)
         {
             data = new dtPhanQuyen();
             gridPhanQuyen.DataSource = data.LayDanhSachMenu(IDNhomNguoiDung);
@@ -52,8 +52,7 @@ namespace BanHang
             data.CapNhatQuyen(Int32.Parse(Request.QueryString["IDNhomNguoiDung"]), ID, TrangThai, ChucNang);
             e.Cancel = true;
             gridPhanQuyen.CancelEdit();
-            LoadGrid(Int32.Parse(Request.QueryString["IDNhomNguoiDung"]));
-
+            LoadGrid(Request.QueryString["IDNhomNguoiDung"]);
             dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Phân Quyền:" + ID, Session["IDKho"].ToString(), "Hệ Thống", "Cập Nhật"); 
         }
 
@@ -64,5 +63,39 @@ namespace BanHang
             if (TrangThai == "")
                 e.Row.BackColor = color;
         }
+        protected void gridPhanQuyen_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
+        {
+            string IDNhomNguoiDung = Request.QueryString["IDNhomNguoiDung"];
+            string TrangThai = e.NewValues["TrangThai"] == null ? "0" : e.NewValues["TrangThai"].ToString();
+            string ChucNang = e.NewValues["ChucNang"] == null ? "0" : e.NewValues["ChucNang"].ToString();
+            string IDMenu = e.NewValues["IDMenu"].ToString();
+            data = new dtPhanQuyen();
+            if (dtPhanQuyen.KiemTraTonTai(IDNhomNguoiDung, IDMenu) == false)
+            {
+                data.ThemQuyen(IDNhomNguoiDung, IDMenu, TrangThai, ChucNang);
+                e.Cancel = true;
+                gridPhanQuyen.CancelEdit();
+                LoadGrid(IDNhomNguoiDung);
+                dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Phân Quyền ", Session["IDKho"].ToString(), "Hệ Thống", "Thêm quyền truy cập");
+            }
+            else
+            {
+                throw new Exception("Lỗi: Quyền này đã tồn tại !!!");
+            }
+        }
+
+        protected void gridPhanQuyen_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
+        {
+            string IDNhomNguoiDung = Request.QueryString["IDNhomNguoiDung"];
+            string ID = e.Keys[0].ToString();
+            data = new dtPhanQuyen();
+            data.XoaQuyen(ID);
+            e.Cancel = true;
+            gridPhanQuyen.CancelEdit();
+            LoadGrid(IDNhomNguoiDung);
+            dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Phân Quyền ", Session["IDKho"].ToString(), "Hệ Thống", "Xóa quyền truy cập");
+        }
+
+       
     }
 }

@@ -99,7 +99,7 @@
         </Styles>
     </dx:ASPxGridView>
     <dx:ASPxPopupControl ID="popup" runat="server" AllowDragging="True" AllowResize="True" 
-         PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter"  Width="600px"
+         PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter"  Width="1100px"
          Height="600px" FooterText="Thông tin chi tiết đơn đặt hàng"
         HeaderText="Phân quyền nhóm người dùng" ClientInstanceName="popup" EnableHierarchyRecreation="True" CloseAction="CloseButton">
     </dx:ASPxPopupControl>

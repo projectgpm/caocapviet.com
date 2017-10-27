@@ -53,7 +53,7 @@ namespace BanHang.Data
                 try
                 {
                     myConnection.Open();
-                    string strSQL = "UPDATE [GPM_IDND_IDKHO] SET [DAXOA] = 1 WHERE [ID] = @ID";
+                    string strSQL = "DELETE [GPM_IDND_IDKHO] WHERE [ID] = @ID";
                     using (SqlCommand myCommand = new SqlCommand(strSQL, myConnection))
                     {
                         myCommand.Parameters.AddWithValue("@ID", ID);
