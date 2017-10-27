@@ -61,7 +61,7 @@
             </Items>
         </EditFormLayoutProperties>
         <Columns>
-            <dx:GridViewCommandColumn ShowDeleteButton="True" ShowNewButtonInHeader="True" VisibleIndex="3">
+            <dx:GridViewCommandColumn ShowDeleteButton="True" ShowNewButtonInHeader="True" VisibleIndex="3" Name="chucnang">
             </dx:GridViewCommandColumn>
             <dx:GridViewDataComboBoxColumn Caption="Người Dùng" FieldName="IDNhanVien" VisibleIndex="0">
                 <PropertiesComboBox DataSourceID="SqlNhanVien" TextField="TenNguoiDung" ValueField="ID">

@@ -20,7 +20,15 @@ namespace BanHang
             }
             else
             {
-                Loadgrid(cmbHienThi.Value.ToString());
+                if (dtSetting.LayChucNang_HienThi(Session["IDNhom"].ToString()) == true)
+                {
+                    Loadgrid(cmbHienThi.Value.ToString());
+                    if (dtSetting.LayChucNang_ThemXoaSua(Session["IDNhom"].ToString()) == false)
+                        btnThemThayDoiGia.Enabled = false;
+                }
+                else
+                    Response.Redirect("Default.aspx");
+               
             }
         }
 

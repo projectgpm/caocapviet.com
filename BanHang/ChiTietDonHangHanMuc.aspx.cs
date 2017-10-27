@@ -18,15 +18,24 @@ namespace BanHang
         {
             if (Session["KTDangNhap"] == "GPM")
             {
-                string IDDonHangChiNhanh = Request.QueryString["IDDonHangChiNhanh"];
-                if (IDDonHangChiNhanh != null)
+                if (dtSetting.LayChucNangCha(Session["IDNhom"].ToString(), 100) == false)
                 {
-                    if (Session["IDNhom"].ToString() != "4")
+                    Response.Redirect("Default.aspx");
+                }
+                else
+                {
+                    if (dtSetting.LayChucNangCha(Session["IDNhom"].ToString(), 100) == false)
+                        btnDuyetDonHang.Enabled = false;
+                    string IDDonHangChiNhanh = Request.QueryString["IDDonHangChiNhanh"];
+                    if (IDDonHangChiNhanh != null)
                     {
-                        gridChiTiet.Columns["chucnang"].Visible = false;
-                        btnThemMoi.Enabled = false;
+                        if (Session["IDNhom"].ToString() != "4")
+                        {
+                            gridChiTiet.Columns["chucnang"].Visible = false;
+                            btnThemMoi.Enabled = false;
+                        }
+                        LoadGrid(IDDonHangChiNhanh.ToString());
                     }
-                    LoadGrid(IDDonHangChiNhanh.ToString());
                 }
             }
             else

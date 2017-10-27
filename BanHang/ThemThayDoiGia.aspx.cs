@@ -21,11 +21,10 @@ namespace BanHang
             }
             else
             {
-                if (dtSetting.LayChucNangCha(Session["IDNhom"].ToString(), 61) == false)
+                if (dtSetting.LayChucNangCha(Session["IDNhom"].ToString(), 99) == false)
                     Response.Redirect("Default.aspx");
                 if (!IsPostBack)
                 {
-                    //Random ran = new Random();
                     ID_temp.Value = Session["IDNhanVien"].ToString();
                     DanhSachVung();
                 }

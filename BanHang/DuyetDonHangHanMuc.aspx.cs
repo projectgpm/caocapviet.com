@@ -20,15 +20,21 @@ namespace BanHang
             }
             else
             {
-                if (!IsPostBack)
+                if (dtSetting.LayChucNang_HienThi(Session["IDNhom"].ToString()) == true)
                 {
-                    dateTuNgay.Date = DateTime.Today.AddDays(-30);
-                    dateDenNgay.Date = DateTime.Today;
+                    if (!IsPostBack)
+                    {
+                        dateTuNgay.Date = DateTime.Today.AddDays(-30);
+                        dateDenNgay.Date = DateTime.Today;
+                    }
+                    if (dateTuNgay.Text != "" || dateDenNgay.Text != "")
+                    {
+                        LoadGrid(cmbHienThi.Value.ToString());
+                    }
                 }
-                if (dateTuNgay.Text != "" || dateDenNgay.Text != "")
-                {
-                    LoadGrid(cmbHienThi.Value.ToString());
-                }
+                else
+                    Response.Redirect("Default.aspx");
+               
             }
         }
 

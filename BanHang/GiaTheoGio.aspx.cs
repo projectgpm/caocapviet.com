@@ -19,9 +19,14 @@ namespace BanHang
             }
             else
             {
-                if (dtSetting.LayChucNangCha(Session["IDNhom"].ToString(), 61) == false)
+                if (dtSetting.LayChucNang_HienThi(Session["IDNhom"].ToString()) == true)
+                {
+                    Loadgrid();
+                    if (dtSetting.LayChucNang_ThemXoaSua(Session["IDNhom"].ToString()) == false)
+                        btnThayDoiGia.Enabled = false;
+                }
+                else
                     Response.Redirect("Default.aspx");
-                Loadgrid();
             }
         }
 

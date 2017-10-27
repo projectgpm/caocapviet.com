@@ -5,7 +5,7 @@
             <dx:LayoutItem Caption="">
                 <LayoutItemNestedControlCollection>
                     <dx:LayoutItemNestedControlContainer runat="server">
-                        <dx:ASPxButton ID="ASPxFormLayout1_E2" runat="server" PostBackUrl="ThemThayDoiGia.aspx" Text="Thêm Thay Đổi Giá">
+                        <dx:ASPxButton ID="btnThayDoiGia" runat="server" PostBackUrl="ThemThayDoiGia.aspx" Text="Thêm Thay Đổi Giá">
                             <Image IconID="actions_add_32x32">
                             </Image>
                         </dx:ASPxButton>

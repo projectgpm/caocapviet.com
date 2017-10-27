@@ -21,7 +21,7 @@ namespace BanHang
             }
             else
             {
-                if (dtSetting.LayChucNangCha(Session["IDNhom"].ToString(), 61) == false)
+                if (dtSetting.LayChucNangCha(Session["IDNhom"].ToString(), 98) == false)
                     Response.Redirect("Default.aspx");
                 if (!IsPostBack)
                 {
