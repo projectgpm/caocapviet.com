@@ -34,7 +34,7 @@ namespace BanHang
         private void LoadGrid(string HienThi)
         {
             data = new dtKhoHang();
-            gridTonKhoBanDau.DataSource = data.LayDanhSachHangTrongKho(Session["IDKho"].ToString(), HienThi);
+            gridTonKhoBanDau.DataSource = data.LayDanhSachHangTrongKho(Session["IDKho"].ToString(), HienThi, Session["IDNhanVien"].ToString());
             gridTonKhoBanDau.DataBind();
         }
 
