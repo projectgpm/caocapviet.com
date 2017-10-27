@@ -29,10 +29,10 @@ namespace BanHang
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["KTBanLe"] == "GPMBanLe")
-            {
-                if (dtSetting.LayChucNang_HienThi(Session["IDNhom"].ToString()) == true)
-                {
+            //if (Session["KTBanLe"] == "GPMBanLe")
+            //{
+            //    if (dtSetting.LayChucNang_HienThi(Session["IDNhom"].ToString()) == true)
+            //    {
                     if (!IsPostBack)
                     {
                         DanhSachHoaDon = new List<HoaDon>();
@@ -44,16 +44,16 @@ namespace BanHang
                     XuLyThayDoiGiaTheoGio();
                     XuLyDonHangChiNhanh();
                     HuyDonHangThuMua();
-                }
-                else
-                {
-                    Response.Redirect("DangNhap.aspx");
-                }
-            }
-            else
-            {
-                Response.Redirect("DangNhap.aspx");
-            }
+            //    }
+            //    else
+            //    {
+            //        Response.Redirect("DangNhap.aspx");
+            //    }
+            //}
+            //else
+            //{
+            //    Response.Redirect("DangNhap.aspx");
+            //}
         }
 
         //-Cập nhật đơn hàng tự động------------------------
