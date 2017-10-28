@@ -333,7 +333,8 @@ namespace BanHang.Data
             {
                 con.Open();
                 string TenThuMuc = LayTenThuMuc();
-                string Link = TenThuMuc + (HttpContext.Current.Request.Url.AbsolutePath).Replace("/", "");
+                string Link = (HttpContext.Current.Request.Url.AbsolutePath).Replace("/", "").Replace(TenThuMuc, "");
+                //string Link = (HttpContext.Current.Request.Url.AbsolutePath).Replace("/", "");
                 string cmdText = "SELECT [GPM_PhanQuyen].TrangThai,[GPM_Menu].Link FROM [GPM_PhanQuyen],[GPM_Menu] WHERE [GPM_PhanQuyen].[IDNhomNguoiDung] = '" + IDNhomNguoiDung + "' AND [GPM_PhanQuyen].IDMenu = [GPM_Menu].ID AND  [GPM_Menu].Link = '" + Link + "'";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
