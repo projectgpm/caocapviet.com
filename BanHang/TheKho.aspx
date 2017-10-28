@@ -86,8 +86,8 @@
         <SettingsItems HorizontalAlign="Center" />
     </dx:ASPxFormLayout>
     <dx:ASPxPopupControl ID="popup" runat="server" AllowDragging="True" AllowResize="True" 
-         PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter"  Width="1000px"
-         Height="550px" FooterText="Thông tin hàng hóa"
+         PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter"  Width="1250px"
+         Height="720px" FooterText="Thông tin hàng hóa"
         HeaderText="Thông tin chi tiết" ClientInstanceName="popup" EnableHierarchyRecreation="True">
     </dx:ASPxPopupControl>
 </asp:Content>

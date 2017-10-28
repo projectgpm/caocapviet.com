@@ -80,12 +80,12 @@ namespace BanHang.Data
             }
         }
 
-        public DataTable LayDanhSachKhachHang_BaoCao(string IDKho)
+        public DataTable LayDanhSachKhachHang_BaoCao(string s)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "SELECT ID,TenKhachHang FROM [GPM_KHACHHANG] WHERE [GPM_KHACHHANG].DaXoa = 0  AND ('" + IDKho + "' = 1 OR IDKho = '" + IDKho + "') ORDER BY [ID] DESC";
+                string cmdText = "SELECT ID,TenKhachHang FROM [GPM_KHACHHANG] WHERE [GPM_KHACHHANG].DaXoa = 0 " + s;
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {

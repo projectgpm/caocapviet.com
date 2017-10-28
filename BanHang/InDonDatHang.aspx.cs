@@ -16,28 +16,28 @@ namespace BanHang
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //string ID = Request.QueryString["ID"];
-            //rpDonDatHang rp = new rpDonDatHang();
-            //rp.Parameters["ID"].Value = ID;
-            //rp.Parameters["ID"].Visible = false;
+            string ID = Request.QueryString["ID"];
+            rpDonDatHang rp = new rpDonDatHang();
+            rp.Parameters["ID"].Value = ID;
+            rp.Parameters["ID"].Visible = false;
 
-            //viewerReport.Report = rp;
+            viewerReport.Report = rp;
 
-            using (MemoryStream ms = new MemoryStream())
-            {
-                rpDonDatHang r = new rpDonDatHang();
-                r.Parameters["ID"].Value = Request.QueryString["ID"];
-                r.CreateDocument();
-                PdfExportOptions opts = new PdfExportOptions();
-                opts.ShowPrintDialogOnOpen = true;
-                r.ExportToPdf(ms, opts);
-                ms.Seek(0, SeekOrigin.Begin);
-                byte[] report = ms.ToArray();
-                Page.Response.ContentType = "application/pdf";
-                Page.Response.Clear();
-                Page.Response.OutputStream.Write(report, 0, report.Length);
-                Page.Response.End();
-            } 
+            //using (MemoryStream ms = new MemoryStream())
+            //{
+            //    rpDonDatHang r = new rpDonDatHang();
+            //    r.Parameters["ID"].Value = Request.QueryString["ID"];
+            //    r.CreateDocument();
+            //    PdfExportOptions opts = new PdfExportOptions();
+            //    opts.ShowPrintDialogOnOpen = true;
+            //    r.ExportToPdf(ms, opts);
+            //    ms.Seek(0, SeekOrigin.Begin);
+            //    byte[] report = ms.ToArray();
+            //    Page.Response.ContentType = "application/pdf";
+            //    Page.Response.Clear();
+            //    Page.Response.OutputStream.Write(report, 0, report.Length);
+            //    Page.Response.End();
+            //} 
         }
     }
 }

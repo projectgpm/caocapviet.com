@@ -106,6 +106,24 @@ namespace BanHang.Data
             }
         }
 
+        public int ktXacNhan(string IDNhanVien, string IDKho)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT IDKho FROM GPM_IDND_IDKHO WHERE IDNhanVien = '" + IDNhanVien + "' AND IDKho = '" + IDKho + "'";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    if (tb.Rows.Count != 0)
+                        return 1;
+                    return 0;
+                }
+            }
+        }
+
         public string TongSoHDCuaKhoNhan(string NgayBD, string NgayKT, string IDKhoXuat, string IDKhoNhan)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))

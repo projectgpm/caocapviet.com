@@ -36,8 +36,8 @@ namespace BanHang
                             IDNhanVien = Session["IDNhanVien"].ToString();
 
                         dtKho dt = new dtKho();
-                        DataTable da = dt.LayDanhSachKho();
-                        da.Rows.Add(-1, "", "Tất cả cửa hàng", null, null, null, null, null, null, null, null, null);
+                        DataTable da = dt.LayDanhSachKho_TheoNV(IDNhanVien);
+                        da.Rows.Add(-1, "Tất cả cửa hàng");
 
                         cmbKho.DataSource = da;
                         cmbKho.TextField = "TenCuaHang";
@@ -45,9 +45,23 @@ namespace BanHang
                         cmbKho.DataBind();
                         cmbKho.SelectedIndex = da.Rows.Count;
 
-                        string IDKho = Session["IDKho"].ToString();
+                        string s = "";
+                        if (Int32.Parse(Session["IDKho"].ToString()) != 1)
+                        {
+                            if (da.Rows.Count != 0)
+                            {
+                                s = s + " AND (IDKho = " + da.Rows[0]["ID"].ToString();
+                                for (int i = 1; i < da.Rows.Count; i++)
+                                {
+                                    DataRow dr = da.Rows[i];
+                                    s = s + " OR IDKho = " + dr["ID"].ToString();
+                                }
+                                s = s + ")";
+                            }
+                        }
+
                         dtKhachHang dt1 = new dtKhachHang();
-                        DataTable da1 = dt1.LayDanhSachKhachHang_BaoCao(IDKho);
+                        DataTable da1 = dt1.LayDanhSachKhachHang_BaoCao(s);
                         da1.Rows.Add(-1, "Tất cả khách hàng");
 
                         cmbKhachHang.DataSource = da1;

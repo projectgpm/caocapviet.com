@@ -35,8 +35,8 @@ namespace BanHang
                             IDNhanVien = Session["IDNhanVien"].ToString();
 
                         dtKho dt = new dtKho();
-                        DataTable da = dt.LayDanhSachKho();
-                        da.Rows.Add(-1, "", "Tất cả cửa hàng", null, null, null, null, null, null, null, null, null);
+                        DataTable da = dt.LayDanhSachKho_TheoNV(IDNhanVien);
+                        da.Rows.Add(-1, "Tất cả cửa hàng");
 
                         cmbKho.DataSource = da;
                         cmbKho.TextField = "TenCuaHang";
