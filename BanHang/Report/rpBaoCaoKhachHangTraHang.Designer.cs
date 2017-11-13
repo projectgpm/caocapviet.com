@@ -365,7 +365,7 @@
             this.xrTableCell18.Dpi = 100F;
             this.xrTableCell18.Name = "xrTableCell18";
             this.xrTableCell18.StylePriority.UseBorders = false;
-            xrSummary4.FormatString = "{0:#,# VND}";
+            xrSummary4.FormatString = "{0:#,# VNĐ}";
             xrSummary4.Running = DevExpress.XtraReports.UI.SummaryRunning.Report;
             this.xrTableCell18.Summary = xrSummary4;
             this.xrTableCell18.Weight = 1.5196081881019001D;

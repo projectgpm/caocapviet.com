@@ -721,7 +721,7 @@
             this.xrTableCell32.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell32.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Tong", "{0:#,# VND}")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Tong", "{0:#,# VNĐ}")});
             this.xrTableCell32.Dpi = 100F;
             this.xrTableCell32.Name = "xrTableCell32";
             this.xrTableCell32.StylePriority.UseBorders = false;
@@ -769,7 +769,7 @@
             this.xrTableCell26.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell26.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Thue.TongThue", "{0:#,# VND}")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Thue.TongThue", "{0:#,# VNĐ}")});
             this.xrTableCell26.Dpi = 100F;
             this.xrTableCell26.Name = "xrTableCell26";
             this.xrTableCell26.StylePriority.UseBorders = false;
@@ -814,7 +814,7 @@
             this.xrTableCell24.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell24.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "GPM_ThuMua_DonHang.TongTienSauChietKhau", "{0:#,# VND}")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "GPM_ThuMua_DonHang.TongTienSauChietKhau", "{0:#,# VNĐ}")});
             this.xrTableCell24.Dpi = 100F;
             this.xrTableCell24.Name = "xrTableCell24";
             this.xrTableCell24.StylePriority.UseBorders = false;
@@ -904,7 +904,7 @@
             this.xrTableCell20.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell20.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "GPM_ThuMua_DonHang.TongTienChietKhau", "{0:#,# VND}")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "GPM_ThuMua_DonHang.TongTienChietKhau", "{0:#,# VNĐ}")});
             this.xrTableCell20.Dpi = 100F;
             this.xrTableCell20.Name = "xrTableCell20";
             this.xrTableCell20.StylePriority.UseBorders = false;
@@ -949,7 +949,7 @@
             this.xrTableCell18.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell18.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "GPM_ThuMua_DonHang.TongTien", "{0:#,# VND}")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "GPM_ThuMua_DonHang.TongTien", "{0:#,# VNĐ}")});
             this.xrTableCell18.Dpi = 100F;
             this.xrTableCell18.Name = "xrTableCell18";
             this.xrTableCell18.StylePriority.UseBorders = false;

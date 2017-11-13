@@ -158,6 +158,7 @@
     <Content Include="DanhSachPhieuDatHang.aspx" />
     <Content Include="DanhSachPhieuXuatKhac.aspx" />
     <Content Include="DanhSachPhieuXuatTra.aspx" />
+    <Content Include="DanhSachThayDoiGiaTheoVung.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="DonDatHangChiNhanh.aspx" />
     <Content Include="DonDoiHang.aspx" />
@@ -236,6 +237,7 @@
     <Content Include="obj\Debug\banhang.dll.licenses" />
     <Content Include="obj\Debug\BanHang.pdb" />
     <Content Include="PhanQuyen.aspx" />
+    <Content Include="PhanQuyenVaoChiNhanh.aspx" />
     <Content Include="PhieuChuyenKho.aspx" />
     <Content Include="PhieuKhachHangTraHang.aspx" />
     <Content Include="PhieuNhapHang.aspx" />
@@ -697,6 +699,13 @@
     <Compile Include="DanhSachPhieuXuatTra.aspx.designer.cs">
       <DependentUpon>DanhSachPhieuXuatTra.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DanhSachThayDoiGiaTheoVung.aspx.cs">
+      <DependentUpon>DanhSachThayDoiGiaTheoVung.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DanhSachThayDoiGiaTheoVung.aspx.designer.cs">
+      <DependentUpon>DanhSachThayDoiGiaTheoVung.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Data\dataHangHoa.cs" />
     <Compile Include="Data\dataHangSanXuat.cs" />
     <Compile Include="Data\dataNganhHang.cs" />
@@ -737,6 +746,7 @@
     <Compile Include="Data\dtNhomKhachHang.cs" />
     <Compile Include="Data\dtNhomNguoiDung.cs" />
     <Compile Include="Data\dtPhanQuyen.cs" />
+    <Compile Include="Data\dtPhanQuyenNguoiDung.cs" />
     <Compile Include="Data\dtPhieuChuyenKho.cs" />
     <Compile Include="Data\dtPhieuKhachHangTraHang.cs" />
     <Compile Include="Data\dtPhieuXuatKhac.cs" />
@@ -1084,6 +1094,7 @@
     <Compile Include="NhomNguoiDung.aspx.designer.cs">
       <DependentUpon>NhomNguoiDung.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Object\HangQuyDoi.cs" />
     <Compile Include="Object\O_HangHoa.cs" />
     <Compile Include="PhanQuyen.aspx.cs">
       <DependentUpon>PhanQuyen.aspx</DependentUpon>
@@ -1091,6 +1102,13 @@
     </Compile>
     <Compile Include="PhanQuyen.aspx.designer.cs">
       <DependentUpon>PhanQuyen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PhanQuyenVaoChiNhanh.aspx.cs">
+      <DependentUpon>PhanQuyenVaoChiNhanh.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PhanQuyenVaoChiNhanh.aspx.designer.cs">
+      <DependentUpon>PhanQuyenVaoChiNhanh.aspx</DependentUpon>
     </Compile>
     <Compile Include="PhieuChuyenKho.aspx.cs">
       <DependentUpon>PhieuChuyenKho.aspx</DependentUpon>
@@ -1396,6 +1414,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ChuyenKho\14092017_015305_PM_13092017_035028_PM_DanhSachNhaCungCap.xls" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\ccv.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

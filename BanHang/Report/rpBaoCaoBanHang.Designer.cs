@@ -396,7 +396,7 @@
             this.xrTableCell24.Dpi = 100F;
             this.xrTableCell24.Name = "xrTableCell24";
             this.xrTableCell24.StylePriority.UseBorders = false;
-            xrSummary4.FormatString = "{0:#,# VND}";
+            xrSummary4.FormatString = "{0:#,# VNĐ}";
             xrSummary4.Running = DevExpress.XtraReports.UI.SummaryRunning.Report;
             this.xrTableCell24.Summary = xrSummary4;
             this.xrTableCell24.Weight = 1.4544115093775281D;
@@ -410,7 +410,7 @@
             this.xrTableCell25.Dpi = 100F;
             this.xrTableCell25.Name = "xrTableCell25";
             this.xrTableCell25.StylePriority.UseBorders = false;
-            xrSummary5.FormatString = "{0:#,# VND}";
+            xrSummary5.FormatString = "{0:#,# VNĐ}";
             xrSummary5.Running = DevExpress.XtraReports.UI.SummaryRunning.Report;
             this.xrTableCell25.Summary = xrSummary5;
             this.xrTableCell25.Weight = 0.912706467085268D;

@@ -89,6 +89,7 @@
             this.xrLabel8 = new DevExpress.XtraReports.UI.XRLabel();
             this.IDKho = new DevExpress.XtraReports.Parameters.Parameter();
             this.TienThua = new DevExpress.XtraReports.UI.CalculatedField();
+            this.xrLabel24 = new DevExpress.XtraReports.UI.XRLabel();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
@@ -567,6 +568,7 @@
             // GroupFooter1
             // 
             this.GroupFooter1.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrLabel24,
             this.xrLabel23,
             this.xrLine2,
             this.xrLabel14,
@@ -576,14 +578,14 @@
             this.xrLabel10,
             this.xrLabel8});
             this.GroupFooter1.Dpi = 254F;
-            this.GroupFooter1.HeightF = 207.0228F;
+            this.GroupFooter1.HeightF = 277.5783F;
             this.GroupFooter1.Name = "GroupFooter1";
             // 
             // xrLabel23
             // 
             this.xrLabel23.Dpi = 254F;
             this.xrLabel23.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold);
-            this.xrLabel23.LocationFloat = new DevExpress.Utils.PointFloat(6.999995F, 156.0073F);
+            this.xrLabel23.LocationFloat = new DevExpress.Utils.PointFloat(7.000003F, 191.2736F);
             this.xrLabel23.Name = "xrLabel23";
             this.xrLabel23.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
             this.xrLabel23.SizeF = new System.Drawing.SizeF(453F, 41.57919F);
@@ -643,7 +645,7 @@
             // xrLabel9
             // 
             this.xrLabel9.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "GPM_HoaDon.TienThua", "{0:#,# đồng}")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "GPM_HoaDon.TienThua", "{0:#,# VNĐ}")});
             this.xrLabel9.Dpi = 254F;
             this.xrLabel9.Font = new System.Drawing.Font("Tahoma", 9F);
             this.xrLabel9.LocationFloat = new DevExpress.Utils.PointFloat(184.451F, 102F);
@@ -657,7 +659,7 @@
             // xrLabel10
             // 
             this.xrLabel10.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "GPM_HoaDon.Khách thanh toán", "{0:#,# đồng}")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "GPM_HoaDon.Khách thanh toán", "{0:#,# VNĐ}")});
             this.xrLabel10.Dpi = 254F;
             this.xrLabel10.Font = new System.Drawing.Font("Tahoma", 9F);
             this.xrLabel10.LocationFloat = new DevExpress.Utils.PointFloat(184.451F, 62.00003F);
@@ -671,7 +673,7 @@
             // xrLabel8
             // 
             this.xrLabel8.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "GPM_HoaDon.Khách cần trả", "{0:#,# đồng}")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "GPM_HoaDon.Khách cần trả", "{0:#,# VNĐ}")});
             this.xrLabel8.Dpi = 254F;
             this.xrLabel8.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
             this.xrLabel8.LocationFloat = new DevExpress.Utils.PointFloat(152.4805F, 19.00004F);
@@ -694,6 +696,19 @@
             this.TienThua.DataMember = "GPM_HoaDon";
             this.TienThua.Expression = "[Khách thanh toán] - [Khách cần trả]";
             this.TienThua.Name = "TienThua";
+            // 
+            // xrLabel24
+            // 
+            this.xrLabel24.Dpi = 254F;
+            this.xrLabel24.Font = new System.Drawing.Font("Times New Roman", 6F);
+            this.xrLabel24.LocationFloat = new DevExpress.Utils.PointFloat(7.000003F, 160.2778F);
+            this.xrLabel24.Name = "xrLabel24";
+            this.xrLabel24.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
+            this.xrLabel24.SizeF = new System.Drawing.SizeF(453F, 30.99586F);
+            this.xrLabel24.StylePriority.UseFont = false;
+            this.xrLabel24.StylePriority.UseTextAlignment = false;
+            this.xrLabel24.Text = "Giá đã bao gồm VAT";
+            this.xrLabel24.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
             // 
             // rpHoaDonBanHangLe
             // 
@@ -784,5 +799,6 @@
         private DevExpress.XtraReports.UI.XRLabel xrLabel23;
         private DevExpress.XtraReports.UI.XRLabel xrLabel25;
         private DevExpress.XtraReports.UI.XRBarCode BarcodeHoaDon;
+        private DevExpress.XtraReports.UI.XRLabel xrLabel24;
     }
 }

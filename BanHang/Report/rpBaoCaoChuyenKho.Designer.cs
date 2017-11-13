@@ -88,6 +88,8 @@
             this.xrTableCell20 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell21 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell22 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableCell23 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableCell24 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell25 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell26 = new DevExpress.XtraReports.UI.XRTableCell();
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
@@ -156,8 +158,6 @@
             this.xrTableCell60 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell61 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell62 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell23 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell24 = new DevExpress.XtraReports.UI.XRTableCell();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable4)).BeginInit();
@@ -296,6 +296,22 @@
             this.xrTableCell22.Name = "xrTableCell22";
             this.xrTableCell22.StylePriority.UseBorders = false;
             this.xrTableCell22.Weight = 0.78288443979940814D;
+            // 
+            // xrTableCell23
+            // 
+            this.xrTableCell23.Borders = DevExpress.XtraPrinting.BorderSide.Bottom;
+            this.xrTableCell23.Dpi = 254F;
+            this.xrTableCell23.Name = "xrTableCell23";
+            this.xrTableCell23.StylePriority.UseBorders = false;
+            this.xrTableCell23.Weight = 1.1510525645040064D;
+            // 
+            // xrTableCell24
+            // 
+            this.xrTableCell24.Borders = DevExpress.XtraPrinting.BorderSide.Bottom;
+            this.xrTableCell24.Dpi = 254F;
+            this.xrTableCell24.Name = "xrTableCell24";
+            this.xrTableCell24.StylePriority.UseBorders = false;
+            this.xrTableCell24.Weight = 0.63550471328491076D;
             // 
             // xrTableCell25
             // 
@@ -754,7 +770,7 @@
             this.xrTableCell44.Dpi = 254F;
             this.xrTableCell44.Name = "xrTableCell44";
             this.xrTableCell44.StylePriority.UseBorders = false;
-            xrSummary4.FormatString = "{0:#,# VND}";
+            xrSummary4.FormatString = "{0:#,# VNĐ}";
             xrSummary4.Running = DevExpress.XtraReports.UI.SummaryRunning.Report;
             this.xrTableCell44.Summary = xrSummary4;
             this.xrTableCell44.Weight = 1.0932034416573631D;
@@ -781,7 +797,7 @@
             this.xrTableCell46.Dpi = 254F;
             this.xrTableCell46.Name = "xrTableCell46";
             this.xrTableCell46.StylePriority.UseBorders = false;
-            xrSummary6.FormatString = "{0:#,# VND}";
+            xrSummary6.FormatString = "{0:#,# VNĐ}";
             xrSummary6.Running = DevExpress.XtraReports.UI.SummaryRunning.Report;
             this.xrTableCell46.Summary = xrSummary6;
             this.xrTableCell46.Weight = 1.1494575332186188D;
@@ -1127,22 +1143,6 @@
             this.xrTableCell62.StylePriority.UseBorders = false;
             this.xrTableCell62.Text = "Ghi chú";
             this.xrTableCell62.Weight = 1.088608138456209D;
-            // 
-            // xrTableCell23
-            // 
-            this.xrTableCell23.Borders = DevExpress.XtraPrinting.BorderSide.Bottom;
-            this.xrTableCell23.Dpi = 254F;
-            this.xrTableCell23.Name = "xrTableCell23";
-            this.xrTableCell23.StylePriority.UseBorders = false;
-            this.xrTableCell23.Weight = 1.1510525645040064D;
-            // 
-            // xrTableCell24
-            // 
-            this.xrTableCell24.Borders = DevExpress.XtraPrinting.BorderSide.Bottom;
-            this.xrTableCell24.Dpi = 254F;
-            this.xrTableCell24.Name = "xrTableCell24";
-            this.xrTableCell24.StylePriority.UseBorders = false;
-            this.xrTableCell24.Weight = 0.63550471328491076D;
             // 
             // rpBaoCaoChuyenKho
             // 
