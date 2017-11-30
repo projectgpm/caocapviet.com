@@ -357,7 +357,9 @@ namespace BanHang.Data
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string Link = (HttpContext.Current.Request.Url.AbsolutePath).Replace("/", "");
+                string TenThuMuc = LayTenThuMuc();
+                string Link = (HttpContext.Current.Request.Url.AbsolutePath).Replace("/", "").Replace(TenThuMuc, "");
+                //string Link = (HttpContext.Current.Request.Url.AbsolutePath).Replace("/", "");
                 string cmdText = "SELECT [GPM_PhanQuyen].ChucNang,[GPM_Menu].Link FROM [GPM_PhanQuyen],[GPM_Menu] WHERE [GPM_PhanQuyen].[IDNhomNguoiDung] = '" + IDNhomNguoiDung + "' AND [GPM_PhanQuyen].IDMenu = [GPM_Menu].ID AND  [GPM_Menu].Link = '" + Link + "'";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
