@@ -22,14 +22,15 @@ namespace BanHang
             {
                 if (!IsPostBack)
                 {
+                    string IDNhanVien = Session["IDNhanVien"].ToString();
                     dataHangHoa data = new dataHangHoa();
-                    DataTable da = data.getHangHoa_Null();
+                    DataTable da = data.getHangHoa_Null(IDNhanVien);
                     if (da.Rows.Count != 0)
                     {
                         IDHangHoa.Value = da.Rows[0]["ID"].ToString();
                         txtMaHang.Value = da.Rows[0]["MaHang"].ToString();
                     }
-                    else IDHangHoa.Value = data.insertHangHoa_Temp() + "";
+                    else IDHangHoa.Value = data.insertHangHoa_Temp(IDNhanVien) + "";
                     cmbTrangThaiHang.SelectedIndex = 0;
                     cmbNhomDatHang.SelectedIndex = 0;
                 }

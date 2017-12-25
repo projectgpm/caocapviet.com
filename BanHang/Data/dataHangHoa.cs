@@ -536,13 +536,13 @@ namespace BanHang.Data
             }
         }
 
-        public DataTable getHangHoa_Null()
+        public DataTable getHangHoa_Null(string IDNhanVien)
         {
-            string cmd = "select ID, MaHang from GPM_HangHoa where IDNhomHang is null and TenHangHoa is null and IDDonViTinh is null";
+            string cmd = "select ID, MaHang from GPM_HangHoa where IDNhomHang is null and TenHangHoa is null and IDDonViTinh is null and GhiChu = '" + IDNhanVien + "'";
             return getData(cmd);
         }
 
-        public object insertHangHoa_Temp()
+        public object insertHangHoa_Temp(string IDNhanVien)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
@@ -550,13 +550,14 @@ namespace BanHang.Data
                 {
                     object IDHH = -1;
                     myConnection.Open();
-                    string cmdText = "INSERT INTO [GPM_HangHoa] ([MaHang])" +
+                    string cmdText = "INSERT INTO [GPM_HangHoa] ([MaHang],[GhiChu])" +
                                      " OUTPUT INSERTED.ID" +
-                                     " VALUES (@MaHang)";
+                                     " VALUES (@MaHang,@IDNhanVien)";
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
 
                         myCommand.Parameters.AddWithValue("@MaHang", "");
+                        myCommand.Parameters.AddWithValue("@IDNhanVien", IDNhanVien);
                         IDHH = myCommand.ExecuteScalar();
                     }
                     return IDHH;
