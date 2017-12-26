@@ -43,7 +43,7 @@ namespace BanHang.Data
 
         public DataTable getDanhSachHangHoa_Ten_ID()
         {
-            string cmd = "SELECT ID,MaHang,TenHangHoa FROM GPM_HangHoa WHERE DaXoa = 0 AND IDHangQuyDoi = 0";
+            string cmd = "SELECT ID,MaHang,TenHangHoa FROM GPM_HangHoa WHERE DaXoa = 0";
             return getData(cmd);
         }
 

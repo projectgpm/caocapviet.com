@@ -93,7 +93,8 @@ namespace BanHang.Data
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "SELECT GPM_Kho.ID,GPM_Kho.TenCuaHang FROM GPM_Kho,GPM_IDND_IDKHO WHERE GPM_Kho.DaXoa = 0 AND GPM_Kho.ID = GPM_IDND_IDKHO.IDKho AND GPM_IDND_IDKHO.IDNhanVien = '" + IDNhanVien + "'";
+                //string cmdText = "SELECT GPM_Kho.ID,GPM_Kho.TenCuaHang FROM GPM_Kho,GPM_IDND_IDKHO WHERE GPM_Kho.DaXoa = 0 AND GPM_Kho.ID = GPM_IDND_IDKHO.IDKho AND GPM_IDND_IDKHO.IDNhanVien = '" + IDNhanVien + "'";
+                string cmdText = "SELECT GPM_Kho.ID,GPM_Kho.TenCuaHang FROM GPM_Kho WHERE DaXoa = 0";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
