@@ -27,8 +27,8 @@ namespace BanHang
                 data = new dtCheckDangNhap();
                 string TenDangNhap = txtDangNhap.Value.ToUpper();
                 string MatKhau = dtSetting.GetSHA1HashData(txtMatKhau.Value.ToString());
-                DataTable dt = data.KiemTraQuanLy(TenDangNhap,MatKhau);
-                if(dt.Rows.Count != 0)
+                DataTable dt = data.KiemTraQuanLy(TenDangNhap, MatKhau);
+                if (dt.Rows.Count != 0)
                 {
                     DataRow dr = dt.Rows[0];
                     Session["TenDangNhap"] = dr["TenNguoiDung"].ToString();
@@ -37,15 +37,24 @@ namespace BanHang
                     Session["IDNhanVien"] = dr["ID"].ToString();
                     Session["IDNhom"] = dr["IDNhomNguoiDung"].ToString();
                     Session["IDKho"] = dr["IDKho"].ToString();
+                    Session["TenThuNgan"] = dr["TenNguoiDung"].ToString();
+                    Session["IDThuNgan"] = dr["ID"].ToString();
+                    Session["KTBanLe"] = "GPMBanLe";
+                    string s = dr["IDNhomNguoiDung"].ToString();
                     dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Đăng Nhập", Session["IDKho"].ToString(), "Đăng Nhập", "Đăng Nhập");
+
+                    if (dr["IDNhomNguoiDung"].ToString().CompareTo("7") ==0)
+                        Response.Redirect("BanHangLe.aspx");
                     Response.Redirect("QLKho.aspx");
+
                 }
                 else
                 {
+
                     Response.Write("<script language='JavaScript'> alert('Đăng Nhập Không Thành Công.'); </script>");
-                    //Response.Redirect("DangNhap.aspx");
                     txtDangNhap.Value = "";
                     txtMatKhau.Value = "";
+
                 }
             }
         }
