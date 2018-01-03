@@ -741,11 +741,13 @@ namespace BanHang
 
         protected void btnQuyDoiHangHoa_Click(object sender, EventArgs e)
         {
-            ClearQuiDoi();
-            btnQuiDoi.Enabled = false;
-            popupQuiDoi.ShowOnPageLoad = true;
+            Response.Redirect("BangKeBanHang.aspx");
         }
 
+        protected void ASPxButton2_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ThayDoiMatKhau.aspx");
+        }
         protected void btnHuyQuiDoi_Click(object sender, EventArgs e)
         {
             ClearQuiDoi();
@@ -902,6 +904,7 @@ namespace BanHang
                 HienThiThongBao("Vui lòng nhập đầy đủ thông tin !!");
             }
         }
+
     }
     [Serializable]
     public class HoaDon
