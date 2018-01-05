@@ -14,7 +14,7 @@ namespace BanHang.Data
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = " SELECT TOP " + HienThi + " * from [GPM_Thue] where DaXoa = 0 ";
+                string cmdText = " SELECT * from [GPM_Thue] where DaXoa = 0 ";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {

@@ -19,7 +19,7 @@
 </script>
     <dx:ASPxFormLayout ID="ASPxFormLayout1" runat="server" ColCount="5">
         <Items>
-            <dx:LayoutItem Caption="">
+            <dx:LayoutItem Caption="" Visible="False">
                 <LayoutItemNestedControlCollection>
                     <dx:LayoutItemNestedControlContainer runat="server">
                         <dx:ASPxButton ID="XuatFilePDF" runat="server" OnClick="XuatFilePDF_Click" Text="Xuất PDF">
@@ -39,7 +39,7 @@
                     </dx:LayoutItemNestedControlContainer>
                 </LayoutItemNestedControlCollection>
             </dx:LayoutItem>
-            <dx:LayoutItem Caption="">
+            <dx:LayoutItem Caption="" Visible="False">
                 <LayoutItemNestedControlCollection>
                     <dx:LayoutItemNestedControlContainer runat="server">
                         <dx:ASPxButton ID="btnNhapExel" runat="server" OnClick="btnNhapExcel_Click" Text="Nhập Exel">
@@ -59,7 +59,7 @@
                     </dx:LayoutItemNestedControlContainer>
                 </LayoutItemNestedControlCollection>
             </dx:LayoutItem>
-            <dx:LayoutItem Caption="Hiển thị">
+            <dx:LayoutItem Caption="Hiển thị" Visible="False">
                 <LayoutItemNestedControlCollection>
                     <dx:LayoutItemNestedControlContainer runat="server">
                         <dx:ASPxComboBox ID="cmbSoLuongXem" runat="server" AutoPostBack="True" SelectedIndex="0" OnSelectedIndexChanged="cmbSoLuongXem_SelectedIndexChanged">
@@ -80,7 +80,7 @@
     <br />
     <dx:ASPxPanel ID="ASPxPanel1" runat="server" Width="100%"><PanelCollection>
     <dx:PanelContent runat="server">
-        <dx:ASPxGridViewExporter ID="HangHoaExport" runat="server" ExportedRowType="All" FileName="HangHoaExport" GridViewID="HangHoaExport1">
+        <dx:ASPxGridViewExporter ID="HangHoaExport" runat="server" ExportedRowType="All" FileName="HangHoaExport" GridViewID="HangHoa1">
         </dx:ASPxGridViewExporter>
     </dx:PanelContent>
     </PanelCollection>
@@ -88,8 +88,35 @@
     <dx:ASPxPanel ID="ASPxPanel2" runat="server" Width="100%" DefaultButton="ASPxButton1">
         <PanelCollection>
         <dx:PanelContent ID="PanelContent1" runat="server">
+            <dx:ASPxGridView ID="HangHoa1" runat="server" AutoGenerateColumns="False" Visible="False">
+<SettingsCommandButton>
+<ShowAdaptiveDetailButton ButtonType="Image"></ShowAdaptiveDetailButton>
+
+<HideAdaptiveDetailButton ButtonType="Image"></HideAdaptiveDetailButton>
+</SettingsCommandButton>
+          <Columns>
+              <dx:GridViewDataTextColumn Caption="GhiChu" FieldName="GhiChu" VisibleIndex="6">
+              </dx:GridViewDataTextColumn>
+              <dx:GridViewDataTextColumn Caption="SoLuong" FieldName="SoLuong" VisibleIndex="5">
+              </dx:GridViewDataTextColumn>
+              <dx:GridViewDataTextColumn Caption="DonViTinh" FieldName="DonViTinh" VisibleIndex="4">
+              </dx:GridViewDataTextColumn>
+              <dx:GridViewDataTextColumn Caption="TenHangHoa" FieldName="TenHangHoa" VisibleIndex="3">
+              </dx:GridViewDataTextColumn>
+              <dx:GridViewDataTextColumn Caption="MaHang" FieldName="MaHang" VisibleIndex="2">
+              </dx:GridViewDataTextColumn>
+              <dx:GridViewDataTextColumn Caption="NganhHang" FieldName="NganhHang" VisibleIndex="0">
+              </dx:GridViewDataTextColumn>
+              <dx:GridViewDataTextColumn Caption="NhomHang" FieldName="NhomHang" VisibleIndex="1">
+              </dx:GridViewDataTextColumn>
+              <dx:GridViewDataTextColumn Caption="DaXoa" FieldName="DaXoa" VisibleIndex="8">
+              </dx:GridViewDataTextColumn>
+              <dx:GridViewDataTextColumn Caption="Barcode" FieldName="Barcode" VisibleIndex="7">
+              </dx:GridViewDataTextColumn>
+          </Columns>
+      </dx:ASPxGridView>
             <dx:ASPxGridView ID="gridHangHoa" runat="server" AutoGenerateColumns="False" Width="100%" KeyFieldName="ID" OnRowDeleting="gridHangHoa_RowDeleting1">
-                    <SettingsPager PageSize="100">
+                    <SettingsPager PageSize="10000">
                     </SettingsPager>
                     <SettingsEditing Mode="PopupEditForm">
                     </SettingsEditing>

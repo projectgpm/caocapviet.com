@@ -14,7 +14,7 @@ namespace BanHang.Data
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "SELECT TOP " + HienThi + " [GPM_HangHoaTonKho].*,[GPM_HangHoa].MaHang,[GPM_HangHoa].IDDonViTinh FROM [GPM_HangHoaTonKho],[GPM_HangHoa] WHERE [GPM_HangHoaTonKho].DaXoa = 0 AND [GPM_HangHoa].ID =  [GPM_HangHoaTonKho].IDHangHoa  AND (" + dtSetting.LayQuyenTruyCapKho_CoTenBang(IDNhanVien, "[GPM_HangHoaTonKho].") + " [GPM_HangHoaTonKho].IDKho = " + IDKho + ")";
+                string cmdText = "SELECT [GPM_HangHoaTonKho].*,[GPM_HangHoa].MaHang,[GPM_HangHoa].IDDonViTinh FROM [GPM_HangHoaTonKho],[GPM_HangHoa] WHERE [GPM_HangHoaTonKho].DaXoa = 0 AND [GPM_HangHoa].ID =  [GPM_HangHoaTonKho].IDHangHoa  AND (" + dtSetting.LayQuyenTruyCapKho_CoTenBang(IDNhanVien, "[GPM_HangHoaTonKho].") + " [GPM_HangHoaTonKho].IDKho = " + IDKho + ")";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {

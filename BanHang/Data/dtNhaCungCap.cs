@@ -74,7 +74,7 @@ namespace BanHang.Data
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = " SELECT TOP " + HienThi + " * FROM [GPM_NHACUNGCAP] WHERE [DAXOA] = 0 and ID != 1";
+                string cmdText = " SELECT * FROM [GPM_NHACUNGCAP] WHERE [DAXOA] = 0 and ID != 1";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {

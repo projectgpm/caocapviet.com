@@ -86,6 +86,9 @@ namespace BanHang
 
         protected void btnXuatExcel_Click(object sender, EventArgs e)
         {
+            dataHangHoa da = new dataHangHoa();
+            HangHoa.DataSource = da.getDanhSachHangHoa_Export(Session["IDKho"].ToString());
+            HangHoa.DataBind();
             XuatDuLieu.WriteXlsToResponse();
         }
 

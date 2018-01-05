@@ -225,7 +225,7 @@ namespace BanHang
             }
             
             UploadFile();
-            string Excel = Server.MapPath("~/Uploads/ChuyenKho") + strFileExcel;
+            string Excel = Server.MapPath("~/Uploads/") + strFileExcel;
 
             string excelConnectionString = string.Empty;
             excelConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + Excel + ";Extended Properties=Excel 8.0;";

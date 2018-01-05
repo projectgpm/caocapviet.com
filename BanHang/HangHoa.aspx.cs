@@ -53,10 +53,10 @@ namespace BanHang
 
         protected void btnXuatExcel_Click(object sender, EventArgs e)
         {
-            //dataHangHoa data = new dataHangHoa();
-            //HangHoaExport1.DataSource = data.getDanhSachHangHoa_Full_Barcode();
-            //HangHoaExport1.DataBind();
-            //HangHoaExport.WriteXlsToResponse();
+            dataHangHoa da = new dataHangHoa();
+            HangHoa1.DataSource = da.getDanhSachHangHoa_Export(Session["IDKho"].ToString());
+            HangHoa1.DataBind();
+            HangHoaExport.WriteXlsToResponse();
 
             //dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Hàng hóa", Session["IDKho"].ToString(), "Danh mục", "Xuất excel");
         }
