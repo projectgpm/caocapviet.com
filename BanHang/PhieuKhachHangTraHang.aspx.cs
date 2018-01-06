@@ -221,7 +221,7 @@ namespace BanHang
                         string SoLuong = dr["SoLuong"].ToString();
                         string ThanhTien = dr["ThanhTien"].ToString();
                         string LyDoDoi = dr["LyDoDoi"].ToString();
-                        data.ThemChiTietPhieuKhachHangTraHang(ID, IDHangHoa, GiaBan, SoLuong, ThanhTien, LyDoDoi);
+                        data.ThemChiTietPhieuKhachHangTraHang(ID, IDHangHoa, GiaBan, SoLuong, ThanhTien, LyDoDoi, IDHoaDon);
 
                         dtCapNhatTonKho.CongTonKho(IDHangHoa, SoLuong, Session["IDKho"].ToString());
                     }

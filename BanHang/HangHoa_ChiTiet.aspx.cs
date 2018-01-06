@@ -66,6 +66,11 @@ namespace BanHang
             txtGiaBan4.Value = da.Rows[0]["GiaBan4"].ToString();
             txtGiaBan5.Value = da.Rows[0]["GiaBan5"].ToString();
 
+
+            gridHangHoaBarcode.DataSource = data.GetListBarCode(IDHangHoa);
+            gridHangHoaBarcode.DataBind();
+            gridHangHoaGiaTheoSL.DataSource = data.GetListHangHoa_GiaTheoSL(IDHangHoa);
+            gridHangHoaGiaTheoSL.DataBind();
         }
 
         protected void cmbDonViTinh_SelectedIndexChanged(object sender, EventArgs e)
@@ -232,6 +237,124 @@ namespace BanHang
 
             dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Hàng hóa chi tiết", Session["IDKho"].ToString(), "Danh mục", "Cập nhật: " + IDHangHoa);
 
+        }
+
+
+        protected void gridHangHoaBarcode_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
+        {
+            string ID = e.Keys[0].ToString();
+            dataHangHoa data = new dataHangHoa();
+            data.deleteHangHoa_Barcode(ID);
+            e.Cancel = true;
+            gridHangHoaBarcode.CancelEdit();
+            Load();
+
+            dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Hàng hóa barcode", Session["IDKho"].ToString(), "Danh mục", "Xóa");
+        }
+
+        protected void gridHangHoaBarcode_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
+        {
+            if (e.NewValues["IDTrangThaiBarcode"] != null && e.NewValues["Barcode"] != null)
+            {
+                string IDTrangThaiBarcode = e.NewValues["IDTrangThaiBarcode"].ToString();
+                string Barcode = e.NewValues["Barcode"].ToString();
+
+                string IDHangHoa = Request.QueryString["IDHangHoa"];
+                dataHangHoa data = new dataHangHoa();
+                DataTable da = data.KiemTraBarcode(Barcode);
+                if (da.Rows.Count == 0)
+                {
+                    data.insertHangHoa_Barcode(IDHangHoa, IDTrangThaiBarcode, Barcode);
+                    e.Cancel = true;
+                    gridHangHoaBarcode.CancelEdit();
+                }
+                else throw new Exception("Barcode đã tồn tại.");
+
+
+            }
+            else throw new Exception("Không được bỏ trống dữ liệu.");
+
+            Load();
+
+            dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Hàng hóa barcode", Session["IDKho"].ToString(), "Danh mục", "Thêm");
+        }
+
+        protected void gridHangHoaBarcode_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
+        {
+            if (e.NewValues["IDTrangThaiBarcode"] != null && e.NewValues["Barcode"] != null)
+            {
+                string IDTrangThaiBarcode = e.NewValues["IDTrangThaiBarcode"].ToString();
+                string Barcode = e.NewValues["Barcode"].ToString();
+                string ID = e.Keys[0].ToString();
+
+                dataHangHoa data = new dataHangHoa();
+                DataTable da = data.KiemTraBarcode(Barcode);
+                if (da.Rows.Count == 0)
+                {
+                    data.updateHangHoa_Barcode(ID, IDTrangThaiBarcode, Barcode);
+                    e.Cancel = true;
+                    gridHangHoaBarcode.CancelEdit();
+                }
+                else throw new Exception("Barcode đã tồn tại.");
+            }
+            else throw new Exception("Không được bỏ trống dữ liệu.");
+
+            Load();
+
+            dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Hàng hóa barcode", Session["IDKho"].ToString(), "Danh mục", "Cập nhật");
+        }
+        protected void gridHangHoaGiaTheoSL_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
+        {
+            string ID = e.Keys[0].ToString();
+            dataHangHoa data = new dataHangHoa();
+            data.deleteHangHoa_TheoSL(ID);
+            e.Cancel = true;
+            gridHangHoaGiaTheoSL.CancelEdit();
+            Load();
+
+            dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Hàng hóa giá theo SL", Session["IDKho"].ToString(), "Danh mục", "Xóa");
+        }
+
+        protected void gridHangHoaGiaTheoSL_RowInserting(object sender, DevExpress.Web.Data.ASPxDataInsertingEventArgs e)
+        {
+            if (e.NewValues["SoLuongBD"] != null && e.NewValues["SoLuongKT"] != null && e.NewValues["GiaBan"] != null)
+            {
+                string SoLuongBD = e.NewValues["SoLuongBD"].ToString();
+                string SoLuongKT = e.NewValues["SoLuongKT"].ToString();
+                string GiaBan = e.NewValues["GiaBan"].ToString();
+
+                string IDHangHoa = Request.QueryString["IDHangHoa"];
+                dataHangHoa data = new dataHangHoa();
+                data.insertHangHoa_GiaTheoSL(IDHangHoa, SoLuongBD, SoLuongKT, GiaBan);
+
+                e.Cancel = true;
+                gridHangHoaGiaTheoSL.CancelEdit();
+            }
+            else throw new Exception("Không được bỏ trống dữ liệu.");
+
+            Load();
+            dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Hàng hóa giá theo SL", Session["IDKho"].ToString(), "Danh mục", "Thêm");
+        }
+
+        protected void gridHangHoaGiaTheoSL_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
+        {
+            if (e.NewValues["SoLuongBD"] != null && e.NewValues["SoLuongKT"] != null && e.NewValues["GiaBan"] != null)
+            {
+                string SoLuongBD = e.NewValues["SoLuongBD"].ToString();
+                string SoLuongKT = e.NewValues["SoLuongKT"].ToString();
+                string GiaBan = e.NewValues["GiaBan"].ToString();
+                string ID = e.Keys[0].ToString();
+
+                dataHangHoa data = new dataHangHoa();
+                data.updateHangHoa_GiaTheoSL(ID, SoLuongBD, SoLuongKT, GiaBan);
+
+                e.Cancel = true;
+                gridHangHoaGiaTheoSL.CancelEdit();
+            }
+            else throw new Exception("Không được bỏ trống dữ liệu.");
+
+            Load();
+            dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Hàng hóa giá theo SL", Session["IDKho"].ToString(), "Danh mục", "Cập nhật");
         }
     }
 }

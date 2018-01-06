@@ -236,7 +236,7 @@ namespace BanHang.Data
             }
         }
 
-        public object ThemChiTietPhieuKhachHangTraHang(string IDPhieuKhachHangTraHang, string IDHangHoa, string GiaBan, string SoLuong, string ThanhTien, string LyDoDoi)
+        public object ThemChiTietPhieuKhachHangTraHang(string IDPhieuKhachHangTraHang, string IDHangHoa, string GiaBan, string SoLuong, string ThanhTien, string LyDoDoi, string IDHoaDon)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
@@ -245,6 +245,11 @@ namespace BanHang.Data
                     myConnection.Open();
                     object IDPhieuChuyenKho = null;
                     string cmdText = "INSERT INTO [GPM_PhieuKhachHangTraHang_ChiTiet] ([IDPhieuKhachHangTraHang],[IDHangHoa],[GiaBan],[SoLuong],[ThanhTien],[LyDoDoi]) OUTPUT INSERTED.ID VALUES ('" + IDPhieuKhachHangTraHang + "','" + IDHangHoa + "','" + GiaBan + "','" + SoLuong + "','" + ThanhTien + "',N'" + LyDoDoi + "')";
+
+                    //string cmdText = "INSERT INTO [GPM_PhieuKhachHangTraHang_ChiTiet] ([IDPhieuKhachHangTraHang],[IDHangHoa],[GiaBan],[SoLuong],[ThanhTien],[LyDoDoi]) OUTPUT INSERTED.ID VALUES (" + IDPhieuKhachHangTraHang + "," + IDHangHoa + "," + GiaBan + "," + SoLuong + "," + ThanhTien + ",N'" + LyDoDoi + "') " +
+                    //    " UPDATE GPM_ChiTietHoaDon SET ThanhTien = ( SoLuong - " + SoLuong + " ) * GiaBan , SoLuong = ( SoLuong - " + SoLuong + " ) WHERE IDHangHoa = " + IDHangHoa + " AND IDHoaDon = " + IDHoaDon +
+                    //    " UPDATE GPM_HoaDon SET GPM_HoaDon.TongTien = GPM_HoaDon.TongTien - (" + SoLuong + " * GPM_ChiTietHoaDon.GiaBan), GPM_HoaDon.KhachCanTra = GPM_HoaDon.KhachCanTra - (" + SoLuong + " * GPM_ChiTietHoaDon.GiaBan) WHERE GPM_HoaDon.ID = " + IDHoaDon + " AND GPM_ChiTietHoaDon.IDHangHoa = " + IDHangHoa;
+
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
                         IDPhieuChuyenKho = myCommand.ExecuteScalar();

@@ -44,6 +44,8 @@
     <dx:ASPxGridViewExporter ID="XuatDuLieu" runat="server" GridViewID="HangHoa">
     </dx:ASPxGridViewExporter>
     <dx:ASPxGridView ID="gridTonKhoBanDau" runat="server" AutoGenerateColumns="False" KeyFieldName="ID" Width="100%" OnRowUpdating="gridTonKhoBanDau_RowUpdating" >
+        <SettingsPager PageSize="200">
+        </SettingsPager>
         <SettingsEditing Mode="PopupEditForm">
         </SettingsEditing>
         <Settings ShowFilterRow="True" ShowTitlePanel="True" />
