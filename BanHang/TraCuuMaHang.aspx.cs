@@ -24,7 +24,7 @@ namespace BanHang
                 {
                     if (txtMaHangTraCuu.Text != "")
                     {
-                        string MaHang = txtMaHangTraCuu.Text.ToString().Trim();
+                        string MaHang = txtMaHangTraCuu.Value.ToString();
                         DataTable db = data.TraCuuMaHang(MaHang);
                         if (db.Rows.Count > 0)
                         {
@@ -67,7 +67,7 @@ namespace BanHang
         {
             if (txtMaHangTraCuu.Text != "")
             {
-                string MaHang = txtMaHangTraCuu.Text.ToString().Trim();
+                string MaHang = txtMaHangTraCuu.Value.ToString();
                 if (dtSetting.IsNumber(MaHang) == true)
                 {
                     Clear();

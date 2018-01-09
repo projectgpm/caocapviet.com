@@ -79,6 +79,41 @@ namespace BanHang
                     Response.Redirect("Default.aspx");
                 }
             }
+
+            string IDKho = cmbKho.Value + "";
+            string IDHH = cmbHangHoa.Value + "";
+            string IDNH = cmbNhomHang.Value + "";
+            string IDNganhH = cmbNganhHang.Value + "";
+
+            DateTime date = DateTime.Now;
+            int thang = date.Month;
+            int nam = date.Year;
+            string ngayBD = ""; string ngayKT = "";
+            if (rbTheoNam.Checked == true)
+            {
+                ngayBD = nam + "-01-01 ";
+                ngayKT = nam + "-12-31 ";
+            }
+            else if (rbTheoThang.Checked == true)
+            {
+                ngayBD = nam + "-" + thang + "-01 ";
+                ngayKT = nam + "-" + thang + "-" + dtSetting.tinhSoNgay(thang, nam) + " ";
+            }
+            else if (rbTuyChon.Checked == true)
+            {
+                ngayBD = DateTime.Parse(dateNgayBD.Value + "").ToString("yyyy-MM-dd ");
+                ngayKT = DateTime.Parse(dateNgayKT.Value + "").ToString("yyyy-MM-dd ");
+            }
+            else Response.Write("<script language='JavaScript'> alert('Hãy chọn 1 hình thức báo cáo.'); </script>");
+
+            ngayBD = ngayBD + "00:00:0.000";
+            ngayKT = ngayKT + "23:59:59.999";
+
+            dtBanHangLe dtx = new dtBanHangLe();
+            DataTable dax = dtx.DanhSachHangHoaBan(IDKho, IDNganhH, IDNH, ngayBD, ngayKT);
+            gridDanhSach.DataSource = dax;
+            gridDanhSach.DataBind();
+
         }
 
         protected void rbTheoNam_CheckedChanged(object sender, EventArgs e)
@@ -145,9 +180,13 @@ namespace BanHang
             ngayBD = ngayBD + "00:00:0.000";
             ngayKT = ngayKT + "23:59:59.999";
 
+            dtBanHangLe dt = new dtBanHangLe();
+            DataTable da = dt.DanhSachHangHoaBan(IDKho, IDNganhH, IDNH, ngayBD, ngayKT);
+            gridDanhSach.DataSource = da;
+            gridDanhSach.DataBind();
 
-            popup.ContentUrl = "~/BaoCaoBanHang_In.aspx?IDKho=" + IDKho + "&IDHH=" + IDHH + "&IDNH=" + IDNH + "&IDNganhH=" + IDNganhH + "&NgayBD=" + ngayBD + "&NgayKT=" + ngayKT;
-            popup.ShowOnPageLoad = true;
+            //popup.ContentUrl = "~/BaoCaoBanHang_In.aspx?IDKho=" + IDKho + "&IDHH=" + IDHH + "&IDNH=" + IDNH + "&IDNganhH=" + IDNganhH + "&NgayBD=" + ngayBD + "&NgayKT=" + ngayKT;
+            //popup.ShowOnPageLoad = true;
         }
 
         protected void cmbNganhHang_SelectedIndexChanged(object sender, EventArgs e)

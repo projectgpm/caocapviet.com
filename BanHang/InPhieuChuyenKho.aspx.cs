@@ -27,7 +27,7 @@ namespace BanHang
 
             using (MemoryStream ms = new MemoryStream())
             {
-                rpXuatPhieuChuyenKho r = new rpXuatPhieuChuyenKho();
+                rpPhieuChuyenKho r = new rpPhieuChuyenKho();
                 r.Parameters["ID"].Value = Request.QueryString["ID"];
                 r.CreateDocument();
                 PdfExportOptions opts = new PdfExportOptions();

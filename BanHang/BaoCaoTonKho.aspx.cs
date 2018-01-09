@@ -79,17 +79,25 @@ namespace BanHang
                     Response.Redirect("Default.aspx");
                 }
             }
+
+            dataHangHoa dtx = new dataHangHoa();
+            gridTonKho.DataSource = dtx.getDanhSachHangHoa_BaoCao(cmbNhomHang.Value + "", cmbNganhHang.Value + "", cmbKho.Value + "");
+            gridTonKho.DataBind();
         }
 
         protected void btnXemBaoCao_Click(object sender, EventArgs e)
         {
             string IDKho = cmbKho.Value + "";
-            string IDHH = cmbHangHoa.Value + "";
+            //string IDHH = cmbHangHoa.Value + "";
             string IDNH = cmbNhomHang.Value + "";
             string IDNganhH = cmbNganhHang.Value + "";
 
-            popup.ContentUrl = "~/BaoCaoTonKho_In.aspx?IDKho=" + IDKho + "&IDHH=" + IDHH + "&IDNH=" + IDNH + "&IDNganhH=" + IDNganhH;
-            popup.ShowOnPageLoad = true;
+            dataHangHoa dt = new dataHangHoa();
+
+            gridTonKho.DataSource = dt.getDanhSachHangHoa_BaoCao(IDNH, IDNganhH, IDKho);
+            gridTonKho.DataBind();
+            //popup.ContentUrl = "~/BaoCaoTonKho_In.aspx?IDKho=" + IDKho + "&IDHH=" + IDHH + "&IDNH=" + IDNH + "&IDNganhH=" + IDNganhH;
+            //popup.ShowOnPageLoad = true;
         }
 
         protected void cmbNganhHang_SelectedIndexChanged(object sender, EventArgs e)
@@ -142,6 +150,11 @@ namespace BanHang
                 cmbHangHoa.SelectedIndex = daHH.Rows.Count;
             }
 
+        }
+
+        protected void btnXuatExel_Click(object sender, EventArgs e)
+        {
+            XuatExel.WriteXlsxToResponse();
         }
     }
 }

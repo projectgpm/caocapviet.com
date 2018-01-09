@@ -34,7 +34,11 @@ namespace BanHang.Data
             string cmd = "SELECT GPM_HangHoa.ID,GPM_HangHoa.MaHang,GPM_HangHoa.TenHangHoa,GPM_HangHoa.IDDonViTinh, GPM_HangHoa.HeSo,GPM_HangHoa.GiaMuaTruocThue,GPM_HangHoa.GiaBanTruocThue,GPM_HangHoa.GiaMuaSauThue,GPM_HangHoa.TrongLuong,GPM_HangHoa.GhiChu, GPM_HangHoaTonKho.GiaBan FROM GPM_HangHoa, GPM_HangHoaTonKho WHERE GPM_HangHoa.DaXoa = 0 AND GPM_HangHoa.ID = GPM_HangHoaTonKho.IDHangHoa AND GPM_HangHoa.IDTrangThaiHang < 5 AND GPM_HangHoaTonKho.IDKho = 1";
             return getData(cmd);
         }
-
+        public DataTable getDanhSachHangHoa_BaoCao(string IDNhom, string IDNganh, string IDKho)
+        {
+            string cmd = "SELECT GPM_NhomHang.TenNhomHang, GPM_HangHoa.ID, GPM_HangHoa.MaHang, GPM_HangHoa.TenHangHoa, GPM_DonViTinh.TenDonViTinh, SUM(GPM_HangHoaTonKho.SoLuongCon) AS SoLuongCon FROM GPM_NhomHang, GPM_HangHoa, GPM_DonViTinh, GPM_HangHoaTonKho WHERE GPM_HangHoa.IDNhomHang = GPM_NhomHang.ID AND GPM_HangHoa.IDDonViTinh = GPM_DonViTinh.ID AND GPM_HangHoaTonKho.IDHangHoa = GPM_HangHoa.ID AND (" + IDNhom + " = -1 OR GPM_NhomHang.ID = " + IDNhom + ") AND (" + IDNganh + " = -1 OR GPM_NhomHang.IDNganhHang = " + IDNganh + ") AND (" + IDKho + " = -1 OR GPM_HangHoaTonKho.IDKho = " + IDKho + ") GROUP BY GPM_NhomHang.TenNhomHang, GPM_HangHoa.MaHang, GPM_HangHoa.TenHangHoa, GPM_DonViTinh.TenDonViTinh, GPM_HangHoa.ID";
+            return getData(cmd);
+        }
         public DataTable getDanhSachHangHoa_Export(string IDKho)
         {
             string cmd = "SELECT GPM_NganhHang.TenNganhHang as NganhHang, GPM_NhomHang.TenNhomHang as NhomHang, GPM_HangHoa.MaHang, GPM_HangHoa.TenHangHoa, GPM_DonViTinh.TenDonViTinh as DonViTinh, GPM_HangHoaTonKho.SoLuongCon as SoLuong, GPM_HangHoa.GhiChu, GPM_HangHoa_Barcode.Barcode, GPM_HangHoa.DaXoa FROM GPM_HangHoa, GPM_DonViTinh,GPM_HangHoaTonKho, GPM_NhomHang, GPM_NganhHang, GPM_HangHoa_Barcode WHERE GPM_NganhHang.ID = GPM_NhomHang.IDNganhHang AND GPM_HangHoa.IDNhomHang = GPM_NhomHang.ID AND GPM_HangHoa.IDDonViTinh = GPM_DonViTinh.ID AND GPM_HangHoa.ID = GPM_HangHoaTonKho.IDHangHoa AND GPM_HangHoa.ID = GPM_HangHoa_Barcode.IDHangHoa AND GPM_HangHoaTonKho.IDKho = " + IDKho;
@@ -487,11 +491,11 @@ namespace BanHang.Data
                         myCommand.ExecuteNonQuery();
                     }
 
-                    dtKho dt = new dtKho();
-                    DataTable da = dt.LayDanhSachKho_2();
-                    for (int i = 0; i < da.Rows.Count; i++)
-                    {
-                        strSQL = "update GPM_HangHoaTonKho set GiaBan = @GiaBan, GiaBan1 = @GiaBan1, GiaBan2 = @GiaBan2, GiaBan3 = @GiaBan3, GiaBan4 = @GiaBan4, GiaBan5 = @GiaBan5 where IDHangHoa = @ID and IDKho = @IDKho";
+                    //dtKho dt = new dtKho();
+                    //DataTable da = dt.LayDanhSachKho_2();
+                    //for (int i = 0; i < da.Rows.Count; i++)
+                    //{
+                        strSQL = "update GPM_HangHoaTonKho set GiaBan = @GiaBan, GiaBan1 = @GiaBan1, GiaBan2 = @GiaBan2, GiaBan3 = @GiaBan3, GiaBan4 = @GiaBan4, GiaBan5 = @GiaBan5 where IDHangHoa = @ID";
                         using (SqlCommand myCommand = new SqlCommand(strSQL, myConnection))
                         {
                             myCommand.Parameters.AddWithValue("@ID", ID);
@@ -502,10 +506,10 @@ namespace BanHang.Data
                             myCommand.Parameters.AddWithValue("@GiaBan4", hh.GiaBan4);
                             myCommand.Parameters.AddWithValue("@GiaBan5", hh.GiaBan5);
 
-                            myCommand.Parameters.AddWithValue("@IDKho", da.Rows[i]["ID"].ToString());
+                            //myCommand.Parameters.AddWithValue("@IDKho", da.Rows[i]["ID"].ToString());
                             myCommand.ExecuteNonQuery();
                         }
-                    }
+                    //}
 
                 }
                 catch (Exception e)

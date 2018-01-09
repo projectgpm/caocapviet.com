@@ -13,6 +13,15 @@ namespace BanHang {
     public partial class BaoCaoTonKho {
         
         /// <summary>
+        /// XuatExel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxGridViewExporter XuatExel;
+        
+        /// <summary>
         /// ASPxFormLayout1 control.
         /// </summary>
         /// <remarks>
@@ -103,6 +112,15 @@ namespace BanHang {
         protected global::DevExpress.Web.LayoutItemNestedControlContainer LayoutItemNestedControlContainer7;
         
         /// <summary>
+        /// btnXuatExel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxButton btnXuatExel;
+        
+        /// <summary>
         /// LayoutItemNestedControlContainer9 control.
         /// </summary>
         /// <remarks>
@@ -119,6 +137,24 @@ namespace BanHang {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxButton btnXemBaoCao;
+        
+        /// <summary>
+        /// ASPxFormLayout2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxFormLayout ASPxFormLayout2;
+        
+        /// <summary>
+        /// gridTonKho control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxGridView gridTonKho;
         
         /// <summary>
         /// popup control.
