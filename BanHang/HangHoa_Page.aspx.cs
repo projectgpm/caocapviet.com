@@ -297,10 +297,11 @@ namespace BanHang
 
                 dataHangHoa data = new dataHangHoa();
                 if (!data.KiemTraMaHang(IDHangHoa.Value + "", hh.MaHang))
+                {
                     data.updateHangHoa(IDHangHoa.Value + "", hh);
+                    Response.Redirect("HangHoa.aspx");
+                }
                 else Response.Write("<script language='JavaScript'> alert('Mã hàng đã tồn tại'); </script>");
-
-                Response.Redirect("HangHoa.aspx");
             }
             else Response.Write("<script language='JavaScript'> alert('Các trường (*) không được bỏ trống.'); </script>");
         }
