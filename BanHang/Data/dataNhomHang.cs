@@ -68,6 +68,26 @@ namespace BanHang.Data
             }
         }
 
+        public static string LayIDHangHoa(string MaHang)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT ID FROM [GPM_HangHoa] WHERE [MaHang] = '" + MaHang + "'";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    if (tb.Rows.Count != 0)
+                    {
+                        return tb.Rows[0]["ID"].ToString();
+                    }
+                    return -1 + "";
+                }
+            }
+        }
+
         public static string Dem_Max()
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
@@ -199,6 +219,28 @@ namespace BanHang.Data
             }
         }
 
+        public void updateHangHoa(int IDHangHoa, int SoLuong, int IDKho)
+        {
+            using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
+            {
+                try
+                {
+                    myConnection.Open();
+                    string strSQL = "UPDATE [GPM_HangHoaTonKho] SET [SoLuongCon] = @SoLuong WHERE [IDHangHoa] = @IDHangHoa AND IDKho = @IDKho";
+                    using (SqlCommand myCommand = new SqlCommand(strSQL, myConnection))
+                    {
+                        myCommand.Parameters.AddWithValue("@IDHangHoa", IDHangHoa);
+                        myCommand.Parameters.AddWithValue("@SoLuong", SoLuong);
+                        myCommand.Parameters.AddWithValue("@IDKho", IDKho);
+                        myCommand.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Lỗi: Quá trình cập nhật dữ liệu gặp lỗi, hãy tải lại trang");
+                }
+            }
+        }
 
         public void insertNhomHang(int IDNganhHang, string MaNhom, string TenNhomHang, string GhiChu)
         {

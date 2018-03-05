@@ -27,7 +27,7 @@
                 </LayoutItemNestedControlCollection>
             </dx:LayoutItem>
            
-           <dx:LayoutItem Caption="Hiển Thị">
+           <dx:LayoutItem Caption="Hiển Thị" Visible="False">
                 <LayoutItemNestedControlCollection>
                     <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer7" runat="server">
                         <dx:ASPxComboBox ID="cmbHienThi" runat="server" AutoPostBack="True" OnSelectedIndexChanged="cmbHienThi_SelectedIndexChanged" SelectedIndex="0">
@@ -44,7 +44,7 @@
                 </LayoutItemNestedControlCollection>
             </dx:LayoutItem>
            
-            <dx:LayoutItem Caption="" HorizontalAlign="Left">
+            <dx:LayoutItem Caption="" HorizontalAlign="Left" Visible="False">
                 <LayoutItemNestedControlCollection>
                     <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer8" runat="server">
                         <dx:ASPxButton ID="btnXuatPDF" runat="server" OnClick="btnXuatPDF_Click" Text="Xuất PDF">
@@ -71,6 +71,8 @@
     </dx:ASPxGridViewExporter>
     <dx:ASPxGridView ID="gridDanhMucCombo" runat="server" AutoGenerateColumns="False" Width="100%" OnRowDeleting="gridDanhMucCombo_RowDeleting" OnRowUpdating="gridDanhMucCombo_RowUpdating" KeyFieldName="ID">
           <Settings AutoFilterCondition="Contains" ShowFilterRow="True" ShowTitlePanel="True" />
+          <SettingsPager PageSize="1000">
+          </SettingsPager>
         <SettingsEditing Mode="PopupEditForm">
         </SettingsEditing>
          <Settings ShowFilterRow="True" />

@@ -34,6 +34,13 @@ namespace BanHang.Data
             string cmd = "SELECT GPM_HangHoa.ID,GPM_HangHoa.MaHang,GPM_HangHoa.TenHangHoa,GPM_HangHoa.IDDonViTinh, GPM_HangHoa.HeSo,GPM_HangHoa.GiaMuaTruocThue,GPM_HangHoa.GiaBanTruocThue,GPM_HangHoa.GiaMuaSauThue,GPM_HangHoa.TrongLuong,GPM_HangHoa.GhiChu, GPM_HangHoaTonKho.GiaBan FROM GPM_HangHoa, GPM_HangHoaTonKho WHERE GPM_HangHoa.DaXoa = 0 AND GPM_HangHoa.ID = GPM_HangHoaTonKho.IDHangHoa AND GPM_HangHoa.IDTrangThaiHang < 5 AND GPM_HangHoaTonKho.IDKho = 1";
             return getData(cmd);
         }
+
+        public DataTable getDanhSach_Upload_Stock()
+        {
+            string cmd = "SELECT * FROM GPM_Upload_Stock";
+            return getData(cmd);
+        }
+
         public DataTable getDanhSachHangHoa_BaoCao(string IDNhom, string IDNganh, string IDKho)
         {
             string cmd = "SELECT GPM_NhomHang.TenNhomHang, GPM_HangHoa.ID, GPM_HangHoa.MaHang, GPM_HangHoa.TenHangHoa, GPM_DonViTinh.TenDonViTinh, SUM(GPM_HangHoaTonKho.SoLuongCon) AS SoLuongCon FROM GPM_NhomHang, GPM_HangHoa, GPM_DonViTinh, GPM_HangHoaTonKho WHERE GPM_HangHoa.IDNhomHang = GPM_NhomHang.ID AND GPM_HangHoa.IDDonViTinh = GPM_DonViTinh.ID AND GPM_HangHoaTonKho.IDHangHoa = GPM_HangHoa.ID AND (" + IDNhom + " = -1 OR GPM_NhomHang.ID = " + IDNhom + ") AND (" + IDNganh + " = -1 OR GPM_NhomHang.IDNganhHang = " + IDNganh + ") AND (" + IDKho + " = -1 OR GPM_HangHoaTonKho.IDKho = " + IDKho + ") GROUP BY GPM_NhomHang.TenNhomHang, GPM_HangHoa.MaHang, GPM_HangHoa.TenHangHoa, GPM_DonViTinh.TenDonViTinh, GPM_HangHoa.ID";
@@ -273,6 +280,104 @@ namespace BanHang.Data
                 }
             }
         }
+
+        public void update_Stock(string maHang, int soLuong, int idKho)
+        {
+            using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
+            {
+                try
+                {
+                    myConnection.Open();
+                    string IDHangHoa = "0";
+                    string str1 = "SELECT ID FROM GPM_HangHoa WHERE MaHang = '" + maHang + "'";
+                    using (SqlCommand command = new SqlCommand(str1, myConnection))
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        DataTable tb = new DataTable();
+                        tb.Load(reader);
+                        if (tb.Rows.Count != 0)
+                        {
+                            IDHangHoa = tb.Rows[0]["ID"].ToString();
+                        }
+                    }
+
+                    string strSQL = "UPDATE GPM_HangHoaTonKho SET SoLuongCon = @SoLuong WHERE IDKho = @IDKho AND IDHangHoa = @IDHangHoa";
+                    using (SqlCommand myCommand = new SqlCommand(strSQL, myConnection))
+                    {
+                        myCommand.Parameters.AddWithValue("@IDKho", idKho);
+                        myCommand.Parameters.AddWithValue("@IDHangHoa", IDHangHoa);
+                        myCommand.Parameters.AddWithValue("@SoLuong", soLuong);
+                        myCommand.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception e)
+                {
+                    //throw new Exception("Lỗi: Quá trình cập nhật dữ liệu gặp lỗi, hãy tải lại trang");
+                }
+            }
+        }
+
+        public void themHangHoa_Upload_Stock(string maHang, string tenHang, int soLuong)
+        {
+            using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
+            {
+                try
+                {
+                    myConnection.Open();
+                    string strSQL = "INSERT INTO GPM_Upload_Stock(MaHang,TenHang,SoLuong) VALUES ('" + maHang + "','" + tenHang + "'," + soLuong + ")";
+                    using (SqlCommand myCommand = new SqlCommand(strSQL, myConnection))
+                    {
+                        myCommand.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Lỗi: Quá trình cập nhật dữ liệu gặp lỗi, hãy tải lại trang");
+                }
+            }
+        }
+
+        public void XoaUpload_Stock(string ID)
+        {
+            using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
+            {
+                try
+                {
+                    myConnection.Open();
+                    string strSQL = "Delete from [GPM_Upload_Stock] WHERE [ID] = @ID";
+                    using (SqlCommand myCommand = new SqlCommand(strSQL, myConnection))
+                    {
+                        myCommand.Parameters.AddWithValue("@ID", ID);
+                        myCommand.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Lỗi: Quá trình cập nhật dữ liệu gặp lỗi, hãy tải lại trang");
+                }
+            }
+        }
+
+        public void XoaUpload_Stock_All()
+        {
+            using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
+            {
+                try
+                {
+                    myConnection.Open();
+                    string strSQL = "DELETE FROM [GPM_Upload_Stock]";
+                    using (SqlCommand myCommand = new SqlCommand(strSQL, myConnection))
+                    {
+                        myCommand.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception e)
+                {
+                    //throw new Exception("Lỗi: Quá trình cập nhật dữ liệu gặp lỗi, hãy tải lại trang");
+                }
+            }
+        }
+
 
         public void XoaHangHoa_Delete(string ID)
         {

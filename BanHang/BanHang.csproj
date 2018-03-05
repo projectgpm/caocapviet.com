@@ -108,6 +108,8 @@
     <Content Include="BaoCaoKhachHangTraHang_In.aspx" />
     <Content Include="BaoCaoNhapHang.aspx" />
     <Content Include="BaoCaoNhapHang_In.aspx" />
+    <Content Include="BaoCaoNhapXuatTon.aspx" />
+    <Content Include="BaoCaoNhapXuatTon_In.aspx" />
     <Content Include="BaoCaoTonKho.aspx" />
     <Content Include="BaoCaoTonKho_In.aspx" />
     <Content Include="bin\BanHang.dll" />
@@ -160,6 +162,7 @@
     <Content Include="DanhSachPhieuXuatTra.aspx" />
     <Content Include="DanhSachThayDoiGiaTheoVung.aspx" />
     <Content Include="Default.aspx" />
+    <Content Include="DieuChinhStock.aspx" />
     <Content Include="DonDatHangChiNhanh.aspx" />
     <Content Include="DonDoiHang.aspx" />
     <Content Include="DonHangDaDuyet.aspx" />
@@ -418,6 +421,20 @@
     </Compile>
     <Compile Include="BaoCaoNhapHang_In.aspx.designer.cs">
       <DependentUpon>BaoCaoNhapHang_In.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BaoCaoNhapXuatTon.aspx.cs">
+      <DependentUpon>BaoCaoNhapXuatTon.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BaoCaoNhapXuatTon.aspx.designer.cs">
+      <DependentUpon>BaoCaoNhapXuatTon.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BaoCaoNhapXuatTon_In.aspx.cs">
+      <DependentUpon>BaoCaoNhapXuatTon_In.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BaoCaoNhapXuatTon_In.aspx.designer.cs">
+      <DependentUpon>BaoCaoNhapXuatTon_In.aspx</DependentUpon>
     </Compile>
     <Compile Include="BaoCaoTonKho.aspx.cs">
       <DependentUpon>BaoCaoTonKho.aspx</DependentUpon>
@@ -772,6 +789,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DieuChinhStock.aspx.cs">
+      <DependentUpon>DieuChinhStock.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DieuChinhStock.aspx.designer.cs">
+      <DependentUpon>DieuChinhStock.aspx</DependentUpon>
     </Compile>
     <Compile Include="DonDatHangChiNhanh.aspx.cs">
       <DependentUpon>DonDatHangChiNhanh.aspx</DependentUpon>
@@ -1202,6 +1226,12 @@
     <Compile Include="Report\rpBaoCaoNhapHang.Designer.cs">
       <DependentUpon>rpBaoCaoNhapHang.cs</DependentUpon>
     </Compile>
+    <Compile Include="Report\rpBaoCaoNhapXuatTon.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rpBaoCaoNhapXuatTon.Designer.cs">
+      <DependentUpon>rpBaoCaoNhapXuatTon.cs</DependentUpon>
+    </Compile>
     <Compile Include="Report\rpBaoCaoTonKho.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -1214,11 +1244,23 @@
     <Compile Include="Report\rpDonDatHang.Designer.cs">
       <DependentUpon>rpDonDatHang.cs</DependentUpon>
     </Compile>
+    <Compile Include="Report\rpHoaDon.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rpHoaDon.Designer.cs">
+      <DependentUpon>rpHoaDon.cs</DependentUpon>
+    </Compile>
     <Compile Include="Report\rpHoaDonBanHangLe.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Report\rpHoaDonBanHangLe.designer.cs">
       <DependentUpon>rpHoaDonBanHangLe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\rpPhieuChuyenKho.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\rpPhieuChuyenKho.Designer.cs">
+      <DependentUpon>rpPhieuChuyenKho.cs</DependentUpon>
     </Compile>
     <Compile Include="Report\rpTheKho.cs">
       <SubType>Component</SubType>
@@ -1375,6 +1417,9 @@
     <EmbeddedResource Include="Report\rpBaoCaoNhapHang.resx">
       <DependentUpon>rpBaoCaoNhapHang.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report\rpBaoCaoNhapXuatTon.resx">
+      <DependentUpon>rpBaoCaoNhapXuatTon.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report\rpBaoCaoTonKho.resx">
       <DependentUpon>rpBaoCaoTonKho.cs</DependentUpon>
     </EmbeddedResource>
@@ -1383,6 +1428,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Report\rpHoaDonBanHangLe.resx">
       <DependentUpon>rpHoaDonBanHangLe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\rpPhieuChuyenKho.resx">
+      <DependentUpon>rpPhieuChuyenKho.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\rpTheKho.resx">
       <DependentUpon>rpTheKho.cs</DependentUpon>

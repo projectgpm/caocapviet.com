@@ -7,8 +7,21 @@
                 <dx:LayoutItem Caption="Mã Hàng" ColSpan="2">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer5" runat="server">
-                            <dx:ASPxTextBox ID="txtMaHangTraCuu" runat="server" NullText="Nhập mã hàng cần tra cứu..." Width="100%">
-                            </dx:ASPxTextBox>
+                            <dx:ASPxComboBox ID="txtMaHangTraCuu" runat="server" ValueType="System.String" 
+                                DropDownWidth="600" DropDownStyle="DropDownList"   AutoPostBack="True"
+                                ValueField="MaHang"
+                                NullText="Nhập mã hàng.." Width="100%" TextFormatString="{0} - {1} - {2}"
+                                EnableCallbackMode="true" CallbackPageSize="10" DataSourceID="sqlHangHoa"               
+                                >                                    
+                                <Columns>
+                                    <dx:ListBoxColumn FieldName="MaHang" Width="80px" Caption="Mã Hàng" />
+                                    <dx:ListBoxColumn FieldName="TenHangHoa" Width="200px" Caption="Tên Hàng Hóa"/>
+                                    <dx:ListBoxColumn FieldName="TenDonViTinh" Width="100px" Caption="Đơn Vị Tính"/>
+                                </Columns>
+                                <DropDownButton Visible="False">
+                                </DropDownButton>
+                            </dx:ASPxComboBox>
+                             <asp:SqlDataSource ID="sqlHangHoa" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" SelectCommand="SELECT GPM_HangHoa.ID, GPM_HangHoa.TenHangHoa, GPM_HangHoa.MaHang, GPM_DonViTinh.TenDonViTinh FROM GPM_HangHoa INNER JOIN GPM_DonViTinh ON GPM_HangHoa.IDDonViTinh = GPM_DonViTinh.ID WHERE (GPM_HangHoa.DaXoa = 0)"></asp:SqlDataSource>
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
                 </dx:LayoutItem>

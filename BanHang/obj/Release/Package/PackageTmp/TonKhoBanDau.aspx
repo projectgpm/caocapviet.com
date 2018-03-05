@@ -5,7 +5,7 @@
              <dx:LayoutItem Caption="" HorizontalAlign="Left">
                 <LayoutItemNestedControlCollection>
                     <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer1" runat="server">
-                        <dx:ASPxButton ID="btnXuatPDF" runat="server" OnClick="btnXuatPDF_Click" Text="Xuất PDF">
+                        <dx:ASPxButton ID="btnXuatPDF" runat="server" OnClick="btnXuatPDF_Click" Text="Xuất PDF" Visible="False">
                             <Image IconID="export_exporttopdf_16x16">
                             </Image>
                         </dx:ASPxButton>
@@ -23,10 +23,10 @@
                 </LayoutItemNestedControlCollection>
             </dx:LayoutItem>
             
-            <dx:LayoutItem Caption="Hiển Thị" ColSpan="2">
+            <dx:LayoutItem Caption="Hiển Thị" ColSpan="2" Visible="False">
                 <LayoutItemNestedControlCollection>
                     <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer4" runat="server">
-                        <dx:ASPxComboBox ID="cmbHienThi" runat="server" AutoPostBack="True" OnSelectedIndexChanged="cmbHienThi_SelectedIndexChanged" SelectedIndex="0">
+                        <dx:ASPxComboBox ID="cmbHienThi" runat="server" AutoPostBack="True" OnSelectedIndexChanged="cmbHienThi_SelectedIndexChanged" SelectedIndex="0" Visible="False">
                             <Items>
                                 <dx:ListEditItem Selected="True" Text="50" Value="50" />
                                 <dx:ListEditItem Text="100" Value="100" />
@@ -39,11 +39,23 @@
                     </dx:LayoutItemNestedControlContainer>
                 </LayoutItemNestedControlCollection>
             </dx:LayoutItem>
+             <dx:LayoutItem Caption="">
+                 <LayoutItemNestedControlCollection>
+                     <dx:LayoutItemNestedControlContainer runat="server">
+                         <dx:ASPxButton ID="btnDieuChinhStock" runat="server" OnClick="btnDieuChinhStock_Click" Text="Chỉnh Stock">
+                             <Image IconID="actions_converttorange_16x16">
+                             </Image>
+                         </dx:ASPxButton>
+                     </dx:LayoutItemNestedControlContainer>
+                 </LayoutItemNestedControlCollection>
+             </dx:LayoutItem>
         </Items>
     </dx:ASPxFormLayout>
-    <dx:ASPxGridViewExporter ID="XuatDuLieu" runat="server">
+    <dx:ASPxGridViewExporter ID="XuatDuLieu" runat="server" GridViewID="HangHoa">
     </dx:ASPxGridViewExporter>
     <dx:ASPxGridView ID="gridTonKhoBanDau" runat="server" AutoGenerateColumns="False" KeyFieldName="ID" Width="100%" OnRowUpdating="gridTonKhoBanDau_RowUpdating" >
+        <SettingsPager PageSize="200">
+        </SettingsPager>
         <SettingsEditing Mode="PopupEditForm">
         </SettingsEditing>
         <Settings ShowFilterRow="True" ShowTitlePanel="True" />
@@ -151,15 +163,23 @@
 <HideAdaptiveDetailButton ButtonType="Image"></HideAdaptiveDetailButton>
 </SettingsCommandButton>
           <Columns>
-              <dx:GridViewDataTextColumn Caption="GhiChu" FieldName="GhiChu" VisibleIndex="4">
+              <dx:GridViewDataTextColumn Caption="GhiChu" FieldName="GhiChu" VisibleIndex="6">
               </dx:GridViewDataTextColumn>
-              <dx:GridViewDataTextColumn Caption="SoLuong" FieldName="SoLuong" VisibleIndex="3">
+              <dx:GridViewDataTextColumn Caption="SoLuong" FieldName="SoLuong" VisibleIndex="5">
               </dx:GridViewDataTextColumn>
-              <dx:GridViewDataTextColumn Caption="DonViTinh" FieldName="DonViTinh" VisibleIndex="2">
+              <dx:GridViewDataTextColumn Caption="DonViTinh" FieldName="DonViTinh" VisibleIndex="4">
               </dx:GridViewDataTextColumn>
-              <dx:GridViewDataTextColumn Caption="TenHangHoa" FieldName="TenHangHoa" VisibleIndex="1">
+              <dx:GridViewDataTextColumn Caption="TenHangHoa" FieldName="TenHangHoa" VisibleIndex="3">
               </dx:GridViewDataTextColumn>
-              <dx:GridViewDataTextColumn Caption="MaHang" FieldName="MaHang" VisibleIndex="0">
+              <dx:GridViewDataTextColumn Caption="MaHang" FieldName="MaHang" VisibleIndex="2">
+              </dx:GridViewDataTextColumn>
+              <dx:GridViewDataTextColumn Caption="NganhHang" FieldName="NganhHang" VisibleIndex="0">
+              </dx:GridViewDataTextColumn>
+              <dx:GridViewDataTextColumn Caption="NhomHang" FieldName="NhomHang" VisibleIndex="1">
+              </dx:GridViewDataTextColumn>
+              <dx:GridViewDataTextColumn Caption="DaXoa" FieldName="DaXoa" VisibleIndex="8">
+              </dx:GridViewDataTextColumn>
+              <dx:GridViewDataTextColumn Caption="Barcode" FieldName="Barcode" VisibleIndex="7">
               </dx:GridViewDataTextColumn>
           </Columns>
       </dx:ASPxGridView>

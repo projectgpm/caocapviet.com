@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
     <dx:ASPxFormLayout ID="ASPxFormLayout1" runat="server" ColCount="8" Width="10%">
         <Items>
-            <dx:LayoutItem Caption="" HorizontalAlign="Left">
+            <dx:LayoutItem Caption="" HorizontalAlign="Left" Visible="False">
                 <LayoutItemNestedControlCollection>
                     <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer1" runat="server">
                         <dx:ASPxButton ID="btnXuatPDF" runat="server" OnClick="btnXuatPDF_Click" Text="Xuất PDF">
@@ -22,7 +22,7 @@
                     </dx:LayoutItemNestedControlContainer>
                 </LayoutItemNestedControlCollection>
             </dx:LayoutItem>
-            <dx:LayoutItem Caption="Hiển Thị" ColSpan="2">
+            <dx:LayoutItem Caption="Hiển Thị" ColSpan="2" Visible="False">
                 <LayoutItemNestedControlCollection>
                     <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer4" runat="server">
                         <dx:ASPxComboBox ID="cmbHienThi" runat="server" AutoPostBack="True" OnSelectedIndexChanged="cmbHienThi_SelectedIndexChanged" SelectedIndex="0">
@@ -43,6 +43,8 @@
     <dx:ASPxGridViewExporter ID="XuatDuLieu" runat="server">
     </dx:ASPxGridViewExporter>
     <dx:ASPxGridView ID="gridDonViTinh" runat="server" AutoGenerateColumns="False" KeyFieldName="ID" Width="100%" OnRowDeleting="gridDonViTinh_RowDeleting" OnRowInserting="gridDonViTinh_RowInserting" OnRowUpdating="gridDonViTinh_RowUpdating" OnInitNewRow="gridDonViTinh_InitNewRow">
+        <SettingsPager PageSize="1000">
+        </SettingsPager>
         <SettingsEditing Mode="PopupEditForm">
         </SettingsEditing>
         <Settings AutoFilterCondition="Contains" ShowFilterRow="True" ShowTitlePanel="True" />

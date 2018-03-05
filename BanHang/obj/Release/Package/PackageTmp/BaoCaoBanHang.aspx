@@ -66,7 +66,7 @@
                             </dx:LayoutItemNestedControlContainer>
                         </LayoutItemNestedControlCollection>
                     </dx:LayoutItem>
-                    <dx:LayoutItem Caption="Hàng Hóa">
+                    <dx:LayoutItem Caption="Hàng Hóa" Visible="False">
                         <LayoutItemNestedControlCollection>
                             <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer3" runat="server">
                                 <dx:ASPxComboBox ID="cmbHangHoa" runat="server" Width="100%">
@@ -90,6 +90,12 @@
                     </dx:LayoutItem>
                     <dx:LayoutItem Caption="">
                         <LayoutItemNestedControlCollection>
+                            <dx:LayoutItemNestedControlContainer runat="server">
+                            </dx:LayoutItemNestedControlContainer>
+                        </LayoutItemNestedControlCollection>
+                    </dx:LayoutItem>
+                    <dx:LayoutItem Caption="">
+                        <LayoutItemNestedControlCollection>
                             <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer9" runat="server">
                                 <dx:ASPxButton ID="btnXemBaoCao" runat="server" Text="Xem báo cáo" Width="100%" OnClick="btnXemBaoCao_Click">
                                     <Image IconID="print_printarea_16x16">
@@ -106,6 +112,47 @@
         <SettingsItemCaptions HorizontalAlign="Center" />
         <SettingsItemHelpTexts HorizontalAlign="Center" />
         <SettingsItems HorizontalAlign="Center" />
+    </dx:ASPxFormLayout>
+    <dx:ASPxFormLayout ID="ASPxFormLayout2" runat="server" Width="100%">
+        <Items>
+            <dx:LayoutGroup Caption="Danh sách hàng hóa">
+                <Items>
+                    <dx:LayoutItem Caption="">
+                        <LayoutItemNestedControlCollection>
+                            <dx:LayoutItemNestedControlContainer runat="server">
+                                <dx:ASPxGridView ID="gridDanhSach" runat="server" AutoGenerateColumns="False" KeyFieldName="ID" Width="100%">
+                                    <SettingsPager Mode="EndlessPaging" PageSize="200">
+                                    </SettingsPager>
+                                    <Settings ShowFilterRow="True" />
+                                    <SettingsCommandButton>
+                                        <ShowAdaptiveDetailButton ButtonType="Image">
+                                        </ShowAdaptiveDetailButton>
+                                        <HideAdaptiveDetailButton ButtonType="Image">
+                                        </HideAdaptiveDetailButton>
+                                    </SettingsCommandButton>
+                                    <Columns>
+                                        <dx:GridViewDataTextColumn Caption="Mã hàng" FieldName="MaHang" ShowInCustomizationForm="True" VisibleIndex="1">
+                                        </dx:GridViewDataTextColumn>
+                                        <dx:GridViewDataTextColumn Caption="Hàng hóa" FieldName="TenHangHoa" ShowInCustomizationForm="True" VisibleIndex="2">
+                                        </dx:GridViewDataTextColumn>
+                                        <dx:GridViewDataTextColumn Caption="Đơn vị tính" FieldName="TenDonViTinh" ShowInCustomizationForm="True" VisibleIndex="3">
+                                        </dx:GridViewDataTextColumn>
+                                        <dx:GridViewDataTextColumn Caption="Số Lượng" FieldName="SoLuong" ShowInCustomizationForm="True" VisibleIndex="4">
+                                        </dx:GridViewDataTextColumn>
+                                        <dx:GridViewDataTextColumn Caption="Nhóm hàng" FieldName="TenNhomHang" ShowInCustomizationForm="True" VisibleIndex="0">
+                                        </dx:GridViewDataTextColumn>
+                                        <dx:GridViewDataSpinEditColumn Caption="Giá bán" FieldName="GiaBan" ShowInCustomizationForm="True" VisibleIndex="5">
+                                            <PropertiesSpinEdit DisplayFormatInEditMode="True" DisplayFormatString="#,#" NumberFormat="Custom">
+                                            </PropertiesSpinEdit>
+                                        </dx:GridViewDataSpinEditColumn>
+                                    </Columns>
+                                </dx:ASPxGridView>
+                            </dx:LayoutItemNestedControlContainer>
+                        </LayoutItemNestedControlCollection>
+                    </dx:LayoutItem>
+                </Items>
+            </dx:LayoutGroup>
+        </Items>
     </dx:ASPxFormLayout>
     <dx:ASPxPopupControl ID="popup" runat="server" AllowDragging="True" AllowResize="True" 
          PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter"  Width="1300px"

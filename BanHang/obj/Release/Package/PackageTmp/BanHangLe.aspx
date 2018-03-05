@@ -227,10 +227,13 @@
                             </td>
                             <td align="right" width="50%">
                                  <dx:ASPxButton ID="btnQuyDoiHangHoa" runat="server"
-                                    RenderMode="Link" Text="Quy Đổi Mã Hàng" OnClick="btnQuyDoiHangHoa_Click" Visible="False">
-                                    <Image IconID="businessobjects_boorderitem_32x32">
-                                    </Image>
+                                    RenderMode="Link" Text="Bảng kê" OnClick="btnQuyDoiHangHoa_Click">
+                                    
                                 </dx:ASPxButton> 
+                                <dx:ASPxButton ID="ASPxButton2" runat="server"
+                                    RenderMode="Link" Text="Tài khoản" OnClick="ASPxButton2_Click">
+                                    
+                                </dx:ASPxButton>
                                 <dx:ASPxButton ID="btnThoat" runat="server"
                                     RenderMode="Link" Text="Thoát" PostBackUrl="DangXuat.aspx">
                                     <Image IconID="edit_delete_32x32">

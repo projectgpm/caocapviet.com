@@ -31,8 +31,8 @@ namespace BanHang
                     {
                         LoadGrid(cmbHienThi.Value.ToString());
                     }
-                    if (dtSetting.LayChucNang_ThemXoaSua(Session["IDNhom"].ToString()) == false)
-                        btnThemPhieuXuatKhac.Enabled = false;
+                    //if (dtSetting.LayChucNang_ThemXoaSua(Session["IDNhom"].ToString()) == false)
+                    //    btnThemPhieuXuatKhac.Enabled = false;
                 }
                 else
                     Response.Redirect("Default.aspx");

@@ -39,6 +39,16 @@
                     </dx:LayoutItemNestedControlContainer>
                 </LayoutItemNestedControlCollection>
             </dx:LayoutItem>
+             <dx:LayoutItem Caption="">
+                 <LayoutItemNestedControlCollection>
+                     <dx:LayoutItemNestedControlContainer runat="server">
+                         <dx:ASPxButton ID="btnDieuChinhStock" runat="server" OnClick="btnDieuChinhStock_Click" Text="Chỉnh Stock">
+                             <Image IconID="actions_converttorange_16x16">
+                             </Image>
+                         </dx:ASPxButton>
+                     </dx:LayoutItemNestedControlContainer>
+                 </LayoutItemNestedControlCollection>
+             </dx:LayoutItem>
         </Items>
     </dx:ASPxFormLayout>
     <dx:ASPxGridViewExporter ID="XuatDuLieu" runat="server" GridViewID="HangHoa">

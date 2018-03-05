@@ -178,10 +178,7 @@
            </Items>
        </dx:ASPxFormLayout>
         <asp:SqlDataSource ID="sqlTrangThaiChuyenHang" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" SelectCommand="SELECT [ID], [TenTrangThai] FROM [GPM_TrangThaiChuyenHang]"></asp:SqlDataSource>
-       <asp:SqlDataSource ID="sqlDNhanVien" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" SelectCommand="SELECT [ID], [TenNguoiDung] FROM [GPM_NguoiDung] WHERE ([DaXoa] = @DaXoa)">
-           <SelectParameters>
-               <asp:Parameter DefaultValue="0" Name="DaXoa" Type="Int32" />
-           </SelectParameters>
+       <asp:SqlDataSource ID="sqlDNhanVien" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" SelectCommand="SELECT [ID], [TenNguoiDung] FROM [GPM_NguoiDung]">
        </asp:SqlDataSource>
        <asp:SqlDataSource ID="sqlKho" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" SelectCommand="SELECT [ID], [TenCuaHang] FROM [GPM_Kho] WHERE ([DaXoa] = @DaXoa)">
            <SelectParameters>

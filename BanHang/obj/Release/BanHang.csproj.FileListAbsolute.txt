@@ -16,3 +16,7 @@ C:\Users\vmquy\Desktop\Code\caocapviet.com\BanHang\obj\Release\BanHang.csproj.Ge
 C:\Users\vmquy\Desktop\Code\caocapviet.com\BanHang\obj\Release\BanHang.dll.licenses
 C:\Users\vmquy\Desktop\Code\caocapviet.com\BanHang\obj\Release\BanHang.dll
 C:\Users\vmquy\Desktop\Code\caocapviet.com\BanHang\obj\Release\BanHang.pdb
+C:\Users\vmquy\Desktop\Code\caocapviet.com\BanHang\bin\BanHang.dll.config
+C:\Users\vmquy\Desktop\Code\caocapviet.com\BanHang\obj\Release\BanHang.csprojResolveAssemblyReference.cache
+C:\Users\vmquy\Desktop\Code\caocapviet.com\BanHang\obj\Release\BanHang.Report.rpBaoCaoNhapXuatTon.resources
+C:\Users\vmquy\Desktop\Code\caocapviet.com\BanHang\obj\Release\BanHang.Report.rpPhieuChuyenKho.resources

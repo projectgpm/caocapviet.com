@@ -96,5 +96,10 @@ namespace BanHang
         {
             XuatDuLieu.WritePdfToResponse();
         }
+
+        protected void btnDieuChinhStock_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("DieuChinhStock.aspx");
+        }
     }
 }

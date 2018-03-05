@@ -12,7 +12,7 @@
                     </dx:LayoutItemNestedControlContainer>
                 </LayoutItemNestedControlCollection>
             </dx:LayoutItem>
-             <dx:LayoutItem Caption="Hiển Thị" ColSpan="2">
+             <dx:LayoutItem Caption="Hiển Thị" ColSpan="2" Visible="False">
                 <LayoutItemNestedControlCollection>
                     <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer4" runat="server">
                         <dx:ASPxComboBox ID="cmbHienThi" runat="server" AutoPostBack="True" OnSelectedIndexChanged="cmbHienThi_SelectedIndexChanged" SelectedIndex="0">
@@ -31,6 +31,8 @@
         </Items>
     </dx:ASPxFormLayout>
     <dx:ASPxGridView ID="gridHangHoa" runat="server" AutoGenerateColumns="False" KeyFieldName="ID" Width="100%" OnHtmlRowPrepared="gridHangHoa_HtmlRowPrepared">
+        <SettingsPager PageSize="1000">
+        </SettingsPager>
         <SettingsEditing Mode="EditForm">
         </SettingsEditing>
         <Settings ShowFilterRow="True" ShowTitlePanel="True" />

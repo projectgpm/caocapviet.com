@@ -22,14 +22,14 @@ namespace BanHang
                 //{
                 //    if (dtSetting.LayTrangThaiMenu_ChucNang(Session["IDNhom"].ToString(), 7) != 1)
                 //    {
-                        if (!IsPostBack)
-                        {
-                            // xóa dữ liệu bảng temp
-                            data = new dtImportHangHoa();
-                            data.XoaDuLieuTemp();
+                        //if (!IsPostBack)
+                        //{
+                        //    // xóa dữ liệu bảng temp
+                        //    data = new dtImportHangHoa();
+                        //    data.XoaDuLieuTemp();
 
-                        }
-                        LoadGrid();
+                        //}
+                        //LoadGrid();
                 //    }
                 //    else
                 //    {
@@ -68,104 +68,14 @@ namespace BanHang
 
         protected void btnThem_Click(object sender, EventArgs e)
         {
-            data = new dtImportHangHoa();
-            DataTable dt = data.DanhSachHangHoa_Import_Temp();
-            if (dt.Rows.Count != 0)
-            {
-                foreach (DataRow dr in dt.Rows)
-                {
-                    string IDNhomHang = dr["IDNhomHang"].ToString();
-                    string MaHang = dr["MaHang"].ToString();
-                    string TenHangHoa = dr["TenHangHoa"].ToString();
-                    string IDDonViTinh = dr["IDDonViTinh"].ToString();
-                    string HeSo = dr["HeSo"].ToString();
-                    string IDHangSanXuat = dr["IDHangSanXuat"].ToString();
-                    string IDThue = dr["IDThue"].ToString();
-                    //string HangQuyDoi = dr["Hang Quy Doi"].ToString();
-                    string IDNhomDatHang = dr["IDNhomDatHang"].ToString();
-                    string GiaMuaTruocThue = dr["GiaMuaTruocThue"].ToString();
-                    string GiaBanTruocThue = dr["GiaBanTruocThue"].ToString();
-                    string GiaMuaSauThue = dr["GiaMuaSauThue"].ToString();
-                    string GiaBanSauThue = dr["GiaBanSauThue"].ToString();
-                    string GiaBan1 = dr["GiaBan1"].ToString();
-                    string GiaBan2 = dr["GiaBan2"].ToString();
-                    string GiaBan3 = dr["GiaBan3"].ToString();
-                    string GiaBan4 = dr["GiaBan4"].ToString();
-                    string GiaBan5 = dr["GiaBan5"].ToString();
-                    string TrongLuong = dr["TrongLuong"].ToString();
-                    string HanSuDung = dr["HanSuDung"].ToString();
-                    string IDTrangThaiHang = dr["IDTrangThaiHang"].ToString();
-                    string GhiChu = dr["GhiChu"].ToString();
-                    string IDTrangThaiBarcode = dr["IDTrangThaiBarcode"].ToString();
-                    string Barcode = dr["Barcode"].ToString();
-
-                    object IDHangHoa = -1;
-                    dataHangHoa hh = new dataHangHoa();
-                    DataTable dd = hh.KiemTraHangHoa_MaHang(MaHang);
-                    if (dd.Rows.Count == 0)
-                    {
-                        //IDHangHoa = hh.insertHangHoa(IDNhomHang, MaHang, TenHangHoa, IDDonViTinh, HeSo, IDHangSanXuat, IDThue, -1 + "", IDNhomDatHang, GiaMuaTruocThue, GiaBanTruocThue, GiaMuaSauThue, GiaBanSauThue, GiaBan1, GiaBan2, GiaBan3, GiaBan4, GiaBan5, TrongLuong, HanSuDung, IDTrangThaiHang, GhiChu);
-                        // Thêm hàng hóa vào các kho....
-                        dtKho dtx = new dtKho();
-                        DataTable dtax = dtx.LayDanhSachKho();
-                        for (int i = 0; i < dtax.Rows.Count; i++)
-                        {
-                            DataRow drx = dtax.Rows[i];
-                            string IDKho = drx["ID"].ToString();
-                            dataHangHoa da = new dataHangHoa();
-                            da.ThemHangVaoTonKho(IDKho, IDHangHoa + "", 0 + "",GiaBanSauThue,GiaBan1,GiaBan2,GiaBan3,GiaBan4,GiaBan5);
-                        }
-                    }
-                    if ((int)IDHangHoa != -1)
-                    {
-                        //DataTable d3 = hh.KiemTraBarcode(IDHangHoa + "", Barcode);
-                        //if (d3.Rows.Count == 0)
-                        //{
-                        //    hh.ThemBarCode(IDHangHoa, IDTrangThaiBarcode, Barcode);
-                        //}
-                    }
-                    else
-                    {
-                        DataRow drx = dd.Rows[0];
-                        int ID = Int32.Parse(drx["ID"].ToString());
-                        //DataTable d3 = hh.KiemTraBarcode(ID + "", Barcode);
-                        //if (d3.Rows.Count == 0)
-                        //{
-                        //    hh.ThemBarCode(ID, IDTrangThaiBarcode, Barcode);
-                        //}
-                    }
-                }
-
-                for (int i = 0; i < dt.Rows.Count; i++)
-                {
-                    DataRow dr = dt.Rows[i];
-                    string HangQuyDoi = dr["HangQuyDoi"].ToString();
-                    string MaHang = dr["MaHang"].ToString();
-
-                    string IDHH = dataHangHoa.LayIDHangHoa(HangQuyDoi);
-                    if (IDHH.CompareTo("-1") != 0)
-                    {
-                        dataHangHoa da = new dataHangHoa();
-                        da.SuaThongTinHangHoa_HangQuyDoi(MaHang, IDHH);
-                    }
-                    else
-                    {
-                        IDHH = dataHangHoa.LayIDHangHoa_MaHang(MaHang);
-                        dataHangHoa da = new dataHangHoa();
-                        da.SuaThongTinHangHoa_HangQuyDoi(MaHang, IDHH);
-                    }
-                }
-
-                data.XoaDuLieuTemp();
-                dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Hàng hóa", Session["IDKho"].ToString(), "Danh mục", "Import hàng hóa");
-                Response.Redirect("HangHoa.aspx");
-            }
+            
+            
         }
 
         protected void btnHuy_Click(object sender, EventArgs e)
         {
             data.XoaDuLieuTemp();
-            Response.Redirect("HangHoa.aspx");
+            //Response.Redirect("HangHoa.aspx");
         }
         private void Import()
         {
@@ -198,39 +108,48 @@ namespace BanHang
             int intRow = dataTable.Rows.Count;
             if (intRow != 0)
             {
-                for (int i = 0; i <= intRow - 1; i++)
+                for (int i = 1400; i <= intRow - 1; i++)
                 {
-                    DataRow dr = dataTable.Rows[i];
-                    dataNhomHang d = new dataNhomHang();
-                    string IDNhomHang = dataNhomHang.LayIDNhom(dr["Nhom Hang"].ToString());
-                    string MaHang = dr["Ma Hang"].ToString();
-                    string TenHangHoa = dr["Ten Hang Hoa"].ToString();
-                    string IDDonViTinh = dtDonViTinh.LayIDDonViTinh(dr["Don Vi Tinh"].ToString());
-                    string HeSo = dtDonViTinh.LayIDDonViTinh(dr["He So"].ToString());
-                    string IDHangSanXuat = dataHangSanXuat.LayIDHangSanXuat(dr["Hang San Xuat"].ToString());
-                    string IDThue = dtDanhMucThue.LayIDThue(dr["Thue"].ToString());
-                    string HangQuyDoi = dr["Hang Quy Doi"].ToString();
-                    string IDNhomDatHang = dtNhomDatHang.LayIDNhomDatHang(dr["Nhom Dat Hang"].ToString());
-                    string GiaMuaTruocThue = dr["Gia Mua Truoc Thue"].ToString();
-                    string GiaBanTruocThue = dr["Gia Ban Truoc Thue"].ToString();
-                    string GiaMuaSauThue = dr["Gia Mua Sau Thue"].ToString();
-                    string GiaBanSauThue = dr["Gia Ban Sau Thue"].ToString();
-                    string GiaBan1 = dr["Gia Ban1"].ToString();
-                    string GiaBan2 = dr["Gia Ban2"].ToString();
-                    string GiaBan3 = dr["Gia Ban3"].ToString();
-                    string GiaBan4 = dr["Gia Ban4"].ToString();
-                    string GiaBan5 = dr["Gia Ban5"].ToString();
-                    string TrongLuong = dr["Trong Luong"].ToString();
-                    string HanSuDung = dr["Han Su Dung"].ToString();
-                    string IDTrangThaiHang = dataHangHoa.LayIDTrangThaiHang(dr["Trang Thai Hang"].ToString());
-                    string GhiChu = dr["Ghi Chu"].ToString();
-                    string IDTrangThaiBarcode = dataHangHoa.LayIDTrangThaiBarcode(dr["Trang Thai Barcode"].ToString());
-                    string Barcode = dr["Barcode"].ToString();
+                    try
+                    {
+                        DataRow dr = dataTable.Rows[i];
+                        dataNhomHang d = new dataNhomHang();
+                        string maHang = dr["MaHang"].ToString();
+                        int IDHangHoa = Int32.Parse(maHang);
+                        int SoLuong1 = Int32.Parse(dr["KHO 01"].ToString());
+                        int SoLuong2 = Int32.Parse(dr["AN THOI 24"].ToString());
+                        int SoLuong3 = Int32.Parse(dr["CAU DINH 43"].ToString());
+                        int SoLuong4 = Int32.Parse(dr["HUNG VUONG 35"].ToString());
+                        int SoLuong5 = Int32.Parse(dr["MY QUI 11"].ToString());
+                        int SoLuong6 = Int32.Parse(dr["MY XUYEN 20"].ToString());
+                        int SoLuong7 = Int32.Parse(dr["TAN PHU DONG 42"].ToString());
+                        int SoLuong8 = Int32.Parse(dr["THANH AN 18"].ToString());
+                        int SoLuong9 = Int32.Parse(dr["TRAN QUANG DIEU 32"].ToString());
 
-                    data = new dtImportHangHoa();
-                    data.insertHangHoa_temp(IDNhomHang, MaHang, TenHangHoa, IDDonViTinh, HeSo, IDHangSanXuat, IDThue, HangQuyDoi, IDNhomDatHang, GiaMuaTruocThue, GiaBanTruocThue, GiaMuaSauThue, GiaBanSauThue, GiaBan1, GiaBan2, GiaBan3, GiaBan4, GiaBan5, TrongLuong, HanSuDung, IDTrangThaiHang, GhiChu, IDTrangThaiBarcode, Barcode);
+                        int IDKho1 = 1;
+                        int IDKho2 = 43;
+                        int IDKho3 = 62;
+                        int IDKho4 = 53;
+                        int IDKho5 = 22;
+                        int IDKho6 = 38;
+                        int IDKho7 = 61;
+                        int IDKho8 = 35;
+                        int IDKho9 = 51;
+                        d.updateHangHoa(IDHangHoa, SoLuong1, IDKho1);
+                        d.updateHangHoa(IDHangHoa, SoLuong2, IDKho2);
+                        d.updateHangHoa(IDHangHoa, SoLuong3, IDKho3);
+                        d.updateHangHoa(IDHangHoa, SoLuong4, IDKho4);
+                        d.updateHangHoa(IDHangHoa, SoLuong5, IDKho5);
+                        d.updateHangHoa(IDHangHoa, SoLuong6, IDKho6);
+                        d.updateHangHoa(IDHangHoa, SoLuong7, IDKho7);
+                        d.updateHangHoa(IDHangHoa, SoLuong8, IDKho8);
+                        d.updateHangHoa(IDHangHoa, SoLuong9, IDKho9);
+
+                    }catch(Exception e){}
+                    //data = new dtImportHangHoa();
+                    //data.insertHangHoa_temp(IDNhomHang, MaHang, TenHangHoa, IDDonViTinh, HeSo, IDHangSanXuat, IDThue, HangQuyDoi, IDNhomDatHang, GiaMuaTruocThue, GiaBanTruocThue, GiaMuaSauThue, GiaBanSauThue, GiaBan1, GiaBan2, GiaBan3, GiaBan4, GiaBan5, TrongLuong, HanSuDung, IDTrangThaiHang, GhiChu, IDTrangThaiBarcode, Barcode);
                 }
-                LoadGrid();
+                //LoadGrid();
             }
         }
 

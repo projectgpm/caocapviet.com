@@ -42,7 +42,7 @@
                                     <DropDownButton Visible="False">
                                     </DropDownButton>
                                 </dx:ASPxComboBox>
-                                <asp:SqlDataSource ID="sqlHoaDonBanHang" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" SelectCommand="select GPM_HoaDon.ID, GPM_HoaDon.MaHoaDon, GPM_KhachHang.TenKhachHang, GPM_HoaDon.TongTien from GPM_HoaDon,GPM_KhachHang where GPM_HoaDon.IDKhachHang = GPM_KhachHang.ID and GPM_HoaDon.IDKho = @Kho  and GPM_HoaDon.NgayBan &gt;= @NgayBatDau  order by GPM_HoaDon.ID DESC">
+                                <asp:SqlDataSource ID="sqlHoaDonBanHang" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" SelectCommand="select GPM_HoaDon.ID, GPM_HoaDon.MaHoaDon, GPM_KhachHang.TenKhachHang, GPM_HoaDon.TongTien from GPM_HoaDon,GPM_KhachHang where GPM_HoaDon.IDKhachHang = GPM_KhachHang.ID and TraHang = 0 and GPM_HoaDon.IDKho = @Kho  and GPM_HoaDon.NgayBan &gt;= @NgayBatDau  order by GPM_HoaDon.ID DESC">
                                     <SelectParameters>
                                         <asp:SessionParameter Name="Kho" SessionField="IDKho" />
                                         <asp:SessionParameter Name="NgayBatDau" SessionField="NgayBatDau" />

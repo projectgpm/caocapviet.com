@@ -292,7 +292,7 @@ namespace BanHang.Data
                 try
                 {
                     myConnection.Open();
-                    string cmdText = "update GPM_PhieuKhachHangTraHang set IDHoaDon = '" + IDHoaDon + "', IDNhanVien = '" + IDNhanVien + "', IDKhachHang = '" + IDKhachHang + "', TongHangHoaDoi = '" + TongHangHoaDoi + "', TongTienTra = '" + TongTienTra + "', GhiChu = '" + GhiChu + "' where ID = '" + ID + "'";
+                    string cmdText = "update GPM_PhieuKhachHangTraHang set IDHoaDon = '" + IDHoaDon + "', IDNhanVien = '" + IDNhanVien + "', IDKhachHang = '" + IDKhachHang + "', TongHangHoaDoi = '" + TongHangHoaDoi + "', TongTienTra = '" + TongTienTra + "', GhiChu = '" + GhiChu + "' where ID = '" + ID + "' ; UPDATE GPM_HoaDon SET TraHang = 1 WHERE ID = '" + IDHoaDon + "'";
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
                         myCommand.ExecuteScalar();

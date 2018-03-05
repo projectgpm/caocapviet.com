@@ -48,3 +48,6 @@ C:\Users\vmquy\Desktop\Code\caocapviet.com\BanHang\obj\Debug\BanHang.dll
 C:\Users\vmquy\Desktop\Code\caocapviet.com\BanHang\obj\Debug\BanHang.pdb
 C:\Users\vmquy\Desktop\Code\caocapviet.com\BanHang\bin\BanHang.dll
 C:\Users\vmquy\Desktop\Code\caocapviet.com\BanHang\bin\BanHang.pdb
+C:\Users\vmquy\Desktop\Code\caocapviet.com\BanHang\bin\BanHang.dll.config
+C:\Users\vmquy\Desktop\Code\caocapviet.com\BanHang\obj\Debug\BanHang.Report.rpBaoCaoNhapXuatTon.resources
+C:\Users\vmquy\Desktop\Code\caocapviet.com\BanHang\obj\Debug\BanHang.Report.rpPhieuChuyenKho.resources
