@@ -137,6 +137,24 @@ namespace BanHang.Data
             }
         }
 
+        public DataTable ThongTinHoaDonVuaBan(string IDKho)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT TOP 10 GPM_HoaDon.ID,GPM_HoaDon.[MaHoaDon],GPM_KhachHang.TenKhachHang,GPM_HoaDon.NgayBan from GPM_HoaDon,GPM_KhachHang WHERE GPM_HoaDon.IDKho = '" + IDKho + "' AND GPM_HoaDon.IDKhachHang = GPM_KhachHang.ID ORDER BY GPM_HoaDon.ID DESC";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        DataTable tb = new DataTable();
+                        tb.Load(reader);
+                        return tb;
+                    }
+                }
+            }
+        }
+
         public DataTable LayThongHoaDon_BaoCao(string NgayBD, string NgayKT, string IDKho)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
@@ -258,12 +276,13 @@ namespace BanHang.Data
                                           FORMAT(GETDATE() , 'ddMMyy')
                                           as 'Mã Hóa Đơn'  
                                           from GPM_HoaDon 
-                                          where (IDKho = @IDKho)
+                                          where (IDKho = @ID)
                                           AND DATEDIFF(dd,NgayBan, GetDate()) = 0";
                     object MaHoaDon;
                     using (SqlCommand cmd = new SqlCommand(CompuMaHoaDon, con, trans))
                     {
                         cmd.Parameters.AddWithValue("@IDKho", dtSetting.LayMaKho(IDKho));
+                        cmd.Parameters.AddWithValue("@ID", IDKho);
                         MaHoaDon = cmd.ExecuteScalar();
                     }
                     if (MaHoaDon != null)

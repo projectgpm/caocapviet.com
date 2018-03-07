@@ -149,7 +149,7 @@
                             <dx:GridViewDataTextColumn Caption="STT" FieldName="STT" VisibleIndex="0" 
                                 AdaptivePriority="1" Name="STT" Width="50px" >                                    
                             </dx:GridViewDataTextColumn>
-                            <dx:GridViewDataTextColumn Caption="Mã hàng"  FieldName="MaHang" VisibleIndex="1" AdaptivePriority="1" Width="120px" Visible="False">                                    
+                            <dx:GridViewDataTextColumn Caption="Mã hàng"  FieldName="MaHang" VisibleIndex="1" AdaptivePriority="1">                                    
                             </dx:GridViewDataTextColumn>
                             <dx:GridViewDataTextColumn Caption="Tên hàng" FieldName="TenHang" VisibleIndex="2">                                    
                             </dx:GridViewDataTextColumn>

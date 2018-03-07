@@ -44,6 +44,10 @@ namespace BanHang
                     XuLyThayDoiGiaTheoGio();
                     XuLyDonHangChiNhanh();
                     HuyDonHangThuMua();
+
+                    dtBanHangLe dt = new dtBanHangLe();
+                    ASPxGridViewInBuil.DataSource = dt.ThongTinHoaDonVuaBan(Session["IDKho"].ToString());
+                    ASPxGridViewInBuil.DataBind();
             //    }
             //    else
             //    {

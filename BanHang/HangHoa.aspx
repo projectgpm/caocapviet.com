@@ -95,7 +95,7 @@
 <HideAdaptiveDetailButton ButtonType="Image"></HideAdaptiveDetailButton>
 </SettingsCommandButton>
           <Columns>
-              <dx:GridViewDataTextColumn Caption="GhiChu" FieldName="GhiChu" VisibleIndex="6">
+              <dx:GridViewDataTextColumn Caption="GhiChu" FieldName="GhiChu" VisibleIndex="7">
               </dx:GridViewDataTextColumn>
               <dx:GridViewDataTextColumn Caption="SoLuong" FieldName="SoLuong" VisibleIndex="5">
               </dx:GridViewDataTextColumn>
@@ -109,9 +109,11 @@
               </dx:GridViewDataTextColumn>
               <dx:GridViewDataTextColumn Caption="NhomHang" FieldName="NhomHang" VisibleIndex="1">
               </dx:GridViewDataTextColumn>
-              <dx:GridViewDataTextColumn Caption="DaXoa" FieldName="DaXoa" VisibleIndex="8">
+              <dx:GridViewDataTextColumn Caption="DaXoa" FieldName="DaXoa" VisibleIndex="9">
               </dx:GridViewDataTextColumn>
-              <dx:GridViewDataTextColumn Caption="Barcode" FieldName="Barcode" VisibleIndex="7">
+              <dx:GridViewDataTextColumn Caption="Barcode" FieldName="Barcode" VisibleIndex="8">
+              </dx:GridViewDataTextColumn>
+              <dx:GridViewDataTextColumn Caption="GiaBan" FieldName="GiaBan" ShowInCustomizationForm="True" VisibleIndex="6">
               </dx:GridViewDataTextColumn>
           </Columns>
       </dx:ASPxGridView>
