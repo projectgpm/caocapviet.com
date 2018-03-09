@@ -48,6 +48,26 @@ namespace BanHang.Data
             }
         }
 
+        public float TongTienKetCa(int IDNhanVien, int IDKho)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                try{
+                con.Open();
+                string cmdText = "SELECT SUM(KhachCanTra) as Tong FROM GPM_HoaDon WHERE  IDNhanVien = '"+IDNhanVien+"' AND IDKho ='"+IDKho+"' AND KetCa = 0";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        DataTable tb = new DataTable();
+                        tb.Load(reader);
+                        return float.Parse(tb.Rows[0]["Tong"].ToString());
+                    }
+                }
+                }catch(Exception e){return 0;}
+            }
+        }
+
         public DataTable DanhSachHangHoaBan(string IDKho, string IDNganh, string IDNhom, string NgayBD, string NgayKT)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
@@ -119,6 +139,49 @@ namespace BanHang.Data
                 }
             }
         }
+
+        public void insertKetCa(int IDNhanVien, int IDKho, float TongTien)
+        {
+            using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
+            {
+                try
+                {
+                    myConnection.Open();
+                    string cmdText = "INSERT INTO GPM_KetCa(IDNhanVien, IDKho, Ngay, TongTien) VALUES ('"+IDNhanVien+"','"+IDKho+"',getDATE(),'"+TongTien+"')";
+                    using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
+                    {
+                        myCommand.ExecuteNonQuery();
+                    }
+                    myConnection.Close();
+                }
+                catch
+                {
+                    throw new Exception("Lỗi: Quá trình thêm dữ liệu gặp lỗi");
+                }
+            }
+        }
+
+        public void updateKetCa(int IDNhanVien, int IDKho)
+        {
+            using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
+            {
+                try
+                {
+                    myConnection.Open();
+                    string cmdText = "UPDATE GPM_HoaDon SET KetCa = 1 WHERE IDKho = '"+IDKho+"' AND IDNhanVien ='"+IDNhanVien+"'";
+                    using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
+                    {
+                        myCommand.ExecuteNonQuery();
+                    }
+                    myConnection.Close();
+                }
+                catch
+                {
+                    throw new Exception("Lỗi: Quá trình thêm dữ liệu gặp lỗi");
+                }
+            }
+        }
+
         public DataTable LayThongHoaDon(string TuKhoa)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
@@ -143,6 +206,24 @@ namespace BanHang.Data
             {
                 con.Open();
                 string cmdText = "SELECT TOP 10 GPM_HoaDon.ID,GPM_HoaDon.[MaHoaDon],GPM_KhachHang.TenKhachHang,GPM_HoaDon.NgayBan from GPM_HoaDon,GPM_KhachHang WHERE GPM_HoaDon.IDKho = '" + IDKho + "' AND GPM_HoaDon.IDKhachHang = GPM_KhachHang.ID ORDER BY GPM_HoaDon.ID DESC";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        DataTable tb = new DataTable();
+                        tb.Load(reader);
+                        return tb;
+                    }
+                }
+            }
+        }
+
+        public DataTable ThongTinKetCa(string IDKho)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT TOP 10 GPM_NguoiDung.TenNguoiDung as NhanVien, GPM_KetCa.TongTien, GPM_KetCa.Ngay FROM GPM_KetCa, GPM_NguoiDung WHERE GPM_KetCa.IDNhanVien = GPM_NguoiDung.ID AND GPM_KetCa.IDKho = '" + IDKho + "' ORDER BY GPM_KetCa.ID DESC";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 {
                     using (SqlDataReader reader = command.ExecuteReader())

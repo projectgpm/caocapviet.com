@@ -436,6 +436,33 @@ namespace BanHang {
         protected global::DevExpress.Web.ASPxGridView ASPxGridViewInBuil;
         
         /// <summary>
+        /// ASPxFormLayout4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxFormLayout ASPxFormLayout4;
+        
+        /// <summary>
+        /// btnKetCa control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxButton btnKetCa;
+        
+        /// <summary>
+        /// gridKetCa control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxGridView gridKetCa;
+        
+        /// <summary>
         /// popupThemKhachHang control.
         /// </summary>
         /// <remarks>

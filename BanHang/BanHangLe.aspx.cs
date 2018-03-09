@@ -48,6 +48,11 @@ namespace BanHang
                     dtBanHangLe dt = new dtBanHangLe();
                     ASPxGridViewInBuil.DataSource = dt.ThongTinHoaDonVuaBan(Session["IDKho"].ToString());
                     ASPxGridViewInBuil.DataBind();
+
+                    gridKetCa.DataSource = dt.ThongTinKetCa(Session["IDKho"].ToString());
+                    gridKetCa.DataBind();
+
+                
             //    }
             //    else
             //    {
@@ -907,6 +912,16 @@ namespace BanHang
                 //txtSoLuongQuyDoi.Focus();
                 HienThiThongBao("Vui lòng nhập đầy đủ thông tin !!");
             }
+        }
+
+        protected void btnKetCa_Click(object sender, EventArgs e)
+        {
+            dtBanHangLe dt = new dtBanHangLe();
+            float tong = dt.TongTienKetCa(Int32.Parse(Session["IDNhanVien"].ToString()), Int32.Parse(Session["IDKho"].ToString()));
+            dt.insertKetCa(Int32.Parse(Session["IDNhanVien"].ToString()), Int32.Parse(Session["IDKho"].ToString()), tong);
+            dt.updateKetCa(Int32.Parse(Session["IDNhanVien"].ToString()), Int32.Parse(Session["IDKho"].ToString()));
+            gridKetCa.DataSource = dt.ThongTinKetCa(Session["IDKho"].ToString());
+            gridKetCa.DataBind();
         }
 
     }

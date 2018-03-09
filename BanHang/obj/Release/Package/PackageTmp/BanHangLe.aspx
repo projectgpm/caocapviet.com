@@ -442,6 +442,72 @@
                                     </dx:ContentControl>
                                 </ContentCollection>
                             </dx:TabPage>
+                            <dx:TabPage Name="KetCa" Text="Kết ca">
+                                <ContentCollection>
+                                    <dx:ContentControl runat="server">
+                                        <dx:ASPxFormLayout ID="ASPxFormLayout4" runat="server" Width="100%">
+                                            <Items>
+                                                <dx:LayoutGroup Caption="Tìm kiếm">
+                                                    <Items>
+                                                        <dx:LayoutItem Caption="">
+                                                            <LayoutItemNestedControlCollection>
+                                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                                    <dx:ASPxButton ID="btnKetCa" runat="server" OnClick="btnKetCa_Click" Text="Kết ca" HorizontalAlign="Center">
+                                                                        <Image IconID="actions_converttorange_16x16">
+                                                                        </Image>
+                                                                    </dx:ASPxButton>
+                                                                </dx:LayoutItemNestedControlContainer>
+                                                            </LayoutItemNestedControlCollection>
+                                                        </dx:LayoutItem>
+                                                    </Items>
+                                                </dx:LayoutGroup>
+                                                <dx:LayoutGroup Caption="Thông tin ">
+                                                    <Items>
+                                                        <dx:LayoutItem Caption="">
+                                                            <LayoutItemNestedControlCollection>
+                                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                                 <dx:ASPxGridView ID="gridKetCa" runat="server" AutoGenerateColumns="False" KeyFieldName="ID">
+                                                                     <SettingsPager PageSize="5" Mode="ShowAllRecords">
+                                                                     </SettingsPager>
+                                            <SettingsCommandButton>
+                                                <ShowAdaptiveDetailButton ButtonType="Image">
+                                                </ShowAdaptiveDetailButton>
+                                                <HideAdaptiveDetailButton ButtonType="Image">
+                                                </HideAdaptiveDetailButton>
+                                            </SettingsCommandButton>
+                                            <SettingsText EmptyDataRow="Danh sách hóa đơn trống." />
+                                            <Columns>
+                                                <dx:GridViewDataTextColumn Caption="Nhân Viên" FieldName="NhanVien" ShowInCustomizationForm="True" VisibleIndex="0">
+                                                </dx:GridViewDataTextColumn>
+                                                <dx:GridViewDataDateColumn Caption="Ngày Bán" FieldName="Ngay" ShowInCustomizationForm="True" VisibleIndex="6">
+                                                    <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy">
+                                                    </PropertiesDateEdit>
+                                                </dx:GridViewDataDateColumn>
+                                                <dx:GridViewDataSpinEditColumn Caption="Tổng Tiền" FieldName="TongTien" ShowInCustomizationForm="True" VisibleIndex="5">
+                                                    <PropertiesSpinEdit DisplayFormatInEditMode="True" DisplayFormatString="#,#" NumberFormat="Custom">
+                                                    </PropertiesSpinEdit>
+                                                </dx:GridViewDataSpinEditColumn>
+                                            </Columns>
+                                                                      <Styles>
+                            <Header Font-Bold="True" HorizontalAlign="Center">
+                            </Header>
+                            <AlternatingRow Enabled="True">
+                            </AlternatingRow>
+                            
+                        </Styles>
+                                        </dx:ASPxGridView>
+
+
+                                                                </dx:LayoutItemNestedControlContainer>
+                                                            </LayoutItemNestedControlCollection>
+                                                        </dx:LayoutItem>
+                                                    </Items>
+                                                </dx:LayoutGroup>
+                                            </Items>
+                                        </dx:ASPxFormLayout>
+                                    </dx:ContentControl>
+                                </ContentCollection>
+                            </dx:TabPage>
                         </TabPages>
                         <ContentStyle>
                             <Paddings Padding="2px" />
