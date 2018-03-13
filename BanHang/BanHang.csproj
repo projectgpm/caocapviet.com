@@ -216,6 +216,7 @@
     <Content Include="ImportExcel_NhaCungCap.aspx" />
     <Content Include="InDonDatHang.aspx" />
     <Content Include="InHoaDonBanLe.aspx" />
+    <Content Include="InKetCa.aspx" />
     <Content Include="InPhieuChuyenKho.aspx" />
     <Content Include="keyCode.aspx" />
     <Content Include="KhachHang.aspx" />
@@ -1009,6 +1010,13 @@
     </Compile>
     <Compile Include="InHoaDonBanLe.aspx.designer.cs">
       <DependentUpon>InHoaDonBanLe.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InKetCa.aspx.cs">
+      <DependentUpon>InKetCa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InKetCa.aspx.designer.cs">
+      <DependentUpon>InKetCa.aspx</DependentUpon>
     </Compile>
     <Compile Include="InPhieuChuyenKho.aspx.cs">
       <DependentUpon>InPhieuChuyenKho.aspx</DependentUpon>

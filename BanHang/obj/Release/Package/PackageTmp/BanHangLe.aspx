@@ -447,13 +447,23 @@
                                     <dx:ContentControl runat="server">
                                         <dx:ASPxFormLayout ID="ASPxFormLayout4" runat="server" Width="100%">
                                             <Items>
-                                                <dx:LayoutGroup Caption="Tìm kiếm">
+                                                <dx:LayoutGroup Caption="Tìm kiếm" ColCount="2">
                                                     <Items>
                                                         <dx:LayoutItem Caption="">
                                                             <LayoutItemNestedControlCollection>
                                                                 <dx:LayoutItemNestedControlContainer runat="server">
                                                                     <dx:ASPxButton ID="btnKetCa" runat="server" OnClick="btnKetCa_Click" Text="Kết ca" HorizontalAlign="Center">
                                                                         <Image IconID="actions_converttorange_16x16">
+                                                                        </Image>
+                                                                    </dx:ASPxButton>
+                                                                </dx:LayoutItemNestedControlContainer>
+                                                            </LayoutItemNestedControlCollection>
+                                                        </dx:LayoutItem>
+                                                        <dx:LayoutItem Caption="">
+                                                            <LayoutItemNestedControlCollection>
+                                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                                    <dx:ASPxButton ID="btnInKetCa" runat="server" OnClick="btnInKetCa_Click" Text="In">
+                                                                        <Image IconID="print_defaultprinternetwork_16x16">
                                                                         </Image>
                                                                     </dx:ASPxButton>
                                                                 </dx:LayoutItemNestedControlContainer>
@@ -479,14 +489,18 @@
                                             <Columns>
                                                 <dx:GridViewDataTextColumn Caption="Nhân Viên" FieldName="NhanVien" ShowInCustomizationForm="True" VisibleIndex="0">
                                                 </dx:GridViewDataTextColumn>
-                                                <dx:GridViewDataDateColumn Caption="Ngày Bán" FieldName="Ngay" ShowInCustomizationForm="True" VisibleIndex="6">
-                                                    <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy">
-                                                    </PropertiesDateEdit>
-                                                </dx:GridViewDataDateColumn>
                                                 <dx:GridViewDataSpinEditColumn Caption="Tổng Tiền" FieldName="TongTien" ShowInCustomizationForm="True" VisibleIndex="5">
                                                     <PropertiesSpinEdit DisplayFormatInEditMode="True" DisplayFormatString="#,#" NumberFormat="Custom">
                                                     </PropertiesSpinEdit>
                                                 </dx:GridViewDataSpinEditColumn>
+                                                <dx:GridViewDataDateColumn Caption="Giờ vào" FieldName="GioVao" ShowInCustomizationForm="True" VisibleIndex="1">
+                                                    <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy hh:mm" DisplayFormatInEditMode="True">
+                                                    </PropertiesDateEdit>
+                                                </dx:GridViewDataDateColumn>
+                                                <dx:GridViewDataDateColumn Caption="Giờ ra" FieldName="GioRa" ShowInCustomizationForm="True" VisibleIndex="4">
+                                                    <PropertiesDateEdit DisplayFormatInEditMode="True" DisplayFormatString="dd/MM/yyyy hh:mm">
+                                                    </PropertiesDateEdit>
+                                                </dx:GridViewDataDateColumn>
                                             </Columns>
                                                                       <Styles>
                             <Header Font-Bold="True" HorizontalAlign="Center">

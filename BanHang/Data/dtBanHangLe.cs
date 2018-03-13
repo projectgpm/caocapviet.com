@@ -68,6 +68,28 @@ namespace BanHang.Data
             }
         }
 
+        public string LayGioBatDau(int IDNhanVien, int IDKho)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                try
+                {
+                    con.Open();
+                    string cmdText = "SELECT TOP 1 NgayBan FROM GPM_HoaDon WHERE  IDNhanVien = '" + IDNhanVien + "' AND IDKho ='" + IDKho + "' AND KetCa = 0 ORDER BY ID ASC";
+                    using (SqlCommand command = new SqlCommand(cmdText, con))
+                    {
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            DataTable tb = new DataTable();
+                            tb.Load(reader);
+                            return tb.Rows[0]["NgayBan"].ToString();
+                        }
+                    }
+                }
+                catch (Exception e) { return DateTime.Now.ToString(); }
+            }
+        }
+
         public DataTable DanhSachHangHoaBan(string IDKho, string IDNganh, string IDNhom, string NgayBD, string NgayKT)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
@@ -140,14 +162,14 @@ namespace BanHang.Data
             }
         }
 
-        public void insertKetCa(int IDNhanVien, int IDKho, float TongTien)
+        public void insertKetCa(int IDNhanVien, int IDKho, float TongTien,string gioVao)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
                 try
                 {
                     myConnection.Open();
-                    string cmdText = "INSERT INTO GPM_KetCa(IDNhanVien, IDKho, Ngay, TongTien) VALUES ('"+IDNhanVien+"','"+IDKho+"',getDATE(),'"+TongTien+"')";
+                    string cmdText = "INSERT INTO GPM_KetCa(IDNhanVien, IDKho, TongTien, GioVao, GioRa) VALUES ('" + IDNhanVien + "','" + IDKho + "','" + TongTien + "','" + gioVao + "',getDATE())";
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
                         myCommand.ExecuteNonQuery();
@@ -223,7 +245,7 @@ namespace BanHang.Data
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "SELECT TOP 10 GPM_NguoiDung.TenNguoiDung as NhanVien, GPM_KetCa.TongTien, GPM_KetCa.Ngay FROM GPM_KetCa, GPM_NguoiDung WHERE GPM_KetCa.IDNhanVien = GPM_NguoiDung.ID AND GPM_KetCa.IDKho = '" + IDKho + "' ORDER BY GPM_KetCa.ID DESC";
+                string cmdText = "SELECT TOP 10 GPM_NguoiDung.TenNguoiDung as NhanVien, GPM_KetCa.TongTien, GPM_KetCa.GioVao,GPM_KetCa.GioRa  FROM GPM_KetCa, GPM_NguoiDung WHERE GPM_KetCa.IDNhanVien = GPM_NguoiDung.ID AND GPM_KetCa.IDKho = '" + IDKho + "' ORDER BY GPM_KetCa.ID DESC";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 {
                     using (SqlDataReader reader = command.ExecuteReader())

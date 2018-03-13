@@ -918,10 +918,17 @@ namespace BanHang
         {
             dtBanHangLe dt = new dtBanHangLe();
             float tong = dt.TongTienKetCa(Int32.Parse(Session["IDNhanVien"].ToString()), Int32.Parse(Session["IDKho"].ToString()));
-            dt.insertKetCa(Int32.Parse(Session["IDNhanVien"].ToString()), Int32.Parse(Session["IDKho"].ToString()), tong);
+            string ngay = dt.LayGioBatDau(Int32.Parse(Session["IDNhanVien"].ToString()), Int32.Parse(Session["IDKho"].ToString()));
+            dt.insertKetCa(Int32.Parse(Session["IDNhanVien"].ToString()), Int32.Parse(Session["IDKho"].ToString()), tong, ngay);
             dt.updateKetCa(Int32.Parse(Session["IDNhanVien"].ToString()), Int32.Parse(Session["IDKho"].ToString()));
             gridKetCa.DataSource = dt.ThongTinKetCa(Session["IDKho"].ToString());
             gridKetCa.DataBind();
+        }
+
+        protected void btnInKetCa_Click(object sender, EventArgs e)
+        {
+            string jsInHoaDon = "window.open(\"InKetCa.aspx?IDNhanVien=" + Session["IDNhanVien"].ToString() + "&IDKho=" + Session["IDKho"].ToString() + "\", \"PrintingFrame\");";
+            ClientScript.RegisterStartupScript(this.GetType(), "Print", jsInHoaDon, true);
         }
 
     }
