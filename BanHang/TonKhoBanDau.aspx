@@ -49,6 +49,16 @@
                      </dx:LayoutItemNestedControlContainer>
                  </LayoutItemNestedControlCollection>
              </dx:LayoutItem>
+             <dx:LayoutItem Caption="">
+                 <LayoutItemNestedControlCollection>
+                     <dx:LayoutItemNestedControlContainer runat="server">
+                         <dx:ASPxButton ID="btnTonKhoAm" runat="server" OnClick="btnTonKhoAm_Click" Text="Tồn kho âm">
+                             <Image IconID="actions_switchrowcolumn_16x16">
+                             </Image>
+                         </dx:ASPxButton>
+                     </dx:LayoutItemNestedControlContainer>
+                 </LayoutItemNestedControlCollection>
+             </dx:LayoutItem>
         </Items>
     </dx:ASPxFormLayout>
     <dx:ASPxGridViewExporter ID="XuatDuLieu" runat="server" GridViewID="HangHoa">

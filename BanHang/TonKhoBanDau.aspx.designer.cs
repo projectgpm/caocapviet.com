@@ -85,6 +85,15 @@ namespace BanHang {
         protected global::DevExpress.Web.ASPxButton btnDieuChinhStock;
         
         /// <summary>
+        /// btnTonKhoAm control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxButton btnTonKhoAm;
+        
+        /// <summary>
         /// XuatDuLieu control.
         /// </summary>
         /// <remarks>

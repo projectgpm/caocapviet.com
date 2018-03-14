@@ -101,5 +101,12 @@ namespace BanHang
         {
             Response.Redirect("DieuChinhStock.aspx");
         }
+
+        protected void btnTonKhoAm_Click(object sender, EventArgs e)
+        {
+            data = new dtKhoHang();
+            gridTonKhoBanDau.DataSource = data.TonKhoAm(Session["IDKho"].ToString());
+            gridTonKhoBanDau.DataBind();
+        }
     }
 }
