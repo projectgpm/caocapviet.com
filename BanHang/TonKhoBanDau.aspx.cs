@@ -108,5 +108,13 @@ namespace BanHang
             gridTonKhoBanDau.DataSource = data.TonKhoAm(Session["IDKho"].ToString());
             gridTonKhoBanDau.DataBind();
         }
+
+        protected void btnXuatTonKhoAm_Click(object sender, EventArgs e)
+        {
+            dataHangHoa da = new dataHangHoa();
+            HangHoa.DataSource = da.getDanhSachHangHoa_Export_Am(Session["IDKho"].ToString());
+            HangHoa.DataBind();
+            XuatDuLieu.WriteXlsToResponse();
+        }
     }
 }
