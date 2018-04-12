@@ -8,7 +8,7 @@
         }
 
     </script>
-    <dx:ASPxFormLayout ID="ASPxFormLayout1" runat="server" ColCount="6" Width="100%">
+    <dx:ASPxFormLayout ID="ASPxFormLayout1" runat="server" ColCount="6" Width="100%" Visible="False">
         <Items>
             <dx:LayoutGroup Caption="Lọc" ColCount="5" ColSpan="6">
                 <Items>
@@ -34,10 +34,10 @@
         </Items>
       </dx:ASPxFormLayout> 
     <dx:ASPxGridView ID="gridQuanTriNguoiDung" runat="server" AutoGenerateColumns="False" Width="100%"  KeyFieldName="ID" OnRowDeleting="gridQuanTriNguoiDung_RowDeleting" OnRowInserting="gridQuanTriNguoiDung_RowInserting" OnRowUpdating="gridQuanTriNguoiDung_RowUpdating" OnInitNewRow="gridQuanTriNguoiDung_InitNewRow">
-        <Settings ShowFilterRow="True" />
+        <Settings AutoFilterCondition="Contains" ShowFilterRow="True" ShowTitlePanel="True" />
         <SettingsEditing Mode="PopupEditForm">
         </SettingsEditing>
-        <Settings AutoFilterCondition="Contains" ShowFilterRow="True" ShowTitlePanel="True" />
+        <Settings ShowFilterRow="True" VerticalScrollableHeight="500" />
         <SettingsBehavior ConfirmDelete="True" />
         <SettingsCommandButton>
             <ShowAdaptiveDetailButton ButtonType="Image">
@@ -69,6 +69,7 @@
             <EditForm HorizontalAlign="WindowCenter" VerticalAlign="WindowCenter" Modal="True" />
         </SettingsPopup>
         <SettingsSearchPanel Visible="True" />
+        <SettingsLoadingPanel Delay="500" />
         <SettingsText CommandDelete="Xóa" CommandEdit="Sửa" CommandNew="Thêm" ConfirmDelete="Bạn có chắc chắn muốn xóa không?" PopupEditFormCaption="Quản trị người dùng" Title="DANH SÁCH NGƯỜI DÙNG" EmptyDataRow="Danh sách người dùng trống" SearchPanelEditorNullText="Nhập thông tin cần tìm..." />
         <EditFormLayoutProperties>
             <Items>
