@@ -41,16 +41,18 @@ namespace BanHang.Data
                 }
             }
         }
-        public void CapNhatTrangThaiDonHang(string ID)
+        public void CapNhatTrangThaiDonHang(string ID, string LyDoHuy)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
                 try
                 {
                     myConnection.Open();
-                    string cmdText = "UPDATE [GPM_ThuMua_DonHang] SET [IDTrangThaiDonHang] = 2,[TrangThaiDonHang] = 1, [NgayCapNhat] = getdate() WHERE [ID] = '" + ID + "'";
+                    string cmdText = "UPDATE [GPM_ThuMua_DonHang] SET [LyDoHuy] = @LyDoHuy,[IDTrangThaiDonHang] = 2,[TrangThaiDonHang] = 1, [NgayCapNhat] = getdate() WHERE [ID] = '" + ID + "'";
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
+
+                        myCommand.Parameters.AddWithValue("@LyDoHuy", LyDoHuy);
                         myCommand.ExecuteNonQuery();
                     }
                     myConnection.Close();
@@ -190,7 +192,7 @@ namespace BanHang.Data
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "SELECT TOP " + HienThi + " * FROM [GPM_ThuMua_DonHang] WHERE TrangThai = 0 AND TrangThaiDonHang = 0  AND [SoDonHang] is not null AND [NgayDat] < '" + NgayKT + "' AND  [NgayDat] >='" + NgayBD + "'  AND [IDKhoLap] = '" + IDKho + "'";
+                string cmdText = "SELECT TOP " + HienThi + " * FROM [GPM_ThuMua_DonHang] WHERE TrangThai = 0 AND TrangThaiDonHang = 0  AND [SoDonHang] is not null AND [NgayDat] < '" + NgayKT + "' AND  [NgayDat] >='" + NgayBD + "'  AND [IDKhoLap] = '" + IDKho + "' ORDER BY ID DESC";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {

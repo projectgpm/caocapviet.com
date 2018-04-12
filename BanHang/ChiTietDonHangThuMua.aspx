@@ -11,6 +11,14 @@
     <div>
         <dx:ASPxFormLayout ID="ASPxFormLayout1" runat="server" ColCount="5">
             <Items>
+                <dx:LayoutItem Caption="Lý do hủy" ColSpan="3" RowSpan="2">
+                    <LayoutItemNestedControlCollection>
+                        <dx:LayoutItemNestedControlContainer runat="server">
+                            <dx:ASPxMemo ID="memoLyDo" runat="server" Width="100%">
+                            </dx:ASPxMemo>
+                        </dx:LayoutItemNestedControlContainer>
+                    </LayoutItemNestedControlCollection>
+                </dx:LayoutItem>
                 <dx:LayoutItem Caption="">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer runat="server">
@@ -34,6 +42,8 @@
             </Items>
         </dx:ASPxFormLayout>
         <dx:ASPxGridView runat="server" AutoGenerateColumns="False" Width="100%" ID="gridChiTiet" KeyFieldName="ID" OnRowUpdating="gridChiTiet_RowUpdating">
+            <SettingsPager Mode="ShowAllRecords">
+            </SettingsPager>
         <SettingsEditing Mode="PopupEditForm">
         </SettingsEditing>
 <Settings ShowTitlePanel="True" ShowFooter="True" ShowFilterRow="True"></Settings>

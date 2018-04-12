@@ -42,12 +42,8 @@ namespace BanHang
                     txtTongTien.Text = "0";
                     txtTongTienSauCk.Text = "0";
                     txtTongTrongLuong.Text = "0";
-                    DateTime date = DateTime.Now;
-                    int thang = date.Month;
-                    int year = date.Year;
-                    string ngayBD = year + "-" + thang + "-01 00:00:00.000";
-                    string ngayKT = year + "-" + thang + "-" + dtSetting.tinhSoNgay(thang, year) + " 00:00:00.000";
-                    txtSoDonHang.Text = (dtSetting.LayMaKho(Session["IDKho"].ToString()) + "-" + dtThuMuaDatHang.TongSoXuatTrongThang(ngayBD, ngayKT, Session["IDKho"].ToString()) + "-" + (DateTime.Now.ToString("ddMMyyyy")));
+                    
+                    
                 }
                 LoadGrid(IDThuMuaDatHang_Temp.Value.ToString());
             }
@@ -79,12 +75,12 @@ namespace BanHang
 	                                        select GPM_HangHoa.ID, GPM_HangHoa.MaHang, GPM_HangHoa.TenHangHoa,GPM_HangHoa.GiaMuaTruocThue, GPM_DonViTinh.TenDonViTinh, 
 	                                        row_number()over(order by GPM_HangHoa.MaHang) as [rn] 
 	                                        FROM GPM_DonViTinh INNER JOIN GPM_HangHoa ON GPM_DonViTinh.ID = GPM_HangHoa.IDDonViTinh           
-	                                        WHERE ((GPM_HangHoa.MaHang LIKE @MaHang)) AND (GPM_HangHoa.DaXoa = 0) AND  (GPM_HangHoa.IDTrangThaiHang = 1) AND (GPM_HangHoa.IDNhomDatHang != 3)
+	                                        WHERE ((GPM_HangHoa.MaHang LIKE @MaHang OR GPM_HangHoa.TenHangHoa LIKE @TenHang)) AND (GPM_HangHoa.DaXoa = 0) AND  (GPM_HangHoa.IDTrangThaiHang = 1) AND (GPM_HangHoa.IDNhomDatHang != 3)
 	                                        ) as st 
                                         where st.[rn] between @startIndex and @endIndex";
 
             dsHangHoa.SelectParameters.Clear();
-          //  dsHangHoa.SelectParameters.Add("TenHang", TypeCode.String, string.Format("%{0}%", e.Filter));
+            dsHangHoa.SelectParameters.Add("TenHang", TypeCode.String, string.Format("%{0}%", e.Filter));
             dsHangHoa.SelectParameters.Add("MaHang", TypeCode.String, string.Format("%{0}%", e.Filter));
             dsHangHoa.SelectParameters.Add("IDKho", TypeCode.Int32, Session["IDKho"].ToString());
             dsHangHoa.SelectParameters.Add("startIndex", TypeCode.Int64, (e.BeginIndex + 1).ToString());
@@ -119,7 +115,12 @@ namespace BanHang
                 DataTable dt = data.DanhSachDonDatHang_Temp(IDThuMuaDatHang);
                 if (dt.Rows.Count != 0)
                 {
-                    string SoDonHang = txtSoDonHang.Text.Trim();
+                    DateTime date = DateTime.Now;
+                    int thang = date.Month;
+                    int year = date.Year;
+                    string ngayBD = year + "-" + thang + "-01 00:00:00.000";
+                    string ngayKT = year + "-" + thang + "-" + dtSetting.tinhSoNgay(thang, year) + " 00:00:00.000";
+                    string SoDonHang = (dtSetting.LayMaKho(Session["IDKho"].ToString()) + "-" + dtThuMuaDatHang.TongSoXuatTrongThang(ngayBD, ngayKT, Session["IDKho"].ToString()) + "-" + (DateTime.Now.ToString("ddMMyyyy")));
                     string IDNguoiLap = Session["IDNhanVien"].ToString();
                     DateTime NgayLap = DateTime.Parse(txtNgayLap.Text);
                     string TongTrongLuong = txtTongTrongLuong.Text;

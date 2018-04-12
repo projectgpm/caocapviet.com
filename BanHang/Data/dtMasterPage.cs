@@ -154,9 +154,10 @@ namespace BanHang.Data
                 try
                 {
                     myConnection.Open();
-                    string cmdText = "UPDATE [GPM_ThuMua_DonHang] SET [IDTrangThaiDonHang] = 2 ,[TrangThaiDonHang] = 1, [NgayCapNhat] = getdate() WHERE [ID] = '" + ID + "'";
+                    string cmdText = "UPDATE [GPM_ThuMua_DonHang] SET [LyDoHuy] = @LyDoHuy,[IDTrangThaiDonHang] = 2 ,[TrangThaiDonHang] = 1, [NgayCapNhat] = getdate() WHERE [ID] = '" + ID + "'";
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
+                        myCommand.Parameters.AddWithValue("@LyDoHuy", "Hệ thống tự động hủy, do quá thời gian quy định");
                         myCommand.ExecuteNonQuery();
                     }
                     myConnection.Close();

@@ -1456,6 +1456,7 @@
     <Content Include="obj\Debug\ResolveAssemblyReference.cache" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="ChungTu_ThuMuaDatHang\" />
     <Folder Include="HoaDonBanLe\" />
     <Folder Include="obj\Debug\TempPE\" />
     <Folder Include="Uploads\" />

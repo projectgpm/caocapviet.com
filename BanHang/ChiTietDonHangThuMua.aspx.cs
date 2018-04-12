@@ -21,12 +21,11 @@ namespace BanHang
                 {
                     if (dtThuMuaDatHang.LayTrangThaiDonHang(IDDonHangThuMua) == 1 || dtThuMuaDatHang.DonHangHuy(IDDonHangThuMua) == 1)
                     {
+                        memoLyDo.Visible = false;
                         btnHuyDonHang.Visible = false;
                         gridChiTiet.Columns["chucnang"].Visible = false;
                     }
                     
-
-
                     LoadGrid(IDDonHangThuMua.ToString());
                 }
             }
@@ -113,13 +112,18 @@ namespace BanHang
         protected void btnHuyDonHang_Click1(object sender, EventArgs e)
         {
             string IDDonHangThuMua = Request.QueryString["IDDonHangThuMua"];
-            if (IDDonHangThuMua != null)
+            if (IDDonHangThuMua != null && memoLyDo.Text != "")
             {
                 data = new dtThuMuaDatHang();
-                data.CapNhatTrangThaiDonHang(IDDonHangThuMua);
+                data.CapNhatTrangThaiDonHang(IDDonHangThuMua, memoLyDo.Text);
                 btnHuyDonHang.Enabled = false;
+                memoLyDo.Enabled = false;
                 gridChiTiet.Columns["chucnang"].Visible = false;
                 LoadGrid(IDDonHangThuMua.ToString());
+            }
+            else
+            {
+                Response.Write("<script language='JavaScript'> alert('Vui lòng nhập lý do hủy đơn hàng.'); </script>");
             }
         }
 

@@ -7,7 +7,7 @@
                 <dx:LayoutItem Caption="Số Đơn Hàng">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer4" runat="server">
-                            <dx:ASPxTextBox ID="txtSoDonHang" runat="server" Enabled="False" Width="100%">
+                            <dx:ASPxTextBox ID="txtSoDonHang" runat="server" Enabled="False" Width="100%" Text="Hệ thống tự tạo...">
                             </dx:ASPxTextBox>
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
@@ -150,7 +150,7 @@
                             
                             <dx:ASPxComboBox ID="cmbHangHoa" runat="server" 
                                 AutoPostBack="True" OnSelectedIndexChanged="cmbHangHoa_SelectedIndexChanged" 
-                                DropDownWidth="750px" DropDownStyle="DropDownList"   TextFormatString="{0}"
+                                DropDownWidth="750px" DropDownStyle="DropDownList"   TextFormatString="{0}-{1}"
                                 EnableCallbackMode="true" Width="100%" 
                                 OnItemsRequestedByFilterCondition="cmbHangHoa_ItemsRequestedByFilterCondition"
                                 OnItemRequestedByValue="cmbHangHoa_ItemRequestedByValue"
@@ -160,7 +160,7 @@
                                 <Columns>
                                     <dx:ListBoxColumn Caption="Mã Hàng" FieldName="MaHang" Width="70px" />
                                     <dx:ListBoxColumn Caption="Tên Hàng Hóa" FieldName="TenHangHoa" Width="100%" />
-                                    <dx:ListBoxColumn Caption="Giá Mua Trước Thuế" FieldName="GiaMuaTruocThue" Width="120px" />   
+                                 <%--   <dx:ListBoxColumn Caption="Giá Mua Trước Thuế" FieldName="GiaMuaTruocThue" Width="120px" />   --%>
                                     <dx:ListBoxColumn Caption="ĐVT" FieldName="TenDonViTinh" Width="100px" />          
                                 </Columns>
                                  <DropDownButton Visible="False">
@@ -284,7 +284,7 @@
                                         <PropertiesSpinEdit DisplayFormatString="N0" NumberFormat="Custom">
                                         </PropertiesSpinEdit>
                                     </dx:GridViewDataSpinEditColumn>
-<dx:GridViewDataSpinEditColumn FieldName="DonGia" ShowInCustomizationForm="True" Caption="Đơn Giá" VisibleIndex="5" ReadOnly="True">
+<dx:GridViewDataSpinEditColumn FieldName="DonGia" ShowInCustomizationForm="True" Caption="Giá Mua Trước Thuế" VisibleIndex="5" ReadOnly="True">
 <PropertiesSpinEdit DisplayFormatString="N0" NumberFormat="Custom"></PropertiesSpinEdit>
 </dx:GridViewDataSpinEditColumn>
                                     <dx:GridViewDataSpinEditColumn Caption="Số Lượng" FieldName="SoLuong" ShowInCustomizationForm="True" VisibleIndex="4">
