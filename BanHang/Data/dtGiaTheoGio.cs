@@ -109,16 +109,17 @@ namespace BanHang.Data
                 }
             }
         }
-        public void CapNhatChiTiet(string ID, string GiaBan)
+        public void CapNhatChiTiet(string ID, string GiaBan, DateTime GioThayDoi)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
                 try
                 {
                     myConnection.Open();
-                    string cmdText = "UPDATE [GPM_GiaTheoGio] SET [GiaBan] = @GiaBan WHERE [ID] = @ID";
+                    string cmdText = "UPDATE [GPM_GiaTheoGio] SET [GiaBan] = @GiaBan, [GioThayDoi] = @GioThayDoi WHERE [ID] = @ID";
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
+                        myCommand.Parameters.AddWithValue("@GioThayDoi", GioThayDoi);
                         myCommand.Parameters.AddWithValue("@GiaBan", GiaBan);
                         myCommand.Parameters.AddWithValue("@ID", ID);
                         myCommand.ExecuteNonQuery();

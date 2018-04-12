@@ -50,13 +50,13 @@
                 </PropertiesComboBox>
             </dx:GridViewDataComboBoxColumn>
             <dx:GridViewDataSpinEditColumn Caption="Giá Bán" FieldName="GiaBan" ShowInCustomizationForm="True" VisibleIndex="4">
-                <PropertiesSpinEdit DisplayFormatString="{0:N0}đ" NumberFormat="Custom">
+                <PropertiesSpinEdit DisplayFormatString="{0:N0}" NumberFormat="Custom" AllowMouseWheel="False" Increment="500">
                 </PropertiesSpinEdit>
             </dx:GridViewDataSpinEditColumn>
             <dx:GridViewDataTextColumn Caption="Mã Hàng" FieldName="MaHang" VisibleIndex="1" ReadOnly="True">
             </dx:GridViewDataTextColumn>
-            <dx:GridViewDataDateColumn Caption="Ngày Thay Đổi" FieldName="GioThayDoi" VisibleIndex="11" ReadOnly="True">
-                <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy hh:mm tt">
+            <dx:GridViewDataDateColumn Caption="Ngày Thay Đổi" FieldName="GioThayDoi" VisibleIndex="11">
+                <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy hh:mm tt" EditFormat="Custom" EditFormatString="dd/MM/yyyy hh:mm tt">
                 </PropertiesDateEdit>
             </dx:GridViewDataDateColumn>
             <dx:GridViewDataComboBoxColumn Caption="Chi Nhánh" FieldName="IDKho" VisibleIndex="0" ReadOnly="True">

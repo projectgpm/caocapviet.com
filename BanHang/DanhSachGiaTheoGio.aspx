@@ -63,8 +63,8 @@
                 <PropertiesComboBox DataSourceID="sqlDonViTinh" TextField="TenDonViTinh" ValueField="ID">
                 </PropertiesComboBox>
             </dx:GridViewDataComboBoxColumn>
-            <dx:GridViewDataSpinEditColumn Caption="Giá Bán" FieldName="GiaBan" ShowInCustomizationForm="True" VisibleIndex="4" ReadOnly="True">
-                <PropertiesSpinEdit DisplayFormatString="{0:N0}đ" NumberFormat="Custom">
+            <dx:GridViewDataSpinEditColumn Caption="Giá Bán" FieldName="GiaBan" CellStyle-Font-Bold="true" ShowInCustomizationForm="True" VisibleIndex="4" ReadOnly="True">
+                <PropertiesSpinEdit DisplayFormatString="{0:N0}" NumberFormat="Custom">
                 </PropertiesSpinEdit>
             </dx:GridViewDataSpinEditColumn>
             <dx:GridViewDataTextColumn Caption="Mã Hàng" FieldName="MaHang" VisibleIndex="1" ReadOnly="True">

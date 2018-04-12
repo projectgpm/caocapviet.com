@@ -50,15 +50,16 @@ namespace BanHang
         protected void gridHangHoa_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
         {
             string ID = e.Keys[0].ToString();
-            if (e.NewValues["GiaBan"] != null)
+            if (e.NewValues["GiaBan"] != null && e.NewValues["GioThayDoi"] != null)
             {
                 string GiaBan0 = e.NewValues["GiaBan"].ToString();
+                DateTime GioThayDoi = DateTime.Parse(e.NewValues["GioThayDoi"].ToString());
                 data = new dtGiaTheoGio();
-                data.CapNhatChiTiet(ID, GiaBan0);
+                data.CapNhatChiTiet(ID, GiaBan0, GioThayDoi);
             }
             else
             {
-                throw new Exception("Lỗi: Giá không được bỏ trống? Vui lòng kiểm tra lại.");
+                throw new Exception("Lỗi: Giá & giờ không được bỏ trống? Vui lòng kiểm tra lại.");
             }
             e.Cancel = true;
             gridHangHoa.CancelEdit();

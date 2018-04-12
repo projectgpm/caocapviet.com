@@ -127,12 +127,12 @@
                                                     </PropertiesComboBox>
                                                 </dx:GridViewDataComboBoxColumn>
                                                 <dx:GridViewDataSpinEditColumn Caption="Giá Bán" FieldName="GiaBan" ShowInCustomizationForm="True" VisibleIndex="3">
-                                                    <PropertiesSpinEdit DisplayFormatString="{0:N0}đ" NumberFormat="Custom">
+                                                    <PropertiesSpinEdit DisplayFormatString="{0:N0}" NumberFormat="Custom" AllowMouseWheel="False" Increment="500">
                                                     </PropertiesSpinEdit>
                                                 </dx:GridViewDataSpinEditColumn>
                                                 <dx:GridViewDataTextColumn Caption="Mã Hàng" FieldName="MaHang" ShowInCustomizationForm="True" VisibleIndex="0" ReadOnly="True">
                                                 </dx:GridViewDataTextColumn>
-                                                <dx:GridViewDataDateColumn Caption="Giờ Thay Đổi" FieldName="GioThayDoi" ShowInCustomizationForm="True" VisibleIndex="9" ReadOnly="True">
+                                                <dx:GridViewDataDateColumn Caption="Giờ Thay Đổi" FieldName="GioThayDoi" ShowInCustomizationForm="True" VisibleIndex="9">
                                                     <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy hh:mm tt" EditFormat="Custom" EditFormatString="dd/MM/yyyy hh:mm tt">
                                                     </PropertiesDateEdit>
                                                 </dx:GridViewDataDateColumn>
