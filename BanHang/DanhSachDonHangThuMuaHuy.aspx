@@ -148,7 +148,7 @@
              <dx:GridViewDataTextColumn Caption="Số Đơn Hàng" FieldName="SoDonHang" VisibleIndex="0">
                  <HeaderStyle Wrap="True" />
              </dx:GridViewDataTextColumn>
-             <dx:GridViewDataTextColumn Caption="Ghi Chú" FieldName="GhiChu" VisibleIndex="11">
+             <dx:GridViewDataTextColumn Caption="Lý do hủy" FieldName="LyDoHuy" VisibleIndex="11" CellStyle-Font-Bold="true">
                  <HeaderStyle Wrap="True" />
              </dx:GridViewDataTextColumn>
              <dx:GridViewDataComboBoxColumn Caption="Người Lập" FieldName="IDNguoiLap" VisibleIndex="2">

@@ -9,9 +9,9 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        <dx:ASPxFormLayout ID="ASPxFormLayout1" runat="server" ColCount="5">
+        <dx:ASPxFormLayout ID="ASPxFormLayout1" runat="server" ColCount="5" Width="100%">
             <Items>
-                <dx:LayoutItem Caption="Lý do hủy" ColSpan="3" RowSpan="2">
+                <dx:LayoutItem Caption="Lý do hủy" ColSpan="5" RowSpan="2">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer runat="server">
                             <dx:ASPxMemo ID="memoLyDo" runat="server" Width="100%">
@@ -22,7 +22,7 @@
                 <dx:LayoutItem Caption="">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer runat="server">
-                            <dx:ASPxButton ID="btnHuyDonHang" runat="server" OnClick="btnHuyDonHang_Click1" Text="Hủy đơn hàng">
+                            <dx:ASPxButton ID="btnHuyDonHang" runat="server" OnClick="btnHuyDonHang_Click1" Text="Hủy đơn hàng" style="height: 34px">
                                 <Image IconID="edit_delete_16x16">
                                 </Image>
                             </dx:ASPxButton>
