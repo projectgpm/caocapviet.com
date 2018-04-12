@@ -41,6 +41,8 @@
         </Items>
     </dx:ASPxFormLayout>
     <dx:ASPxGridView ID="gridHangHoa" runat="server" AutoGenerateColumns="False" KeyFieldName="ID" Width="100%">
+        <SettingsPager PageSize="100">
+        </SettingsPager>
         <SettingsEditing Mode="EditForm">
         </SettingsEditing>
         <Settings ShowFilterRow="True" ShowTitlePanel="True" />

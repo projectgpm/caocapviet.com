@@ -68,12 +68,7 @@ namespace BanHang.Data
                         myCommand.Parameters.AddWithValue("@GiaBan", GiaBan);
                         myCommand.Parameters.AddWithValue("@MaHang", MaHang);
                         myCommand.Parameters.AddWithValue("@IDDonViTinh", IDDonViTinh);
-                        //myCommand.Parameters.AddWithValue("@GiaBan1", GiaBan1);
-                        //myCommand.Parameters.AddWithValue("@GiaBan2", GiaBan2);
-                        //myCommand.Parameters.AddWithValue("@GiaBan3", GiaBan3);
                         myCommand.Parameters.AddWithValue("@IDHangHoa", IDHangHoa);
-                        //myCommand.Parameters.AddWithValue("@GiaBan4", GiaBan4);
-                        //myCommand.Parameters.AddWithValue("@GiaBan5", GiaBan5);
                         myCommand.Parameters.AddWithValue("@GioThayDoi", GioThayDoi);
                         myCommand.Parameters.AddWithValue("@IDKho", IDKho);
                         myCommand.ExecuteNonQuery();

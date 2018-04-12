@@ -237,7 +237,7 @@ namespace BanHang.Data
                 try
                 {
                     myConnection.Open();
-                    string strSQL = "UPDATE [GPM_HangHoaTonKho] SET [" + GiaThayDoi + "] =  @GiaBan   WHERE [IDKho] = @IDKho AND [IDHangHoa]= @IDHangHoa";
+                    string strSQL = "UPDATE [GPM_HangHoaTonKho] SET [" + GiaThayDoi + "] =  @GiaBan,[NgayCapNhat] = getdate()   WHERE [IDKho] = @IDKho AND [IDHangHoa]= @IDHangHoa";
                     using (SqlCommand myCommand = new SqlCommand(strSQL, myConnection))
                     {
                         myCommand.Parameters.AddWithValue("@IDHangHoa", IDHangHoa);
