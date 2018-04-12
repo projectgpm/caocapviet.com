@@ -93,17 +93,17 @@ namespace BanHang
                                 {
                                     string IDKhoApDung = DanhSachKho.Items[i].Value.ToString();
                                     float GiaBan = dtCapNhatTonKho.GiaBan_KhoChiNhanh(IDHangHoa, IDKhoApDung);
-                                    float GiaBan1 = dtCapNhatTonKho.GiaBan1_KhoChiNhanh(IDHangHoa, IDKhoApDung);
-                                    float GiaBan2 = dtCapNhatTonKho.GiaBan2_KhoChiNhanh(IDHangHoa, IDKhoApDung);
-                                    float GiaBan3 = dtCapNhatTonKho.GiaBan3_KhoChiNhanh(IDHangHoa, IDKhoApDung);
-                                    float GiaBan4 = dtCapNhatTonKho.GiaBan4_KhoChiNhanh(IDHangHoa, IDKhoApDung);
-                                    float GiaBan5 = dtCapNhatTonKho.GiaBan5_KhoChiNhanh(IDHangHoa, IDKhoApDung);
+                                    //float GiaBan1 = dtCapNhatTonKho.GiaBan1_KhoChiNhanh(IDHangHoa, IDKhoApDung);
+                                    //float GiaBan2 = dtCapNhatTonKho.GiaBan2_KhoChiNhanh(IDHangHoa, IDKhoApDung);
+                                    //float GiaBan3 = dtCapNhatTonKho.GiaBan3_KhoChiNhanh(IDHangHoa, IDKhoApDung);
+                                    //float GiaBan4 = dtCapNhatTonKho.GiaBan4_KhoChiNhanh(IDHangHoa, IDKhoApDung);
+                                    //float GiaBan5 = dtCapNhatTonKho.GiaBan5_KhoChiNhanh(IDHangHoa, IDKhoApDung);
                                     // thêm temp
                                     dt = new dtGiaTheoGio();
                                     DataTable db = dt.KT_ThemChiTiet_Temp(IDHangHoa, IDTemp, IDKhoApDung, GioThayDoi);
                                     if (db.Rows.Count == 0)
                                     {
-                                        dt.ThemChiTiet_Temp(IDTemp, MaHang, IDHangHoa, IDDonViTinh, GiaBan.ToString(), GiaBan1.ToString(), GiaBan2.ToString(), GiaBan3.ToString(), GiaBan4.ToString(), GiaBan5.ToString(), GioThayDoi, IDKhoApDung);
+                                        dt.ThemChiTiet_Temp(IDTemp, MaHang, IDHangHoa, IDDonViTinh, GiaBan.ToString(), GioThayDoi, IDKhoApDung);
                                     }
                                     else
                                     {
@@ -160,14 +160,14 @@ namespace BanHang
             if (e.NewValues["GiaBan"] != null && e.NewValues["GiaBan1"] != null && e.NewValues["GiaBan2"] != null && e.NewValues["GiaBan3"] != null && e.NewValues["GiaBan4"] != null && e.NewValues["GiaBan5"] != null)
             {
                 string GiaBan0 = e.NewValues["GiaBan"].ToString();
-                string GiaBan1 = e.NewValues["GiaBan1"].ToString();
-                string GiaBan2 = e.NewValues["GiaBan2"].ToString();
-                string GiaBan3 = e.NewValues["GiaBan3"].ToString();
-                string GiaBan4 = e.NewValues["GiaBan4"].ToString();
-                string GiaBan5 = e.NewValues["GiaBan5"].ToString();
+                //string GiaBan1 = e.NewValues["GiaBan1"].ToString();
+                //string GiaBan2 = e.NewValues["GiaBan2"].ToString();
+                //string GiaBan3 = e.NewValues["GiaBan3"].ToString();
+                //string GiaBan4 = e.NewValues["GiaBan4"].ToString();
+                //string GiaBan5 = e.NewValues["GiaBan5"].ToString();
                 DateTime GioThayDoi = DateTime.Parse(e.NewValues["GioThayDoi"].ToString());
                 dt = new dtGiaTheoGio();
-                dt.CapNhatChiTiet_Temp(ID, GiaBan0, GiaBan1, GiaBan2, GiaBan3, GiaBan4, GiaBan5, GioThayDoi);
+                dt.CapNhatChiTiet_Temp(ID, GiaBan0, GioThayDoi);
             }
             else
             {
@@ -190,11 +190,11 @@ namespace BanHang
                     string IDHangHoa = dr["IDHangHoa"].ToString();
                     string IDDonViTinh = dr["IDDonViTinh"].ToString();
                     string GiaBan = dr["GiaBan"].ToString();
-                    string GiaBan1 = dr["GiaBan1"].ToString();
-                    string GiaBan2 = dr["GiaBan2"].ToString();
-                    string GiaBan3 = dr["GiaBan3"].ToString();
-                    string GiaBan4 = dr["GiaBan4"].ToString();
-                    string GiaBan5 = dr["GiaBan5"].ToString();
+                    //string GiaBan1 = dr["GiaBan1"].ToString();
+                    //string GiaBan2 = dr["GiaBan2"].ToString();
+                    //string GiaBan3 = dr["GiaBan3"].ToString();
+                    //string GiaBan4 = dr["GiaBan4"].ToString();
+                    //string GiaBan5 = dr["GiaBan5"].ToString();
                     string GioThayDoi = dr["GioThayDoi"].ToString();
                     string IDKho = dr["IDKho"].ToString();
                     string IDNhanVien = Session["IDNhanVien"].ToString();
@@ -203,7 +203,7 @@ namespace BanHang
                     DataTable db1 = dt.KT_ThemChiTiet(IDHangHoa, IDKho, DateTime.Parse(GioThayDoi));
                     if (db1.Rows.Count == 0)
                     {
-                        dt.ThemChiTiet(MaHang, IDHangHoa, IDDonViTinh, GiaBan, GiaBan1, GiaBan2, GiaBan3, GiaBan4, GiaBan5, DateTime.Parse(GioThayDoi), IDKho, IDNhanVien);
+                        dt.ThemChiTiet(MaHang, IDHangHoa, IDDonViTinh, GiaBan, DateTime.Parse(GioThayDoi), IDKho, IDNhanVien);
                     }
                 }
                 dt = new dtGiaTheoGio();

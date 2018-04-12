@@ -106,27 +106,8 @@
                                                     <PropertiesSpinEdit DisplayFormatString="{0:N0}đ" NumberFormat="Custom">
                                                     </PropertiesSpinEdit>
                                                 </dx:GridViewDataSpinEditColumn>
-<dx:GridViewDataSpinEditColumn FieldName="GiaBan1" ShowInCustomizationForm="True" Caption="Giá Bán 1" VisibleIndex="4">
-<PropertiesSpinEdit DisplayFormatString="{0:N0}đ" NumberFormat="Custom"></PropertiesSpinEdit>
-</dx:GridViewDataSpinEditColumn>
                                                 <dx:GridViewDataTextColumn Caption="Mã Hàng" FieldName="MaHang" ShowInCustomizationForm="True" VisibleIndex="0" ReadOnly="True">
                                                 </dx:GridViewDataTextColumn>
-                                                <dx:GridViewDataSpinEditColumn Caption="Giá Bán 2" FieldName="GiaBan2" ShowInCustomizationForm="True" VisibleIndex="5">
-                                                    <PropertiesSpinEdit DisplayFormatString="{0:N0}đ" NumberFormat="Custom">
-                                                    </PropertiesSpinEdit>
-                                                </dx:GridViewDataSpinEditColumn>
-                                                <dx:GridViewDataSpinEditColumn Caption="Giá Bán 3" FieldName="GiaBan3" ShowInCustomizationForm="True" VisibleIndex="6">
-                                                    <PropertiesSpinEdit DisplayFormatString="{0:N0}đ" NumberFormat="Custom">
-                                                    </PropertiesSpinEdit>
-                                                </dx:GridViewDataSpinEditColumn>
-                                                <dx:GridViewDataSpinEditColumn Caption="Giá Bán 4" FieldName="GiaBan4" ShowInCustomizationForm="True" VisibleIndex="7">
-                                                    <PropertiesSpinEdit DisplayFormatString="{0:N0}đ" NumberFormat="Custom">
-                                                    </PropertiesSpinEdit>
-                                                </dx:GridViewDataSpinEditColumn>
-                                                <dx:GridViewDataSpinEditColumn Caption="Giá Bán 5" FieldName="GiaBan5" ShowInCustomizationForm="True" VisibleIndex="8">
-                                                    <PropertiesSpinEdit DisplayFormatString="{0:N0}đ" NumberFormat="Custom">
-                                                    </PropertiesSpinEdit>
-                                                </dx:GridViewDataSpinEditColumn>
                                                 <dx:GridViewDataDateColumn Caption="Giờ Thay Đổi" FieldName="GioThayDoi" ShowInCustomizationForm="True" VisibleIndex="9" ReadOnly="True">
                                                     <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy hh:mm tt" EditFormat="Custom" EditFormatString="dd/MM/yyyy hh:mm tt">
                                                     </PropertiesDateEdit>

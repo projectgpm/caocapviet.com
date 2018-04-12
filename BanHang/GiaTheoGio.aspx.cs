@@ -50,16 +50,11 @@ namespace BanHang
         protected void gridHangHoa_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
         {
             string ID = e.Keys[0].ToString();
-            if (e.NewValues["GiaBan"] != null && e.NewValues["GiaBan1"] != null && e.NewValues["GiaBan2"] != null && e.NewValues["GiaBan3"] != null && e.NewValues["GiaBan4"] != null && e.NewValues["GiaBan5"] != null)
+            if (e.NewValues["GiaBan"] != null)
             {
                 string GiaBan0 = e.NewValues["GiaBan"].ToString();
-                string GiaBan1 = e.NewValues["GiaBan1"].ToString();
-                string GiaBan2 = e.NewValues["GiaBan2"].ToString();
-                string GiaBan3 = e.NewValues["GiaBan3"].ToString();
-                string GiaBan4 = e.NewValues["GiaBan4"].ToString();
-                string GiaBan5 = e.NewValues["GiaBan5"].ToString();
                 data = new dtGiaTheoGio();
-                data.CapNhatChiTiet(ID, GiaBan0, GiaBan1, GiaBan2, GiaBan3, GiaBan4, GiaBan5);
+                data.CapNhatChiTiet(ID, GiaBan0);
             }
             else
             {
