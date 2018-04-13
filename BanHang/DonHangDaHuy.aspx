@@ -173,14 +173,17 @@
         <SettingsSearchPanel Visible="True" />
         <SettingsText CommandDelete="Xóa" CommandEdit="Sửa" CommandNew="Thêm" ConfirmDelete="Bạn có chắc chắn muốn xóa không?" PopupEditFormCaption="Thông tin đơn vị tính" Title="DANH SÁCH ĐƠN ĐẶT HÀNG ĐÃ HỦY" EmptyDataRow="Danh sách đơn hàng trống." SearchPanelEditorNullText=" Nhập thông tin cần tìm.." />
          <Columns>
-             <dx:GridViewDataButtonEditColumn Caption="Xem Chi Tiết" VisibleIndex="14">
+            <%-- <dx:GridViewDataButtonEditColumn Caption="Xem Chi Tiết" VisibleIndex="14">
                 
                 <DataItemTemplate>
                     <a href="javascript:void(0);" onclick="OnMoreInfoClick(this, '<%# Container.KeyValue %>')">Xem </a>
                 </DataItemTemplate>
                  <HeaderStyle Wrap="True" />
-            </dx:GridViewDataButtonEditColumn>
+            </dx:GridViewDataButtonEditColumn>--%>
              <dx:GridViewDataTextColumn Caption="Số Đơn Hàng" FieldName="SoDonHang" VisibleIndex="0">
+                   <DataItemTemplate>
+                    <a href="javascript:void(0);" title="Xem chi tiết" onclick="OnMoreInfoClick(this, '<%# Container.KeyValue %>')"> <%# Eval("SoDonHang") %> </a>
+                </DataItemTemplate>
                  <HeaderStyle Wrap="True" />
              </dx:GridViewDataTextColumn>
              <dx:GridViewDataTextColumn Caption="Ghi Chú" FieldName="GhiChu" VisibleIndex="9">

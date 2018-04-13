@@ -146,6 +146,9 @@
         <SettingsText CommandDelete="Xóa" CommandEdit="Sửa" CommandNew="Thêm" ConfirmDelete="Bạn có chắc chắn muốn xóa không?" PopupEditFormCaption="Thông tin đơn vị tính" Title="DANH SÁCH ĐƠN ĐẶT HÀNG" EmptyDataRow="Danh sách đơn hàng trống." SearchPanelEditorNullText="Nhập thông tin cần tìm..." />
          <Columns>
              <dx:GridViewDataTextColumn Caption="Số Đơn Hàng" FieldName="SoDonHang" VisibleIndex="0">
+                 <DataItemTemplate>
+                    <a href="javascript:void(0);" title="Xem chi tiết" onclick="OnMoreInfoClick(this, '<%# Container.KeyValue %>')"> <%# Eval("SoDonHang") %> </a>
+                </DataItemTemplate>
                  <HeaderStyle Wrap="True" />
              </dx:GridViewDataTextColumn>
              <dx:GridViewDataTextColumn Caption="Ghi Chú" FieldName="GhiChu" VisibleIndex="6">
@@ -173,13 +176,13 @@
                  </PropertiesComboBox>
                  <HeaderStyle Wrap="True" />
              </dx:GridViewDataComboBoxColumn>
-             <dx:GridViewDataButtonEditColumn Caption="Xem Chi Tiết" VisibleIndex="13">
+             <%--<dx:GridViewDataButtonEditColumn Caption="Xem Chi Tiết" VisibleIndex="13">
                 
                 <DataItemTemplate>
                     <a href="javascript:void(0);" onclick="OnMoreInfoClick(this, '<%# Container.KeyValue %>')">Xem </a>
                 </DataItemTemplate>
                  <HeaderStyle Wrap="True" />
-            </dx:GridViewDataButtonEditColumn>
+            </dx:GridViewDataButtonEditColumn>--%>
              <dx:GridViewDataDateColumn Caption="Ngày Đặt" FieldName="NgayDat" VisibleIndex="3">
                  <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy ">
                  </PropertiesDateEdit>
@@ -208,8 +211,8 @@
                  </PropertiesComboBox>
                  <HeaderStyle Wrap="True" />
              </dx:GridViewDataComboBoxColumn>
-             <dx:GridViewDataSpinEditColumn Caption="Tổng Tiền" FieldName="TongTien" VisibleIndex="8">
-                 <PropertiesSpinEdit DisplayFormatString="{0:N0}VNĐ" NumberFormat="Custom">
+             <dx:GridViewDataSpinEditColumn Caption="Tổng Tiền" FieldName="TongTien" VisibleIndex="8" CellStyle-Font-Bold="true">
+                 <PropertiesSpinEdit DisplayFormatString="{0:N0}" NumberFormat="Custom">
                  </PropertiesSpinEdit>
              </dx:GridViewDataSpinEditColumn>
              <dx:GridViewDataComboBoxColumn Caption="Quản Lý" FieldName="KhoDuyet" VisibleIndex="10">

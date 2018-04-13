@@ -24,5 +24,22 @@ namespace BanHang.Data
                 }
             }
         }
+
+
+        public DataTable ChiTietChiNhanHDatHang(string IDHangHoa)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT [GPM_HangHoaTonKho].SoLuongCon,[GPM_DonHangChiNhanh_ChiTiet].SoLuong FROM [GPM_DonHangChiNhanh],[GPM_DonHangChiNhanh_ChiTiet],[GPM_HangHoaTonKho] WHERE [GPM_DonHangChiNhanh].GiamSatDuyet = 1   AND [GPM_DonHangChiNhanh].TrangThai = 0   AND [GPM_DonHangChiNhanh_ChiTiet].IDDonHangChiNhanh = [GPM_DonHangChiNhanh].ID AND [GPM_HangHoaTonKho].IDHangHoa = [GPM_DonHangChiNhanh_ChiTiet].IDHangHoa AND GPM_DonHangChiNhanh_ChiTiet.IDHangHoa = " + IDHangHoa;
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    return tb;
+                }
+            }
+        }
     }
 }

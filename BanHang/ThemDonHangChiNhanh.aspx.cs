@@ -37,7 +37,7 @@ namespace BanHang
                     int year = date.Year;
                     string ngayBD = year + "-" + thang + "-01 00:00:00.000";
                     string ngayKT = year + "-" + thang + "-" + dtSetting.tinhSoNgay(thang, year) + " 00:00:00.000";
-                    txtSoDonHang.Text = (dtSetting.LayMaKho(Session["IDKho"].ToString()) + "-" + dtDonHangChiNhanh.TongSoXuatTrongThang(ngayBD, ngayKT, Session["IDKho"].ToString()).ToString() + "-" + (DateTime.Now.ToString("ddMMyyyy")));
+                    //txtSoDonHang.Text = (dtSetting.LayMaKho(Session["IDKho"].ToString()) + "-" + dtDonHangChiNhanh.TongSoXuatTrongThang(ngayBD, ngayKT, Session["IDKho"].ToString()).ToString() + "-" + (DateTime.Now.ToString("ddMMyyyy")));
                 }
                 LoadGrid(IDDonDatHang_Temp.Value.ToString());
             }
@@ -181,7 +181,12 @@ namespace BanHang
                 DataTable dt = data.DanhSachDonDatHangClient_Temp(IDDonHangChiNhanh);
                 if (dt.Rows.Count != 0)
                 {
-                    string SoDonHang = txtSoDonHang.Text.Trim();
+                    DateTime date = DateTime.Now;
+                    int thang = date.Month;
+                    int year = date.Year;
+                    string ngayBD = year + "-" + thang + "-01 00:00:00.000";
+                    string ngayKT = year + "-" + thang + "-" + dtSetting.tinhSoNgay(thang, year) + " 00:00:00.000";
+                    string SoDonHang = (dtSetting.LayMaKho(Session["IDKho"].ToString()) + "-" + dtDonHangChiNhanh.TongSoXuatTrongThang(ngayBD, ngayKT, Session["IDKho"].ToString()).ToString() + "-" + (DateTime.Now.ToString("ddMMyyyy")));
                     string IDNguoiLap = Session["IDNhanVien"].ToString();
                     DateTime NgayLap = DateTime.Parse(txtNgayLap.Text);
                     DateTime NgayDat = DateTime.Parse(txtNgayDat.Text.ToString());

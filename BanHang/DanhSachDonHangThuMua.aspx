@@ -146,6 +146,9 @@
         <SettingsText CommandDelete="Xóa" CommandEdit="Sửa" CommandNew="Thêm" ConfirmDelete="Bạn có chắc chắn muốn xóa không?" PopupEditFormCaption="Thông tin đơn vị tính" Title="DANH SÁCH ĐƠN ĐẶT HÀNG THU MUA" EmptyDataRow="Danh sách đơn hàng trống" SearchPanelEditorNullText="Nhập thông tin cần tìm..." />
          <Columns>
              <dx:GridViewDataTextColumn Caption="Số Đơn Hàng" FieldName="SoDonHang" VisibleIndex="0">
+                   <DataItemTemplate>
+                    <a href="javascript:void(0);" title="Xem chi tiết" onclick="OnMoreInfoClick(this, '<%# Container.KeyValue %>')"> <%# Eval("SoDonHang") %> </a>
+                </DataItemTemplate>
                  <HeaderStyle Wrap="True" />
              </dx:GridViewDataTextColumn>
              <dx:GridViewDataTextColumn Caption="Ghi Chú" FieldName="GhiChu" VisibleIndex="11">
@@ -177,13 +180,13 @@
                  </PropertiesComboBox>
                  <HeaderStyle Wrap="True" />
              </dx:GridViewDataComboBoxColumn>
-             <dx:GridViewDataButtonEditColumn Caption="Xem Chi Tiết" VisibleIndex="15">
+             <%--<dx:GridViewDataButtonEditColumn Caption="Xem Chi Tiết" VisibleIndex="15">
                 
                 <DataItemTemplate>
                     <a href="javascript:void(0);" onclick="OnMoreInfoClick(this, '<%# Container.KeyValue %>')">Xem </a>
                 </DataItemTemplate>
                  <HeaderStyle Wrap="True" />
-            </dx:GridViewDataButtonEditColumn>
+            </dx:GridViewDataButtonEditColumn>--%>
              <dx:GridViewDataSpinEditColumn Caption="Tổng Tiền Sau Chiết Khấu" FieldName="TongTienSauChietKhau" VisibleIndex="8">
                  <PropertiesSpinEdit DisplayFormatString="N0" NumberFormat="Custom">
                  </PropertiesSpinEdit>

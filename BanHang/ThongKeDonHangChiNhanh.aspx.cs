@@ -1,4 +1,5 @@
 ﻿using BanHang.Data;
+using DevExpress.Web;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -43,16 +44,21 @@ namespace BanHang
 
         protected void gridDanhSach_HtmlRowPrepared(object sender, DevExpress.Web.ASPxGridViewTableRowEventArgs e)
         {
-              Color color = (Color)ColorTranslator.FromHtml("#FF9797");
-            int TonKhoTong = Convert.ToInt32(e.GetValue("TonKho"));// lấy giá trị
-            int SoLuongDat = Convert.ToInt32(e.GetValue("SoLuongDat"));
-            if (TonKhoTong < SoLuongDat)
-                e.Row.BackColor = color;
+            //  Color color = (Color)ColorTranslator.FromHtml("#FF9797");
+            //int TonKhoTong = Convert.ToInt32(e.GetValue("TonKho"));// lấy giá trị
+            //int SoLuongDat = Convert.ToInt32(e.GetValue("SoLuongDat"));
+            //if (TonKhoTong < SoLuongDat)
+            //    e.Row.BackColor = color;
         }
 
         protected void cmbHienThi_SelectedIndexChanged(object sender, EventArgs e)
         {
             LoadGrid(cmbHienThi.Value.ToString());
+        }
+
+        protected void gridChiTiet_BeforePerformDataSelect(object sender, EventArgs e)
+        {
+            Session["IDHangHoa"] = (sender as ASPxGridView).GetMasterRowKeyValue();
         }
 
       
