@@ -289,11 +289,11 @@ namespace BanHang
                 hh.GiaBanTruocThue = txtGiaBanTruocThue.Value + "";
                 hh.GiaMuaSauThue = txtGiaMuaSauThue.Value + "";
                 hh.GiaBanSauThue = txtGiaBanSauThue.Value + "";
-                hh.GiaBan1 = txtGiaBan1.Value + "";
-                hh.GiaBan2 = txtGiaBan2.Value + "";
-                hh.GiaBan3 = txtGiaBan3.Value + "";
-                hh.GiaBan4 = txtGiaBan4.Value + "";
-                hh.GiaBan5 = txtGiaBan5.Value + "";
+                hh.GiaBan1 = "0";
+                hh.GiaBan2 = "0";
+                hh.GiaBan3 = "0";
+                hh.GiaBan4 = "0";
+                hh.GiaBan5 = "0";
 
                 dataHangHoa data = new dataHangHoa();
                 if (!data.KiemTraMaHang(IDHangHoa.Value + "", hh.MaHang))

@@ -373,51 +373,6 @@ namespace BanHang {
         protected global::DevExpress.Web.ASPxSpinEdit txtGiaBan0;
         
         /// <summary>
-        /// txtGiaBan1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxSpinEdit txtGiaBan1;
-        
-        /// <summary>
-        /// txtGiaBan2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxSpinEdit txtGiaBan2;
-        
-        /// <summary>
-        /// txtGiaBan3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxSpinEdit txtGiaBan3;
-        
-        /// <summary>
-        /// txtGiaBan4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxSpinEdit txtGiaBan4;
-        
-        /// <summary>
-        /// txtGiaBan5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxSpinEdit txtGiaBan5;
-        
-        /// <summary>
         /// txtSoLuongDangDat control.
         /// </summary>
         /// <remarks>

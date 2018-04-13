@@ -28,7 +28,7 @@ namespace BanHang
                    // Random ran = new Random();
                     IDHangHoaComBo_Temp.Value = Session["IDNhanVien"].ToString();//ran.Next(100000, 999999).ToString();
                     txtSoLuong.Text = "0";
-                    txtMaHang.Text = dtHangCombo.Dem_Max().ToString();
+                    //txtMaHang.Text = dtHangCombo.Dem_Max().ToString();
                 }
                 LoadGrid(Int32.Parse(IDHangHoaComBo_Temp.Value.ToString()));
             }
@@ -44,14 +44,14 @@ namespace BanHang
 
         protected void btnThem_Click(object sender, EventArgs e)
         {
-            if (txtBarcode.Text != "" && txtHanSuDung.Text !="" && txtMaHang.Text != "" && cmbDonViTinh.Text != "" && txtTenHangHoa.Text != "" && txtGiaBanTong.Text != "" && cmbNhomHang.Text != "")
+            if (txtBarcode.Text != "" && txtHanSuDung.Text !=""  && cmbDonViTinh.Text != "" && txtTenHangHoa.Text != "" && txtGiaBanTong.Text != "" && cmbNhomHang.Text != "")
             {
                 data = new dtHangCombo();
                 int IDHangHoaComBo = Int32.Parse(IDHangHoaComBo_Temp.Value.ToString());
                 DataTable dt = data.DanhSachHangHoaCombo_Temp(IDHangHoaComBo);
                 if (dt.Rows.Count != 0)
                 {
-                    string MaHang = txtMaHang.Text.Trim();
+                    string MaHang = txtMaHang.Text == ""  ? dtHangCombo.Dem_Max().ToString() : txtMaHang.Text.ToString();
                     string txtTenHangComBo = txtTenHangHoa.Text.ToString();
                     if (dtSetting.kiemTraChuyenDoiDau() == 1)
                         txtTenHangComBo = dtSetting.convertDauSangKhongDau(txtTenHangComBo).ToUpper();

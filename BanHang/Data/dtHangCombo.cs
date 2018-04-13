@@ -135,7 +135,9 @@ namespace BanHang.Data
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
             {
                 con.Open();
-                string cmdText = "SELECT [GPM_HANGHOA].*,[GPM_NHOMHANG].TenNhomHang,[GPM_HangHoaTonKho].SoLuongCon,[GPM_HangHoaTonKho].GiaBan  FROM [GPM_HangHoaTonKho],[GPM_HANGHOA],[GPM_NHOMHANG] WHERE [GPM_HangHoaTonKho].IDKho = '" + IDKho + "'  AND  [GPM_HangHoaTonKho].IDHangHoa = [GPM_HANGHOA].ID   AND [GPM_NHOMHANG].ID = [GPM_HANGHOA].IDNhomHang  AND  GPM_HANGHOA.[DAXOA] = 0 AND IDTrangThaiHang > 4 AND TenHangHoa is not null";
+                string cmdText = "SELECT [GPM_NganhHang].TenNganhHang,[GPM_HANGHOA].*,[GPM_NHOMHANG].TenNhomHang,[GPM_HangHoaTonKho].SoLuongCon,[GPM_HangHoaTonKho].GiaBan" +
+                    " FROM [GPM_HangHoaTonKho],[GPM_HANGHOA],[GPM_NHOMHANG],[GPM_NganhHang]" +
+                    " WHERE [GPM_NganhHang].ID = [GPM_NHOMHANG].IDNganhHang  AND [GPM_HangHoaTonKho].IDKho = '" + IDKho + "'  AND  [GPM_HangHoaTonKho].IDHangHoa = [GPM_HANGHOA].ID   AND [GPM_NHOMHANG].ID = [GPM_HANGHOA].IDNhomHang  AND  GPM_HANGHOA.[DAXOA] = 0 AND IDTrangThaiHang > 4 AND TenHangHoa is not null";
                 using (SqlCommand command = new SqlCommand(cmdText, con))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
@@ -153,7 +155,7 @@ namespace BanHang.Data
                 {
                     myConnection.Open();
                     object IDPhieuNhapSi = null;
-                    string cmdText = "INSERT INTO [GPM_HangHoa] ([IDTrangThaiHang],[NgayCapNhat]) OUTPUT INSERTED.ID VALUES (5,getdate())";
+                    string cmdText = "INSERT INTO [GPM_HangHoa] ([IDTrangThaiHang],[NgayCapNhat]) OUTPUT INSERTED.ID VALUES (6,getdate())";
                     using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
                     {
                         IDPhieuNhapSi = myCommand.ExecuteScalar();
@@ -464,6 +466,44 @@ namespace BanHang.Data
                         myCommand.ExecuteNonQuery();
                     }
 
+                    myConnection.Close();
+                }
+                catch
+                {
+                    throw new Exception("Lỗi: Quá trình cập nhật dữ liệu gặp lỗi");
+                }
+            }
+        }
+
+
+        public void CapNhat_TrangThai_GhiChu(int ID, string IDTrangThaiHang, string GhiChu, string TenHangHoa, string IDNhomHang, string IDDonViTinh, string GiaBan, string HanSuDung)
+        {
+            using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
+            {
+                try
+                {
+                    myConnection.Open();
+                    string cmdText = "UPDATE [GPM_HangHoa] SET [HanSuDung] = @HanSuDung,[IDDonViTinh] = @IDDonViTinh,[IDNhomHang] = @IDNhomHang,[TenHangHoa] = @TenHangHoa,[GhiChu] = @GhiChu,[IDTrangThaiHang] = @IDTrangThaiHang  WHERE [ID] = @ID";
+                    using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
+                    {
+    
+                        myCommand.Parameters.AddWithValue("@ID", ID);
+                        myCommand.Parameters.AddWithValue("@IDTrangThaiHang", IDTrangThaiHang);
+                        myCommand.Parameters.AddWithValue("@GhiChu", GhiChu);
+                        myCommand.Parameters.AddWithValue("@TenHangHoa", TenHangHoa);
+                        myCommand.Parameters.AddWithValue("@IDNhomHang", IDNhomHang);
+                        myCommand.Parameters.AddWithValue("@IDDonViTinh", IDDonViTinh);
+                        myCommand.Parameters.AddWithValue("@HanSuDung", HanSuDung);
+                        myCommand.ExecuteNonQuery();
+                    }
+                    cmdText = "UPDATE [GPM_HangHoaTonKho] SET [GiaBan] = @GiaBan,[GiaBan1] = @GiaBan,[GiaBan2] = @GiaBan,[GiaBan3] = @GiaBan,[GiaBan4] = @GiaBan,[GiaBan5] = @GiaBan  WHERE [IDHangHoa] = @ID";
+                    using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
+                    {
+
+                        myCommand.Parameters.AddWithValue("@ID", ID);
+                        myCommand.Parameters.AddWithValue("@GiaBan", GiaBan);
+                        myCommand.ExecuteNonQuery();
+                    }
                     myConnection.Close();
                 }
                 catch

@@ -31,7 +31,7 @@ namespace BanHang.Data
 
         public DataTable getDanhSachHangHoa(string s)
         {
-            string cmd = "SELECT GPM_HangHoa.ID,GPM_HangHoa.MaHang,GPM_HangHoa.TenHangHoa,GPM_HangHoa.IDDonViTinh, GPM_HangHoa.HeSo,GPM_HangHoa.GiaMuaTruocThue,GPM_HangHoa.GiaBanTruocThue,GPM_HangHoa.GiaMuaSauThue,GPM_HangHoa.TrongLuong,GPM_HangHoa.GhiChu, GPM_HangHoaTonKho.GiaBan FROM GPM_HangHoa, GPM_HangHoaTonKho WHERE GPM_HangHoa.DaXoa = 0 AND GPM_HangHoa.ID = GPM_HangHoaTonKho.IDHangHoa AND GPM_HangHoa.IDTrangThaiHang < 5 AND GPM_HangHoaTonKho.IDKho = 1";
+            string cmd = "SELECT [GPM_HangHoa].IDNhomHang,GPM_HangHoa.ID,GPM_HangHoa.MaHang,GPM_HangHoa.TenHangHoa,GPM_HangHoa.IDDonViTinh, GPM_HangHoa.HeSo,GPM_HangHoa.GiaMuaTruocThue,GPM_HangHoa.GiaBanTruocThue,GPM_HangHoa.GiaMuaSauThue,GPM_HangHoa.TrongLuong,GPM_HangHoa.GhiChu, GPM_HangHoaTonKho.GiaBan FROM GPM_HangHoa, GPM_HangHoaTonKho WHERE GPM_HangHoa.DaXoa = 0 AND GPM_HangHoa.ID = GPM_HangHoaTonKho.IDHangHoa AND GPM_HangHoa.IDTrangThaiHang < 5 AND GPM_HangHoaTonKho.IDKho = 1";
             return getData(cmd);
         }
 
@@ -60,7 +60,7 @@ namespace BanHang.Data
 
         public DataTable getDanhSachHangHoa_Ten_ID()
         {
-            string cmd = "SELECT ID,MaHang,TenHangHoa FROM GPM_HangHoa WHERE DaXoa = 0";
+            string cmd = "SELECT ID,MaHang,TenHangHoa FROM GPM_HangHoa WHERE DaXoa = 0 AND TenHangHoa is not null";
             return getData(cmd);
         }
 

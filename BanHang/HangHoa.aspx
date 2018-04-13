@@ -117,12 +117,12 @@
               </dx:GridViewDataTextColumn>
           </Columns>
       </dx:ASPxGridView>
-            <dx:ASPxGridView ID="gridHangHoa" runat="server" AutoGenerateColumns="False" Width="100%" KeyFieldName="ID" OnRowDeleting="gridHangHoa_RowDeleting1">
+            <dx:ASPxGridView ID="gridHangHoa" runat="server"  AutoGenerateColumns="False" Width="100%" KeyFieldName="ID" OnRowDeleting="gridHangHoa_RowDeleting1">
                     <SettingsPager PageSize="200" Mode="EndlessPaging">
                     </SettingsPager>
                     <SettingsEditing Mode="PopupEditForm">
                     </SettingsEditing>
-                    <Settings ShowFilterRow="True" ShowTitlePanel="True" />
+                    <Settings ShowFilterRow="True" ShowTitlePanel="True" VerticalScrollableHeight="500" />
                     <SettingsBehavior ConfirmDelete="True" />
                     <SettingsCommandButton RenderMode="Image">
                         <ShowAdaptiveDetailButton ButtonType="Image">
@@ -156,64 +156,73 @@
                     <SettingsSearchPanel Visible="True" />
                     <SettingsText CommandDelete="Xóa" CommandEdit="Sửa" CommandNew="Thêm" ConfirmDelete="Bạn có chắc chắn muốn xóa không?" PopupEditFormCaption="Thông tin hàng hóa" Title="DANH SÁCH HÀNG HÓA" EmptyDataRow="Danh sách hàng hóa trống" SearchPanelEditorNullText="Nhập thông tin cần tìm..." />
                     <Columns>
-                        <dx:GridViewCommandColumn ShowDeleteButton="True" ShowInCustomizationForm="True" VisibleIndex="26" Name="chucnang2">
+                        <dx:GridViewCommandColumn Width="80px" ShowDeleteButton="True" ShowInCustomizationForm="True" VisibleIndex="25" Name="chucnang2">
                         </dx:GridViewCommandColumn>
-                        <dx:GridViewDataTextColumn Caption="ID" FieldName="ID" ShowInCustomizationForm="True" VisibleIndex="3" Visible="False">
+                        <dx:GridViewDataTextColumn Caption="ID" FieldName="ID" ShowInCustomizationForm="True" VisibleIndex="0" Visible="False">
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataButtonEditColumn Caption="Hàng hóa" VisibleIndex="0" Name="chucnang1">
+                        <%--<dx:GridViewDataButtonEditColumn Caption="Hàng hóa" VisibleIndex="0" Name="chucnang1">
                             <DataItemTemplate>
                                 <a href="javascript:void(0);" onclick="OnMoreInfoClick_HangHoa(this, '<%# Container.KeyValue %>')">Chi Tiết</a>
                             </DataItemTemplate>
                             <HeaderStyle Wrap="False" />
-                        </dx:GridViewDataButtonEditColumn>
-                        <dx:GridViewDataButtonEditColumn Caption="Barcode" VisibleIndex="1" Visible="False">
+                        </dx:GridViewDataButtonEditColumn>--%>
+                        <%--<dx:GridViewDataButtonEditColumn Caption="Barcode" VisibleIndex="1" Visible="False">
                             <DataItemTemplate>
                                 <a href="javascript:void(0);" onclick="OnMoreInfoClick_Barcode(this, '<%# Container.KeyValue %>')">Xem</a>
                             </DataItemTemplate>
                             <HeaderStyle Wrap="True" />
-                        </dx:GridViewDataButtonEditColumn>
-                        <dx:GridViewDataButtonEditColumn Caption="Giá theo SL" VisibleIndex="2" Visible="False">
+                        </dx:GridViewDataButtonEditColumn>--%>
+                       <%-- <dx:GridViewDataButtonEditColumn Caption="Giá theo SL" VisibleIndex="2" Visible="False">
                             <DataItemTemplate>
                                 <a href="javascript:void(0);" onclick="OnMoreInfoClick_GiaTheoSL(this, '<%# Container.KeyValue %>')">Xem</a>
                             </DataItemTemplate>
                             <HeaderStyle Wrap="True" />
-                        </dx:GridViewDataButtonEditColumn>
-                        <dx:GridViewDataTextColumn FieldName="TenHangHoa" ShowInCustomizationForm="True" VisibleIndex="7" Caption="Tên Hàng Hóa">
+                        </dx:GridViewDataButtonEditColumn>--%>
+                        <dx:GridViewDataTextColumn FieldName="TenHangHoa" Width="100%" ShowInCustomizationForm="True" VisibleIndex="4" Caption="Tên Hàng Hóa">
+                              <DataItemTemplate>
+                                <a href="javascript:void(0);" title="Cập nhật hàng hóa" onclick="OnMoreInfoClick_HangHoa(this, '<%# Container.KeyValue %>')"> <%# Eval("TenHangHoa") %></a>
+                            </DataItemTemplate>
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn FieldName="MaHang" ShowInCustomizationForm="True" VisibleIndex="6" Caption="Mã Hàng">
+                        <dx:GridViewDataTextColumn Width="80px" FieldName="MaHang" ShowInCustomizationForm="True" VisibleIndex="3" Caption="Mã Hàng">
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataComboBoxColumn Caption="Đơn Vị Tính" FieldName="IDDonViTinh" ShowInCustomizationForm="True" VisibleIndex="8">
+                        <dx:GridViewDataComboBoxColumn Width="80px" Caption="ĐVT" FieldName="IDDonViTinh" ShowInCustomizationForm="True" VisibleIndex="5">
                             <PropertiesComboBox TextField="TenDonViTinh" ValueField="ID" DataSourceID="sqlDonViTinh">
                             </PropertiesComboBox>
                         </dx:GridViewDataComboBoxColumn>
-                        <dx:GridViewDataSpinEditColumn Caption="Hệ Số" FieldName="HeSo" ShowInCustomizationForm="True" VisibleIndex="9">
+                       <%-- <dx:GridViewDataSpinEditColumn Width="80px" Caption="Hệ Số" FieldName="HeSo" ShowInCustomizationForm="True" VisibleIndex="9">
                             <PropertiesSpinEdit DisplayFormatString="g">
                             </PropertiesSpinEdit>
                             <HeaderStyle Wrap="True" />
-                        </dx:GridViewDataSpinEditColumn>
-                        <dx:GridViewDataSpinEditColumn Caption="Giá Mua Trước Thuế" FieldName="GiaMuaTruocThue" ShowInCustomizationForm="True" VisibleIndex="13">
-                            <PropertiesSpinEdit DisplayFormatString="{0:#,#} VNĐ" DisplayFormatInEditMode="True" NumberFormat="Custom">
+                        </dx:GridViewDataSpinEditColumn>--%>
+                        <dx:GridViewDataSpinEditColumn Width="150px" Caption="Giá Mua Trước Thuế" FieldName="GiaMuaTruocThue" ShowInCustomizationForm="True" VisibleIndex="10">
+                            <PropertiesSpinEdit DisplayFormatString="N0" DisplayFormatInEditMode="True" NumberFormat="Custom">
                             </PropertiesSpinEdit>
                         </dx:GridViewDataSpinEditColumn>
-                        <dx:GridViewDataSpinEditColumn Caption="Giá Bán Trước Thuế" FieldName="GiaBanTruocThue" ShowInCustomizationForm="True" VisibleIndex="14" Visible="False">
-                            <PropertiesSpinEdit DisplayFormatString="{0:#,#} VNĐ" DisplayFormatInEditMode="True" NumberFormat="Custom">
+                        <dx:GridViewDataSpinEditColumn Width="150px" Caption="Giá Bán Trước Thuế" FieldName="GiaBanTruocThue" ShowInCustomizationForm="True" VisibleIndex="11" Visible="False">
+                            <PropertiesSpinEdit DisplayFormatString="N0" DisplayFormatInEditMode="True" NumberFormat="Custom">
                             </PropertiesSpinEdit>
                         </dx:GridViewDataSpinEditColumn>
-                        <dx:GridViewDataSpinEditColumn Caption="Giá Mua Sau Thuế" FieldName="GiaMuaSauThue" ShowInCustomizationForm="True" VisibleIndex="15" Visible="False">
-                            <PropertiesSpinEdit DisplayFormatString="{0:#,#} VNĐ" DisplayFormatInEditMode="True" NumberFormat="Custom">
+                        <dx:GridViewDataSpinEditColumn Width="150px" Caption="Giá Mua Sau Thuế" FieldName="GiaMuaSauThue" ShowInCustomizationForm="True" VisibleIndex="12" Visible="False">
+                            <PropertiesSpinEdit DisplayFormatString="N0" DisplayFormatInEditMode="True" NumberFormat="Custom">
                             </PropertiesSpinEdit>
                         </dx:GridViewDataSpinEditColumn>
-                        <dx:GridViewDataSpinEditColumn Caption="Giá Bán Sau Thuế" FieldName="GiaBan" ShowInCustomizationForm="True" VisibleIndex="16">
-                            <PropertiesSpinEdit DisplayFormatString="{0:#,#} VNĐ" DisplayFormatInEditMode="True" NumberFormat="Custom">
+                        <dx:GridViewDataSpinEditColumn Width="150px" CellStyle-Font-Bold="true" Caption="Giá Bán Sau Thuế" FieldName="GiaBan" ShowInCustomizationForm="True" VisibleIndex="13">
+                            <PropertiesSpinEdit DisplayFormatString="N0" DisplayFormatInEditMode="True" NumberFormat="Custom">
                             </PropertiesSpinEdit>
+
+<CellStyle Font-Bold="True"></CellStyle>
                         </dx:GridViewDataSpinEditColumn>
-                        <dx:GridViewDataTextColumn FieldName="GhiChu" ShowInCustomizationForm="True" VisibleIndex="25" Caption="Ghi Chú">
+                        <dx:GridViewDataTextColumn Width="150px" FieldName="GhiChu" ShowInCustomizationForm="True" VisibleIndex="24" Caption="Ghi Chú">
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataSpinEditColumn Caption="Trọng Lượng (Kg)" FieldName="TrongLuong" ShowInCustomizationForm="True" VisibleIndex="22">
-                            <PropertiesSpinEdit DisplayFormatString="{0:n} KG" NumberFormat="Custom">
+                        <dx:GridViewDataSpinEditColumn Width="100px" Caption="Trọng Lượng (Kg)" FieldName="TrongLuong" ShowInCustomizationForm="True" VisibleIndex="21">
+                            <PropertiesSpinEdit DisplayFormatString="{0} KG" NumberFormat="Custom">
                             </PropertiesSpinEdit>
                             <HeaderStyle Wrap="True" />
                         </dx:GridViewDataSpinEditColumn>
+                        <dx:GridViewDataComboBoxColumn Caption="Nhóm hàng" FieldName="IDNhomHang" ShowInCustomizationForm="True" VisibleIndex="20" Width="150px">
+                            <PropertiesComboBox DataSourceID="dsNhomHang" TextField="TenNhomHang" ValueField="ID">
+                            </PropertiesComboBox>
+                        </dx:GridViewDataComboBoxColumn>
                     </Columns>
                     <Styles>
                         <Header Font-Bold="True" HorizontalAlign="Center">
@@ -224,6 +233,7 @@
                         </TitlePanel>
                     </Styles>
                 </dx:ASPxGridView>
+            <asp:SqlDataSource ID="dsNhomHang" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" SelectCommand="SELECT [TenNhomHang], [ID] FROM [GPM_NhomHang]"></asp:SqlDataSource>
             <asp:SqlDataSource ID="sqlDonViTinh" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" SelectCommand="SELECT [ID], [TenDonViTinh] FROM [GPM_DonViTinh]"></asp:SqlDataSource>
         </dx:PanelContent>
         </PanelCollection>
