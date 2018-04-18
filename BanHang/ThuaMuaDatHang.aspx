@@ -123,7 +123,7 @@
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
                 </dx:LayoutItem>
-                <dx:LayoutItem Caption="Trạng Thái Thanh Toán(*)">
+                <dx:LayoutItem Caption="Hình Thức Thanh Toán(*)">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer8" runat="server">
                             <dx:ASPxComboBox ID="cmbThanhToan" runat="server" DataSourceID="SqlTrangThaiThanhToan" TextField="TenHinhThuc" ValueField="ID" Width="100%">
@@ -189,20 +189,28 @@
                 <dx:LayoutItem Caption="Số Lượng">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer runat="server">
-                            <dx:ASPxSpinEdit ID="txtSoLuong" runat="server" DisplayFormatString="N0" Width="100%">
+                            <dx:ASPxSpinEdit ID="txtSoLuong" runat="server" DisplayFormatString="N0" Width="100%" Increment="5">
                             </dx:ASPxSpinEdit>
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
                 </dx:LayoutItem>
-                <dx:LayoutItem Caption="Đơn Giá">
+                <dx:LayoutItem Caption="Đơn Giá (-VAT)">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer runat="server">
-                            <dx:ASPxSpinEdit ID="txtDonGia" runat="server" DisplayFormatString="N0" Width="100%">
+                            <dx:ASPxSpinEdit ID="txtDonGia" runat="server" DisplayFormatString="N0" Width="100%" Increment="5000" ToolTip="Giá mua trước thuế">
                             </dx:ASPxSpinEdit>
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
                 </dx:LayoutItem>
-                <dx:LayoutItem Caption="Ghi Chú" ColSpan="3" RowSpan="3">
+                <dx:LayoutItem Caption="Đơn Giá (+VAT)">
+                    <LayoutItemNestedControlCollection>
+                        <dx:LayoutItemNestedControlContainer runat="server">
+                            <dx:ASPxSpinEdit ID="txtGiaMuaSauThue" runat="server" DisplayFormatString="N0" Increment="5000" ToolTip="Giá mua sau thuế" Width="100%">
+                            </dx:ASPxSpinEdit>
+                        </dx:LayoutItemNestedControlContainer>
+                    </LayoutItemNestedControlCollection>
+                </dx:LayoutItem>
+                <dx:LayoutItem Caption="Ghi Chú" ColSpan="2">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer runat="server">
                             <dx:ASPxTextBox ID="txtGhiChuHangHoa" runat="server" Width="100%">
@@ -225,7 +233,7 @@
                 <dx:LayoutItem Caption="">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer runat="server">
-                            <dx:ASPxButton ID="btnThem_Temp" runat="server" Text="Thêm" OnClick="btnThem_Temp_Click">
+                            <dx:ASPxButton ID="btnThem_Temp" runat="server" Text="Đưa vào DS" OnClick="btnThem_Temp_Click">
                                 <Image IconID="actions_add_32x32">
                                 </Image>
                             </dx:ASPxButton>
@@ -280,11 +288,11 @@
                                 <Columns>
                                     <dx:GridViewDataTextColumn Caption="Mã Hàng" FieldName="MaHang" ShowInCustomizationForm="True" VisibleIndex="0" ReadOnly="True">
                                     </dx:GridViewDataTextColumn>
-                                    <dx:GridViewDataSpinEditColumn Caption="Thành Tiền" FieldName="ThanhTien" ShowInCustomizationForm="True" VisibleIndex="6" ReadOnly="True">
+                                    <dx:GridViewDataSpinEditColumn Caption="Thành Tiền (-VAT)" FieldName="ThanhTien" ShowInCustomizationForm="True" VisibleIndex="7" ReadOnly="True">
                                         <PropertiesSpinEdit DisplayFormatString="N0" NumberFormat="Custom">
                                         </PropertiesSpinEdit>
                                     </dx:GridViewDataSpinEditColumn>
-<dx:GridViewDataSpinEditColumn FieldName="DonGia" ShowInCustomizationForm="True" Caption="Giá Mua Trước Thuế" VisibleIndex="5" ReadOnly="True">
+<dx:GridViewDataSpinEditColumn FieldName="DonGia" ShowInCustomizationForm="True" Caption="Đơn Giá (-VAT)" VisibleIndex="5" ReadOnly="True">
 <PropertiesSpinEdit DisplayFormatString="N0" NumberFormat="Custom"></PropertiesSpinEdit>
 </dx:GridViewDataSpinEditColumn>
                                     <dx:GridViewDataSpinEditColumn Caption="Số Lượng" FieldName="SoLuong" ShowInCustomizationForm="True" VisibleIndex="4">
@@ -304,7 +312,7 @@
                                     </dx:GridViewDataSpinEditColumn>
 
                                     <dx:GridViewDataButtonEditColumn Caption="Xóa" ShowInCustomizationForm="True" Width="50px" 
-                                        VisibleIndex="8">
+                                        VisibleIndex="10">
                                         <DataItemTemplate>
                                             <dx:ASPxButton ID="BtnXoaHang" runat="server" CommandName="XoaHang"
                                                 CommandArgument='<%# Eval("ID") %>' 
@@ -317,13 +325,23 @@
                                         </CellStyle>
                                     </dx:GridViewDataButtonEditColumn>
 
-                                    <dx:GridViewDataTextColumn Caption="Ghi Chú" FieldName="GhiChu" ShowInCustomizationForm="True" VisibleIndex="7">
+                                    <dx:GridViewDataTextColumn Caption="Ghi Chú" FieldName="GhiChu" ShowInCustomizationForm="True" VisibleIndex="9">
                                     </dx:GridViewDataTextColumn>
+
+                                    <dx:GridViewDataSpinEditColumn Caption="Đơn Giá (+VAT)" FieldName="DonGia2" ShowInCustomizationForm="True" VisibleIndex="6">
+                                        <PropertiesSpinEdit DisplayFormatString="N0" NumberFormat="Custom">
+                                        </PropertiesSpinEdit>
+                                    </dx:GridViewDataSpinEditColumn>
+                                    <dx:GridViewDataSpinEditColumn Caption="Thành Tiền (+VAT)" FieldName="ThanhTien2" ShowInCustomizationForm="True" VisibleIndex="8">
+                                        <PropertiesSpinEdit DisplayFormatString="N0" NumberFormat="Custom">
+                                        </PropertiesSpinEdit>
+                                    </dx:GridViewDataSpinEditColumn>
 
                                 </Columns>
                                  <TotalSummary>
-                                     <dx:ASPxSummaryItem DisplayFormat="Tổng = {0:N0}" FieldName="ThanhTien" ShowInColumn="Thành Tiền" SummaryType="Sum" />
+                                     <dx:ASPxSummaryItem DisplayFormat="Tổng = {0:N0}" FieldName="ThanhTien" ShowInColumn="Thành Tiền (-VAT)" SummaryType="Sum" />
                                      <dx:ASPxSummaryItem DisplayFormat="Tổng = {0:N0}" FieldName="SoLuong" ShowInColumn="Số Lượng" SummaryType="Sum" />
+                                     <dx:ASPxSummaryItem DisplayFormat="Tổng = {0:N0}" FieldName="ThanhTien2" ShowInColumn="Thành Tiền (+VAT)" SummaryType="Sum" />
                                  </TotalSummary>
                                  <Styles>
                                     <Header Font-Bold="True" HorizontalAlign="Center">
