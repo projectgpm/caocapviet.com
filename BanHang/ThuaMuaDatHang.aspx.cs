@@ -151,8 +151,12 @@ namespace BanHang
                             string DonGia = dr["DonGia"].ToString();
                             string ThanhTien = dr["ThanhTien"].ToString();
                             string GhiChuHangHoa = dr["GhiChu"].ToString();
+
+
+                            string DonGia2 = dr["DonGia2"].ToString();
+                            string ThanhTien2 = dr["ThanhTien2"].ToString();
                             data = new dtThuMuaDatHang();
-                            data.ThemChiTietDonHang(ID, MaHang, IDHangHoa, IDDonViTinh, TrongLuong, SoLuong, DonGia, ThanhTien, GhiChuHangHoa);
+                            data.ThemChiTietDonHang(ID, MaHang, IDHangHoa, IDDonViTinh, TrongLuong, SoLuong, DonGia, ThanhTien, GhiChuHangHoa, DonGia2, ThanhTien2);
                         }
                         data = new dtThuMuaDatHang();
                         data.XoaChiTietDonHang_Nhap(IDThuMuaDatHang);

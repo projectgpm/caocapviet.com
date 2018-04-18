@@ -45,15 +45,11 @@ namespace BanHang
         {
             string ID = e.Keys[0].ToString();
             string IDDonHangThuMua = Request.QueryString["IDDonHangThuMua"];
-
-            string MaHang = e.NewValues["MaHang"].ToString();
             int SoLuong = Int32.Parse(e.NewValues["SoLuong"].ToString());
-            float DonGia = float.Parse(e.NewValues["DonGia"].ToString());
-            if (SoLuong >= 0 && DonGia >= 0)
+            if (SoLuong >= 0)
             {
-                string IDHangHoa = dtHangHoa.LayIDHangHoa_MaHang(MaHang.Trim());
                 data = new dtThuMuaDatHang();
-                data.CapNhatChiTietDonHang(IDDonHangThuMua, IDHangHoa, SoLuong, DonGia, DonGia * SoLuong);
+                data.CapNhatChiTietDonHang(ID,SoLuong);
                 int GiaTri = dtThuMuaDatHang.LayTyLeChietKhau(IDDonHangThuMua);
                 double TongTien = TinhTongTien();
                 double Tylegiam = (GiaTri * (0.01));
@@ -68,7 +64,7 @@ namespace BanHang
             }
             else
             {
-                throw new Exception("Lỗi: Số lượng & Đơn giá phải >= 0 ?");
+                throw new Exception("Lỗi: Số lượng >= 0 ?");
             }
         }
         public double TinhTongTien()
