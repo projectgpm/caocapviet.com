@@ -343,19 +343,19 @@ namespace BanHang
                         string MaHang = dr["MaHang"].ToString().Trim();
                         if (MaHang != "")
                         {
-                            int SoLuongDat = Int32.Parse(dr["SoLuongDat"] == null ? "0" : dr["SoLuongDat"].ToString());
+                            int SoLuongDat = Int32.Parse(dr["SoLuongDat"].ToString() == "" ? "0" : dr["SoLuongDat"].ToString());
                             string GhiChu = dr["GhiChu"] == null ? "" : dr["GhiChu"].ToString();
                             string IDHangHoa = dtHangHoa.LayIDHangHoa_MaHang(MaHang.Trim());
                             string IDDonViTinh = dtHangHoa.LayIDDonViTinh(IDHangHoa.Trim());
                             string IDDonHangChiNhanh = IDThuMuaDatHang_Temp.Value.ToString();
                             float TrongLuong = dtHangHoa.LayTrongLuong(IDHangHoa);
 
-                            float GiaMuaTruocThue = float.Parse(dr["DonGia(-VAT)"] == null ? "0" : dr["DonGia(-VAT)"].ToString());
+                            float GiaMuaTruocThue = float.Parse(dr["DonGia(-VAT)"].ToString() == "" ? "0" : dr["DonGia(-VAT)"].ToString());
                             if (GiaMuaTruocThue == 0)
                             {
                                 GiaMuaTruocThue = dtHangHoa.LayGiaMuaSauThue(IDHangHoa);
                             }
-                            float GiaMuaSauThue = float.Parse(dr["DonGia(+VAT)"] == null ? "0" : dr["DonGia(+VAT)"].ToString());
+                            float GiaMuaSauThue = float.Parse(dr["DonGia(+VAT)"].ToString() == "" ? "0" : dr["DonGia(+VAT)"].ToString());
                             if (GiaMuaSauThue == 0)
                             {
                                 GiaMuaSauThue = dtHangHoa.LayGiaMuaTruocThue(IDHangHoa);
