@@ -1473,6 +1473,7 @@
     <Content Include="ChuyenKho\14092017_015305_PM_13092017_035028_PM_DanhSachNhaCungCap.xls" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BieuMau\DonDatHangThuMua.xls" />
     <None Include="Properties\PublishProfiles\ccv.pubxml" />
   </ItemGroup>
   <PropertyGroup>

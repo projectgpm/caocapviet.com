@@ -221,12 +221,25 @@
                 <dx:LayoutItem Caption="" ColSpan="2">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer runat="server">
-                           <dx:ASPxUploadControl ID="UploadFileExcel" runat="server" AllowedFileExtensions=".xls" Width="100%">
-                               <ValidationSettings AllowedFileExtensions=".xls, .xlsx">
-                               </ValidationSettings>
-                               <BrowseButton Text="Chọn file đơn hàng...">
-                               </BrowseButton>
-                            </dx:ASPxUploadControl>
+
+                            <table>
+                                <tr>
+                                    <td style="width:80%">
+                                        <dx:ASPxUploadControl ID="UploadFileExcel" runat="server" AllowedFileExtensions=".xls" Width="100%">
+                                           <ValidationSettings AllowedFileExtensions=".xls">
+                                           </ValidationSettings>
+                                           <BrowseButton Text="Chọn file đơn hàng...">
+                                           </BrowseButton>
+                                        </dx:ASPxUploadControl>
+                                    </td>
+                                    <td style="padding-left:2px;">
+                                        <dx:ASPxHyperLink ID="ASPxHyperLink1"  NavigateUrl="~/BieuMau/DonDatHangThuMua.xls" runat="server" Text="Mẫu excel">
+                                        </dx:ASPxHyperLink>
+                                    </td>
+                                </tr>
+                            </table>
+                           
+
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
                 </dx:LayoutItem>

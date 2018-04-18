@@ -346,6 +346,15 @@ namespace BanHang {
         protected global::DevExpress.Web.ASPxUploadControl UploadFileExcel;
         
         /// <summary>
+        /// ASPxHyperLink1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxHyperLink ASPxHyperLink1;
+        
+        /// <summary>
         /// btnThem_Temp control.
         /// </summary>
         /// <remarks>
