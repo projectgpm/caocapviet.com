@@ -62,7 +62,7 @@ namespace BanHang
             DateTime NgayMo = DateTime.Parse(e.NewValues["NgayMo"].ToString());
             string IDVung = e.NewValues["IDVung"].ToString();
             string TrangThaiBanHang = e.NewValues["TrangThaiBanHang"] == null ? "0" : e.NewValues["TrangThaiBanHang"].ToString();
-            string GiaApDung = e.NewValues["GiaApDung"].ToString();
+            string GiaApDung = "0";
 
             if (dtSetting.IsNumber(MaKho) == true)
             {
@@ -85,6 +85,9 @@ namespace BanHang
                         data = new dtKho();
                         data.ThemHangHoaTonKho(IDHangHoa, GiaBan, GiaBan1, GiaBan2, GiaBan3, GiaBan4, GiaBan5, ID.ToString());
                     }
+
+                    // thêm IDKho vào phân quyền trừ Thu Ngân, CHT, Giám sát
+                    dtKho.ThemQuyen(ID.ToString());
                 }
                 e.Cancel = true;
                 gridThongTinCuaHangKho.CancelEdit();
@@ -109,7 +112,7 @@ namespace BanHang
             DateTime NgayMo = DateTime.Parse(e.NewValues["NgayMo"].ToString());
             string IDVung = e.NewValues["IDVung"].ToString();
             string TrangThaiBanHang = e.NewValues["TrangThaiBanHang"] == null ? "0" : e.NewValues["TrangThaiBanHang"].ToString();
-            string GiaApDung = e.NewValues["GiaApDung"].ToString();
+            string GiaApDung = "0";
             if (dtSetting.IsNumber(MaKho) == true)
             {
                 dtKho data = new dtKho();

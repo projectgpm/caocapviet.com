@@ -1,10 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Root.master" AutoEventWireup="true" CodeBehind="Kho.aspx.cs" Inherits="BanHang.Kho" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
     <dx:ASPxGridView ID="gridThongTinCuaHangKho" runat="server" AutoGenerateColumns="False" Width="100%"  KeyFieldName="ID" OnRowDeleting="gridThongTinCuaHangKho_RowDeleting" OnRowInserting="gridThongTinCuaHangKho_RowInserting" OnRowUpdating="gridThongTinCuaHangKho_RowUpdating" OnInitNewRow="gridThongTinCuaHangKho_InitNewRow">
-        <Settings ShowFilterRow="True" />
+        <Settings AutoFilterCondition="Contains" ShowFilterRow="True" ShowTitlePanel="True" />
+        <SettingsPager PageSize="50">
+        </SettingsPager>
         <SettingsEditing Mode="PopupEditForm">
         </SettingsEditing>
-        <Settings AutoFilterCondition="Contains" ShowFilterRow="True" ShowTitlePanel="True" />
+        <Settings ShowFilterRow="True" />
         <SettingsBehavior ConfirmDelete="True" />
         <SettingsCommandButton>
             <ShowAdaptiveDetailButton ButtonType="Image">
@@ -48,8 +50,6 @@
                 <dx:GridViewColumnLayoutItem ColumnName="Địa chỉ" Name="DiaChi">
                 </dx:GridViewColumnLayoutItem>
                 <dx:GridViewColumnLayoutItem ColumnName="Vùng" Name="IDVung">
-                </dx:GridViewColumnLayoutItem>
-                <dx:GridViewColumnLayoutItem ColumnName="Giá Bán">
                 </dx:GridViewColumnLayoutItem>
                 <dx:GridViewColumnLayoutItem ColumnName="Bán Hàng Âm">
                 </dx:GridViewColumnLayoutItem>
@@ -107,21 +107,6 @@
 </ValidationSettings>
 </PropertiesComboBox>
 </dx:GridViewDataComboBoxColumn>
-            <dx:GridViewDataComboBoxColumn Caption="Giá Bán" FieldName="GiaApDung" VisibleIndex="7">
-                <PropertiesComboBox>
-                    <Items>
-                        <dx:ListEditItem Text="Giá Bán" Value="0" />
-                        <dx:ListEditItem Text="Giá Bán 1" Value="1" />
-                        <dx:ListEditItem Text="Giá Bán 2" Value="2" />
-                        <dx:ListEditItem Text="Giá Bán 3" Value="3" />
-                        <dx:ListEditItem Text="Giá Bán 4" Value="4" />
-                        <dx:ListEditItem Text="Giá Bán 5" Value="5" />
-                    </Items>
-                    <ValidationSettings SetFocusOnError="True">
-                        <RequiredField IsRequired="True" />
-                    </ValidationSettings>
-                </PropertiesComboBox>
-            </dx:GridViewDataComboBoxColumn>
             <dx:GridViewDataCheckColumn Caption="Bán Hàng Âm" FieldName="TrangThaiBanHang" VisibleIndex="8">
             </dx:GridViewDataCheckColumn>
             <dx:GridViewDataDateColumn Caption="Ngày Cập Nhật" FieldName="NgayCapNhat" VisibleIndex="9">

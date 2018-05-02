@@ -9,6 +9,51 @@ namespace BanHang.Data
 {
     public class dtKho
     {
+        public static void ThemQuyen(string IDKho)
+        {
+            using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
+            {
+                try
+                {
+                    myConnection.Open();
+                    string cmdText = "SELECT * FROM [GPM_NhomNguoiDung] WHERE [DAXOA] = 0 AND [ID] != 7 AND [ID] !=3 AND [ID] != 4";
+                    using (SqlCommand command = new SqlCommand(cmdText, myConnection))
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        DataTable tb = new DataTable();
+                        tb.Load(reader);
+                        foreach (DataRow dr in tb.Rows)
+                        {
+                            // có nhóm người dùng, lấy nhân viên
+                            cmdText = "SELECT * FROM [GPM_NguoiDung] WHERE [DAXOA] = 0 AND [IDNhomNguoiDung] = '" + dr["ID"].ToString() + "'";
+                            using (SqlCommand command1 = new SqlCommand(cmdText, myConnection))
+                            using (SqlDataReader reader1 = command1.ExecuteReader())
+                            {
+                                DataTable tb1 = new DataTable();
+                                tb1.Load(reader1);
+                                foreach (DataRow dr1 in tb1.Rows)
+                                {
+                                    cmdText = "INSERT INTO [GPM_IDND_IDKHO] ([IDNhanVien],[IDKho],[NgayCapNhat]) VALUES (@IDNhanVien,@IDKho, getdate())";
+                                    using (SqlCommand myCommand = new SqlCommand(cmdText, myConnection))
+                                    {
+                                        myCommand.Parameters.AddWithValue("@IDNhanVien", dr1["ID"].ToString());
+                                        myCommand.Parameters.AddWithValue("@IDKho", IDKho);
+                                        myCommand.ExecuteNonQuery();
+                                    }
+                                }
+                            }
+                        }
+                      
+                    }
+                    myConnection.Close();
+                }
+                catch
+                {
+                    throw new Exception("Lỗi: Quá trình thêm dữ liệu gặp lỗi");
+                }
+            }
+        }
+
         public void ThemHangHoaTonKho(string IDHangHoa, float GiaBan, float GiaBan1, float GiaBan2, float GiaBan3, float GiaBan4, float GiaBan5, string IDKho)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
