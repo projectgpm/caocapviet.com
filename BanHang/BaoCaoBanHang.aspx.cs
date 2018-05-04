@@ -240,5 +240,10 @@ namespace BanHang
             }
 
         }
+
+        protected void btnXuatExel_Click(object sender, EventArgs e)
+        {
+            export.WriteXlsToResponse();
+        }
     }
 }
