@@ -1,8 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <MathInterface>
   <Group>
-      <Item Name="ban-hang-le" NavigateUrl="BanHangLe.aspx" Size="Large" Text="Bán hàng lẻ" LargeImageUrl="images/banhang.png">
-      </Item>
+     
   </Group>
   <Group>
     <Item Text="Danh mục" ItemType="DropDownButton" Size="Large" LargeImageUrl="images/khohang.png">
