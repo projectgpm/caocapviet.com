@@ -80,39 +80,42 @@ namespace BanHang
                 }
             }
 
-            string IDKho = cmbKho.Value + "";
-            string IDHH = cmbHangHoa.Value + "";
-            string IDNH = cmbNhomHang.Value + "";
-            string IDNganhH = cmbNganhHang.Value + "";
+            //if (!IsPostBack)
+            //{
+            //    string IDKho = cmbKho.Value + "";
+            //    string IDHH = cmbHangHoa.Value + "";
+            //    string IDNH = cmbNhomHang.Value + "";
+            //    string IDNganhH = cmbNganhHang.Value + "";
 
-            DateTime date = DateTime.Now;
-            int thang = date.Month;
-            int nam = date.Year;
-            string ngayBD = ""; string ngayKT = "";
-            if (rbTheoNam.Checked == true)
-            {
-                ngayBD = nam + "-01-01 ";
-                ngayKT = nam + "-12-31 ";
-            }
-            else if (rbTheoThang.Checked == true)
-            {
-                ngayBD = nam + "-" + thang + "-01 ";
-                ngayKT = nam + "-" + thang + "-" + dtSetting.tinhSoNgay(thang, nam) + " ";
-            }
-            else if (rbTuyChon.Checked == true)
-            {
-                ngayBD = DateTime.Parse(dateNgayBD.Value + "").ToString("yyyy-MM-dd ");
-                ngayKT = DateTime.Parse(dateNgayKT.Value + "").ToString("yyyy-MM-dd ");
-            }
-            else Response.Write("<script language='JavaScript'> alert('Hãy chọn 1 hình thức báo cáo.'); </script>");
+            //    DateTime date = DateTime.Now;
+            //    int thang = date.Month;
+            //    int nam = date.Year;
+            //    string ngayBD = ""; string ngayKT = "";
+            //    if (rbTheoNam.Checked == true)
+            //    {
+            //        ngayBD = nam + "-01-01 ";
+            //        ngayKT = nam + "-31-12 ";
+            //    }
+            //    else if (rbTheoThang.Checked == true)
+            //    {
+            //        ngayBD = nam + "-01-" + thang + " ";
+            //        ngayKT = nam + "-" + dtSetting.tinhSoNgay(thang, nam) + "-" + thang + " ";
+            //    }
+            //    else if (rbTuyChon.Checked == true)
+            //    {
+            //        ngayBD = DateTime.Parse(dateNgayBD.Value + "").ToString("yyyy-dd-MM ");
+            //        ngayKT = DateTime.Parse(dateNgayKT.Value + "").ToString("yyyy-dd-MM ");
+            //    }
+            //    else Response.Write("<script language='JavaScript'> alert('Hãy chọn 1 hình thức báo cáo.'); </script>");
 
-            ngayBD = ngayBD + "00:00:0.000";
-            ngayKT = ngayKT + "23:59:59.999";
+            //    ngayBD = ngayBD + "00:00:0.000";
+            //    ngayKT = ngayKT + "23:59:59.999";
 
-            dtBanHangLe dtx = new dtBanHangLe();
-            DataTable dax = dtx.DanhSachHangHoaBan(IDKho, IDNganhH, IDNH, ngayBD, ngayKT);
-            gridDanhSach.DataSource = dax;
-            gridDanhSach.DataBind();
+            //    dtBanHangLe dtx = new dtBanHangLe();
+            //    DataTable dax = dtx.DanhSachHangHoaBan(IDKho, IDNganhH, IDNH, ngayBD, ngayKT);
+            //    gridDanhSach.DataSource = dax;
+            //    gridDanhSach.DataBind();
+            //}
 
         }
 
@@ -146,6 +149,9 @@ namespace BanHang
                 rbTheoNam.Checked = false;
                 dateNgayBD.Enabled = true;
                 dateNgayKT.Enabled = true;
+
+                dateNgayBD.Value = DateTime.Now;
+                dateNgayKT.Value = DateTime.Now;
             }
         }
 
@@ -159,29 +165,29 @@ namespace BanHang
             DateTime date = DateTime.Now;
             int thang = date.Month;
             int nam = date.Year;
-            string ngayBD = ""; string ngayKT = "";
+            DateTime ngayBD = DateTime.Now; DateTime ngayKT = DateTime.Now;
             if (rbTheoNam.Checked == true)
             {
-                ngayBD = nam + "-01-01 ";
-                ngayKT = nam + "-12-31 ";
+                ngayBD = DateTime.Parse("01-01-" + nam);
+                ngayKT = DateTime.Parse("12-31-" + nam);
             }
             else if (rbTheoThang.Checked == true)
             {
-                ngayBD = nam + "-" + thang + "-01 ";
-                ngayKT = nam + "-" + thang + "-" + dtSetting.tinhSoNgay(thang, nam) + " ";
+                ngayBD = DateTime.Parse(thang + "-01-" + nam);
+                ngayKT = DateTime.Parse(thang + "-" + dtSetting.tinhSoNgay(thang, nam) + "-" + nam);
             }
             else if (rbTuyChon.Checked == true)
             {
-                ngayBD = DateTime.Parse(dateNgayBD.Value + "").ToString("yyyy-MM-dd ");
-                ngayKT = DateTime.Parse(dateNgayKT.Value + "").ToString("yyyy-MM-dd ");
+                ngayBD = DateTime.Parse(dateNgayBD.Value + "");
+                ngayKT = DateTime.Parse(dateNgayKT.Value + "");
             }
             else Response.Write("<script language='JavaScript'> alert('Hãy chọn 1 hình thức báo cáo.'); </script>");
 
-            ngayBD = ngayBD + "00:00:0.000";
-            ngayKT = ngayKT + "23:59:59.999";
+            //ngayBD = ngayBD + "00:00:0.000";
+            //ngayKT = ngayKT + "23:59:59.999";
 
             dtBanHangLe dt = new dtBanHangLe();
-            DataTable da = dt.DanhSachHangHoaBan(IDKho, IDNganhH, IDNH, ngayBD, ngayKT);
+            DataTable da = dt.DanhSachHangHoaBan(IDKho, IDNganhH, IDNH, ngayBD.ToString("yyyy-dd-MM 00:00:00.000"), ngayKT.ToString("yyyy-dd-MM 23:59:59.999"));
             gridDanhSach.DataSource = da;
             gridDanhSach.DataBind();
 
@@ -243,6 +249,40 @@ namespace BanHang
 
         protected void btnXuatExel_Click(object sender, EventArgs e)
         {
+            string IDKho = cmbKho.Value + "";
+            string IDHH = cmbHangHoa.Value + "";
+            string IDNH = cmbNhomHang.Value + "";
+            string IDNganhH = cmbNganhHang.Value + "";
+
+            DateTime date = DateTime.Now;
+            int thang = date.Month;
+            int nam = date.Year;
+            DateTime ngayBD = DateTime.Now; DateTime ngayKT = DateTime.Now;
+            if (rbTheoNam.Checked == true)
+            {
+                ngayBD = DateTime.Parse("01-01-" + nam);
+                ngayKT = DateTime.Parse("12-31-" + nam);
+            }
+            else if (rbTheoThang.Checked == true)
+            {
+                ngayBD = DateTime.Parse(thang + "-01-" + nam);
+                ngayKT = DateTime.Parse(thang + "-" + dtSetting.tinhSoNgay(thang, nam) + "-" + nam);
+            }
+            else if (rbTuyChon.Checked == true)
+            {
+                ngayBD = DateTime.Parse(dateNgayBD.Value + "");
+                ngayKT = DateTime.Parse(dateNgayKT.Value + "");
+            }
+            else Response.Write("<script language='JavaScript'> alert('Hãy chọn 1 hình thức báo cáo.'); </script>");
+
+            //ngayBD = ngayBD + "00:00:0.000";
+            //ngayKT = ngayKT + "23:59:59.999";
+
+            dtBanHangLe dt = new dtBanHangLe();
+            DataTable da = dt.DanhSachHangHoaBan(IDKho, IDNganhH, IDNH, ngayBD.ToString("yyyy-dd-MM 00:00:00.000"), ngayKT.ToString("yyyy-dd-MM 23:59:59.999"));
+            gridDanhSach.DataSource = da;
+            gridDanhSach.DataBind();
+
             export.WriteXlsToResponse();
         }
     }

@@ -118,17 +118,17 @@ namespace BanHang
             if (rbTheoNam.Checked == true)
             {
                 ngayBD = nam + "-01-01 ";
-                ngayKT = nam + "-12-31 ";
+                ngayKT = nam + "-31-12 ";
             }
             else if (rbTheoThang.Checked == true)
             {
-                ngayBD = nam + "-" + thang + "-01 ";
-                ngayKT = nam + "-" + thang + "-" + dtSetting.tinhSoNgay(thang, nam) + " ";
+                ngayBD = nam + "-01-" + thang + " ";
+                ngayKT = nam + "-" + dtSetting.tinhSoNgay(thang, nam) + "-" + thang + " ";
             }
             else if (rbTuyChon.Checked == true)
             {
-                ngayBD = DateTime.Parse(dateNgayBD.Value + "").ToString("yyyy-MM-dd ");
-                ngayKT = DateTime.Parse(dateNgayKT.Value + "").ToString("yyyy-MM-dd ");
+                ngayBD = DateTime.Parse(dateNgayBD.Value + "").ToString("yyyy-dd-MM ");
+                ngayKT = DateTime.Parse(dateNgayKT.Value + "").ToString("yyyy-dd-MM ");
             }
             else Response.Write("<script language='JavaScript'> alert('Hãy chọn 1 hình thức báo cáo.'); </script>");
 
