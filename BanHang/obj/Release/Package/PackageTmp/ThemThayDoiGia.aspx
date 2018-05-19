@@ -3,23 +3,31 @@
      s<dx:ASPxFormLayout ID="LayoutGiaTheoVung" runat="server" Width="100%" ColCount="2">
         <Items>
 
-            <dx:LayoutGroup Caption="Danh sách các chi nhánh" Width="100%" RowSpan="10" ColSpan="2">
+            <dx:LayoutGroup Caption="Danh sách các chi nhánh" Width="100%" RowSpan="10" ColSpan="2" ColCount="2">
 
                 <Items>
                     <dx:LayoutItem Caption="">
                         <LayoutItemNestedControlCollection>
                             <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer1" runat="server">
                                 <dx:ASPxComboBox ID="cmbVung" runat="server" AutoPostBack="True"
-                                     OnSelectedIndexChanged="cmbVung_SelectedIndexChanged" Width="50%"
-                                     
+                                     OnSelectedIndexChanged="cmbVung_SelectedIndexChanged" Width="100%"
                                     >
-                                     <%--<Columns>
-                                        <dx:ListBoxColumn FieldName="MaVung" Width="100px" Caption="Mã Vùng" />
-                                        <dx:ListBoxColumn FieldName="TenVung" Width="200px" Caption="Tên Vùng"/>
-                                    </Columns>--%>
                                 </dx:ASPxComboBox>
 
-                                <br />
+                            </dx:LayoutItemNestedControlContainer>
+                        </LayoutItemNestedControlCollection>
+                    </dx:LayoutItem>
+                    <dx:LayoutItem Caption="">
+                        <LayoutItemNestedControlCollection>
+                            <dx:LayoutItemNestedControlContainer runat="server">
+                                <dx:ASPxCheckBox ID="ckChonTatCa" runat="server" CheckState="Unchecked" OnCheckedChanged="ckChonTatCa_CheckedChanged" Text="Chọn tất cả" AutoPostBack="True">
+                                </dx:ASPxCheckBox>
+                            </dx:LayoutItemNestedControlContainer>
+                        </LayoutItemNestedControlCollection>
+                    </dx:LayoutItem>
+                    <dx:LayoutItem Caption="" ColSpan="2">
+                        <LayoutItemNestedControlCollection>
+                            <dx:LayoutItemNestedControlContainer runat="server">
                                 <dx:ASPxCheckBoxList ID="DanhSachKho" runat="server" RepeatColumns="5" Width="100%">
                                 </dx:ASPxCheckBoxList>
                             </dx:LayoutItemNestedControlContainer>
@@ -45,8 +53,24 @@
                     <dx:LayoutItem Caption="Nhập Mã Hàng(*)">
                         <LayoutItemNestedControlCollection>
                             <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer2" runat="server">
-                                <dx:ASPxTextBox ID="txtMaHang" runat="server" Width="100%">
-                                </dx:ASPxTextBox>
+                                <dx:ASPxComboBox ID="txtBarcode" runat="server" ValueType="System.String" 
+                                        DropDownWidth="600" 
+                                        ValueField="ID"
+                                        NullText="Nhập mã hàng ......." Width="100%" TextFormatString="{0}-{1}"
+                                        EnableCallbackMode="true" 
+                                        OnItemsRequestedByFilterCondition="txtBarcode_ItemsRequestedByFilterCondition"
+                                        OnItemRequestedByValue="txtBarcode_ItemRequestedByValue" 
+                                        >                                    
+                                        <Columns>
+                                            <dx:ListBoxColumn FieldName="MaHang" Width="80px" Caption="Mã Hàng" />
+                                            <dx:ListBoxColumn FieldName="TenHangHoa" Width="250px" Caption="Tên Hàng Hóa"/>
+                                            <dx:ListBoxColumn FieldName="TenDonViTinh" Width="100px" Caption="Đơn Vị Tính"/>
+                                        </Columns>
+                                        <DropDownButton Visible="False">
+                                        </DropDownButton>
+                                    </dx:ASPxComboBox>
+                                    <asp:SqlDataSource ID="dsHangHoa" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangConnectionString %>" >                                       
+                                    </asp:SqlDataSource>
                             </dx:LayoutItemNestedControlContainer>
                         </LayoutItemNestedControlCollection>
                     </dx:LayoutItem>
@@ -103,38 +127,15 @@
                                                     </PropertiesComboBox>
                                                 </dx:GridViewDataComboBoxColumn>
                                                 <dx:GridViewDataSpinEditColumn Caption="Giá Bán" FieldName="GiaBan" ShowInCustomizationForm="True" VisibleIndex="3">
-                                                    <PropertiesSpinEdit DisplayFormatString="{0:N0}đ" NumberFormat="Custom">
+                                                    <PropertiesSpinEdit DisplayFormatString="{0:N0}" NumberFormat="Custom" AllowMouseWheel="False" Increment="500">
                                                     </PropertiesSpinEdit>
                                                 </dx:GridViewDataSpinEditColumn>
-<dx:GridViewDataSpinEditColumn FieldName="GiaBan1" ShowInCustomizationForm="True" Caption="Giá Bán 1" VisibleIndex="4">
-<PropertiesSpinEdit DisplayFormatString="{0:N0}đ" NumberFormat="Custom"></PropertiesSpinEdit>
-</dx:GridViewDataSpinEditColumn>
                                                 <dx:GridViewDataTextColumn Caption="Mã Hàng" FieldName="MaHang" ShowInCustomizationForm="True" VisibleIndex="0" ReadOnly="True">
                                                 </dx:GridViewDataTextColumn>
-                                                <dx:GridViewDataSpinEditColumn Caption="Giá Bán 2" FieldName="GiaBan2" ShowInCustomizationForm="True" VisibleIndex="5">
-                                                    <PropertiesSpinEdit DisplayFormatString="{0:N0}đ" NumberFormat="Custom">
-                                                    </PropertiesSpinEdit>
-                                                </dx:GridViewDataSpinEditColumn>
-                                                <dx:GridViewDataSpinEditColumn Caption="Giá Bán 3" FieldName="GiaBan3" ShowInCustomizationForm="True" VisibleIndex="6">
-                                                    <PropertiesSpinEdit DisplayFormatString="{0:N0}đ" NumberFormat="Custom">
-                                                    </PropertiesSpinEdit>
-                                                </dx:GridViewDataSpinEditColumn>
-                                                <dx:GridViewDataSpinEditColumn Caption="Giá Bán 4" FieldName="GiaBan4" ShowInCustomizationForm="True" VisibleIndex="7">
-                                                    <PropertiesSpinEdit DisplayFormatString="{0:N0}đ" NumberFormat="Custom">
-                                                    </PropertiesSpinEdit>
-                                                </dx:GridViewDataSpinEditColumn>
-                                                <dx:GridViewDataSpinEditColumn Caption="Giá Bán 5" FieldName="GiaBan5" ShowInCustomizationForm="True" VisibleIndex="8">
-                                                    <PropertiesSpinEdit DisplayFormatString="{0:N0}đ" NumberFormat="Custom">
-                                                    </PropertiesSpinEdit>
-                                                </dx:GridViewDataSpinEditColumn>
-                                                <dx:GridViewDataDateColumn Caption="Giờ Thay Đổi" FieldName="GioThayDoi" ShowInCustomizationForm="True" VisibleIndex="9" ReadOnly="True">
+                                                <dx:GridViewDataDateColumn Caption="Giờ Thay Đổi" FieldName="GioThayDoi" ShowInCustomizationForm="True" VisibleIndex="9">
                                                     <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy hh:mm tt" EditFormat="Custom" EditFormatString="dd/MM/yyyy hh:mm tt">
                                                     </PropertiesDateEdit>
                                                 </dx:GridViewDataDateColumn>
-                                                <dx:GridViewDataComboBoxColumn Caption="Chi Nhánh" FieldName="IDKho" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="10">
-                                                    <PropertiesComboBox DataSourceID="SqlDanhSachKho" TextField="TenCuaHang" ValueField="ID">
-                                                    </PropertiesComboBox>
-                                                </dx:GridViewDataComboBoxColumn>
                                                 <dx:GridViewDataComboBoxColumn Caption="Tên Hàng Hóa" FieldName="IDHangHoa" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="1">
                                                     <PropertiesComboBox DataSourceID="SqlHangHoa" TextField="TenHangHoa" ValueField="ID">
                                                     </PropertiesComboBox>

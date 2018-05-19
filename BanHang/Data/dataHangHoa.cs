@@ -286,7 +286,7 @@ namespace BanHang.Data
             }
         }
 
-        public void update_Stock(string maHang, int soLuong, int idKho)
+        public void update_Stock(string maHang, int soLuong, int idKho, float giaban)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
@@ -306,12 +306,13 @@ namespace BanHang.Data
                         }
                     }
 
-                    string strSQL = "UPDATE GPM_HangHoaTonKho SET SoLuongCon = @SoLuong WHERE IDKho = @IDKho AND IDHangHoa = @IDHangHoa";
+                    string strSQL = "UPDATE GPM_HangHoaTonKho SET SoLuongCon = @SoLuong, GiaBan = @GiaBan WHERE IDKho = @IDKho AND IDHangHoa = @IDHangHoa";
                     using (SqlCommand myCommand = new SqlCommand(strSQL, myConnection))
                     {
                         myCommand.Parameters.AddWithValue("@IDKho", idKho);
                         myCommand.Parameters.AddWithValue("@IDHangHoa", IDHangHoa);
                         myCommand.Parameters.AddWithValue("@SoLuong", soLuong);
+                        myCommand.Parameters.AddWithValue("@GiaBan", giaban);
                         myCommand.ExecuteNonQuery();
                     }
                 }
@@ -322,14 +323,14 @@ namespace BanHang.Data
             }
         }
 
-        public void themHangHoa_Upload_Stock(string maHang, string tenHang, int soLuong)
+        public void themHangHoa_Upload_Stock(string maHang, string tenHang, int soLuong, float giaban)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
             {
                 try
                 {
                     myConnection.Open();
-                    string strSQL = "INSERT INTO GPM_Upload_Stock(MaHang,TenHang,SoLuong) VALUES ('" + maHang + "','" + tenHang + "'," + soLuong + ")";
+                    string strSQL = "INSERT INTO GPM_Upload_Stock(MaHang,TenHang,SoLuong, GiaBan) VALUES ('" + maHang + "','" + tenHang + "'," + soLuong + ", " + giaban + ")";
                     using (SqlCommand myCommand = new SqlCommand(strSQL, myConnection))
                     {
                         myCommand.ExecuteNonQuery();

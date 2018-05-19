@@ -109,7 +109,7 @@
                                                             </dx:RibbonDropDownButtonItem>
                                                             <dx:RibbonDropDownButtonItem Name="danh-sach-don-hang-thu-mua" NavigateUrl="DanhSachDonHangThuMua.aspx" Text="Đơn Đặt Hàng Thu Mua" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
-                                                            <dx:RibbonDropDownButtonItem Name="danh-sach-don-hang-chi-nhanh" NavigateUrl="DonDatHangChiNhanh.aspx" Text="Đơn Đặt Hàng Chi Nhánh" Visible="False">
+                                                            <dx:RibbonDropDownButtonItem Name="danh-sach-don-hang-chi-nhanh" NavigateUrl="DonDatHangChiNhanh.aspx" Text="DS Đơn Hàng Chi Nhánh" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>
                                                             <dx:RibbonDropDownButtonItem Name="don-dat-hang-chi-nhanh" Text="Chi Nhánh Đặt Hàng" NavigateUrl="ChiNhanhDatHang.aspx" Visible="False">
                                                             </dx:RibbonDropDownButtonItem>

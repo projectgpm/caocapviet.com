@@ -41,8 +41,8 @@ namespace BanHang
             string IDKho = cmbKhoHang.Value.ToString();
             for (int i = 0; i < data.Rows.Count; i++)
             {
-                
-                dt.update_Stock(data.Rows[i]["MaHang"].ToString(), Int32.Parse(data.Rows[i]["SoLuong"].ToString()),Int32.Parse(IDKho));
+
+                dt.update_Stock(data.Rows[i]["MaHang"].ToString(), Int32.Parse(data.Rows[i]["SoLuong"].ToString()), Int32.Parse(IDKho), float.Parse(data.Rows[i]["GiaBan"].ToString()));
             }
             dtLichSuTruyCap.ThemLichSu(Session["IDNhanVien"].ToString(), Session["IDNhom"].ToString(), "Hàng hóa", Session["IDKho"].ToString(), "Điều chỉnh stock", "Điều chỉnh stock");
             Response.Redirect("TonKhoBanDau.aspx");
@@ -103,8 +103,9 @@ namespace BanHang
                     string MaHang = dr["Ma Hang"].ToString();
                     string TenHangHoa = dr["Ten Hang Hoa"].ToString();
                     int SoLuong = Int32.Parse(dr["So Luong"].ToString());
+                    int giaban = Int32.Parse(dr["Gia Ban"].ToString());
 
-                    dt.themHangHoa_Upload_Stock(MaHang, TenHangHoa, SoLuong);
+                    dt.themHangHoa_Upload_Stock(MaHang, TenHangHoa, SoLuong, giaban);
                 }
                 Load();
             }

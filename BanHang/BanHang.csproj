@@ -249,6 +249,7 @@
     <Content Include="PhieuXuatTra.aspx" />
     <Content Include="QLKho.aspx" />
     <Content Include="QuanTriNguoiDung.aspx" />
+    <Content Include="QuyDoiHang.aspx" />
     <Content Include="Root.master" />
   </ItemGroup>
   <ItemGroup>
@@ -1191,6 +1192,13 @@
     </Compile>
     <Compile Include="QuanTriNguoiDung.aspx.designer.cs">
       <DependentUpon>QuanTriNguoiDung.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="QuyDoiHang.aspx.cs">
+      <DependentUpon>QuyDoiHang.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="QuyDoiHang.aspx.designer.cs">
+      <DependentUpon>QuyDoiHang.aspx</DependentUpon>
     </Compile>
     <Compile Include="Report\rpBangKeBanHang.cs">
       <SubType>Component</SubType>

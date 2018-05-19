@@ -109,13 +109,15 @@
         </EditFormLayoutProperties>
         
                 <Columns>
-                    <dx:GridViewCommandColumn ShowDeleteButton="True" ShowInCustomizationForm="True" VisibleIndex="3">
+                    <dx:GridViewCommandColumn ShowDeleteButton="True" ShowInCustomizationForm="True" VisibleIndex="4">
                     </dx:GridViewCommandColumn>
                     <dx:GridViewDataTextColumn Caption="Mã hàng" FieldName="MaHang" ShowInCustomizationForm="True" VisibleIndex="0">
                     </dx:GridViewDataTextColumn>
                     <dx:GridViewDataTextColumn Caption="Tên hàng" FieldName="TenHang" ShowInCustomizationForm="True" VisibleIndex="1">
                     </dx:GridViewDataTextColumn>
                     <dx:GridViewDataTextColumn Caption="Số lượng" FieldName="SoLuong" ShowInCustomizationForm="True" VisibleIndex="2">
+                    </dx:GridViewDataTextColumn>
+                    <dx:GridViewDataTextColumn Caption="Đơn giá" FieldName="DonGia" ShowInCustomizationForm="True" VisibleIndex="3">
                     </dx:GridViewDataTextColumn>
                 </Columns>
         <Styles>

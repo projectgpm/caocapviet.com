@@ -63,7 +63,7 @@ namespace BanHang
 
         protected void btnNhapExcel_Click(object sender, EventArgs e)
         {
-            Response.Redirect("ImportExcel_HangHoa.aspx");
+            Response.Redirect("QuyDoiHang.aspx");
         }
 
         protected void XuatFilePDF_Click(object sender, EventArgs e)

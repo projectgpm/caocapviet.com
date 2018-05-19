@@ -75,7 +75,7 @@
                     </PropertiesSpinEdit>
                 </dx:GridViewDataSpinEditColumn>
                 <dx:GridViewDataSpinEditColumn Caption="Giá Bán" FieldName="GiaBan" ShowInCustomizationForm="True" VisibleIndex="3">
-                    <PropertiesSpinEdit DisplayFormatString="{0:N0}VNĐ" NumberFormat="Custom" DisplayFormatInEditMode="True">
+                    <PropertiesSpinEdit DisplayFormatString="N0" NumberFormat="Custom" DisplayFormatInEditMode="True" Increment="5000">
                     </PropertiesSpinEdit>
                 </dx:GridViewDataSpinEditColumn>
                 <dx:GridViewDataDateColumn Caption="Ngày Cập Nhật" FieldName="NgayCapNhat" ShowInCustomizationForm="True" VisibleIndex="6">

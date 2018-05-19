@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Root.master" AutoEventWireup="true" CodeBehind="BaoCaoBanHang.aspx.cs" Inherits="BanHang.BaoCaoBanHang" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
+    <dx:ASPxGridViewExporter ID="export" runat="server" GridViewID="gridDanhSach">
+    </dx:ASPxGridViewExporter>
     <dx:ASPxFormLayout ID="ASPxFormLayout1" runat="server" Width="100%">
         <Items>
             <dx:LayoutGroup Caption="Thông tin báo cáo" ColCount="3" HorizontalAlign="Center">
@@ -91,6 +93,8 @@
                     <dx:LayoutItem Caption="">
                         <LayoutItemNestedControlCollection>
                             <dx:LayoutItemNestedControlContainer runat="server">
+                                <dx:ASPxButton ID="btnXuatExel" runat="server" OnClick="btnXuatExel_Click" Text="Xuất Exel" Width="100%">
+                                </dx:ASPxButton>
                             </dx:LayoutItemNestedControlContainer>
                         </LayoutItemNestedControlCollection>
                     </dx:LayoutItem>

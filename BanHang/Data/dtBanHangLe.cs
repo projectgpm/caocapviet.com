@@ -107,7 +107,23 @@ namespace BanHang.Data
                 }
             }
         }
-
+        public DataTable DanhSachHangHoaBan_BK(string IDKho, string IDNganh, string IDNhom, string NgayBD, string NgayKT)
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT GPM_NhomHang.TenNhomHang, GPM_HangHoa.ID, GPM_HangHoa.MaHang, GPM_HangHoa.TenHangHoa, GPM_DonViTinh.TenDonViTinh, GPM_ChiTietHoaDon.SoLuong AS SoLuong, GPM_ChiTietHoaDon.GiaBan, GPM_HoaDon.MaHoaDon FROM GPM_HangHoa,GPM_HoaDon,GPM_ChiTietHoaDon,GPM_DonViTinh,GPM_NhomHang WHERE GPM_HoaDon.ID = GPM_ChiTietHoaDon.IDHoaDon AND GPM_HangHoa.ID = GPM_ChiTietHoaDon.IDHangHoa AND GPM_HangHoa.IDDonViTinh = GPM_DonViTinh.ID AND GPM_HangHoa.IDNhomHang = GPM_NhomHang.ID AND ( " + IDKho + " = -1 OR GPM_HoaDon.IDKho = " + IDKho + ") AND ( " + IDNhom + " = -1 OR GPM_NhomHang.ID = " + IDNhom + ") AND (" + IDNganh + " = -1 OR GPM_NhomHang.IDNganhHang = " + IDNganh + ") AND GPM_HoaDon.NgayBan >= '" + NgayBD + "' AND GPM_HoaDon.NgayBan <= '" + NgayKT + "'";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        DataTable tb = new DataTable();
+                        tb.Load(reader);
+                        return tb;
+                    }
+                }
+            }
+        }
         public void ThemHangQuyDoi(int IDHangHoaQuiDoi, int SoLuong, int SoLuongCon, string IDKho, string IDNguoiDung, int IDHangHoa, int MaHoaDon)
         {
             using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))

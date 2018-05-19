@@ -9,7 +9,23 @@ namespace BanHang.Data
 {
     public class dtHangHoa
     {
-        
+
+        public static DataTable DanhSachHangHoaCoQuyDoi()
+        {
+            using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
+            {
+                con.Open();
+                string cmdText = "SELECT ID, MaHang, TenHangHoa, IDHangQuyDoi FROM GPM_HangHoa WHERE IDHangQuyDoi != 0";
+                using (SqlCommand command = new SqlCommand(cmdText, con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    DataTable tb = new DataTable();
+                    tb.Load(reader);
+                    return tb;
+                }
+            }
+        }
+
         public static bool KiemTraMaHang(string MaHang)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))
@@ -452,6 +468,30 @@ namespace BanHang.Data
                 }
             }
         }
+
+        public static void UpdateHangQuyDoi(int IDHH1, int IDHH2)
+        {
+            using (SqlConnection myConnection = new SqlConnection(StaticContext.ConnectionString))
+            {
+                try
+                {
+                    myConnection.Open();
+                    string strSQL = "UPDATE GPM_HangHoa SET IDHangQuyDoi = @IDHH1 WHERE [ID] = @IDHH2;" +
+                        "UPDATE GPM_HangHoa SET IDHangQuyDoi = @IDHH2 WHERE [ID] = @IDHH1;";
+                    using (SqlCommand myCommand = new SqlCommand(strSQL, myConnection))
+                    {
+                        myCommand.Parameters.AddWithValue("@IDHH1", IDHH1);
+                        myCommand.Parameters.AddWithValue("@IDHH2", IDHH2);
+                        myCommand.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Lỗi: Quá trình Xóa dữ liệu gặp lỗi, hãy tải lại trang");
+                }
+            }
+        }
+
         public static int HangHoaQuiDoi(string IDHangHoa)
         {
             using (SqlConnection con = new SqlConnection(StaticContext.ConnectionString))

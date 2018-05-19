@@ -8,7 +8,7 @@
                 <dx:LayoutItem Caption="Số Đơn Hàng">
                     <LayoutItemNestedControlCollection>
                         <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer4" runat="server">
-                            <dx:ASPxTextBox ID="txtSoDonHang" runat="server" Width="100%" Enabled="False">
+                            <dx:ASPxTextBox ID="txtSoDonHang" runat="server" Width="100%" Enabled="False" Text="Hệ thống tự tạo">
                             </dx:ASPxTextBox>
                         </dx:LayoutItemNestedControlContainer>
                     </LayoutItemNestedControlCollection>
